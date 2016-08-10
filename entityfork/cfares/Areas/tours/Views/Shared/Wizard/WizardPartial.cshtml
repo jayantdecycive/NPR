@@ -1,0 +1,43 @@
+﻿@model cfacore.shared.modules.com.admin.Wizard
+           
+<div class="wizard">
+
+@if(Model!=null){
+
+        <div class="wizard-bar @("wizard-bg-"+(Model.CurrentStep.Index.ToString()))">
+
+
+    @{
+        foreach (cfacore.shared.modules.com.admin.WizardStep step in Model.Steps)
+        {
+            <div class="bar-section @(step.Index!=Model.CurrentStep.Index?"step-past":"step-future")">
+                @if(step.Index != Model.CurrentStep.Index && step.Complete){
+                    <a href='@step.Uri'>@step.Name</a>
+                }
+                else{
+                   @step.Name
+                }
+    
+            </div>
+        
+        }
+        <span class="clearfloat"></span>
+    }
+        </div>
+        <div class="wizard-info">
+    @{ 
+        foreach (cfacore.shared.modules.com.admin.WizardStep step in Model.Steps)
+        {
+            if (!string.IsNullOrEmpty(step.Summary) && step.Index<Model.CurrentStep.Index)
+            {
+                
+                <a href='@step.Uri' class='block wizard-step @("info-" + step.Index)'>@Html.Raw(step.Summary)</a> 
+                
+            }
+        }
+    
+    }
+        </div>
+    
+}
+</div>

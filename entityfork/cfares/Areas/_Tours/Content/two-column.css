@@ -1,0 +1,195 @@
+﻿/* 2 column 50 50 split
+----------------------------------------------------------*/
+.two-column-5050
+{
+    font-size:10pt;
+    font-family:Arial,sans-serif;
+}
+.column-left-50
+{
+    width:43%;
+    display:inline-block;
+    float:left;
+}
+
+.column-right-50
+{
+    width:43%;
+    display:inline-block;
+    float:right;
+}
+
+.two-column-5050 .dividor
+{
+    display:inline-block;
+    background:#e2e2e2;
+    height: 250px;
+    width:3px;
+    margin-left:60px;
+}
+
+.two-column-5050 .description
+{
+    height:50px; 
+    width:100% 
+}
+
+.two-column-5050 .item-name
+{
+    width:87px;  
+    display:inline-block; 
+}
+
+.two-column-5050 .form-item
+{
+    line-height:250%;
+}
+
+.two-column-5050 .form-item input[type=text], .two-column-5050 .form-item input[type=password]
+{
+    width:  220px;
+}
+
+.two-column-5050 .reset-button
+{
+    margin-left:20%;
+}
+
+.two-column-5050 h1
+{
+    text-align:center;
+}
+
+
+/* 2 column 66 33 split
+----------------------------------------------------------*/
+
+.two-column-6633 p 
+{
+    font-family:Arial,sans-serif; 
+    font-size:10pt; 
+    color:#666;
+    line-height: 150%; 
+}
+    
+.column-left-66 
+{
+    float:left; 
+    width:600px; 
+}
+
+.column-left-66 p 
+{
+    padding-bottom:40px; 
+}
+
+.column-left-66 li 
+{
+    font-family:Arial,sans-serif; 
+    font-size:10pt; 
+    color:#666; 
+    font-weight:bold; 
+    line-height: 150%; 
+}
+
+.column-left-66 .map 
+{
+    float:left; 
+    padding-right:30px;
+}
+     
+.column-left-66 .info-section 
+{
+    clear:both; 
+    padding-top:30px; 
+}
+
+.info-section p 
+{
+    padding:0px; 
+}
+
+.address 
+{
+    font-family:Arial,sans-serif; 
+    font-size:10pt; 
+    line-height: 150%; 
+    color:#666; 
+    padding-left:30px;
+}
+
+.address h4 
+{
+    color:#000; 
+    padding:0px; 
+    margin:0px;
+}
+
+.strong
+{
+    color:#000;
+    font-weight:bold;   
+}
+
+/* hotels sidebar
+----------------------------------------------------------*/
+
+.column-right-hotels
+{
+    float:right;
+    width:339px;
+    border:none;
+    background-image:url("/Areas/Tours/Content/Img/hotel-bg.png");
+    background-repeat:no-repeat;
+}
+.hotel  
+{
+    font-family:Arial,sans-serif; 
+    font-size:10pt; 
+    padding-top: 2px; 
+    color:#666; 
+    line-height: 150%;
+}
+#hotel-content 
+{
+    width:300px; 
+    padding-left:19px; 
+    padding-top:19px; 
+    padding-bottom:35px; 
+}
+
+/* brag box
+----------------------------------------------------------*/
+
+.sm-icon img
+{
+    float:left;
+    padding-left: 8px;
+    padding-right: 8p;
+    padding-bottom: 30px;
+}
+
+#sm-fb{ width:58px; height:57px; background-image:url(/Areas/Tours/Content/Img/icon-facebook.png); background-repeat:no-repeat; margin-right:22px; float:left; -moz-box-shadow: 0 0 5px 5px #fcfcfc; -webkit-box-shadow: 0 0 5px 5px#fcfcfc;  box-shadow: 0 0 5px 5px #fcfcfc;}
+#sm-tw{ width:58px; height:57px; background-image:url(/Areas/Tours/Content/Img/icon-twitter.png); background-repeat:no-repeat; margin-right:22px; float:left; -moz-box-shadow: 0 0 5px 5px #fcfcfc; -webkit-box-shadow: 0 0 5px 5px#fcfcfc;  box-shadow: 0 0 5px 5px #fcfcfc;}
+#sm-pin{ width:58px; height:57px; background-image:url(/Areas/Tours/Content/Img/icon-pinterest.png); background-repeat:no-repeat; margin-right:22px; float:left; -moz-box-shadow: 0 0 5px 5px #fcfcfc; -webkit-box-shadow: 0 0 5px 5px#fcfcfc;  box-shadow: 0 0 5px 5px #fcfcfc;}
+#sm-mail{ width:58px; height:57px; background-image:url(/Areas/Tours/Content/Img/icon-mail.png); background-repeat:no-repeat; float:right; margin-bottom:30px; -moz-box-shadow: 0 0 5px 5px #fcfcfc; -webkit-box-shadow: 0 0 5px 5px#fcfcfc;  box-shadow: 0 0 5px 5px #fcfcfc;}
+
+
+.brag-box
+{
+    float:right;
+    width:339px;
+    border:none;
+    background-image:url("/Areas/Tours/Content/Img/bragbox-bg.png");
+    background-repeat:no-repeat;
+}
+
+.brag-content
+{
+    width:300px; 
+    padding-left:19px; 
+    padding-top:19px; 
+    padding-bottom:35px; 
+}
+
+

@@ -1,0 +1,19 @@
+﻿<script type="text/javascript">
+    var DataFunction = {
+
+        tablefilter: function (col) {
+            
+            var filterArr = [];
+
+            
+            filterArr.push("{0} eq null".format("SlotId"));
+
+
+            if (filterArr.length)
+                return "(" + filterArr.join(" and ") + ")";
+        }
+
+
+    };
+
+</script>

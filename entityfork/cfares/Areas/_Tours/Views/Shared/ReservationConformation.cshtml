@@ -1,0 +1,24 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+@{
+    ViewBag.Title = "ReservationConfirmation";
+    Layout = "~/Areas/Tours/Views/Shared/TwoColumn/_Column6633.cshtml";
+    ViewBag.WizardStep = 5;
+}
+
+@Html.Partial("Wizard/WizardPartial")
+
+@section ColumnLeft{
+    <h1>Thank You! Your Reservation is Complete!</h1>
+    <p><span>We look forward to seeing you on</span>@ViewBag.dateRequests[0]<span>. You will soon receive an email with your reservation details. Please print the email and make sure you bring it and a photo ID on the day of your tour</span></p>
+
+    @if (ViewBag.UserMode == "Customer")
+    {
+    <p>Make sure to read the @Html.ActionLink("Plan Your Visit", "CustomerPlan", "Home") page prior to your tour date! If you have any questions, please see the @Html.ActionLink("Frequently Asked Questions", "Faq", "Home").</p>
+    } else {
+    <p>Make sure to read the @Html.ActionLink("Plan Your Visit", "OperatorPlan", "Operator") page prior to your tour date! If you have any questions, please see the @Html.ActionLink("Frequently Asked Questions", "Faq", "Operator").</p>
+    }
+}
+
+@section ColumnRight{
+@Html.Partial("TwoColumn/BragBox")
+}

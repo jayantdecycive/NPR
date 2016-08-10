@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.Brief = "All Tickets";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+<h1>Ticket Dash</h1>
+<p>
+    A list of all active tickets
+</p>
+
+@section Table{
+<table id="ticket_dash" class='data-table' data-data='/DataService/Ticket.svc/Tickets' 
+    data-crud='/DataService/Ticket.svc/Tickets({0}L)'>
+        <thead>
+        <tr>
+            <th data-id='TicketLink' data-on-display='DataFormat.TicketUrl' data-column-parent='TicketId'></th>                        
+            <th data-column-name='TicketIdL' data-id-column='true' >Ticket Id</th>                        
+			<th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+            <th data-id='SlotLink' data-column-parent='SlotId' data-on-display='DataFormat.SlotUrl' >Slot</th>
+			<th data-column-name='CardNumberI' >Card Number</th>
+            <th data-column-name='OwnerIdL' data-visible='false'>Owner Id</th>  
+            <th data-id='Owner' data-column-parent='OwnerId' data-on-display='DataFormat.UserUrl'>Owner</th>  
+		</tr>
+        </thead>
+    </table>
+}

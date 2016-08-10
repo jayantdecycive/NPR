@@ -1,0 +1,16 @@
+﻿@model cfacore.shared.domain.media.Media
+
+@{
+    ViewBag.Title = "Detail";
+    ViewBag.Brief = "Media Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+
+
+<h1>Media Detail</h1>
+<p>
+    @Model.ToString()
+</p>
+
+@Html.Partial("ModelDetail/_Media")
+            

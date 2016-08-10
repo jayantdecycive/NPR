@@ -1,0 +1,16 @@
+﻿@model cfares.domain.user.ResUser
+
+@{
+    ViewBag.Title = "Create User";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+    ViewBag.Brief = "Create New Event User";
+    
+}
+
+
+<h1>Reservation User Detail</h1>
+<p>
+    <br /><strong>Note:</strong> the user will be added to the site database. If you intend to create a user that logs in through @@cfa, please contact a site administrator for Chick-fil-A IT.
+</p>
+
+@Html.Partial("ModelForm/_User")

@@ -1,0 +1,50 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_LeftJustified.cshtml";
+}
+
+<h1>
+    Reservation Overview</h1>
+<div class="reservation-overview">
+
+        <div class="red">@Html.ValidationSummary(true)</div>
+        @Html.Partial("FormReview/SlotInfo")
+        @if (Model.reservationUser.IsBound())
+        {
+            @Html.HiddenFor(m => m.reservationUser.UserId)
+        }
+        @if (Model.tourTicket.IsBound())
+        {
+            @Html.HiddenFor(m => m.tourTicket.TicketId)
+        }
+        @Html.Partial("FormReview/UserInfo")
+
+        @Html.Partial("FormReview/Customer/GroupType")
+
+        @Html.Partial("FormReview/GroupName")
+        <!--special Needs-->
+        @Html.Partial("FormReview/SpecialNeeds")
+        @if (Model.tourTicket.OptInForLunch)
+        {
+            @Html.Partial("FormReview/LunchOptionDisplay")
+
+        }
+        <!--lunch-->
+        @if (ViewBag.UserMode == "Operator")
+        {
+            @Html.Partial("FormReview/Operator/AdditionalStops")
+
+        }
+        <!--for hiding the lunch option-->
+        @if (Model.tourTicket.Slot.Start != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.Start, new { id = "slotStart" })
+        }
+        <!--Buttons-->
+        <a class="form-button" id="modify-registration-button" href="@Url.Action("Modify", "Reservation", new { id = Model.tourTicket.TicketId })">
+        <a class="form-button" id="resend-button" href="@Url.Action("ReSend", "Reservation", new { id = Model.tourTicket.TicketId })">
+        </a><a class="form-button" id="cancel-registration-button" href="@Url.Action("Delete", new { id = Model.tourTicket.TicketId })">
+        </a>
+    </div>

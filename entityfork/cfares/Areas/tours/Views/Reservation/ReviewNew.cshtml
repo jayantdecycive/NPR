@@ -1,0 +1,74 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@{
+    ViewBag.Title = "Review Your Registration";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_LeftJustified.cshtml";
+}
+        <!--wizard-->
+        @if (ViewBag.Wizard != null)
+        {
+            cfacore.shared.modules.com.admin.Wizard wmodel = (cfacore.shared.modules.com.admin.Wizard)Session["homeofficeidwizard"];
+            if (wmodel != null && wmodel is cfacore.shared.modules.com.admin.Wizard)
+            {
+                @Html.Partial("Wizard/WizardPartial", wmodel)
+            }
+        }
+<h1>
+    Reservation Overview</h1>
+@using (Html.BeginForm())
+{
+    
+
+    <div class="reservation-overview">
+        <div class="review-description">
+            Please review the details of your reservation below. To modify a field, click the
+            'Edit This Information' button at the bottom of the screen. <span class="legal-aside red">
+                * Indicates required field</span>
+        </div>
+        <div class="red">@Html.ValidationSummary(true)</div>
+        @Html.Partial("FormReview/SlotInfo")
+        @*@if (Model.reservationUser.IsBound())
+        {
+            @Html.HiddenFor(m => m.reservationUser.UserId)
+        }*@
+        @if (Model.tourTicket.IsBound())
+        {
+            @Html.HiddenFor(m => m.tourTicket.TicketId)
+        }
+        @Html.Partial("FormReview/UserInfo")
+        @if (!Request.IsAuthenticated)
+        {
+            @Html.Partial("FormReview/Customer/UserCreation")
+
+        }
+        @Html.Partial("FormReview/Customer/GroupType")
+        @Html.Partial("FormReview/GroupName")
+        <!--special Needs-->
+        @Html.Partial("FormReview/SpecialNeeds")
+        @if (Model.tourTicket.OptInForLunch)
+        {
+            @Html.Partial("FormReview/LunchOptionDisplay")
+
+        }
+        <!--lunch-->
+        @if (ViewBag.UserMode == "Operator")
+        {
+            @Html.Partial("FormReview/Operator/AdditionalStops")
+
+        }
+        <!--for hiding the lunch option-->
+        @if (Model.tourTicket.Slot.Start != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.Start, new { id = "slotStart" })
+        }
+        <!--Buttons-->
+        <input class="form-button" id="confirm-registration-button" value="" type="submit" />
+        @if(!Request.IsAuthenticated){
+            <a class="form-button" id="modify-registration-button" href="@Url.Action("Begin", "Reservation", new { id = Model.tourTicket.Slot.SlotId })"></a>
+        }
+        else{
+            <a class="form-button" id="modify-registration-button" href="@Url.Action("Modify", "Reservation", new { id = Model.tourTicket.TicketId })"></a>
+        }
+        
+        <a class="form-button" id="cancel-registration-button" href="@Url.Action("Forget")"></a>
+    </div>
+}

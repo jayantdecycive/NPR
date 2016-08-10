@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Admin Home Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+    <script type="text/template" id="mytemplate">
+        <div>
+            My Name is {0}
+        </div>
+    </script>
+}
+
+<div class="content rounded" id="main">
+    
+    
+    
+    <div class="inner-content wrapper upcoming-tours">
+        <div class='model badge'>
+            
+            <div class='button-cta right'>
+                @Html.ActionLink("Events Dashboard", "Index", "Event", new { }, new { data_icon = "ui-icon-circle-arrow-e" })
+            </div>
+            <h1>Upcoming Tours</h1>
+            <p>View Upcoming tours and make modifications if necessary</p>
+            
+
+        </div>
+        <div class='filters model badge'>
+            
+            <p class='inline-block'>Filter by:</p>
+            
+            @Html.Partial("Filters/Input/_SlotDash")
+
+        </div>
+        
+        <!--<div class='admin-grey'>
+            <input type="text" class='jq-auto-complete' data-columns="LocationNumber,LocationCode" data-filter="Name,LocationCode" data-label="Name" data-src='http://localhost:65271/DataService/Location.svc/Locations' />
+        </div>-->
+        @Html.Partial("Tables/_UpcomingSlotsDash")
+     </div>
+     
+     <div class='inner-content wrapper new-tour-cta'>
+        <div class='model badge rounded'>
+            <h2>Create a New Tour</h2>
+            <p>Choose the type of tour you wish to create.</p>
+            <div class='button-list admin-green'>
+                <!--<a href="Admin/Wizard/CreateSmallStoryTour" data-icon="ui-icon-triangle-1-e" class='jq-button'>Small Story Tour</a>
+                <a href="Admin/Wizard/CreateLargeStoryTour" data-icon="ui-icon-triangle-1-e" class='jq-button'>Large Story Tour</a>
+                <a href="Admin/Wizard/CreateTeamTour" data-icon="ui-icon-triangle-1-e" class='jq-button'>Team Member Tour</a>-->
+                <a href="/Admin/Event/Create-Dash/story" data-icon="ui-icon-triangle-1-e" class='jq-button'>Small Story Tour</a>
+                <a href="/Admin/Event/Create-Dash/lgstory" data-icon="ui-icon-triangle-1-e" class='jq-button'>Large Story Tour</a>
+                <a href="/Admin/Event/Create-Dash/team" data-icon="ui-icon-triangle-1-e" class='jq-button'>Team Member Tour</a>
+            </div>
+        </div>
+     </div>
+
+     <div class='inner-content wrapper home-dash-cta'>
+        <div class='model badge rounded'>
+            <h2>Dashboards</h2>
+            <p>Create or view data for the application.</p>
+            <div class='button-list admin-green'>
+                <a href="/Admin/Schedule" data-icon="ui-icon-calculator" class='jq-button'>Schedule Dashboard</a>
+                <a href="/Admin/User" data-icon="ui-icon-person" class='jq-button'>User Dashboard</a>
+                <a href="/Admin/Slot/TourSlot-Index" data-icon="ui-icon-calendar" class='jq-button'>Tour Slot Dashboard</a>
+                <a href="/Admin/Ticket/TourTicket-Index" data-icon="ui-icon-tag" class='jq-button'>Tour Ticket Dashboard</a>
+            </div>
+        </div>
+     </div>
+     <div class="inner-content wrapper past-tours">
+        <div class='model badge'>
+            <h2>Past Tours</h2>
+            <p>View past tours and make reports</p>
+        </div>
+        <!--<div class='admin-grey'>
+            <input type="text" class='jq-auto-complete' data-onlabel="CompleteLabel.location" data-columns="LocationNumber,LocationCode,Name,Line1" data-filter="Name,LocationCode"  data-src='http://localhost:65271/DataService/Location.svc/Location_StreetAddress' />
+        </div>-->
+        @Html.Partial("Tables/_PastSlotsDash")
+        
+     </div>
+</div>
+

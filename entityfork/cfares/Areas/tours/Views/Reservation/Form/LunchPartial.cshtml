@@ -1,0 +1,30 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+<div id="lunchOptInSection" class="form-section" data-priceModel="@ViewBag.UserMode">
+    <span class="field-requirement">* </span><span class="name">This tour time has a lunch
+        option. Would anyone in your group like to reserve a lunch? </span><span class="yes-no-radios">@Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, true)
+            Yes
+            @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, false)
+            No</span>
+    @if (ViewBag.UserMode == "Customer" && ViewBag.TourSize == "Small")
+    {
+        <div class="textboxwrapper">
+            @Html.TextBoxFor(m => m.tourTicket.NumberOfAdultLunches, new { @class = "lunchCounter" })
+            <span>Adults – Lunch includes a Chick-fil-A Sandwich, Potato Chips, a Cookie, and bottled
+                water. @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST (cost of lunch includes tax).</span>
+        </div>
+        <div class="textboxwrapper">
+            @Html.TextBoxFor(m => m.tourTicket.NumberOfKidLunches, new { @class = "lunchCounter" })
+            <span>Kids (12 & under) – Lunch includes Chick-fil-A Nuggets, Fruit Cup, a Cookie, and
+                bottled water. @cfares.domain._event.ticket.tours.TourTicket.CHILD_LUNCH_COST (cost of lunch includes tax).</span>
+        </div>
+        <div class="textboxwrapper">
+            @Html.TextBoxFor(m => m.tourTicket.NumberOfSpecialNeedLunches, new { @class = "lunchCounter" })
+            <span>Special Needs – Lunch includes a vegetarian and gluten-free salad. @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST (cost of lunch includes tax). </span>
+            @Html.TextBoxFor(m => m.tourTicket.SpecialDietNeedsDescription, new { @class = "additional-info-box" })
+            @Html.ValidationMessageFor(m => m.tourTicket.SpecialDietNeedsDescription)
+        </div>
+        <div id="lunchPriceSection">
+            Lunch option will cost a total of <span id="totalLunchAmount"></span> (cost of lunch includes tax).</div>
+        @Html.ValidationMessageFor(m => m.tourTicket.OptInForLunch)
+    }
+</div>

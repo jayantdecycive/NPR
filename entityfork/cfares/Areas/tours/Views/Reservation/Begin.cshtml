@@ -1,0 +1,217 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@using cfacore.site.controllers._event;
+@{
+    ViewBag.Title = "Register Your Group";
+    ViewBag.Style = "jquery-ui-form.css";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_LeftJustified.cshtml";
+}
+
+@section Meta{
+<script src="@Url.Content("~/Areas/tours/Scripts/formLogic.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Areas/tours/Scripts/multiEntryList.js")" type="text/javascript"></script>
+}
+<!--Javascript for jquery ui dialogs-->
+<script type="text/javascript">
+    $(function () {
+
+        var $pass = $('<div></div>')
+		.html('Dedicating a password will allow you to cancel or modify your reservation.')
+		.dialog({autoOpen: false, title: 'Why a Password?'
+		});
+
+        var $security = $('<div></div>')
+		.html('For security reasons, all guests visiting the home office must be cleared by security prior to their visit.')
+		.dialog({ autoOpen: false, title: 'Why do I need to enter group members?'
+		});
+
+        var $groupMembers = $('<div></div>')
+		.html("You may visit the website prior to 72 hours of your tour to add or edit any group member names.")
+		.dialog({ autoOpen: false, title: "Don't yet know who is in your group?"
+		});
+
+
+
+        $('#password-dialog').click(function () {
+            $pass.dialog('open'); return false;
+        });
+
+        $('#group-security-dialog').click(function () {
+            $security.dialog('open'); return false;
+        });
+
+        $('#group-members-dialog').click(function () {
+            $groupMembers.dialog('open'); return false;
+        });
+
+    });
+</script>
+        <!--wizard-->
+        @if (ViewBag.Wizard != null)
+        {
+            cfacore.shared.modules.com.admin.Wizard wmodel = (cfacore.shared.modules.com.admin.Wizard)Session["homeofficeidwizard"];
+            if (wmodel != null && wmodel is cfacore.shared.modules.com.admin.Wizard)
+            {
+                @Html.Partial("Wizard/WizardPartial", wmodel)
+            }
+        }
+<!--Header and Description-->
+<h1>Register Your Group</h1>
+<p class="description">
+    Now that you have selected a tour date and time, please complete your reservation <br/>by filling out the form below.<span class="legal-aside red">
+    * Indicates required field</span>
+    @if (!Request.IsAuthenticated)
+    {
+    <p class="login-link red">Have you registered for a tour before? Please click <a href="@("/Account/LogOn?url=/Reservation/Begin/" + @Model.tourTicket.Slot.SlotId)">here</a> to log in.</p>
+    <br/>
+    }
+    else
+    {
+    <p class="login-link red">Not @Model.reservationUser.Name? Please click <a href=@("/Account/LogOff?url=/Reservation/Date/"+Model.tourTicket.GuestCount)>here</a> to log out.</p>
+    <br/>
+    }
+</p>
+
+
+<!--Main Form-->
+<div class="form-body" data-tourSize="@ViewBag.TourSize">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Registration was unsuccessful. Please correct the errors and try again.")
+
+        <!--Change Slot-->
+        @* 
+        Not doing this for new signups
+        @Html.Partial("Form/ChangeSlot", Model) 
+        *@
+        if (!Request.IsAuthenticated)
+        {   
+       <!--group size-->     
+       @Html.Partial("Form/UserInfoForm")
+        }
+        
+        <!--group size-->     
+        @Html.Partial("Form/GroupSize")  
+        
+        
+        
+        <!--Group Members-->
+        <div class="h-divider"></div>
+        <div class="form-section" >
+        <span class="no-wrap">Group Members:</span>
+        <div class="guest-list-widget">
+        
+
+        <p>
+            Please enter the first and last name of each member in your group, including yourself. 
+            Select the check mark symbol to the right of the field to enter the name and add an additional member. 
+            <a class="dialog-link" id="group-security-dialog" href="#">Why?</a>
+            <a class="dialog-link" id="group-members-dialog" href="#">Don't yet know who is in your group?</a>
+        </p>
+
+        <ul id="guest-list"></ul>
+        <p id="guest-counter-message">Names added: <span id="guest-list-counter"></span> of <span id="guest-count-requirement"></span></p><br/>
+        @Html.TextBoxFor(m => m.tourTicket.GuestList, new { style = "display:none;", id = "hiddenGuestList" })
+        <div>@Html.ValidationMessageFor(m => m.tourTicket.GuestList, "", new { id = "guest-count-validation" })</div>
+
+
+        <!--GUEST NAMES TERMS-->
+        @Html.CheckBoxFor(m => m.userForm.guestNamesConfirm)
+        <label><span class="field-requirement"> * </span> I understand that all guests in my group must be cleared by security 3 days in advance of my tour. 
+        If all guest names have not been submitted 72 hours prior to the tour, my tour will be cancelled. </label>
+        @Html.ValidationMessageFor(m => m.userForm.guestNamesConfirm)
+
+
+        </div>
+        </div> 
+        <div class="h-divider"></div>
+        
+        
+        
+        
+        <!--Group Type-->  
+        if (ViewBag.UserMode != "Operator")
+        {
+       @Html.Partial("Form/GroupTypePartial")  
+        }
+        
+        <!--Group Name-->
+        <div class="form-section" >
+        <span class="field-requirement"> * </span>
+        <div class="">
+        <span>For security purposes, please enter a name for your group </span>
+        @Html.TextBoxFor(m => m.tourTicket.GroupName)
+        @Html.ValidationMessageFor(m => m.tourTicket.GroupName)
+        </div>
+        </div>
+        
+           
+        
+        <!--Special Needs-->
+        @Html.Partial("Form/SpecialNeedsPartial")    
+        
+        <!--Lunch opt in-->
+        
+        if (ViewBag.UserMode == "Customer")
+        {
+
+            int currentHour = (new OccurrenceService().ConvertToTimeZoneContext(Model.tourTicket.Slot.Start)).Hour;
+
+            if (currentHour >= 9 && currentHour < 10)
+            {
+                
+                       @Html.Partial("Form/LunchPartial")
+                      
+            }
+        }
+        else
+        {
+            //operator lunch option
+            <div id="lunchOptInSection" class="form-section" data-priceModel="@ViewBag.UserMode">
+            <span class="field-requirement">* </span>
+            <span class="name">Will you be staying for lunch </span>
+            <span class="yes-no-radios">
+            @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, true)Yes
+            @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, false)No
+            </span>
+            </div>
+        }
+
+        
+        <!--Additional Stops-->
+        if (ViewBag.UserMode == "Operator")
+        {
+            @Html.Partial("Form/AdditionalStopsPartial")
+        }
+
+        
+        <!--Hidden Fileds-->
+        if (Model.tourTicket.TicketId != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.TicketId)
+        }
+        if (Model.tourTicket.TourTicketId != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.TourTicketId)
+        }
+        if (Model.tourTicket.Slot.Start != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.Start, new { id = "slotStart", @class = "clean-timezone" })
+        }
+        if (Model.tourTicket.Slot.SlotId != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.SlotId, new { id = "slotIdInput" })
+        }
+        if (Model.tourTicket.Slot.Capacity != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.Capacity)
+        }
+        if (Model.tourTicket.Slot.TicketsAvailable != null)
+        {
+            @Html.HiddenFor(m => m.tourTicket.Slot.TicketsAvailable, new { id = "ticketsAvailable" })
+        }
+        
+        
+
+        <input type="submit" value="" class="form-button" id="submit-registration-button" />
+    }
+</div>

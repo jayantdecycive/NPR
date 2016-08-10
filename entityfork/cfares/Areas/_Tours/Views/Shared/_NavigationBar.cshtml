@@ -1,0 +1,13 @@
+﻿<div id="navigation-bar">
+    <div class="navigation-buttons">
+        <nav><ul>
+            <li><a href="http://www.chick-fil-a.com/Company/HomeOfficeBackstageTours">Tour Overview</a></li>
+            <li>@Html.ActionLink("Plan Your Visit", "CustomerPlan", "Home")</li>
+            <li>@Html.ActionLink("Modify/Cancel Reservation", "CancelExistingReservation", "Reservation")</li>
+            <li>@Html.ActionLink("Lost Invitation", "Lost", "Reservation")</li>
+            <li>@Html.ActionLink("Need Help?", "FAQ", "Home")</li>
+            
+        </ul></nav>
+    </div>
+    <h2 class="graphic"><img alt="Chick-fil-A Backstage Home Office Tours" src="@Url.Content(ViewBag.AreaRelativeURL + "Content/Img/head-graphic.jpg")" width="772" height="220" /></h2>
+</div>

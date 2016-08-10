@@ -1,0 +1,16 @@
+﻿@model cfacore.shared.domain.store.Store
+@{ 
+    string defaultLabel;
+    if (Model.Name == null)
+    {
+        defaultLabel = string.Format("Store number:{0}", Model.Id());
+    }
+    else
+    {
+        defaultLabel = Model.Name.ToString();
+    }
+}
+<span class='admin-grey'>    
+    <input type="text" data-default-label="@defaultLabel" value="@Model.Id()" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='jq-auto-complete' data-onlabel="CompleteLabel.location" data-onselect="ModelTools.AutoCompleteSelect" 
+    data-columns="LocationNumber,LocationCode,Name,Line1" data-filter="Name,LocationCode,Line1" data-numeric-filter="LocationNumber" data-src='/DataService/Location.svc/Location_StreetAddress' />
+</span>

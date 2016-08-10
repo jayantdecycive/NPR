@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Frequestly Asked Questions";
+    Layout = "~/Areas/tours/Views/Shared/Faq/_Faq.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#faq-time").accordion({
+            collapsible: true,
+            active: false
+        });
+        $("#faq-logistics").accordion({
+            collapsible: true,
+            active: false
+        });
+        $("#faq-tour").accordion({
+            collapsible: true,
+            active: false
+        });
+        $("#faq-operators").accordion({
+            collapsible: true,
+            active: false
+        });
+    });
+</script>
+
+<h1>Frequently Asked Questions</h1>
+
+<h3>About the Tour</h3>
+<div id="faq-tour" class="faq-section">
+    <h4><a href="#">Q:  What are the group size requirements?</a></h4>
+    <div><div class="A">A: </div>  We accommodate groups and individuals. Our small group tours are for groups 1-60 in size, while our large group tours are for groups 61 – 120 in size. For more details, please call 1-800-232-2677.<br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+    
+    <h4><a href="#">Q:  What is the appropriate age group for the tour?</a></h4>
+    <div><div class="A">A: </div>  People of all ages have enjoyed our tours over the years. We feel that the best ages are 6 and up. This is to ensure the best tour experience for all guests. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  What will I experience on the tour?</a></h4>
+    <div><div class="A">A: </div>  You’ll have the opportunity to take a photo with the cows alongside a life size billboard, go on a guided backstage tour through our home office, have an opportunity to meet staff members, visit the Chick-fil-A Museum, walk back in time to experience Truett’s first Dwarf Grill, visit Founder Truett Cathy’s office and visit the retail gift shop to purchase and take home a memory. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  How can I learn more about the Chick-fil-A story outside of the tour? </a></h4>
+    <div><div class="A">A: </div>  Our website, <a href="http://www.chick-fil-a.com">www.chick-fil-a.com</a>, is full of resources we’d love for you to check out! If you are interested in learning more about the Cathy Family, please visit <a href="http://www.cathyfamily.com">www.cathyfamily.com</a>.  <br/><br /> @Html.Partial("Faq/CaresPartial")</div>
+
+    <h4><a href="#">Q:  Will we see Truett or a member of the Cathy Family?</a></h4>
+    <div><div class="A">A: </div>  As you can imagine, Truett and the Cathy Family maintain a busy schedule. If they are in the office, there is a chance that you would see them, but we can’t make any promises!  <br/><br /> @Html.Partial("Faq/CaresPartial")</div>
+</div>
+
+
+
+<h3>Logistics</h3>
+<div id="faq-logistics" class="faq-section">
+    <h4><a href="#">Q:  How much does the tour cost?</a></h4>
+    <div><div class="A">A: </div>  The tour is free! If you elect the 9:30 A.M. time slot, there is a @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST lunch option that will need to be paid at check-in. 
+    If you elect the 9:30 AM time slot, there is an adult lunch option for @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST and a @cfares.domain._event.ticket.tours.TourTicket.CHILD_LUNCH_COST lunch option for children. Cash or Credit Card payment will be taken at the tour. Tax is included in all lunch prices.<br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  Do we pay for parking?</a></h4>
+    <div><div class="A">A: </div>  Parking is completely free. Upon arrival, please check with the gate guard for a guest parking slip. We have a parking lot designed for our guests. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  How do we get to the Chick-fil-A Home Office?</a></h4>
+    <div><div class="A">A: </div>  Our address is 5200 Buffington Road, Atlanta, GA 30349. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  Is your building wheelchair accessible?</a></h4>
+    <div><div class="A">A: </div> Yes. Please call 1-800-232-2677 ahead of your scheduled tour so our team can help make accommodations. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  Will there be a lot of walking?</a></h4>
+    <div><div class="A">A: </div>  The entire tour is done through walking. We recommend wearing comfortable shoes.  <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+</div>
+
+
+<h3>Registering for a Tour</h3>
+<div id="faq-time" class="faq-section">
+    <h4><a href="#" class="faq-question">Q:  What are the available tour times and dates?</a></h4>
+    <div><div class="A">A: </div>  For groups 1-60 in size, tours are available at 9:30 A.M. and 1:00 P.M. on Tuesday, Thursday and Friday. For large groups 61 – 120, 
+    tours are available on a limited basis and reservations must be made a month in advance. To make a reservation, click <a href="/reservation/date">here</a> or call 1-800-232-2677.<br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+    
+    <h4><a href="#">Q:  How long is the tour? </a></h4>
+    <div><div class="A">A: </div>  The tour is approximately 1 hour and 30 minutes long. <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  How do I cancel, modify or reschedule my tour? </a></h4>
+    <div><div class="A">A: </div>  Visit <a href="/Account/LogOn">Modify/Cancel Reservation</a> and log in with the email and password used to make your reservation. 
+    You will have the option to select the tour you would like to modify or cancel. Please note that no additional guests can be added within 72 hours of your tour reservation.  <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+
+    <h4><a href="#">Q:  I lost or never received my confirmation email. What do I do?  </a></h4>
+    <div><div class="A">A: </div>  To resend your confirmation email, visit the <a href="/Account/LogOn">Modify/Cancel Reservation</a> page and log in with the email and password used to make your reservation. You will have the option to select your tour where you are taken to your Reservation Overview page. Click the button to 'Resend my Confirmation' at the bottom of the page.   <br/><br /> @Html.Partial("Faq/CaresPartial") </div>
+</div>
+
+
+
+ @if (ViewBag.UserMode == "Operator")
+ {
+    
+     <h3>Operators</h3>
+<div id="faq-operators" class="faq-section">
+    <h4><a href="#">Q:  Can someone from the Inc. staff do a workshop for my team members? <br/>(i.e. Marketing, T&D, Field Operations)</a></h4>
+    <div>A:  Please contact __________ at name@chick-fil-a.com or 404-404-4004 to discuss your interest. @Html.Partial("Faq/CaresPartial") </div>
+    
+    <h4><a href="#">Q:  Will we get to eat in the Café? </a></h4>
+    <div>A:  If you would like to eat in the café, please contact us at 1-800-232-2677 to reserve a time. @Html.Partial("Faq/CaresPartial")</div>
+</div>
+
+ }
+
+

@@ -1,0 +1,47 @@
+﻿@{
+    cfacore.domain.user.User filterUser = new cfacore.domain.user.User();
+    filterUser.Name = new cfacore.shared.domain.user.Name("Filter by Guide");
+    filterUser.Id("0");
+}
+            <div class='admin-table inline-block'>
+                <select class="load-on-click filter" data-source="/Service/ResEvent.svc/AllEventTypes" id="filter-tour-type" data-label="Name" data-value="ReservationTypeId">
+                    <option  value="">Tour Types</option>                    
+                </select>
+            </div>
+
+            <div class='admin-table inline-block'>
+                <select class="jq-select filter" id="filter-year">
+                    <option value="">Year</option>
+                    @for (int i = 2011; i <= 2014; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+            
+            <div class='admin-table inline-block'>
+                <select class="jq-select filter" id="filter-month">
+                    <option value="">Month</option>
+                    @for (int i = 1; i <= 12; i++)
+                    {
+                        string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(i);
+                        <option value="@i">@label</option>
+                    }
+                </select>
+            </div>
+
+            <div class='admin-table inline-block'>
+                <select class="jq-select filter" id="filter-day">
+                    <option value="">Day Of Week</option>
+                    @for (int i = 1; i <= 7; i++)
+                    {
+                        string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetDayName((DayOfWeek)(i-1));
+                        <option value="@i">@label</option>
+                    }
+                </select>
+            </div>
+            <div class='admin-table inline-block' id="filter-guide">
+                
+                @Html.Partial("EditorTemplates/AutoComplete/_Guide", filterUser)
+
+            </div>

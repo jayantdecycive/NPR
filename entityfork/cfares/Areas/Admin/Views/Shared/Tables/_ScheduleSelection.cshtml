@@ -1,0 +1,19 @@
+﻿@model string
+
+
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="event_select" class='data-table' data-jquery-ui="true" data-dom='<"H"r>t<"F"fp>' data-data='/DataService/ResEvent.svc/Schedules' 
+        data-crud='/DataService/ResEvent.svc/Schedules({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='ScheduleSelect' data-on-display='DataFormat.Radio' data-column-parent='ScheduleId'></th>                        
+                <th data-column-name='ScheduleIdL' data-id-column='true' >Schedule Id</th>
+                <th data-column-name='Name' >Name</th>
+                <th data-column-name='UrlName' data-visible="false">Marketable Name</th>
+                <th data-column-name='CapacityI' >Capacity</th>			    
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+			    <th data-column-name='EndD' data-visible="false" data-on-display='DataFormat.date'>End</th>		
+		    </tr>
+            </thead>
+      </table>
+      </div>

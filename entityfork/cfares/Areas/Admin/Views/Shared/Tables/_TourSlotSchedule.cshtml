@@ -1,0 +1,37 @@
+﻿@model string
+           <script type="text/javascript">
+               var ModelDataFunction = {};
+               ModelDataFunction.tablefilter = function () {
+
+                   return "ScheduleId eq {0}".format('@Model');
+               };
+            
+           </script>
+    <table id="tourslot_dash" class='data-table filterable' data-filter="ModelDataFunction.tablefilter" data-data='/DataService/Slot.svc/Slot_Tour_Capacity_Event' 
+        data-crud='/DataService/Slot.svc/Slots({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotTourUrl' data-column-parent='SlotId'></th>       
+                <th data-id='SlotLinkDelete' data-visible="false" data-on-display='DataFormat.SlotTourDeleteUrl' data-column-parent='SlotId'></th>                        
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+                <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+
+                <th data-column-name='Slot_TourIdL' data-visible='false' >Slot Tour Id</th>                
+                
+                <th data-column-name='GuideIdL' data-visible='false' >Guide Id</th>
+                        
+                <th data-id='GuideLink' data-column-parent='GuideId' data-on-display='DataFormat.UserUrl' >Guide</th>
+			    
+                <th data-column-name='CapacityI' >Capacity</th>
+
+                <th data-column-name='TotalTicketsI' >Tickets Reserved</th>        
+
+                <th data-column-name='ResEventUrlName' >ResEvent Url Name</th>        
+
+                
+			    
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th> 
+		    </tr>
+            </thead>
+        </table>

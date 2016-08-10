@@ -1,0 +1,197 @@
+﻿@model cfares.domain._event.ticket.tours.TourTicket
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+    
+<fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+    
+    <div class='legend inline-block'>Tour Ticket</div>
+
+    <div class="display-label" data-field="GuestCount">Guest Count</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuestCount)
+    </div>
+
+    <div class="display-label" data-field="TotalCostOfLunches">Total Cost Of Lunches</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalCostOfLunches)
+    </div>
+
+    <div class="display-label" data-field="OptInForLunch">Opt In For Lunch</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OptInForLunch)
+    </div>
+
+    <div class="display-label" data-field="NumberOfAdultLunches">Number Of Adult Lunches</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfAdultLunches)
+    </div>
+
+    <div class="display-label" data-field="NumberOfKidLunches">Number Of Kid Lunches</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfKidLunches)
+    </div>
+
+    <div class="display-label" data-field="NumberOfSpecialNeedLunches">Number Of Special Need Lunches</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfSpecialNeedLunches)
+    </div>
+
+    <div class="display-label" data-field="SpecialDietNeedsDescription">Special Diet Needs Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpecialDietNeedsDescription)
+    </div>
+
+    <div class="display-label" data-field="VisitMarketing">Visit Marketing</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitMarketing)
+    </div>
+
+    <div class="display-label" data-field="VisitTech">VisitTech</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitTech)
+    </div>
+
+    <div class="display-label" data-field="VisitInnovation">Visit Innovation</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitInnovation)
+    </div>
+
+    <div class="display-label" data-field="VisitTraining">Visit Training</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitTraining)
+    </div>
+
+    <div class="display-label" data-field="VisitWellness">Visit Wellness</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitWellness)
+    </div>
+
+    <div class="display-label" data-field="VisitWareHouse">Visit WareHouse</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitWareHouse)
+    </div>
+
+    <div class="display-label" data-field="VisitIT">Visit IT</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitIT)
+    </div>
+
+    <div class="display-label" data-field="VisitOther">Visit Other</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitOther)
+    </div>
+
+    <div class="display-label" data-field="VisitOtherDescription">VisitOther Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VisitOtherDescription)
+    </div>
+
+    <div class="display-label" data-field="HasSpecialNeeds">HasSpecial Needs</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HasSpecialNeeds)
+    </div>
+
+    <div class="display-label" data-field="IsVisuallyImpaired">Is Visually Impaired</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsVisuallyImpaired)
+    </div>
+
+    <div class="display-label" data-field="OtherNeeds">OtherNeeds</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherNeeds)
+    </div>
+
+    <div class="display-label" data-field="OtherNeedsDescription">Other Needs Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherNeedsDescription)
+    </div>
+
+    <div class="display-label" data-field="IsHearingImpaired">Is Hearing Impaired</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsHearingImpaired)
+    </div>
+
+    <div class="display-label" data-field="NeedsWheelChair">Needs Wheel Chair</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NeedsWheelChair)
+    </div>
+
+    <div class="display-label" data-field="IsFamilyWithKids">Is Family With Kids</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsFamilyWithKids)
+    </div>
+
+    <div class="display-label" data-field="IsSchoolGroup">Is School Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsSchoolGroup)
+    </div>
+
+    <div class="display-label" data-field="IsFamilyWithoutKids">Is Family Without Kids</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsFamilyWithoutKids)
+    </div>
+
+    <div class="display-label" data-field="IsAdultGroup">Is Adult Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsAdultGroup)
+    </div>
+
+    <div class="display-label" data-field="IsReligiousGroup">Is Religious Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsReligiousGroup)
+    </div>
+
+    <div class="display-label" data-field="IsSeniorGroup">Is Senior Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsSeniorGroup)
+    </div>
+
+    <div class="display-label" data-field="IsBusinessGroup">Is Business Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsBusinessGroup)
+    </div>
+
+    <div class="display-label" data-field="IsRavingFans">Is Raving Fans</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsRavingFans)
+    </div>
+
+    <div class="display-label" data-field="IsTeamMemberGroup">Is TeamMember Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsTeamMemberGroup)
+    </div>
+
+    <div class="display-label" data-field="IsOtherTypeOfGroup">Is Other Type Of Group</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsOtherTypeOfGroup)
+    </div>
+
+    <div class="display-label" data-field="OtherTypeDescription">Other Type Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherTypeDescription)
+    </div>
+
+    <div class="display-label" data-field="GroupName">Group Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+
+    <div class="display-label" data-field="Guests">Guests</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuestList)
+    </div>
+
+    <div class="display-label" data-field="OwnerId">Owner Id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OwnerId)
+    </div>
+
+    <div class="display-label" data-field="TicketId">Ticket Id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TicketId)
+    </div>
+
+    <div class="display-label" data-field="CardNumber">Card Number</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CardNumber)
+    </div>
+</fieldset>

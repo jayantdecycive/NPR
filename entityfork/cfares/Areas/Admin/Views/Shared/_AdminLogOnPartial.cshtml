@@ -1,0 +1,19 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div class='logged-in'>
+    <span class="status inline-block">Logged in as @Session["FullName"]</span>
+    <div class='admin-table inline-block'>
+    <select id="auth_dd" class="jq-select">
+        <option value="/Admin/Account/Profile">Manage Profile</option>        
+        <option value="/Admin/Account/LogOff">Log Off</option>
+    </select>
+    </div>
+    </div>
+}
+else
+{
+    <span class="status inline-block">Logged in as Guest</span>
+    <span class='admin-table inline-block'>    
+    @Html.ActionLink("Sign In", "LogOn", "Account",new{}, new { @class = "jq-button" })
+    </span>
+}

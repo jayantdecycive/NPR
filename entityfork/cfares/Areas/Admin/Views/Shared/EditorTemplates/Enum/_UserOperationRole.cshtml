@@ -1,0 +1,4 @@
+﻿@model cfares.domain.user.UserOperationRole?
+<div class='admin-table'>
+@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(cfares.domain.user.UserOperationRole)), Model != null ? Model : cfares.domain.user.UserOperationRole.None), new { @class = " jq-select" })
+</div>

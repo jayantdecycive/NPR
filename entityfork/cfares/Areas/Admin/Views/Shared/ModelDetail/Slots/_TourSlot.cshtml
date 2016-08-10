@@ -1,0 +1,90 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{string pk = Model.IsBound() ? Model.TourSlotId.ToString() : "new";}
+
+
+    <fieldset data-pk='@pk' class='tourslot-@pk'>
+        <div class='legend inline-block'>Tour Guides &amp; Cameos</div>
+
+        <div class='model-field field-Guide'>
+            <div class="display-label inline-block">Guide</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Guide)
+            </div>
+        </div>
+        @if (Model.Cameos != null)
+        {
+        <div class='model-field field-Cameo'>
+            <div class="display-label inline-block">Additional Guides</div>
+            <div class="display-field inline-block">
+                @Html.Raw(string.Join(", ", Model.Cameos.AdditionalGuides.Select(m =>
+                string.Format("<a target='_blank' href='/Admin/User/Details/{0}' data-pk='{0}'>{1}</a>", m.Id(), m.Name.Full)).ToArray()
+                        ))
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="display-label inline-block">Cathy Cameos</div>
+            <div class="display-field inline-block">
+                @Html.Raw(string.Join(", ", Model.Cameos.CathyCameos.Select(m =>
+                string.Format("<a target='_blank' href='/Admin/User/Details/{0}' data-pk='{0}'>{1}</a>", m.Id(), m.Name.Full)).ToArray()
+                        ))
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="display-label inline-block">Executive Cameos</div>
+            <div class="display-field inline-block">
+                @Html.Raw(string.Join(", ", Model.Cameos.ExecutiveCameos.Select(m =>
+                string.Format("<a target='_blank' href='/Admin/User/Details/{0}' data-pk='{0}'>{1}</a>", m.Id(), m.Name.Full)).ToArray()
+                        ))
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="display-label inline-block">Cow Cameos</div>
+            <div class="display-field inline-block">
+                @Html.Raw(string.Join(", ", Model.Cameos.CowCameos.Select(m =>
+                        string.Format("<a target='_blank' href='/Admin/User/Details/{0}' data-pk='{0}'>{1}</a>", m.Id(), m.Name.Full)).ToArray()
+                        ))
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="display-label inline-block">Staff Cameos</div>
+            <div class="display-field inline-block">
+                @Html.Raw(string.Join(", ", Model.Cameos.StaffCameos.Select(m =>
+               string.Format("<a target='_blank' href='/Admin/User/Details/{0}' data-pk='{0}'>{1}</a>", m.Id(), m.Name.Full)).ToArray()
+               ))
+            </div>
+        </div>
+        }
+        <script type="text/javascript">
+            $(function(){
+                $.getJSON("/DataService/Slot.svc/C_Admin_Slot_TourDash(@Html.Raw(Model.SlotId)L)", function (obj, status, xhr) {
+                            
+                    var d = obj.d;
+                    var jq=$(".field-Tickets");
+                    $(".field-Tickets .data").html(d.TotalCount); 
+                    if(isNumber(d.TotalCount)){
+                        d.TotalCount = Number(d.TotalCount);
+                                    
+                        var cap = @Model.Capacity;
+                        $(".field-TicketsAvailable .display-field").html(cap-d.TotalCount);
+
+                        $(".field-TicketsAvailable .display-field").after(jq);
+                    }
+                                    
+                                                               
+                });
+            });
+        </script>     
+        <div class='model-field field-Tickets'>
+               <div class="display-label inline-block">Tickets Reserved</div>
+                <div class="display-field inline-block">
+                    <span class='data'></span>
+                    
+                </div>
+            </div>
+        
+    </fieldset>

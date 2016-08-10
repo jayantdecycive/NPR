@@ -1,0 +1,32 @@
+﻿@model cfares.Areas.tours.Models.UserCreationForm
+@{
+    ViewBag.Title = "Reset Password";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+
+
+
+@section Modify{
+    <h1>Please enter a new password.</h1>
+    <span></span>
+}
+
+
+
+@section Login{
+<div class="logon-form">
+
+    @using (Html.BeginForm())
+    {
+        if (!String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }
+    
+        <div class="form-item"><span class="strong item-name">Password: </span>@Html.EditorFor(m => m.Password)</div>
+        <div class="form-item"><span class="strong" id="confirm-pass"> Confirm Password: </span>@Html.EditorFor(m => m.ConfirmPassword)</div>
+    
+        <input type="submit" value="" class="logon-form-button form-button" id="submit-registration-button"/>
+    }
+</div>
+}

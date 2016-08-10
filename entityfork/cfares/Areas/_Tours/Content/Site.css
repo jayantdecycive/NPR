@@ -1,0 +1,585 @@
+﻿@font-face
+{
+    font-family: caeciliacom-75bold;
+    src: url('Fonts/caeciliacom-75bold-webfont.ttf'), url('Fonts/caeciliacom-75bold-webfont.eot');
+}
+
+body 
+{
+    margin: 0px;
+    height:100%;
+    font-family: caeciliacom-75bold;
+    background-image: url(/Areas/Tours/Content/Img/background-gradient.jpg);
+    background-position:top;
+    background-repeat:repeat-x;
+    background-color:#ffffff;
+}
+
+#content-body
+{
+    width: 976px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+a
+{
+    color: #660000;
+    font-weight:bold;
+}
+
+
+/* Nav ----------------------------------------------------------*/
+
+
+#navigation-bar 
+{
+    background-image: url(/Areas/Tours/Content/Img/head-gradient.jpg);
+    background-repeat: repeat-x;
+    display: block;
+    height: 280px;
+}
+
+#navigation-bar .navigation-buttons 
+{
+    top: 0px;
+    width: 976px;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navigation-bar .navigation-buttons ul 
+{
+    margin: auto;
+    height: 100%;
+    width: 976px;
+    vertical-align: middle;
+    list-style-type: none;
+}
+
+#navigation-bar .navigation-buttons ul li
+{
+    width: 19%;
+    float: left;
+    text-align: center;
+}
+
+#navigation-bar .navigation-buttons ul li:hover
+{
+  background-image: url(/Areas/Tours/Content/Img/head-gradient-hover.jpg);
+  background-repeat: repeat-x;
+
+}
+
+#navigation-bar .navigation-buttons ul .help-link
+{
+    background-image: url(/Areas/Tours/Content/Img/head-gradient-hover.jpg);
+    background-repeat: repeat-x;
+}
+
+#navigation-bar .navigation-buttons ul li:first-child
+{
+    margin-left: 5px;
+
+}
+
+#navigation-bar .navigation-buttons ul li a 
+{
+    display:block;
+    line-height: 35px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: .75em;
+    font-weight:normal;
+}
+#navigation-bar .navigation-buttons ul li a:hover 
+{
+   color: #ecac00; 
+}
+
+
+#navigation-bar .graphic 
+{
+   display: block;
+   margin: 0px;
+   width:871px;
+   margin-left:auto;
+   margin-right:auto;
+   padding-left:180px;
+}
+
+/* Form
+----------------------------------------------------------*/
+
+.form-body
+{
+    font-size: .9em;
+    font-weight: bold;
+    font-family: Arial, Sans-Serif;
+    color: #333333;
+    line-height:200%;
+}
+
+.form-body p
+{
+    display: inline-block;
+    
+}
+.red 
+{
+    color: #e21937;
+}
+
+.form-body .name-value
+{
+    width:150px;   
+}
+
+.form-body .small-field input[type=text]
+{
+    width:80px;   
+}
+
+
+.form-body span
+{
+    display:inline-block;
+}
+
+.legal-aside
+{
+    font-size: .85em;
+    font-weight: normal;
+}
+
+ .field-requirement
+{
+    font-size:1.5em;
+    color: #e21937;
+    vertical-align: middle;
+    float:left;
+    padding-right:7px
+}
+
+.form-body .textboxwrapper label 
+{
+    width: 150px;   
+    display: inline-block;
+}
+
+.form-body .textboxwrapper input 
+{
+    width: 200px;   
+}
+
+
+.form-body .field-validation-error
+{
+    font-size: .9em;
+    font-weight: bold;
+    color: #e21937;
+    font-style:italic;
+}
+
+.form-body .timeRequestForm
+{
+    display: inline-block;
+    background-image: url(/Areas/Tours/Content/Img/timepicker-divider.png);
+    background-position:right top;
+    background-repeat: no-repeat;
+    padding-left: 20px ;
+    padding-right: 20px;
+    padding-bottom:30px;
+    width:250px;
+    float:left;
+}
+
+.form-body .timeRequestForm:last-child
+{
+    background-image: none;
+}
+
+.form-body .calendar-icon
+{
+    float:right;
+    margin-right:10px;
+    background-image: url(/Areas/Tours/Content/Img/calendar-icons.png);
+    background-position: right center;
+    width: 39px;
+    height: 37px;
+}
+
+.form-body .calendar-icon:hover
+{
+    background-position: left center;    
+}
+
+.form-body #lunchOptInSection  .additional-info-box
+{
+    width: 250px;   
+}
+
+.form-body .clear
+{
+    clear:both;
+}
+
+.form-body #timeRequestSection
+{
+    padding-left:30px;   
+}
+
+.form-body .editor-label
+{
+    float:left;
+    clear:both;
+    width:150px;
+}
+
+input[type=text], input[type=password]
+{
+    border-style:solid;
+    border-width:1px;
+    border-color:#99b6cf;
+    border-radius:2px;
+    -moz-border-radius: 2px;
+    -moz-box-shadow: inset 1px 2px 2px #ddd;
+    -webkit-box-shadow: inset 1px 2px 2px #ddd;
+    box-shadow: inset 1px 2px 2px #ddd;
+}
+
+.form-body .timeRequestForm input[type=text]{width:175px; padding:0; margin:0;}
+.form-body .timeRequestForm .timeselectinput{width:177px; padding:0; margin:0;}
+
+.form-body .form-submit
+{
+    background-image:url(/Areas/Tours/Content/Img/submit.png);
+    background-position:left, top;
+    background-repeat:no-repeat;
+    height:58px;
+    width:222px;
+    border:none;
+}
+
+
+.description
+{
+    font-family:Arial, sans-serif;
+
+    color:#666;
+    width:73%;
+    font-size:10pt;
+}
+
+.form-body .lunchOptInSection #lunchForm_numberOfAdultLunches
+{
+    width:20px;
+}
+
+.form-body .checkboxgroup
+{
+    padding-left:50px;
+    width:75%;
+    padding-bottom:30px;
+    line-height: 200%;
+    font-weight:normal;
+}
+
+.form-body .checkboxwrapper
+{
+    width:32%;
+}
+
+.form-body #specialNeedsForm
+{
+    padding-left:50px;   
+    width:75%;
+
+    line-height: 200%;
+    font-weight:normal;
+}
+
+.form-body #otherDescription
+{
+    width:370px;  
+}
+
+.form-body #descriptionOfSpecialNeeds
+{
+    width:400px;
+    margin-left:80px;   
+}
+
+.form-body #password-dialog, .form-body #diet-dialog
+{
+    color:#831719;
+    text-decoration:underline;
+}
+
+
+.form-body #submit-registration-button 
+{
+    margin-top:30px;
+    background-image: url("/Areas/Tours/Content/Img/submit-buttons.png");
+    height: 72px;
+    width:236px;
+    display: block;
+    background-position: top;
+    border:none;  
+}
+
+.form-body #submit-registration-button:hover
+{
+    background-position: bottom;
+}
+
+.form-body .text-box-wrapper
+{
+    zoom:1;
+    position:absolute; 
+}
+
+.form-body .form-section
+{
+    margin-bottom: 10px;   
+}
+
+.form-body #lunchOptInSection 
+{
+    margin-bottom: 25px;   
+}
+
+.form-body #diet-dialog
+{
+    font-weight:bold;    
+}
+
+.form-body #lunchOptInSection .textboxwrapper
+{
+    font-weight:normal;   
+    padding-left:50px;
+}
+
+.form-body #lunchOptInSection .lunchCounter
+{
+    width: 50px;   
+}
+
+
+/*---------------Reservation Overview------------*/
+
+.reservation-overview
+{
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    font-size:10pt;
+    line-height:250%
+}
+
+.reservation-overview .name-value-pair .value
+{
+    color:#666; 
+}
+
+.review-column .name
+{
+    width:150px;
+}
+
+.review-column
+{
+    line-height:150%
+}
+
+.review-section
+{
+    padding-bottom:20px;   
+    clear:both;
+}
+
+.review-description
+{
+    color:#666;
+    padding-bottom:20px; 
+    width:80%;
+    line-height:150%;
+    font-weight:normal;
+}
+
+.form-button
+{
+    background-color: transparent;
+}
+
+.reservation-overview .form-button
+{
+    width: 230px;
+    display: block;
+    margin-top:10px;
+    
+}
+
+.reservation-overview #confirm-registration-button 
+{
+    background-image: url("/Areas/Tours/Content/Img/confirm-buttons.png");
+    height: 71px;
+    background-position: bottom right;
+}
+
+.reservation-overview #confirm-registration-button:hover
+{
+    background-position: bottom left;
+}
+
+.reservation-overview #modify-registration-button 
+{
+    background-image: url("/Areas/Tours/Content/Img/edit-information-buttons.png");
+    height: 46px;
+    background-position: bottom right;
+}
+
+.reservation-overview #modify-registration-button:hover
+{
+    background-position: bottom left;
+}
+
+.reservation-overview #cancel-registration-button 
+{
+    background-image: url("/Areas/Tours/Content/Img/cancel-buttons.png");
+    height: 42px;
+    background-position: bottom left;
+}
+
+.reservation-overview #cancel-registration-button:hover
+{
+    background-position: bottom right;
+}
+
+.reservation-overview .name-value-pair .checkboxgroup
+{
+    padding-left:50px;
+    padding-bottom:30px;
+    line-height:200%;
+    width:75%;
+    font-weight:normal;
+}
+
+.reservation-overview .checkbox-name-wrapper
+{
+    width:32%;
+    float:left;
+}
+
+.reservation-overview .checkboxWithExplanation
+{
+    width:40%;
+    float:left;
+}
+
+/*---------------Logon Form------------*/
+
+.logon-form
+{
+    text-align:left;  
+    padding-top:50px;
+    line-height:250%;
+    margin-left:30%;
+}
+
+.logon-form input[type=text], .notification input[type=password] 
+{
+    width:220px;
+    margin-right:10px;
+}
+
+.logon-form .item-name
+{
+    display:inline-block;
+    width:87px;
+}
+
+.logon-form-button
+{  
+    margin-top:30px;
+    margin-left:87px;
+    background-image: url("/Areas/Tours/Content/Img/submit-buttons.png");
+    height: 72px;
+    width:236px;
+    display: inline-block;
+    background-position: top;
+    border:none;
+}
+
+.logon-form-button:hover
+{
+    background-position: bottom;   
+}
+
+
+/*FAQ
+-----------------------------------------------------------*/
+
+
+ .ui-widget-content .additional-faq-info 
+{
+    display: block;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin-bottom: 20px;
+    font-size:8pt;
+}
+
+/*wizard
+-----------------------------------------------------------*/
+
+.wizard
+{
+    font-family:arial, sans-sreif;   
+    font-size:10pt;
+}
+
+.wizard .wizard-bar
+{
+    
+    height:22px;
+    color:#fff;
+    margin:0px;
+    width:802px;
+    background-image:url("/Areas/Tours/Content/Img/step3.png");
+}
+
+.wizard .bar-section
+{
+    padding-right:50px;
+    padding-left:10px;
+    padding-top:2px;
+    width:100px;
+    height:100%;
+    display:inline-block;
+}
+/*
+.wizard .step-past   { background-image:url("/Areas/Tours/Content/Img/wizard-section-past.png"); }
+.wizard .step-present{ background-image:url("/Areas/Tours/Content/Img/wizard-section-active.png"); }
+.wizard .step-future { background-image:url("/Areas/Tours/Content/Img/wizard-section-upcoming.png"); }
+*/
+
+/* Footer  
+----------------------------------------------------------*/
+
+#footer
+{
+    text-align:center;
+    padding-top:100px;
+    padding-bottom: 20px;
+    font-family:Arial,sans-serif;
+    color:#666;
+    font-size:8pt;
+    clear:both;
+}
+
+#footer a {font-weight:bold;}
+#footer a:hover {color:#000;}
+

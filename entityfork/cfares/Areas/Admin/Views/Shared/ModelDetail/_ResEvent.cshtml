@@ -1,0 +1,38 @@
+﻿@model cfares.domain._event.ResEvent
+
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+           
+    <fieldset data-pk='@pk' class='resevent-@pk'>
+        <div class='legend inline-block'>Event Details</div>
+            
+            <div class='model-field field-Name'>                
+               <div class="display-label inline-block">Name</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+            <div class='model-field field-UrlName'>                
+               <div class="display-label inline-block">Event Type</div>
+               <div class="display-field inline-block">
+                   @Html.DisplayFor(model => model.ReservationType.ReservationTypeId)
+                </div>
+            </div>
+            <div class='model-field field-UrlName'>                
+               <div class="display-label inline-block">Url Name</div>
+               <div class="display-field inline-block">
+                   @Html.DisplayFor(model => model.UrlName)
+                </div>
+            </div>
+            <div class='model-field field-Description'>                
+               <div class="display-label inline-block">Description</div>
+               <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+            </div>
+            <div class='model-field field-Status'>                
+               <div class="display-label inline-block">Status</div>
+                <div class="display-field inline-block">
+                   @Html.DisplayFor(model => model.Status)
+                </div>
+            </div>
+    </fieldset>

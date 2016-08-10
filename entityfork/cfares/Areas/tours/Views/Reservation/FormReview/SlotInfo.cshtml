@@ -1,0 +1,27 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@using cfacore.site.controllers._event;
+<div class="review-section review-column">
+    <div class="name-value-pair">
+        <span class="field-requirement">* </span><span class="name">Tour Type:</span>
+        @if (Model.tourTicket.GuestCount > 40)
+        {
+            <span class="value" id="group-size-item">Large</span>
+        }
+        else
+        {
+            <span class="value" id="group-size-item">Small</span>
+        }
+    </div>
+    <div class="name-value-pair">
+        <span class="field-requirement">* </span><span class="name">Group Size: </span><span
+            class="value">@Model.tourTicket.GuestCount</span>
+    </div>
+    
+    <div class="name-value-pair">
+        <span class="field-requirement">* </span><span class="name">Date: </span><span class="value">@String.Format("{0}", Model.tourTicket.Slot.Start.ToString("dddd, MMMM, dd, yyyy"))</span>
+    </div>
+    <div class="name-value-pair">
+        <span class="field-requirement">* </span><span class="name">Time: </span><span class="value clean-timezone" data-date-base='@Model.tourTicket.Slot.Start.ToString("dddd, MMMM, dd, yyyy")' data-time-format='h:mmtt'>@Model.tourTicket.Slot.Start.ToString("h:mmtt").ToLower()</span> <span class='value'>-</span>
+        <span class='clean-timezone value' data-date-base='@Model.tourTicket.Slot.End.ToString("dddd, MMMM, dd, yyyy")' data-time-format='h:mmtt'>@Model.tourTicket.Slot.End.ToString("h:mmtt").ToLower()</span>
+    </div>
+</div>

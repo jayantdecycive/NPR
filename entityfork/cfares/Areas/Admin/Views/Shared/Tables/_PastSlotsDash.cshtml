@@ -1,0 +1,27 @@
+﻿        <div class='admin-table'>
+            <table id="past_tour_table" class='data-table' data-data="/DataService/Slot.svc/C_Admin_Slot_TourDash_Past" 
+                data-crud='/DataService/Slot.svc/Slots({0}L)'>
+                 <thead>
+                    <tr>
+                        <th data-id='SlotLink' data-column-parent='SlotId' data-on-display='DataFunction.onSlotLinkdisplay' >View</th>
+                        <th data-id='SlotIdL' data-id-column='true' >Slot Id</th>
+                        <th data-visible="false" data-id='ResEventIdL' >ResEvent Id</th>		    
+			            <th data-column-name='SlotDayOfWeek' data-searchable='false' data-on-display='DataFormat.weekdayByInt' >Day</th>
+                        <th data-column-name='StartD' data-on-display='DataFormat.date' width="15%">Start</th>
+
+                        <th data-column-name='SlotYear' data-searchable='false' data-visible="false"  >Year</th>
+                        <th data-column-name='SlotMonth' data-searchable='false' data-visible="false" >Month</th>
+                        
+
+			            <th data-column-name='EndD'  data-on-display='DataFormat.date' width="15%">End</th>
+                        <th data-column-name='ReservationType' data-searchable='false'>Reservation Type</th>                
+                        <th data-visible="false" data-searchable='false'  data-column-name='Template' >Reservation Template</th>             
+                        <th data-column-name='ResEventStatus' data-searchable='false' data-on-display='EnumFormat.ResEventStatus' >Event Status</th>
+                        <th data-column-name='Status' data-searchable='false' data-visible="false" data-on-display='EnumFormat.SlotStatus' >Slot Status</th>                        
+                        <th data-visible="false" data-column-name='CapacityI' >Capacity</th>    
+                        <th data-column-name='TotalCountI' >Tickets Reserved</th>
+                        <th data-id='TicketsRemain' data-on-display='DataFunction.ticketDifference' data-column-parent="TotalCount" >Tickets Available</th>             
+		            </tr>
+                 </thead>
+             </table>
+         </div>

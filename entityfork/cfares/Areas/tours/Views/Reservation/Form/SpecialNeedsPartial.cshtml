@@ -1,0 +1,18 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+<div class="form-section">
+    <span class="field-requirement">* </span><span>Does anyone in the group have special
+        needs? </span><span id="specialNeedsRadio" class="yes-no-radios">
+            @Html.RadioButtonFor(model => model.tourTicket.HasSpecialNeeds, true) Yes
+            @Html.RadioButtonFor(model => model.tourTicket.HasSpecialNeeds, false) No</span>
+    @Html.ValidationMessageFor(m => m.tourTicket.HasSpecialNeeds)
+    <div id="specialNeedsForm">
+        <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsHearingImpaired)
+            @Html.LabelFor(m => m.tourTicket.IsHearingImpaired)</span> <span class="checkboxwrapper">
+                @Html.CheckBoxFor(m => m.tourTicket.IsVisuallyImpaired) @Html.LabelFor(m => m.tourTicket.IsVisuallyImpaired)</span>
+        <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.NeedsWheelChair)
+            @Html.LabelFor(m => m.tourTicket.NeedsWheelChair) </span><span class="checkboxWithExplanation">
+                @Html.CheckBoxFor(m => m.tourTicket.OtherNeeds) @Html.LabelFor(m => m.tourTicket.OtherNeeds)
+                @Html.TextBoxFor(m => m.tourTicket.OtherNeedsDescription)</span>
+        @Html.ValidationMessageFor(m => m.tourTicket.OtherNeedsDescription)
+    </div>
+</div>

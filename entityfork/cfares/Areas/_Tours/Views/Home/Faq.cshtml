@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Frequestly Asked Questions";
+    Layout = "~/Areas/Tours/Views/Shared/Faq/_Faq.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#faq-time").accordion({
+            collapsible: true,
+            active: false
+        });
+        $("#faq-logistics").accordion({
+            collapsible: true,
+            active: false
+        });
+        $("#faq-tour").accordion({
+            collapsible: true,
+            active: false
+        });
+    });
+</script>
+
+ @Html.Partial("Faq/FaqMain")
+
+

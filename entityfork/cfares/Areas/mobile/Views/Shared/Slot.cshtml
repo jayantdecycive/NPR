@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Slot";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="center">
+
+<h1>When Would You Like to Take Your Tour?</h1><br/>
+<p>Please choose a day and time from the available options below.</p>
+
+</div>
+
+<script type="text/javascript" src="@Url.Content("/Areas/mobile/Scripts/slot.js")"></script>
+
+<div class="container">
+<div class="slot-picker">
+
+    <div class="selections">
+
+    <select name="select-month" id="select-month" data-theme="f">
+        <option value="" selected="selected">Choose a Month</option> 
+    </select>
+    <br/>
+
+    
+    <select name="select-date" id="select-date" data-theme="f">
+        <option value="" selected="selected">Choose a Day</option> 
+    </select>
+    <br/>
+
+    
+    <select name="select-slot" id="select-slot" data-theme="f">
+        <option value="" selected="selected">Choose a Time</option> 
+    </select>
+    <br/>
+
+    </div>
+
+    <br class="clear-all"/>
+
+    <a class="form-buttons red-button" id="button-submit" href="#" data-role="button" data-theme="a">Submit and Continue</a>
+
+    
+
+
+</div>
+
+</div>
+

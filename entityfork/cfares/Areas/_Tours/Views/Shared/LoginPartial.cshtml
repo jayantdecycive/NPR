@@ -1,0 +1,22 @@
+﻿@model cfares.Areas.Tours.Models.LogOnModel
+           
+<div class="logon-form">
+
+    @using (Html.BeginForm())
+    {
+        if (! String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }
+    
+        <div class="form-item"><span class="strong item-name">Email: </span>@Html.EditorFor(m => m.email)</div>
+        <div class="form-item"><span class="strong item-name">Password: </span>@Html.EditorFor(m => m.password)<a class="password-reset" href="">@Html.ActionLink("Forgot Your Email or Password?", "Reset", "Reservation")</a></div>
+    
+        <!--<a class="password-reset" href="">Forgot your email or password?</a>-->
+      
+        <input type="submit" value="" class="logon-form-button form-button" id="submit-registration-button"/>
+    }
+</div>
+
+
+

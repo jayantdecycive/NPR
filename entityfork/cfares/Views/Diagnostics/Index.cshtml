@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Diagnostics";
+}
+
+<script type="text/javascript">
+    var DataFunction = {
+        mallfilter: function (col) {
+            return "{0} ne '{1}'".format(col, "MALL");
+        },
+        onset: function () { },
+        onedit: function () { },
+        onsort: function () { },
+        ondisplay: function (src, val) { return val; },
+        onsubmit: function () { },
+        onlinkdisplay: function (sourceObject, val, column) {
+
+            return "<a href='http://www.chick-fil-a.com/{0}' target='_blank'>{1}</a>".format(val, "View");
+        }
+    };
+    
+        $(function () {
+            $("#inline_cal").datepicker();
+        });
+        var PageData = {
+            march13: [{ SlotId: 1, Status: "1" }, { SlotId: 2, Status: "1"}]
+
+        };
+    
+</script>
+<h2>Diagnostics</h2>
+<div class='admin-grey'>
+    <input type="text" class='jq-auto-complete' 
+    data-columns="LocationNumber,LocationCode" 
+    data-filter="Name,LocationCode" data-select="DataFunction.autoCompleteSelected"
+    data-label="Name" data-src='http://localhost:65271/DataService/Location.svc/Locations' />
+</div>
+<div class='admin-table'>
+     Put content here.
+     <table id="table1" class='data-table' data-data='http://localhost:65271/DataService/Location.svc/Locations' data-crud='http://localhost:65271/DataService/Location.svc/Locations({0}L)'>
+         <thead>
+            <tr>
+                <th data-id='MarketableLink' data-column-parent='MarketableName' data-on-display='DataFunction.onlinkdisplay' width="10%">Link</th>
+                <th data-id='Name' width="30%">Location Name</th>			    
+			    <th data-column-name='LocationNumber' data-id-column='true' width="20%">Location Number</th>
+			    <th data-column-name='LocationCode' data-editable='false' data-filter='DataFunction.mallfilter' width="20%">Location Code</th>
+                <th data-column-name='MarketableName' width="20%">Marketable Name</th>                
+		    </tr>
+         </thead>
+     </table>
+     <br />
+     <div class='table-wrapper'>
+        <table id="slot_dash" class='data-table' data-data='PageData.march13'>
+                <thead>
+                <tr>
+                    <th width="200px" data-id='SlotLink' data-on-display='DataFormat.SlotUrl' data-column-parent='SlotId'></th>
+                    <th width="200px" data-column-name='SlotId' data-id-column='true' >Slot Id</th>
+                                    
+                    <th width="200px" data-column-name='Status' data-on-display='EnumFormat.SlotStatus'>Status</th>  
+		        </tr>
+                </thead>
+            </table>
+        </div>
+     <br />
+     <table class='data-table' data-data='http://localhost:65271/DataService/Location.svc/Addresses'>
+         <thead>
+            <tr>
+                <th data-column-name='Label' data-searchable='true' width="25%">Label</th>			    
+			    <th data-column-name='Line1' width="25%">Line 1 </th>
+			    <th data-column-name='City' data-searchable='true' width="25%">City</th>
+                <th data-column-name='Zip' width="25%">Zip</th>
+		    </tr>
+         </thead>
+     </table>
+     <br />
+     
+     <table class='data-table' data-data='http://localhost:65271/DataService/Location.svc/Users'>
+         <thead>
+            <tr>
+                <th data-column-name='Name' data-searchable='true' width="25%">Name</th>			    
+			    <th data-column-name='Email' data-searchable='true' width="25%">Email</th>
+			    <th data-column-name='Authority' width="25%">Authority</th>
+                <th data-column-name='AuthorityUID' width="25%">AuthorityUID</th>
+		    </tr>
+         </thead>
+     </table>
+</div>

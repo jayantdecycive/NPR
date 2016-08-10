@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Home Office Backstage Tours";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+    
+}
+
+@section Meta{
+
+}
+
+
+
+<div class="landing-page">
+        <div class="tours-photos">
+        <img src="/Areas/mobile/Content/Img/mobile-photos.png" width="310" height="158" alt="" class="" />
+        </div>
+
+        <div id="details">
+            <p class="section-title">About the Tour:</p>
+            <p>The 90-minute guided walking tour will feature the story of Chick-fil-A Founder, Truett Cathy. You will also get a behind-the-scenes look at Chick-fil-A’s food, engage in fun interactions with the Chick-fil-A Cows and get a chance to visit our gift shop to commemorate your experience. You will want to bring your camera to capture the fun!  Tours are available for adults and children ages 6 and up.
+            
+            </p>
+            <br/>
+            <p class="section-title">Tour Options:</p>
+            <p><span class="bold">Small Group (1 - 60*)</span> <br/>Tuesday, Thursday & Friday, 2 times per day</p>
+            <br/>
+            <p><b>9:30 AM – 11:00 AM</b> –  Lunch offered for cash or credit purchase<br /><b>1:00 PM – 2:30 PM</b></p><br/>
+            <p>*Please note: Tours will be split into groups of 20.</p><br/>
+            <p><span class="bold">Large Group (61 - 120*)</span> <br/>Offered on a limited basis and reservations must be made one month in advance.</p>
+            <br/>
+            <p>Lunch offered for cash or credit purchase</p>
+            <br/>
+            <p>*Please note: Tours will be split into groups of 20.</p>
+            <br/>
+            <h3 id="reservation-header">Make a Reservation</h3>
+        </div>
+            
+        <div id="guest" class="">
+            <p id="guest-header" class="section-header">Guest Tour</p>
+            <form name="groupSizeForm">
+
+            <div data-role="fieldcontain" class="size-field">
+                <fieldset data-role="controlgroup">
+                    <p class="text-black"><label for="textinput1">For how many people are you making  <br/> a tour reservation?</label></p>
+                    <input id="groupSize" placeholder="" value="" name="groupSize" type="text"><p class="group-size-validation validation hidden">Please choose a group size between 1 and 120</p>
+                </fieldset>
+            </div>
+            <a id="button-register" href="javascript:void(0)" data-role="button" data-inline="false" data-theme="a">Make a Reservation</a>
+            
+            </form>
+
+        </div>
+
+        <div id="team" class="text-black">
+            <p id="team-header" class="section-header">Operator/Team Member Tour</p>
+            <fieldset data-role="controlgroup">
+                    <p class="operator-text text-black"><label for="textinput1">For how many Team Members are you making a reservation?</label></p>
+                    <input id="teamGroupSize" placeholder="" value="" name="teamGroupSize" type="text"><p class="team-group-size-validation validation hidden">Please choose a group size between 1 and 120</p>
+            </fieldset>
+            <a id="team-button-register" href="javascript:void(0)" data-role="button" data-inline="false" data-theme="a">Make a Reservation</a>
+        </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<script type="text/javascript">
+    $("#messagebox").hide();
+
+    function register(value) {
+        if (value < 61 && value > 0) {
+            window.location.href = "http://m.story.tours.chick-fil-a.com/mobile/Ticket/Slot/" + value;
+            $(".group-size-validation").addClass("hidden");
+        }
+        else if (value < 121 && value > 60) {
+            window.location.href = "http://m.lgstory.tours.chick-fil-a.com/mobile/Ticket/Slot/" + value;
+            $(".group-size-validation").addClass("hidden");
+        }
+        else {
+            $(".group-size-validation").removeClass("hidden");
+        }
+    }
+
+    function registerTeam(value) {
+        if (value < 121 && value > 0) {
+
+            window.location.href = "http://m.team.tours.chick-fil-a.com/mobile/Account/OperatorLogOn/" + value;
+            $(".team-group-size-validation").addClass("hidden");
+        }
+        else {
+            $(".team-group-size-validation").removeClass("hidden");
+        }
+    }
+
+    $("#button-register").click(function () {
+        var size = $("#groupSize").val();
+        register(size);
+    });
+
+    $("#team-button-register").click(function () {
+        var size = $("#teamGroupSize").val();
+        registerTeam(size);
+    });
+
+</script>
+
+

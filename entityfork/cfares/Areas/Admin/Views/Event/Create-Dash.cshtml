@@ -1,0 +1,61 @@
+﻿@using cfacore.shared.Helpers
+@model cfares.domain._event.ResEvent
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+<script type="text/javascript">
+    $(function () {
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            height: "auto",
+            modal: true,
+            width:400,
+            autoOpen: false,
+            buttons: {
+                "Ok": function () {
+                    $(this).dialog("close");
+                    $("input[type='submit']").click();
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        }).parents('.ui-dialog:eq(0)').wrap('<div class="admin-table"></div>');
+    });
+</script>
+}
+
+<!--TODO: CLARKE Label and Input Should be different font -->
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model create edit">
+        <div class='model badge'>
+            <h1>Create Event</h1>
+            <p>
+                Please Set Technical Event Parameters
+            </p>
+
+
+            @Html.Partial("ModelForm/_ResEventShort",Model)
+
+            <div class='dash-cta'>
+                @Html.ActionLink("Back to Dash", "Index","Home")
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Suggested != null && ViewBag.Suggested)
+{
+<div id="dialog-confirm" title="Skip this step?">
+	<p style=' line-height:125%;'><span class="ui-icon ui-icon-alert" style="float:left; margin: 6px 7px 26px 0;"></span>Here are the recommended settings for this event. 
+    <br class="clearfloat" />
+    <span style='padding:10px;display:block;'>
+    @Html.Wiki(Model.ToSummaryString())
+    </span>
+    <span style='display:block; font-weight:bold;'>Would you like to proceed with these settings?</span></p>
+</div>
+}

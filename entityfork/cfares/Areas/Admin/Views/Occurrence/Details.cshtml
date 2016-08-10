@@ -1,0 +1,17 @@
+﻿@model cfares.domain._event.Occurrence
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewBag.Brief = "Occurrence Detailed Information";
+    
+}
+
+
+<h1>Occurence Detail</h1>
+<p>
+    @Model.ToString()
+</p>
+
+@Html.Partial("ModelDetail/_Occurrence")
+

@@ -1,0 +1,25 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+<div class="form-section">
+            <span>Are there any additional tour stops you would like to take your team on? <span
+                class="legal-aside">(click all that apply)</span></span>
+            <div class=" checkboxgroup">
+                <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitMarketing)
+                    @Html.LabelFor(m => m.tourTicket.VisitMarketing)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitTech)
+                    @Html.LabelFor(m => m.tourTicket.VisitTech)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitInnovation)
+                    @Html.LabelFor(m => m.tourTicket.VisitInnovation)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitTraining)
+                    @Html.LabelFor(m => m.tourTicket.VisitTraining)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitWellness)
+                    @Html.LabelFor(m => m.tourTicket.VisitWellness)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitWareHouse)
+                    @Html.LabelFor(m => m.tourTicket.VisitWareHouse)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.VisitIT)
+                    @Html.LabelFor(m => m.tourTicket.VisitIT)
+                </span><span class="checkboxWithExplanation">@Html.CheckBoxFor(m => m.tourTicket.VisitOther)
+                    @Html.LabelFor(m => m.tourTicket.VisitOther)
+                    @Html.TextBoxFor(m => m.tourTicket.VisitOtherDescription)</span>
+                @Html.ValidationMessageFor(m => m.tourTicket.VisitOtherDescription)
+            </div>
+        </div>

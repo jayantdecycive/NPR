@@ -1,0 +1,17 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+   <!--Group Name-->
+    <div class="review-section">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.tourTicket.GroupName): </span><span class="value">@Html.DisplayFor(m => m.tourTicket.GroupName)</span>
+        </div>
+    </div>
+
+    <!--Guest List-->
+    <div class="review-section">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.tourTicket.GuestList): </span><span class="value">@Html.DisplayFor(m => m.tourTicket.GuestList)</span>
+        </div>
+    </div>

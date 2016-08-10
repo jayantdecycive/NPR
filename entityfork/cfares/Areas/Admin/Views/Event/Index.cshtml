@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Events Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+@section Meta{
+
+@Html.Partial("Filters/Script/_ResEvent")
+
+}
+
+<h1 >All Events</h1>
+
+<p class='inline-block'>Filter by:</p>
+            
+@Html.Partial("Filters/Input/_ResEvent")
+    
+        
+@section Table{
+    <table id="events_dash" class='data-table filterable' data-filter="DataFunction.reseventfilter" data-data='/DataService/ResEvent.svc/ResEvents' 
+        data-crud='/DataService/ResEvent.svc/ResEvents({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='ResEventLink' data-on-display='DataFormat.ResEventUrlSummary' data-column-parent='ResEventId'></th>                        
+                <th data-column-name='ResEventIdL' data-visible="false" data-id-column='true' >Event Id</th>
+                <th data-column-name='Name' width="20%" >Name</th>
+                <th data-column-name='UrlName' >Marketable Name</th>
+                <th data-column-name='Description' data-visible="false" >Description</th>
+                <th data-column-name='ReservationType' data-searchable='false' data-editable="false">Reservation Type</th>
+                <th data-column-name='Template' data-searchable='false' data-editable="false" data-visible="false" >Reservation Template</th>
+                <th data-column-name='RegistrationStartD' data-visible="false" data-on-display='DataFormat.date' >Registration Start</th>			    
+			    <th data-column-name='RegistrationEndD' data-on-display='DataFormat.date'>Registration End</th>
+                <th data-column-name='SiteStartD' data-on-display='DataFormat.date' >Site Start</th>			    
+			    <th data-column-name='SiteEndD' data-visible="false" data-on-display='DataFormat.date'>Site End</th>		
+                <th data-id='ResEventSlotDash' data-on-display='DataFormat.ResEventSlotDash' data-column-parent='ResEventId'></th>   	            
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.ResEventStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+}

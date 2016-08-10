@@ -1,0 +1,27 @@
+﻿@model string
+
+
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="slot_select" class='data-table' data-jquery-ui="true" data-dom='<"H"r>t<"F"fp>' data-data='/DataService/Slot.svc/Slot_Tour_Guide_Joined' 
+        data-crud='/DataService/Slot.svc/Slots({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.Checkbox' data-column-parent='SlotId'></th>                       
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+                <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+
+                <th data-column-name='Slot_TourIdL' data-visible='false' >Slot Tour Id</th>                
+                
+                
+                        
+                
+                <th data-column-name='Name' >Guide Name</th>                        
+                
+			            
+			    <th data-column-name='CapacityI' >Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th> 
+		    </tr>
+            </thead>
+        </table>
+      </div>

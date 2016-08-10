@@ -1,0 +1,30 @@
+﻿<div id="navigation-bar">
+    <div class="navigation-buttons">
+        <ul>
+            <li class="inline-block" ><a href="/Home/Index">Tour Overview</a></li>
+            
+            <li
+             class="inline-block" >@Html.ActionLink("Plan Your Visit", "CustomerPlan", "Home")</li><li
+              class="inline-block" >
+            <a href="/Account/LogOn">Modify/Cancel @if(!Request.IsAuthenticated) {<text>Reservation</text>}</a>
+            </li>
+            <li
+             class="inline-block" >@Html.ActionLink("FAQs", "FAQ", "Home")
+             </li>
+              @*<li class="inline-block" >
+              @{
+                  Html.RenderAction("LogOnOffLink", "Account");
+              }</li>*@
+            
+        </ul>
+    </div>
+    <div class="shadow"></div>
+    <a href="/Home/Index" class="logo">
+    @*<img alt="chick-fil-a backstage home office tours" src="@url.content(viewbag.arearelativeurl + "content/img/logo-small.png")" width="622" height="178" />*@
+    </a>
+</div>
+
+
+
+
+    

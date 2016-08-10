@@ -1,0 +1,81 @@
+﻿@model cfares.domain._event.Slot
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+
+    <fieldset data-pk='@pk' class='slot-@pk'>
+            <div class='legend inline-block'>Slot Details</div>
+            @if (Model.Occurrence != null && Model.Occurrence.ResEvent!=null){
+            <div class='model-field field-Start'>
+               <div class="display-label inline-block">Event Type</div>
+                <div class="display-field inline-block">
+                    @Model.Occurrence.ResEvent.ReservationType.Id()
+                </div>
+            </div>
+            }
+            <div class='model-field field-Start'>
+               <div class="display-label inline-block">Start</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Start)
+                </div>
+            </div>
+
+            <div class='model-field field-End'>
+               <div class="display-label inline-block">End</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.End)
+                </div>
+            </div>
+
+            <div class='model-field field-Cutoff'>
+               <div class="display-label inline-block">Cutoff</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Cutoff)
+                </div>
+            </div>
+            
+
+            <div class='model-field field-Occurance'>
+               <div class="display-label inline-block">Event Occurrence</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Occurrence)
+                </div>
+            </div>
+
+            <div class='model-field field-Occurance'>
+               <div class="display-label inline-block">Status</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Status)
+                </div>
+            </div>
+
+            <div class='model-field field-Capacity'>
+               <div class="display-label inline-block">Capacity</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Capacity)
+                </div>
+            </div>
+
+            <div class='model-field field-TicketsAvailable'>
+               <div class="display-label inline-block">Tickets Available</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.TicketsAvailable)
+                </div>
+            </div>
+
+            <div class='model-field field-Schedule'>
+               <div class="display-label inline-block">Schedule</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Schedule)
+                </div>
+            </div>
+
+            <div class='model-field field-IsScheduled'>
+               <div class="display-label inline-block">Is Scheduled</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.IsScheduled)
+                </div>
+            </div>
+
+            
+            
+
+        </fieldset>

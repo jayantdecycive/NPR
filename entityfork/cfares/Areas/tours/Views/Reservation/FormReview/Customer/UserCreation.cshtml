@@ -1,0 +1,39 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+<span class="field-requirement">* </span>
+<div class="name-value-pair">
+    <span class="name">@Html.LabelFor(m => m.userForm.Password):</span><span class="value"></span>
+    @{
+        for (int i = 0; i < Model.userForm.Password.Length; i++)
+        {
+        <span>*</span> 
+        }
+                
+    }
+</div>
+<span class="field-requirement">* </span>
+<div class="name-value-pair">
+    <span class="name">Zip Code: </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Address.Zip.Code)</span>
+</div>
+
+<span class="field-requirement">* </span>
+<div class="name-value-pair">
+    <span class="name">Mobile Phone #: </span><span class="value">@Html.DisplayFor(m => m.reservationUser.MobilePhone)</span>
+</div>
+
+<!--Over Thirteen-->
+<div class="review-section">
+    <span class="field-requirement">* </span>
+    <div class="name-value-pair">
+        <span class="name">I am 13 years or older: </span><span class="value">
+            @Html.RadioButtonFor(model => ((cfares.Areas.tours.Models.StoryTourTicketFormModel)model).userForm.isOverThirteen, true, new { @readonly = "readonly", disabled = "true" })
+            Yes
+            @Html.RadioButtonFor(model => ((cfares.Areas.tours.Models.StoryTourTicketFormModel)model).userForm.isOverThirteen, false, new { @readonly = "readonly", disabled = "true" })
+            No</span>
+    </div>
+</div>
+<!--Email Insiders-->
+<div class="review-section">
+    @Html.CheckBoxFor(m => ((cfares.Areas.tours.Models.StoryTourTicketFormModel)m).userForm.joinInsiders, new { @readyonly = "readonly", disabled = "true" })<span>Join
+        Email Insiders and receive exclusive updates from Chick-fil-A, Inc. <span class="legal-aside">
+            (must be 18 years or older)</span></span>
+</div>

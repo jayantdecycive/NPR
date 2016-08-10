@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+@section Meta{
+
+@Html.Partial("Filters/Script/_TourTicket")
+
+}
+<!--<br class='clearfloat' />-->
+<h1>Ticket Dash</h1>
+<p class='inline-block'>Filter by:</p>
+            
+@Html.Partial("Filters/Input/_TourTicket")
+
+@section Action{
+    <div class='button-cta right'>
+        @Html.ActionLink("Create New Tour Ticket", "TourTicket-Create", new { }, new { data_left_icon = "ui-icon-circle-plus" })
+    </div>
+}
+
+@section Table{
+    @Html.Partial("Tables/_TourTicket")
+    <div class='dashboard'>
+    <div class='button-cta right'>
+                @Html.ActionLink("View Tickets without Slots", "TourTicketNoSlot-Index", new { }, new { data_left_icon = "ui-icon-circle-arrow-e" })
+            </div>
+    </div>
+}

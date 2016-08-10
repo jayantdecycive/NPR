@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Areas/tours/Views/Shared/_Layout.cshtml";
+    ViewBag.Style = "two-column.css";
+}
+
+@section Meta{
+
+    @if (IsSectionDefined("Meta"))
+    {  
+        @RenderSection("Meta")
+    }
+}
+
+<div class="two-column-6633">
+
+    
+
+    @if (IsSectionDefined("h1"))
+    {  
+        @RenderSection("h1")
+    }
+
+<div class="column-left-66">
+    @if (IsSectionDefined("ColumnLeft"))
+    {  
+        @RenderSection("ColumnLeft")
+    }
+    else { 
+    @RenderBody()
+    <!--no meta, html can go here as default-->
+    }
+</div>
+
+<div class="column-left-33">
+    @if (IsSectionDefined("ColumnRight"))
+    {  
+        @RenderSection("ColumnRight")
+    }
+    else { 
+    <!--no meta, html can go here as default-->
+    }
+
+</div>
+
+</div>
+
+
+

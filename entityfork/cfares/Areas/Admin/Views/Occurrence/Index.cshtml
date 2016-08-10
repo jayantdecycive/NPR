@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.ModelName = "Occurrence";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+
+<h1>Occurrences</h1>
+<p>
+    A list of all Occurrences
+</p>
+    
+        
+@section Table{
+    <table id="occurrence_dash" class='data-table' data-data='/DataService/ResEvent.svc/Occurrences' 
+        data-crud='/DataService/ResEvent.svc/Occurrences({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='ResEventLink' data-on-display='DataFormat.OccurrenceUrl' data-column-parent='OccurrenceId'></th>                        
+                <th data-column-name='OccurrenceIdL' data-id-column='true' >Occurrence Id</th>
+                <th data-id='ResStoreLink' data-on-display='DataFormat.StoreUrl' data-column-parent='StoreId'></th>                        
+                <th data-column-name='StoreIdL' data-id-column='true' >Store Id</th>
+                        
+                <!--<th data-column-name='RegistrationStart' data-visible="false" data-on-display='DataFormat.date' >Registration Start</th>			    
+			    <th data-column-name='RegistrationEnd' data-on-display='DataFormat.date'>Registration End</th>
+                -->
+                <th data-id='ResEventSlotDash' data-on-display='DataFormat.ResEventSlotDash' data-column-parent='OccurrenceId'></th>   	            
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.OccurrenceStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+}

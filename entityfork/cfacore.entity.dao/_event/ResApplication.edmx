@@ -1,0 +1,2178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ResApplicationModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ResApplicationModelStoreContainer">
+          <EntitySet Name="Address" EntityType="ResApplicationModel.Store.Address" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Distributor" EntityType="ResApplicationModel.Store.Distributor" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Location" EntityType="ResApplicationModel.Store.Location" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Media" EntityType="ResApplicationModel.Store.Media" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Occurrence" EntityType="ResApplicationModel.Store.Occurrence" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="ResEvent" EntityType="ResApplicationModel.Store.ResEvent" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Slot" EntityType="ResApplicationModel.Store.Slot" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Slot:Tour" EntityType="ResApplicationModel.Store.Slot:Tour" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Ticket" EntityType="ResApplicationModel.Store.Ticket" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="Ticket:Tour" EntityType="ResApplicationModel.Store.Ticket:Tour" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="User" EntityType="ResApplicationModel.Store.User" store:Type="Tables" Schema="resApplication" />
+          <EntitySet Name="$Admin~SlotDash" EntityType="ResApplicationModel.Store.$Admin~SlotDash" store:Type="Views" store:Schema="resApplication" store:Name="$Admin~SlotDash">
+            <DefiningQuery>SELECT
+      `$Admin~SlotDash`.`ResEventId`, 
+      `$Admin~SlotDash`.`Status`, 
+      `$Admin~SlotDash`.`SlotId`, 
+      `$Admin~SlotDash`.`OccurrenceId`, 
+      `$Admin~SlotDash`.`Start`, 
+      `$Admin~SlotDash`.`End`, 
+      `$Admin~SlotDash`.`Capacity`, 
+      `$Admin~SlotDash`.`RegistrationStart`, 
+      `$Admin~SlotDash`.`ResEventStatus`, 
+      `$Admin~SlotDash`.`RegistrationEnd`, 
+      `$Admin~SlotDash`.`SiteStart`, 
+      `$Admin~SlotDash`.`SiteEnd`, 
+      `$Admin~SlotDash`.`Name`, 
+      `$Admin~SlotDash`.`UrlName`, 
+      `$Admin~SlotDash`.`Description`, 
+      `$Admin~SlotDash`.`ReservationType`, 
+      `$Admin~SlotDash`.`Template`, 
+      `$Admin~SlotDash`.`TicketCount`
+      FROM `$Admin~SlotDash` AS `$Admin~SlotDash`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="$Admin~SlotDash~Future" EntityType="ResApplicationModel.Store.$Admin~SlotDash~Future" store:Type="Views" store:Schema="resApplication" store:Name="$Admin~SlotDash~Future">
+            <DefiningQuery>SELECT
+      `$Admin~SlotDash~Future`.`ResEventId`, 
+      `$Admin~SlotDash~Future`.`Status`, 
+      `$Admin~SlotDash~Future`.`SlotId`, 
+      `$Admin~SlotDash~Future`.`OccurrenceId`, 
+      `$Admin~SlotDash~Future`.`Start`, 
+      `$Admin~SlotDash~Future`.`End`, 
+      `$Admin~SlotDash~Future`.`Capacity`, 
+      `$Admin~SlotDash~Future`.`RegistrationStart`, 
+      `$Admin~SlotDash~Future`.`ResEventStatus`, 
+      `$Admin~SlotDash~Future`.`RegistrationEnd`, 
+      `$Admin~SlotDash~Future`.`SiteStart`, 
+      `$Admin~SlotDash~Future`.`SiteEnd`, 
+      `$Admin~SlotDash~Future`.`Name`, 
+      `$Admin~SlotDash~Future`.`UrlName`, 
+      `$Admin~SlotDash~Future`.`Description`, 
+      `$Admin~SlotDash~Future`.`ReservationType`, 
+      `$Admin~SlotDash~Future`.`Template`, 
+      `$Admin~SlotDash~Future`.`TicketCount`
+      FROM `$Admin~SlotDash~Future` AS `$Admin~SlotDash~Future`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="$Admin~SlotDash~Past" EntityType="ResApplicationModel.Store.$Admin~SlotDash~Past" store:Type="Views" store:Schema="resApplication" store:Name="$Admin~SlotDash~Past">
+            <DefiningQuery>SELECT
+      `$Admin~SlotDash~Past`.`ResEventId`, 
+      `$Admin~SlotDash~Past`.`Status`, 
+      `$Admin~SlotDash~Past`.`SlotId`, 
+      `$Admin~SlotDash~Past`.`OccurrenceId`, 
+      `$Admin~SlotDash~Past`.`Start`, 
+      `$Admin~SlotDash~Past`.`End`, 
+      `$Admin~SlotDash~Past`.`Capacity`, 
+      `$Admin~SlotDash~Past`.`RegistrationStart`, 
+      `$Admin~SlotDash~Past`.`ResEventStatus`, 
+      `$Admin~SlotDash~Past`.`RegistrationEnd`, 
+      `$Admin~SlotDash~Past`.`SiteStart`, 
+      `$Admin~SlotDash~Past`.`SiteEnd`, 
+      `$Admin~SlotDash~Past`.`Name`, 
+      `$Admin~SlotDash~Past`.`UrlName`, 
+      `$Admin~SlotDash~Past`.`Description`, 
+      `$Admin~SlotDash~Past`.`ReservationType`, 
+      `$Admin~SlotDash~Past`.`Template`, 
+      `$Admin~SlotDash~Past`.`TicketCount`
+      FROM `$Admin~SlotDash~Past` AS `$Admin~SlotDash~Past`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Location~StreetAddress" EntityType="ResApplicationModel.Store.Location~StreetAddress" store:Type="Views" store:Schema="resApplication" store:Name="Location~StreetAddress">
+            <DefiningQuery>SELECT
+      `Location~StreetAddress`.`LocationNumber`, 
+      `Location~StreetAddress`.`BusinessConsultantId`, 
+      `Location~StreetAddress`.`ConceptCode`, 
+      `Location~StreetAddress`.`CorporateOwned`, 
+      `Location~StreetAddress`.`BillingAddressId`, 
+      `Location~StreetAddress`.`ShippingAddressId`, 
+      `Location~StreetAddress`.`StreetAddressId`, 
+      `Location~StreetAddress`.`Phone`, 
+      `Location~StreetAddress`.`Fax`, 
+      `Location~StreetAddress`.`VoiceMail`, 
+      `Location~StreetAddress`.`Email`, 
+      `Location~StreetAddress`.`DistributorId`, 
+      `Location~StreetAddress`.`AcceptsCfaCard`, 
+      `Location~StreetAddress`.`HasDiningRoom`, 
+      `Location~StreetAddress`.`HasDriveThru`, 
+      `Location~StreetAddress`.`OffersOnlineOrdering`, 
+      `Location~StreetAddress`.`OffersWireless`, 
+      `Location~StreetAddress`.`Playground`, 
+      `Location~StreetAddress`.`ServesBreakfast`, 
+      `Location~StreetAddress`.`FinancialConsultantId`, 
+      `Location~StreetAddress`.`GMTOffset`, 
+      `Location~StreetAddress`.`Lat`, 
+      `Location~StreetAddress`.`Lon`, 
+      `Location~StreetAddress`.`LocationCode`, 
+      `Location~StreetAddress`.`MarketableName`, 
+      `Location~StreetAddress`.`MarketableURL`, 
+      `Location~StreetAddress`.`Message`, 
+      `Location~StreetAddress`.`LocationDescription`, 
+      `Location~StreetAddress`.`Name`, 
+      `Location~StreetAddress`.`OpenDate`, 
+      `Location~StreetAddress`.`OperatorId`, 
+      `Location~StreetAddress`.`OperatorTeamName`, 
+      `Location~StreetAddress`.`PriceGroupNumber`, 
+      `Location~StreetAddress`.`ProjectedOpenDate`, 
+      `Location~StreetAddress`.`RegionName`, 
+      `Location~StreetAddress`.`ServiceTeamName`, 
+      `Location~StreetAddress`.`Status`, 
+      `Location~StreetAddress`.`SiteStatus`, 
+      `Location~StreetAddress`.`MarketingDirectorId`, 
+      `Location~StreetAddress`.`AddressId`, 
+      `Location~StreetAddress`.`Line1`, 
+      `Location~StreetAddress`.`Line2`, 
+      `Location~StreetAddress`.`Line3`, 
+      `Location~StreetAddress`.`AddressName`, 
+      `Location~StreetAddress`.`Zip`, 
+      `Location~StreetAddress`.`Label`, 
+      `Location~StreetAddress`.`City`, 
+      `Location~StreetAddress`.`State`, 
+      `Location~StreetAddress`.`AddressLat`, 
+      `Location~StreetAddress`.`AddressLon`, 
+      `Location~StreetAddress`.`County`, 
+      `Location~StreetAddress`.`ZipExtension`
+      FROM `Location~StreetAddress` AS `Location~StreetAddress`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Slot:Tour~Joined" EntityType="ResApplicationModel.Store.Slot:Tour~Joined" store:Type="Views" store:Schema="resApplication" store:Name="Slot:Tour~Joined">
+            <DefiningQuery>SELECT
+      `Slot:Tour~Joined`.`SlotId`, 
+      `Slot:Tour~Joined`.`OccurrenceId`, 
+      `Slot:Tour~Joined`.`Start`, 
+      `Slot:Tour~Joined`.`End`, 
+      `Slot:Tour~Joined`.`Slot:TourId`, 
+      `Slot:Tour~Joined`.`GuideId`, 
+      `Slot:Tour~Joined`.`KidFriendly`, 
+      `Slot:Tour~Joined`.`SpecialNeeds`, 
+      `Slot:Tour~Joined`.`Status`, 
+      `Slot:Tour~Joined`.`Capacity`
+      FROM `Slot:Tour~Joined` AS `Slot:Tour~Joined`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ticket:Tour~Joined" EntityType="ResApplicationModel.Store.Ticket:Tour~Joined" store:Type="Views" store:Schema="resApplication" store:Name="Ticket:Tour~Joined">
+            <DefiningQuery>SELECT
+      `Ticket:Tour~Joined`.`TicketId`, 
+      `Ticket:Tour~Joined`.`CardNumber`, 
+      `Ticket:Tour~Joined`.`SlotId`, 
+      `Ticket:Tour~Joined`.`OwnerId`, 
+      `Ticket:Tour~Joined`.`Ticket:TourId`, 
+      `Ticket:Tour~Joined`.`GuestCount`
+      FROM `Ticket:Tour~Joined` AS `Ticket:Tour~Joined`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ticket:Tour~Owner" EntityType="ResApplicationModel.Store.Ticket:Tour~Owner" store:Type="Views" store:Schema="resApplication" store:Name="Ticket:Tour~Owner">
+            <DefiningQuery>SELECT
+      `Ticket:Tour~Owner`.`TicketId`, 
+      `Ticket:Tour~Owner`.`CardNumber`, 
+      `Ticket:Tour~Owner`.`SlotId`, 
+      `Ticket:Tour~Owner`.`OwnerId`, 
+      `Ticket:Tour~Owner`.`Ticket:TourId`, 
+      `Ticket:Tour~Owner`.`GuestCount`, 
+      `Ticket:Tour~Owner`.`UserId`, 
+      `Ticket:Tour~Owner`.`Email`, 
+      `Ticket:Tour~Owner`.`Authority`, 
+      `Ticket:Tour~Owner`.`AuthorityUID`, 
+      `Ticket:Tour~Owner`.`Username`, 
+      `Ticket:Tour~Owner`.`UID`, 
+      `Ticket:Tour~Owner`.`DN`, 
+      `Ticket:Tour~Owner`.`Name`, 
+      `Ticket:Tour~Owner`.`AddressId`, 
+      `Ticket:Tour~Owner`.`HomePhone`, 
+      `Ticket:Tour~Owner`.`MobilePhone`, 
+      `Ticket:Tour~Owner`.`Creation`, 
+      `Ticket:Tour~Owner`.`LastActivity`, 
+      `Ticket:Tour~Owner`.`AccountStatus`
+      FROM `Ticket:Tour~Owner` AS `Ticket:Tour~Owner`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ticket~Owner" EntityType="ResApplicationModel.Store.Ticket~Owner" store:Type="Views" store:Schema="resApplication" store:Name="Ticket~Owner">
+            <DefiningQuery>SELECT
+      `Ticket~Owner`.`TicketId`, 
+      `Ticket~Owner`.`CardNumber`, 
+      `Ticket~Owner`.`SlotId`, 
+      `Ticket~Owner`.`OwnerId`, 
+      `Ticket~Owner`.`UserId`, 
+      `Ticket~Owner`.`Email`, 
+      `Ticket~Owner`.`Authority`, 
+      `Ticket~Owner`.`AuthorityUID`, 
+      `Ticket~Owner`.`Username`, 
+      `Ticket~Owner`.`UID`, 
+      `Ticket~Owner`.`DN`, 
+      `Ticket~Owner`.`Name`, 
+      `Ticket~Owner`.`AddressId`, 
+      `Ticket~Owner`.`HomePhone`, 
+      `Ticket~Owner`.`MobilePhone`, 
+      `Ticket~Owner`.`Creation`, 
+      `Ticket~Owner`.`LastActivity`, 
+      `Ticket~Owner`.`AccountStatus`
+      FROM `Ticket~Owner` AS `Ticket~Owner`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BillingAddress" Association="ResApplicationModel.Store.FK_BillingAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessConsultantId" Association="ResApplicationModel.Store.FK_BusinessConsultantId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarketingDirectorId" Association="ResApplicationModel.Store.FK_MarketingDirectorId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Occurrence_ResEvent" Association="ResApplicationModel.Store.FK_Occurrence_ResEvent">
+            <End Role="ResEvent" EntitySet="ResEvent" />
+            <End Role="Occurrence" EntitySet="Occurrence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperatorId" Association="ResApplicationModel.Store.FK_OperatorId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Owner" Association="ResApplicationModel.Store.FK_Owner">
+            <End Role="User" EntitySet="User" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerId" Association="ResApplicationModel.Store.FK_OwnerId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentOccurrence" Association="ResApplicationModel.Store.FK_ParentOccurrence">
+            <End Role="Occurrence" EntitySet="Occurrence" />
+            <End Role="Slot" EntitySet="Slot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentSlot" Association="ResApplicationModel.Store.FK_ParentSlot">
+            <End Role="Slot" EntitySet="Slot" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingAddress" Association="ResApplicationModel.Store.FK_ShippingAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetAddress" Association="ResApplicationModel.Store.FK_StreetAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketTourParent" Association="ResApplicationModel.Store.FK_TicketTourParent">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Ticket:Tour" EntitySet="Ticket:Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourParentSlot" Association="ResApplicationModel.Store.FK_TourParentSlot">
+            <End Role="Slot" EntitySet="Slot" />
+            <End Role="Slot:Tour" EntitySet="Slot:Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAddress" Association="ResApplicationModel.Store.FK_UserAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Line1" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Line2" Type="varchar" MaxLength="200" />
+          <Property Name="Line3" Type="varchar" MaxLength="75" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Zip" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Label" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lon" Type="float" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="ZipExtension" Type="int" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="DistributorId" />
+          </Key>
+          <Property Name="DistributorId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DistributionCenter" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationNumber" />
+          </Key>
+          <Property Name="LocationNumber" Type="uint" Nullable="false" />
+          <Property Name="BusinessConsultantId" Type="uint" />
+          <Property Name="ConceptCode" Type="smallint" Nullable="false" />
+          <Property Name="CorporateOwned" Type="bit" Nullable="false" />
+          <Property Name="BillingAddressId" Type="uint" />
+          <Property Name="ShippingAddressId" Type="uint" />
+          <Property Name="StreetAddressId" Type="uint" />
+          <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Fax" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="VoiceMail" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DistributorId" Type="uint" Nullable="false" />
+          <Property Name="AcceptsCfaCard" Type="bit" Nullable="false" />
+          <Property Name="HasDiningRoom" Type="bit" Nullable="false" />
+          <Property Name="HasDriveThru" Type="bit" Nullable="false" />
+          <Property Name="OffersOnlineOrdering" Type="bit" Nullable="false" />
+          <Property Name="OffersWireless" Type="bit" Nullable="false" />
+          <Property Name="Playground" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ServesBreakfast" Type="bit" Nullable="false" />
+          <Property Name="FinancialConsultantId" Type="int" Nullable="false" />
+          <Property Name="GMTOffset" Type="varchar" MaxLength="200" />
+          <Property Name="Lat" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Lon" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="LocationCode" Type="smallint" Nullable="false" />
+          <Property Name="MarketableName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="MarketableURL" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Message" Type="varchar" MaxLength="200" />
+          <Property Name="LocationDescription" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="OpenDate" Type="datetime" Nullable="false" />
+          <Property Name="OperatorId" Type="uint" />
+          <Property Name="OperatorTeamName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="PriceGroupNumber" Type="varchar" MaxLength="200" />
+          <Property Name="ProjectedOpenDate" Type="datetime" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ServiceTeamName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="SiteStatus" Type="varchar" MaxLength="50" />
+          <Property Name="MarketingDirectorId" Type="uint" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="MediaId" />
+          </Key>
+          <Property Name="MediaId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Uri" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="OwnerId" Type="uint" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="FileSize" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="MediaType" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Occurrence">
+          <Key>
+            <PropertyRef Name="OccurrenceId" />
+          </Key>
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoreId" Type="uint" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="ResEventId" Type="uint" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="BoundToPrototype" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResEvent">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+          </Key>
+          <Property Name="ResEventId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationStart" Type="datetime" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="datetime" Nullable="false" />
+          <Property Name="SiteStart" Type="datetime" Nullable="false" />
+          <Property Name="SiteEnd" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ReservationType" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Template" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Status" Type="utinyint" Nullable="false" />
+          <Property Name="ProtoOccurrenceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Slot">
+          <Key>
+            <PropertyRef Name="SlotId" />
+          </Key>
+          <Property Name="SlotId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slot:Tour">
+          <Key>
+            <PropertyRef Name="Slot:TourId" />
+          </Key>
+          <Property Name="Slot:TourId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GuideId" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="KidFriendly" Type="bit" Nullable="false" />
+          <Property Name="SpecialNeeds" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OwnerId" Type="uint" />
+        </EntityType>
+        <EntityType Name="Ticket:Tour">
+          <Key>
+            <PropertyRef Name="Ticket:TourId" />
+          </Key>
+          <Property Name="Ticket:TourId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GuestCount" Type="int" Nullable="false" />
+          <Property Name="TicketId" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Authority" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuthorityUID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UID" Type="varchar" MaxLength="200" />
+          <Property Name="DN" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="AddressId" Type="uint" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="200" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="200" />
+          <Property Name="Creation" Type="datetime" Nullable="false" />
+          <Property Name="LastActivity" Type="datetime" Nullable="false" />
+          <Property Name="AccountStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.$Admin~SlotDash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="$Admin~SlotDash">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="uint" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="RegistrationStart" Type="datetime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="utinyint" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="datetime" Nullable="false" />
+          <Property Name="SiteStart" Type="datetime" Nullable="false" />
+          <Property Name="SiteEnd" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ReservationType" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Template" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="TicketCount" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.$Admin~SlotDash~Future' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="$Admin~SlotDash~Future">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="uint" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="RegistrationStart" Type="datetime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="utinyint" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="datetime" Nullable="false" />
+          <Property Name="SiteStart" Type="datetime" Nullable="false" />
+          <Property Name="SiteEnd" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ReservationType" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Template" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="TicketCount" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.$Admin~SlotDash~Past' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="$Admin~SlotDash~Past">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="uint" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="RegistrationStart" Type="datetime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="utinyint" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="datetime" Nullable="false" />
+          <Property Name="SiteStart" Type="datetime" Nullable="false" />
+          <Property Name="SiteEnd" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UrlName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ReservationType" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Template" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="TicketCount" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.Location~StreetAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Location~StreetAddress">
+          <Key>
+            <PropertyRef Name="LocationNumber" />
+            <PropertyRef Name="ConceptCode" />
+            <PropertyRef Name="CorporateOwned" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="VoiceMail" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DistributorId" />
+            <PropertyRef Name="AcceptsCfaCard" />
+            <PropertyRef Name="HasDiningRoom" />
+            <PropertyRef Name="HasDriveThru" />
+            <PropertyRef Name="OffersOnlineOrdering" />
+            <PropertyRef Name="OffersWireless" />
+            <PropertyRef Name="Playground" />
+            <PropertyRef Name="ServesBreakfast" />
+            <PropertyRef Name="FinancialConsultantId" />
+            <PropertyRef Name="Lat" />
+            <PropertyRef Name="Lon" />
+            <PropertyRef Name="LocationCode" />
+            <PropertyRef Name="MarketableName" />
+            <PropertyRef Name="MarketableURL" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OpenDate" />
+            <PropertyRef Name="OperatorTeamName" />
+            <PropertyRef Name="ProjectedOpenDate" />
+            <PropertyRef Name="RegionName" />
+            <PropertyRef Name="ServiceTeamName" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="Line1" />
+            <PropertyRef Name="Zip" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="State" />
+          </Key>
+          <Property Name="LocationNumber" Type="uint" Nullable="false" />
+          <Property Name="BusinessConsultantId" Type="uint" />
+          <Property Name="ConceptCode" Type="smallint" Nullable="false" />
+          <Property Name="CorporateOwned" Type="bit" Nullable="false" />
+          <Property Name="BillingAddressId" Type="uint" />
+          <Property Name="ShippingAddressId" Type="uint" />
+          <Property Name="StreetAddressId" Type="uint" />
+          <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Fax" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="VoiceMail" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DistributorId" Type="uint" Nullable="false" />
+          <Property Name="AcceptsCfaCard" Type="bit" Nullable="false" />
+          <Property Name="HasDiningRoom" Type="bit" Nullable="false" />
+          <Property Name="HasDriveThru" Type="bit" Nullable="false" />
+          <Property Name="OffersOnlineOrdering" Type="bit" Nullable="false" />
+          <Property Name="OffersWireless" Type="bit" Nullable="false" />
+          <Property Name="Playground" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ServesBreakfast" Type="bit" Nullable="false" />
+          <Property Name="FinancialConsultantId" Type="int" Nullable="false" />
+          <Property Name="GMTOffset" Type="varchar" MaxLength="200" />
+          <Property Name="Lat" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Lon" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="LocationCode" Type="smallint" Nullable="false" />
+          <Property Name="MarketableName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="MarketableURL" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Message" Type="varchar" MaxLength="200" />
+          <Property Name="LocationDescription" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="OpenDate" Type="datetime" Nullable="false" />
+          <Property Name="OperatorId" Type="uint" />
+          <Property Name="OperatorTeamName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="PriceGroupNumber" Type="varchar" MaxLength="200" />
+          <Property Name="ProjectedOpenDate" Type="datetime" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ServiceTeamName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="SiteStatus" Type="varchar" MaxLength="50" />
+          <Property Name="MarketingDirectorId" Type="uint" />
+          <Property Name="AddressId" Type="uint" Nullable="false" />
+          <Property Name="Line1" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Line2" Type="varchar" MaxLength="200" />
+          <Property Name="Line3" Type="varchar" MaxLength="75" />
+          <Property Name="AddressName" Type="varchar" MaxLength="200" />
+          <Property Name="Zip" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Label" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="State" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="AddressLat" Type="float" />
+          <Property Name="AddressLon" Type="float" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="ZipExtension" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.Slot:Tour~Joined' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Slot:Tour~Joined">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Slot:TourId" />
+            <PropertyRef Name="GuideId" />
+            <PropertyRef Name="KidFriendly" />
+            <PropertyRef Name="SpecialNeeds" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+          </Key>
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OccurrenceId" Type="uint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Slot:TourId" Type="uint" Nullable="false" />
+          <Property Name="GuideId" Type="int" Nullable="false" />
+          <Property Name="KidFriendly" Type="bit" Nullable="false" />
+          <Property Name="SpecialNeeds" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.Ticket:Tour~Joined' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Ticket:Tour~Joined">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Ticket:TourId" />
+            <PropertyRef Name="GuestCount" />
+          </Key>
+          <Property Name="TicketId" Type="uint" Nullable="false" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OwnerId" Type="uint" />
+          <Property Name="Ticket:TourId" Type="uint" Nullable="false" />
+          <Property Name="GuestCount" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.Ticket:Tour~Owner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Ticket:Tour~Owner">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Ticket:TourId" />
+            <PropertyRef Name="GuestCount" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Authority" />
+            <PropertyRef Name="AuthorityUID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creation" />
+            <PropertyRef Name="LastActivity" />
+            <PropertyRef Name="AccountStatus" />
+          </Key>
+          <Property Name="TicketId" Type="uint" Nullable="false" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OwnerId" Type="uint" />
+          <Property Name="Ticket:TourId" Type="uint" Nullable="false" />
+          <Property Name="GuestCount" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uint" Nullable="false" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Authority" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuthorityUID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UID" Type="varchar" MaxLength="200" />
+          <Property Name="DN" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="AddressId" Type="uint" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="200" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="200" />
+          <Property Name="Creation" Type="datetime" Nullable="false" />
+          <Property Name="LastActivity" Type="datetime" Nullable="false" />
+          <Property Name="AccountStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.resApplication.Ticket~Owner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Ticket~Owner">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Authority" />
+            <PropertyRef Name="AuthorityUID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creation" />
+            <PropertyRef Name="LastActivity" />
+            <PropertyRef Name="AccountStatus" />
+          </Key>
+          <Property Name="TicketId" Type="uint" Nullable="false" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="SlotId" Type="uint" Nullable="false" />
+          <Property Name="OwnerId" Type="uint" />
+          <Property Name="UserId" Type="uint" Nullable="false" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Authority" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuthorityUID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="UID" Type="varchar" MaxLength="200" />
+          <Property Name="DN" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="AddressId" Type="uint" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="200" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="200" />
+          <Property Name="Creation" Type="datetime" Nullable="false" />
+          <Property Name="LastActivity" Type="datetime" Nullable="false" />
+          <Property Name="AccountStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BillingAddress">
+          <End Role="Address" Type="ResApplicationModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="BillingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessConsultantId">
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="BusinessConsultantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarketingDirectorId">
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="MarketingDirectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Occurrence_ResEvent">
+          <End Role="ResEvent" Type="ResApplicationModel.Store.ResEvent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Occurrence" Type="ResApplicationModel.Store.Occurrence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResEvent">
+              <PropertyRef Name="ResEventId" />
+            </Principal>
+            <Dependent Role="Occurrence">
+              <PropertyRef Name="ResEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperatorId">
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="OperatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Owner">
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="0..1" />
+          <End Role="Ticket" Type="ResApplicationModel.Store.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerId">
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="0..1" />
+          <End Role="Media" Type="ResApplicationModel.Store.Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentOccurrence">
+          <End Role="Occurrence" Type="ResApplicationModel.Store.Occurrence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Slot" Type="ResApplicationModel.Store.Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occurrence">
+              <PropertyRef Name="OccurrenceId" />
+            </Principal>
+            <Dependent Role="Slot">
+              <PropertyRef Name="OccurrenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentSlot">
+          <End Role="Slot" Type="ResApplicationModel.Store.Slot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ticket" Type="ResApplicationModel.Store.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slot">
+              <PropertyRef Name="SlotId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="SlotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingAddress">
+          <End Role="Address" Type="ResApplicationModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ShippingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetAddress">
+          <End Role="Address" Type="ResApplicationModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="StreetAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketTourParent">
+          <End Role="Ticket" Type="ResApplicationModel.Store.Ticket" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ticket:Tour" Type="ResApplicationModel.Store.Ticket:Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="Ticket:Tour">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourParentSlot">
+          <End Role="Slot" Type="ResApplicationModel.Store.Slot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Slot:Tour" Type="ResApplicationModel.Store.Slot:Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slot">
+              <PropertyRef Name="SlotId" />
+            </Principal>
+            <Dependent Role="Slot:Tour">
+              <PropertyRef Name="SlotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAddress">
+          <End Role="Address" Type="ResApplicationModel.Store.Address" Multiplicity="0..1" />
+          <End Role="User" Type="ResApplicationModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ResApplicationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ResApplication" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="ResApplicationModel.Address" />
+          <EntitySet Name="Distributors" EntityType="ResApplicationModel.Distributor" />
+          <EntitySet Name="Locations" EntityType="ResApplicationModel.Location" />
+          <EntitySet Name="Media" EntityType="ResApplicationModel.Medium" />
+          <EntitySet Name="Occurrences" EntityType="ResApplicationModel.Occurrence" />
+          <EntitySet Name="ResEvents" EntityType="ResApplicationModel.ResEvent" />
+          <EntitySet Name="Slots" EntityType="ResApplicationModel.Slot" />
+          <EntitySet Name="Slot_Tour" EntityType="ResApplicationModel.Slot_Tour" />
+          <EntitySet Name="Tickets" EntityType="ResApplicationModel.Ticket" />
+          <EntitySet Name="Ticket_Tour" EntityType="ResApplicationModel.Ticket_Tour" />
+          <EntitySet Name="Users" EntityType="ResApplicationModel.User" />
+          <EntitySet Name="C_Admin_SlotDash" EntityType="ResApplicationModel.C_Admin_SlotDash" />
+          <EntitySet Name="C_Admin_SlotDash_Future" EntityType="ResApplicationModel.C_Admin_SlotDash_Future" />
+          <EntitySet Name="C_Admin_SlotDash_Past" EntityType="ResApplicationModel.C_Admin_SlotDash_Past" />
+          <EntitySet Name="Location_StreetAddress" EntityType="ResApplicationModel.Location_StreetAddress" />
+          <EntitySet Name="Slot_Tour_Joined" EntityType="ResApplicationModel.Slot_Tour_Joined" />
+          <EntitySet Name="Ticket_Tour_Joined" EntityType="ResApplicationModel.Ticket_Tour_Joined" />
+          <EntitySet Name="Ticket_Tour_Owner" EntityType="ResApplicationModel.Ticket_Tour_Owner" />
+          <EntitySet Name="Ticket_Owner" EntityType="ResApplicationModel.Ticket_Owner" />
+          <AssociationSet Name="FK_BillingAddress" Association="ResApplicationModel.FK_BillingAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingAddress" Association="ResApplicationModel.FK_ShippingAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetAddress" Association="ResApplicationModel.FK_StreetAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAddress" Association="ResApplicationModel.FK_UserAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessConsultantId" Association="ResApplicationModel.FK_BusinessConsultantId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarketingDirectorId" Association="ResApplicationModel.FK_MarketingDirectorId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperatorId" Association="ResApplicationModel.FK_OperatorId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerId" Association="ResApplicationModel.FK_OwnerId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Occurrence_ResEvent" Association="ResApplicationModel.FK_Occurrence_ResEvent">
+            <End Role="ResEvent" EntitySet="ResEvents" />
+            <End Role="Occurrence" EntitySet="Occurrences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentOccurrence" Association="ResApplicationModel.FK_ParentOccurrence">
+            <End Role="Occurrence" EntitySet="Occurrences" />
+            <End Role="Slot" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentSlot" Association="ResApplicationModel.FK_ParentSlot">
+            <End Role="Slot" EntitySet="Slots" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourParentSlot" Association="ResApplicationModel.FK_TourParentSlot">
+            <End Role="Slot" EntitySet="Slots" />
+            <End Role="Slot_Tour" EntitySet="Slot_Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Owner" Association="ResApplicationModel.FK_Owner">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketTourParent" Association="ResApplicationModel.FK_TicketTourParent">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="Ticket_Tour" EntitySet="Ticket_Tour" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Line1" Type="String" Nullable="false" />
+          <Property Name="Line2" Type="String" />
+          <Property Name="Line3" Type="String" />
+          <Property Name="Name" Type="String" />
+          <Property Name="Zip" Type="String" Nullable="false" />
+          <Property Name="Label" Type="String" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="State" Type="String" Nullable="false" />
+          <Property Name="Lat" Type="Single" />
+          <Property Name="Lon" Type="Single" />
+          <Property Name="County" Type="String" />
+          <Property Name="ZipExtension" Type="Int32" />
+          <NavigationProperty Name="Locations" Relationship="ResApplicationModel.FK_BillingAddress" FromRole="Address" ToRole="Location" />
+          <NavigationProperty Name="Locations1" Relationship="ResApplicationModel.FK_ShippingAddress" FromRole="Address" ToRole="Location" />
+          <NavigationProperty Name="Locations2" Relationship="ResApplicationModel.FK_StreetAddress" FromRole="Address" ToRole="Location" />
+          <NavigationProperty Name="Users" Relationship="ResApplicationModel.FK_UserAddress" FromRole="Address" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="DistributorId" />
+          </Key>
+          <Property Name="DistributorId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistributionCenter" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationNumber" />
+          </Key>
+          <Property Name="LocationNumber" Type="Int64" Nullable="false" />
+          <Property Name="BusinessConsultantId" Type="Int64" />
+          <Property Name="ConceptCode" Type="Int16" Nullable="false" />
+          <Property Name="CorporateOwned" Type="Boolean" Nullable="false" />
+          <Property Name="BillingAddressId" Type="Int64" />
+          <Property Name="ShippingAddressId" Type="Int64" />
+          <Property Name="StreetAddressId" Type="Int64" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <Property Name="Fax" Type="String" Nullable="false" />
+          <Property Name="VoiceMail" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="DistributorId" Type="Int64" Nullable="false" />
+          <Property Name="AcceptsCfaCard" Type="Boolean" Nullable="false" />
+          <Property Name="HasDiningRoom" Type="Boolean" Nullable="false" />
+          <Property Name="HasDriveThru" Type="Boolean" Nullable="false" />
+          <Property Name="OffersOnlineOrdering" Type="Boolean" Nullable="false" />
+          <Property Name="OffersWireless" Type="Boolean" Nullable="false" />
+          <Property Name="Playground" Type="String" Nullable="false" />
+          <Property Name="ServesBreakfast" Type="Boolean" Nullable="false" />
+          <Property Name="FinancialConsultantId" Type="Int32" Nullable="false" />
+          <Property Name="GMTOffset" Type="String" />
+          <Property Name="Lat" Type="String" Nullable="false" />
+          <Property Name="Lon" Type="String" Nullable="false" />
+          <Property Name="LocationCode" Type="Int16" Nullable="false" />
+          <Property Name="MarketableName" Type="String" Nullable="false" />
+          <Property Name="MarketableURL" Type="String" Nullable="false" />
+          <Property Name="Message" Type="String" />
+          <Property Name="LocationDescription" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="OpenDate" Type="DateTime" Nullable="false" />
+          <Property Name="OperatorId" Type="Int64" />
+          <Property Name="OperatorTeamName" Type="String" Nullable="false" />
+          <Property Name="PriceGroupNumber" Type="String" />
+          <Property Name="ProjectedOpenDate" Type="DateTime" Nullable="false" />
+          <Property Name="RegionName" Type="String" Nullable="false" />
+          <Property Name="ServiceTeamName" Type="String" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="SiteStatus" Type="String" />
+          <Property Name="MarketingDirectorId" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="ResApplicationModel.FK_BillingAddress" FromRole="Location" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="ResApplicationModel.FK_ShippingAddress" FromRole="Location" ToRole="Address" />
+          <NavigationProperty Name="Address2" Relationship="ResApplicationModel.FK_StreetAddress" FromRole="Location" ToRole="Address" />
+          <NavigationProperty Name="User" Relationship="ResApplicationModel.FK_BusinessConsultantId" FromRole="Location" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ResApplicationModel.FK_MarketingDirectorId" FromRole="Location" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="ResApplicationModel.FK_OperatorId" FromRole="Location" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Medium">
+          <Key>
+            <PropertyRef Name="MediaId" />
+          </Key>
+          <Property Name="MediaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uri" Type="String" Nullable="false" />
+          <Property Name="OwnerId" Type="Int64" />
+          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="FileSize" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="MediaType" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ResApplicationModel.FK_OwnerId" FromRole="Media" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Occurrence">
+          <Key>
+            <PropertyRef Name="OccurrenceId" />
+          </Key>
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreId" Type="Int64" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="ResEventId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="BoundToPrototype" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ResEvent" Relationship="ResApplicationModel.FK_Occurrence_ResEvent" FromRole="Occurrence" ToRole="ResEvent" />
+          <NavigationProperty Name="Slots" Relationship="ResApplicationModel.FK_ParentOccurrence" FromRole="Occurrence" ToRole="Slot" />
+        </EntityType>
+        <EntityType Name="ResEvent">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+          </Key>
+          <Property Name="ResEventId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationStart" Type="DateTime" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="DateTime" Nullable="false" />
+          <Property Name="SiteStart" Type="DateTime" Nullable="false" />
+          <Property Name="SiteEnd" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="ReservationType" Type="String" Nullable="false" />
+          <Property Name="Template" Type="String" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="ProtoOccurrenceId" Type="Int32" />
+          <NavigationProperty Name="Occurrences" Relationship="ResApplicationModel.FK_Occurrence_ResEvent" FromRole="ResEvent" ToRole="Occurrence" />
+        </EntityType>
+        <EntityType Name="Slot">
+          <Key>
+            <PropertyRef Name="SlotId" />
+          </Key>
+          <Property Name="SlotId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Occurrence" Relationship="ResApplicationModel.FK_ParentOccurrence" FromRole="Slot" ToRole="Occurrence" />
+          <NavigationProperty Name="Tickets" Relationship="ResApplicationModel.FK_ParentSlot" FromRole="Slot" ToRole="Ticket" />
+          <NavigationProperty Name="Slot_Tour" Relationship="ResApplicationModel.FK_TourParentSlot" FromRole="Slot" ToRole="Slot_Tour" />
+        </EntityType>
+        <EntityType Name="Slot_Tour">
+          <Key>
+            <PropertyRef Name="Slot_TourId" />
+          </Key>
+          <Property Name="Slot_TourId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuideId" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="KidFriendly" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialNeeds" Type="String" Nullable="false" />
+          <NavigationProperty Name="Slot" Relationship="ResApplicationModel.FK_TourParentSlot" FromRole="Slot_Tour" ToRole="Slot" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OwnerId" Type="Int64" />
+          <NavigationProperty Name="Slot" Relationship="ResApplicationModel.FK_ParentSlot" FromRole="Ticket" ToRole="Slot" />
+          <NavigationProperty Name="User" Relationship="ResApplicationModel.FK_Owner" FromRole="Ticket" ToRole="User" />
+          <NavigationProperty Name="Ticket_Tour" Relationship="ResApplicationModel.FK_TicketTourParent" FromRole="Ticket" ToRole="Ticket_Tour" />
+        </EntityType>
+        <EntityType Name="Ticket_Tour">
+          <Key>
+            <PropertyRef Name="Ticket_TourId" />
+          </Key>
+          <Property Name="Ticket_TourId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestCount" Type="Int32" Nullable="false" />
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="ResApplicationModel.FK_TicketTourParent" FromRole="Ticket_Tour" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Authority" Type="String" Nullable="false" />
+          <Property Name="AuthorityUID" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="UID" Type="String" />
+          <Property Name="DN" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="HomePhone" Type="String" />
+          <Property Name="MobilePhone" Type="String" />
+          <Property Name="Creation" Type="DateTime" Nullable="false" />
+          <Property Name="LastActivity" Type="DateTime" Nullable="false" />
+          <Property Name="AccountStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="ResApplicationModel.FK_UserAddress" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Locations" Relationship="ResApplicationModel.FK_BusinessConsultantId" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Locations1" Relationship="ResApplicationModel.FK_MarketingDirectorId" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Locations2" Relationship="ResApplicationModel.FK_OperatorId" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Media" Relationship="ResApplicationModel.FK_OwnerId" FromRole="User" ToRole="Media" />
+          <NavigationProperty Name="Tickets" Relationship="ResApplicationModel.FK_Owner" FromRole="User" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="C_Admin_SlotDash">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationStart" Type="DateTime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="Byte" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="DateTime" Nullable="false" />
+          <Property Name="SiteStart" Type="DateTime" Nullable="false" />
+          <Property Name="SiteEnd" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="ReservationType" Type="String" Nullable="false" />
+          <Property Name="Template" Type="String" Nullable="false" />
+          <Property Name="TicketCount" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Admin_SlotDash_Future">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationStart" Type="DateTime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="Byte" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="DateTime" Nullable="false" />
+          <Property Name="SiteStart" Type="DateTime" Nullable="false" />
+          <Property Name="SiteEnd" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="ReservationType" Type="String" Nullable="false" />
+          <Property Name="Template" Type="String" Nullable="false" />
+          <Property Name="TicketCount" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Admin_SlotDash_Past">
+          <Key>
+            <PropertyRef Name="ResEventId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="ResEventStatus" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="SiteStart" />
+            <PropertyRef Name="SiteEnd" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UrlName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ReservationType" />
+            <PropertyRef Name="Template" />
+            <PropertyRef Name="TicketCount" />
+          </Key>
+          <Property Name="ResEventId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationStart" Type="DateTime" Nullable="false" />
+          <Property Name="ResEventStatus" Type="Byte" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="DateTime" Nullable="false" />
+          <Property Name="SiteStart" Type="DateTime" Nullable="false" />
+          <Property Name="SiteEnd" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="ReservationType" Type="String" Nullable="false" />
+          <Property Name="Template" Type="String" Nullable="false" />
+          <Property Name="TicketCount" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location_StreetAddress">
+          <Key>
+            <PropertyRef Name="LocationNumber" />
+            <PropertyRef Name="ConceptCode" />
+            <PropertyRef Name="CorporateOwned" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="VoiceMail" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DistributorId" />
+            <PropertyRef Name="AcceptsCfaCard" />
+            <PropertyRef Name="HasDiningRoom" />
+            <PropertyRef Name="HasDriveThru" />
+            <PropertyRef Name="OffersOnlineOrdering" />
+            <PropertyRef Name="OffersWireless" />
+            <PropertyRef Name="Playground" />
+            <PropertyRef Name="ServesBreakfast" />
+            <PropertyRef Name="FinancialConsultantId" />
+            <PropertyRef Name="Lat" />
+            <PropertyRef Name="Lon" />
+            <PropertyRef Name="LocationCode" />
+            <PropertyRef Name="MarketableName" />
+            <PropertyRef Name="MarketableURL" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OpenDate" />
+            <PropertyRef Name="OperatorTeamName" />
+            <PropertyRef Name="ProjectedOpenDate" />
+            <PropertyRef Name="RegionName" />
+            <PropertyRef Name="ServiceTeamName" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="Line1" />
+            <PropertyRef Name="Zip" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="State" />
+          </Key>
+          <Property Name="LocationNumber" Type="Int64" Nullable="false" />
+          <Property Name="BusinessConsultantId" Type="Int64" />
+          <Property Name="ConceptCode" Type="Int16" Nullable="false" />
+          <Property Name="CorporateOwned" Type="Boolean" Nullable="false" />
+          <Property Name="BillingAddressId" Type="Int64" />
+          <Property Name="ShippingAddressId" Type="Int64" />
+          <Property Name="StreetAddressId" Type="Int64" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <Property Name="Fax" Type="String" Nullable="false" />
+          <Property Name="VoiceMail" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="DistributorId" Type="Int64" Nullable="false" />
+          <Property Name="AcceptsCfaCard" Type="Boolean" Nullable="false" />
+          <Property Name="HasDiningRoom" Type="Boolean" Nullable="false" />
+          <Property Name="HasDriveThru" Type="Boolean" Nullable="false" />
+          <Property Name="OffersOnlineOrdering" Type="Boolean" Nullable="false" />
+          <Property Name="OffersWireless" Type="Boolean" Nullable="false" />
+          <Property Name="Playground" Type="String" Nullable="false" />
+          <Property Name="ServesBreakfast" Type="Boolean" Nullable="false" />
+          <Property Name="FinancialConsultantId" Type="Int32" Nullable="false" />
+          <Property Name="GMTOffset" Type="String" />
+          <Property Name="Lat" Type="String" Nullable="false" />
+          <Property Name="Lon" Type="String" Nullable="false" />
+          <Property Name="LocationCode" Type="Int16" Nullable="false" />
+          <Property Name="MarketableName" Type="String" Nullable="false" />
+          <Property Name="MarketableURL" Type="String" Nullable="false" />
+          <Property Name="Message" Type="String" />
+          <Property Name="LocationDescription" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="OpenDate" Type="DateTime" Nullable="false" />
+          <Property Name="OperatorId" Type="Int64" />
+          <Property Name="OperatorTeamName" Type="String" Nullable="false" />
+          <Property Name="PriceGroupNumber" Type="String" />
+          <Property Name="ProjectedOpenDate" Type="DateTime" Nullable="false" />
+          <Property Name="RegionName" Type="String" Nullable="false" />
+          <Property Name="ServiceTeamName" Type="String" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="SiteStatus" Type="String" />
+          <Property Name="MarketingDirectorId" Type="Int64" />
+          <Property Name="AddressId" Type="Int64" Nullable="false" />
+          <Property Name="Line1" Type="String" Nullable="false" />
+          <Property Name="Line2" Type="String" />
+          <Property Name="Line3" Type="String" />
+          <Property Name="AddressName" Type="String" />
+          <Property Name="Zip" Type="String" Nullable="false" />
+          <Property Name="Label" Type="String" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="State" Type="String" Nullable="false" />
+          <Property Name="AddressLat" Type="Single" />
+          <Property Name="AddressLon" Type="Single" />
+          <Property Name="County" Type="String" />
+          <Property Name="ZipExtension" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Slot_Tour_Joined">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="OccurrenceId" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+            <PropertyRef Name="Slot_TourId" />
+            <PropertyRef Name="GuideId" />
+            <PropertyRef Name="KidFriendly" />
+            <PropertyRef Name="SpecialNeeds" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+          </Key>
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OccurrenceId" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Slot_TourId" Type="Int64" Nullable="false" />
+          <Property Name="GuideId" Type="Int32" Nullable="false" />
+          <Property Name="KidFriendly" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialNeeds" Type="String" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket_Tour_Joined">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Ticket_TourId" />
+            <PropertyRef Name="GuestCount" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OwnerId" Type="Int64" />
+          <Property Name="Ticket_TourId" Type="Int64" Nullable="false" />
+          <Property Name="GuestCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket_Tour_Owner">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Ticket_TourId" />
+            <PropertyRef Name="GuestCount" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Authority" />
+            <PropertyRef Name="AuthorityUID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creation" />
+            <PropertyRef Name="LastActivity" />
+            <PropertyRef Name="AccountStatus" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OwnerId" Type="Int64" />
+          <Property Name="Ticket_TourId" Type="Int64" Nullable="false" />
+          <Property Name="GuestCount" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Authority" Type="String" Nullable="false" />
+          <Property Name="AuthorityUID" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="UID" Type="String" />
+          <Property Name="DN" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="HomePhone" Type="String" />
+          <Property Name="MobilePhone" Type="String" />
+          <Property Name="Creation" Type="DateTime" Nullable="false" />
+          <Property Name="LastActivity" Type="DateTime" Nullable="false" />
+          <Property Name="AccountStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket_Owner">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Authority" />
+            <PropertyRef Name="AuthorityUID" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creation" />
+            <PropertyRef Name="LastActivity" />
+            <PropertyRef Name="AccountStatus" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="SlotId" Type="Int64" Nullable="false" />
+          <Property Name="OwnerId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Authority" Type="String" Nullable="false" />
+          <Property Name="AuthorityUID" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="UID" Type="String" />
+          <Property Name="DN" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="HomePhone" Type="String" />
+          <Property Name="MobilePhone" Type="String" />
+          <Property Name="Creation" Type="DateTime" Nullable="false" />
+          <Property Name="LastActivity" Type="DateTime" Nullable="false" />
+          <Property Name="AccountStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BillingAddress">
+          <End Role="Address" Type="ResApplicationModel.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="BillingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingAddress">
+          <End Role="Address" Type="ResApplicationModel.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ShippingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetAddress">
+          <End Role="Address" Type="ResApplicationModel.Address" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="StreetAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAddress">
+          <End Role="Address" Type="ResApplicationModel.Address" Multiplicity="0..1" />
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessConsultantId">
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="BusinessConsultantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarketingDirectorId">
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="MarketingDirectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperatorId">
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="0..1" />
+          <End Role="Location" Type="ResApplicationModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="OperatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerId">
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="0..1" />
+          <End Role="Media" Type="ResApplicationModel.Medium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Media">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Occurrence_ResEvent">
+          <End Role="ResEvent" Type="ResApplicationModel.ResEvent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Occurrence" Type="ResApplicationModel.Occurrence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResEvent">
+              <PropertyRef Name="ResEventId" />
+            </Principal>
+            <Dependent Role="Occurrence">
+              <PropertyRef Name="ResEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentOccurrence">
+          <End Role="Occurrence" Type="ResApplicationModel.Occurrence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Slot" Type="ResApplicationModel.Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occurrence">
+              <PropertyRef Name="OccurrenceId" />
+            </Principal>
+            <Dependent Role="Slot">
+              <PropertyRef Name="OccurrenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentSlot">
+          <End Role="Slot" Type="ResApplicationModel.Slot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ticket" Type="ResApplicationModel.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slot">
+              <PropertyRef Name="SlotId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="SlotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourParentSlot">
+          <End Role="Slot" Type="ResApplicationModel.Slot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Slot_Tour" Type="ResApplicationModel.Slot_Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slot">
+              <PropertyRef Name="SlotId" />
+            </Principal>
+            <Dependent Role="Slot_Tour">
+              <PropertyRef Name="SlotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Owner">
+          <End Role="User" Type="ResApplicationModel.User" Multiplicity="0..1" />
+          <End Role="Ticket" Type="ResApplicationModel.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketTourParent">
+          <End Role="Ticket" Type="ResApplicationModel.Ticket" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ticket_Tour" Type="ResApplicationModel.Ticket_Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="Ticket_Tour">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ResApplicationModelStoreContainer" CdmEntityContainer="ResApplication">
+          <EntitySetMapping Name="Addresses"><EntityTypeMapping TypeName="ResApplicationModel.Address"><MappingFragment StoreEntitySet="Address">
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="Line1" ColumnName="Line1" />
+            <ScalarProperty Name="Line2" ColumnName="Line2" />
+            <ScalarProperty Name="Line3" ColumnName="Line3" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Zip" ColumnName="Zip" />
+            <ScalarProperty Name="Label" ColumnName="Label" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Lat" ColumnName="Lat" />
+            <ScalarProperty Name="Lon" ColumnName="Lon" />
+            <ScalarProperty Name="County" ColumnName="County" />
+            <ScalarProperty Name="ZipExtension" ColumnName="ZipExtension" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Distributors"><EntityTypeMapping TypeName="ResApplicationModel.Distributor"><MappingFragment StoreEntitySet="Distributor">
+            <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+            <ScalarProperty Name="DistributionCenter" ColumnName="DistributionCenter" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Locations"><EntityTypeMapping TypeName="ResApplicationModel.Location"><MappingFragment StoreEntitySet="Location">
+            <ScalarProperty Name="LocationNumber" ColumnName="LocationNumber" />
+            <ScalarProperty Name="BusinessConsultantId" ColumnName="BusinessConsultantId" />
+            <ScalarProperty Name="ConceptCode" ColumnName="ConceptCode" />
+            <ScalarProperty Name="CorporateOwned" ColumnName="CorporateOwned" />
+            <ScalarProperty Name="BillingAddressId" ColumnName="BillingAddressId" />
+            <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
+            <ScalarProperty Name="StreetAddressId" ColumnName="StreetAddressId" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Fax" ColumnName="Fax" />
+            <ScalarProperty Name="VoiceMail" ColumnName="VoiceMail" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+            <ScalarProperty Name="AcceptsCfaCard" ColumnName="AcceptsCfaCard" />
+            <ScalarProperty Name="HasDiningRoom" ColumnName="HasDiningRoom" />
+            <ScalarProperty Name="HasDriveThru" ColumnName="HasDriveThru" />
+            <ScalarProperty Name="OffersOnlineOrdering" ColumnName="OffersOnlineOrdering" />
+            <ScalarProperty Name="OffersWireless" ColumnName="OffersWireless" />
+            <ScalarProperty Name="Playground" ColumnName="Playground" />
+            <ScalarProperty Name="ServesBreakfast" ColumnName="ServesBreakfast" />
+            <ScalarProperty Name="FinancialConsultantId" ColumnName="FinancialConsultantId" />
+            <ScalarProperty Name="GMTOffset" ColumnName="GMTOffset" />
+            <ScalarProperty Name="Lat" ColumnName="Lat" />
+            <ScalarProperty Name="Lon" ColumnName="Lon" />
+            <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+            <ScalarProperty Name="MarketableName" ColumnName="MarketableName" />
+            <ScalarProperty Name="MarketableURL" ColumnName="MarketableURL" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+            <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+            <ScalarProperty Name="OperatorTeamName" ColumnName="OperatorTeamName" />
+            <ScalarProperty Name="PriceGroupNumber" ColumnName="PriceGroupNumber" />
+            <ScalarProperty Name="ProjectedOpenDate" ColumnName="ProjectedOpenDate" />
+            <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+            <ScalarProperty Name="ServiceTeamName" ColumnName="ServiceTeamName" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="SiteStatus" ColumnName="SiteStatus" />
+            <ScalarProperty Name="MarketingDirectorId" ColumnName="MarketingDirectorId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Media"><EntityTypeMapping TypeName="ResApplicationModel.Medium"><MappingFragment StoreEntitySet="Media">
+            <ScalarProperty Name="MediaId" ColumnName="MediaId" />
+            <ScalarProperty Name="Uri" ColumnName="Uri" />
+            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+            <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+            <ScalarProperty Name="Width" ColumnName="Width" />
+            <ScalarProperty Name="Height" ColumnName="Height" />
+            <ScalarProperty Name="Length" ColumnName="Length" />
+            <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+            <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Occurrences"><EntityTypeMapping TypeName="ResApplicationModel.Occurrence"><MappingFragment StoreEntitySet="Occurrence">
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="ResEventId" ColumnName="ResEventId" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="BoundToPrototype" ColumnName="BoundToPrototype" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ResEvents"><EntityTypeMapping TypeName="ResApplicationModel.ResEvent"><MappingFragment StoreEntitySet="ResEvent">
+            <ScalarProperty Name="ResEventId" ColumnName="ResEventId" />
+            <ScalarProperty Name="RegistrationStart" ColumnName="RegistrationStart" />
+            <ScalarProperty Name="RegistrationEnd" ColumnName="RegistrationEnd" />
+            <ScalarProperty Name="SiteStart" ColumnName="SiteStart" />
+            <ScalarProperty Name="SiteEnd" ColumnName="SiteEnd" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+            <ScalarProperty Name="Template" ColumnName="Template" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="ProtoOccurrenceId" ColumnName="ProtoOccurrenceId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Slots"><EntityTypeMapping TypeName="ResApplicationModel.Slot"><MappingFragment StoreEntitySet="Slot">
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Slot_Tour"><EntityTypeMapping TypeName="ResApplicationModel.Slot_Tour"><MappingFragment StoreEntitySet="Slot:Tour">
+            <ScalarProperty Name="Slot_TourId" ColumnName="Slot:TourId" />
+            <ScalarProperty Name="GuideId" ColumnName="GuideId" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="KidFriendly" ColumnName="KidFriendly" />
+            <ScalarProperty Name="SpecialNeeds" ColumnName="SpecialNeeds" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tickets"><EntityTypeMapping TypeName="ResApplicationModel.Ticket"><MappingFragment StoreEntitySet="Ticket">
+            <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+            <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Tour"><EntityTypeMapping TypeName="ResApplicationModel.Ticket_Tour"><MappingFragment StoreEntitySet="Ticket:Tour">
+            <ScalarProperty Name="Ticket_TourId" ColumnName="Ticket:TourId" />
+            <ScalarProperty Name="GuestCount" ColumnName="GuestCount" />
+            <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="ResApplicationModel.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Authority" ColumnName="Authority" />
+            <ScalarProperty Name="AuthorityUID" ColumnName="AuthorityUID" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="UID" ColumnName="UID" />
+            <ScalarProperty Name="DN" ColumnName="DN" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+            <ScalarProperty Name="Creation" ColumnName="Creation" />
+            <ScalarProperty Name="LastActivity" ColumnName="LastActivity" />
+            <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="C_Admin_SlotDash"><EntityTypeMapping TypeName="ResApplicationModel.C_Admin_SlotDash"><MappingFragment StoreEntitySet="$Admin~SlotDash">
+            <ScalarProperty Name="ResEventId" ColumnName="ResEventId" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+            <ScalarProperty Name="RegistrationStart" ColumnName="RegistrationStart" />
+            <ScalarProperty Name="ResEventStatus" ColumnName="ResEventStatus" />
+            <ScalarProperty Name="RegistrationEnd" ColumnName="RegistrationEnd" />
+            <ScalarProperty Name="SiteStart" ColumnName="SiteStart" />
+            <ScalarProperty Name="SiteEnd" ColumnName="SiteEnd" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+            <ScalarProperty Name="Template" ColumnName="Template" />
+            <ScalarProperty Name="TicketCount" ColumnName="TicketCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="C_Admin_SlotDash_Future"><EntityTypeMapping TypeName="ResApplicationModel.C_Admin_SlotDash_Future"><MappingFragment StoreEntitySet="$Admin~SlotDash~Future">
+            <ScalarProperty Name="ResEventId" ColumnName="ResEventId" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+            <ScalarProperty Name="RegistrationStart" ColumnName="RegistrationStart" />
+            <ScalarProperty Name="ResEventStatus" ColumnName="ResEventStatus" />
+            <ScalarProperty Name="RegistrationEnd" ColumnName="RegistrationEnd" />
+            <ScalarProperty Name="SiteStart" ColumnName="SiteStart" />
+            <ScalarProperty Name="SiteEnd" ColumnName="SiteEnd" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+            <ScalarProperty Name="Template" ColumnName="Template" />
+            <ScalarProperty Name="TicketCount" ColumnName="TicketCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="C_Admin_SlotDash_Past"><EntityTypeMapping TypeName="ResApplicationModel.C_Admin_SlotDash_Past"><MappingFragment StoreEntitySet="$Admin~SlotDash~Past">
+            <ScalarProperty Name="ResEventId" ColumnName="ResEventId" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+            <ScalarProperty Name="RegistrationStart" ColumnName="RegistrationStart" />
+            <ScalarProperty Name="ResEventStatus" ColumnName="ResEventStatus" />
+            <ScalarProperty Name="RegistrationEnd" ColumnName="RegistrationEnd" />
+            <ScalarProperty Name="SiteStart" ColumnName="SiteStart" />
+            <ScalarProperty Name="SiteEnd" ColumnName="SiteEnd" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ReservationType" ColumnName="ReservationType" />
+            <ScalarProperty Name="Template" ColumnName="Template" />
+            <ScalarProperty Name="TicketCount" ColumnName="TicketCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Location_StreetAddress"><EntityTypeMapping TypeName="ResApplicationModel.Location_StreetAddress"><MappingFragment StoreEntitySet="Location~StreetAddress">
+            <ScalarProperty Name="LocationNumber" ColumnName="LocationNumber" />
+            <ScalarProperty Name="BusinessConsultantId" ColumnName="BusinessConsultantId" />
+            <ScalarProperty Name="ConceptCode" ColumnName="ConceptCode" />
+            <ScalarProperty Name="CorporateOwned" ColumnName="CorporateOwned" />
+            <ScalarProperty Name="BillingAddressId" ColumnName="BillingAddressId" />
+            <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
+            <ScalarProperty Name="StreetAddressId" ColumnName="StreetAddressId" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Fax" ColumnName="Fax" />
+            <ScalarProperty Name="VoiceMail" ColumnName="VoiceMail" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+            <ScalarProperty Name="AcceptsCfaCard" ColumnName="AcceptsCfaCard" />
+            <ScalarProperty Name="HasDiningRoom" ColumnName="HasDiningRoom" />
+            <ScalarProperty Name="HasDriveThru" ColumnName="HasDriveThru" />
+            <ScalarProperty Name="OffersOnlineOrdering" ColumnName="OffersOnlineOrdering" />
+            <ScalarProperty Name="OffersWireless" ColumnName="OffersWireless" />
+            <ScalarProperty Name="Playground" ColumnName="Playground" />
+            <ScalarProperty Name="ServesBreakfast" ColumnName="ServesBreakfast" />
+            <ScalarProperty Name="FinancialConsultantId" ColumnName="FinancialConsultantId" />
+            <ScalarProperty Name="GMTOffset" ColumnName="GMTOffset" />
+            <ScalarProperty Name="Lat" ColumnName="Lat" />
+            <ScalarProperty Name="Lon" ColumnName="Lon" />
+            <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+            <ScalarProperty Name="MarketableName" ColumnName="MarketableName" />
+            <ScalarProperty Name="MarketableURL" ColumnName="MarketableURL" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+            <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+            <ScalarProperty Name="OperatorTeamName" ColumnName="OperatorTeamName" />
+            <ScalarProperty Name="PriceGroupNumber" ColumnName="PriceGroupNumber" />
+            <ScalarProperty Name="ProjectedOpenDate" ColumnName="ProjectedOpenDate" />
+            <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+            <ScalarProperty Name="ServiceTeamName" ColumnName="ServiceTeamName" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="SiteStatus" ColumnName="SiteStatus" />
+            <ScalarProperty Name="MarketingDirectorId" ColumnName="MarketingDirectorId" />
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="Line1" ColumnName="Line1" />
+            <ScalarProperty Name="Line2" ColumnName="Line2" />
+            <ScalarProperty Name="Line3" ColumnName="Line3" />
+            <ScalarProperty Name="AddressName" ColumnName="AddressName" />
+            <ScalarProperty Name="Zip" ColumnName="Zip" />
+            <ScalarProperty Name="Label" ColumnName="Label" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="AddressLat" ColumnName="AddressLat" />
+            <ScalarProperty Name="AddressLon" ColumnName="AddressLon" />
+            <ScalarProperty Name="County" ColumnName="County" />
+            <ScalarProperty Name="ZipExtension" ColumnName="ZipExtension" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Slot_Tour_Joined"><EntityTypeMapping TypeName="ResApplicationModel.Slot_Tour_Joined"><MappingFragment StoreEntitySet="Slot:Tour~Joined">
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+            <ScalarProperty Name="Start" ColumnName="Start" />
+            <ScalarProperty Name="End" ColumnName="End" />
+            <ScalarProperty Name="Slot_TourId" ColumnName="Slot:TourId" />
+            <ScalarProperty Name="GuideId" ColumnName="GuideId" />
+            <ScalarProperty Name="KidFriendly" ColumnName="KidFriendly" />
+            <ScalarProperty Name="SpecialNeeds" ColumnName="SpecialNeeds" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Tour_Joined"><EntityTypeMapping TypeName="ResApplicationModel.Ticket_Tour_Joined"><MappingFragment StoreEntitySet="Ticket:Tour~Joined">
+            <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+            <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+            <ScalarProperty Name="Ticket_TourId" ColumnName="Ticket:TourId" />
+            <ScalarProperty Name="GuestCount" ColumnName="GuestCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Tour_Owner"><EntityTypeMapping TypeName="ResApplicationModel.Ticket_Tour_Owner"><MappingFragment StoreEntitySet="Ticket:Tour~Owner">
+            <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+            <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+            <ScalarProperty Name="Ticket_TourId" ColumnName="Ticket:TourId" />
+            <ScalarProperty Name="GuestCount" ColumnName="GuestCount" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Authority" ColumnName="Authority" />
+            <ScalarProperty Name="AuthorityUID" ColumnName="AuthorityUID" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="UID" ColumnName="UID" />
+            <ScalarProperty Name="DN" ColumnName="DN" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+            <ScalarProperty Name="Creation" ColumnName="Creation" />
+            <ScalarProperty Name="LastActivity" ColumnName="LastActivity" />
+            <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Owner"><EntityTypeMapping TypeName="ResApplicationModel.Ticket_Owner"><MappingFragment StoreEntitySet="Ticket~Owner">
+            <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+            <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+            <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Authority" ColumnName="Authority" />
+            <ScalarProperty Name="AuthorityUID" ColumnName="AuthorityUID" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="UID" ColumnName="UID" />
+            <ScalarProperty Name="DN" ColumnName="DN" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+            <ScalarProperty Name="Creation" ColumnName="Creation" />
+            <ScalarProperty Name="LastActivity" ColumnName="LastActivity" />
+            <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ResApplication">
+        <EntityTypeShape EntityType="ResApplicationModel.Address" Width="1.5" PointX="0.75" PointY="8" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Distributor" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Location" Width="1.5" PointX="5.25" PointY="7.75" Height="9.6723437499999978" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Medium" Width="1.5" PointX="5.25" PointY="18.875" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Occurrence" Width="1.5" PointX="3.75" PointY="24.25" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.ResEvent" Width="1.5" PointX="1.5" PointY="23.875" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Slot" Width="1.5" PointX="6" PointY="24.25" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Slot_Tour" Width="1.5" PointX="8.25" PointY="24.5" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Ticket" Width="1.5" PointX="8.25" PointY="19.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Ticket_Tour" Width="1.5" PointX="10.5" PointY="19.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.User" Width="1.5" PointX="3" PointY="18.25" Height="4.8648079427083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.C_Admin_SlotDash" Width="1.5" PointX="2.75" PointY="0.75" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.C_Admin_SlotDash_Future" Width="1.5" PointX="4.75" PointY="0.75" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.C_Admin_SlotDash_Past" Width="1.5" PointX="6.75" PointY="0.75" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Location_StreetAddress" Width="1.5" PointX="7.75" PointY="6.75" Height="11.018453776041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Slot_Tour_Joined" Width="1.5" PointX="8.75" PointY="0.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Ticket_Tour_Joined" Width="1.5" PointX="9.75" PointY="4.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Ticket_Tour_Owner" Width="1.5" PointX="9.75" PointY="7.75" Height="4.8648079427083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResApplicationModel.Ticket_Owner" Width="1.5" PointX="11.75" PointY="0.75" Height="4.4802050781250031" IsExpanded="true" />
+        <AssociationConnector Association="ResApplicationModel.FK_BillingAddress" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.143951822916666" />
+          <ConnectorPoint PointX="5.25" PointY="10.143951822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_ShippingAddress" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.0094759114583329" />
+          <ConnectorPoint PointX="5.25" PointY="9.0094759114583329" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_StreetAddress" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.278427734374999" />
+          <ConnectorPoint PointX="5.25" PointY="11.278427734374999" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_UserAddress" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="12.287903645833332" />
+          <ConnectorPoint PointX="1.5" PointY="20.682403971354166" />
+          <ConnectorPoint PointX="3" PointY="20.682403971354166" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_BusinessConsultantId" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="18.25" />
+          <ConnectorPoint PointX="3.75" PointY="14.381638242187499" />
+          <ConnectorPoint PointX="5.25" PointY="14.381638242187499" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_MarketingDirectorId" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.1562525" PointY="18.25" />
+          <ConnectorPoint PointX="4.1562525" PointY="15.933243496093748" />
+          <ConnectorPoint PointX="5.25" PointY="15.933243496093748" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_OperatorId" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.3437475" PointY="18.25" />
+          <ConnectorPoint PointX="3.3437475" PointY="12.83003298828125" />
+          <ConnectorPoint PointX="5.25" PointY="12.83003298828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_OwnerId" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.634348958333334" />
+          <ConnectorPoint PointX="5.25" PointY="20.634348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_Occurrence_ResEvent" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="25.62474609375" />
+          <ConnectorPoint PointX="3.75" PointY="25.62474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_ParentOccurrence" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="25.62474609375" />
+          <ConnectorPoint PointX="6" PointY="25.62474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_ParentSlot" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="24.251152846153843" />
+          <ConnectorPoint PointX="7.875" PointY="23.876152846153843" />
+          <ConnectorPoint PointX="7.875" PointY="20.682444661458334" />
+          <ConnectorPoint PointX="8.25" PointY="20.682444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_TourParentSlot" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="25.586293945312498" />
+          <ConnectorPoint PointX="8.25" PointY="25.586293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_Owner" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="22.7855029296875" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="22.7855029296875" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="22.7855029296875" />
+          <ConnectorPoint PointX="9" PointY="22.7855029296875" />
+          <ConnectorPoint PointX="9" PointY="21.864889322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ResApplicationModel.FK_TicketTourParent" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="20.643992513020834" />
+          <ConnectorPoint PointX="10.5" PointY="20.643992513020834" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

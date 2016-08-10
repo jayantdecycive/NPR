@@ -1,0 +1,31 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+<div class="review-section">
+        <span class="field-requirement">* </span><div class="name-value-pair">
+            <span class="name">Does anyone in the group have special needs? </span><span class="value">
+                @Html.RadioButtonFor(model => model.tourTicket.HasSpecialNeeds, true, new { @readonly = "readonly", disabled = "true" }) Yes
+                @Html.RadioButtonFor(model => model.tourTicket.HasSpecialNeeds, false, new { @readonly = "readonly", disabled = "true" }) No
+              </span>
+        </div>
+ @if (Model.tourTicket.HasSpecialNeeds)
+ {
+             <div class="name-value-pair">
+                <div class="value checkboxgroup">
+                    <span class="checkbox-name-wrapper">
+                        @Html.CheckBoxFor(m => m.tourTicket.IsHearingImpaired, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.tourTicket.IsHearingImpaired)</span> <span class="checkbox-name-wrapper">
+                        @Html.CheckBoxFor(m => m.tourTicket.IsVisuallyImpaired, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.tourTicket.IsVisuallyImpaired)</span>
+                    <span class="checkbox-name-wrapper">
+                        @Html.CheckBoxFor(m => m.tourTicket.NeedsWheelChair, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.tourTicket.NeedsWheelChair)</span>
+                    <span class="checkboxWithExplanation">
+                        @Html.CheckBoxFor(m => m.tourTicket.OtherNeeds, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.tourTicket.OtherNeeds)
+                        @Html.TextBoxFor(m => m.tourTicket.OtherNeedsDescription, new { @readonly = "readonly", disabled = "true" })</span>
+                </div>
+            </div>
+ }
+</div>
+
+

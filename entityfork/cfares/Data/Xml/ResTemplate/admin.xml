@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ResTemplateId>admin</ResTemplateId>
+  <Icon>
+    <MediaId>null</MediaId>
+    <IsSystem>false</IsSystem>
+    <Width>0</Width>
+    <Height>0</Height>
+    <Length>0</Length>
+    <Size>0</Size>
+    <CreationDate>2012-06-04T17:24:37.1802635-04:00</CreationDate>
+    <FileSize>0</FileSize>
+    <MediaType>Image</MediaType>
+  </Icon>
+  <Preview>
+    <MediaId>null</MediaId>
+    <IsSystem>false</IsSystem>
+    <Width>0</Width>
+    <Height>0</Height>
+    <Length>0</Length>
+    <Size>0</Size>
+    <CreationDate>2012-06-04T17:24:37.1802635-04:00</CreationDate>
+    <FileSize>0</FileSize>
+    <MediaType>Image</MediaType>
+  </Preview>
+  <Description>Chick-fil-A admin Proto Template</Description>
+  <Name>Desktop admin</Name>
+  <BrowserMedia>Browser</BrowserMedia>
+  <DefaultReservationTypeId>admin</DefaultReservationTypeId>
+</ResTemplate>

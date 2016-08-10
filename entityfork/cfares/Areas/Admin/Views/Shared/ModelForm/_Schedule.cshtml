@@ -1,0 +1,67 @@
+﻿@model cfares.domain._event.Schedule
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+@{bool isNew = pk == "new";}
+
+    <fieldset data-pk='@pk' class='schedule-@pk'>
+        
+        @Html.HiddenFor(model => model.ScheduleId)
+
+        <div class='legend inline-block'></div>
+
+
+        <div class='model-field field-Name'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+       
+       
+        <div class='model-field field-UrlName'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.UrlName)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.UrlName)
+                @Html.ValidationMessageFor(model => model.UrlName)
+            </div>
+        </div>
+
+        <div class='model-field field-Start'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Start)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Start)
+                @Html.ValidationMessageFor(model => model.Start)
+            </div>
+        </div>
+
+        <div class='model-field field-End'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.End)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.End)
+                @Html.ValidationMessageFor(model => model.End)
+            </div>
+        </div>
+
+      
+        <div class='model-field field-Capacity'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Capacity)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Capacity)
+                @Html.ValidationMessageFor(model => model.Capacity)
+            </div>
+        </div>
+
+       
+        
+        
+    </fieldset>

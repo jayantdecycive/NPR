@@ -1,0 +1,41 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.Brief = "Edit Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+}
+
+
+            <h1>Edit Tour Slot</h1>
+            <p>
+                
+            </p>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                @Html.Partial("ModelForm/Slots/_TourSlot",Model)
+                @Html.Partial("ModelForm/_Slot", Model)                
+
+                <div class='submit-block admin-green'>
+                    <div class='editor-label inline-block inline-block'>
+            
+                    </div>
+                    <div class='editor-field inline-block inline-block'>
+                        <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+                    </div>
+            
+                </div>
+            }
+@section Action{
+<div class='button-cta' data-icon="ui-icon-circle-close">
+    @Html.ActionLink("Delete", "TourSlot-Delete", new { id=Model.Id()})
+</div>
+}
+                    
+@section Cancel{
+<div class='dash-cta'>
+    @Html.ActionLink("Cancel", "TourSlot-Details", new { id=Model.Id()})
+</div>
+}
+        

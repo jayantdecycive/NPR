@@ -1,0 +1,23 @@
+﻿@model cfacore.domain.user.User
+
+@{ 
+    string defaultLabel;
+    if (Model == null || string.IsNullOrEmpty(Model.Id()))
+    {
+        defaultLabel = "No User";
+    }else if (string.IsNullOrEmpty(Model.Name.ToString())) {
+        defaultLabel = string.Format("User id:{0}", Model.Id());
+    }
+    else {
+        defaultLabel = Model.Name.ToString();
+    }
+    string id = string.Empty;
+    if(Model!=null){
+        id = Model.Id();
+    }        
+}
+<span class='admin-grey'>    
+    <input type="text" data-default-label="@defaultLabel" value="@id" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='jq-auto-complete' data-pk="UserId" 
+        data-columns="Email,Name,UserId,Username" data-filter="Email,Name,Username,UserIdL" data-label="Name,Email" data-src='/DataService/User.svc/Users' />
+</span>
+<!--user-->

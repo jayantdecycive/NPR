@@ -1,0 +1,132 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@{
+    ViewBag.Title = "Reservation Confirmation";
+    Layout = "~/Areas/tours/Views/Shared/TwoColumn/_Column6633.cshtml";
+    ViewBag.WizardStep = 5;
+
+    ViewBag.sharedPhoto = "http://tours.chick-fil-a.com/Areas/tours/Content/Img/logo-small.png"; 
+}
+        <!--wizard-->
+        @if (ViewBag.Wizard != null)
+        {
+            cfacore.shared.modules.com.admin.Wizard wmodel = (cfacore.shared.modules.com.admin.Wizard)Session["homeofficeidwizard"];
+            if (wmodel != null && wmodel is cfacore.shared.modules.com.admin.Wizard)
+            {
+                @Html.Partial("Wizard/WizardPartial", wmodel)
+            }
+        }
+@section Meta
+{
+    <meta property="og:type" content="Article" />
+    <meta property="og:url" content="http://tours.chick-fil-a.com" id="ogUrl" />
+    <meta property="og:image" content="@ViewBag.sharedPhoto" id="ogImage" />
+    <meta property="og:site_name" content="Chick-fil-A Home Office Backstage Tours"/>    
+    <meta property="og:description" id="ogDescription" content="Make a reservation to attend a Chick-fil-A® Home Office Backstage Tour, a behind-the-scenes look at the history and food of Chick-fil-A. Register Now! "/>
+    <meta property="fb:app_id" content="120042528067135" />
+    <meta content="39803335" property="fb:admins" />
+
+
+<!--Scripts-->
+<script type="text/javascript">
+    var sharedPhoto = "@ViewBag.sharedPhoto";
+    var url = "http://tours.chick-fil-a.com";
+    var description = "Make a reservation to attend a Chick-fil-A® Home Office Backstage Tour, a behind-the-scenes look at the history and food of Chick-fil-A®. Register Now! ";
+
+
+    function facebookShare() {
+        FB.ui(
+        {
+            method: 'feed',
+            name: 'Chick-fil-A® Home Office Backstage Tours',
+            link: url,
+            caption: 'Chick-fil-A® Home Office Backstage Tours',
+            picture: sharedPhoto,
+            description: description
+        },
+        function (response) {
+            if (response && response.post_id) {
+
+            } else {
+
+            }
+        });
+
+    };
+
+
+    function twitterShare() {
+        var twitterShareURL = "http://twitter.com/share?text={0}&url={1}";
+        var twitterDescription = "Make a reservation to attend a Chick-fil-A® Home Office Backstage Tour";
+        twitterShareURL = twitterShareURL.format(encodeURIComponent(twitterDescription), encodeURIComponent(url));
+
+        var width = 575,
+        height = 252,
+        left = ($(window).width() - width) / 2,
+        top = ($(window).height() - height) / 2,
+        opts = 'status=1' +
+                    ',width=' + width +
+                    ',height=' + height +
+                    ',top=' + Math.round(top) +
+                    ',left=' + left;
+
+        window.open(twitterShareURL, 'twitter', opts);
+    };
+
+
+    function mailShare() {
+        var name = $("#emailName").val().toString();
+        window.location.href = "mailto:?subject=Make a reservation to attend a Chick-fil-A® Home Office Backstage Tour&body=Hello, your friend " + name + " wanted to share a link with you,%0D%0A%0D%0AMake a reservation to attend a Chick-fil-A® Home Office Backstage Tour, a behind-the-scenes look at the history and food of Chick-fil-A®. Register Now at tours.chick-fil-a.com!"
+    };
+
+    
+</script>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+    FB.init({
+        appId: '120042528067135',
+        status: true, // check login status
+        cookie: true
+    });
+
+    window.fbAsyncInit = function () {
+        FB.Canvas.setAutoResize();
+    }
+</script>
+}
+
+@section ColumnLeft
+{
+    <h1>Thank You! Your Reservation is Complete!</h1>
+    <p>We look forward to seeing you on <b></span>@String.Format("{0}", Model.tourTicket.Slot.Start.ToString("dddd, MMMM, dd, yyyy"))</b>. You will soon receive an email with your reservation details. Please print the email and make sure you bring it and a photo ID on the day of your tour.</span></p>
+
+    @if (ViewBag.UserMode == "Customer")
+    {
+    <p>Make sure to read the @Html.ActionLink("Plan Your Visit", "CustomerPlan", "Home") page prior to your tour date! If you have any questions, please see the @Html.ActionLink("Frequently Asked Questions", "Faq", "Home").</p>
+    } else {
+    <p>Make sure to read the @Html.ActionLink("Plan Your Visit", "OperatorPlan", "Operator") page prior to your tour date! If you have any questions, please see the @Html.ActionLink("Frequently Asked Questions", "Faq", "Operator").</p>
+    }
+
+    @if (Model.reservationUser.Name.First != null)
+        {
+            @Html.HiddenFor(m => m.reservationUser.Name.First, new { id="emailName" })
+        }
+}
+
+@section ColumnRight{
+<div class="brag-box">
+        <div class="brag-content ">
+            <h3>
+                Tell your friends!</h3>
+            <div class="share-buttons">
+                <a href="javascript:facebookShare();" id="sm-fb"></a>
+                <a href="javascript:twitterShare();" id="sm-tw"></a>
+                <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Ftours.chick-fil-a.com&media=http%3A%2F%2Ftours.chick-fil-a.com%2FAreas%2FTemp%2FContent%2FImg%2Flogo.png&description=Make%20a%20reservation%20to%20attend%20a%20Chick-fil-A%C2%AE%20Home%20Office%20Backstage%20Tour%2C%20a%20behind-the-scenes%20look%20at%20the%20history%20and%20food%20of%20Chick-fil-A.%20Register%20Now!%20" class="pin-it-button" count-layout="horizontal" id="sm-pin"></a>
+                <a href="javascript:mailShare();" id="sm-mail"></a>
+            </div>
+        </div>
+    </div>
+}
+
+
+

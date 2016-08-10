@@ -1,0 +1,19 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div class="form-section"> <span class="field-requirement">* </span><span>Type of
+            Group : <span class="legal-aside"> (click all that apply)</span></span> <div class="checkboxgroup">
+            <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.groupDescription.isFamilyWithKids)
+            @Html.LabelFor(m => m.groupDescription.isFamilyWithKids)</span> <span class="checkboxwrapper">
+            @Html.CheckBoxFor(m => m.groupDescription.isFamilyWithoutKids) @Html.LabelFor(m => m.groupDescription.isFamilyWithoutKids)</span>
+            <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.groupDescription.isChurchGroup)
+            @Html.LabelFor(m => m.groupDescription.isChurchGroup)</span> <span class="checkboxwrapper">
+            @Html.CheckBoxFor(m => m.groupDescription.isBusinessGroup) @Html.LabelFor(m => m.groupDescription.isBusinessGroup)</span>
+            <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.groupDescription.isSchoolGroup)
+            @Html.LabelFor(m => m.groupDescription.isSchoolGroup)</span> <span class="checkboxwrapper">
+            @Html.CheckBoxFor(m => m.groupDescription.isAdultGroup) @Html.LabelFor(m => m.groupDescription.isAdultGroup)</span>
+            <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.groupDescription.isSeniorGroup)
+            @Html.LabelFor(m => m.groupDescription.isSeniorGroup)</span> <span class="checkboxWithExplanation">@Html.CheckBoxFor(m => m.groupDescription.isOtherType)
+            @Html.LabelFor(m => m.groupDescription.isOtherType)
+            @Html.TextBoxFor(m => m.groupDescription.otherTypeDescription)</span>
+            @Html.ValidationMessageFor(m => m.groupDescription.otherTypeDescription)
+        </div> 
+        </div>

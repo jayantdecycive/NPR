@@ -1,0 +1,72 @@
+﻿<!--View For the Customer dashbord to modify/ delete and add tour slots-->
+@model cfares.domain.user.ResUser
+@{
+    ViewBag.Title = "Modify Your ";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+@section Meta{
+    <script type="text/javascript">
+        var DataFunction = {
+            userfilter: function () {
+                var filter = "OwnerId eq @Model.UserId";
+                var odataFormat = "yyyy-MM-dd-hh:mm";                
+                    filter = filter + " and "+ ("{0} gt datetime'{1}'".format("Start", (new Date()).toString(odataFormat)));
+                return filter;
+            }
+        };
+    </script>
+}
+
+
+
+<div class="dashboard">
+    <h1>
+        Welcome Back, @Model.Name.First</h1>
+    <span class="logout">@Html.ActionLink("Log Out", "LogOff", "Account")</span>
+    <p>
+        Your scheduled tours are listed below. Please click the Modify button to change any 
+        information related to your reservation. At the bottom of your Reservation Overview 
+        page, you will have the option to Edit Your Reservation, Cancel Your Reservation or 
+        Re-Send Your Confirmation Email. Please contact us at 1-800-232-2677 with any questions 
+        or concerns.</p>
+        <p class="strong">Please note that no additional guests can be added within 72 hours of your tour reservation.</p>
+    <!--Some Table stuff goes here<"H"lfr>t<"F"ip>-->
+    <div class='customer-grey'>
+        <table id="ticket_dash" class='data-table' data-data='/DataService/Ticket.svc/Ticket_Tour_Slot_Occurrence_Event'
+            data-crud='/DataService/Ticket.svc/Ticket_Tour_Slot({0}L)' data-filter='DataFunction.userfilter'
+            data-dom='<r>t<"F">'>
+            <thead>
+                <tr>
+                    <th class="button-modify" data-id='ModifyLink' data-column-parent='TicketId' data-on-display='DataFormat.ModifyUrl'>
+                    </th>
+                    <th data-column-name='TicketId' data-searchable='false' data-visible='false' data-id-column='true'>
+                    </th>
+                    <th data-id='Weekday' data-on-display='DataFormat.weekday' data-column-parent='Start'>
+                        Day
+                    </th>
+                    <th data-id='Month' data-on-display='DataFormat.month' data-column-parent='Start'>
+                        Month
+                    </th>
+                    <th data-id='Day' data-on-display='DataFormat.day' data-column-parent='Start'>
+                        Date
+                    </th>
+                    <th data-id='Year' data-on-display='DataFormat.year' data-column-parent='Start'>
+                        Year
+                    </th>
+                    <th data-id='Time' data-on-display='DataFormat.time' data-column-parent='Start'>
+                        Time
+                    </th>
+                    <th data-column-name='Start' data-visible='false' data-searchable="false" data-id-column='true'>
+                    </th>
+                    <th data-column-name='ReservationType' data-visible='false' data-searchable="false" data-id-column='true'>
+                    </th>
+                    <th id="top-right" data-column-name='GuestCount'>
+                        Number in Group
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <br />
+    <br />
+</div>

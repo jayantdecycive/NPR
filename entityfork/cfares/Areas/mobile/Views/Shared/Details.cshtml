@@ -1,0 +1,114 @@
+﻿@model cfares.domain._event.ticket.tours.TourTicket
+@{
+    ViewBag.Title = "Reservation Overview";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+    DateTime translatedStart = oServ.ConvertToTimeZoneContext(Model.Slot.Start);
+}
+
+<div class="container">
+
+<h1 class="center">Overview</h1>
+<p class="">
+    Please review the details of your reservation below. To modify any of the information
+    click the 'Edit This Information' button at the bottom of the screen.<span class="red no-wrap"><br/>* indicates
+    required field</span>
+</p>
+</div>
+
+<div class="overview-form">
+
+    <ul data-role="listview" data-theme="f" data-inset="false">
+
+	    <li data-role="list-divider" data-divider-theme="b">Tour Details</li>
+	    <li><span class="label">Date: </span><span class="field-value">@translatedStart.ToString("D")</span></li>
+	    <li><span class="label">Time: </span><span class="field-value">@translatedStart.ToString("t")</span></li>
+        <li><span class="label">Group Name:</span> <span class="field-value">@Model.GroupName</span></li>
+        <li><span class="label">Group Size:</span> <span class="field-value">@Model.GuestCount</span></li>
+
+        <li data-role="list-divider" data-divider-theme="b">User Details</li>
+        <li><span class="label">First Name:</span> <span class="field-value">@Model.Owner.Name.First</span></li>
+        <li><span class="label">Last Name:</span> <span class="field-value">@Model.Owner.Name.Last</span></li>
+        <li><span class="label">Email Address:</span> <span class="field-value">@Model.Owner.Email</span></li>
+        <li><span class="label">Password:</span> <span class="field-value">******</span></li>
+        <li><span class="label">Zip Code:</span> <span class="field-value">@Model.Owner.Address.Zip.Code</span></li>
+        <li><span class="label">Mobile Phone #:</span><span class="field-value"> @Model.Owner.MobilePhone</span></li>
+
+        <li data-role="list-divider" data-divider-theme="b">Group Type</li>
+        @if (Model.IsFamilyWithKids)
+        {<li><span class="label">Family with Kids</span></li>}
+        @if (Model.IsFamilyWithoutKids)
+        {<li><span class="label">Family without Kids</span></li>}
+        @if (Model.IsReligiousGroup)
+        {<li><span class="label">Religious Group</span></li>}          
+        @if (Model.IsBusinessGroup)
+        {<li><span class="label">Business Group</span></li>}
+        @if (Model.IsSchoolGroup)
+        {<li><span class="label">School Group</span></li>}
+        @if (Model.IsAdultGroup)
+        {<li><span class="label">Adult Group</span></li>}
+        @if (Model.IsSeniorGroup)
+        {<li><span class="label">Senior Group</span></li>}
+        @if (Model.IsOtherTypeOfGroup)
+        {
+            <li><span class="label">Other Group:</span> <span class="field-value">@Model.OtherTypeDescription</span></li>
+        }
+        
+        <li data-role="list-divider" data-divider-theme="b">Special Needs</li>
+        @if (!Model.HasSpecialNeeds)
+        {<li><span class="label">No Special Needs</span></li>}
+        else
+        {
+            if (Model.IsHearingImpaired)
+            {<li><span class="label">Hearing Impaired</span></li>}
+            if (Model.IsVisuallyImpaired)
+            {<li><span class="label">Visually Impaired</span></li>}
+            if (Model.NeedsWheelChair)
+            {<li><span class="label">Wheel Chair Needed</span></li>}
+            if (Model.OtherNeeds)
+            {
+                <li><span class="label">Other Needs:</span><span class="field-value">@Model.OtherNeedsDescription</span></li>
+            }
+        }
+
+        <li data-role="list-divider" data-divider-theme="b">Lunch Option</li>
+        @if (!Model.OptInForLunch)
+        {<li><span class="label">No Lunch</span></li>}
+        else
+        {
+            <li><span class="label">Adult Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.NumberOfAdultLunches)</span></li>
+            <li><span class="label">Kid Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.NumberOfKidLunches)</span></li>
+            <li><span class="label">Special Needs Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.NumberOfSpecialNeedLunches)</span></li>
+            if (Model.NumberOfSpecialNeedLunches > 0)
+            {
+                <li><span class="label">Description of Dietary Needs:</span> <span class="field-value">@Html.DisplayFor(m => m.SpecialDietNeedsDescription)</span></li>
+            }
+            <li><span class="label">Total Price:</span> <span class="field-value">@Html.DisplayFor(m => m.TotalCostOfLunches)</span></li>
+        }
+    </ul>
+
+
+    <div data-role="collapsible" data-theme="b" style="overflow:hidden;">
+        <h3>Guest List</h3>
+        <ul data-role="listview" data-theme="f" data-inset="false">
+           @if (Model.GuestNames != null)
+           {
+               for (int i = 0; i < Model.GuestNames.Length; i++)
+               {
+                    <li>@Model.GuestNames[i]</li>
+               }
+           }
+        </ul>
+    </div>
+
+    <div class="jquery-theme-overide button-group">
+        <a class="form-buttons gray-button" data-theme="b" data-role="button" id="edit-button" href="/mobile/ticket/edit/@Model.TicketId">Edit this Information</a> 
+        <a class="form-buttons gray-button" data-theme="b" data-role="button" id="confirm-button" href="/mobile/ticket/resend/@Model.TicketId">Resend Confirmation</a>
+        <a class="form-buttons gray-button" data-theme="b" data-role="button" id="confirm-button" href="@Url.Action("Dash", "Ticket")">Back To Dashboard</a>
+    </div>
+    <br/>
+</div>

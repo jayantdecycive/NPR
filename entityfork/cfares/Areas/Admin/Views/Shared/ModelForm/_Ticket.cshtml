@@ -1,0 +1,66 @@
+﻿@model cfares.domain._event.Ticket
+@{string pk = (Model != null && Model.IsBound()) ? Model.Id().ToString() : "new";}
+@{bool isNew = pk == "new";}
+
+@if(!isNew){
+    @Html.HiddenFor(mode=>Model.TicketId)
+}
+
+    <fieldset data-pk='@pk' class='ticket-@pk'>
+
+        <div class='legend inline-block'>Basic Ticket Information</div>
+
+        <div class='model-field field-CardNumber'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CardNumber)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.CardNumber)
+                @Html.ValidationMessageFor(model => model.CardNumber)
+            </div>
+        </div>
+
+        
+        <div class='model-field field-Owner'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Owner)
+            </div>
+            <div class="editor-label inline-block">
+                    @Html.EditorFor(model => model.Owner)
+                    @Html.ValidationMessageFor(model => model.Owner)
+                    
+            </div>
+        </div>
+   
+        <div class='model-field field-Slot'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Slot)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Slot)
+                @Html.ValidationMessageFor(model => model.Slot)
+            </div>
+        </div>
+
+        <div class='model-field field-CreationSrc'>
+            <div class="editor-label  inline-block" data-field="CreationSrc">
+                @Html.LabelFor(model => model.CreationSrc)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.CreationSrc)
+                @Html.ValidationMessageFor(model => model.CreationSrc)
+            </div>
+        </div>
+
+        <div class='model-field field-Note'>
+            <div class="editor-label  inline-block" data-field="Note">
+                @Html.LabelFor(model => model.Note)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Note)
+                @Html.ValidationMessageFor(model => model.Note)
+            </div>
+        </div>
+       
+    </fieldset>
+    

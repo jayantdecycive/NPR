@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Frequestly Asked Questions";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="faq">
+    <br/>
+    <h1 class="center">Frequently Asked Questions</h1>
+    <br/>
+    <p class="center">Click the question to view the answer.</p>
+    <br/>
+
+
+    <h2>About the Tour</h2>
+    <div data-role="collapsible-set" data-theme="e" data-iconpos="right" data-content-theme="e">
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>What are the group size requirements?</h3>
+            <p>We accommodate groups and individuals. Our small group tours are for groups 1-60 in size, while our large group tours are for groups 
+    61 – 120 in size. For more details, please call 1-800-232-2677.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>What is the appropriate age group for the tour?</h3>
+            <p>People of all ages have enjoyed our tours over the years. We feel that the best ages are 6 and up. This is to ensure the best tour experience for all guests.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>What will I experience on the tour?</h3>
+            <p>You’ll have the opportunity to take a photo with the cows alongside a life size billboard, go on a guided backstage tour through our home office,
+     have an opportunity to meet staff members, visit the Chick-fil-A Museum, walk back in time to experience Truett’s first Dwarf Grill, visit Founder Truett Cathy’s office 
+     and visit the retail gift shop to purchase and take home a memory.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+         <div data-role="collapsible" data-collapsed="true">
+            <h3>How can I learn more about the Chick-fil-A story outside of the tour? </h3>
+            <p>  Our website, <a href="http://www.chick-fil-a.com">www.chick-fil-a.com</a>, is full of resources we’d love for you to check
+     out! If you are interested in learning more about the Cathy Family, please visit <a href="http://www.cathyfamily.com">www.cathyfamily.com</a>.  
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+         <div data-role="collapsible" data-collapsed="true">
+            <h3>Will we see Truett or a member of the Cathy Family?</h3>
+            <p>As you can imagine, Truett and the Cathy Family maintain a busy schedule. If they are in the office, 
+    there is a chance that you would see them, but we can’t make any promises! 
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+    </div>
+
+
+    
+
+
+    <h2>Logistics</h2>
+    <div data-role="collapsible-set" data-theme="e" data-iconpos="right" data-content-theme="e">
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>How much does the tour cost?</h3>
+            <p>The tour is free! If you elect the 9:30 A.M. time slot, there is a @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST lunch option that will need to be paid at check-in. 
+            If you elect the 9:30 AM time slot, there is an adult lunch option for @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST and a @cfares.domain._event.ticket.tours.TourTicket.CHILD_LUNCH_COST lunch option for children. Cash or Credit Card payment will be taken at the tour. All lunch prices include tax.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>Do we pay for parking?</h3>
+            <p>Parking is completely free. Upon arrival, please check with the gate guard for a guest parking slip. We have a parking lot designed for our guests.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>How do we get to the Chick-fil-A Home Office?</h3>
+            <p>Our address is 5200 Buffington Road, Atlanta, GA 30349.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+         <div data-role="collapsible" data-collapsed="true">
+            <h3>Is your building wheelchair accessible?</h3>
+            <p>Yes. Please call 1-800-232-2677 ahead of your scheduled tour so our team can help make accommodations.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+         <div data-role="collapsible" data-collapsed="true">
+            <h3>Will there be a lot of walking?</h3>
+            <p>The entire tour is done through walking. We recommend wearing comfortable shoes.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+    </div>
+
+
+    <h2>Registering for a Tour</h2>
+    <div data-role="collapsible-set" data-theme="e" data-iconpos="right" data-content-theme="e">
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>What are the available tour times and dates?</h3>
+            <p>For groups 1-60 in size, tours are available at 9:30 A.M. and 1:00 P.M. on Tuesday, Thursday and Friday. For large groups 61 – 120, 
+            tours are available on a limited basis and reservations must be made a month in advance. To make a reservation, <a href="/mobile/ticket/slot">click here</a> or call 1-800-232-2677.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>How long is the tour?</h3>
+            <p>The tour is approximately 1 hour and 30 minutes long.
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>How do I cancel, modify or reschedule my tour? </h3>
+            <p>Visit <a href="/mobile/Account/LogOn?redirectUrl=/mobile/Ticket/Dash">Modify/Cancel Reservation</a> and log in with the email and password used to make your
+             reservation. You will have the option to select the tour you would like to modify or cancel. Please note that no additional guests can be added within 72 hours of your tour reservation. 
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+            <h3>I lost or never received my confirmation email. What do I do? </h3>
+            <p>To resend your confirmation email, visit the <a href="/mobile/Account/LogOn?redirectUrl=/mobile/Ticket/Dash">Modify/Cancel Reservation</a> page and 
+            log in with the email and password used to make your reservation. You will have the option 
+            to select your tour where you are taken to your Reservation Overview page. Click the button 
+            to 'Resend my Confirmation' at the bottom of the page. 
+            </p>
+            <br/><p> @Html.Partial("CaresPartial")</p>
+        </div>
+    </div>
+
+
+</div>
+

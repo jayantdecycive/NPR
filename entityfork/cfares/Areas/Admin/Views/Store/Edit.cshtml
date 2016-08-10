@@ -1,0 +1,18 @@
+﻿@model cfacore.shared.domain.store.Store
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.Brief = "Edit Store";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+}
+
+
+        
+<h1>Edit @Model.Name</h1>
+<p>
+@Model.ToString()
+</p>
+        
+        
+@Html.Partial("ModelForm/_Store")  
+        

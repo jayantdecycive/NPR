@@ -1,0 +1,16 @@
+﻿@model cfares.domain._event.Occurrence
+
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Brief = "Create New Occurrence";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+}
+
+
+<h1>Occurrence</h1>
+<p>
+    This is where Events meet locations
+</p>
+      
+@Html.Partial("ModelForm/_Occurrence")
+

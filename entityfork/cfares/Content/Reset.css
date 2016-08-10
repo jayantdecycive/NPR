@@ -1,0 +1,304 @@
+﻿/* 
+CSS ParcelQuest Structure 
+Sept. 7, 2011
+*/
+/*---
+-
+-GENERAL
+-
+---*/
+
+
+/*------------------------------------------------------
+FONT FACE */
+
+/*@font-face {
+	font-family: 'CaeciliaCom75Bold';
+	src: url('/Content/Media/Font/caeciliacom-75bold-webfont.eot');
+	src: local('☺'), url('/Content/Media/Font/caeciliacom-75bold-webfont.woff') format('woff'), url('/Content/Media/Font/caeciliacom-75bold-webfont.ttf') format('truetype'), url('/Content/Media/Font/caeciliacom-75bold-webfont.svg#webfontYrgsN1bB') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}*/
+
+/* END FONT FACE
+----------------------------------------------------------*/
+
+
+.caecilia{font-family:'CaeciliaCom75Bold', Times New Roman, Serif;}
+.verdana {font-family: Verdana, Geneva, sans-serif;}
+.arial {font-family: Arial, Helvetica, sans-serif;}
+
+/* End More Fonts
+----------------------------------------------------------*/
+
+
+
+
+/*------------------------------------------------------
+RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, 
+ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup,.sup{vertical-align: super;font-size: .8em;}
+sub,.sub{vertical-align: sub; font-size: .8em;}
+img,a img {border: 0;}
+a span{cursor:pointer;}
+.bold,.strong,strong,b {font-weight: bold;}
+em,.em,i{font-style:italic;}
+
+
+/* -- Links ---*/
+a {text-decoration: none;}
+a:hover{text-decoration:underline;}
+a.legacy{text-decoration:underline;}
+a.legacy:hover{text-decoration:none;}
+a.nolink{text-decoration:none;}
+a.nolink:hover{cursor:default;}
+/*--Lists--*/
+ul,li,ol{list-style:none;display:inline;}
+ul.legacy,ol.legacy{padding-left:45px; padding-right:45px; display:block;}
+ul.legacy li,ol.legacy li{list-style:outside;display:list-item;list-style-type:disc; margin-top: 2px;}
+ol.legacy li{list-style-type:decimal; margin-top: 2px;}
+ul.legacy li:first-child ,ol.legacy li:first-child{margin-top: 5px;}
+ol.legacy li:first-child{list-style-type:decimal; margin-top: 5px;}
+
+/* END RESET
+----------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------
+TAG STYLING */
+
+body {font-size:16pt;}
+
+h1, h2, h3, h4, h5, h6, p {font-family: Verdana,Arial, Helvetica, sans-serif; font-size: 80%;}
+
+/*h1, h2, h3,h1 a, h2, a h3 a{font-family:Georgia, Times New Roman, Serif;}*/
+h1, h2, h3,h1 a, h2, a h3 a{font-family: Verdana,Arial, Helvetica, sans-serif;}
+h1{font-family: Tahoma,Verdana,Arial, Helvetica, sans-serif;}
+
+h2 {font-size: 13.5pt; }
+h1 {font-size: 16pt; line-height: 13pt; }
+p {line-height: 20pt;}    
+p,p span {font-size: 10pt; font-weight: normal; font-family:Verdana, Arial, Sans-Serif;}    
+ul,li{font-family:Verdana, Arial, Sans-Serif;}
+
+
+
+a {font-weight: normal;}
+/* END TAG STYLING
+----------------------------------------------------------*/
+
+
+/*------------------------------------------------------
+Abstract classes for general use. USE THESE AS MUCH AS POSSIBLE
+
+GLOBAL */
+
+   
+
+/*!!!BASE CLASSES THAT SHOULD BE USED FOR ALL PAGE LAYOUTS!!!*/
+.page{width:100%;clear:both;position:relative;}
+.content{clear: both; margin-left: auto; margin-right: auto; width: 949px; position: relative;}
+
+/*!!!END BASE CLASSES THAT SHOULD BE USED FOR ALL PAGE LAYOUTS!!!*/
+
+.header-wrap{padding-top: 14px; padding-bottom: 0;z-index:110;}
+.page-home-default .header-wrap{padding-top: 14px; padding-bottom: 14px;}
+
+.focus{/*outline:#7BABCB dotted 1px;*/}
+
+.block {display: block;}
+.inline-block,.inlineblock{ display: inline-block;}
+/*IE 7 does not do inline block, but will treat an inline item with "has layout" the same*/
+.flag-ie7 .inline-block,.flag-ie7 .inlineblock {display: inline; zoom: 1;}
+
+.zero {padding: 0; margin: 0;}
+
+.hinted{color:#949494;}
+
+.left,.css_left {float: left;}
+.right,.css_right {float: right;}
+.center {margin: 0 auto;}
+.vcenter{vertical-align:middle;}
+.fullwidth{width:100%;}
+
+/*-- Swatches --*/
+.white {color: #FFF;}
+.red {color: #B20838;}
+.blue {color: #2D5686;}
+.ltgrey {color: #7C7C7C;}
+.dkblue {color: #2D5686;}
+.ltblue {color: #41879E;}
+.black {color: #000;}
+.orange {color: #FC4E11;}
+.grey {color: #5B5C5C;}
+.ltgrey{color:#636363;}
+.bluegrey {color: #485761;}
+.tan {color: #E5DCCD;}
+.babyblue {color: #7BABCB;}
+
+.bgtan{background-color:#fcfcdf;}
+.bgwhite{background-color:#fff;}
+.bordertan{border-color:#f6e8c0;}
+.bgyellow{background-color:#ffffc2;}
+.bordergold{border-color:#eacf88;}
+
+/*-- Font Size --*/
+/*
+    Example:
+    <span class='font small'></span>
+*/
+.font.small {font-size: .4em;}
+.font.medium {font-size: 0.5em;}
+.font.normal {font-size: 0.6em; line-height: 1.4em;}
+.font.large {font-size: 1.2em; line-height: 1.2em;}
+.font.x-large {font-size: 1.4em;}
+.font.bullet {font-size: 12px; line-height: 1.7em;}
+.list-alpha {list-style-type: lower-alpha !important;}
+
+/*easy override:*/
+.page-groupname-pagename .font.large
+{
+    font-size:1.3em;    
+}
+
+.font-line-height {line-height: 1.6em;}
+
+/*-- Text --*/
+.normal {font-weight: normal;}
+
+/*-- Background --*/
+.bg-darkGrey {background-color: #5f5e5e;}
+
+
+
+/* -- Positions ---*/
+.absolute {position: absolute;}
+.relative {position: relative;}
+.fixed{position:fixed;}
+
+/*--Paragraph--*/
+.nowrap {white-space:nowrap;}
+.aleft{text-align:left;}
+.aright{text-align:right;}
+.acenter{text-align:center;}
+
+
+/*--Alignment--*/
+.vert-middle{vertical-align:middle;}
+
+/*-- Funcational CSS --*/
+.fn-hide,.fn-slide,.fn-fade,.fn{height:0px !important;position:absolute;top:0px;overflow:hidden;}
+
+/*--hacks and tricks--*/
+.clearfloat,.clr {clear: both; height: 0; font-size: 1px; line-height: 0px; width: 100%;}
+
+
+    /*------------------------------------------------------
+     *Includes any CSS3 techniques that are often offset by javascript.
+
+    EFFECTS */    
+    .rounded{position: relative; padding: 0px; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
+
+    .rounded.button{position:relative;border:none;padding-left:73px;padding-top:8px;padding-bottom:8px;padding-right:73px;border-radius: 15px;-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;}
+
+    
+
+    .shadow{-webkit-box-shadow: #666 0px 1px 6px;
+    -moz-box-shadow: #666 0px 1px 6px;
+    box-shadow: #666 0px 1px 6px;}
+    
+    .heavy.shadow{-webkit-box-shadow: #000 0px 0px 16px;
+    -moz-box-shadow: #000 0px 0px 16px;
+    box-shadow: #000 0px 0px 16px;}
+    
+    .shadow.b-r{-webkit-box-shadow: #666 3px 4px 8px;
+    -moz-box-shadow: #666 3px 4px 8px;
+    box-shadow: #666 3px 4px 8px;}
+
+
+    .gradient.white-grey{background: #FFFFFF;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFFFFF), to(#e3e1e1));
+    background: -webkit-linear-gradient(#FFFFFF, #e3e1e1);
+    background: -moz-linear-gradient(#FFFFFF, #e3e1e1);
+    background: -ms-linear-gradient(#FFFFFF, #e3e1e1);
+    background: -o-linear-gradient(#FFFFFF, #e3e1e1);
+    background: linear-gradient(#FFFFFF, #e3e1e1);
+    -pie-background: linear-gradient(#FFFFFF, #e3e1e1);}
+
+
+
+    /* END EFFECTS
+    ------------------------------------------------------*/
+
+    /*------------------------------------------------------
+    WIDGETS */
+
+    .data-table
+    {
+        width:100%; 
+        position:relative;   
+    }
+    
+    .data-table th
+    {
+        text-align:left;    
+    }
+    
+
+    /* END WIDGETS
+    ------------------------------------------------------*/
+
+
+    
+
+
+/* END GLOBAL
+----------------------------------------------------------*/

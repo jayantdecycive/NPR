@@ -1,0 +1,25 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Delete Slot";
+}
+
+
+<h1>@Model.TourSlotId</h1>
+<p>
+@Html.Raw(Model.ToHtmlString())
+</p>
+        
+        
+@section Details{
+    @Html.Partial("ModelDetail/Slots/_TourSlot")     
+    @Html.Partial("ModelDetail/_Slot")        
+}
+@section Cancel{
+<div class='dash-cta'>
+    @Html.ActionLink("Cancel", "TourSlot-Details", new { id=Model.Id()})
+</div>
+}
+        

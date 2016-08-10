@@ -1,0 +1,202 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+@{
+    ViewBag.Title = "Reservation Overview";
+    Layout = "~/Areas/Tours/Views/Shared/OneColumn/_LeftJustified.cshtml";
+    ViewBag.WizardStep = 4;
+}
+
+<!--Wizard-->
+@Html.Partial("Wizard/WizardPartial")
+
+
+
+<h1>Reservation Overview</h1>
+<div class="reservation-overview">
+    <div class="review-description">Please review the details of your reservation below. To modify a field, click the'Edit This Information' button at the bottom of the screen. 
+    <span class="legal-aside red">* Indicates required field</span>
+    </div>
+
+
+    <div class="red">@ViewBag.Error</div>
+
+
+    <div class="review-section review-column">       
+        <div class="name-value-pair">
+            <span class="field-requirement">* </span><span class="name">Date: </span><span class="value">@ViewBag.dateRequests[0]</span>
+        </div>
+        <div class="name-value-pair">
+            <span class="field-requirement">* </span><span class="name">Time: </span><span class="value">@ViewBag.dateRequests[0]</span>
+        </div>  
+        <div class="name-value-pair">
+            <span class="name">Group Size: </span><span class="value">@Model.GroupSize</span>
+        </div>
+    </div>
+
+
+    <div class="review-section review-column">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.firstName): </span><span class="value">@Html.DisplayFor(m => m.userForm.firstName)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.lastName): </span><span class="value">@Html.DisplayFor(m => m.userForm.lastName)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.Email): </span><span class="value">@Html.DisplayFor(m => m.userForm.Email)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.Password): </span><span class="value">@Html.DisplayFor(m => m.userForm.Password)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.zipCode): </span><span class="value">@Html.DisplayFor(m => m.userForm.zipCode)</span></div>
+    </div>
+
+
+    <!--Other options-->
+    @if (Model is cfares.Areas.Tours.Models.GroupRegistrationForm)
+    {
+        <div class="review-section">
+            <span class="field-requirement">* </span>
+            <div class="name-value-pair">
+                <span class="name">I am 13 years or older: </span><span class="value">
+                    @Html.RadioButtonFor(model => ((cfares.Areas.Tours.Models.GroupRegistrationForm)model).isOverThirteen, true, new { @readonly = "readonly", disabled = "true" })
+                    Yes
+                    @Html.RadioButtonFor(model => ((cfares.Areas.Tours.Models.GroupRegistrationForm)model).isOverThirteen, false, new { @readonly = "readonly", disabled = "true" })
+                    No</span>
+            </div>
+        </div>
+
+        
+        <div class="review-section">
+            @Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.GroupRegistrationForm)m).joinInsiders, new { @readyonly = "readonly", disabled = "true" })<span>Join
+                Email Insiders and receive exclusive updates from Chick-fil-A, Inc. <span class="legal-aside">
+                    (must be 18 years or older)</span></span>
+        </div>
+    }
+    else
+    {
+        <div class="review-section">
+            <div class="name-value-pair">
+                <span class="name">@Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber):
+                </span><span class="value">@Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber)</span>
+            </div>
+        </div>  
+    }
+
+
+    <!--Group Type-->
+    @if (Model is cfares.Areas.Tours.Models.GroupRegistrationForm)
+    {
+        <div class="review-section">
+            <span class="field-requirement">* </span>
+            <div class="name-value-pair">
+                <span class="name">Type of Group: </span>
+                <div class="value checkboxgroup">
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isFamilyWithKids, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isFamilyWithKids)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isFamilyWithoutKids, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isFamilyWithoutKids)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isChurchGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isChurchGroup)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isSchoolGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isSchoolGroup)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isAdultGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isAdultGroup)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isSeniorGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isSeniorGroup)</div>
+                    <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.groupDescription.isBusinessGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.groupDescription.isBusinessGroup)</div>
+                    <span class="checkboxWithExplanation">@Html.CheckBoxFor(m => m.groupDescription.isOtherType, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.groupDescription.isOtherType) @Html.TextBoxFor(m => m.groupDescription.otherTypeDescription, new { @readonly = "readonly", disabled = "true" })</span>
+                </div>
+            </div>
+        </div>
+    }
+    
+    <!--special Needs-->
+    <div class="review-section">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">Does anyone in the group have special needs? </span><span class="value">
+                @Html.RadioButtonFor(model => model.specialNeedsForm.hasSpecialNeeds, true, new { @readonly = "readonly", disabled = "true" })
+                Yes
+                @Html.RadioButtonFor(model => model.specialNeedsForm.hasSpecialNeeds, false, new { @readonly = "readonly", disabled = "true" })
+                No</span>
+        </div>
+        @{
+            if (Model.specialNeedsForm.hasSpecialNeeds)
+            {
+            <div class="name-value-pair">
+                <div class="value checkboxgroup">
+                    <span class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.specialNeedsForm.isHearingImpaired, new { @readyonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => m.specialNeedsForm.isHearingImpaired)</span> <span class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.specialNeedsForm.isVisuallyImpaired, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.specialNeedsForm.isVisuallyImpaired)</span>
+                    <span class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.specialNeedsForm.needsWheelChair, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.specialNeedsForm.needsWheelChair)</span>
+                    <span class="checkboxWithExplanation">@Html.CheckBoxFor(m => m.specialNeedsForm.Other, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.specialNeedsForm.Other)
+                        @Html.TextBoxFor(m => m.specialNeedsForm.otherDescription, new { @readonly = "readonly", disabled = "true" })</span>
+                </div>
+            </div>
+            }
+        }
+    </div>
+
+
+    <!--lunch-->
+    <div class="review-section">
+        @if (Model is cfares.Areas.Tours.Models.GroupRegistrationForm)
+        {
+            <div class="name-value-pair">
+                <span class="field-requirement">* </span><span class="name">This tour time has a $6.50
+                    lunch option. Would anyone in your group like to reserve a lunch? </span><span class="value">
+                            @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, true, new { @readonly = "readonly", disabled = "true" })
+                            Yes
+                            @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, false, new { @readonly = "readonly", disabled = "true" })
+                            No</span>
+            </div>
+            <div class="name-value-pair">
+                <span class="name">Number of Lunches: </span><span class="value">@Html.DisplayFor(m => m.lunchForm.numberOfAdultLunches)
+                    adults, @Html.DisplayFor(m => m.lunchForm.numberOfKidLunches) kids, @Html.DisplayFor(m => m.lunchForm.numberOfSpecialNeeds)
+                    special needs</span></div>
+            <div class="name-value-pair">
+                <span class="name">Total Price: </span><span class="value">@Html.DisplayFor(m => m.lunchForm.totalCostofLunches)</span></div>
+        }
+        else
+        {
+            <span class="field-requirement">* </span><span class="name">Will you be staying for
+                lunch?</span>
+            <span class="value">
+                @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, true, new { @readonly = "readonly", disabled = "true" })
+                Yes
+                @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, false, new { @readonly = "readonly", disabled = "true" })
+                No</span>
+        }
+    </div>
+
+
+    <!--additional tour stops-->
+    @if (Model is cfares.Areas.Tours.Models.TeamRegistrationForm)
+    {
+        <div class="review-section">
+            <span>Are there any additional tour stops you would like to take your team on? <span
+                class="legal-aside">(click all that apply)</span></span>
+            <div class=" name-value-pair ">
+                <div class="checkboxgroup">
+                    <span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing)</span>
+                    <span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech)</span>
+                    <span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation)
+                    </span><span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining)
+                    </span><span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness)
+                    </span><span class="value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse)
+                    </span><span class="checkboxWithExplanation value checkbox-name-wrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther, new { @readonly = "readonly", disabled = "true" })
+                        @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther)
+                        @Html.TextBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOtherDescription, new { @readonly = "readonly", disabled = "true" })</span>
+                    @Html.ValidationMessageFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOtherDescription)
+                </div>
+            </div>
+        </div>      
+    }
+
+    <!--Buttons-->
+    <a class="form-button" id="confirm-registration-button" href="@Url.Action("ProcessRegistration")">
+    </a><a class="form-button" id="modify-registration-button" href="@Url.Action("ModifyRegistration")">
+    </a><a class="form-button" id="cancel-registration-button" href="@Url.Action("NewRegistrationCancellation")">
+    </a>
+</div>

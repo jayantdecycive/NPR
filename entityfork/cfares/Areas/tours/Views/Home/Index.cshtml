@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Home Office Backstage Tours";
+    Layout = "~/Areas/tours/Views/Shared/_Layout.cshtml";
+    ViewBag.Style = "jquery-ui.css";
+}
+
+@section Meta{
+
+<script type="text/javascript">
+
+    function register(value) {
+        var port = Number(location.port)==80?"":":"+location.port;
+        if (value <= 60 && value > 0) {
+            window.location.href = "http://story.tours.chick-fil-a.com"+port+"/Reservation/Date/" + value;
+        }
+        else if (value < 121 && value > 60) {
+            window.location.href = "http://lgstory.tours.chick-fil-a.com" + port + "/Reservation/Date/" + value;
+        }
+        else {
+            alert("Please choose a size between 1 and 120");
+        }
+    }
+
+    function registerTeam(value) {
+        
+        var port = Number(location.port) == 80 ? "" : ":" + location.port;
+        if (value > 0 && value < 120) {
+            window.location.href = "http://team.tours.chick-fil-a.com" + port + "/Account/OperatorLogOn/" + value;
+        }
+        else {
+            alert("Please choose a size between 1 and 120");
+        }
+    }
+
+    $(function () {
+        $("#teamSubmit").click(function () {
+            registerTeam($("#teamGroupSize").val());
+        });
+
+        $("#teamGroupSize").keypress(function (e) {
+            if (e.which == 13) {
+                registerTeam($("#teamGroupSize").val());
+            }
+        });
+
+        $("#button a").click(function () {
+            register($("#groupSize").val());
+        });
+
+        $("#groupSize").keypress(function (e) {
+            if (e.which == 13) {
+                register($("#groupSize").val());
+            }
+        });
+
+    });
+
+</script>
+
+}
+
+<div class="landing-page">
+        <img src="/Areas/tours/Content/Img/tours-photos.png" width="461" height="352" alt="" class="tours-photos" />
+        <div id="row-top">
+            
+            <p>We are delighted that you are considering to attend a Chick-fil-A<sup>®</sup> Home Office Backstage Tour. Whether you are a native of the Atlanta area and grew up on <br/>Chick-fil-A or you are visiting from out of town, we hope that you take the opportunity to visit.
+            </p>
+            <p class="section-title">About the Tour:</p>
+            <p>The 90-minute guided walking tour will feature the story of Chick-fil-A Founder, Truett Cathy. You will also get a behind-the-scenes look at Chick-fil-A’s food, engage in fun interactions with the Chick-fil-A Cows and get a chance to visit our gift shop to commemorate your experience. You will want to bring your camera to capture the fun!  Tours are available for adults and children ages 6 and up.
+            </p>
+            <p class="section-title">Plan Your Visit:</p>
+            <p>After making your reservation, get a map and directions, surrounding hotel locations and more by visiting the <a href="http://tours.chick-fil-a.com/Home/CustomerPlan"><span class="underline plan-link">Plan Your Visit</span></a> page!
+            </p>
+        </div>
+
+        <div id="row-details">
+            <h3>Tour Options</h3>
+            <div id="tour-banner">
+                <div class="section-tour">
+                    <h4>Small Group</h4>
+                    <p>
+                        <b>Group size 1-60*</b> <br />Tuesday, Thursday & Friday, 2 times per day:
+                        <br />
+                        <br />
+                        <b>9:30 AM – 11:00 AM</b> – Lunch offered for cash or credit purchase<br />
+                        <b>1:00 PM – 2:30 PM</b>
+                    </p>                    
+                </div>
+                <div id="divider"></div>
+                <div class="section-tour large-group">
+                    <h4>Large Group</h4>
+                    <p><b>Group size 61 – 120*</b> <br/>Large group tours are offered on a limited basis and reservations must be made one month in advance.<br /><br />Lunch offered for cash or credit purchase</p>
+                </div>
+            </div>
+            <p class="note note-left">*Please Note: Tours will be split into groups of 20.
+            </p>
+
+            <p class="note note-right">*Please Note: Tours will be split into groups of 20. </p>
+        </div>
+
+        <br/>
+        <div id="row-reservation">
+            <h3 class="reservation-header">Make a Reservation</h3>
+            <div id="section-guest">
+                <div class="reservation-text">
+                    <h4>Guest Tour</h4>
+                    <form name="groupSizeForm">
+                    <span class="input-text">For how many people are you making  <br/> a tour reservation?</span><span><input type="text" id="groupSize" name="groupSize" value=""/></span>
+                    <div id="button"><a  href="javascript:void(0);" ></a></div>
+                    </form>
+                    <p><a href="/Account/LogOn">Modify or Cancel a Reservation</a></p>
+                </div>
+            </div>
+
+            <div id="section-team">
+                <div class="reservation-text">
+                    <h4 class="team-header">Operator/Team Member Tour</h4>
+                    
+
+                    <form name="teamGroupSizeForm" action="javascript:void(0);">
+                    <p class="operator-text">For how many Team Members are you making a reservation?<br/></p>
+                    <span><input type="text" id="teamGroupSize" name="teamGroupSize" value=""/></span>
+                    <p><a id="teamSubmit" class="underline" href="javascript:void(0)">Make a Reservation</a></p>
+                    </form>
+
+                    
+                </div>
+            </div>
+        </div>
+</div>
+

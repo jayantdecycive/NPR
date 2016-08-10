@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Choose Your Tour Date";
+    Layout = "~/Areas/tours/Views/Shared/Onecolumn/_Notification.cshtml";
+}
+
+        <!--wizard-->
+        @if (ViewBag.Wizard != null)
+        {
+            cfacore.shared.modules.com.admin.Wizard wmodel = (cfacore.shared.modules.com.admin.Wizard)Session["homeofficeidwizard"];
+            if (wmodel != null && wmodel is cfacore.shared.modules.com.admin.Wizard)
+            {
+                @Html.Partial("Wizard/WizardPartial", wmodel)
+            }
+        }
+<h1>When would you like to schedule your tour?</h1>
+<p>Please choose a day and time from the available options below. <br/> Please use the arrows to navigate to additional dates and months.</p>
+
+@if (! String.IsNullOrEmpty(ViewBag.Result))
+{
+    <span class="red">@ViewBag.Result</span>
+}
+
+@if (!String.IsNullOrEmpty(ViewBag.TicketID)) { 
+    
+}
+
+<div id="calendarDiv" class="calendar" data-groupSize="@ViewBag.GroupSize" data-ticket="@ViewBag.TicketID">
+
+</div>
+<script type="text/javascript" src="@Url.Content("/Areas/Tours/Scripts/calendarLogic.js")"></script>
+<script type="text/javascript" src="@Url.Content("/Scripts/fullcalendar-1.5.3/fullcalendar/fullcalendar.js")"></script>
+
+<!--temp-->
+
+
+
+

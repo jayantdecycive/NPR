@@ -1,0 +1,11 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div>
+            <br />
+            <span class="yes-no-radios"><span class="field-requirement">* </span><span>I am 13 years
+                of age or older:</span>
+                @Html.RadioButtonFor(m => ((cfares.Areas.Tours.Models.GroupRegistrationForm)m).isOverThirteen, true)
+                Yes
+                @Html.RadioButtonFor(m => ((cfares.Areas.Tours.Models.GroupRegistrationForm)m).isOverThirteen, false)
+                No</span>
+            @Html.ValidationMessageFor(m => ((cfares.Areas.Tours.Models.GroupRegistrationForm)m).isOverThirteen)
+        </div>

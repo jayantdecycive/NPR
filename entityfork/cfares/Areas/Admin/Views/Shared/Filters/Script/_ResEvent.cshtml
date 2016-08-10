@@ -1,0 +1,56 @@
+﻿<script type="text/javascript">
+    var DataFunction = {
+
+        reseventfilter: function (col) {
+            var year = $("#filter-year").val();
+            var month = $("#filter-month").val();
+            var tourType = $("#filter-tour-type").val();
+            var dayOfWeek = $("#filter-day").val();
+            var guide = $($("#filter-guide .jq-auto-complete").data("pk")).val();
+
+            var filterArr = [];
+            if (tourType)
+                filterArr.push("{0} eq '{1}'".format("ReservationType", tourType));
+
+            if (year)
+                filterArr.push("{0} eq {1}".format("SlotYear", year));
+
+            if (month)
+                filterArr.push("{0} eq {1}".format("SlotMonth", month));
+
+            if (dayOfWeek)
+                filterArr.push("{0} eq {1}".format("SlotDayOfWeek", dayOfWeek));
+
+            if (guide && guide != "0")
+                filterArr.push("{0} eq {1}L".format("GuideId", guide));
+
+            var past = !!$("#filter-past input:checked").length;
+            if (!past && $("#filter-past").length)
+                filterArr.push("{0} gt datetime'{1}'".format("SiteEnd", (new Date()).toString("yyyy-MM-dd-hh:mm")));
+
+
+            if (filterArr.length)
+                return "(" + filterArr.join(" and ") + ")";
+        },
+
+        onset: function () { },
+        onedit: function () { },
+        onsort: function () { },
+        ondisplay: function (src, val) { return val; },
+        onsubmit: function () { },
+        onlinkdisplay: function (sourceObject, val, column) {
+
+            return "<a href='/Admin/Store/Details/{0}'>{1}</a>".format(val, "View");
+        },
+        ticketDifference: function (sourceObject, val, column) {
+
+            return sourceObject.Capacity - sourceObject.TotalCount;
+        },
+        onSlotLinkdisplay: function (sourceObject, val, column) {
+
+            return "<a href='/Admin/Slot/TourSlot-Details/{0}'>{1}</a>".format(val, "View");
+            //return "<a href='/Admin/Slot/Details/{0}' target='_blank'>{1}</a>".format(val, "View");
+        }
+    };
+
+</script>

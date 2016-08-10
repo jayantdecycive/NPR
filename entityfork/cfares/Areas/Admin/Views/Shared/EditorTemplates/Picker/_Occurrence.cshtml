@@ -1,0 +1,54 @@
+﻿@model cfares.domain._event.Occurrence
+@{
+    string id;
+    if (Model == null || string.IsNullOrEmpty(Model.Id()))
+    {
+        id = "0";
+    }
+    else
+    {
+        id = Model.Id();
+    }
+    string dialogId = "dia" + ViewData.TemplateInfo.HtmlFieldPrefix;
+    string fieldName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if(string.IsNullOrEmpty(fieldName)){
+        fieldName = "occurrence_picker";
+    }
+}
+<span class='admin-grey table-picker'>    
+    <input type="text" name="@fieldName" id="@fieldName" value="@id" class='res-occurrence'  />
+</span>
+
+<div id="@dialogId" class='event-table vcenter' title="Please Select an Occurrence">
+    @Html.Partial("Tables/_TourOccurrenceSelection",id)
+</div>
+<script type="text/javascript">
+    $("#@fieldName").focus(function () {
+        $("#@dialogId").dialog("open");
+    });
+
+    $("#@dialogId").dialog({
+        autoOpen: false,
+        modal: true,
+        width: 800,
+        height: 400,
+        buttons: {
+            Cancel: function () {
+                $(this).dialog("close");
+            },
+            Clear: function () {
+                $("#@fieldName").val("0");
+                $("#@fieldName").trigger("pk", "0")
+                $(this).dialog("close");
+            },
+            Ok: function () {
+                var val = $(this).find("input:checked").val();
+                if (val) {
+                    $("#@fieldName").val(val);
+                    $("#@fieldName").trigger("pk",val);
+                }
+                $(this).dialog("close");
+            }
+        }
+    }).parents('.ui-dialog:eq(0)').wrap('<div class="admin-table"></div>')
+</script>

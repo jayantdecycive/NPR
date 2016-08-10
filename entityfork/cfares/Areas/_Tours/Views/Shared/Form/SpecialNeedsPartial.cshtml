@@ -1,0 +1,18 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div class="form-section">
+            <span class="field-requirement">* </span><span>Does anyone in the group have special
+                needs? </span><span id="specialNeedsRadio" class="yes-no-radios">
+                    @Html.RadioButtonFor(model => model.specialNeedsForm.hasSpecialNeeds, true) Yes
+                    @Html.RadioButtonFor(model => model.specialNeedsForm.hasSpecialNeeds, false) No</span>
+            @Html.ValidationMessageFor(m => m.specialNeedsForm.hasSpecialNeeds)
+            <div id="specialNeedsForm">
+                <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.specialNeedsForm.isHearingImpaired)
+                    @Html.LabelFor(m => m.specialNeedsForm.isHearingImpaired)</span> <span class="checkboxwrapper">
+                        @Html.CheckBoxFor(m => m.specialNeedsForm.isVisuallyImpaired) @Html.LabelFor(m => m.specialNeedsForm.isVisuallyImpaired)</span>
+                <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.specialNeedsForm.needsWheelChair)
+                    @Html.LabelFor(m => m.specialNeedsForm.needsWheelChair) </span><span class="checkboxWithExplanation">
+                        @Html.CheckBoxFor(m => m.specialNeedsForm.Other) @Html.LabelFor(m => m.specialNeedsForm.Other)
+                        @Html.TextBoxFor(m => m.specialNeedsForm.otherDescription)</span>
+                @Html.ValidationMessageFor(m => m.specialNeedsForm.otherDescription)
+            </div>
+        </div>

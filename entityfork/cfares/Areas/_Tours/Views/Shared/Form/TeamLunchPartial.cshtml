@@ -1,0 +1,10 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div id="lunchOptInSection" class="form-section" data-priceModel="@ViewBag.UserMode">
+            <span class="field-requirement">* </span>
+            <span class="name">Will your group plan to stay for lunch? </span>
+                <span class="yes-no-radios">@Html.RadioButtonFor(model => model.lunchForm.optInForLunch, true)
+                    Yes
+                    @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, false)
+                    No</span>
+            @Html.ValidationMessageFor(m => m.lunchForm.optInForLunch)
+        </div>

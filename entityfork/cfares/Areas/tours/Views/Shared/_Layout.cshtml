@@ -1,0 +1,151 @@
+﻿@using cfacore.shared.Helpers
+@using cfares.Global
+@using cfacore.shared.modules.com.request
+@using cfacore.shared.modules.com.admin
+@using SquishIt.Framework
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @{string[] Css = new[]{
+        "~/Content/themes/base/jquery.ui.core.css",
+        "~/Content/themes/base/jquery.ui.resizable.css",
+        "~/Content/themes/base/jquery.ui.selectable.css",
+        "~/Content/themes/base/jquery.ui.accordion.css",
+        "~/Content/themes/base/jquery.ui.autocomplete.css",
+        "~/Content/themes/base/jquery.ui.button.css",
+        "~/Content/themes/base/jquery.ui.dialog.css",
+        "~/Content/themes/base/jquery.ui.slider.css",
+        "~/Content/themes/base/jquery.ui.tabs.css",
+        "~/Content/themes/base/jquery.ui.datepicker.css",
+        "~/Content/themes/base/jquery.ui.progressbar.css",
+        "~/Content/themes/base/jquery.ui.theme.css",
+        "~/Content/Reset.css",  
+        "~/Content/Site.css",        
+        "~/Content/plugins.css",
+        "~/Content/themes/admin-blue/jquery-ui-1.8.18.custom.css",
+        "~/Content/themes/admin-orange/jquery-ui-1.8.18.custom.css",
+        "~/Content/themes/admin-orange-invert/jquery-ui-1.8.18.custom.css",
+        "~/Content/themes/admin-red/jquery-ui-1.8.18.custom.css",
+        
+        "~/Content/themes/admin-table/jquery-ui-1.8.18.custom.css",
+        "~/Content/themes/admin-green/jquery-ui-1.8.18.custom.css",
+        //"~/Content/themes/customer-grey/jquery-ui-1.8.18.custom.css",
+        "~/Scripts/datatables/ColVis-1.0.7/media/css/ColVis.css",
+        "~/Scripts/datatables/TableTools-2.0.3/media/css/TableTools_JUI.css"
+    };}    
+    @Html.Raw(Bundle.Css().Add(Css).Render("~/Content/gen/combined9999_#.css")) 
+    @{string[] Scripts = new[] { 
+          "~/Scripts/jquery-1.5.1.js",
+          "~/Scripts/datajs-1.0.2.min.js", 
+          "~/Scripts/modernizr-1.7.js",
+            "~/Scripts/jquery/plugins.js",
+            "~/Scripts/jquery-ui-1.8.11.js",
+            "~/Scripts/jquery.dataTables.js",
+            "~/Scripts/jquery/jquery.jeditable.js",
+            "~/Scripts/jquery.validate.js",
+            //"~/Scripts/jquery.validate.unobtrusive.min.js",
+            "~/Scripts/datatables/KeyTable.js",
+          "~/Scripts/datatables/jquery.dataTables.editable.js",
+          "~/Scripts/datatables/plugins.js",          
+          "~/Scripts/api/api-base.js",
+          "~/Scripts/datatables/ColVis-1.0.7/media/js/ColVis.js",
+          "~/Scripts/datatables/TableTools-2.0.3/media/js/TableTools.js",
+          "~/Scripts/datatables/TableTools-2.0.3/media/js/ZeroClipboard.js",
+          "~/Scripts/Underscore.js",
+          "~/Scripts/backbone.dev.js",
+          "~/Scripts/backbone.localStorage.js",
+          "~/Scripts/plugins.js"
+      };}
+    @Html.Raw(Bundle.JavaScript().Add(Scripts).Render("~/Scripts/gen/combined116_#.js"))
+    <script src="@Url.Content("~/Admin/AutoScript/DomainModel.js")" type="text/javascript"></script>
+    
+    @Html.ResApplicationScript()
+    @Html.GlobalTimeData()
+    <script src="http://www.chick-fil-a.com/Scripts/API/CFA.0.3.js" type="text/javascript"></script>
+
+    
+    @if ((ViewData["browser"] as BrowserInfo) != null)
+    {
+        foreach (string s in ((BrowserInfo)ViewData["browser"]).browserCSS)
+        {
+    @:<link href="@Url.Content("~/Content/Browser/" + @s + ".css")" rel="stylesheet" type="text/css" />
+        }
+    }
+    
+    
+
+    @if (IsSectionDefined("Meta"))
+    {
+        @RenderSection("Meta")
+    }
+    else
+    {
+
+    }
+    
+
+    <script src="@Url.Content("~/Scripts/init.js")" type="text/javascript"></script>
+    @{
+        ViewBag.AreaRelativeURL = "~/Areas/tours/";
+        ViewBag.Styles = new List<String>();      
+    }
+
+    <link href="@Url.Content(ViewBag.AreaRelativeURL + "Content/Site.css")" rel="stylesheet" type="text/css" />
+    @{
+        if (!String.IsNullOrEmpty(ViewBag.Style))
+        {
+            <link href="@Url.Content(ViewBag.AreaRelativeURL + "Content/" + ViewBag.Style)" rel="stylesheet" type="text/css" />
+        }
+
+        foreach (string style in ViewBag.Styles)
+        {
+               <link href="@Url.Content(style)" rel="stylesheet" type="text/css" />
+        }
+    }
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33288254-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body class='jqui-theme-tours @Html.BrowerBodyClasses(ViewData["browser"]) @Html.RouteClasses()'>
+
+        @Html.Partial("_NavigationBar")
+        @if (IsSectionDefined("Header"))
+        {
+            @RenderSection("Header")
+        }
+   <div id="content-body" class="tours">
+        <!--message-->
+        @if(ViewBag.Message!=null){
+            <div class='message-wrapper'>
+            <div class='jq-info'>    
+
+                @ViewBag.Message
+
+            </div>
+            </div>
+        }
+
+
+        @RenderBody()
+        @if (IsSectionDefined("Footer"))
+        {
+            @RenderSection("Footer")
+        }
+        @Html.Partial("_Footer")
+   </div>
+ 
+</body>
+</html>

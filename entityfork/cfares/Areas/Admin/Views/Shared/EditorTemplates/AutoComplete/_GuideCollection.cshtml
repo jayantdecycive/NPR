@@ -1,0 +1,28 @@
+﻿@model cfares.domain.user.ResUserCollection
+<div class='guide-collection'>
+<div class='models'>  
+@{
+    string ids = "";    
+}
+@if (Model != null && Model.Count > 0 && Model[0] != null)
+{
+ids=Model.JoinedIds();
+
+foreach(cfacore.domain.user.User guide in Model){
+    if (guide != null)
+    {
+    <div class='block guide' data-pk="@guide.Id()">@guide.Name.ToString() <a href='javascript:void(0);' class='legacy remove-guide'>remove</a></div>    
+    }
+}
+
+
+}
+</div>
+<input name="@Html.Raw(ViewData.TemplateInfo.HtmlFieldPrefix)_accept" class='to-accept' type='hidden' value="@ids" />
+<input name="@Html.Raw(ViewData.TemplateInfo.HtmlFieldPrefix)_remove" class='to-remove' type='hidden' value="" />
+<div class='add-guides'>
+
+    @Html.Partial("EditorTemplates/AutoComplete/_Guide", new cfares.domain.user.ResUser())
+
+</div>
+</div>

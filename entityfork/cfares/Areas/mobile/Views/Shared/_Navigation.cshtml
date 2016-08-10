@@ -1,0 +1,31 @@
+﻿
+<div data-role="navbar">
+    <ul>
+    
+    @*@{
+        if(Request.IsAuthenticated){
+            <li>@Html.ActionLink("Log Off", "LogOff", "Account", null, new { data_role = "button", data_theme = "g", data_mini = "true" })</li>
+        }
+        else{
+            <li>@Html.ActionLink("Log On", "LogOn", "Account", null, new { data_role = "button", data_theme = "g", data_mini = "true" })</li>
+        }
+    }*@
+
+    <li>@Html.ActionLink("Modify Tours", "LogOn", "Account", null, new { data_role = "button", data_theme = "g", data_mini = "true" })</li>
+    <li>@Html.ActionLink("Plan a Visit", "Directions", "Home", null, new { data_role = "button", data_theme = "g", data_mini = "true" })</li>
+    <li>@Html.ActionLink("FAQs", "faq", "home", null, new { data_role = "button", data_theme = "g", data_mini = "true" })</li>
+    
+
+    </ul>
+</div>
+
+<div id="header">
+
+    <div class="center">
+    <h2 class="graphic"><a href="/mobile/Home/Index"><img alt="Chick-fil-A Backstage Home Office Tours" src="@Url.Content(ViewBag.AreaRelativeURL + "Content/Img/mobile-header.png")" width="243" height="140" /></a></h2>
+    </div>
+
+</div>
+<div class="clear-all"></div>
+
+

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Calendar";
+    Layout = "~/Areas/Tours/Views/Shared/Onecolumn/_Notification.cshtml";
+    ViewBag.WizardStep = 2;
+}
+
+@section Calendar{
+
+@Html.Partial("Wizard/WizardPartial")
+
+<h1>When would you like to take your tour?</h1>
+<p>Please choose a day and a time from the available options below. <br/> Use the arrows on both sides of the month to look at additional dates. </p>
+
+@Html.Partial("Calendar/CalendarPartial")
+
+}
+
+

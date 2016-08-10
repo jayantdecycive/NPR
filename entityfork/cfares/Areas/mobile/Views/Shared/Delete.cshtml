@@ -1,0 +1,18 @@
+﻿@model cfares.domain._event.ticket.tours.TourTicket
+@{
+    ViewBag.Title = "Delete Ticket";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+<h1 class="center">Are you sure you want to remove this ticket?</h1>
+
+</div>
+@using (Html.BeginForm("Delete", "Ticket", FormMethod.Post))
+{
+    <input type="submit" value="Yes, Delete my Ticket" data-theme="a"/>
+}
+<a data-role="button" data-theme="b" href="/mobile/Account/LogOn?returnUrl=/mobile/Ticket/Dash" >Cancel</a>
+
+<br/>
+<br/>

@@ -1,0 +1,12 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+<span class="field-requirement">* </span>
+<div class="name-value-pair form-section">
+    <label class="name">Group Size</label>
+    <span class="value">
+    
+        @Html.TextBoxFor(Model => Model.tourTicket.GuestCount, new { id="groupSize" })
+        @Html.ValidationMessageFor(Model => Model.tourTicket.GuestCount)
+        @Html.ValidationMessage("LargeGroupSize")
+    
+    </span>
+</div>

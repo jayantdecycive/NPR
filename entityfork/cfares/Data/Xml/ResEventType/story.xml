@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReservationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ReservationTypeId>story</ReservationTypeId>
+  <StrUri>http://res.chick-fil-a.com/event/reseventtype/tours</StrUri>
+  <Description>Story Tours Type</Description>
+  <StrType>cfares.domain._event.TourEvent</StrType>
+  <Name>Story</Name>
+</ReservationType>

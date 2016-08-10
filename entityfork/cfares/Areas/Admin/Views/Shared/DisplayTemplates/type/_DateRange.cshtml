@@ -1,0 +1,4 @@
+﻿@model cfacore.shared.domain._base.DateRange
+
+<span class='clean-timezone' data-date-format='M/dd/yyyy h:mmtt'>@Model.Start.ToString("M/dd/yyyy h:mmtt").ToLower()</span> to  
+<span class='clean-timezone' data-date-base='@Model.End.ToString("M/dd/yyyy h:mmtt")' data-date-format='h:mmtt'>@Model.End.ToString("h:mmtt").ToLower()</span>

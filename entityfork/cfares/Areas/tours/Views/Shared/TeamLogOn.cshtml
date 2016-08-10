@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Logon";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+
+@section Modify{
+    <h1>Team Member Logon</h1>
+    <span>Please enter your store information to begin.</span>
+}
+@section Meta{
+    <script src="/Areas/tours/Scripts/operator-temp-login.js"></script>
+}
+
+@section Login{
+
+
+<div class="logon-form">
+
+    @using (Html.BeginForm())
+    {
+        if (! String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }else if(!string.IsNullOrEmpty(Html.ValidationMessage("").ToString())){
+            <span class="red">@Html.ValidationMessage("")</span>
+        }
+        
+        <div class="form-item"><span class="strong item-name">Store Email: </span>
+        <input class="text-box single-line" data-val="true" data-val-required="Store Email is required." id="store_email" name="storeEmail" type="text" value="" />
+        </div>
+        <div class="form-item"><span class="strong item-name">Store Number: </span>
+        <input class="text-box single-line" data-val="true" data-val-required="Store Number is required." id="store_id" name="storeNumber" type="text" value="" />
+        </div>
+      
+        <input type="submit" value="" class="logon-form-button form-button" id="submit-registration-button"/>
+    }
+</div>
+
+
+}

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wizards>
+  <wizard type="cfares.site.modules.com.admin.tours.CreateTourWizard">  
+    <step route="Event/Create-Dash"></step>
+    <step route="Slot/Edit-Dash"></step>
+    <step route="Event/Verify"></step>
+    <step route="Event/Confirm"></step>
+  </wizard>
+</wizards>

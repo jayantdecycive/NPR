@@ -1,0 +1,37 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Brief = "Create New Tour Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+}
+
+
+<h1>Tour Slot Create</h1>
+<p>
+                
+</p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.Partial("ModelForm/Slots/_TourSlot")
+    @Html.Partial("ModelForm/_Slot")
+
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>
+}
+@section Cancel{
+<div class='dash-cta'>
+    @Html.ActionLink("Back to Tour Slot Dash", "TourSlot-Index")
+</div>
+}
+        

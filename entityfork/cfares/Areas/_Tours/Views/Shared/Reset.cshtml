@@ -1,0 +1,29 @@
+﻿@model cfares.Areas.Tours.Models.ForgotPasswordModel
+@{
+    ViewBag.Title = "ForgotPassword";
+    Layout = "~/Areas/Tours/Views/Shared/TwoColumn/_Column5050.cshtml";
+}
+
+@section h1{
+<h1>Forgot Your Email Address or Password?</h1>
+}
+
+@section ColumnLeft{
+    <p class="description">If you've forgotten your password, complete the form and a link to reset your password will be sent to your inbox</p>
+
+    <div class="form-item"><div class="strong item-name">First Name:</div>@Html.EditorFor(m => m.firstName)</div>
+    <div class="form-item"><div class="strong item-name">Last Name:</div>@Html.EditorFor(m => m.lastName)</div>
+    <div class="form-item"><div class="strong item-name">Email:</div>@Html.EditorFor(m => m.email)</div>
+     
+    <input type="submit" value="" class="logon-form-button form-button reset-button" />
+}
+
+@section ColumnRight{
+    <p class="description">If you've forgotten your email address, complete the form below.</p>
+
+    <div class="form-item"><div class="strong item-name">First Name:</div>@Html.TextBox("firstname")</div>
+    <div class="form-item"><div class="strong item-name">Last Name:</div>@Html.TextBox("lastname")</div>
+    <div class="form-item"><div class="strong item-name">Password:</div>@Html.TextBox("password")</div>
+
+    <input type="submit" value="" class="logon-form-button form-button reset-button" />
+}

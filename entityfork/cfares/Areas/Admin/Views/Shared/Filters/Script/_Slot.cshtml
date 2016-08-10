@@ -1,0 +1,42 @@
+﻿<script type="text/javascript">
+    var DataFunction = {
+
+        tablefilter: function (col) {
+            var year = $("#filter-year").val();
+            var month = $("#filter-month").val();
+            var tourType = $("#filter-tour-type").val();
+            var dayOfWeek = $("#filter-day").val();
+            var guide = $($("#filter-guide .jq-auto-complete").data("pk")).val();
+
+
+            var filterArr = [];
+
+            if (guide && guide != "0")
+                filterArr.push("{0} eq {1}L".format("GuideId", guide));
+
+
+            if (dayOfWeek)
+                filterArr.push("{0} eq {1}".format("SlotDayOfWeek", dayOfWeek));
+
+            var past = !!$("#filter-past input:checked").length;
+            if (!past)
+                filterArr.push("{0} gt datetime'{1}'".format("Start", (new Date()).toString("yyyy-MM-dd-hh:mm")));
+
+            var picker = $("#filter-event input").val();
+            if (picker && picker != "0")
+                filterArr.push("{0} eq {1}L".format("OccurrenceId", picker));
+
+            if (filterArr.length)
+                return "(" + filterArr.join(" and ") + ")";
+        },
+        TicketsRemaining: function (row, val, i) {
+            
+            if (row.TotalTickets == null)
+                row.TotalTickets = 0;
+            return Number(row.Capacity) - Number(row.TotalTickets);
+        }
+
+
+    };
+
+</script>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Areas/Tours/Views/Shared/_Layout.cshtml";
+    ViewBag.Style = "one-column.css";
+}
+
+<div class="notification">
+    
+    @if (IsSectionDefined("Modify"))
+    {  
+        @RenderSection("Modify")
+    }
+    
+     @if (IsSectionDefined("Lost"))
+    {  
+        @RenderSection("Lost")
+    }
+
+    @if (IsSectionDefined("Login"))
+    {  
+        @RenderSection("Login")
+    }
+    
+    @if (IsSectionDefined("Calendar"))
+    {  
+        @RenderSection("Calendar")
+    }
+    
+
+
+</div>

@@ -1,0 +1,176 @@
+﻿@model cfares.domain._event.ticket.tours.TourTicket
+@{
+    string baseurl = "http://tours.chick-fil-a.com";
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+
+    DateTime correctedStart = oServ.ConvertToTimeZoneContext(Model.Slot.Start);
+    DateTime correctedEnd = oServ.ConvertToTimeZoneContext(Model.Slot.End);
+    Layout = null;
+    
+    
+    string lunch = "";
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>EmailConfirmation</title>
+    <style type="text/css">
+        
+    body, table, tr, td, img, p
+    {
+        padding:0px;
+        margin:0px;
+        border:0px;
+        font-family: Arial, sans-serif;     
+        color:#666;        
+    }
+    
+    li
+    {
+        padding-bottom:15px;
+    }
+    
+    </style>
+    
+    
+</head>
+<body>
+<div>
+        
+<table border="0" cellspacing="0" cellpadding="0" width="612" style="border-collapse:collapse; border-spacing: 0;">
+<tr>
+<td>   
+</td>    
+</tr>   
+<tr>
+<td>
+    
+<img src=@(baseurl + "/Areas/tours/Content/Img/email/header.png") alt="Home Office Backstage Tours"/>
+    
+</td>    
+</tr>
+<tr>
+<td style="padding-left:30px">
+<br/>  
+<p style="padding-bottom:15px;">Dear  Home Office Backstage Tour Guest, </p><br/>
+<p style="padding-bottom:15px;">We're excited you'll be joining us for a Chick-fil-A<sup>®</sup> Home Office Backstage Tour! </p>
+<p>Below are the details of your reservation and a few important reminders:</p>
+<br/>
+
+<p><b>First Name: </b>@Model.Owner.Name.First</p>
+<p><b>Last Name: </b>@Model.Owner.Name.Last</p>
+<p><b>Tour Date: </b>@Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy")</p>
+<p><b>Tour Time: </b>@correctedStart.ToString("h:mmtt") - @correctedEnd.ToString("h:mmtt")</p>
+<p><b>Group Size: </b>@Model.GuestCount</p>
+<p><b>Group Name: </b>@Model.GroupName</p>
+@if (Model.OptInForLunch)
+    {
+        <p><b>Lunch Total: </b>@Model.TotalCostOfLunches.ToString("C2")</p>
+    }
+
+<br/>
+<ul>
+<li><b>Confirmation Ticket:</b> Please print this email and bring it with you along with your photo ID on the day of your tour.</li>
+<li>
+    <b>Arrival:</b>  Please plan to arrive 15 minutes prior to your tour time to allow for check-in at the Chick-fil-A security entrance. When you arrive on campus, you will check-in with our 
+    security guard (in the left lane) to confirm your tour and registered # of guests. <span style="font-weight:bold;">Please note that each person in your tour group, regardless of age, must be previously registered on our 
+    website to receive admittance onto the Chick-fil-A campus and tour.</span> You will receive a pass for your car and further directions on parking and entering the tour entrance. 
+    Click <a href=@(baseurl + "/Areas/tours/Content/Doc/directions.pdf")>HERE</a> for directions to our campus.
+</li>
+<li>
+    <b>Check-In:</b> As you face the building, look to your right for the directional sign, "Chick-fil-A Home Office Backstage Tour Entrance" 
+    (the sign will be to the left of the tiered waterfalls). Walk along this path and through the grassy area, and then you will see a red 
+    carpet as you approach the double doors located on the right side of the main building. Please go inside and check-in at the welcome desk. 
+</li>
+<li><b>Age Requirements:</b> We require that all guests be six years of age or older due to the amount of walking throughout the tour experience.</li>
+<li><b>Attire:</b> The Chick-fil-A<sup>®</sup> Home Office Backstage Tour requires a lot of walking, so please wear comfortable shoes. Business casual or casual attire is preferred.</li>
+<li><b>Don’t Forget:</b> Remember to come prepared to have FUN! The Chick-fil-A Cows and the Chick-fil-A family eagerly await your arrival!</li>
+</ul>
+<br/>
+
+
+<p> 
+    You will receive a reminder email 72 hours ahead of your scheduled tour time. If you need to change your tour time, number and names of people in your party, please visit the 
+    <a href="http://tours.chick-fil-a.com/Account/LogOn">website</a> to *modify your reservation. In addition, we ask that you also contact us at
+    <a href="mailto:homeofficebackstagetour@chick-fil-a.com">homeofficebackstagetour@chick-fil-a.com</a> or 404-530-1854. <span style="font-weight:bold;">Please note that no additional guests can be added within 72 hours of your tour reservation.</span>
+</p>
+<br/>
+<p>It is our pleasure to host you,<br /> The Chick-fil-A<sup>®</sup> Home Office Backstage Tour Team</p>
+<br/>
+<br/>
+<p style="font-size:9pt">
+    *While we would like to accommodate your request, due to the limited space during each tour time,
+    please note that any change in the number of people in your party could result in your tour date and time needing to be rescheduled.
+</p> 
+<br/>
+<p style="font-size:9pt">
+    *Due to the high demand and tour schedules, if you tour group is not present within 15 minutes of your appointed tour time and/or Chick-fil-A does 
+    not receive notification (<a href="mailto:homeofficebackstagetour@chick-fil-a.com">homeofficebackstagetour@chick-fil-a.com</a> or 404-530-1854), you will not receive admittance to Chick-fil-A and you 
+    will need to reschedule your tour for another date and time. <br/>*Please note that each person in your tour group, regardless of age, must be previously registered on our website to receive admittance onto the Chick-fil-A campus and tour.
+</p>
+
+<br/>
+
+</td>              
+</tr>
+<tr>
+<td>
+
+   
+<table border="0" cellspacing="0" cellpadding="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0; line-height:0;">   
+<tr>
+<td>   
+    <table cellspacing="0" cellpadding="0" border="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0;">
+        
+    <tr style="height:62px;">
+        <td height="62" style="height:62px"> 
+            <a href="http://www.chick-fil-a.com/"><img src=@(baseurl + "/Areas/tours/Content/Img/email/brag-header.png") alt="" width="604" height="62"/></a>    
+        </td>
+        </tr>
+        <tr>
+        <table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tr>
+            <td> 
+                <a href="http://www.chick-fil-a.com/Connect/Email-Insiders"><img src=@(baseurl + "/Areas/tours/Content/Img/email/brag-email.png") alt="" width="299" height="44"/></a>   
+            </td>   
+            <td> 
+                <a href="http://www.facebook.com/ChickfilA"><img src=@(baseurl + "/Areas/tours/Content/Img/email/brag-fb.png") alt="" width="305" height="44"/></a>  
+            </td>       
+        </tr>
+        <tr>
+            <td> 
+            <a href="http://www.chick-fil-a.com/Connect/Text-Insiders"><img src=@(baseurl + "/Areas/tours/Content/Img/email/brag-text.png") alt="" width="299" height="57"/></a>     
+            </td>   
+            <td> 
+                <a href="http://twitter.com/#!/ChickfilA"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-tw.png") alt="" width="305" height="57"/></a>    
+            </td> 
+        </tr>    
+        </table>       
+    </tr> 
+    <tr>
+    <td>
+
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">Please do not reply to this email.</p><br/><br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">For specific customer service requests, please contact us at</p><br/><br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px"><a href="homeofficebackstagetour@chick-fil-a.com">homeofficebackstagetour@chick-fil-a.com</a></p><br/>
+    <br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">© 2012 CFA Properties, Inc. All trademarks shown are the property of their respective owners.</p><br/>
+
+    </td>
+    </tr>   
+    </table>  
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+   
+</div>
+</body>
+</html>
+​
+​

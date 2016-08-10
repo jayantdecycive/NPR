@@ -1,0 +1,80 @@
+﻿
+/*------------------------------------------------------
+Abstract classes for general use. USE THESE AS MUCH AS POSSIBLE
+
+GLOBAL */
+
+    
+
+
+/*!!!BASE CLASSES THAT SHOULD BE USED FOR ALL PAGE LAYOUTS!!!*/
+.wide.content{width: 972px;}
+.small.content{width: 879px;}
+/*!!!END BASE CLASSES THAT SHOULD BE USED FOR ALL PAGE LAYOUTS!!!*/
+
+.header-wrap{padding-top: 14px; padding-bottom: 0;z-index:110;}
+.page-home-default .header-wrap{padding-top: 14px; padding-bottom: 14px;}
+
+.focus{/*outline:#7BABCB dotted 1px;*/}
+.no-link,.no-link:hover{text-decoration:none !important;cursor:default;}
+
+
+/*---Text Layout Classes---*/
+.page-title {margin: 0; display: block; height: 93px; width: 90%; font-family: "Dinot",Arial; font-size: 1.2em; line-height: 1.2em;}
+.page-title strong,.page-title .strong,.page-title .bold{font-weight: normal;font-family: "DinotBold",Arial;}
+
+.paragraph-block {margin: 0px 0px 15px 0px; display:block;}
+
+.text-section {margin: 0px 0px 25px 0px; display:block;}
+
+.text-block-list {padding: 10px 0px 10px 10px; display:block;}
+.text-block-list-item {padding: 20px 0px 20px 0px; display:block; border-bottom-style: solid; border-bottom-color: #DDDDDD; border-bottom-width:thin;}
+.text-block-list-item:last-child {border-bottom-style:none}
+.text-block-list-item.no-separator{border-bottom-style:none}
+    /*------------------------------------------------------
+    WIDGETS */
+
+   
+    
+    #xcel_src{height:0px;width:0px;}
+
+    /* END WIDGETS
+    ------------------------------------------------------*/
+
+
+    /*------------------------------------------------------
+    JQ OVERRIDE */
+    
+    .admin-table
+    {
+        font-size:10pt;    
+    }
+    h2.table-header{padding-left: 13px;}
+    .time
+    {
+        }
+        
+    .admin-table .ui-button{overflow:visible !important;}
+    
+    .ui-autocomplete.ui-widget{font-size:10pt;}
+    
+    /*tables*/
+    div.DTTT_container {
+	    position: absolute;
+	    left: 404px;
+        top: 10px;
+    }
+    
+    
+
+    /* END JQ OVERRIDE
+    ------------------------------------------------------*/
+    
+
+
+/* END GLOBAL
+----------------------------------------------------------*/
+
+
+
+

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.ModelName = "Schedule";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+
+
+<h1>Schedule Home</h1>
+<p>Schedules</p>
+        
+@section Table{
+    <table id="schedule_dash" class='data-table' data-data='/DataService/ResEvent.svc/Schedules' 
+        data-crud='/DataService/ResEvent.svc/Schedules({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='ScheduleLink' data-on-display='DataFormat.ScheduleUrl' data-column-parent='ScheduleId'></th>                                        
+                <th data-column-name='ScheduleIdL' data-id-column='true' data-visible="false">Schedule Id</th>
+                <th data-column-name='Name' >Name</th>  
+                <th data-column-name='UrlName' data-visible="false" >Url Name</th> 
+
+                
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+			    <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+			    <th data-column-name='CapacityI' >Capacity</th>
+                 
+		    </tr>
+            </thead>
+        </table>
+}

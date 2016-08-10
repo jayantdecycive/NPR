@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    <script src="/Areas/tours/Scripts/operator-temp-login.js"></script>
+}
+
+
+<div class="container logon-form">
+
+    <h1 class="center">Team Member Logon</h1>
+    <p class="center">Please enter your store information to begin.</p><br/>
+
+
+    @using (Html.BeginForm())
+    {
+        if (! String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }else if(!string.IsNullOrEmpty(Html.ValidationMessage("").ToString())){
+            <span class="red">@Html.ValidationMessage("")</span>
+        }
+        
+        <div class="form-item">
+        <input class="text-box single-line" data-val="true" data-val-required="Person ID is required." id="person_id" name="peopleId" type="text" value="" placeholder="CFA People ID">
+        </div>
+        <br/>
+        <div class="form-item">
+        <input class="text-box single-line" data-val="true" data-val-required="Store Number is required." id="store_id" name="storeNumber" type="text" value="" placeholder="Store Number">
+        </div>
+        <br/>
+        <input type="submit" value="Submit" data-inline="false" data-theme="a" id="submit-registration-button" class="logon-form-button form-button"/>
+    }
+
+    @*@using (Html.BeginForm())
+    {
+        <div class="form-item">@Html.TextBoxFor(m => m.UserName, new { placeholder="CFA People ID" })</div>
+        <br/>
+        <div class="form-item">@Html.PasswordFor(m => m.Password, new { placeholder="Store Number" })</div>
+        <br/>
+        <input type="submit" value="Submit" data-inline="false" data-theme="a"/>
+    }*@
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () { $.mobile.ajaxEnabled = false; });
+
+</script>

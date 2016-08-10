@@ -1,0 +1,20 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+    <!--Group Type-->
+    <div class="review-section">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">Type of Group: </span>
+            <div class="value checkboxgroup">
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsFamilyWithKids, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsFamilyWithKids)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsFamilyWithoutKids, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsFamilyWithoutKids)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsReligiousGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsReligiousGroup)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsSchoolGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsSchoolGroup)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsAdultGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsAdultGroup)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsSeniorGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsSeniorGroup)</div>
+                <div class="checkbox-name-wrapper">@Html.CheckBoxFor(m => m.tourTicket.IsBusinessGroup, new { @readyonly = "readonly", disabled = "true" })@Html.LabelFor(m => m.tourTicket.IsBusinessGroup)</div>
+                <span class="checkboxWithExplanation">@Html.CheckBoxFor(m => m.tourTicket.IsOtherTypeOfGroup, new { @readyonly = "readonly", disabled = "true" })
+                    @Html.LabelFor(m => m.tourTicket.IsOtherTypeOfGroup) @Html.TextBoxFor(m => m.tourTicket.OtherTypeDescription, new { @readonly = "readonly", disabled = "true" })</span>
+            </div>
+        </div>
+    </div>

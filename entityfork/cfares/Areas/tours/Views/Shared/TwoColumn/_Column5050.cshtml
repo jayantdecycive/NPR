@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Areas/tours/Views/Shared/_Layout.cshtml";
+    ViewBag.Style = "two-column.css";
+}
+
+@if (IsSectionDefined("h1"))
+{  
+    @RenderSection("h1")
+}
+else { 
+    <!--no meta, html can go here as default-->
+}
+
+<div class="two-column-5050">
+
+<div class="column-left-50">
+    @if (IsSectionDefined("ColumnLeft"))
+    {  
+        @RenderSection("ColumnLeft")
+    }
+    else { 
+    <!--no meta, html can go here as default-->
+    }
+</div>
+
+<div class="dividor"></div>
+
+<div class="column-right-50">
+    @if (IsSectionDefined("ColumnRight"))
+    {  
+        @RenderSection("ColumnRight")
+    }
+    else { 
+    <!--no meta, html can go here as default-->
+    }
+
+</div>
+
+</div>
+
+
+

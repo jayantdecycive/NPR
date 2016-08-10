@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Backbone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type='text/template' id='myTemplate'>
+
+</script>
+<script type='text/javascript'>
+    $(function(){
+    
+        var Game = Backbone.Model.extend({  
+            initialize: function(){  
+                //alert("Oh hey! ");  
+            },  
+              defaults: {  
+                name: 'Default title',  
+                releaseDate: 2011,  
+            }  
+        });  
+        window.portal = new Game({ name: "Portal 2", releaseDate: 2011});  
+        
+        var release = portal.get('releaseDate'); 
+        portal.set({ name: "Portal 2 by Valve"});  
+        
+        var GameView= Backbone.View.extend({
+          el:$(".game"),
+          initialize: function(){
+              _.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
+                this.model.bind("destroy",this.unrender,this);
+                this.model.bind("change",this.change,this);
+               this.render(); // not all views are self-rendering. This one is.
+            },
+            
+          render : function() {
+            // code for rendering the HTML for the view
+             //this.el.innerHTML = this.model.get('name');  
+             console.log(this);
+            console.log(arguments);
+            
+            //Or the jQuery way  
+            $(this.el).html(this.model.get('name'));  
+          },
+          change : function() {
+            
+            console.log(arguments);
+            console.log(this);
+            
+            
+            this.render();
+          },
+          unrender:function(){
+            $(this.el).html("No More Games, sorry!");
+          }
+        });
+        var myView = new GameView({model:portal});
+
+        $("#game_remove").click(function(){
+            console.log(portal);
+            portal.destroy();
+            }
+        );
+    });
+</script>
+<h2>Backbone</h2>
+<div class='game'></div>
+<button id="game_remove">Click Me</button>

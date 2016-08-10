@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Areas/tours/Views/Shared/_Layout.cshtml";
+}
+
+@section meta{
+     @if (IsSectionDefined("Meta"))
+    {
+        @RenderSection("Meta")
+    }
+}
+
+<div class="left-justified">
+    @RenderBody()
+</div>

@@ -1,0 +1,171 @@
+﻿@model string
+           
+    <script type="text/javascript">
+        var GroupDict = {
+
+            IsSchoolGroup: 'School',
+            IsAdultGroup: 'Adult',
+            IsReligiousGroup: 'Religious',
+            IsSeniorGroup: 'Senior',
+            IsFamilyWithoutKids: 'Family Without Kids',
+            IsFamilyWithKids: 'Family With Kids',
+            IsBusinessGroup: 'Business',
+            IsRavingFans: 'Raving Fans',
+            IsOtherTypeGroup: 'Other Type'
+
+        };
+
+        var NeedsDict = {
+
+            IsVisuallyImpaired: 'Visual',
+            IsHearingImpaired: 'Hearing',
+            NeedsWheelChair: 'WheelChair'
+
+            //OtherNeedsDescription,Other Needs Description</th>
+
+        };
+
+        if (!window.DataFunction)
+            window.DataFunction = {};
+        window.DataFunction=$.extend(window.DataFunction, {
+            
+            PhoneSummary: function (sourceObject, val, column) {
+                return sourceObject.MobilePhone || sourceObject.HomePhone || "none";
+            },
+            NeedsSummary: function (sourceObject, val, column) {
+                var outputArr = [];
+                for (var i in sourceObject) {
+                    if (NeedsDict[i] && (sourceObject[i] == true || sourceObject[i] == "true"))
+                        outputArr.push(NeedsDict[i]);
+                }
+                if (sourceObject.OtherNeeds) {
+                    outputArr.push(sourceObject.OtherNeedsDescription);
+                }
+
+                return outputArr.join(', ') || "none";
+            },
+            GroupTypeSummary: function (sourceObject, val, column) {
+                var outputArr = [];
+                for (var i in sourceObject) {
+                    //console.log(i);
+                    //console.log(sourceObject[i]);
+                    
+                    if (GroupDict[i] && (sourceObject[i] == true || sourceObject[i] == "true")) {
+                        outputArr.push(GroupDict[i]);
+                        console.log("push");
+                    }
+                }
+
+
+                return outputArr.join(', ') || "none";
+            }
+        });
+        if (!DataFunction.tableFilter && '@Model')
+            DataFunction.tablefilter = function () {
+
+                return "SlotId eq {0}".format('@Model');
+            };
+    </script>
+<table id="tourslot_details" class='data-table filterable' data-data='/DataService/Ticket.svc/Ticket_Tour_Owner_Slot_Guide?$orderby=Creation' 
+                data-crud='/DataService/Ticket.svc/Ticket({0}L)' data-filter='DataFunction.tablefilter'>
+                 <thead>
+                    <tr>
+                        <th data-id='TicketLink' data-searchable="false" data-on-display='DataFormat.TourTicketUrl' data-column-parent='TicketId'>View</th>                        
+                        <th data-id='TicketDeleteLink' data-visible="false" data-searchable="false" data-on-display='DataFormat.TourTicketDeleteUrl' data-column-parent='TicketId'>Delete</th>
+                        <th data-column-name='SlotDayOfWeek' data-searchable='false' data-on-display='DataFormat.weekdayByInt' >Day</th>
+                        <th data-column-name='TicketId' data-searchable="false" data-visible='false' data-id-column='true' >Ticket Id</th>
+                        <th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+                        <th data-column-name='StartD' data-on-display='DataFormat.date'>Slot Start</th>
+                        
+                        <th data-column-name='GuideIdL' data-visible='false' >Guide Id</th>
+                        
+                        <th data-id='GuideLink' data-column-parent='GuideId' data-on-display='DataFormat.GuideNameUrl' >Guide</th>
+			    
+                        <th data-column-name='GroupName' >Group Name</th>
+
+                        <th data-column-name='OwnerIdL' data-visible='false' >Leader Id</th>
+                        <th data-column-name='Name' data-visible='false' >Leader Name</th>                        
+                        <th data-column-name='NameLink'  data-on-display='DataFormat.UserNameUrl' data-column-parent='OwnerId' >Leader</th>                        
+                        <th data-column-name='HomePhone' data-visible='false'>Leader Home Phone</th>                        
+                        <th data-column-name='MobilePhone' data-visible='false'>Leader Mobile Phone</th>
+
+                        <th data-column-name='PhoneSummary' data-visible='false' data-on-display='DataFunction.PhoneSummary' data-column-parent='OwnerId' >Leader Phone</th>                        
+
+                        <th data-column-name='Email' data-visible='false'  data-on-display='DataFormat.EmailLink'>Leader Email</th>                        
+                        
+                        <th data-column-name='GuestCountI' >Group Size</th>
+
+                        <th data-column-name='LunchOptIn' data-searchable='false'>Lunch Opt In</th>
+                        <th data-column-name='NumberOfAdultLunches' data-searchable='false'>Adult Lunches</th>
+                        <th data-column-name='NumberOfKidLunches' data-searchable='false'>Kid Lunches</th>
+                        <th data-column-name='TotalPriceOfLunch' data-searchable='false'>Lunch Total</th>
+                        
+                        <th data-column-name='IsSchoolGroup' data-searchable='false' data-visible='false'>Is School Group</th>
+                        <th data-column-name='IsAdultGroup' data-searchable='false' data-visible='false'>Is Adult Group</th>
+                        <th data-column-name='IsReligiousGroup' data-searchable='false' data-visible='false'>Is Religious Group</th>
+                        <th data-column-name='IsSeniorGroup' data-searchable='false' data-visible='false'>Is Senior Group</th>
+                        <th data-column-name='IsFamilyWithoutKids' data-searchable='false' data-visible='false'>Is Family Without Kids</th>
+                        <th data-column-name='IsFamilyWithKids' data-searchable='false' data-visible='false'>Is Family With Kids</th>
+                        <th data-column-name='IsBusinessGroup' data-searchable='false' data-visible='false'>Is Business Group</th>
+                        <th data-column-name='IsRavingFans' data-searchable='false' data-visible='false'>Is Raving Fans</th>
+                        <th data-column-name='IsOtherTypeGroup' data-searchable='false' data-visible='false'>Is Other Type Group</th>
+                        
+
+                        <th data-column-name='GroupTypeSummary' width="25%"  data-on-display='DataFunction.GroupTypeSummary' data-column-parent='OwnerId' >Group Type</th>                        
+
+                        <th data-column-name='IsVisuallyImpaired' data-searchable='false' data-visible='false'>Is Visually Impaired</th>
+                        <th data-column-name='IsHearingImpaired' data-searchable='false' data-visible='false'>Is Hearing Impaired</th>
+                        <th data-column-name='NeedsWheelChair' data-searchable='false' data-visible='false'>Needs Wheel Chair Impaired</th>
+                        <th data-column-name='OtherNeeds' data-searchable='false' data-visible='false'>Other Needs</th>
+                        <th data-column-name='OtherNeedsDescription' data-visible='false'>Other Needs Description</th>
+
+                        <th data-column-name='NeedsSummary' width="25%"   data-on-display='DataFunction.NeedsSummary' data-column-parent='OwnerId' >Special Needs</th>                        
+
+                        <th data-column-name='OtherVisitDescription' data-visible="false">Other Visit Description</th>
+                        <th data-column-name='Note'>Note</th>
+                        
+
+                        <th data-column-name='Guests' >Guests</th>
+                        <th data-column-name='CreationDateD' data-on-display='DataFormat.date' >Registration Date</th>
+                        
+                        
+		            </tr>
+                 </thead>
+             </table>
+             @if (!string.IsNullOrEmpty(Model))
+             {
+             <script type="text/javascript">
+                $("#tourslot_details").data("tools", ["copy", "csv", {
+                    "sExtends": "ajax",
+                    "sButtonText": "Excel",
+                    "fnClick": function (nButton, oConfig) {
+                        oConfig.sFieldBoundary = "'";
+                        oConfig.sFieldSeperator = ",";
+                        oConfig.mColumns = "visible";
+                        oConfig.fnCellRender = function (cell) {
+
+                            return (""+cell).replace(/\n\r/gi, "\n").replace(/<(?:.|\n)*?>/gm, '');
+                        }
+                        var sData = this.fnGetTableData(oConfig).replace("\\''", "\\'");
+                        
+                    
+                        $.ajax({
+                            "url": "/Admin/Excel/TourSlotSummary/"+@Model,
+                            "data": { "data": sData },
+                            "success": function(d,xhr){
+                                var href = d.href;
+                                $("#xcel_src").attr("src",href);
+                            },
+                            "dataType": "json",
+                            "type": "POST",
+                            "cache": false,
+                            "error": function () {
+                                alert("Error detected when sending table data to server");
+                            }
+                        });
+                    }
+
+                }]);
+            </script>
+             }
+             

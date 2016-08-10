@@ -1,0 +1,24 @@
+﻿@model cfares.domain._event.Schedule
+
+@{
+    ViewBag.Title = "Schedule";
+    ViewBag.Brief = "Event Schedule Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+        
+            <h1 class='clean-timezone'>@Model.Start</h1>
+            <p>
+            @Html.Raw(Model.Name)
+            </p>
+        
+        
+            @Html.Partial("ModelDetail/_Schedule")        
+@section Table{
+ <br class='clearfloat' />
+        
+            <br />
+            <h2 class='table-header'>Slots in this Schedule:</h2>
+            <div class='admin-table'>            
+            @Html.Partial("Tables/_TourSlotSchedule",Model.Id())
+        </div>
+        }

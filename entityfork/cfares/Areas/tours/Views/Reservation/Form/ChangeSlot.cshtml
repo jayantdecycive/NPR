@@ -1,0 +1,24 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+@{
+    string ticketId = "";
+    string href = "";
+    if(Model.tourTicket!=null){
+        ticketId=Model.tourTicket.TicketId;
+        href = "/Reservation/Date/" + Model.tourTicket.GuestCount+"?ticket=" + ticketId;
+    }else{
+        href = "/Reservation/Date/";
+    }
+    
+    
+}
+
+    <!--Change Slot-->
+    <div class="form-section" >
+    <span class="field-requirement"> * </span>
+    <div class="">
+    <span>Tour Date: </span>
+    <div class='value inline-block'>@Model.tourTicket.Slot.Start.ToLongDateString() &nbsp;&nbsp;&nbsp;<a href='@href' class='edit-button' data-ticket-id="@ticketId" id="change_slot">Edit</a></div>
+    
+    </div>
+    </div>

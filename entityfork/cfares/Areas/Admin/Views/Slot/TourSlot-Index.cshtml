@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "TourSlot-Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+@section Meta{
+
+@Html.Partial("Filters/Script/_Slot")
+
+}
+@section Action{    
+    <div class='button-cta right'>
+        @Html.ActionLink("Create New Tour Slot", "TourSlot-Create", new { }, new { data_left_icon = "ui-icon-circle-plus" })
+    </div>
+}
+<h1>Tour Slot Home</h1>
+@Html.Partial("Filters/Input/_TourSlot")
+@section Table{
+    <table id="tourslot_dash" class='data-table filterable' data-filter="DataFunction.tablefilter" data-data='/DataService/Slot.svc/Slot_Tour_Capacity_Event' 
+        data-crud='/DataService/Slot.svc/Slots({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotTourUrl' data-column-parent='SlotId'></th>       
+                <th data-id='SlotLinkDelete' data-visible="false" data-on-display='DataFormat.SlotTourDeleteUrl' data-column-parent='SlotId'></th>    
+                <th data-column-name='SlotDayOfWeek' data-searchable='false'data-on-display='DataFormat.weekdayByInt' >Day</th>                    
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+                <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+
+                <th data-column-name='Slot_TourIdL' data-visible='false' >Slot Tour Id</th>                
+                
+                <th data-column-name='GuideIdL' data-visible='false' >Guide Id</th>
+                        
+                <th data-id='GuideLink' data-column-parent='GuideId' data-on-display='DataFormat.UserUrl' >Guide</th>
+			    
+                <th data-column-name='CapacityI' >Capacity</th>
+
+                <th data-column-name='TotalTicketsI' >Tickets Reserved</th>        
+
+                <th data-column-parent='TotalTickets' data-on-display='DataFunction.TicketsRemaining'>Tickets Remaining</th>        
+			    
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th> 
+
+                
+
+		    </tr>
+            </thead>
+        </table>
+}

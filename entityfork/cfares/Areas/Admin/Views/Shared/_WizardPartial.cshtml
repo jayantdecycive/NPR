@@ -1,0 +1,17 @@
+﻿@using cfacore.shared.modules.com.admin;
+@model Wizard
+
+<div class="wizard-summary inline-block">
+    <h3>@Model.Description</h3>
+    <h2>@Model.Name</h2>
+</div>
+
+@foreach(cfacore.shared.modules.com.admin.WizardStep step in Model.Steps){
+    string currentCss = (step.Index == Model.CurrentStep.Index?"current-true":"current-false");
+    string stepUri = (step.Complete && step.Index != Model.CurrentStep.Index) ? step.Uri.ToString() : "javascript:void(0);";
+    <a href='@stepUri' class='wizard-step step-@step.Index complete-@step.Complete.ToString().ToLower() inline-block @currentCss'>
+        <span class="inline-block wizard-icon"></span>
+        <span class="block wizard-text">@step.Name</span>        
+        <span class="block wizard-bar"></span>        
+    </a>
+}

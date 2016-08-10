@@ -1,0 +1,49 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";    
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+@section Meta{
+    <script type="text/javascript">
+        var DataFunction = {
+            storeEditLink: function (row, val) {
+                return "<a href='Store/Edit/{0}'>Edit</a>".format(val);
+            }, 
+            storeLink: function (row, val) {
+                return "<a href='http://www.chick-fil-a.com/{0}' target='_blank'>View Online</a>".format(val);
+            }
+        };
+    </script>
+}
+
+
+<h1>Store Home</h1>
+<p>
+    Stores
+</p>
+
+
+        
+@section Table{
+<table id="store_dash" class='data-table' data-data='/DataService/Location.svc/Location_StreetAddress' 
+    data-crud='/DataService/Location.svc/Locations({0}L)'>
+        <thead>
+        <tr>
+            <th data-id='MarketableLink' data-column-parent='LocationNumber'  data-on-display='DataFunction.storeEditLink' ></th>
+            <th data-id='Name' >Location Name</th>			    
+			<th data-column-name='LocationNumberL' data-id-column='true' data-searchable='false'>Location Number</th>
+			<th data-column-name='LocationCode' data-searchable='false' data-on-display='EnumFormat.LocationCode' data-editable='false'>Location Code</th>
+            <th data-column-name='ConceptCode' data-searchable='false' data-on-display='EnumFormat.ConceptCode' data-editable='false'>Concept Code</th>
+            <th data-column-name='MarketableName' data-searchable='false'>Marketable Name</th>  
+            <th data-column-name='StreetAddressId' data-searchable='false' data-visible='false'>Street Address Id</th>  
+            <th data-column-name='Line1' 
+                data-id-override='StreetAddressId'data-crud='/DataService/Location.svc/Addresses({0}L)'>
+                Address</th>
+            <th data-column-name='City' data-id-override='StreetAddressId' data-crud='/DataService/Location.svc/Addresses({0}L)'>City</th>               
+            <th data-column-name='State' data-id-override='StreetAddressId'data-crud='/DataService/Location.svc/Addresses({0}L)'>State</th>               
+		</tr>
+        </thead>
+    </table>
+}

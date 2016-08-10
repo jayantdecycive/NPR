@@ -1,0 +1,26 @@
+﻿@model cfares.Models.LogOnModel
+@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" container logon-form">
+
+    <h1 class="center">Need To Cancel or Change Your Tour Reservation?</h1>
+    <p class="center">To cancel or modify your reservation, please enter the email address and password used to make your reservation.</p><br/>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-item">@Html.TextBoxFor(m => m.UserName, new { placeholder="Email" })</div>
+        <br/>
+        <div class="form-item">@Html.PasswordFor(m => m.Password, new { placeholder="Password" })</div>
+        <br/>
+        @Html.ActionLink("Forgot Your Password", "Forgot", "Account", null, new { data_role = "button", data_theme = "f", data_mini = "false", @class = "forgot" })
+        <input type="submit" value="Submit" data-inline="false" data-theme="a"/>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready( function () { $.mobile.ajaxEnabled = false; });
+
+</script>

@@ -1,0 +1,1468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D15121CF-A94B-4824-93F6-CFDD2CFE6F20}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cfares</RootNamespace>
+    <AssemblyName>cfares</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ResApplicationEntities-Deployment" Order="1" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com%3bUser Id=resSqlAdmin%3bpassword=drake7%3bPersist Security Info=True%3bdatabase=resApplication" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\ResApplicationEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="UserMySqlEntityAccess-Deployment" Order="2" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com%3bUser Id=resSqlAdmin%3bpassword=drake7%3bPersist Security Info=True%3bdatabase=resApplication" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\UserMySqlEntityAccess-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="ContentModelEntities-Deployment" Order="3" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com%3bUser Id=resSqlAdmin%3bpassword=drake7%3bPersist Security Info=True%3bdatabase=resApplication" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\ContentModelEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-res-Deployment" Order="4" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=id.chick-fil-a.com%3bInitial Catalog=resApplication%3bUser ID=idSqlAdmin%3b Password=drake7%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\cfa-res-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-res-mysql-Deployment" Order="5" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com%3buid=resSqlAdmin%3bpwd=drake7%3bdatabase=resApplication%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\cfa-res-mysql-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-app-fabric-Deployment" Order="6" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="telnet://localhost:22233/cfaRes" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\cfa-app-fabric-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-queue-Deployment" Order="7" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql" Enabled="False">
+            <PreSource Path="" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\cfa-queue-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PublishDatabases>true</PublishDatabases>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=4.46.4422.26284, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="ColorCode, Version=1.0.1.62759, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\ColorCode.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.2.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation">
+      <HintPath>_bin_deployableAssemblies\FiftyOne.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.8.0.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>net\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.5.4\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Web.6.5.4\lib\net40\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>net\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>net\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Mvc, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\SquishIt.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Hosting.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.ServiceModel.DomainServices.Server, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WikiPlex, Version=2.0.0.259, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\WikiPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.7.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>net\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AutoScriptController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CsvController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExcelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OccurrenceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PartialController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlotController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StoreController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TicketController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TokenConsumerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WizardController.cs" />
+    <Compile Include="Areas\executive\Controllers\HomeController.cs" />
+    <Compile Include="Areas\executive\executiveAreaRegistration.cs" />
+    <Compile Include="Areas\mobile\Controllers\AccountController.cs" />
+    <Compile Include="Areas\mobile\Controllers\HomeController.cs" />
+    <Compile Include="Areas\mobile\Controllers\TicketController.cs" />
+    <Compile Include="Areas\mobile\mobileAreaRegistration.cs" />
+    <Compile Include="Areas\tours\Controllers\AccountController.cs" />
+    <Compile Include="Areas\tours\Controllers\ReservationController.cs" />
+    <Compile Include="Areas\tours\Controllers\EmailController.cs" />
+    <Compile Include="Areas\tours\Controllers\HomeController.cs" />
+    <Compile Include="Areas\tours\Controllers\TokenController.cs" />
+    <Compile Include="Areas\tours\ToursAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoScriptController.cs" />
+    <Compile Include="Controllers\DiagnosticsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OccurenceController.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
+    <Compile Include="DataService\Common.svc.cs">
+      <DependentUpon>Common.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\Location.svc.cs">
+      <DependentUpon>Location.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\ResEvent.svc.cs">
+      <DependentUpon>ResEvent.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\Slot.svc.cs">
+      <DependentUpon>Slot.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\Ticket.svc.cs">
+      <DependentUpon>Ticket.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\User.svc.cs">
+      <DependentUpon>User.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\Validation.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Global\Browser.cs" />
+    <Compile Include="infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\IProfileRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ILocation.cs" />
+    <Compile Include="Service\IOccurrence.cs" />
+    <Compile Include="Service\IResEvent.cs" />
+    <Compile Include="Service\ISlot.cs" />
+    <Compile Include="Service\ITicket.cs" />
+    <Compile Include="Service\IUser.cs" />
+    <Compile Include="Service\Location.svc.cs">
+      <DependentUpon>Location.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Occurrence.svc.cs">
+      <DependentUpon>Occurrence.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ResEvent.svc.cs">
+      <DependentUpon>ResEvent.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Slot.svc.cs">
+      <DependentUpon>Slot.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Ticket.svc.cs">
+      <DependentUpon>Ticket.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\User.svc.cs">
+      <DependentUpon>User.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Content\Data\Xml\SampleWizard.xml" />
+    <Content Include="Areas\Admin\Content\Img\Master\cfa-logo.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\content-grad.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\topshadow.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\wizard-complete.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\wizard-current.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\wizard-sprite.png" />
+    <Content Include="Areas\Admin\Content\Img\Master\wizard-todo.png" />
+    <Content Include="Areas\Admin\Content\Site.css" />
+    <Content Include="Areas\Admin\Scripts\Event\Summary.js" />
+    <Content Include="Areas\Admin\Scripts\Occurrence\Edit-Dash.js" />
+    <Content Include="Areas\Admin\Scripts\Slot\pass.txt" />
+    <Content Include="Areas\mobile\Content\Fonts\caeciliacom-75bold-webfont.svg" />
+    <Content Include="Areas\mobile\Content\Img\mobile-header.png" />
+    <Content Include="Areas\mobile\Content\Img\mobile-photos.png" />
+    <Content Include="Areas\mobile\Content\Site.css" />
+    <Content Include="Areas\mobile\Scripts\operator-temp-login.js" />
+    <Content Include="Areas\mobile\Scripts\Social.js" />
+    <Content Include="Areas\mobile\Scripts\register.js" />
+    <Content Include="Areas\mobile\Scripts\slot.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\ajax-loader.gif" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\ajax-loader.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\icons-18-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\icons-18-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\icons-36-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\images\icons-36-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile.structure-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile.structure-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile.theme-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\css\themes\default\jquery.mobile.theme-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\accessibility.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\features.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\getting-started.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\intro.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\about\platforms.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\data-attributes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\events-nav.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\globalconfig.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\mediahelpers.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\api\themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\api-buttons.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-grouped.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-icons.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-inline.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\buttons-types.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\buttons\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\dialogTransition.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\iOSFullscreen.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\jq17b1.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\loadingMessage.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\loadingMessageTextVisible.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\minScrollBack.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\pageLoadErrorMessage.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\pageTransition.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\pushState.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\config\touchOverflow.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\api-content.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-set-events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-set-methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-set-options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible-set.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-collapsible.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-grids.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-html.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\content-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\content\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\checkboxes\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\checkboxes\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\checkboxes\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\checkboxes\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\docs-forms.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-all-compare.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-all-mini.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-all-native.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-all.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-sample.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\plugin-eventsmethods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\radiobuttons\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\radiobuttons\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\radiobuttons\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\radiobuttons\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\search\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\search\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\search\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\search\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\selects\custom.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\selects\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\selects\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\selects\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\selects\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\slider\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\slider\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\slider\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\slider\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\switch\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\switch\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\switch\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\switch\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\textinputs\events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\textinputs\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\textinputs\methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\textinputs\options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\docs-lists.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-af.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-ag.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-bb.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-bk.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-hc.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-k.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-mg.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-ok.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-p.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-rh.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-ws.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\album-xx.jpg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\de.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\fi.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\gb.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\gf.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\sj.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\images\us.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-all-full.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-count.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-divider.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-formatting.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-forms-inset.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-forms.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-icons.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-inset.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-nested.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-ol.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-performance.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-readonly-inset.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-readonly.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-search-filtertext.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-search-inset.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-search-with-dividers.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-search.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-split-purchase.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-split.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-thumbnails.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\lists\lists-ul.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\nav.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog-alt.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog-buttons.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog-overlay.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog-success.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog-with-select.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dialog.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\docs-links-urltest\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\animals.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\colors.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\sample-reuse-page-external.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\sample-reuse-page.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\vehicles.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\multipage-template.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-anatomy.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-cache.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-customtransitions.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-dialogs.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-dynamic.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-links.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-navmodel.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-scripting.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-template.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-titles.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-transitions-dialog.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-transitions-page.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\page-transitions.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes\theme-a.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes\theme-b.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes\theme-c.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes\theme-d.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\pages-themes\theme-e.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\phonegap.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\touchoverflow.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\transition-success.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-events.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-a.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-b.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-c.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-d.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-e.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-f.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-g.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms-h.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-forms.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-methods.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed-options.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fixed.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-fullscreen.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\bars-themes.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\docs-bars.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\docs-footers.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\docs-headers.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\docs-navbar.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\footer-persist-a.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\footer-persist-b.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\footer-persist-c.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\footer-persist-d.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\09-chat2.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\100-coffee.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\18-envelope.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\19-gear.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\21-skull.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\30-key.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\34-coffee.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\88-beermug.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\glyphish-icons\Read me first - license.txt" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\images\photo-run.jpeg" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\toolbars\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\css\jqm-docs.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\ios_icon.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\ios_startup.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\jqm-sitebg.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\jquery-logo.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\mobile-devices.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\px-ccc.gif" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\themroller-mobile-logo.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\images\version.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\js\jqm-docs.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\_assets\js\_viewsource.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\index.html" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\js\jquery.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\js\jquery.mobile-1.1.0.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\js\jquery.mobile-1.1.0.min.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\ajax-loader.gif" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\ajax-loader.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\icons-18-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\icons-18-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\icons-36-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\images\icons-36-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile-1.1.0.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile-1.1.0.min.js" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile.structure-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile.structure-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile.theme-1.1.0.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\jquery.mobile.theme-1.1.0.min.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\images\ajax-loader.gif" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\images\icons-18-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\images\icons-18-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\images\icons-36-black.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\images\icons-36-white.png" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\res-mobile.css" />
+    <Content Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\themes\res-mobile.min.css" />
+    <Content Include="Areas\tours\Content\Img\bg-gradient.jpg" />
+    <Content Include="Areas\tours\Content\Img\button-graident-highlight.png" />
+    <Content Include="Areas\tours\Content\Img\button-graident-left.png" />
+    <Content Include="Areas\tours\Content\Img\button-graident-right.png" />
+    <Content Include="Areas\tours\Content\Img\button-graident-shadow.png" />
+    <Content Include="Areas\tours\Content\Img\buttons.png" />
+    <Content Include="Areas\tours\Content\Img\calendar-texture-fade.png" />
+    <Content Include="Areas\tours\Content\Img\calendar-texture.png" />
+    <Content Include="Areas\tours\Content\Img\check.png" />
+    <Content Include="Areas\tours\Content\Img\details-bg.png" />
+    <Content Include="Areas\tours\Content\Img\email\brag-email.png" />
+    <Content Include="Areas\tours\Content\Img\email\brag-fb.png" />
+    <Content Include="Areas\tours\Content\Img\email\brag-header.png" />
+    <Content Include="Areas\tours\Content\Img\email\brag-text.png" />
+    <Content Include="Areas\tours\Content\Img\email\brag-tw.png" />
+    <Content Include="Areas\tours\Content\Img\email\header.png" />
+    <Content Include="Areas\tours\Content\Img\guest-bg.png" />
+    <Content Include="Areas\tours\Content\Img\logo-small.png" />
+    <Content Include="Areas\tours\Content\Img\month-icon.png" />
+    <Content Include="Areas\tours\Content\Img\resend-btn.png" />
+    <Content Include="Areas\tours\Content\Img\resend-btn_2.png" />
+    <Content Include="Areas\tours\Content\Img\resend-btn_3.png" />
+    <Content Include="Areas\tours\Content\Img\shadow-repeat.png" />
+    <Content Include="Areas\tours\Content\Img\shadow.png" />
+    <Content Include="Areas\tours\Content\Img\step2.png" />
+    <Content Include="Areas\tours\Content\Img\step3.png" />
+    <Content Include="Areas\tours\Content\Img\step4.png" />
+    <Content Include="Areas\tours\Content\Img\step5.png" />
+    <Content Include="Areas\tours\Content\Img\team-bg.png" />
+    <Content Include="Areas\tours\Content\Img\tours-photos.png" />
+    <Content Include="Areas\tours\Content\Img\week-icon.png" />
+    <Content Include="Areas\tours\Content\Img\wizard-section-active.png" />
+    <Content Include="Areas\tours\Content\Img\wizard-section-past.png" />
+    <Content Include="Areas\tours\Content\Img\wizard-section-upcoming.png" />
+    <Content Include="Areas\tours\Content\one-column.css" />
+    <Content Include="Areas\tours\Content\Fonts\caeciliacom-75bold-webfont.svg" />
+    <Content Include="Areas\tours\Content\Img\accordian-closed.jpg" />
+    <Content Include="Areas\tours\Content\Img\accordian-closed.png" />
+    <Content Include="Areas\tours\Content\Img\accordian-open.jpg" />
+    <Content Include="Areas\tours\Content\Img\background-gradient.jpg" />
+    <Content Include="Areas\tours\Content\Img\bragbox-bg.png" />
+    <Content Include="Areas\tours\Content\Img\calendar-icons.png" />
+    <Content Include="Areas\tours\Content\Img\calendar.png" />
+    <Content Include="Areas\tours\Content\Img\cancel-buttons.png" />
+    <Content Include="Areas\tours\Content\Img\confirm-buttons.png" />
+    <Content Include="Areas\tours\Content\Img\edit-information-buttons.png" />
+    <Content Include="Areas\tours\Content\Img\head-gradient-hover.jpg" />
+    <Content Include="Areas\tours\Content\Img\head-gradient.jpg" />
+    <Content Include="Areas\tours\Content\Img\head-graphic.jpg" />
+    <Content Include="Areas\tours\Content\Img\header-graphic.png" />
+    <Content Include="Areas\tours\Content\Img\hotel-bg.png" />
+    <Content Include="Areas\tours\Content\Img\icon-facebook.png" />
+    <Content Include="Areas\tours\Content\Img\icon-mail.png" />
+    <Content Include="Areas\tours\Content\Img\icon-pinterest.png" />
+    <Content Include="Areas\tours\Content\Img\icon-twitter.png" />
+    <Content Include="Areas\tours\Content\Img\nav-gradient.jpg" />
+    <Content Include="Areas\tours\Content\Img\submit-buttons.png" />
+    <Content Include="Areas\tours\Content\Img\submit.png" />
+    <Content Include="Areas\tours\Content\Img\timepicker-divider.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_flat_75_f5f5e7_40x100.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_highlight-soft_100_eae7d1_1x100.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_highlight-soft_75_efeed0_1x100.png" />
+    <Content Include="Areas\tours\Content\Img\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Areas\tours\Content\Img\ui-icons_222222_256x240.png" />
+    <Content Include="Areas\tours\Content\Img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Areas\tours\Content\Img\ui-icons_958981_256x240.png" />
+    <Content Include="Areas\tours\Content\Img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Areas\tours\Content\jquery-ui-form.css" />
+    <Content Include="Areas\tours\Content\jquery-ui.css" />
+    <Content Include="Areas\tours\Content\Site.css" />
+    <Content Include="Areas\tours\Content\two-column.css" />
+    <Content Include="Areas\tours\Scripts\calendarLogic.js" />
+    <Content Include="Areas\tours\Scripts\formLogic.js" />
+    <Content Include="Areas\tours\Scripts\init.js" />
+    <Content Include="Areas\tours\Scripts\multiEntryList.js" />
+    <Content Include="Areas\tours\Scripts\operator-temp-login.js" />
+    <Content Include="Content\Reset.css" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_diagonals-small_50_b3b3b3_40x40.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_flat_10_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_highlight-soft_25_e2e5e9_1x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_highlight-soft_35_e2e5e9_1x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_inset-soft_45_e2e5e9_1x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_000000_256x240.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_666666_256x240.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\customer-grey\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\customer-grey\jquery-ui-1.8.21.custom.css" />
+    <Content Include="Data\Xml\ResEventTheme\admin.xml" />
+    <Content Include="Data\Xml\ResEventType\admin.xml" />
+    <Content Include="Data\Xml\ResTemplate\admin.xml" />
+    <Content Include="net\ColorCode.dll" />
+    <Content Include="net\ColorCode.pdb" />
+    <Content Include="net\ExcelLibrary.dll" />
+    <Content Include="net\License.txt" />
+    <Content Include="net\LumenWorks.Framework.IO.dll" />
+    <Content Include="net\MarkdownSharp.dll" />
+    <Content Include="net\MarkdownSharp.pdb" />
+    <Content Include="net\RazorEngine.dll" />
+    <Content Include="net\System.Web.Razor.dll" />
+    <Content Include="net\WikiPlex.dll" />
+    <Content Include="net\WikiPlex.pdb" />
+    <Content Include="net\WikiPlex.XML" />
+    <Content Include="net\WinSCP.dll" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\pie\PIE.htc" />
+    <Content Include="Scripts\pie\PIE.js" />
+    <Content Include="Scripts\pie\PIE_uncompressed.htc" />
+    <Content Include="Scripts\pie\PIE_uncompressed.js" />
+    <Content Include="Content\Browser\ie-Legacy.css" />
+    <Content Include="Content\Browser\iOS.css" />
+    <Content Include="Content\Browser\Mobile.css" />
+    <Content Include="Content\Browser\Phone.css" />
+    <Content Include="Content\Browser\Tablet.css" />
+    <Content Include="Content\Browser\Webkit.css" />
+    <Content Include="Content\gen\pass.txt" />
+    <Content Include="Content\Media\Font\caeciliacom-75bold-webfont.svg" />
+    <Content Include="Content\plugins.css" />
+    <Content Include="Content\plugins\datatables\images\back_disabled.png" />
+    <Content Include="Content\plugins\datatables\images\back_enabled.png" />
+    <Content Include="Content\plugins\datatables\images\back_enabled_hover.png" />
+    <Content Include="Content\plugins\datatables\images\forward_disabled.png" />
+    <Content Include="Content\plugins\datatables\images\forward_enabled.png" />
+    <Content Include="Content\plugins\datatables\images\forward_enabled_hover.png" />
+    <Content Include="Content\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Content\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Content\plugins\datatables\images\sort_both.png" />
+    <Content Include="Content\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Content\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Content\plugins\datatables\jquery.dataTables.css" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-soft_25_74adc7_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_6699cc_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_bedce9_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-blue\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_45_ebebeb_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_55_ebebeb_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-soft_25_24980a_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_339900_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-green\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-soft_25_86898a_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_86898a_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-grey\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_25_3a3838_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_45_f0f0ed_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-soft_25_3a3838_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cc3300_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_highlight-soft_25_383636_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cc3300_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-orange\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-soft_25_d60000_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_d60000_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-red\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_diagonals-small_75_dadada_40x40.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_flat_10_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_highlight-soft_25_383636_1x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_highlight-soft_35_383636_1x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_inset-soft_45_383636_1x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-table\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-table\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-table\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\admin-table\images\ui-icons_cc3300_256x240.png" />
+    <Content Include="Content\themes\admin-table\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-table\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="DataService\Common.svc" />
+    <Content Include="DataService\Location.svc" />
+    <Content Include="DataService\ResEvent.svc" />
+    <Content Include="DataService\Slot.svc" />
+    <Content Include="DataService\Ticket.svc" />
+    <Content Include="DataService\User.svc" />
+    <Content Include="Data\Xml\ResEventTheme\executive.xml" />
+    <Content Include="Data\Xml\ResEventTheme\lgstory.xml" />
+    <Content Include="Data\Xml\ResEventTheme\story.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\Xml\ResEventTheme\team.xml" />
+    <Content Include="Data\Xml\ResEventTheme\tours.xml" />
+    <Content Include="Data\Xml\ResEventType\team.xml" />
+    <Content Include="Data\Xml\ResEventType\lgstory.xml" />
+    <Content Include="Data\Xml\ResEventType\story.xml" />
+    <Content Include="Data\Xml\ResEventType\executive.xml" />
+    <Content Include="Data\Xml\ResTemplate\mobile.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\Xml\ResTemplate\tours.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\Xml\Wizards\CreateTeamTour.xml" />
+    <Content Include="Data\Xml\Wizards\CreateLargeStoryTour.xml" />
+    <Content Include="Data\Xml\Wizards\CreateSmallStoryTour.xml" />
+    <Content Include="Data\Xml\Wizards\CreateTour.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="net\AjaxMin.dll" />
+    <Content Include="net\dotless.Core.dll" />
+    <Content Include="net\EcmaScript.NET.modified.dll" />
+    <Content Include="net\Microsoft.ApplicationServer.Caching.Client.dll" />
+    <Content Include="net\Microsoft.ApplicationServer.Caching.Core.dll" />
+    <Content Include="net\Moq.dll" />
+    <Content Include="net\MySql.Data.dll" />
+    <Content Include="net\MySql.Web.dll" />
+    <Content Include="net\Ninject.dll" />
+    <Content Include="net\SquishIt.Framework.dll" />
+    <Content Include="net\SquishIt.Mvc.dll" />
+    <Content Include="net\Yahoo.Yui.Compressor.dll" />
+    <Content Include="Scripts\api\api-base.js" />
+    <Content Include="Scripts\backbone.dev.js" />
+    <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\backbone.localStorage.js" />
+    <Content Include="Scripts\datajs-1.0.2.min.js" />
+    <Content Include="Scripts\datatables\CfaAdmin.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\exclude_columns.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\index.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\css\ColVis.css" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\css\ColVisAlt.css" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\a69b02bcf2.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\ccb5a49865.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\ColVis.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\global.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\index.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\css\doc.css" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\css\shCore.css" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\images\extended.png" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\images\button.png" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\js\ColVis.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\media\js\ColVis.min.js" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\mouseover.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\style.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\text.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\theme.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\title_callback.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\two_tables.html" />
+    <Content Include="Scripts\datatables\ColVis-1.0.7\two_tables_identical.html" />
+    <Content Include="Scripts\datatables\ExtendedDataTablesFactory.js" />
+    <Content Include="Scripts\datatables\jquery.dataTables.editable.js" />
+    <Content Include="Scripts\datatables\extendedDataTables.js" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\alter_buttons.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\alt_init.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\button_text.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\collection.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\defaults.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\index.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\css\TableTools.css" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\css\TableTools_JUI.css" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\background.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\collection.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\collection_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\copy.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\copy_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\csv.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\csv_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\pdf.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\pdf_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\print.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\print_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\xls.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\images\xls_hover.png" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\js\TableTools.js" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\js\TableTools.min.js" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\swf\copy_csv_xls.swf" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\multiple_tables.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\multi_instance.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\pdf_message.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\plug-in.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\select_multi.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\select_single.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\swf_path.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\tabs.html" />
+    <Content Include="Scripts\datatables\TableTools-2.0.3\theme.html" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\changelog.txt" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\agenda-views.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\basic-views.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\cupertino\theme.css" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\default.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\external-dragging.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\gcal.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\json.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\selectable.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\demos\theme.html" />
+    <Content Include="Scripts\fullcalendar-1.5.3\fullcalendar\fullcalendar.css" />
+    <Content Include="Scripts\fullcalendar-1.5.3\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Scripts\fullcalendar-1.5.3\fullcalendar\gcal.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\GPL-LICENSE.txt" />
+    <Content Include="Scripts\fullcalendar-1.5.3\jquery\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\jquery\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="Scripts\fullcalendar-1.5.3\MIT-LICENSE.txt" />
+    <Content Include="Scripts\gen\pass.txt" />
+    <Content Include="Scripts\jquery\jquery.jeditable.js" />
+    <Content Include="Scripts\datatables\KeyTable.js" />
+    <Content Include="Scripts\datatables\plugins.js" />
+    <Content Include="Scripts\datatables\stephansTablePlugin.js" />
+    <Content Include="Scripts\init.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\plugins.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\Underscore.js" />
+    <Content Include="Service\Location.svc" />
+    <Content Include="Service\Occurrence.svc" />
+    <Content Include="Service\ResEvent.svc" />
+    <Content Include="Service\Slot.svc" />
+    <Content Include="Service\Ticket.svc" />
+    <Content Include="Service\User.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Areas\tours\Views\Home\Index.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\_NavigationBar.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\TwoColumn\_Column5050.cshtml" />
+    <Content Include="Areas\tours\Views\Web.config" />
+    <Content Include="Areas\tours\Content\Fonts\caeciliacom-75bold-webfont.eot" />
+    <Content Include="Areas\tours\Content\Fonts\caeciliacom-75bold-webfont.ttf" />
+    <Content Include="Areas\tours\Content\Fonts\caeciliacom-75bold-webfont.woff" />
+    <Content Include="Areas\tours\Views\Shared\TwoColumn\Hotels.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\Wizard\WizardPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\TwoColumn\_Column6633.cshtml" />
+    <Content Include="Areas\tours\Views\Home\Directions.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\OneColumn\_Notification.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\TwoColumn\PlanMain.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\OneColumn\_LeftJustified.cshtml" />
+    <Content Include="Areas\tours\Views\Home\Faq.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\Faq\CaresPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\Faq\_Faq.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\LogOn.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Calendar.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\Reset.cshtml" />
+    <Content Include="51Degrees.mobi.config" />
+    <Content Include="_bin_deployableAssemblies\FiftyOne.Foundation.dll" />
+    <None Include="Areas\Admin\Content\Data\Xml\Wizard.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Areas\Admin\Views\Event\Confirm.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Create-Dash.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Past.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Upcoming.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Verify.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Tours-Landing.cshtml" />
+    <Content Include="Areas\Admin\Views\Media\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Media\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Media\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Media\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Occurrence\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Occurrence\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Occurrence\Edit-Dash.cshtml" />
+    <Content Include="Areas\Admin\Views\Occurrence\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Occurrence\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ChildActions\Picker\_ResTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ChildActions\Picker\_ResType.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_Occurrence.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_Store.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_User.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Tables\_Tickets.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_Admin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_Distributor.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_Store.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_User.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Enum\_ResEventStatus.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Enum\_SlotStatus.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Enum\_UserAccountStatus.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\jqui\_DatePicker.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\jqui\_DateRange.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_ResTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_ResType.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_Slot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\RelationalTable\_Slots.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\RelationalTable\_Tickets.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\RelationalTable\_Users.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\_RelationalAutoComplete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\Slots\_TourSlot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Media.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Occurrence.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Slot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Store.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Ticket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_User.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\Slots\_TourSlot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Media.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Occurrence.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_ResEventShort.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Slot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Store.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Ticket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_User.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_PastSlotsDash.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_UpcomingSlotsDash.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLogOnPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_WizardPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\TourSlot-Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\TourSlot-Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\TourSlot-Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\TourSlot-Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Store\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Store\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Store\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Wizard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Summary.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\TeamReservationForm.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Delete.cshtml" />
+    <Content Include="Areas\executive\Views\Web.config" />
+    <Content Include="Areas\executive\Views\Home\Index.cshtml" />
+    <Content Include="Areas\mobile\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_MessagePartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\LogOn.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminTitlePartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\ToString.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Begin.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\AdditionalStopsPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\AgeRequirementPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\GroupSize.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\GroupTypePartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\NewsletterPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\OperatorGroupTypePartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\OperatorOptionsPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\SpecialNeedsPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\UserInfoForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\AdminLink.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\type\_DateRange.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicket-Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicket-Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicket-Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicket-Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_Slot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Dash.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_Occurrence.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicket-Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\Tickets\_TourTicket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\Tickets\_TourTicket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\AdminLinkLoadable.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\TourSlot-Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Slot\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_ScheduleSelection.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourSlotSelection.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourOccurrenceSelection.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourTicket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Enum\_UserOperationRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\type\_TimeZonedDate.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourSlotCheckbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_Guide.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Dialogs\_SlotOperations.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AutoComplete\_GuideCollection.cshtml" />
+    <Content Include="Areas\mobile\Content\Fonts\caeciliacom-75bold-webfont.eot" />
+    <Content Include="Areas\mobile\Content\Fonts\caeciliacom-75bold-webfont.ttf" />
+    <Content Include="Areas\mobile\Content\Fonts\caeciliacom-75bold-webfont.woff" />
+    <Content Include="Areas\Admin\Views\Event\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Input\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Script\_ResEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Input\_SlotDash.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Script\_Slot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Input\_TourSlot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Input\_TourTicket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Script\_TourTicket.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourTicketNoSlot.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Script\_TourTicketNoSlot.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\TourTicketNoSlot-Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Filters\Script\_TourTicketAll.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelForm\_Schedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ModelDetail\_Schedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_EventSelection.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Picker\_Schedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Badge\_Schedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tables\_TourSlotSchedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Res-Landing.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Operator-Landing.cshtml" />
+    <None Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-sample-response.php" />
+    <None Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\forms\forms-sample-selfsubmit.php" />
+    <None Include="Areas\mobile\Scripts\jquery.mobile-1.1.0\demos\docs\pages\dynamic-samples\category.php" />
+    <Content Include="Areas\mobile\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\mobile\Views\Home\Index.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\_Navigation.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\mobile\Views\Home\Faq.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\CaresPartial.cshtml" />
+    <Content Include="Areas\mobile\Views\Home\Directions.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Confirmation.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\LogOn.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Modify.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\ReSend.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Forgot.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Dash.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Overview.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Register.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Slot.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Message.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Details.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Delete.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\Edit.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\EditConfirm.cshtml" />
+    <Content Include="Areas\mobile\Views\Shared\OperatorLogOn.cshtml" />
+    <None Include="Areas\tours\Content\Doc\directions.pdf" />
+    <Content Include="Areas\tours\Views\Reservation\Confirm.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\ModifyTickets.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\LostInvitation.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\LostConfirmation.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\TeamLogOn.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\ForgotPassword.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\tours\Views\Shared\LogOnReturning.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\LunchOptionDisplay.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\Operator\AdditionalStops.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\SpecialNeeds.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\Customer\GroupType.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\Customer\UserCreation.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\SlotInfo.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\ReviewNew.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\UserInfo.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\FormReview\GroupName.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Review.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Display.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Modify.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\LunchPartial.cshtml" />
+    <Content Include="Areas\tours\Views\Shared\UserSignIn.cshtml" />
+    <Content Include="Areas\tours\Views\Reservation\Form\ChangeSlot.cshtml" />
+    <None Include="Scripts\pie\PIE.php" />
+    <None Include="Scripts\fullcalendar-1.5.3\demos\json-events.php" />
+    <Content Include="Views\Shared\Email\EmailReminder.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Diagnostics\Backbone.cshtml" />
+    <Content Include="Views\Diagnostics\DataTablesSimple.cshtml" />
+    <Content Include="Views\Diagnostics\Index.cshtml" />
+    <Content Include="Views\Diagnostics\LoadAlternativeView.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\FooTemplate.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Operator\Faq.cshtml" />
+    <Content Include="Views\Home\Operator\OperatorPlan.cshtml" />
+    <Content Include="Views\Shared\EmailNotFound.cshtml" />
+    <Content Include="Views\Shared\Email\AdminCancellationNotification.cshtml" />
+    <Content Include="Views\Shared\Email\AdminConfirmation.cshtml" />
+    <Content Include="Views\Shared\Email\CustomerCancellationNotification.cshtml" />
+    <Content Include="Views\Shared\Email\EmailConfirmation.cshtml" />
+    <Content Include="Views\Shared\Email\ResetEmail.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Email\TestEmail.cshtml" />
+    <Content Include="Views\Shared\Email\EmailConfirmationView.cshtml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\executive\Models\" />
+    <Folder Include="Areas\executive\Views\Shared\" />
+    <Folder Include="Areas\mobile\Models\" />
+    <Folder Include="Areas\tours\Models\" />
+    <Folder Include="Content\Media\Image\admin\" />
+    <Folder Include="Data\Xls\admin\" />
+    <Folder Include="Models\Paging\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cfacore\cfacore.dao\cfacore.shared.dao.csproj">
+      <Project>{1B073C78-AE9E-45E3-B4FD-6C5F95459A6A}</Project>
+      <Name>cfacore.shared.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.domain\cfacore.shared.domain.csproj">
+      <Project>{F06B4A08-F390-4206-9FB8-6F8BDE4F9DB7}</Project>
+      <Name>cfacore.shared.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.modules\cfacore.shared.modules.csproj">
+      <Project>{7512E2E7-225D-41D4-B27B-F811F41F9F65}</Project>
+      <Name>cfacore.shared.modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.service\cfacore.shared.service.csproj">
+      <Project>{D47E604D-1E7A-4C0F-910D-BBC58CD1D563}</Project>
+      <Name>cfacore.shared.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.appfabric.dao\cfares.appfabric.dao.csproj">
+      <Project>{8EA7FC4E-46B2-4509-BDD1-5EC670C57F29}</Project>
+      <Name>cfares.appfabric.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.domain\cfares.domain.csproj">
+      <Project>{893D1B65-F5FB-429C-BCC5-07F8C834A0CA}</Project>
+      <Name>cfares.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.file.dao\cfares.xml.dao.csproj">
+      <Project>{2028A093-3FA4-4B59-A87C-D18B80FD693B}</Project>
+      <Name>cfares.xml.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.mysql.dao\cfares.mysql.dao.csproj">
+      <Project>{E5CB6ABB-683C-44E1-8CF7-9C1E778C613A}</Project>
+      <Name>cfares.mysql.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.queue.dao\cfares.queue.dao.csproj">
+      <Project>{56CD7B07-7F18-459E-862E-D1E90F3F8728}</Project>
+      <Name>cfares.queue.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.service\cfares.service.csproj">
+      <Project>{F7AF332A-097C-4E4F-8B68-FCB33232CCD2}</Project>
+      <Name>cfares.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.site.modules\cfares.site.modules.csproj">
+      <Project>{9E60A97B-7BD3-4F03-9515-6F9787AC2B42}</Project>
+      <Name>cfares.site.modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.sql.dao\cfares.mssql.dao.csproj">
+      <Project>{464F97B6-9439-4631-AFEF-9577F01F07CF}</Project>
+      <Name>cfares.mssql.dao</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Data\credentials\smtp.csv" />
+    <None Include="Content\Media\Font\caeciliacom-75bold-webfont.eot" />
+    <None Include="Content\Media\Font\caeciliacom-75bold-webfont.ttf" />
+    <None Include="Content\Media\Font\caeciliacom-75bold-webfont.woff" />
+    <None Include="Scripts\datatables\ColVis-1.0.7\media\docs\media\license\Syntax Highlighter" />
+    <None Include="Scripts\datatables\ColVis-1.0.7\media\js\ColVis.min.js.gz" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\as3\lib\AlivePDF.swc" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\as3\ZeroClipboard.as" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\as3\ZeroClipboardPdf.as" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\images\psd\collection.psd" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\images\psd\copy document.psd" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\images\psd\file_types.psd" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\images\psd\printer.psd" />
+    <None Include="Scripts\datatables\TableTools-2.0.3\media\js\TableTools.min.js.gz" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>65271</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://tours.local.chick-fil-a.com</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+</Project>

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+@section Meta{
+
+@Html.Partial("Filters/Script/_TourTicketNoSlot")
+
+}
+<h1>Slotless Ticket Dash</h1>
+<p class='inline-block'>Tickets that have no slots</p>
+            
+
+
+@section Action{
+    <div class='button-cta right'>
+        @Html.ActionLink("Create New Tour Ticket", "TourTicket-Create", new { }, new { data_left_icon = "ui-icon-circle-plus" })
+    </div>
+}
+
+@section Table{
+    @Html.Partial("Tables/_TourTicketNoSlot")
+
+    
+    <div class='button-cta left'>
+                @Html.ActionLink("Back to Regular Tickets", "TourTicket-Index", new { }, new { data_left_icon = "ui-icon-circle-arrow-w" })
+    
+    </div>
+}

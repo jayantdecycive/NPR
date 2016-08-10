@@ -1,0 +1,170 @@
+﻿@model cfares.domain._event.ResEvent
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    cfacore.domain.user.User filterUser = new cfacore.domain.user.User();
+    filterUser.Name = new cfacore.shared.domain.user.Name("Filter by Guide");
+    filterUser.Id("0");
+}
+@section Meta{
+    <script src="@Url.Content("~/Areas/Admin/Scripts/Event/Summary.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var DataFunction = {
+            occurrencefilter: function () {
+
+                var dayOfWeek = $("#filter-day").val();
+                var guide = $($("#filter-guide .jq-auto-complete").data("pk")).val();
+
+                var filterArr = [];
+                
+                if (dayOfWeek)
+                    filterArr.push("{0} eq {1}".format("SlotDayOfWeek", dayOfWeek));
+
+                if (guide && guide != "0")
+                    filterArr.push("{0} eq {1}L".format("GuideId", guide));
+
+                filterArr.push("OccurrenceId eq @Model.ProtoOccurrence.OccurrenceId");
+
+                if (filterArr.length)
+                    return "(" + filterArr.join(" and ") + ")";
+
+                
+            },
+            ticketDifference: function (sourceObject, val, column) {
+                var dif = sourceObject.Capacity - sourceObject.TotalCount;
+                Model.capacityCache["_"+sourceObject.SlotId]=dif;
+                return dif;
+            }
+        };
+        $(function(){
+            $(".delete-checked").click(function(){
+                
+            });
+        });
+    </script>
+}
+
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+        <div class='model badge short'>
+        <h1 class='inline-block'>Event Summary</h1>
+            <div class='button-cta right dash-header' data-icon="ui-icon-calendar">
+
+                @Html.ActionLink("Create a Single Slot for this Event", "TourSlot-Create", "Slot", new { Occurrence = Model.ProtoOccurrence.Id() }, new { })
+
+            </div>
+        </div>
+        <div class='model badge'>
+            
+
+
+            
+
+
+            <p class='inline-block'>Filter by:</p>
+                        
+            
+            <div class='admin-table inline-block'>
+                <select class="jq-select filter" id="filter-day">
+                    <option value="">Day Of Week</option>
+                    @for (int i = 1; i <= 7; i++)
+                    {
+                        string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetDayName((DayOfWeek)(i-1));
+                        <option value="@i">@label</option>
+                    }
+                </select>
+            </div>
+            <div class='admin-table inline-block' id="filter-guide">
+                
+                @Html.Partial("EditorTemplates/AutoComplete/_Guide", filterUser)
+
+            </div>
+
+
+        </div>
+        
+        <div class='admin-table select-wrapper'>
+            <table id="event_summary" class='data-table filterable' data-data='/DataService/Slot.svc/C_Admin_Slot_TourDash?$orderby=Start' 
+                data-crud='/DataService/Slot.svc/Slots({0}L)' data-filter='DataFunction.occurrencefilter'>
+                 <thead>
+                    <tr>
+                        <th data-id='SlotCheck' data-searchable="false" data-on-display='DataFormat.Checkbox' data-column-parent='SlotId' width='4%'><input type='checkbox' class='select-all' /></th>                       
+                        <th data-id='SlotLink' data-searchable="false" data-on-display='DataFormat.SlotTourUrl' data-column-parent='SlotId' width="6%">View</th>                        
+                        <th data-column-name='SlotId' data-searchable="false" data-id-column='true' width="10%">Slot Id</th>
+                        <th data-column-name='SlotDayOfWeek' data-searchable="false" data-on-display='DataFormat.weekdayByInt' >Day</th>
+                        <th data-column-name='Start' data-searchable="false" data-on-display='DataFormat.date' >Start</th>			    
+                        <th data-column-name='End' data-searchable="false" data-on-display='DataFormat.date' width="14%">End</th>
+
+                        
+                        
+                        <th data-column-name='GuideId' data-searchable="false" data-visible='false' >Guide Id</th>
+                        <th data-column-name='Name' data-visible='false' >Guide Name</th>                        
+                        <th data-id='GuideLink' data-searchable="false" data-column-parent='GuideId' data-on-display='DataFormat.UserNameUrl' width="10%">Guide</th>
+			            
+			            <th data-column-name='Capacity' data-searchable="false" width="10%">Capacity</th>
+                        <th data-column-name='TotalCount' data-searchable="false">Tickets Reserved</th>
+                        <th data-id='TicketsRemain'data-searchable="false" data-on-display='DataFunction.ticketDifference' data-column-parent="TotalCount" >Tickets Available</th>                
+                        <th data-column-name='Status' data-searchable="false" data-on-display='EnumFormat.SlotStatus' width="10%">Status</th> 
+		            </tr>
+                 </thead>
+             </table>
+        </div>
+        <div class='admin-red left'>
+            <br />
+            <a class='jq-button delete-checked' id="delete" data-left-icon="ui-icon-circle-close" href="javascript:void(0);">Delete Checked</a>
+                        
+        </div>
+        <br class='clearfloat' />
+        <script type="text/javascript">
+            $("#event_summary").data("tools", ["copy", "csv", {
+                "sExtends": "ajax",
+                "sButtonText": "Excel",
+                "fnClick": function (nButton, oConfig) {
+                    oConfig.sFieldBoundary = "'";
+                    oConfig.sFieldSeperator = ",";
+                    oConfig.mColumns = "visible";
+                    oConfig.fnCellRender = function (cell) {
+
+                        return ("" + cell).replace(/\r/gi, "").replace(/<(?:.|\n)*?>/gm, '').replace("'", "\\'");
+                    }
+                    var sData = this.fnGetTableData(oConfig).replace("\\''", "\\'");
+                    
+                    
+                    $.ajax({
+                        "url": "/Admin/Excel/EventSummary/"+@Model.Id(),
+                        "data": { "data": sData },
+                        "success": function(d,xhr){
+                            var href = d.href;
+                            $("#xcel_src").attr("src",href);
+                        },
+                        "dataType": "json",
+                        "type": "POST",
+                        "cache": false,
+                        "error": function () {
+                            alert("Error detected when sending table data to server");
+                        }
+                    });
+                }
+
+            }]);
+        </script>
+        
+        <br />
+        <div class='bottom'>
+            <div class='right '>
+                <div class='button-cta'>
+                        @Html.ActionLink("Delete Event", "Delete", new { id =Model.ResEventId }, new { data_icon = "ui-icon-close" })
+                        <br class='clearfloat' />
+                        @Html.ActionLink("Save for Review", "Index", "Home", new { }, new { data_icon = "ui-icon-locked" })
+                        <br class='clearfloat' />
+                        @Html.ActionLink("Activate Event", "Activate", "Event", new { id = Model.ResEventId }, new { data_icon = "ui-icon-circle-check" })
+                </div>
+            </div>
+        @Html.Partial("ModelDetail/_ResEvent")
+            
+        </div>
+        
+    </div>
+</div>
+
+@Html.Partial("Dialogs/_SlotOperations")

@@ -1,0 +1,54 @@
+﻿@model cfares.domain._event.Occurrence
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+@{bool isNew = pk == "new";}
+
+ @using (Html.BeginForm()) {
+    
+    @Html.ValidationSummary(true)
+    <fieldset data-pk='@pk' class='occurrence-@pk'>
+        
+        @Html.HiddenFor(model => model.OccurrenceId)
+        <div class='legend inline-block'>Reservation Occurrence</div>
+
+        <div class='model-field field-Store'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Store)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Store)
+                @Html.ValidationMessageFor(model => model.Store)
+            </div>
+        </div>
+
+        <div class='model-field field-ResEvent'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.ResEvent)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.ResEvent)
+                @Html.ValidationMessageFor(model => model.ResEvent)
+            </div>
+        </div>
+
+        <div class='model-field field-RegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.RegistrationAvailability)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.RegistrationAvailability)
+                @Html.ValidationMessageFor(model => model.RegistrationAvailability)
+            </div>
+        </div>
+
+        
+    </fieldset>
+     <div class='submit-block admin-green'>
+            <div class='editor-label inline-block inline-block'>
+            
+            </div>
+            <div class='editor-field inline-block inline-block'>
+                <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+            </div>
+            
+        </div>
+ }

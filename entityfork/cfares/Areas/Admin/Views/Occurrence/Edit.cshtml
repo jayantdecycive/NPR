@@ -1,0 +1,17 @@
+﻿@model cfares.domain._event.Occurrence
+
+@{
+    ViewBag.Title = "Edit " + Model.ToString();
+    ViewBag.Brief = "Edit Occurrence";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+}
+
+
+<h1>Edit Occurence</h1>
+<p>
+    @Model.ToString()
+</p>
+
+
+@Html.Partial("ModelForm/_Occurrence")
+

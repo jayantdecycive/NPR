@@ -1,0 +1,91 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{
+    ViewBag.Title = "Tour Slot";
+    ViewBag.Brief = "Tour Slot Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_TourTicketAll")
+    <script type="text/javascript">
+        
+        if (!window.DataFunction)
+            window.DataFunction = {};
+        window.DataFunction.slotfilter = function () {
+
+            return "SlotId eq @Model.SlotId";
+        };
+        $(function () {
+            //$("#slot-report").
+            $("#slot-report").click(function(){
+                var slot = $(this).attr("data-slot");
+                $.ajax({
+                    "url": "/Admin/Csv/iVisitorReport",
+                    "data": { "slot": slot },
+                    "success": function(d,xhr){
+                        var href = d.href;
+                        $("#xcel_src").attr("src",href);
+                    },
+                    "dataType": "json",
+                    "type": "POST",
+                    "cache": false,
+                    "error": function () {
+                        alert("Error detected when sending table data to server");
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details">
+        <div class='model badge'>
+            
+            <h1 class='clean-timezone'>@Model.Start</h1>
+            <p>
+            &nbsp;
+            </p>
+        </div>
+        
+        
+            <div class='bottom'>
+            
+                <div class='right '>
+                    
+                    <div class='button-cta'>
+                        @Html.ActionLink("Event Summary", "Summary", "Occurrence", new { id = Model.OccurrenceId }, new { data_icon = "ui-icon-circle-arrow-e" })
+                        
+                    </div>
+                    <div class='dash-cta'>
+                        @Html.ActionLink("Back to Admin", "Index","Home")
+                    </div>
+                </div>
+            
+            @Html.Partial("ModelDetail/Slots/_TourSlot")
+            @Html.Partial("ModelDetail/_Slot")
+
+                <div class='button-cta left' data-icon="ui-icon-pencil">
+                        @Html.ActionLink("Edit This Slot", "TourSlot-Edit", new { id = Model.Id() })
+                </div>
+
+                <div class='button-cta left' data-icon="ui-icon-tag">
+                        @Html.ActionLink("Create Ticket for This Slot", "TourTicket-Create", "Ticket", new { Slot = Model.Id() }, new { })
+                </div>
+
+                <div class='button-cta left' data-icon="ui-icon-person">
+                        <a href="javascript:void(0);" id="slot-report" data-slot="@Model.SlotId">Get iVisitor Report For this Slot</a>                        
+                </div>
+            </div>
+            <br class='clearfloat' />
+            <br />
+            
+            <div class='admin-table'>            
+            @Html.Partial("Tables/_TourTicket",Model.Id())
+        </div>
+        
+        
+        
+    </div>
+</div>

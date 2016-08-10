@@ -1,0 +1,25 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div class="form-section">
+            <span>Are there any additional tour stops you would like to take your team on? <span
+                class="legal-aside">(click all that apply)</span></span>
+            <div class=" checkboxgroup">
+                <span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse)
+                </span><span class="checkboxwrapper">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitIT)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitIT)
+                </span><span class="checkboxWithExplanation">@Html.CheckBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther)
+                    @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther)
+                    @Html.TextBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOtherDescription)</span>
+                @Html.ValidationMessageFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOtherDescription)
+            </div>
+        </div>

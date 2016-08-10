@@ -1,0 +1,59 @@
+﻿@model cfares.Models.LogOnModel
+@{
+    ViewBag.Title = "Log On";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model create edit">
+        <div class='model badge'>
+            <h1>
+                Log On</h1>
+            <p>
+                Please enter your user name and password. @Html.ActionLink("Register", "Register")
+                if you don't have an account.
+            </p>
+            @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+            @using (Html.BeginForm())
+            {
+                <fieldset>
+                    <div class='legend inline-block'>
+                        Account Information</div>
+                    <div class='model-field field-UserName'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.UserName)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.UserName)
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        </div>
+                    </div>
+                    <div class='model-field field-Password'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                    </div>
+                    <div class='model-field field-RememberMe'>
+                        <div class="editor-label inline-block">
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </fieldset>
+                <div class='submit-block admin-green'>
+                    <div class='editor-label inline-block inline-block'>
+                    </div>
+                    <div class='editor-field inline-block inline-block'>
+                        <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Log On" />
+                    </div>
+                </div>
+    
+            }
+        </div>
+    </div>
+</div>

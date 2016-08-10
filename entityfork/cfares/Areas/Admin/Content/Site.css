@@ -1,0 +1,797 @@
+﻿/*------------------------------------------------------
+Abstract classes for general use. USE THESE AS MUCH AS POSSIBLE
+
+GLOBAL */    
+    
+    
+    /*------------------------------------------------------
+    LAYOUT */
+    
+    .content
+    {
+        width:1002px;
+    }
+    
+    /* END LAYOUT
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    TAGS */
+    a.no-link{text-decoration:none;cursor:default;}
+
+    body
+    {
+        background-color:#eaeae5;
+        background-image:url('/Areas/Admin/Content/Img/Master/topshadow.png');
+        background-repeat:repeat-x;
+        background-position:left 11px;
+    }
+    
+
+    /* END TAGS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    CONTROLLERS */
+    
+    .header-bar
+    {
+        background-color:#454545;
+        border-bottom:2px solid #fefefe;
+        height:10px;
+        width:100%;
+    }
+    
+    #header
+    {
+        vertical-align:top;
+    }
+        
+        #logo
+        {
+            
+            position:relative;
+            top:-12px;
+            left:0px;
+            background-image:url('/Areas/Admin/Content/Img/Master/cfa-logo.png');
+            width:228px;
+            height:107px; 
+        }
+        .top-menu
+        {
+            width:765px; 
+            padding-top:24px;   
+        }
+        #logo,.top-menu,#toptitle,#logindisplay
+        {
+            vertical-align:top;   
+        }
+        #toptitle
+        {
+            float:left;    
+            position:relative;
+            top:-10px;
+        }
+            #toptitle h2, #toptitle h3
+            {
+                font-size:13.5pt;
+                text-transform:uppercase;
+                padding:9px 11px;
+                margin:0px;
+            }
+            .legend{font-weight:bold;margin-bottom:15px;}
+            #toptitle h2
+            {
+                color:#384350;   
+                font-weight:bold; 
+            /*    border-right:solid 1px #becdd5;*/
+                
+            }
+            #toptitle h3
+            {
+                color:#495969;
+                font-weight:normal;    
+            }
+        
+        #logindisplay
+        {
+            float:right;      
+            position:relative;          
+            top:-10px;
+        }
+        #logindisplay .logged-in .status{}
+        #logindisplay .status
+        {
+            color:#8da5af;
+            font-size:7.5pt;
+            text-transform:uppercase;
+            position:relative;
+            left:-10px;            
+            
+        }
+        #logindisplay select{width:150px;}
+        
+        .wizard.content
+        {
+            background-color:#eaeae5;                        
+        }
+        
+        .wizard.content .wizard-summary
+        {
+            float:left;
+            margin-left:35px;
+            margin-top:21px;
+        }
+        .wizard.content .wizard-summary h3,.wizard.content .wizard-summary h2{text-align:left;}
+        .wizard.content .wizard-summary h3{color:#6e8c9c;font-size:10.5pt;margin-bottom:5px;}
+        .wizard.content .wizard-summary h2{color:#e2383f;font-size:13.5pt;font-weight:bold;}
+        
+        .wizard.wrapper
+        {
+            width:99%;
+            height:79px;
+            border-top:1px solid #dfdfd8;
+            border-bottom:1px solid #dfdfd8;
+            margin-left:auto;
+            margin-right:auto;    
+        }
+        
+        .wizard.content .jq-info .ui-state-highlight
+        {
+            padding:10px;
+            
+            margin-top:13px;
+            
+        }
+        .wizard.content .jq-info .ui-state-highlight p,.wizard.content .jq-info .ui-state-error p
+        {
+           text-align:left;
+        }
+        .wizard.content .jq-info .ui-state-highlight .ui-icon
+        {
+            top:5px;    
+            position:relative;
+        }
+        
+        .wizard.content 
+        {
+            text-align:right;
+            vertical-align:top;
+        }
+        
+        .wizard.content .wizard-step
+        {
+            width:86px;
+            height:100%;
+            text-align:center;
+            position:relative;
+            vertical-align:top;
+        }
+        
+        .wizard.content .wizard-step .wizard-text{font-size:10pt;}
+        
+        
+        .wizard.content .wizard-step.complete-true .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-complete.png');
+        }
+        
+        .wizard.content .wizard-step:hover,.wizard.content .wizard-step:hover span
+        {
+            text-decoration:none;    
+        }
+        
+        .wizard.content .wizard-step.complete-false,.wizard.content .wizard-step.current-true,
+        .wizard.content .wizard-step.complete-false span,.wizard.content .wizard-step.current-true span{cursor:text;}
+        
+        .wizard.content .wizard-step.complete-true .wizard-text
+        {
+            color:#9f9e9d;    
+        }
+        
+        .wizard.content .wizard-step.complete-false .wizard-text
+        {            
+            color:#fffefe;
+            font-weight:bold;    
+        }
+        
+        .wizard.content .wizard-step.complete-false .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-todo.png');
+        }
+        
+        .wizard.content .wizard-step.current-true .wizard-text,.wizard.content .wizard-step:hover .wizard-text
+        {
+            color:#9ab6c3;    
+            font-weight:bold;
+        }
+        
+        .wizard.content .wizard-step.current-true .wizard-icon,.wizard.content .wizard-step:hover .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-current.png');
+        }
+        .wizard.content .wizard-step.current-true .wizard-bar
+        {
+            width:100%;
+            background-color:#9ab6c3;    
+            height:6px;
+            position:absolute;
+            bottom:0px;
+            left:0px;
+        }
+        
+        
+        
+        .wizard.content .wizard-step .wizard-icon
+        {
+            width:29px;
+            height:29px;  
+            overflow:hidden;
+            background-repeat:no-repeat;  
+            margin-top:7px;
+            margin-bottom:4px;
+        }
+        
+        .wizard.content .wizard-step.step-0 .wizard-icon{ background-position:0px top;}
+        .wizard.content .wizard-step.step-1 .wizard-icon{ background-position:-29px top;}
+        .wizard.content .wizard-step.step-2 .wizard-icon{ background-position:-58px top;}
+        .wizard.content .wizard-step.step-3 .wizard-icon{ background-position:-87px top;}
+        .wizard.content .wizard-step.step-4 .wizard-icon{ background-position:-116px top;}
+        .wizard.content .wizard-step.step-5 .wizard-icon{ background-position:-145px top;}
+        .wizard.content .wizard-step.step-6 .wizard-icon{ background-position:-174px top;}
+        
+        #main.content
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/content-grad.png');
+            background-position:center -2px;
+            background-repeat:repeat-x;
+            padding-bottom:60px;
+        }
+        
+        .inner-content.wrapper
+        {
+            width:97%;
+            margin-left:auto;
+            margin-right:auto;  
+            padding-top:18px;             
+            padding-bottom:24px;  
+        }
+        
+        .model.badge,.dashboard
+        {
+             padding-left:23px;
+             padding-right:23px;
+             padding-top:10px;
+             padding-bottom:10px;
+        }
+        .model.badge.short
+        {
+             padding-top:0px;
+             padding-bottom:0px;
+        }
+            .model.badge h1,.model.badge h2,.dashboard h1,.dashboard h2
+            {
+                color:#252525;
+                font-size:13.5pt;
+                padding-bottom:8px;
+            }
+            .model.badge p,.dashboard p
+            {
+                line-height:1.1em;
+                
+            }
+
+    /* END CONTROLLERS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL DEFAULT */
+    
+    .dash-cta,.edit-cta,.button-cta
+    {
+        padding-top: 10px;
+        padding-left: 23px;
+    }
+    .filters .button-cta{position:relative;top:-10px;}
+    .dash p{min-height:24px;}
+    
+    .model fieldset,.model .submit-block
+    {
+        background-color:#dededb;
+        width:43%;
+        min-width:300px;
+        font-size:10.5pt;
+        padding-right:5px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:23px;
+        margin-top:10px;
+        
+    }
+    .model .submit-block
+    {
+        margin-top:0px;    
+    }
+    
+        .model fieldset legend
+        {
+            display:block;
+
+        }
+    
+        .model .model-field
+        {
+            padding:4px 0px;    
+        }
+    
+        .model .display-label,.model .display-field,.model .editor-label,.model .editor-field
+        {
+            width:58%;   
+            text-align:left;
+        }
+        .model .display-label,.model .editor-label
+        {
+            width:30%;
+            padding-right:7%;    
+        }
+        .model .editor-field .text-box
+        {
+            width:100%;
+        }
+        
+        .model .guide-collection .guide
+        {
+            padding:3px;
+            font-size:9pt;
+            
+        }
+        .model .guide-collection .guide a
+        {
+            float:right;
+            position:relative;
+            right:-3px;    
+            color:#6E8C9C;
+        }
+        
+        .model .editor-field .multi-line
+        {
+            height:7em;
+        }
+        
+    
+    /* END MODEL DEFAULT
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL DETAILS */
+    
+    .model.details fieldset
+    {
+        
+        
+    }
+    
+        .model.details .model-field
+        {
+            
+        }
+    
+        .model.details .display-label,.model.details .display-field
+        {
+            
+        }
+        .model.details .display-field,.model.details .display-field a
+        {
+            color:#333;    font-weight:bold;
+        }
+        .model.edit .display-field
+        {
+            color:#666;
+            
+            background-color:#fefefe;
+            padding:2px 1px;
+            border: 2px inset;
+        }
+        .model.details .display-field a{text-decoration:underline;}
+        .model.details .display-field a:hover{text-decoration:none;}
+        .model.details .display-label
+        {
+            
+        }
+        
+    
+    /* END MODEL DETAILS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL EDIT */
+    
+    .model.edit fieldset,.model.edit .submit-block
+    {
+        width:45%;        
+    }
+
+    .user-form .field-AccountStatus select{min-width:120px;}
+    
+        .model.edit .model-field
+        {
+            
+        }
+    
+        .model.edit .editor-label,.model.edit .editor-field
+        {
+                
+        }
+        
+        .model.edit .editor-label
+        {
+            
+        }
+        
+        .model .editor-field select
+        {
+            width:100%;   
+        }
+        
+        /*==WIDGET==*/
+        .in-daterange input
+        {
+             width:42%;
+             font-size:8.5pt;
+        }
+        
+        .in-daterange-to
+        {
+             font-size:8pt;   
+        }
+        
+        .validation-summary-errors
+        {
+            width:45%;
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        .validation-summary-errors .ui-state-highlight,.validation-summary-errors .ui-state-error
+        {
+            padding:15px;
+        }
+        
+        .validation-summary-errors ul,.validation-summary-errors li
+        {
+            display:block;
+            font-size:9pt;            
+        }
+        .validation-summary-errors ul
+        {
+            margin-top:5px;    
+        }
+        .validation-summary-errors li
+        {
+            padding:10px;  
+            font-weight:bold;  
+        }
+        .field-validation-error
+        {
+            font-size:8pt;
+            color:#CD0A0A;    
+            display:block;
+        }
+    
+    /* END MODEL EDIT
+    ------------------------------------------------------*/
+
+/* END GLOBAL
+----------------------------------------------------------*/
+
+
+/*------------------------------------------------------
+PAGES */    
+    
+    /*--------------------------------------------------
+    controller-home */
+    
+        /*----------------------------------------------
+        action-index controller-home */
+    
+            .action-index.controller-home
+            {
+                
+            }
+            .action-index.controller-home .button-cta,.dash-header.button-cta{position:relative;top:0px;}
+            
+            
+            #filter-tour-type.filter
+            {
+                width:10em;
+            }
+            
+            #filter-year.filter
+            {
+                width:6em;
+            }
+            
+            #filter-month.filter
+            {
+                width:8em;
+            }
+            
+            #filter-day.filter
+            {
+                width:10em;
+            }
+            
+            .filter-past{}
+            
+            .filter-past input{margin:0px;position:relative;top:2px;margin-left:5px;}
+            
+            .action-index.controller-home .new-tour-cta .badge,.rounded.segment,.action-index.controller-home .home-dash-cta .badge
+            {
+                background-image:url('/Areas/Admin/Content/Img/Master/content-grad.png');
+                background-position:center top;
+                background-repeat:repeat-x;
+            }
+        
+            .action-index.controller-home .button-list
+            {
+                padding-top:10px;
+            }
+    
+        /* END action-index controller-home
+        ----------------------------------------------*/
+    
+    /* END controller-home
+    --------------------------------------------------*/
+    
+    /*--------------------------------------------------
+    controller-event */
+    
+        /*----------------------------------------------
+        action-create-dash controller-event */
+    
+            .action-create-dash.controller-event
+            {
+            
+            }
+            
+            .action-create-dash.controller-event .model.edit fieldset,.action-create-dash.controller-event .model.edit .submit-block
+            {
+                width:60%;
+            }            
+    
+        /* END action-create-dash controller-event
+        ----------------------------------------------*/
+    
+    /* END controller-event
+    --------------------------------------------------*/
+    
+    
+    /*--------------------------------------------------
+    controller-event */
+    
+        /*----------------------------------------------
+        action-summary controller-event */
+    
+            .action-summary.controller-event
+            {
+            
+            }
+            
+            .action-summary.controller-event .bottom .button-cta
+            {                    
+                text-align:right;
+            }
+            
+            .action-summary.controller-event .bottom .button-cta a
+            {
+                margin-bottom:10px;
+                position:relative;top:20px;   
+                width:150px;
+                float:right;
+            }            
+    
+        /* END action-summary controller-event
+        ----------------------------------------------*/
+    
+    /* END controller-event
+    --------------------------------------------------*/
+    
+    
+    /*--------------------------------------------------
+    controller-slot */
+    
+        /*----------------------------------------------
+        action-edit-dash controller-slot */
+    
+            .action-edit-dash.controller-occurrence
+            {
+            
+            }
+            
+                .action-edit-dash.controller-occurrence .date-grid
+                {
+                    margin-top:10px;    
+                }
+            
+                .action-edit-dash.controller-occurrence .date-grid,.action-edit-dash.controller-occurrence .date-grid.admin-table .item
+                {
+                    vertical-align:top;    
+                }
+            
+                .action-edit-dash.controller-occurrence .details-input
+                {
+                    padding-top:15px;
+                    vertical-align:middle;
+                }
+                
+                .action-edit-dash.controller-occurrence .details-input select
+                {
+                    width:200px;    
+                }
+            
+                .action-edit-dash.controller-occurrence .details-input .submit-block
+                {
+                    float:right;
+                    position:relative;
+                    top:-7px;
+                    padding-right:20px;
+                }
+                
+                .action-edit-dash.controller-occurrence #inline_cal
+                {
+                    margin-right:20px;    
+                }
+                
+                .action-edit-dash.controller-occurrence #date_summary_list
+                {
+                    height:166px;
+                    width:17em;
+                    border:solid 1px #AAA;
+                    background-color:#F3F3EF;
+                    overflow:auto;
+                }
+                
+                .action-edit-dash.controller-occurrence #date_summary_list li
+                {
+                    border-bottom:solid 1px #AAA;
+                    display:block;
+                    position:relative;
+                    padding-left:4px;
+                    padding-top:5px;
+                    padding-bottom:7px;
+                }
+                .action-edit-dash.controller-occurrence #date_summary_list li.last
+                {
+                     
+                }
+                
+                .close-icon{
+                    margin: 2px !important;
+                    position: relative !important;
+                    padding: 3px 0 !important;
+                    cursor: pointer !important;                    
+                    
+                 }
+                 .remove-date{                    
+                    position:absolute !important;
+                    right:3px !important;
+                    top:1px !important;
+                 }
+                 .admin-table .ui-button-icon-only.close-icon
+                 {
+                     width:1.2em;
+                 }
+                 .All .ui-button-icon-only.close-icon
+                 {
+                     visibility:hidden;
+                 }
+                 
+                 .action-edit-dash.controller-occurrence .table-wrapper{width:90%;}
+                 
+                 .table-picker input{width:6em;}
+                 
+                 .select-wrapper input{margin:0px;}
+                 
+                 .action-edit-dash.controller-occurrence .slot-wrapper{margin-top:20px;}
+                
+                .action-edit-dash.controller-occurrence .inline-header
+                {
+                    cursor:pointer;    
+                }
+                .action-edit-dash.controller-occurrence .inline-header:hover
+                {
+                    text-decoration:underline;    
+                }
+                
+                .action-edit-dash.controller-occurrence .remove-slot
+                {
+                    position:relative;
+                    top: 6px;
+                    left: 4px;
+                }
+                .action-edit-dash.controller-occurrence .slot-rows
+                {
+                    padding-top:10px;
+                    padding-bottom:10px;
+                }
+                .action-edit-dash.controller-occurrence .slot-row
+                {
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    border-bottom:solid 1px #aaa;
+                }
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos
+                {
+                    
+                }
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-label,
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input
+                {
+                    
+                }
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-label{width:35%;padding-right:4%;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input{width:55%;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .subform-label{vertical-align:top;position:relative;top:9px;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input input{width:100%;}
+                
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .dormant{color:#666;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-set,
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas{position:relative;display:block;}
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas .remove-cameo{position:absolute !important;right: -3px;top: 2px;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas .add-cameo{position:absolute !important;right: -27px;top: 2px;}
+                
+                
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_all{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week{padding-left:10px;}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week p{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week .wrapper{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment .button-group-master p{width:30%}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment .button-group-master .wrapper{width:60%;}
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_all .wrapper{padding-left:9px;}
+                
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-header a {
+                    
+                }
+
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-header span.ui-icon {
+                    
+                }
+                
+                .action-edit-dash.controller-occurrence .slot-accordion.mode-all .mode-date,
+                .action-edit-dash.controller-occurrence .slot-accordion.mode-date .mode-all{
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    height:0px;
+                    width:0px;
+                    visibility:hidden;
+                }
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-content
+                {
+                    padding-bottom:10px !important;    
+                }
+                
+                .action-edit-dash.controller-occurrence .summary{position:relative;top: -36px;left:-4px;}
+                .action-edit-dash.controller-occurrence .summary .legend{display:none;}
+                .action-edit-dash.controller-occurrence .summary h2{font-size:11pt;padding-left:23px;}
+            
+    
+        /* END action-edit-dash controller-slot
+        --------------------------------------------------*/
+    
+    /* END controller-slot
+    ------------------------------------------------------*/
+
+/* PAGES
+----------------------------------------------------------*/

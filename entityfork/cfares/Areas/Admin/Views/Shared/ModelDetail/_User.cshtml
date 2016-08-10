@@ -1,0 +1,84 @@
+﻿@model cfares.domain.user.ResUser
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+    
+    <fieldset data-pk='@pk' class='user-@pk'>
+            
+            <div class='legend inline-block'>User</div>
+            
+            <div class='model-field field-Name'>
+                <div class="display-label inline-block">Full Name</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+            <div class='model-field field-Username'>
+                <div class="display-label inline-block">Username</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Username)
+                </div>
+            </div>
+
+            <div class='model-field field-Authority'>
+                <div class="display-label inline-block">Authority</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Authority)
+                </div>
+            </div>
+
+            <div class='model-field field-Authority'>
+                <div class="display-label inline-block">Authority UID</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.AuthorityUID)
+                </div>
+            </div>
+
+            @*<div class='model-field field-UID'>
+                <div class="display-label inline-block">UID</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.UID)
+                </div>
+            </div>*@
+            <div class='model-field field-Email'>
+                <div class="display-label inline-block">Email</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+            <div class='model-field field-AccountStatus'>
+                <div class="display-label inline-block">Account Status</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.AccountStatus)
+                </div>
+            </div>
+
+            <div class='model-field field-AccountStatus'>
+                <div class="display-label inline-block">Operation Role</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.OperationRole)
+                </div>
+            </div>
+            <div class='model-field field-LastActivity'>
+                <div class="display-label inline-block">Last Activity</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.LastActivity)
+                </div>
+            </div>
+            @*<div class='model-field field-Address'>
+                <div class="display-label inline-block">Address</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Address)
+                </div>
+            </div>*@
+            <div class='model-field field-HomePhone'>
+                <div class="display-label inline-block">Home Phone</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.HomePhone)
+                </div>
+            </div>
+            <div class='model-field field-MobilePhone'>
+                <div class="display-label inline-block">Mobile Phone</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.MobilePhone)
+                </div>
+            </div>
+    </fieldset>

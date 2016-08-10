@@ -1,0 +1,29 @@
+﻿@model cfacore.shared.modules.com.admin.Wizard
+           
+<div class="wizard">
+    <div class="wizard-bar">
+
+
+@{
+    foreach (cfacore.shared.modules.com.admin.WizardStep step in Model.Steps)
+    {
+        <div class="bar-section @(step.Index<Model.CurrentStep.Index?"step-past":"step-future")">
+            <a href='@step.Uri'>@step.Name</a>
+        </div>
+        
+    }
+    
+}
+    </div>
+    <div class="wizard info">
+@{ 
+    foreach (cfacore.shared.modules.com.admin.WizardStep step in Model.Steps)
+    {
+        <div class='wizard-step info @step.Index'>@step.Summary</div>  
+    }
+    
+}
+    </div>
+    
+
+</div>

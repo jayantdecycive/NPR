@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.ModelName = "Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+
+
+<h1>Slot Home</h1>
+<p>Slots</p>
+        
+@section Table{
+    <table id="slot_dash" class='data-table' data-data='/DataService/Slot.svc/Slots' 
+        data-crud='/DataService/Slot.svc/Slots({0}L)'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotUrl' data-column-parent='SlotId'></th>                        
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+			    <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+			    <th data-column-name='CapacityI' >Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+}

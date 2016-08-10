@@ -1,0 +1,13 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+    <div class="review-section review-column">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.First): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.First)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.Last): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.Last)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Email): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Email)</span></div>
+    </div>

@@ -1,0 +1,15 @@
+﻿@model cfacore.shared.domain.media.Media
+
+@{
+    ViewBag.Title = "Edit " + Model.ToString();
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+}
+
+
+<h1>Edit Media</h1>
+<p>
+    @Model.ToString()
+</p>
+
+
+@Html.Partial("ModelForm/_Media")

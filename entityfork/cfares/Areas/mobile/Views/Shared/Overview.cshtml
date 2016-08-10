@@ -1,0 +1,158 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@using cfacore.site.controllers._event;
+
+@{
+    ViewBag.Title = "Reservation Overview";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+<h1 class="center">Overview</h1>
+<p class="">
+    Please review the details of your reservation below. To modify any of the information
+    click the 'Edit This Information' button at the bottom of the screen.<span class="red no-wrap"><br/>* indicates
+    required field</span>
+</p>
+</div>
+
+
+
+<div class="overview-form">
+
+    <ul data-role="listview" data-theme="f" data-inset="false">
+
+	    <li data-role="list-divider" data-divider-theme="b">Tour Details</li>
+	    <li><span class="label">Date: </span><span class="field-value">@Model.tourTicket.Slot.Start.ToString("D")</span></li>
+	    <li><span class="label">Time: </span><span class="field-value">
+            <span class="value clean-timezone" data-date-base='@Model.tourTicket.Slot.Start.ToString()'>@String.Format("{0} - {1}", Model.tourTicket.Slot.Start.ToString("h:mmtt").ToLower(), Model.tourTicket.Slot.End.ToString("h:mmtt").ToLower())</span>
+        </span></li>
+        <li><span class="label">Group Name:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.GroupName)</span></li>
+        <li><span class="label">Group Size:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.GuestCount)</span></li>
+
+        <li data-role="list-divider" data-divider-theme="b">User Details</li>
+        <li><span class="label">First Name:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.Owner.Name.First)</span></li>
+        <li><span class="label">Last Name:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.Owner.Name.Last)</span></li>
+        <li><span class="label">Email Address:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.Owner.Email)</span></li>
+        <li><span class="label">Password:</span> <span class="field-value">******</span></li>
+        <li><span class="label">Zip Code:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.Owner.Address.Zip.Code)</span></li>
+        <li><span class="label">Mobile Phone #:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.Owner.MobilePhone)</span></li>
+
+        @*
+        <li><span class="label">13 or older:</span> <span class="field-value">
+        @if (Model.userForm.isOverThirteen)
+        {
+            <span>Yes</span>   
+        }
+        else
+        {
+            <span>No</span>  
+        }
+        </span></li>
+        <li><span class="label">Email Insider:</span> <span class="field-value">
+        @if (Model.userForm.joinInsiders)
+        {
+            <span>Yes</span>   
+        }
+        else
+        {
+            <span>No</span>  
+        }
+        </span></li>
+        *@
+
+        <li data-role="list-divider" data-divider-theme="b">Group Type</li>
+        @if (Model.tourTicket.IsFamilyWithKids)
+        {<li><span class="label">Family with Kids</span></li>}
+        @if (Model.tourTicket.IsFamilyWithoutKids)
+        {<li><span class="label">Family without Kids</span></li>}
+        @if (Model.tourTicket.IsReligiousGroup)
+        {<li><span class="label">Religious Group</span></li>}          
+        @if (Model.tourTicket.IsBusinessGroup)
+        {<li><span class="label">Business Group</span></li>}
+        @if (Model.tourTicket.IsSchoolGroup)
+        {<li><span class="label">School Group</span></li>}
+        @if (Model.tourTicket.IsAdultGroup)
+        {<li><span class="label">Adult Group</span></li>}
+        @if (Model.tourTicket.IsSeniorGroup)
+        {<li><span class="label">Senior Group</span></li>}
+        @if (Model.tourTicket.IsOtherTypeOfGroup)
+        {
+            <li><span class="label">Other Group:</span> <span class="field-value">@Model.tourTicket.OtherTypeDescription</span></li>
+        }
+        
+        <li data-role="list-divider" data-divider-theme="b">Special Needs</li>
+        @if (!Model.tourTicket.HasSpecialNeeds)
+        {<li><span class="label">No Special Needs</span></li>}
+        else
+        {
+            if (Model.tourTicket.IsHearingImpaired)
+            {<li><span class="label">Hearing Impaired</span></li>}
+            if (Model.tourTicket.IsVisuallyImpaired)
+            {<li><span class="label">Visually Impaired</span></li>}
+            if (Model.tourTicket.NeedsWheelChair)
+            {<li><span class="label">Wheel Chair Needed</span></li>}
+            if (Model.tourTicket.OtherNeeds)
+            {
+                <li><span class="label">Other Needs:</span><span class="field-value">@Model.tourTicket.OtherNeedsDescription</span></li>
+            }
+        }
+
+        <li data-role="list-divider" data-divider-theme="b">Lunch Option</li>
+        @if (!Model.tourTicket.OptInForLunch)
+        {<li><span class="label">No Lunch</span></li>}
+        else
+        {
+            <li><span class="label">Adult Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.NumberOfAdultLunches)</span></li>
+            <li><span class="label">Kid Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.NumberOfKidLunches)</span></li>
+            <li><span class="label">Special Needs Lunches:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.NumberOfSpecialNeedLunches)</span></li>
+            if (Model.tourTicket.NumberOfSpecialNeedLunches > 0)
+            {
+                <li><span class="label">Description of Dietary Needs:</span> <span class="field-value">@Html.DisplayFor(m => m.tourTicket.SpecialDietNeedsDescription)</span></li>
+            }
+            <li><span class="label">Total Price:</span> <span class="field-value">$@Html.DisplayFor(m => m.tourTicket.TotalCostOfLunches) (cost of lunch includes tax).</span></li>
+        }
+
+        <li data-role="list-divider" data-divider-theme="b">Guest List</li>
+        @if (Model.tourTicket.GuestNames != null)
+           {
+               for (int i = 0; i < Model.tourTicket.GuestNames.Length; i++)
+               {
+                    <li>@Model.tourTicket.GuestNames[i]</li>
+               }
+           }
+    </ul>
+
+
+    @*<div data-role="collapsible" style="overflow:hidden;" data-theme="b" data-inline="true">
+        <h3 >Guest List</h3>
+        <ul data-role="listview" data-theme="f" data-inset="false">
+           @if (Model.tourTicket.GuestNames != null)
+           {
+               for (int i = 0; i < Model.tourTicket.GuestNames.Length; i++)
+               {
+                    <li>@Model.tourTicket.GuestNames[i]</li>
+               }
+           }
+        </ul>
+    </div>*@
+
+
+
+    <div class="jquery-theme-overide button-group">
+        @using (Html.BeginForm("Overview", "Ticket", FormMethod.Post, new { id = "overview-form" }))
+        {
+            <input type="submit" value="Confirm" data-theme="a" />
+        }
+
+        @*<a class="form-buttons red-button"  data-theme="b" data-role="button" id="confirmation-button" href="@Url.Action("Confirmation", "Ticket")">Confirm</a> *@
+
+        <a class="form-buttons gray-button" data-theme="b" data-role="button" id="edit-button" href="@Url.Action("Modify", "Ticket")">Edit this Information</a> 
+        <a class="form-buttons gray-button" data-theme="b" data-role="button" id="confirm-button" href="@Url.Action("Cancel", "Ticket")">Cancel My Tour</a>
+    </div>
+    
+</div>
+<br/>
+
+<script type="text/javascript">
+    $("#overview-form").attr("data-ajax", "false");
+</script>

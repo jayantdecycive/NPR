@@ -1,0 +1,70 @@
+﻿@model cfares.domain._event.ticket.TourTicketCollection
+@{
+    ViewBag.Title = "User Dashboard";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+
+    
+}
+
+<div class="container center">
+@if (Model.Count > 0)
+{
+<h1>Welcome Back @Model[0].Owner.Name.First</h1>
+}
+else
+{
+   <h1>Welcome Back</h1> 
+}
+<br/>
+<p>
+    Your scheduled tours are listed below. Please click on a tour to change any information related to your reservation. At the bottom of your Reservation Overview page, you will have the option to Edit Your Reservation, or Re-Send Your Confirmation Email. Please contact us at 1-800-232-2677 with any questions or concerns.
+</p>
+<p class="strong">
+    Please note that no additional guests can be added within 72 hours of your tour reservation.
+</p>
+<br/>
+</div>
+
+<div data-role="navbar">
+    <ul>
+    <li>@Html.ActionLink("Log Off", "LogOff", "Account", null, new { data_role = "button", data_theme = "b", data_mini = "true" })</li>
+    </ul>
+</div>
+
+<div class="dashbord">
+    
+    <ul data-role="listview" data-theme="c">
+        <li data-role="list-divider" data-divider-theme="b">Tickets</li>
+
+        @if (Model.Count > 0)
+        {
+            for (int i = 0; i < Model.Count; i++)
+            {
+                if (Model[i].SlotId != null && Model[i].Slot != null)
+                {
+                    DateTime translatedStart = oServ.ConvertToTimeZoneContext(Model[i].Slot.Start);
+                    <li>
+                    <a href="@("/mobile/Ticket/Details/" + Model[i].TicketId)">
+                    <span class="title-ticket">@translatedStart.ToString("MMMM dd yyyy")</span>
+                    <p class="ticket-time"> @translatedStart.ToString("t")</p>
+                    </a>
+                    <a href="@("/mobile/Ticket/Delete/" + Model[i].TicketId)" data-icon="delete" data-theme="f"></a>
+                    </li>
+                }
+            }
+        }
+        else
+        {
+            <li>No Tickets registered</li>
+        }
+    </ul>
+
+
+</div>
+<br/>
+<br/>
+<br/>

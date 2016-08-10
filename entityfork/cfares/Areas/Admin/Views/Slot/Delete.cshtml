@@ -1,0 +1,19 @@
+﻿@model cfares.domain._event.Slot
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Delete Slot";
+}
+
+
+<h1>@Model.SlotId</h1>
+<p>
+@Html.Raw(Model.ToHtmlString())
+</p>
+        
+        
+@section Details{    
+    @Html.Partial("ModelDetail/_Slot")        
+}
+        

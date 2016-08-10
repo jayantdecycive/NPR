@@ -1,0 +1,54 @@
+﻿@model cfares.domain._event.ticket.tours.TourTicket
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta
+{
+    <meta property="og:type" content="Article" />
+    <meta property="og:url" content="http://tours.chick-fil-a.com" id="ogUrl" />
+    <meta property="og:image" content="@ViewBag.sharedPhoto" id="ogImage" />
+    <meta property="og:site_name" content="Chick-fil-A Home Office Backstage Tours"/>    
+    <meta property="og:description" id="ogDescription" content="Make a reservation to attend a Chick-fil-A® Home Office Backstage Tour, a behind-the-scenes look at the history and food of Chick-fil-A. Register Now! "/>
+    <meta property="fb:app_id" content="120042528067135" />
+    <meta content="39803335" property="fb:admins" />
+}
+
+@{
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+
+    DateTime translatedStart = oServ.ConvertToTimeZoneContext(Model.Slot.Start);
+}
+
+<h1 class="center">Thank You! Your Reservation is Complete!</h1>
+<div class="container">
+<p>
+We look forward to seeing you on @Model.Slot.Start.ToString("MMMM dd yyyy") <span class="value"> @translatedStart.ToString("h:mm tt").ToLower()</span>. You will soon receive an email with your reservation details. 
+Please print the email and make sure you bring it and a photo ID on the day of your tour. 
+If you have any questions, please see the <a href="/mobile/home/faq">Frequently Asked Questions</a>. 
+
+</p>
+</div>
+<div class="brag-box">
+    <h2>Tell Your Friends About the Tour!</h2>
+    <div class="icon fb" id="share-fb"></div>
+    <div class="icon tw" id="share-tw"></div>
+    <div class="icon pin" id="share-pin"></div>
+    <div class="icon mail" id="share-email"></div>
+</div>
+
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+    FB.init({
+        appId: '120042528067135',
+        status: true, // check login status
+        cookie: true
+    });
+
+    window.fbAsyncInit = function () {
+        FB.Canvas.setAutoResize();
+    }
+</script>
+<script type="text/javascript" src="/Areas/mobile/scripts/Social.js"></script>

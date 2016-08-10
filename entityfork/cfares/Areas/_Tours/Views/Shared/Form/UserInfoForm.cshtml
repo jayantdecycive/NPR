@@ -1,0 +1,44 @@
+﻿@model cfares.Areas.Tours.Models.UserInfoForm
+           
+    <div class="textboxwrapper">
+    <span class="field-requirement"> * </span>
+        @Html.LabelFor(m => m.firstName)
+        @Html.TextBoxFor(m => m.firstName, new { @class = "form-firstname" })
+        @Html.ValidationMessageFor(m => m.firstName)
+    </div>
+
+    <div class="textboxwrapper">
+    <span class="field-requirement"> * </span>
+        @Html.LabelFor(m => m.lastName)
+        @Html.TextBoxFor(m => m.lastName, new { @class = "form-lastname" })
+        @Html.ValidationMessageFor(m => m.lastName)
+    </div>
+    
+    <div class="textboxwrapper">
+    <span class="field-requirement"> * </span>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-email" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div> 
+                        
+    <div class="textboxwrapper">
+    <span class="field-requirement"> * </span>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-pass" })
+        @Html.ValidationMessageFor(m => m.Password)
+    <a href="#" id="password-dialog">Why a Password?</a>
+    </div>
+    
+    <div class="textboxwrapper">
+    <span class="field-requirement"> * </span>
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-confirm" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+    </div>
+    
+    <div class="textboxwrapper">
+     <span class="field-requirement small-field"> * </span>
+        @Html.LabelFor(m => m.zipCode)
+        @Html.TextBoxFor(m => m.zipCode, new { @class = "form-zip" })
+        @Html.ValidationMessageFor(m => m.zipCode)
+    </div>

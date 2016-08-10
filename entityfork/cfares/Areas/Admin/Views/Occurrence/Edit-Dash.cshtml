@@ -1,0 +1,255 @@
+﻿@{
+    ViewBag.Title = "Slots-Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model cfares.domain._event.Occurrence
+
+@section Meta{
+    
+    <script type="text/template" id="slot_row_template">
+	    <div class='slot-row'>
+		    From <input value='<%=Start.getTime()?Start.toString("hh:mm tt").toLowerCase():Start%>' type='text' class='inline-block jq-time in-start' name='<%=cid%>start' data-model-property='Start' /> To 
+            <input value='<%=End.getTime()?End.toString("hh:mm tt").toLowerCase():End%>' name='<%=cid%>end' type='text' class='inline-block jq-time in-end' data-model-property='End' /> 
+            <input value='<%=Start.getTime()?Start.toString("MM/dd/yyyy"):(new Date()).toString("MM/dd/yyyy")%>' name='<%=cid%>date' type='hidden' data-model-property='Date' /> 
+            Reservation Limit: <input type='text' value='<%=Capacity%>' class='in-capacity' name='<%=cid%>Capacity' data-model-property='Capacity' /> <a href='javascript:void(0);' class='jq-button edit-cameos' data-target='<%=cid%>'>Cameos &amp; Guides</a> <a data-icon="ui-icon-circle-close" data-target='<%=cid%>' data-text='false' class='close-icon remove-slot jq-button-icon inline-block'></a>
+            <div class="dialog-cameos" title="Cameos and Guides">
+	            <div>                
+                
+                
+                <label class='inline-block subform-label' for="<%=cid%>guide">Guide Name</label>
+                <span class='admin-grey inline-block subform-input'>    
+                    <input type="text" 
+                        data-default-label="<%=Guide.get("Name")%>" value="<%=Guide.get("UserId")%>" 
+                        name='<%=cid%>guide'
+                        id='<%=cid%>guide' 
+                        data-model-property='GuideId' 
+                        class='jq-auto-complete' data-pk="UserId" 
+                        data-columns="Email,Name,UserId,Username" 
+                        data-filter="Email,Name,Username,UserIdL"
+                        data-label="Name" data-src='/DataService/User.svc/User_Guide' />
+                </span>
+                <div class='cameos'>
+                    <label class='inline-block subform-label' for="<%=cid%>addguide">Additional Guide:</label>
+                    <div class='guide-cameo-and-input inline-block subform-input'>
+                        <div class='guide-cameo-canvas block cameo-canvas'>                            
+                            
+                        </div>
+                        <div class='guide-cameo-input block'>
+                            <span class='admin-grey'>    
+                                <input type="text" 
+                                    data-default-label="Click to Add" value="" 
+                                    name='<%=cid%>addguide'
+                                    id='<%=cid%>addguide'      
+                                    data-cameo-type="Guide"                           
+                                    class='jq-auto-complete dormant cameo-input' data-pk="UserId" 
+                                    data-columns="Email,Name,UserId,Username" 
+                                    data-filter="Email,Name,Username,UserIdL"
+                                    data-label="Name" data-src='/DataService/User.svc/User_Guide' />
+                            </span>
+                        </div>
+                    </div>
+
+                    <label class='inline-block subform-label' for="<%=cid%>addcathy">Cathy Cameo:</label>
+                    <div class='cathy-cameo-and-input inline-block subform-input'>
+                        <div class='cathy-cameo-canvas block cameo-canvas'>                            
+                            
+                        </div>
+                        <div class='cathy-cameo-input block'>
+                            <span class='admin-grey'>    
+                                <input type="text" 
+                                    data-default-label="Click to Add" value="" 
+                                    name='<%=cid%>addcathy'
+                                    id='<%=cid%>addcathy'      
+                                    data-cameo-type="Cathy"                           
+                                    class='jq-auto-complete dormant cameo-input' data-pk="UserId" 
+                                    data-columns="Email,Name,UserId,Username" 
+                                    data-filter="Email,Name,Username,UserIdL"
+                                    data-label="Name" data-src='/DataService/User.svc/User_Guide' />
+                            </span>
+                        </div>
+                    </div>
+
+                    <label class='inline-block subform-label' for="<%=cid%>addcathy">Staff Cameo:</label>
+                    <div class='staff-cameo-and-input inline-block subform-input'>
+                        <div class='staff-cameo-canvas block cameo-canvas'>                            
+                            
+                        </div>
+                        <div class='staff-cameo-input block'>
+                            <span class='admin-grey'>    
+                                <input type="text" 
+                                    data-default-label="Click to Add" value="" 
+                                    name='<%=cid%>addstaff'
+                                    id='<%=cid%>addstaff'      
+                                    data-cameo-type="Staff"                           
+                                    class='jq-auto-complete dormant cameo-input' data-pk="UserId" 
+                                    data-columns="Email,Name,UserId,Username" 
+                                    data-filter="Email,Name,Username,UserIdL"
+                                    data-label="Name" data-src='/DataService/User.svc/User_Guide' />
+                            </span>
+                        </div>
+                    </div>
+
+                    <label class='inline-block subform-label' for="<%=cid%>addcow">Cow Cameo:</label>
+                    <div class='cow-cameo-and-input inline-block subform-input'>
+                        <div class='cow-cameo-canvas block cameo-canvas'>                            
+                            
+                        </div>
+                        <div class='cow-cameo-input block'>
+                            <span class='admin-grey'>    
+                                <input type="text" 
+                                    data-default-label="Click to Add" value="" 
+                                    name='<%=cid%>addcow'
+                                    id='<%=cid%>addcow'      
+                                    data-cameo-type="Cow"                           
+                                    class='jq-auto-complete dormant cameo-input' data-pk="UserId" 
+                                    data-columns="Email,Name,UserId,Username" 
+                                    data-filter="Email,Name,Username,UserIdL"
+                                    data-label="Name" data-src='/DataService/User.svc/User_Guide' />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+	    </div>
+    </script>
+    <script type="text/template" id="slot_cameo_template">
+        <span class='cameo-set' data-pk='{1}'>
+            <input type='text' readonly='readonly' value='{0}' data-pk='{1}' />
+            <a data-icon='ui-icon-circle-close' data-text='false' data-pk='{1}' class='close-icon remove-cameo jq-button-icon inline-block'></a>
+            <a data-icon='ui-icon-circle-plus' data-text='false' data-pk='{1}' class='close-icon add-cameo jq-button-icon inline-block'></a>
+        </span>        
+    </script>
+    <script type="text/template" id="accordion_slot_template">
+        
+        <h3 class='<%=(date=="All"?"mode-all":"mode-date")%>'><a href="#"><%=date.toString("MMMM d, dddd")%></a></h3>
+	    <div class='admin-table <%=(date=="All"?"mode-all":"mode-date")%>'>
+		    <div class='slot-rows'></div>
+            <a href='javascript:void(0);' data-icon="ui-icon-triangle-1-e" class='jq-button add-timeslot'>Add a new Timeslot</a>
+	    </div>
+        
+    </script>
+    <script type="text/template" id="date_menu_template">
+        <li class='<%=date.toString("MMMM d, yyyy")%>'>
+            <span class='label'><%=date.toString("MMMM d, yyyy")%></span>
+            <a data-icon="ui-icon-circle-close" data-text='false' class='close-icon remove-date jq-button-icon inline-block'></a>
+        </li>
+    </script>
+    <script type="text/javascript">
+        var Model={
+            Start:Date.parse("@Model.Start.ToString("M/dd/yyyy")")
+        };
+        
+        Model.OccurrenceModel = new DomainModel.Occurrence({OccurrenceId:@Model.Id()});
+        
+            
+    </script>
+    <script src="@Url.Content("~/Areas/Admin/Scripts/Occurrence/Edit-Dash.js")" type="text/javascript"></script>
+    
+}
+@using (Html.BeginForm("Edit-Dash", "Occurrence", FormMethod.Post, new { id = "main", @class = "content rounded" }))
+{        
+    @Html.Hidden("OccurrenceId", Model.Id())
+
+    <div class="inner-content wrapper">
+        
+
+        <div id='summary_segment' class='details dashboard'>
+        
+            <h1>Tour Dates</h1>
+            <p>Select Days for this tour</p>
+            <div class='date-grid admin-table'>
+                <div id="event_summary" class='inline-block summary right model details'>
+                <h2>Event Details</h2>
+                @Html.Partial("ModelDetail/_ResEvent",Model.ResEvent)
+                </div>
+
+                <div id='inline_cal' class='inline-block item'></div>
+
+                <ul id="date_summary_list" class='inline-block item ui-corner-all'>                   
+                </ul>
+
+                <div id='rule_summary' class='inline-block item'></div>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="inner-content wrapper">
+
+        <div id='date_accordian_segment' class='rounded segment details dashboard'>
+        
+            <h2>Time Slots</h2>
+            <div id="button_group_all" class='button-group-master'>
+                <p class='inline-block'>Select Days for this tour</p>
+                
+                <div class="inline-block wrapper admin-orange">
+                    <div id="all_style_radios">
+		                <input type="radio" id="as2" name="all_style" checked="checked"  value="day" /><label for="as2">Times Apply to Individual Day</label>
+                        <input type="radio" id="as1" name="all_style"value="all" /><label for="as1">Times Apply to All Days</label>
+		                
+		            
+	                </div>
+                </div>
+            </div>
+
+            <div id="button_group_week" class='button-group-master'>
+                <p class='inline-block'>Edit timeslots based on individual calendar days or days of the week.</p>
+                
+                
+                <div class="inline-block wrapper admin-orange">
+                    <div id="day_style_radios">
+		                <input type="radio" id="ds1" name="day_style" checked="checked"  value="date" /><label for="ds1">By Date</label>
+		                <input type="radio" id="ds2" name="day_style" value="DOW" /><label for="ds2">By Day of Week</label>
+		            
+	                </div>
+                </div>
+            </div>
+
+            
+
+            <div class='admin-table slot-wrapper'>
+                <div class='slot-accordion' id="slot_accordion">
+                    
+                    
+	                
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="inner-content wrapper">
+
+        <div id='details_segment' class='rounded segment details dashboard'>
+        
+            <h2>Reservation Cut-Off Time</h2>
+            <p>Choose a time at least a day in advance to stop taking reservations</p>
+            <div class='details-input'>
+                <label class='inline-block'>
+                    
+                    <input type='text' value='12:00 am' class='jq-time inline-block' name='cutoff-time' id="cutoff_time" />
+                </label>
+                <label class='inline-block admin-table'>
+                    <select class='jq-select' name='cutoff-day' id="cutoff_day">
+                        <option value='{"days":-1}'>The Day Before</option>
+                        <option value='{"days":-2}'>Two Days Before</option>
+                        <option value='{"days":-3}'>Three Days Before</option>
+                        <option value='{"days":-7}'>The Week Before</option>    
+                        <option value='{"months":-1}'>The Month Before</option>                    
+                    </select>
+                </label>
+                <div class='submit-block inline-block admin-green'>
+                    <a data-icon="ui-icon-triangle-1-e" id="save" href="javascript:void(0)" class='jq-button'>Save &amp; Continue</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+}
+
+@Html.Partial("Dialogs/_SlotOperations")

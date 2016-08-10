@@ -1,0 +1,125 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@{
+    ViewBag.Title = "Review Your Registration";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_LeftJustified.cshtml";
+}
+
+@section Meta{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var tourTimeListener = function () {
+
+                var lunchValidTimeSlot = false;
+
+                var slotStart = $("#slotStart").val();
+                var x = 5;
+
+                slotStart = "0" + slotStart.substring(slotStart.length - 10, slotStart.length - 6); ;
+
+                if (slotStart > "09:00" && slotStart < "10:00") {
+                    lunchValidTimeSlot = true;
+                }
+                if (lunchValidTimeSlot) {
+                    $("#lunchOptInSection").show();
+
+                } else {
+                    $("#lunchOptInSection").hide();
+                }
+            };
+
+            tourTimeListener();
+
+        });
+
+    </script>
+}
+
+<h1>Reservation Overview</h1>
+@using (Html.BeginForm()) {
+    
+
+<div class="reservation-overview">
+    <div class="review-description">Please review the details of your reservation below. To modify a field, click the 'Edit This Information' button at the bottom of the screen. 
+    <span class="legal-aside red">* Indicates required field</span>
+    </div>
+    <div class="red">@Html.ValidationSummary(true)</div>
+
+
+    @Html.Partial("FormReview/SlotInfo")
+    
+    @if (Model.reservationUser.IsBound())
+    {
+        @Html.HiddenFor(m => m.reservationUser.UserId)
+    }
+    
+    @if (Model.tourTicket.IsBound())
+    {
+        @Html.HiddenFor(m => m.tourTicket.TicketId)
+    }
+
+    <div class="review-section review-column">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.First): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.First)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.Last): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.Last)</span></div>
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Email): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Email)</span></div>
+    </div>
+    @if (!Request.IsAuthenticated)
+    {
+        @Html.Partial("FormReview/Customer/UserCreation")
+
+    }
+
+    @Html.Partial("FormReview/Customer/GroupType")
+    
+
+    <!--Group Name-->
+    <div class="review-section">
+        <span class="field-requirement">* </span>
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.tourTicket.GroupName): </span><span class="value">@Html.DisplayFor(m => m.tourTicket.GroupName)</span>
+        </div>
+    </div>
+
+    
+    <!--special Needs-->
+    <div class="review-section">
+        
+        @Html.Partial("FormReview/SpecialNeeds")
+    </div>
+    @if (Model.tourTicket.OptInForLunch)
+        {
+            @Html.Partial("FormReview/LunchOptionDisplay")
+
+        }
+    <!--lunch-->
+      
+    @if (ViewBag.UserMode == "Operator")
+    {
+        @Html.Partial("FormReview/Operator/AdditionalStops")
+
+
+    }
+        
+        
+    
+
+    <!--for hiding the lunch option-->
+    @if (Model.tourTicket.Slot.Start != null)
+    {
+            @Html.HiddenFor(m => m.tourTicket.Slot.Start, new { id = "slotStart" })
+
+    }
+
+    <!--Buttons-->
+    
+    <input class="form-button" id="confirm-registration-button" value="" type="submit" />
+    <a class="form-button" id="modify-registration-button" href="@Url.Action("Begin", "Reservation", new { id = Model.tourTicket.Slot.SlotId, groupSize = Model.tourTicket.GuestCount })"></a>
+    <a class="form-button" id="cancel-registration-button" href="@Url.Action("Forget")"></a>
+</div>
+}

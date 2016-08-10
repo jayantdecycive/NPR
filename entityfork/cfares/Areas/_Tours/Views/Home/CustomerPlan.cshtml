@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "CustomerPlan";
+    Layout = "~/Areas/Tours/Views/Shared/TwoColumn/_Column6633.cshtml";
+}
+
+@section h1{
+<h1>Plan Your Visit</h1>
+}
+
+@section ColumnLeft{
+
+    @Html.Partial("TwoColumn/PlanMain")
+
+    <div class="info-section">
+        <h4>The Original Dwarf House<sup>®</sup></h4>
+        <p>Located in Hapeville, Georgia, the original Chick-fil-A Dwarf House can be found just 15 minutes from the Home Office. It was originally called “the Dwarf Grill” due to its small size. It has been remodeled since but it contains several original menu items. We recommend visiting the Dwarf House before or after your Chick-fil-A<sup>®</sup> Home Office Backstage Tour to see where it all started.</p>
+        <div class="address">
+            <h4>Address</h4>
+            <p>461 N Central Ave<br />Hapeville, GA 30354<br />(404) 762-1746<br /><a href="http://www.cfarestaurant.com/hapevilledwarfhouse ">www.cfarestaurant.com/hapevilledwarfhouse </a></p>
+        </div>
+    </div>
+}
+
+@section ColumnRight{
+@Html.Partial("TwoColumn/Hotels")
+}

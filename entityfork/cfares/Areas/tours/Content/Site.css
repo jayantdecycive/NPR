@@ -1,0 +1,1563 @@
+﻿/*----------------------------------------------------------
+CONTENTS
+
+GLOBAL
+    fonts
+    NAV
+    FOOTER
+    WIZARD
+    FORMS
+        login
+    DATATABLES
+PAGES
+    CONTROLER-REGISTRATION
+        form
+        overfiew
+        calendar
+        dashboard
+    CONTROLER-HOME
+        faq
+        index
+*/
+
+/***************************************************************
+GLOBAL*/
+
+    /* Fonts
+    --------------------------------------*/
+    
+    @font-face {
+        font-family: caeciliacom-75bold;
+        src: url('Fonts/caeciliacom-75bold-webfont.eot'); /* FOR IEs */
+        src: local('caeciliacom-75bold'), 
+             url('Fonts/caeciliacom-75bold-webfont.woff') format('woff'), /* for IE9 */
+             url('Fonts/caeciliacom-75bold-webfont.ttf') format('truetype'); /* for other web browsers */
+    }
+    
+    /*
+    @font-face
+    {
+        font-family: caeciliacom-75bold;
+        src: url('Fonts/caeciliacom-75bold-webfont.ttf'), url('Fonts/caeciliacom-75bold-webfont.eot');
+    }
+    */
+
+    body 
+    {
+        margin: 0px;
+        height:100%;
+        font-family: caeciliacom-75bold;
+        background-image: url(/Areas/tours/Content/Img/bg-gradient.jpg);
+        background-position:top;
+        background-repeat:repeat-x;
+        background-color:#ffffff;
+    }
+
+    #content-body
+    {
+        width: 976px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    h1{ font-family: caeciliacom-75bold; font-size:24px; margin:20px 0px 20px 0px; line-height:24px;}
+    h3{ font-family: caeciliacom-75bold; font-size:16pt; margin:10px 0px 0px 0px; margin-bottom:10px;}
+    h4{ font-family: caeciliacom-75bold; margin-bottom:10px;}
+    
+    a{ color: #660000; font-weight:bold; }
+    
+    .small-text{font-size:8pt;}
+    
+    .no-wrap{white-space:nowrap;}
+
+
+
+    /*----------------------------------------------------------
+    NAV*/
+    
+        #navigation-bar 
+        {
+            background-image: url(/Areas/tours/Content/Img/head-gradient.jpg);
+            background-repeat: repeat-x;
+            display: block;
+            height: 240px;
+        }
+
+        #navigation-bar .navigation-buttons 
+        {
+            top: 0px;
+            width: 976px;
+            height: 35px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #navigation-bar .navigation-buttons ul 
+        {
+            margin: auto;
+            height: 100%;
+            width: 976px;
+            vertical-align: middle;
+            list-style-type: none;
+        }
+        #navigation-bar .navigation-buttons ul li
+        {
+            width: auto;
+            float: left;
+            text-align: center;
+            display:block;
+        }
+        
+        #navigation-bar .navigation-buttons ul li:hover
+        {
+          background-image: url(/Areas/tours/Content/Img/head-gradient-hover.jpg);
+          background-repeat: repeat-x;
+
+        }
+
+        #navigation-bar .navigation-buttons ul .help-link
+        {
+            background-image: url(/Areas/tours/Content/Img/head-gradient-hover.jpg);
+            background-repeat: repeat-x;
+        }
+
+        #navigation-bar .navigation-buttons ul li:first-child
+        {
+            margin-left: 5px;
+
+        }
+
+        #navigation-bar .navigation-buttons ul li a 
+        {
+            display:block;
+            font-family:'caeciliacom-75bold',Georgia,serif;
+            line-height: 35px;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 10pt;
+            font-weight:normal;
+            padding:0px 70px 0px 70px;
+        }
+        #navigation-bar .navigation-buttons ul li a:hover 
+        {
+           color: #ecac00; 
+        }
+
+
+        #navigation-bar .graphic 
+        {
+           display: block;
+           margin: 0px;
+           width:871px;
+           margin-left:auto;
+           margin-right:auto;
+           padding-left:180px;
+        }
+        
+        #navigation-bar .logo
+        {
+            background-image: url(/Areas/tours/Content/Img/logo-small.png);
+            background-repeat:no-repeat;
+            background-position:right;
+            height:174px;
+            width:675px;
+            display:block;
+            margin:auto;
+            margin-top:1px;
+        }
+
+        #navigation-bar .shadow
+        {
+            background-image: url(/Areas/tours/Content/Img/shadow-repeat.png);
+            background-repeat:repeat-x;
+            width:100%;
+            height:5px;
+            margin-bottom:-5px;
+            z-index:100;
+            position:relative;
+            -webkit-box-shadow: #666 0px 0px 0px;
+            -moz-box-shadow: #666 0px 0px 0px;
+            box-shadow: #666 0px 0px 0px;
+        }
+    /* END NAV 
+    ----------------------------------------------------------*/
+    
+    /*----------------------------------------------------------
+    FOOTER*/
+
+    #footer
+    {
+        text-align:center;
+        padding-top:100px;
+        padding-bottom: 20px;
+        font-family:Arial,sans-serif;
+        color:#666;
+        font-size:8pt;
+        clear:both;
+    }
+
+    #footer p {font-size:8pt; line-height:normal; padding-top:5px;}
+    #footer a {font-weight:bold; }
+    #footer a:hover {color:#000;}
+    
+    /* END FOOTER  
+    ----------------------------------------------------------*/
+    
+    
+    /*----------------------------------------------------------
+    INFO*/
+    
+        .message-wrapper{width:400px;margin-left:auto;margin-right:auto; margin-top:10px;margin-bottom:10px;}
+        .message-wrapper .ui-state-highlight{padding:10px;}
+        .message-wrapper .ui-icon-info{position:relative;top:5px;}
+    
+    /* END INFO
+    ----------------------------------------------------------*/
+    
+    
+    /*----------------------------------------------------------
+    WIZARD*/
+    
+        .wizard
+        {
+            font-family:arial, sans-sreif;   
+            font-size:9pt;
+            width:802px;
+            padding-left:86px;
+            text-align:left;
+        }
+
+        .wizard .bar-section a
+        {
+            color:#fff;
+            text-decoration:none;
+        }
+
+        .wizard .wizard-bar
+        {
+            height:22px;
+            color:#fff;
+            margin:0px;
+            background-image:url("/Areas/tours/Content/Img/step3.png");
+        }
+
+        .wizard .bar-section
+        {
+            padding-right:0px;
+            padding-left:18px;
+            padding-top:3px;
+            width:142px;
+            height:100%;
+            display:inline-block;
+            float:left;
+        }
+
+        .wizard .Wizard-info
+        {
+            padding-left:0px;
+        }
+
+        .wizard .wizard-step
+        {
+            margin-bottom:20px;
+            margin-top:10px;
+            width:14%;
+            margin-right:6%;
+            display:inline-block;
+            vertical-align:top;
+            height:50px;
+        }
+        .wizard a.wizard-step
+        {
+            color:#666;    
+            cursor:pointer;
+            font-weight:normal;
+        }
+        .wizard a.wizard-step strong{font-weight:bold;}
+        .wizard a.wizard-step:hover{text-decoration:none;}
+
+        .wizard .info-2, .wizard .info-3, .wizard .info-4
+        {
+            background-image:url("/Areas/tours/Content/Img/check.png"); 
+            background-position:left top;
+            background-repeat:no-repeat;
+        }
+
+        .wizard .wizard-bg-1  { background-image:url("/Areas/tours/Content/Img/step2.png"); }
+        .wizard .wizard-bg-2  { background-image:url("/Areas/tours/Content/Img/step3.png"); }
+        .wizard .wizard-bg-3  { background-image:url("/Areas/tours/Content/Img/step4.png"); }
+        .wizard .wizard-bg-4  { background-image:url("/Areas/tours/Content/Img/step5.png"); }
+        
+        .wizard .info-1
+        {
+            width:20%;
+            margin-right:0%;   
+        }
+
+    /* END WIZARD  
+    ----------------------------------------------------------*/
+    
+    /*----------------------------------------------------------
+    Forms*/
+        input[type=text], input[type=password]
+        {
+            border-style:solid;
+            border-width:1px;
+            border-color:#99b6cf;
+            border-radius:2px;
+            -moz-border-radius: 2px;
+            -moz-box-shadow: inset 1px 2px 2px #ddd;
+            -webkit-box-shadow: inset 1px 2px 2px #ddd;
+            box-shadow: inset 1px 2px 2px #ddd;
+        }
+        
+        .legal-aside
+        {
+            font-size: .85em;
+            font-weight: normal;
+        }
+
+        .field-requirement
+        {
+            font-size:1.5em;
+            color: #e21937;
+            vertical-align: middle;
+            float:left;
+            padding-right:7px
+        }
+        
+        .h-divider
+        {
+            height:1px; 
+            margin:30px 0px 30px 0px;
+            width:100%;
+            background:#ccc;
+        }
+        
+        /*-------Lost Invite -------------------------------*/
+        
+        .forgot-pass-link
+        {
+            display: block;
+            text-align: left;
+            margin-left: 105px;
+            margin-top: 5px;
+               
+        }
+        
+        /*--------------------------------------------------
+        Login*/
+    
+            .logon-form
+            {
+                text-align:center;  
+                padding-top:50px;
+                line-height:120%;
+                position:relative;
+            }
+            
+            .form-item{margin-top:12px;width:338px;margin-left:auto;margin-right:auto;position:relative; 
+                       left:-48px;}
+            
+            .form-item .password-reset{ padding-left: 10px;}
+            
+
+            .logon-form input[type=text], .notification input[type=password] 
+            {
+                width:220px;
+                margin-right:10px;
+            }
+
+            .logon-form .item-name
+            {
+                display:inline-block;
+                width:102px;
+                text-align:left;
+            }
+
+            .logon-form-button
+            {  
+                margin-top:30px;
+                
+                background-image: url("/Areas/tours/Content/Img/submit-buttons.png");
+                height: 72px;
+                width:236px;
+                display: inline-block;
+                background-position: top;
+                border:none;
+            }
+
+            .logon-form-button:hover
+            {
+                background-position: bottom;   
+            }
+            
+            .logon-form .logon-description
+            {
+               font-family:Arial, Sans-Serif;
+               line-height:19px;
+            }
+            
+            .form-item #confirm-pass
+            {
+                display:inline-block;
+                width:120px;
+                margin-left:-95px;
+            }
+            
+            .form-item #ConfirmPassword
+            {
+                position:relative;
+                left:37px;
+            }
+            
+            .login-link
+            {
+                font-family:Arial, Sans-Serif;
+                font-size: 14px;
+            }
+            
+             .logon-form .forgot-pass
+             {
+                 
+             }
+
+    
+        /* END Login
+        --------------------------------------------------*/
+    
+    /* END FORMS  
+    ----------------------------------------------------------*/
+    
+    
+    /*Datatables
+    ------------------------------------------*/
+    .dataTables_wrapper, .customer-grey 
+    {
+        text-align:left;  
+
+    }
+    .dataTables_wrapper .ui-state-default
+    {
+        border-color:#ACACAC;
+    }
+    
+    .dataTables_wrapper tbody {
+        border-left: solid 1px #ACACAC;
+        border-right: solid 1px #ACACAC;
+    }
+    
+    .dataTables_wrapper label, .dataTables_info, .dataTables_processing {
+        color:#666666;
+    }
+    
+    .dataTables_wrapper .modify-link, .dataTables_wrapper .cancel-link
+    {
+        color:#fff;
+        background:#c82129;
+        padding:4px 10px 4px 10px;
+        border-radius:3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+    
+    .dataTables_wrapper .modify-link:hover, .dataTables_wrapper .cancel-link:hover
+    {
+        text-decoration:none;
+        background:#282828;
+    }
+    
+    
+    /* END Datatables
+    --------------------------------------------------*/
+    
+    .validation-summary-errors.ui-widget .ui-state-error{
+        padding: 10px 10px;
+        margin: 13px 5px;
+        margin-top:0px;
+        }
+        
+        .validation-summary-errors.ui-widget .ui-state-error .ui-icon-alert{position: relative;
+top: 6px;}
+    
+
+/* END GLOBAL 
+****************************************************************/
+
+
+/***************************************************************
+PAGES */    
+
+    /*--------------------------------------------------
+    controller-registration */
+
+        /*--------------------------------------------------
+        Registration Form*/
+    
+            .form-body
+            {
+                font-size: 10.5pt;
+                font-weight: bold;
+                font-family: Arial, Sans-Serif;
+                color: #333333;
+                line-height:200%;
+            }
+            
+            .form-body .value{font-weight:normal;padding-left:1em;}
+            
+            .edit-button{color: white;
+background: #c82129;
+padding: 2px 6px;
+border:solid 1px #c82129;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;}
+
+            .edit-button:hover, .edit-button.hover{color: #c82129;
+background: #ffffff;
+text-decoration:none;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;}
+
+
+            .form-body p
+            {
+                display: inline-block; 
+                
+            }
+
+            .form-body .name-value
+            {
+                width:150px;   
+            }
+
+            .form-body .small-field input[type=text]
+            {
+                width:80px;   
+            }
+
+            .form-body span
+            {
+                display:inline-block;
+            }
+            
+            .form-body .multi-line
+            {
+                text-indent: -1.2em;
+                position: relative;
+                left: 1.2em;
+            }
+
+            .form-body .textboxwrapper label 
+            {
+                width: 150px;   
+                display: inline-block;
+            }
+
+            .form-body .textboxwrapper input 
+            {
+                width: 200px;   
+            }
+
+            .form-body .field-validation-error
+            {
+                font-size: .9em;
+                font-weight: bold;
+                color: #e21937;
+                font-style:italic;
+            }
+
+            .form-body .timeRequestForm
+            {
+                display: inline-block;
+                background-image: url(/Areas/tours/Content/Img/timepicker-divider.png);
+                background-position:right top;
+                background-repeat: no-repeat;
+                padding-left: 20px ;
+                padding-right: 20px;
+                padding-bottom:30px;
+                width:250px;
+                float:left;
+            }
+
+            .form-body #userForm_Password, .form-body #userForm_ConfirmPassword
+            {
+                
+            }
+                
+            .form-body .timeRequestForm:last-child
+            {
+                background-image: none;
+            }
+
+            .form-body .calendar-icon
+            {
+                float:right;
+                margin-right:10px;
+                background-image: url(/Areas/tours/Content/Img/calendar-icons.png);
+                background-position: right center;
+                width: 39px;
+                height: 37px;
+            }
+
+            .form-body .calendar-icon:hover
+            {
+                background-position: left center;    
+            }
+
+            .form-body #lunchOptInSection  .additional-info-box
+            {
+                width: 250px;   
+            }
+
+            .form-body .clear
+            {
+                clear:both;
+            }
+
+            .form-body #timeRequestSection
+            {
+                padding-left:30px;   
+            }
+
+            .form-body .editor-label
+            {
+                float:left;
+                clear:both;
+                width:150px;
+            }
+
+            .form-body .timeRequestForm input[type=text]{width:175px; padding:0; margin:0;}
+            .form-body .timeRequestForm .timeselectinput{width:177px; padding:0; margin:0;}
+
+            .form-body .form-submit
+            {
+                background-image:url(/Areas/tours/Content/Img/submit.png);
+                background-position:left, top;
+                background-repeat:no-repeat;
+                height:58px;
+                width:222px;
+                border:none;
+            }
+
+
+            .left-justified .description
+            {
+                font-family:Arial, sans-serif;
+                padding-bottom:20px;
+                color:#666;
+                width:73%;
+                font-size:10pt;
+                line-height:150%;
+            }
+            
+            
+
+            .form-body .lunchOptInSection #lunchForm_numberOfAdultLunches
+            {
+                width:20px;
+            }
+
+            .form-body .checkboxgroup
+            {
+                padding-left:50px;
+                width:75%;
+                padding-bottom:30px;
+                line-height: 200%;
+                font-weight:normal;
+            }
+
+            .form-body .checkboxwrapper
+            {
+                width:32%;
+            }
+
+            .form-body #specialNeedsForm
+            {
+                padding-left:50px;   
+                width:75%;
+
+                line-height: 200%;
+                font-weight:normal;
+            }
+
+            .form-body #otherDescription
+            {
+                width:370px;  
+            }
+
+            .form-body #descriptionOfSpecialNeeds
+            {
+                width:400px;
+                margin-left:80px;   
+            }
+
+            .form-body #password-dialog, .form-body #diet-dialog
+            {
+                color:#831719;
+                text-decoration:underline;
+            }
+
+
+            .form-body #submit-registration-button 
+            {
+                margin-top:30px;
+                background-image: url("/Areas/tours/Content/Img/submit-buttons.png");
+                height: 72px;
+                width:236px;
+                display: block;
+                background-position: top;
+                border:none;  
+            }
+
+            .form-body #submit-registration-button:hover
+            {
+                background-position: bottom;
+            }
+
+            .form-body .text-box-wrapper
+            {
+                zoom:1;
+                position:absolute; 
+            }
+
+            .form-body .form-section
+            {
+                margin-bottom: 10px;   
+            }
+
+            .form-body #lunchOptInSection 
+            {
+                margin-bottom: 25px;   
+            }
+
+            .form-body #diet-dialog
+            {
+                font-weight:bold;    
+            }
+
+            .form-body #lunchOptInSection .textboxwrapper
+            {
+                font-weight:normal;   
+                padding-left:50px;
+            }
+
+            .form-body #lunchOptInSection .lunchCounter
+            {
+                width: 50px;   
+            }
+
+            .form-body #lunchOptInSection #groupName
+            {
+                width: 150px;   
+            }
+            
+            .form-body #guest-list
+            {
+                display:block;   
+                padding-left: 0px;
+            }
+            
+            .form-body #guest-list li
+             {
+
+               
+             }
+            
+            .form-body #guest-list .edit-form
+            {
+                width: 200px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                background-color: #EFEFEF;
+                border-radius:5px;
+            }
+            
+            .form-body #guest-list .display-form
+            {
+                font-size: .85em;
+                color: #666666;
+                width: 150px;
+                line-height: 20px;
+
+                margin-right: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                background-color: #EFEFEF;
+                border-radius:5px;
+            }
+            
+            
+            .form-body #guest-list li input
+            {
+                display: inline-block;
+            }
+            
+             .form-body #guest-list li .button
+             {
+                 display: inline-block;
+                 margin-right: 4px;
+                 float: right;
+             }
+            
+            .form-body #guest-list .edit-form .button
+            {
+                margin-top: 6px;
+                margin-right: 4px;
+            }
+            
+            .form-body #guest-list .display-form .button
+            {
+                
+            }
+            
+            .form-body .guest-list-widget
+            {
+                padding-left: 50px;
+            }
+            
+            .form-body .guest-list-widget .addNameButton
+            {
+                display: inline-block;
+                border-bottom: none;
+                margin-bottom: 0px;
+                font-size: .85em;
+                color: #666666;
+                width: 150px;
+                padding-right:20px;
+            }
+            
+            .form-body .guest-list-widget .addNameButton .button
+            {
+                margin-top: 6px;
+                float: right;
+            }
+    
+        /* END Registration Form
+        --------------------------------------------------*/
+
+        /*--------------------------------------------------
+        Registration Overview*/
+
+            .reservation-overview
+            {
+                font-family:Arial,sans-serif;
+                font-weight:bold;
+                font-size:10pt;
+                line-height:250%;
+                padding-top:20px;
+            }
+
+            .reservation-overview .name-value-pair .value
+            {
+                color:#666; 
+            }
+
+            .review-column .name
+            {
+                width:150px;
+            }
+
+            .review-column
+            {
+                line-height:150%
+            }
+
+            .review-section
+            {
+                padding-bottom:20px;   
+                clear:both;
+                height:100%;
+                
+            }
+            
+            .reservation-overview #additional-stops
+            {
+                height:130px;
+            }
+
+            .review-column .name-value-pair .name
+            {
+                width:120px;
+                display:inline-block;
+
+            }
+
+            .review-description
+            {
+                color:#666;
+                padding-bottom:20px; 
+                width:80%;
+                line-height:150%;
+                font-weight:normal;
+                font-family:Arial, Sans-Serif;
+            }
+            
+            #group-size-item
+            {
+                position:relative;
+                left:-5px;
+            }
+
+            .form-button
+            {
+                background-color: transparent;
+                cursor:pointer;
+            }
+
+            .reservation-overview .form-button
+            {
+                width: 230px;
+                display: block;
+                margin-top:10px;
+    
+            }
+
+            .reservation-overview #confirm-registration-button 
+            {
+                background-image: url("/Areas/tours/Content/Img/confirm-buttons.png");
+                height: 71px;
+                background-position: bottom right;
+                border:none;
+            }
+
+            .reservation-overview #confirm-registration-button:hover
+            {
+                background-position: bottom left;
+            }
+
+            .reservation-overview #modify-registration-button 
+            {
+                background-image: url("/Areas/tours/Content/Img/edit-information-buttons.png");
+                height: 46px;
+                background-position: bottom right;
+            }
+            
+            
+            .reservation-overview #modify-registration-button:hover
+            {
+                background-position: bottom left;
+            }
+
+            .reservation-overview #cancel-registration-button 
+            {
+                background-image: url("/Areas/tours/Content/Img/cancel-buttons.png");
+                height: 42px;
+                background-position: bottom left;
+            }
+
+            .reservation-overview #cancel-registration-button:hover
+            {
+                background-position: bottom right;
+            }
+            
+            .reservation-overview #resend-button 
+            {
+                background-image: url("/Areas/tours/Content/Img/resend-btn_3.png");
+                height: 52px;
+                width: 236px;
+                background-position: bottom left;
+            }
+            
+            .reservation-overview #resend-button:hover 
+            {
+                background-position: bottom right;
+            }
+
+
+            .reservation-overview .name-value-pair .checkboxgroup
+            {
+                padding-left:50px;
+                padding-bottom:30px;
+                line-height:200%;
+                width:75%;
+                font-weight:normal;
+            }
+
+            .reservation-overview .checkbox-name-wrapper
+            {
+                width:32%;
+                float:left;
+            }
+
+            .reservation-overview .checkboxWithExplanation
+            {
+                width:40%;
+                float:left;
+            }
+        
+        /* END Registration Overview
+        -----------------------------------------------------------*/
+    
+        /*--------------------------------------------------
+        CALENDAR*/
+    
+            .calendar
+            {
+                background:#f1f9fa;
+                background-image:url("/Areas/tours/Content/Img/calendar-texture-fade.png") ;
+                background-position: top;
+                background-repeat: repeat-x;
+                padding-top: 30px;
+                padding-right: 10px;
+                padding-left: 10px;
+                -moz-border-radius: 20px;
+	            -webkit-border-radius: 20px;
+	            border-radius: 20px;
+	            behavior: url("/Scripts/Pie/Pie.htc");
+	            height:100%;
+            }
+
+            .calendar tr .ui-widget-header
+            {
+                border: none;
+                background: none;
+                padding-bottom: 15px;
+            }
+
+            .calendar tr .ui-widget-header .dayOfWeek
+            {
+                display: block;
+                text-align: center;
+                font-family: caeciliacom-75bold;
+                color:#666;
+            }
+
+            .calendar tr .ui-widget-content
+            {
+                border: none;
+                background: none;
+            }
+
+            .calendar .fc-event 
+            {
+                padding: 3px;
+            }
+
+            .calendar .fc-event 
+            {
+                padding: 3px;
+            }
+
+            .calendar .eventBody {
+                display: block;
+                text-decoration: none;
+                font-family:"Arial", sans-serif;
+                border-style:solid;
+	            border-color:#B8B8B8;
+	            -moz-border-radius: 15px;
+	            -webkit-border-radius: 15px;
+	            border-radius: 15px;
+	            border-width: 2px;
+	            background: #aedafe;
+	            color: #333333;
+	            font-weight: normal;
+	            background-image:url("/Areas/tours/Content/Img/button-graident-left.png"), url("/Areas/tours/Content/Img/button-graident-right.png");
+	            background-position:left top, right top;
+	            background-repeat:repeat-y;
+	            cursor:pointer;
+	            behavior: url("/Scripts/Pie/Pie.htc");
+            }
+            
+            .calendar .eventBodyPast {
+                display: block;
+                text-decoration: none;
+                font-family:"Arial", sans-serif;
+                border-style:solid;
+	            border-color:#B8B8B8;
+	            -moz-border-radius: 15px;
+	            -webkit-border-radius: 15px;
+	            border-radius: 15px;
+	            border-width: 2px;
+	            background: #e6e6e5;
+	            color: #333333;
+	            font-weight: normal;
+	            /*
+                background-image:url("/Areas/tours/Content/Img/button-graident-left.png"), url("/Areas/tours/Content/Img/button-graident-right.png");
+	            background-position:left top, right top;
+	            background-repeat:repeat-y;
+                */
+	            behavior: url("/Scripts/Pie/Pie.htc");
+            }
+
+            .calendar .timeString {
+	            text-align: center;
+	            display: block;
+	            font-weight:bold;
+            }
+
+            .calendar .fc-event .timeString {
+	            display: block;
+	            text-align: center;
+	            padding-top: 8px;
+	            padding-bottom: 8px;
+	            text-shadow:0px 1px #ffffff;
+	            background-image:url("/Areas/tours/Content/Img/button-graident-highlight.png");
+	            background-position:left top;
+	            background-repeat:repeat-x;
+	            bbehavior: url("/Scripts/Pie/Pie.htc");
+            }
+            
+
+            .calendar .eventBody .ticketLabel
+            {
+                min-height:31px;
+                text-align: center;
+                line-height:130%;
+                font-size: .8em;
+                font-weight:bold;
+                padding-left: 15%;
+                padding-right: 15%;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 15px;
+                border-radius: 10px;
+                padding-top:8px;
+                padding-bottom:8px;
+                background: #89cafd;
+                background-image:url("/Areas/tours/Content/Img/button-graident-shadow.png");
+	            background-position:left bottom;
+	            background-repeat:repeat-x;
+	            behavior: url("/Scripts/Pie/Pie.htc");
+            }
+
+            .calendar .eventBodyPast .ticketLabel
+            {
+                min-height:31px;
+                text-align: center;
+                line-height:130%;
+                font-size: .8em;
+                font-weight:bold;
+                padding-left: 15%;
+                padding-right: 15%;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 15px;
+                border-radius: 10px;
+                padding-top:8px;
+                padding-bottom:8px;
+                background: #d3d2d1;
+                background-image:url("/Areas/tours/Content/Img/button-graident-shadow.png");
+	            background-position:left bottom;
+	            background-repeat:repeat-x;
+	            behavior: url("/Scripts/Pie/Pie.htc");
+            }
+            
+             .calendar .eventBodyPast .condensed, .calendar .eventBody .condensed 
+             {
+                line-height:120%;
+                font-size: .75em;
+                padding-left: 5px;
+                padding-right: 5px;
+             }
+            
+            .calendar .calendarHeader 
+            {
+                height: 25px;
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+                background: #f1f9fb;
+                display: block;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                vertical-align: middle;
+                margin-bottom: 15px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 15px;
+                border-radius: 10px;
+            }
+
+            .calendar .fc-content
+            {
+                width: 95%;
+                height:100%
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .calendar .calendarHeader .monthHeader 
+            {
+                width:90%;
+                text-align:center;   
+                display: inline-block;
+                font-weight:bold;
+                font-size:18pt;
+            }
+
+            .calendar .calendarHeader .month-button
+            {
+                background-image:url("/Areas/tours/Content/Img/month-icon.png") ;
+                width:8px;
+                height:16px;
+            }
+
+            .calendar .next
+            {
+                background-position:top;
+                display: inline-block;
+            }
+
+            .calendar .previous
+            {
+                display: inline-block;
+                background-position:bottom;
+            }
+
+            .calendar .fc-view 
+            {
+                display:inline-block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+            }
+
+            .calendar .fc-content .week-button
+            {
+                display: inline-block;
+                vertical-align: top;
+                background-image:url("/Areas/tours/Content/Img/week-icon.png") ;
+                width:18px;
+                height:36px;
+            }
+
+            .calendar .fc-content .previous-week
+            {
+                float: left;
+                background-position:top;
+                cursor:pointer;
+            }
+
+            .calendar .fc-content .next-week
+            {
+                float: right;
+                background-position:bottom;   
+            }
+    
+        /* END CALENDAR
+        --------------------------------------------------*/
+        
+        /*--------------------------------------------------
+        DASHBOARD */
+        
+        .dashboard
+        {
+            width:90%; 
+            margin-left:5%;
+        }
+        
+        .dashboard .logout
+        {
+            float:right;
+            position:relative;
+            top:-40px;
+        }
+        
+        
+        
+        
+        
+        
+        /* END DASHBORD
+        --------------------------------------------------*/
+        
+     /* END controler-registration
+    --------------------------------------------------*/
+    
+    
+    /*--------------------------------------------------
+    controller-home */
+    
+        /*----------------------------------------------
+        action-faq controller-home */
+    
+            body.action-faq.controller-home
+            {
+                font-size:11pt;
+            }
+            .action-faq.controller-home 
+            {
+                
+            }
+        
+            .action-faq.controller-home .jqui-theme-faq .ui-accordion .ui-accordion-header .ui-icon 
+            { 
+                position:absolute; left:800px; 
+                top: 0%; margin-top: 0px; background-image: url(/Areas/Tours/Content/Img/accordian-closed.png) !important; 
+                background-position:right top; height:39px; width: 143px;
+            }
+                
+            .action-faq.controller-home .ui-widget-content .additional-faq-info 
+            {
+                display: block;
+                padding-top:15px;
+                padding-bottom:15px;
+                margin-bottom: 20px;
+                font-size:8pt;
+            }
+    
+        /* END action-faq controller-home
+        ----------------------------------------------*/
+        
+        /*----------------------------------------------
+        action-Index controller-home */
+    
+    
+            .landing-page p 
+            {
+                line-height:19px;
+                color:#666;
+                font-size:10pt;
+                font-family:Arial, Sans-Serif;
+                
+            }
+            
+            .landing-page h3{ color:#79a3d8; padding-left:20px; font-weight:normal; font-size:23px;}
+            .landing-page h4{ font-weight:normal; font-family:caeciliacom-75bold;}
+
+            .landing-page #row-top p
+            {
+                margin-top:0px;
+            }
+
+           .landing-page a 
+            {
+                font-weight:bold;
+            }
+
+            .landing-page #tours-banner
+            {
+                padding-left:20px; 
+            }
+
+            .landing-page #row-top 
+            {
+                float:right; 
+                width:50%;
+                padding-top:15px;
+            }
+
+            .landing-page .tours-photos
+            {
+                position:relative;
+                left:-30px;
+                top:-30px;
+                float:left;
+
+            }
+
+            .landing-page  #row-details .note-left
+            {
+                float:left;
+                padding-left:18px; 
+            }
+
+            .landing-page  #row-details .note-right
+            {
+                float:right;
+                margin-right:190px;
+            }
+
+            
+
+           .landing-page  #row-details .note
+            {
+                font-family:Arial;
+                margin-top: -37px;
+                font-size:8pt;
+                color:#666;
+                padding-left:18px; 
+            }
+
+            .landing-page .section-tour
+            {
+                float:left;
+                margin-left:2%;
+                margin-right:4%;
+                width:45%;
+            }
+
+            .landing-page .large-group
+            {
+                width:40%;   
+            }
+
+            .landing-page #row-top .section-title
+            {
+                font-weight:bold;
+                font-size:11pt;
+                padding-top:20px;
+                color:#000;
+            }
+
+            .landing-page .section-tour h4 
+            {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-family:caeciliacom-75bold; 
+                font-size:14pt;
+            }
+
+           .landing-page #row-details     
+            {
+                clear:both;
+               
+                width:93%;
+                padding-left:4%;
+            }
+            .landing-page #row-reservation 
+            {
+                clear:both;
+                width:93%;
+                padding-left:4%;
+            }
+
+            .landing-page #row-reservation p
+            {
+                margin-top:0px;
+                color:#000;
+    
+            }
+
+            .landing-page #divider
+            {
+                float:left;
+                width:0%;
+                height:80%;
+                margin-top:2%;
+    
+            }
+
+            .landing-page #tour-banner
+            {
+                height:180px;
+                width:896px;
+                background:url(/Areas/tours/Content/Img/details-bg.png) no-repeat;
+
+            }
+
+            .landing-page #section-team
+            {
+                float:right;
+                background-image:url(/Areas/tours/Content/Img/team-bg.png);
+                background-position:left, top;
+                background-repeat:no-repeat;
+                width:449px;
+                height:205px;
+            }
+
+            .landing-page #section-guest
+            {
+                float:left;
+                background-image:url(/Areas/tours/Content/Img/guest-bg.png);
+                background-repeat:no-repeat;
+                width:449px;
+                height:100%;
+                margin-top: -5px;
+                top:-30px;
+            }
+
+            .landing-page #section-guest .reservation-text
+            {
+                margin-top:40px;
+            }
+
+            .landing-page .reservation-text
+            {
+                margin-left:20px;
+                margin-right:20px;
+                margin-top:40px;
+                width:57%;
+            }
+
+            .landing-page .reservation-text p
+            {
+                padding-bottom:8px;
+            }
+
+            .landing-page .reservation-text .input-text
+            {
+                line-height:5px;
+                font-size:10pt;
+            }
+
+            .landing-page .reservation-text h4 {color:#e89032; font-family:caeciliacom-75bold; font-size:14pt; margin-bottom: 12px; font-weight:normal;}
+
+            .landing-page #button
+            {
+                margin-top:15px;
+                margin-bottom:5px;
+                position:relative;
+                left:-6px;
+                width:236px;
+                height:72px;
+                background-image:url(/Areas/tours/Content/Img/buttons.png);
+                background-position:top;
+                background-repeat:no-repeat;
+            }
+
+            .landing-page #button a
+            {
+                display:block;
+                width:236px;
+                height:72px;
+            }
+
+            .landing-page #button:hover
+            {
+                background-position:bottom;
+            }
+
+            .landing-page .underline
+            {
+                text-decoration:underline;
+            }
+
+            .landing-page .reservation-header
+            {
+                height:20px;
+                margin-bottom:0px;
+            }
+
+            .landing-page .reservation-text .team-header
+            {
+                color:#988600;
+            }
+            .landing-page #teamGroupSize
+            {
+                width:96px;
+                margin-bottom:5px;
+            }
+
+            .landing-page #groupSize
+            {
+             width:96px;   
+             margin-top:-5px;
+             margin-left:15px;
+             position:relative;
+             top:5px;
+            }
+
+
+            .landing-page .operator-text
+            {
+                width:200px;
+            }
+            
+            .landing-page .plan-link
+            {
+                font-family:Arial, Sans-Serif;
+            }
+            
+            
+    
+        /* END action-Index controller-home
+        ----------------------------------------------*/
+    
+    /* END controller-home
+    --------------------------------------------------*/
+    
+/* END pages
+****************************************************************/

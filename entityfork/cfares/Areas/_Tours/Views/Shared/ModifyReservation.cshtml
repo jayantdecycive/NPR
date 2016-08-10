@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "ModifyReservation";
+    Layout = "~/Areas/Tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+
+@section Modify{
+    <h1>Need To Cancel or Change Your Tour Reservation?</h1>
+    <span class="strong">To Cancel: </span><span>Please enter the email address and password used to make your reservation. </span><br/>
+    <span class="strong">To Modify: </span><span>Please call us at 1-800-232-2677 to modify your tour date, group size or additional information. </span>
+}
+
+@section Login{
+@Html.Partial("LoginPartial")
+}

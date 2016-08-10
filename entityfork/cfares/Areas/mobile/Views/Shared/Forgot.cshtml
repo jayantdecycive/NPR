@@ -1,0 +1,24 @@
+﻿@model cfares.Areas.tours.Models.LogOnModel
+@{
+    ViewBag.Title = "Forgot";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<div class="container center">
+<h1>Forgot Your Password?</h1>
+
+<p>If you've forgotten your password, please enter the email address used to make your reservation. An email will be sent to your inbox with instructions on how to reset your password.</p>
+<br/>
+@using (Html.BeginForm())
+{    
+    if (! String.IsNullOrEmpty(ViewBag.Result))
+    {
+        <span class="red">@ViewBag.Result</span>
+    }
+    
+    <div class="form-item">@Html.TextBoxFor(m => m.email, new { placeholder = "Email Address" })</div>
+     <br/>
+    <input type="submit" value="Submit" data-inline="false" data-theme="a"/>
+}
+
+</div>

@@ -1,0 +1,40 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+
+
+
+    @if (ViewBag.UserMode == "Customer" && ViewBag.TourSize == "Small")
+    {
+        <div class="review-section" id="lunchOptInSection">
+            <div class="name-value-pair">
+                <span class="field-requirement">* </span>
+                <span class="name">This tour time has a lunch option. Would anyone in your group like to reserve a lunch? </span>
+                <span class="value">
+                    @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, true, new { @readonly = "readonly", disabled = "true" })Yes
+                    @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, false, new { @readonly = "readonly", disabled = "true" })No
+                </span>
+            </div>
+            <div class="name-value-pair" id="lunchOptionsUI">
+                <span class="name">Number of Lunches: </span>
+                <span class="value">
+                    @Html.DisplayFor(m => m.tourTicket.NumberOfAdultLunches) adults, 
+                    @Html.DisplayFor(m => m.tourTicket.NumberOfKidLunches) kids, 
+                    @Html.DisplayFor(m => m.tourTicket.NumberOfSpecialNeedLunches) special needs
+                </span>
+            </div>
+            <div class="name-value-pair">
+            <span class="name">Total Price: </span><span class="value">$@Html.DisplayFor(m => m.tourTicket.TotalCostOfLunches)</span><span> (cost of lunch includes tax)</span></div>
+        </div>
+    }
+    else
+    {
+        <div class="review-section">
+            <div class="name-value-pair">
+                <span class="field-requirement">* </span>
+                <span class="name">Will you be staying for lunch? </span>
+                <span class="value">
+                    @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, true, new { @readonly = "readonly", disabled = "true" })Yes
+                    @Html.RadioButtonFor(model => model.tourTicket.OptInForLunch, false, new { @readonly = "readonly", disabled = "true" })No
+                </span>
+            </div>
+        </div>
+    }

@@ -1,0 +1,311 @@
+﻿@model cfares.Areas.tours.Models.StoryTourTicketFormModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="center">
+<h1>Register</h1>
+
+<p>Now that you have selected a tour date and time, please complete your reservation by filling out the form below. 
+<span class="red legal no-wrap">* Indicates required field</span></p>
+</div>
+
+@if (Model.initialUserCreation)
+{
+<div class="container">
+<p class="center">Have you registered for a tour before?</p>
+<a href="@("/mobile/Account/LogOn?returnUrl=/mobile/ticket/register/" + Model.tourTicket.SlotId)" data-role="button" data-theme="f" data-inline="false" data-mini="true">Log In</a>
+</div>
+}
+else
+{
+<p class="center">Not @Model.tourTicket.Owner.Name? Log off to register as a new user.</p>
+<a href="@("/mobile/Account/LogOff?returnUrl=/mobile/ticket/register/" + Model.tourTicket.SlotId)" data-role="button" data-theme="f" data-inline="false" data-mini="true">Log Off</a>
+}
+
+<div class="form-body">
+@using (Html.BeginForm("Register", "Ticket", FormMethod.Post, new { id = "register-form" }))
+{
+    <p id="form-validation" class="validation"></p>
+    @Html.ValidationSummary(true, "Registration was unsuccesful. Please re-enter your password, correct the errors and try again. ")
+    @Html.HiddenFor(m => m.tourTicket.Slot.Start, new { @class = "slotTime" });
+
+                                                                              if (Model.initialUserCreation)
+                                                                              {   
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.TextBoxFor(m => Model.reservationUser.Name.First, new { placeholder = "First Name" })
+        <span class="validation">@Html.ValidationMessageFor(m => Model.reservationUser.Name.First)</span>
+        </div>
+
+
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.TextBoxFor(m => Model.reservationUser.Name.Last, new { placeholder = "Last Name" })
+        <span class="validation">@Html.ValidationMessageFor(m => Model.reservationUser.Name.Last)</span>
+        </div>
+    
+
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.TextBoxFor(m => Model.reservationUser.Email, new { placeholder = "Email", autocapitalize = "off" })
+        <span class="validation">@Html.ValidationMessageFor(m => Model.reservationUser.Email)</span>
+        </div>
+
+    
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.TextBoxFor(m => m.userForm.emailConfirmation, new { placeholder = "Confirm Email", autocapitalize = "off" })
+        <span class="validation">@Html.ValidationMessageFor(m => m.userForm.emailConfirmation)</span>
+        </div>
+
+    
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.PasswordFor(m => m.userForm.Password, new { placeholder = "Password" })
+        <span class="validation">@Html.ValidationMessageFor(m => m.userForm.Password)</span>
+        </div>
+    
+        <div class="text-wrapper"><div data-role="collapsible" data-theme="f" data-content-theme="f" data-mini="true" data-icon="info" data-inset="true">
+           <h3>Why a Password?</h3>
+           <p>Dedicating a password will allow you to cancel or modify your reservation.</p>
+        </div></div>
+
+
+        <div class="text-wrapper">
+        <span class="field-requirement"> * </span>
+        @Html.PasswordFor(m => m.userForm.ConfirmPassword, new { placeholder = "Confirm Password" })
+        <span class="validation">@Html.ValidationMessageFor(m => m.userForm.ConfirmPassword)</span>
+        </div>
+
+    
+        <div class="text-wrapper">
+        <span class="field-requirement small-field"> * </span>
+        @Html.TextBoxFor(m => m.reservationUser.Address.Zip.Code, new { placeholder = "Zip Code" })
+        <span class="validation">@Html.ValidationMessageFor(m => m.reservationUser.Address.Zip.Code)</span>
+        </div>
+    
+        <div class="text-wrapper">
+        <span class="field-requirement small-field"> * </span>
+        @Html.TextBoxFor(m => m.reservationUser.MobilePhone, new { placeholder = "Mobile Phone #" })
+        <span class="validation">@Html.ValidationMessageFor(m => m.reservationUser.MobilePhone)</span>
+        </div>
+
+        
+        <div class="radios">
+        <span class="field-requirement small-field"> * </span><span><p class="bold dark">I am 13 years of age or older.</p></span>
+        <div data-role="fieldcontain">
+        <fieldset data-role="controlgroup" data-type="horizontal">
+        @Html.RadioButtonFor(m => m.userForm.isOverThirteen, true, new { name = "age-yes", id = "age-yes" })<label for="age-yes">Yes</label>
+        @Html.RadioButtonFor(m => m.userForm.isOverThirteen, false, new { name = "age-no", id = "age-no" })<label for="age-no">No</label>
+        </fieldset>
+        <span class="validation">@Html.ValidationMessageFor(m => m.userForm.isOverThirteen)</span>
+        </div>
+        </div>
+    
+    
+        <label>@Html.CheckBoxFor(m => m.userForm.joinInsiders)<span class="insiders">Join Email Insiders and receive exclusive updates from Chick-fil-A, Inc.</span><span class="small"> (must be 18 or older)</span></label>
+                                                                              }
+
+                                                                              else
+                                                                              {
+        @Html.HiddenFor(m => m.reservationUser.Name.First);
+        @Html.HiddenFor(m => m.reservationUser.Name.Last);
+        @Html.HiddenFor(m => m.reservationUser.Email);
+        @Html.HiddenFor(m => m.reservationUser.Address.Zip.Code, new { value = Model.reservationUser.Address.Zip.Code });
+        @Html.HiddenFor(m => m.reservationUser.MobilePhone);
+                                                                              }
+
+    <span class="field-requirement"> * </span><span><p class="bold dark">Group Size</p></span>
+    @Html.TextBoxFor(m => m.tourTicket.GuestCount, new { id = "guest-count" })
+    <span class="validation">@Html.ValidationMessageFor(m => m.tourTicket.GuestCount)</span>
+    <span class="validation">@Html.ValidationMessage("LargeGroupSize")</span>
+    
+    
+    
+    <span class="field-requirement"> * </span><span><p class="bold dark"> Please enter the first and last name of each member in your group, including yourself. Select the (+) symbol to the right of the field to enter the name and add each additional member.</p></span>
+    <br/>
+    
+    <div class="text-wrapper"><div data-role="collapsible" data-theme="f" data-content-theme="f" data-mini="true" data-icon="info" data-inset="true">
+    <h3>Why</h3>
+    <p>For security reasons, all guests visiting the home office must be cleared by security prior to their visit.</p>
+    </div></div>
+    
+    <div class="text-wrapper"><div data-role="collapsible" data-theme="f" data-content-theme="f" data-mini="true" data-icon="info" data-inset="true">
+    <h3>Don't yet know who is in your group?</h3>
+    <p> You may visit the website prior to 72 hours of your tour to add or edit any group member names. </p>
+    </div></div>    
+    
+    <span class="validation">@Html.ValidationMessageFor(m => m.tourTicket.GuestList, "", new { id = "tourticket_GuestList_Validation" })</span>
+    
+    
+    <ul data-role="listview" id="guest-list" data-inset="true" data-mini="false" data-split-icon="delete" data-split-theme="f" data-dividoe-theme="">
+        <li data-role="list-divider" class="guest-top" data-divider-theme="b">Guest List</li>
+        <li>
+            <div class="ui-grid-a">
+            <div class="ui-block-a"><input type="text" id="group-member-name"/></div>
+	        <div class="ui-block-b"><a href="javascript:void(0)" id="guest-add-button" data-role="button" data-icon="plus" data-iconpos="notext"></a></div>
+            </div>
+        </li>
+        @{
+                                                                              if (!String.IsNullOrEmpty(Model.tourTicket.GuestList))
+                                                                              {
+                                                                                  String[] names = Model.tourTicket.GuestList.Split(',');
+                                                                                  for (int i = 0; i < names.Length; i++)
+                                                                                  {
+                <li>
+                <a class="guest-name">@names[i]</a>
+                <a href="javascript:void(0)" class="guest-delete-button"></a>
+                </li>
+                                                                                  }
+                                                                              }
+}
+    </ul>
+    <br/>
+    @Html.HiddenFor(m => m.tourTicket.GuestList);
+
+
+    <span class="field-requirement"> * </span>@Html.CheckBoxFor(m => m.userForm.guestNamesConfirm)@Html.LabelFor(m => m.userForm.guestNamesConfirm, "I understand that all guests in my group must be cleared by security 3 days in advance of my tour. If all guest names have not been submitted 72 hours prior to the tour, my tour will be cancelled.")
+    <span class="validation">@Html.ValidationMessageFor(m => m.userForm.guestNamesConfirm)</span><br/>
+
+
+   
+    
+    
+                                                if (!(ViewBag.UserMode == "team"))
+                                                {
+    <span class="field-requirement"> * </span><span><p class="bold dark">Type of Group</p></span>
+    <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+	<span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsFamilyWithKids)@Html.LabelFor(m => m.tourTicket.IsFamilyWithKids)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsFamilyWithoutKids)@Html.LabelFor(m => m.tourTicket.IsFamilyWithoutKids)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsReligiousGroup)@Html.LabelFor(m => m.tourTicket.IsReligiousGroup)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsBusinessGroup)@Html.LabelFor(m => m.tourTicket.IsBusinessGroup)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsSchoolGroup)@Html.LabelFor(m => m.tourTicket.IsSchoolGroup)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsAdultGroup)@Html.LabelFor(m => m.tourTicket.IsAdultGroup)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsSeniorGroup)@Html.LabelFor(m => m.tourTicket.IsSeniorGroup)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsOtherTypeOfGroup)@Html.LabelFor(m => m.tourTicket.IsOtherTypeOfGroup)</span>
+    </fieldset>
+    @Html.TextBoxFor(m => m.tourTicket.OtherTypeDescription, new { placeholder = "Other description of group type" })
+    <span class="validation">@Html.ValidationMessageFor(m => m.tourTicket.OtherTypeDescription)</span>
+    </div>
+                                                }
+                                                
+                                                
+    <div class="radios">
+    <span class="field-requirement small-field"> * </span><span><p class="bold dark">To help us plan for your group, please let us know if there are special limitations we need to be aware of.</p></span>
+    <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup" data-type="horizontal">
+    @Html.RadioButtonFor(m => m.tourTicket.HasSpecialNeeds, true, new { name = "needs-yes", id = "needs-yes", @class = "needs-yes" })<label for="needs-yes">Yes</label>
+    @Html.RadioButtonFor(m => m.tourTicket.HasSpecialNeeds, false, new { name = "needs-no", id = "needs-no", @class = "needs-no" })<label for="needs-no">No</label>
+    </fieldset>
+    </div>
+    </div>
+    
+    
+    <div class="needs-wrapper">
+    <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsVisuallyImpaired)@Html.LabelFor(m => m.tourTicket.IsVisuallyImpaired)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.IsHearingImpaired)@Html.LabelFor(m => m.tourTicket.IsHearingImpaired)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.NeedsWheelChair)@Html.LabelFor(m => m.tourTicket.NeedsWheelChair)</span>
+    <span class="checkboxwrapper">@Html.CheckBoxFor(m => m.tourTicket.OtherNeeds)@Html.LabelFor(m => m.tourTicket.OtherNeeds)</span>
+    </fieldset>
+    @Html.TextBoxFor(m => m.tourTicket.OtherNeedsDescription, new { placeholder = "Description of Special Needs" })
+    
+    </div>
+    </div>
+    
+    
+    <span class="field-requirement"> * </span><span><p class="bold dark">For security purposes, please enter a name for your group.</p></span>
+    @Html.TextBoxFor(m => m.tourTicket.GroupName, new { placeholder = "Group Name" })
+    <span class="validation">@Html.ValidationMessageFor(m => m.tourTicket.GroupName)</span>
+
+
+
+                                                if (!(ViewBag.UserMode == "team"))
+                                                {
+        <div class="lunch-section">
+        <span class="field-requirement"> * </span><div class="radios">
+        <p class="bold dark">The 9:30 tour time has a lunch option. Would anyone in your group like to reserve a lunch?</p>
+        <div data-role="fieldcontain">
+        <fieldset data-role="controlgroup" data-type="horizontal">
+        @Html.RadioButtonFor(m => m.tourTicket.OptInForLunch, true, new { name = "lunch-yes", id = "lunch-yes", @class = "lunch-yes" })<label for="lunch-yes">Yes</label>
+        @Html.RadioButtonFor(m => m.tourTicket.OptInForLunch, false, new { name = "lunch-no", id = "lunch-no", @class = "lunch-no" })<label for="lunch-no">No</label>
+        </fieldset>
+        </div>
+        </div>
+        
+        <div class="lunch-wrapper">
+        <div class="lunch-field-wrapper">
+           
+               @Html.TextBoxFor(m => m.tourTicket.NumberOfAdultLunches, new { type = "number", max = @Model.tourTicket.GuestCount, min = 0, @class = "number-picker" })  
+               <p class="number-picker-label"> Adults – Lunch includes a Chick-fil-A Sandwich, Potato Chips, a Cookie and bottled water. @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST (cost of lunch includes tax).</p>
+           </div>
+           
+           <div class="lunch-field-wrapper">
+           @Html.TextBoxFor(m => m.tourTicket.NumberOfKidLunches, new { type = "number", max = @Model.tourTicket.GuestCount, min = 0, @class = "number-picker" })
+            <p class="number-picker-label">Kids (12 & under) – Lunch includes Chick-fil-A Nuggets, Fruit Cup, a Cookie and bottled water. @cfares.domain._event.ticket.tours.TourTicket.CHILD_LUNCH_COST (cost of lunch includes tax).</p>
+           </div>
+        
+            <div class="lunch-field-wrapper">
+                @Html.TextBoxFor(m => m.tourTicket.NumberOfSpecialNeedLunches, new { type = "number", max = @Model.tourTicket.GuestCount, min = 0, @class = "number-picker" })
+                <p class="number-picker-label">Special Needs – Lunch includes a vegetarian and gluten-free salad. @cfares.domain._event.ticket.tours.TourTicket.ADULT_LUNCH_COST (cost of lunch includes tax).</p>
+                @Html.TextBoxFor(m => m.tourTicket.SpecialDietNeedsDescription, new { placeholder = "Description of Dietary Needs", @class = "otherLunch" })
+            </div>
+            
+        
+           </div>
+            
+        </div>
+                                                }
+                                                else
+                                                {
+        <div class="radios">
+        <p class="bold dark">Will you be staying for lunch?</p>
+        <div data-role="fieldcontain">
+        <fieldset data-role="controlgroup" data-type="horizontal">
+        @Html.RadioButtonFor(m => m.tourTicket.OptInForLunch, true, new { name = "lunch-yes", id = "lunch-yes" })<label for="lunch-yes">Yes</label>
+        @Html.RadioButtonFor(m => m.tourTicket.OptInForLunch, false, new { name = "lunch-no", id = "lunch-no" })<label for="lunch-no">No</label>
+        </fieldset>
+        </div>
+        </div>
+    
+        
+        <span class="field-requirement"> * </span><span><p class="bold dark">Are there any additional tour stops you would like to take your team on?</p></span>
+        <div data-role="fieldcontain">
+        <fieldset data-role="controlgroup">
+	    <label>@Html.CheckBoxFor(m => m.tourTicket.VisitMarketing)<span>Marketing Building</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitInnovation)<span>Innovation Center</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitWellness)<span>Wellness Center</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitTech)<span>Tech Center</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitTraining)<span>Training Simulator</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitWareHouse)<span>Warehouse</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitIT)<span>IT Building</span></label>
+        <label>@Html.CheckBoxFor(m => m.tourTicket.VisitOther)<span>Other</span></label>
+        </fieldset>
+        @Html.TextBoxFor(m => m.tourTicket.VisitOtherDescription)
+        </div>
+        
+                                                }
+
+    
+    @Html.HiddenFor(m => m.tourTicket.Slot.SlotId)
+    @Html.HiddenFor(m => m.initialUserCreation)
+
+    
+    <div class="jquery-theme-overide">
+        <input type="submit" value="Submit and Continue" data-inline="false" data-theme="a"/>
+    </div>
+    
+}
+</div>
+<br/>
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+﻿@model cfacore.domain._base.DomainObject
+@{    
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content rounded" id="main">    
+    <div class="inner-content wrapper model create edit">
+        <div class='model badge'>
+        
+            @RenderBody()
+            
+            @if (IsSectionDefined("Cancel"))
+            {
+                @RenderSection("Cancel")
+            }
+            else { 
+                <div class='dash-cta'>
+                    @Html.ActionLink("Cancel", "Index")
+                </div>
+            }           
+
+        </div>
+    </div>
+</div>
+@if (IsSectionDefined("Meta")) {DefineSection("Meta", () => RenderSection("Meta"));}
+@if (IsSectionDefined("Footer")) {DefineSection("Footer", () => RenderSection("Footer"));}
+@if (IsSectionDefined("Header")) {DefineSection("Header", () => RenderSection("Header"));}
+

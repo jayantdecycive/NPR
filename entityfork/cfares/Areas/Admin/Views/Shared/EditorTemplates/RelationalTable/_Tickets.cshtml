@@ -1,0 +1,6 @@
+﻿@model ViewPage<cfacore.domain._base.IDomainObject>
+
+<span class='admin-grey'>    
+    <input type="text" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='jq-auto-complete' data-pk="UserId" data-onselect="ModelTools.AutoCompleteSelect" 
+        data-columns="Email,Name,UserId,Username" data-filter="Email,Name,UserId,Username" data-label="Name" data-src='/DataService/User.svc/Users' />
+</span>

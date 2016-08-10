@@ -1,0 +1,17 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<br/>
+<div class="textboxwrapper">
+            <span class="field-requirement">* </span>
+            @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber)
+            @Html.TextBoxFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber, new { @class = "form-store" })
+            @Html.ValidationMessageFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber)
+        </div>
+        
+
+
+ <div class="textboxwrapper">
+            <span class="field-requirement">* </span>
+            @Html.LabelFor(m => m.GroupSize)
+            @Html.TextBoxFor(m => m.GroupSize)
+            @Html.ValidationMessageFor(m => m.GroupSize)
+        </div><br />

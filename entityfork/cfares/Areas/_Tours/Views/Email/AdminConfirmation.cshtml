@@ -1,0 +1,165 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AdminConfirmation</title>
+</head>
+<body>
+    <div class="reservation-overview">
+    <div class="review-description">
+       A new reservation has been requested with the following information: </div>
+       <br />
+    <div class="review-section review-column">
+        <div class="name-value-pair">
+            <span class="name">Tour Type: </span><span class="value">Normal</span></div>
+        <div class="name-value-pair">
+            <span class="name">Date Option 1: </span><span class="value">@Model.tourTimeRequests[0].day at @Model.tourTimeRequests[0].requestedTimeOfDay
+            </span>
+        </div>
+        <div class="name-value-pair">
+            <span class="name">Date Option 2: </span><span class="value">@Model.tourTimeRequests[1].day at @Model.tourTimeRequests[1].requestedTimeOfDay</span></div>
+        <div class="name-value-pair">
+            <span class="name">Date Option 3: </span><span class="value">@Model.tourTimeRequests[2].day at @Model.tourTimeRequests[2].requestedTimeOfDay</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">Group Size: </span><span class="value">@Model.GroupSize</span>
+        </div>
+    </div>
+    
+    <br />
+    <div class="review-section review-column">
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.firstName): </span><span class="value">@Html.DisplayFor(m => m.userForm.firstName)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.lastName): </span><span class="value">@Html.DisplayFor(m => m.userForm.lastName)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.Email): </span><span class="value">@Html.DisplayFor(m => m.userForm.Email)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.userForm.zipCode): </span><span class="value">@Html.DisplayFor(m => m.userForm.zipCode)</span></div>
+    </div>
+    <br />
+    @if (Model is cfares.Areas.Tours.Models.TeamRegistrationForm)
+    {
+        <div class="review-section">
+            <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber): </span><span class="value">@Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).storeNumber)</span>
+            </div>
+    </div>
+
+    }
+    <br />
+     @if (Model is cfares.Areas.Tours.Models.GroupRegistrationForm)
+     {
+         <div class="review-section review-column">
+
+        <div class="name-value-pair">
+            <span class="name">Type of Group: </span><span class="value">
+            <span class="checkbox-name-wrapper">@Html.DisplayFor(m => m.groupDescription.isFamilyWithKids)
+                @Html.LabelFor(m => m.groupDescription.isFamilyWithKids)</span> |
+                 <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isFamilyWithoutKids): @Html.DisplayFor(m => m.groupDescription.isFamilyWithoutKids)</span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isChurchGroup): @Html.DisplayFor(m => m.groupDescription.isChurchGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isSchoolGroup): @Html.DisplayFor(m => m.groupDescription.isSchoolGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isAdultGroup): @Html.DisplayFor(m => m.groupDescription.isAdultGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isSeniorGroup): @Html.DisplayFor(m => m.groupDescription.isSeniorGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.groupDescription.isBusinessGroup): @Html.DisplayFor(m => m.groupDescription.isBusinessGroup)  </span> | 
+                <span class="checkboxWithExplanation">@Html.LabelFor(m => m.groupDescription.isOtherType): @Html.DisplayFor(m => m.groupDescription.isOtherType)<br />
+                     @Html.DisplayFor(m => m.groupDescription.otherTypeDescription)</span>
+            </span>
+        </div>
+    </div>
+    <br />
+
+
+
+     }
+
+    <div class="review-section">
+
+        <div class="name-value-pair">
+            <span class="name">Does anyone in the group have special needs? </span><span class="value">
+                @Html.DisplayFor(model => model.specialNeedsForm.hasSpecialNeeds)
+               </span>
+        </div>
+        @{
+            if (Model.specialNeedsForm.hasSpecialNeeds)
+            {
+            <div class="name-value-pair">
+                <span class="name">Needs: </span><span class="value"><span class="checkbox-name-wrapper">@Html.LabelFor(m => m.specialNeedsForm.isHearingImpaired): 
+                    @Html.DisplayFor(m => m.specialNeedsForm.isHearingImpaired)</span> |  <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.specialNeedsForm.isVisuallyImpaired): @Html.DisplayFor(m => m.specialNeedsForm.isVisuallyImpaired)</span> | 
+                    <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.specialNeedsForm.needsWheelChair): @Html.DisplayFor(m => m.specialNeedsForm.needsWheelChair)</span> | 
+                    <span class="checkboxWithExplanation">@Html.LabelFor(m => m.specialNeedsForm.Other): @Html.DisplayFor(m => m.specialNeedsForm.Other)
+                        @Html.DisplayFor(m => m.specialNeedsForm.otherDescription)</span>
+                </span>
+            </div>
+            }
+        }
+    </div>
+    <br />
+    <div class="review-section">
+        
+            @if (Model is cfares.Areas.Tours.Models.GroupRegistrationForm)
+            {
+                <div class="name-value-pair">
+                <span class="name">This tour time has a $6.50
+                    lunch option. Would anyone in your group like to reserve a lunch? </span>
+                <span class="value">
+                @Html.DisplayFor(model => model.lunchForm.optInForLunch)
+               </span>
+               </div>
+                <div class="name-value-pair">
+            <span class="name">Number of Lunches: </span><span class="value">@Html.DisplayFor(m => m.lunchForm.numberOfAdultLunches)
+                adults, @Html.DisplayFor(m => m.lunchForm.numberOfKidLunches) kids, @Html.DisplayFor(m => m.lunchForm.numberOfSpecialNeeds)
+                special need lunches</span><br />
+                @Html.DisplayFor(m => m.lunchForm.descriptionOfSpecialNeeds)</div>
+            }
+            else
+            {
+            <div class="name-value-pair">
+                <span class="name">Will this group be staying for lunch? </span>
+                <span class="value">
+                @Html.DisplayFor(model => model.lunchForm.optInForLunch)
+               </span>
+               </div>
+            }
+            
+        
+        
+    </div>
+    <br />
+
+    <br />
+    @if (Model is cfares.Areas.Tours.Models.TeamRegistrationForm)
+    {
+        <div class="review-section">
+            <span>Are there any additional tour stops you would like to take your team on? <span
+                class="legal-aside">(click all that apply)</span></span>
+            <div class=" name-value-pair ">
+                <span class="value">@Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitMarketing)
+                    </span> | 
+                <span class="value">@Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTech)
+                    </span> | 
+                <span class="value"> @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitInnovation)
+                   
+                </span> | <span class="value"> @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitTraining)
+                   
+                </span> | <span class="value">@Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWellness)
+                    
+                </span> | <span class="value"> @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse) : @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitWareHouse)
+                   
+                </span> | <span class="checkboxWithExplanation value"> @Html.LabelFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther) @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOther)
+                   <br />
+                    @Html.DisplayFor(m => ((cfares.Areas.Tours.Models.TeamRegistrationForm)m).visitOtherDescription)</span>
+            </div>
+        </div>
+    }
+</body>
+</html>

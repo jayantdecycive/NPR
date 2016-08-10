@@ -1,0 +1,71 @@
+﻿@model  cfares.Areas.tours.Models.StoryTourTicketFormModel
+           
+<!--first Name--> 
+            <div class="textboxwrapper">
+            <span class="field-requirement"> * </span>
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.reservationUser.Name.First, new { @class = "form-firstname" })
+            @Html.ValidationMessageFor(m => m.reservationUser.Name.First)
+            </div>
+               
+            <!--last name--> 
+            <div class="textboxwrapper">
+            <span class="field-requirement"> * </span>
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.reservationUser.Name.Last, new { @class = "form-lastname" })
+            @Html.ValidationMessageFor(m => m.reservationUser.Name.Last)
+            </div>
+        
+            <!--email--> 
+            <div class="textboxwrapper">
+            <span class="field-requirement"> * </span>
+            @Html.LabelFor(m => m.reservationUser.Email)
+            @Html.TextBoxFor(m => m.reservationUser.Email, new { @class = "form-email" })
+            @Html.ValidationMessageFor(m => m.reservationUser.Email)
+            </div> 
+            
+            <!--email confirm--> 
+            <div class="textboxwrapper">
+            <span class="field-requirement"> * </span>
+            @Html.LabelFor(m => m.userForm.emailConfirmation)
+            @Html.TextBoxFor(m => m.userForm.emailConfirmation)
+            @Html.ValidationMessageFor(m => m.userForm.emailConfirmation)
+            </div> 
+            
+            <!--pass--> 
+            <div class="textboxwrapper" id="pass-field">
+            <span class="field-requirement"> * </span>
+            @Html.LabelFor(m => m.userForm.Password)
+            @Html.PasswordFor(m => m.userForm.Password)
+            @Html.ValidationMessageFor(m => m.userForm.Password)
+            <a href="#" id="password-dialog">Why a Password?</a>
+            </div>
+        
+            <!--pass confirm-->  
+            <div class="textboxwrapper" id="pass-field">
+            <span class="field-requirement"> * </span>
+            @Html.LabelFor(m => m.userForm.ConfirmPassword)
+            @Html.PasswordFor(m => m.userForm.ConfirmPassword, new { @class = "form-confirm" })
+            @Html.ValidationMessageFor(m => m.userForm.ConfirmPassword)
+            </div>
+            
+            <!--zip-->  
+            <div class="textboxwrapper">
+            <span class="field-requirement small-field"> * </span>
+            <label>Zip Code</label>
+            @Html.TextBoxFor(m => m.reservationUser.Address.Zip.Code, new { @class = "form-zip", maxlength = "5" })
+            @Html.ValidationMessageFor(m => m.reservationUser.Address.Zip.Code)
+            </div>
+
+            
+            <!--phone-->  
+            <div class="textboxwrapper form-section">
+            <span class="field-requirement small-field"> * </span>
+            <label>Mobile Phone #</label>
+            @Html.TextBoxFor(m => m.reservationUser.MobilePhone, new { @class = "", name="MobilePhone" })
+            @Html.ValidationMessageFor(m => m.reservationUser.MobilePhone)
+            </div>
+
+            <!--other options-->  
+            @Html.Partial("Form/AgeRequirementPartial")  
+            @Html.Partial("Form/NewsletterPartial") 

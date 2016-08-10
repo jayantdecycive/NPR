@@ -1,0 +1,23 @@
+﻿@model cfares.domain._event.Slot
+
+@{
+    ViewBag.Title = "Slot";
+    ViewBag.Brief = "Event Slot Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+        
+            <h1 class='clean-timezone'>@Model.Start</h1>
+            <p>
+            @Html.Raw(Model.ToHtmlString())
+            </p>
+        
+        
+            @Html.Partial("ModelDetail/_Slot")        
+        
+            
+@section Action{
+            <div class='button-cta'>
+                @Html.ActionLink("Event Summary", "Summary", "Occurrence", new { id = Model.OccurrenceId }, new { data_icon = "ui-icon-circle-arrow-e" })
+            </div>
+}
+            

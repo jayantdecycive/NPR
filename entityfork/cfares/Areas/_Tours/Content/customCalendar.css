@@ -1,0 +1,20 @@
+.fc-event {
+	padding: 5px;
+
+}
+
+.fc-event-title {
+	text-align: center;
+	display: block;
+}
+
+.fc-event .timeString {
+	display: block;
+	text-align: center;
+}
+
+.fc-event .ticketLabel
+{
+
+
+}

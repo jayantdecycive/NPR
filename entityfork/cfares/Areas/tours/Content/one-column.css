@@ -1,0 +1,23 @@
+﻿.notification
+{
+    text-align:center;  
+    font-size:10pt;
+    font-family:Arial,sans-serif; 
+    line-height:150%
+}
+
+.notification h1
+{
+    font-family:caeciliacom-75bold;
+}
+
+.notification .strong
+{
+    font-weight:bold;
+}
+
+.notification p 
+{
+    line-height:normal;
+    padding-bottom:20px;    
+}

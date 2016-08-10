@@ -1,0 +1,77 @@
+﻿@model cfares.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model create edit">
+        <div class='model badge'>
+            <h1>
+                Create a new Account</h1>
+            <p>
+                Use the form below to create a new account.
+            </p>
+            <p>
+                Passwords are required to be a minimum of @Membership.MinRequiredPasswordLength
+                characters in length.
+            </p>
+            @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+            @using (Html.BeginForm())
+            {
+                <fieldset>
+                    <div class='legend inline-block'>
+                        Account Information</div>
+                    <div class='model-field field-UserName'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.UserName)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.UserName)
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        </div>
+                    </div>
+
+                    <div class='model-field field-Email'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.Email)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+                    
+                    <div class='model-field field-Password'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                    </div>
+                    
+                    <div class='model-field field-ConfirmPassword'>
+                        <div class="editor-label inline-block">
+                            @Html.LabelFor(model => model.ConfirmPassword)
+                        </div>
+                        <div class="editor-field inline-block">
+                            @Html.EditorFor(model => model.ConfirmPassword)
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                        </div>
+                    </div>
+                    
+                    
+                </fieldset>
+                <div class='submit-block admin-green'>
+                    <div class='editor-label inline-block inline-block'>
+                    </div>
+                    <div class='editor-field inline-block inline-block'>
+                        <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Register" />
+                    </div>
+                </div>
+    
+            }
+        </div>
+    </div>
+</div>

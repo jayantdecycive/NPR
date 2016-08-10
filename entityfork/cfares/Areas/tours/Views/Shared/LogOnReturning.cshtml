@@ -1,0 +1,34 @@
+﻿@model cfares.Areas.tours.Models.LogOnModel
+@{
+    ViewBag.Title = "Logon";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+
+@section Modify{
+    <h1>Want to schedule another tour?</h1>
+    <span>Log in with the email and password used to create your previous tour to schedule another Home Office Backstage Tour.</span>
+}
+
+@section Login{
+
+
+<div class="logon-form">
+
+    @using (Html.BeginForm())
+    {
+        if (! String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }
+    
+        <div class="form-item"><span class="strong item-name">Email: </span>@Html.EditorFor(m => m.email)</div>
+        <div class="form-item"><span class="strong item-name">Password: </span>@Html.EditorFor(m => m.password)<br/><a class="password-reset" href="">@Html.ActionLink("Forgot Your Password?", "ForgotPassword", "Account")</a></div>
+        @Html.HiddenFor(m => m.callbackUrl)
+        <!--<a class="password-reset" href="">Forgot your email or password?</a>-->
+        
+        <input type="submit" value="" class="logon-form-button form-button" id="submit-registration-button"/>
+    }
+</div>
+
+
+}

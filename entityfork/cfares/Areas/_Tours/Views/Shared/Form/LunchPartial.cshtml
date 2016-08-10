@@ -1,0 +1,31 @@
+﻿@model cfares.Areas.Tours.Models.TourRegistrationForm
+<div id="lunchOptInSection" class="form-section" data-priceModel="@ViewBag.UserMode">
+            <span class="field-requirement">* </span>
+
+                <span class="name">The 9:30 AM tour time has a $6.50 lunch option. Would anyone in your
+                    group like to reserve a lunch? </span>
+                <span class="yes-no-radios">@Html.RadioButtonFor(model => model.lunchForm.optInForLunch, true)
+                    Yes
+                    @Html.RadioButtonFor(model => model.lunchForm.optInForLunch, false)
+                    No</span>
+                <div class="textboxwrapper">
+                    @Html.TextBoxFor(m => m.lunchForm.numberOfAdultLunches, new { @class = "lunchCounter" })
+                    <span>Adults – Lunch includes a Chick-fil-A Sandwich, Potato Chips, a Cookie, and bottled
+                        water</span>
+                </div>
+                <div class="textboxwrapper">
+                    @Html.TextBoxFor(m => m.lunchForm.numberOfKidLunches, new { @class = "lunchCounter" })
+                    <span>Kids (12 & under) – Lunch includes Chick-fil-A Nuggets, Fruit Cup, a Cookie, and
+                        bottled water</span>
+                </div>
+                <div class="textboxwrapper">
+                    @Html.TextBoxFor(m => m.lunchForm.numberOfSpecialNeeds, new { @class = "lunchCounter" })
+                    <span>Special Needs Lunches – Please identify the special needs <a href="#" id="diet-dialog">
+                        What is this?</a></span>
+                    @Html.TextBoxFor(m => m.lunchForm.descriptionOfSpecialNeeds, new { @class = "additional-info-box" })
+                    @Html.ValidationMessageFor(m => m.lunchForm.descriptionOfSpecialNeeds)
+                </div>
+                <div id="lunchPriceSection">
+                    Lunch option will cost a total of <span id="totalLunchAmount"></span>plus tax.</div>
+            @Html.ValidationMessageFor(m => m.lunchForm.optInForLunch)
+        </div>

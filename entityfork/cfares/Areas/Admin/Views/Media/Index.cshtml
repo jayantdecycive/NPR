@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+<h1>Media Dashboard</h1>
+<p>
+    A list of all Media
+</p>
+
+@section Table{
+    <table id="media_dash" class='data-table' data-data='/DataService/Common.svc/Media' 
+        data-crud='/DataService/Common.svc/Media({0}L)'>
+            <thead>
+            <tr>
+                <th data-column-name='Uri' width='20%'>Uri</th>
+                <th data-column-name='Name' width='20%' >Name</th>			    
+			    <th data-column-name='MediaIdL' data-id-column='true' width='20%' data-visible='false'>Media Id</th>
+			    <th data-column-name='Description' width='20%'>Description</th>
+                <th data-column-name='CreationDateD' data-on-display='DataFormat.date'  width='20%'>Creation Date</th>  
+		    </tr>
+            </thead>
+        </table>
+}

@@ -1,0 +1,18 @@
+﻿@model cfares.domain._event.ResEvent
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+
+            <h1>
+                Event Detail</h1>
+            <p>
+                @Model.ToString()
+            </p>
+             @Html.Partial("ModelDetail/_ResEvent")
+@section Action{
+     <div class='button-cta'>
+        @Html.ActionLink("Slot Dashboard", "Edit-Dash", "Occurrence", new { id = Model.ProtoOccurrence.Id() }, new { data_icon = "ui-icon-circle-arrow-e" })
+    </div>
+}
+

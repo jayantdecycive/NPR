@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.ModelName = "User";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+<h1>User Dashboard</h1>
+<p>
+    A list of all users in the system
+</p>
+
+@section Table{
+    <table id="user_dash" class='data-table' data-data='/DataService/User.svc/Users' 
+                data-crud='/DataService/User.svc/Users({0}L)'>
+        <thead>
+        <tr>
+            <th data-id='UserLink' data-column-parent='UserId' data-on-display='DataFormat.UserUrl'></th> 
+            <th data-column-name='UserIdL' data-searchable='false' data-id-column='true'>User Id</th>
+            <th data-column-name='Email' >Email</th>			    
+			<th data-column-name='Authority' >Authority</th>
+			<th data-column-name='Username'>Username</th>
+            <th data-column-name='Name'>Name</th>  
+            <!--<th data-column-name='CreationDate' data-on-display='DataFormat.date' >Creation Date</th>  -->
+		</tr>
+        </thead>
+    </table>
+}

@@ -1,0 +1,10 @@
+﻿
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Log Out", "LogOff", "Account", new { area="tours", url = Request.Url.AbsolutePath }, new { })
+
+    }
+    else
+    {
+    @Html.ActionLink("Log On", "LogOn", "Account", new { area = "tours", url = Request.Url.AbsolutePath }, new { })
+    }

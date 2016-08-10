@@ -1,0 +1,35 @@
+﻿@model cfares.Areas.tours.Models.LogOnModel
+@{
+    ViewBag.Title = "Logon";
+    Layout = "~/Areas/tours/Views/Shared/OneColumn/_Notification.cshtml";
+}
+
+@section Modify{
+    <h1>Need To Cancel or Change Your Tour Reservation?</h1>
+    <span>To cancel or modify your reservation, please enter the email address and password used to make your reservation.</span>
+}
+
+@section Login{
+
+
+<div class="logon-form">
+
+    @using (Html.BeginForm())
+    {
+        if (! String.IsNullOrEmpty(ViewBag.Result))
+        {
+            <span class="red">@ViewBag.Result</span>
+        }
+    
+        <div class="form-item"><span class="strong item-name">Email: </span>@Html.EditorFor(m => m.email)</div>
+        <div class="form-item"><span class="strong item-name">Password: </span>@Html.EditorFor(m => m.password)<br />
+        @Html.ActionLink("Forgot your password?", "ForgotPassword", "Account", new { @class = "password-reset" })</div>
+        @Html.HiddenFor(m => m.callbackUrl)
+        
+      
+        <input type="submit" value="" class="logon-form-button form-button" id="submit-registration-button"/>
+    }
+</div>
+
+
+}

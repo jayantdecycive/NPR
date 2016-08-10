@@ -1,0 +1,31 @@
+﻿@model cfacore.domain._base.DomainObject
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Meta{
+@RenderSection("Meta",false)
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+        <div class='model badge dash'>
+            @if (IsSectionDefined("Action")) {
+                @RenderSection("Action",false)
+            }else{
+            <div class='button-cta right'>
+                @Html.ActionLink("Create New ", "Create", new { }, new { data_left_icon = "ui-icon-circle-plus" })
+            </div>
+            }
+            
+            @RenderBody()
+        </div>
+        <div class='admin-table'>
+            @RenderSection("Table")         
+        </div>
+    </div>
+</div>
+
+
+@if (IsSectionDefined("Footer")) {DefineSection("Footer", () => RenderSection("Footer"));}
+@if (IsSectionDefined("Header")) {DefineSection("Header", () => RenderSection("Header"));}

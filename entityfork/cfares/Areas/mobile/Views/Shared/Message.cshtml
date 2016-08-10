@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Message";
+    Layout = "~/Areas/mobile/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center message">
+
+@if (ViewData["Head"] != null)
+{
+<h1>@ViewData["Head"]</h1>
+}
+
+<br/>
+
+@if (ViewData["Message"] != null)
+{
+<p>@ViewData["Message"]</p>
+}
+
+<br/>
+<a data-role="button" href="/mobile/Account/LogOn?returnUrl=/mobile/Ticket/Dash">Go to my Dashboard</a>
+    
+</div>

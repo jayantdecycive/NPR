@@ -1,0 +1,93 @@
+﻿@model cfares.domain._event.Slot
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+@{bool isNew = pk == "new";}
+
+    <fieldset data-pk='@pk' class='slot-@pk'>
+        
+        @Html.HiddenFor(model => model.SlotId)
+
+        <div class='legend inline-block'></div>
+
+        <div class='model-field field-Availability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Availability)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Availability)
+                @Html.ValidationMessageFor(model => model.Availability)
+            </div>
+        </div>
+
+        <div class='model-field field-Cutoff'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Cutoff)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Cutoff)
+                @Html.ValidationMessageFor(model => model.Cutoff)
+            </div>
+        </div>
+
+        <div class='model-field field-Capacity'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Capacity)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Capacity)
+                @Html.ValidationMessageFor(model => model.Capacity)
+            </div>
+        </div>
+
+        <div class='model-field field-Occurrence'>
+            <div class="editor-label inline-block">
+                Event Occurrence
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Occurrence)
+                @Html.ValidationMessageFor(model => model.Occurrence)
+            </div>
+        </div>
+
+        <div class='model-field field-Schedule'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Schedule)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Schedule)
+                @Html.ValidationMessageFor(model => model.Schedule)
+            </div>
+        </div>
+
+        <div class='model-field field-IsScheduled'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.IsScheduled)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.IsScheduled)
+                @Html.ValidationMessageFor(model => model.IsScheduled)
+            </div>
+        </div>
+        
+       @if (!isNew)
+       {
+
+        <div class='model-field field-Tickets'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Tickets)
+            </div>
+            <div class="editor-field inline-block admin-table">
+                @Html.ActionLink("Ticket Summary", "Summary", "Occurrence", new { id = Model.Occurrence.OccurrenceId }, new { @class = "jq-button", data_icon = "ui-icon-circle-arrow-e" })
+            </div>
+        </div>
+       }
+        <div class='model-field field-Status'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        
+    </fieldset>
