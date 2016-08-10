@@ -1,0 +1,24 @@
+﻿@model cfacore.shared.domain.store.Store
+<section class="overview">
+    <h3 class="name">@Model.Name</h3>
+
+    <address class="address">
+
+        @if (Model.StreetAddress.ToString() != string.Empty)
+        {
+
+            <text>    @Model.StreetAddress.Line1 @Model.StreetAddress.Line2<br />
+
+            @Model.StreetAddress.City, @Model.StreetAddress.State @Model.StreetAddress.Zip.Code
+
+            </text>
+            <a class="viewMap" id="@( "viewMap" + Model.LocationNumber)" rel="popover" data-original-title="Chick-fil-A at @Model.Name" href="javascript:void(0);" data-poload="http://maps.google.com/maps?q=@Model.StreetAddress.ToStringSingleLine().Replace(' ', '+')">view map</a>
+    
+        }
+        else
+        {
+
+        }
+
+    </address>
+</section>

@@ -1,0 +1,10 @@
+﻿@model cfares.domain._event.OccurrenceStatus?
+<div class='admin-table'>
+    @Html.DropDownListFor(model => model,
+                          new SelectList(
+                              from cfares.domain._event.OccurrenceStatus e in Enum.GetValues(typeof(cfares.domain._event.OccurrenceStatus))
+                              select new { Id=(int)e,Name=e.ToString()},
+                              "Id", "Name",
+                              (int)(Model ?? cfares.domain._event.OccurrenceStatus.Locked)
+                              ), new { @class = " jq-select" })
+</div>

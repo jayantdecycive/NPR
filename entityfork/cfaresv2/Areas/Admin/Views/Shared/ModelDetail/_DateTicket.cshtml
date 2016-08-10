@@ -1,0 +1,24 @@
+﻿@model cfares.domain._event._tickets.DateTicket
+
+@{string pk = Model.Id().ToString();}
+
+    <fieldset data-pk='@pk' class='date-ticket-@pk'>
+            
+            <div class='legend inline-block'>Date Ticket</div>
+            
+
+           
+            <div class='model-field field-NumberOfGuests'>
+                <div class="display-label inline-block">Number of Guests</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.NumberOfGuests)             
+                </div>
+            </div>
+            <div class='model-field field-TableRequest'>
+                <div class="display-label inline-block">TableRequest</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.TableRequest)             
+                </div>
+           
+    </fieldset>
+

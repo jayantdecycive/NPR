@@ -1,0 +1,13 @@
+﻿@model string
+
+<div class='admin-table'>
+    <table id="tickets_productsummary_@ViewData["id"]" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                @*<th data-column-name='MenuItemId' data-searchable='false' data-editable="false" data-sortable="false">Food ID</th>*@
+                <th data-column-name='MenuItemName' data-searchable='false' data-editable="false" data-sortable="false">Food Item</th>
+                <th data-column-name='AllocatedCapacity' data-searchable='false' data-editable="false" data-sortable="false">Quantity</th>
+		    </tr>
+        </thead>
+        </table>
+      </div>

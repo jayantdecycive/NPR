@@ -1,0 +1,13 @@
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\bin\Release\PostageApp.dll
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\bin\Release\PostageApp.pdb
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\bin\Release\Newtonsoft.Json.dll
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\bin\Release\Newtonsoft.Json.xml
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\obj\Release\PostageApp.dll
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\PostageApp\obj\Release\PostageApp.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\bin\Release\PostageApp.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\bin\Release\PostageApp.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\bin\Release\Newtonsoft.Json.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\bin\Release\Newtonsoft.Json.xml
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\obj\Release\PostageApp.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\obj\Release\PostageApp.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\PostageApp\obj\Release\PostageApp.csprojResolveAssemblyReference.cache

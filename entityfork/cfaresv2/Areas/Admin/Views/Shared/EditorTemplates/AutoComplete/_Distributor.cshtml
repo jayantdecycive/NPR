@@ -1,0 +1,20 @@
+﻿@model cfacore.shared.domain.store.Distributor
+
+@*
+@{ 
+    string defaultLabel;
+    string pk=(Model==null||Model.DistributorId==0)?""
+    if (Model==null||Model.Name == null)
+    {
+        defaultLabel = string.Format("Distributor id:{0}", Model.Id());
+    }else{
+        defaultLabel = Model.Name.ToString();    
+    }
+}
+<span class='admin-grey'>    
+    <input type="text" data-default-label="@defaultLabel" value="@Model.Id()" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='jq-auto-complete' data-label="Name" data-pk="LocationNumber" data-onselect="ModelTools.AutoCompleteSelect"
+        data-columns="Name,ShortName,DistributionCenter" data-pk="DistributorId" 
+        data-filter="Name,ShortName,DistributionCenter,DistributorIdL" data-src='/DataService/Location.svc/Distributors' />
+</span>
+
+*@

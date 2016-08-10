@@ -1,0 +1,69 @@
+﻿@model npr.domain._event.slot.NPRSlot
+
+@{
+    ViewBag.Title = "Edit Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+    
+}
+
+<h1>Edit @Model.Occurrence.ResEvent.ReservationType.Name Slot</h1>
+
+@using (Html.BeginForm())
+{
+    
+	@Html.ValidationSummary(true)
+	@Html.Partial("ModelForm/_NPRSlot")
+
+	<div class='submit-block admin-green'>
+		<div class='editor-field inline-block'>
+			<input type="submit" data-icon="ui-icon-disk" class='jq-button margin-left-0' value="Save" />
+		</div>
+	</div>
+	
+	<div class='submit-block admin-red'>
+		<div class='editor-field inline-block'>
+			<input type="submit" data-icon="ui-icon-circle-close" class='jq-button margin-left-0' value="Cancel"
+				onclick="document.location.href = '@UrlHelpers.GetReferrerUrl()'; return false;" />
+		</div>
+	</div>
+}
+
+
+<script type="text/javascript">
+  
+    //$(document).ready(function () {
+
+    //    alert(document.getElementById("#EndOffsetString").value);
+    //    debugger;
+    //    $('#form').validate({
+    //        rules: {
+    //            EndOffsetString: {
+
+    //                required: true
+    //            }
+    //        },
+    //        messages: {
+    //            EndOffsetString: "Please enter a valid EndOffsetString"
+    //        }
+
+    //    });
+    //});
+    </script>
+
+@*<script type="text/javascript">
+
+    function SubmitForm() {
+        debugger;
+        if (document.getElementById('#StartOffsetString').value == null) {
+            alert("Plesefill Availability Start");
+        }
+        else if (document.getElementById('#EndOffsetString').value == null) {
+            alert("Plesefill Availability End");
+        }
+        else {
+            $('#saveTrigger').click();
+            return false;
+        }
+    }
+    </script>*@
+

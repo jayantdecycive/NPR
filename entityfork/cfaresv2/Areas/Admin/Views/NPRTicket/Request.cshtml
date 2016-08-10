@@ -1,0 +1,148 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+@{
+    ViewBag.Title = "Time Slot Request";
+    ViewBag.Brief = "Specialized Tours";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+
+@section Meta
+{
+	<link href="/Content/bootstrap-combined.no-icons.min.css" rel="stylesheet"/>
+	<script>
+
+		$(function() {
+
+			$('#noteInput').on('change', function () {
+				var v = $(this).val();
+				$('.noteHidden').val( v );
+			});
+
+		});
+
+	</script>
+}
+
+@section Action{
+    
+}
+
+<div class="request-page">
+
+<div class='row-fluid'>
+    <div class='span6' style="margin-bottom: 10px;">
+		<h3>Request Details</h3>     
+        @Html.Partial("ModelDetail/_NPRTicketShort",Model)
+    </div>
+	<div class='span6 well notesContainer'>
+        <ul>
+            @if (Model.ContactNotes!=null)
+            {
+                foreach (string note in Model.ContactNotes)
+                {
+                    <li>
+                        <span>@note</span>
+                        <span></span>
+                    </li>
+                }
+            }
+        </ul>
+        @Html.ActionLink("add a note","Note",new {id=Model.TicketId})
+    </div>
+</div>
+
+	@Html.ValidationSummary(true)
+	
+	<h3 style="margin: 15px 0;">Requested Slot Times</h3>
+	<div class="well">
+		<fieldset style="padding: 0; margin: 0;">
+        @foreach (var time in Model.Dates.Where( o => o != null ).Select( o => o.Value ) )
+        {
+            using (Html.BeginForm())
+            {
+                <div class="inline-block row-fluid model-field">
+                    <div class="span3 inline-block datetimeLabel">
+                        @time.ToString("dddd, MMM. dd, yyyy")
+                    </div>
+                    <div class="span3 inline-block editor-field">
+                        From:
+                        @Html.TextBox("start_" + time.Ticks, "", new {@class = "jq-time"})
+						<span class="calendar-icon-big"></span>
+                    </div>
+                    <div class="span3 inline-block editor-field">
+                        To:
+                        @Html.TextBox("end_" + time.Ticks, "", new {@class = "jq-time"})
+						<span class="calendar-icon-big"></span>
+                    </div>
+                    <div class="span2 admin-green inline-block">
+                        <input  type="submit" role="submit" class='jq-button' value="Approve & Create Timeslot" />
+                    </div>
+                </div>
+                    @Html.Hidden("timeId",time.Ticks)
+	                @Html.Hidden("note","", new { @class = "noteHidden" })
+                <hr />
+            }
+        }    
+
+		@using (Html.BeginForm())
+        {
+            <div class="inline-block row-fluid model-field">
+				<div class="span3 inline-block customDateInput editor-field">
+					<p>Consensus Alternate Date</p>
+					@Html.TextBox("new", "", new {@class = "jq-date"})
+					<span class="calendar-icon-big"></span>
+				</div>
+                <div class="span3 inline-block editor-field">
+					<p>&nbsp;</p>
+					<div>From:
+                    @Html.TextBox("start_new", "", new {@class = "jq-time"})
+						<span class="calendar-icon-big"></span>
+					</div>
+                </div>
+                <div class="span3 inline-block editor-field">
+					<p>&nbsp;</p>
+                    <div>To:
+                    @Html.TextBox("end_new", "", new {@class = "jq-time"})
+ 						<span class="calendar-icon-big"></span>
+					</div>
+               </div>
+                @Html.Hidden("timeId","new")
+                @Html.Hidden("note","", new { @class = "noteHidden" })
+                <div class="span2 admin-green inline-block">
+					<p>&nbsp;</p>
+                    <input  type="submit" role="submit" class='jq-button' value="Approve & Create Timeslot" />
+                </div>
+            </div>    
+        }
+
+		</fieldset>        
+	</div>
+
+	<h3 style="margin: 15px 0;">Tour Notes</h3>
+	<div class="well">
+		<fieldset style="padding: 0; margin: 0;">
+			
+        @Html.TextArea("noteInput")
+	
+		</fieldset>        
+	</div>
+
+
+	@*    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>
+*@
+    
+	
+	<div class="admin-red padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-close">
+			<a href="@Url.Action("Delete", "NPRTicket", new { id = Model.TicketId })" data-icon="ui-icon-circle-close" class="btn-container-default">Delete</a>
+		</div>
+	</div>
+
+</div>

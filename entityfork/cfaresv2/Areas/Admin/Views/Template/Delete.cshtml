@@ -1,0 +1,19 @@
+﻿@model cfares.domain._event.ResTemplate
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Delete ResTemplate";
+}
+
+
+<h1>@Model.ScheduleId</h1>
+<p>
+@Html.Raw(Model.Name)
+</p>
+        
+        
+@section Details{    
+    @Html.Partial("ModelDetail/_ResTemplate")        
+}
+        

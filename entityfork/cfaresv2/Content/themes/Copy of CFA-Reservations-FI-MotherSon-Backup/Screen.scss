@@ -1,0 +1,802 @@
+
+/*-------------------------------------------------------------
+  Theme Stylesheet - CFA-Reservations-FI-MotherSon
+-------------------------------------------------------------*/
+
+@import '../../Screen.scss';
+
+// Place theme specific overrides below
+
+// --- Colors -------------------------------------------------
+
+$colorTextDefault: #666;
+$colorTextInfo: #999; 
+$colorTextError: #8d1d21; 
+$colorTextHeadings: #333; 
+$colorFormBackground: #f1ebe3;
+$colorTextSettings: #694f1f;
+$colorTextFormRequired: #8e1e22;
+//$colorTextHREF: #6d4f21;
+$colorTextHREF: #8d1d21;
+$colorTextHREFRoll: #c19193;
+
+$colorTextHeadingsPreferred: #8d1d21; 
+
+$buttonTextDefault: #edc68a;
+$buttonBackgroundDefault: #ad2c31;
+
+$borderReservationBannerHorizontal: #bfa56b;
+$borderReservationBannerVertical: #ece5d6;
+
+$borderReviewBlock: #efefe9;
+
+// --- Global -------------------------------------------------
+
+/* set a max-width for horizontal fluid layout and make it centered */
+.container-fluid {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 840px;
+}
+
+header {
+	position: relative;
+	h1 { 
+		text-align: center;
+		margin: 0 auto 20px; // rclark: dropped margin-bottom to 20px from 40px
+	}
+	.needHelp {
+		width: 129px;
+		height: 71px; 
+		position: absolute;
+		top: -5px;
+		left: 15px;
+		background: {
+			image: url("#{$themeImages}/needhelp.png"); 
+			position: right center;
+			repeat: no-repeat; }
+	}
+}
+
+main {
+	//text-align: center;
+	font: {
+		family: Arial, sans-serif;
+		size: 14px;
+	}
+	color: $colorTextDefault;
+	.wizard { 
+		display: none; 
+	}
+	> div > div > * { 
+		margin: 0 10px;
+	}
+	> div > div > p { 
+		margin: 0 10px 20px;
+	}
+	h1 {
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 30px;
+		}
+		color: $colorTextHeadingsPreferred;
+		text-align: center;
+	}
+	h2 {
+		line-height: 33px;
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 24px;
+		}
+		color: $colorTextHeadingsPreferred;
+		text-align: center;
+
+		a, a:active {
+			color: #3d3d3d;
+		}
+	}
+	h2.intro {
+		padding: 30px 0 35px;
+		border-bottom: 1px solid #bfa56b;
+	}
+	h3 {
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 18px;
+		}
+		color: $colorTextHeadings;
+		text-align: center;
+	}
+	p { text-align: left; }
+	a, a:active {
+		color: $colorTextHREF;
+		font-weight: bold;
+	}
+	a:hover {
+		text-decoration: underline;
+		color: $colorTextHREFRoll;
+	}
+	form {
+		.captionedForm {
+			background-color: $colorFormBackground;
+		}
+
+		h2 {
+			text-align: left !important;
+			margin: 60px 0 45px;
+		}
+
+		h3 {
+			margin: 0 10px;
+			color: $colorTextHeadings;
+		}
+	}
+	.captionedForm p {
+		margin: 4px 10px;
+	}
+
+	.field-validation-error {
+		color: $colorTextError;
+		margin: 0 0 0 10px;
+	}
+	
+	/* --- Page: Search By Location ------------------------ */
+	#searchPanel form {
+		background-color: $colorFormBackground;
+		padding: 10px;
+		margin:  0 0 20px;
+		p {
+			margin: 4px 10px;
+		}
+		.searchRow {
+			label {
+				//float: left;
+				display: inline-block;
+				line-height: 30px;
+				margin-right: 5px;
+				font: {
+					family: Arial;
+					size: 14px;
+					weight: bold;
+				}
+				color: #999;
+			}
+			input[type=text] {
+				//float: left;
+				display: inline-block;
+				width: 150px;
+				margin-right: 5px;
+				//line-height: 30px;
+				margin-bottom: 0px; //bootstrap override
+			}
+			select {
+				//float: left;
+				display: inline-block;
+				width: 100px;
+				line-height: 30px;
+				margin-right: 5px;
+				margin-bottom: 0px; //bootstrap override
+			}
+			button {
+				//float: left;
+				display: inline-block;
+				line-height: 30px;
+				width: 45px;
+				//height: 30px;
+				padding: 0px;
+			}
+		}
+		.subtext {
+			display: inline-block;
+			font: { 
+				family: Arial;
+				size: 11px;
+			}
+			color: #999;
+		}
+	}
+	.leadin {
+		text-align: left;
+		position: relative;
+		//left: 10px;
+		font: {
+			family: Arial;
+			size: 14px;
+		}
+	}
+	#chooseCityNearYou {
+		margin-top: 40px; //give clearance from leadin/search box independent of which is greater in height
+	
+		#eventsList { //this is a ul
+			margin: 0;
+			
+			li.event {
+				display: block;
+				position: relative;
+				height: auto;
+				margin: auto;
+				border-bottom: 1px solid #e5dad1;
+				padding: 0;
+
+				/* Will revisit for more responsiveness on locations box
+				h3 {
+					font: {
+						family: Arial;
+						size: 16px;
+						weight: bold;
+					}
+					text-align: left;
+					margin: 10px;
+					line-height: 20px;
+				}
+
+				ul {
+					
+					li {
+						display: inline-block;
+						margin: auto;
+					}
+
+					li.address {
+						width: auto;
+					}
+
+					li.resCount {
+						min-width: 150px;
+					}
+
+					li.commands {
+						min-width: 170px;
+					}
+				}
+				*/
+				//working to replace
+				div.locationBlock {
+					display: block;
+					height: auto;
+					width: 100%;
+					margin: 10px 0;
+
+					div.overview {
+						display: block;
+						width: 60%;
+						margin: 0;
+						padding: 10px;
+
+						h3 {
+							font: {
+								family: Arial;
+								size: 16px;
+								weight: bold;
+							}
+							text-align: left;
+							margin: 10px;
+							line-height: 20px;
+						}
+
+						p {
+							font: {
+								family: Arial;
+								size: 14px;
+							}
+							color: $colorTextDefault;
+							line-height: 14px;
+							text-align: left;
+						}
+
+						p.tools a {
+							color: #6d4f21;
+							padding-top: 5px;
+							line-height: 18px;
+						}
+					}
+
+					div.reservationDetail {
+						position: absolute;
+						left: 300px;
+						top: 47px;
+
+						p {
+							padding: 0;
+							margin: 0;
+							color: #000;
+							font-weight: bold;
+							text-align: left;
+						}
+					}
+					
+					div.commands {
+						position: absolute;
+						top: 45px;
+						right: 40px;
+						margin: 0;
+						font: {
+							size: 17px;
+							weight: bold;
+						}
+
+						button {
+							width: 150px;
+							height: 40px;
+							font: {
+								family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+							}
+						}
+					}
+				}
+
+				div.locationBlock.preferred {
+					background-color: #f7f3ef;
+
+					div.overview h3 {
+						color: $colorTextHeadingsPreferred;
+					}
+				}
+			}
+
+			li.event:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+
+	/* --- Page: Reservation Form ------------------------ */
+	#eventInfoBanner {
+		height: 130px;
+		border-bottom: 1px solid $borderReservationBannerHorizontal;
+
+		ul {
+			
+			li {
+				display: inline-block;
+				text-align: left;
+				padding: 0 45px 0 20px;
+				height: 100px;
+				vertical-align: top;
+				//width: 50%;
+
+				h3 {
+					font: {
+						family: Arial;
+						size: 16px;
+						weight: bold;
+					}
+					color: $colorTextHeadingsPreferred;
+					line-height: 16px;
+				}
+
+				p {
+					font: {
+						family: Arial;
+						size: 14px;
+					}
+					color: $colorTextDefault;
+					line-height: 18px;
+				}
+
+				span.viewMap {
+					font: {
+						family: Arial;
+						size: 14px;
+					}
+					color: $colorTextSettings;
+					line-height: 14px;
+					padding-left: 15px;
+				}
+
+				span.modSetting {
+					font: {
+						family: Arial;
+						size: 10px;
+					}
+					color: $colorTextSettings;
+					line-height: 10px;
+				}
+			}
+
+			li:first-child {
+				border-right: 1px solid $borderReservationBannerVertical;
+			}
+
+			li:last-child {
+				padding-top: 20px;
+			}
+		}
+	}
+
+	#reservationForm {
+		margin-top: 25px;
+		background: none;
+		
+		fieldset {
+			
+			ul {
+				
+				li {
+					display: block;
+					text-align: left;
+					margin: 5px 0;
+
+					p {
+						display: inline-block;
+						font: {
+							family: Arial;
+							size: 14px;
+							weight: bold;
+						}
+						color: #333;
+					}
+
+					/* rclark: removed span.note and span.required from here for global usage */
+
+					label, legend {
+						display: inline-block;
+						width: 200px;
+						font: {
+							family: Arial;
+							size: 14px;
+							weight: bold;
+						}
+						color: $colorTextDefault;
+
+						span.ageReq {
+							font: {
+								family: Arial;
+								size: 12px;
+								weight: bold;
+							}
+						}
+					}
+
+					label.check {
+						width: auto;
+						padding-left: 15px;
+					}
+
+					label.radio {
+						width: auto;
+						padding-left: 0;
+					}
+
+					legend {
+						border: none;
+						width: auto;
+						margin: 0;
+						line-height: 20px;
+						float: left;
+					}
+
+					input {
+						display: inline-block;
+						height: 20px;
+						background-color: #ebebeb;
+						border-radius: 2px;
+					}
+
+					input[type=checkbox] { margin: 0; }
+
+					input[type=radio] {
+						margin: 0 0 0 10px;
+					}
+
+					select {
+						display: inline-block;
+						height: 30px;
+						background-color: #ebebeb;
+						border-radius: 2px;
+					}
+
+					select.birth {
+						width: auto;
+					}
+
+					.date {
+						margin-left: 10px;
+					}
+				}
+			}
+
+			button.reserve {
+				margin: 20px 65px 0 0;
+			}
+		}
+	}
+
+	/* --- Page: Review Form ------------------------ */
+	#overviewIntro {
+		
+		p {
+			font: {
+				family: Arial, sans-serif;
+				size: 14px;
+			}
+		}
+	}
+
+	#resReview {
+		margin-top: 25px;
+
+		ul {
+				
+			li {
+				display: block;
+				text-align: left;
+				margin: 5px 0;
+			}
+
+			li.reviewBlockEnd {
+				padding-bottom: 20px;
+				border-bottom: 1px solid $borderReviewBlock;
+			}
+
+			li.groupBegin {
+				padding-top: 15px;
+			}
+
+			li.groupEnd {
+				padding-bottom: 15px;
+			}
+
+			li.groupButton {
+				float: right;
+				padding-top: 25px;
+			
+				button {
+					margin-left: 15px;
+				}
+			}
+
+			span.itemName, label.check {
+				display: inline-block;
+				width: 215px;
+				font: {
+					family: Arial;
+					size: 14px;
+					weight: bold;
+				}
+				color: $colorTextDefault;
+			}
+			span.itemInfo {
+				display: inline-block;
+				font: {
+					family: Arial;
+					size: 14px;
+					weight: bold;
+				}
+				color: $colorTextInfo;
+			}
+			span.editInfo {
+				float: right;
+				font: {
+					family: Arial;
+					size: 14px;
+				}
+				color: $colorTextHREF;
+
+				a, a:hover, a:active {
+					text-decoration: none;
+					color: $colorTextHREF;
+				}
+			}
+
+			label.check {
+				display: inline-block;
+				width: auto;
+				padding-left: 15px;
+			}
+
+			input[type=checkbox] { margin: 0; }
+
+			span.ageReq {
+				font: {
+					family: Arial;
+					size: 12px;
+					weight: bold;
+				}
+			}
+		}
+	}
+
+	/* --- Page: Success ------------------------ */
+	#intro {
+		text-align: left;
+
+		h2 { text-align: center; }
+
+		a, a:hover, a:active {
+			color: $colorTextHREF;
+		}
+
+		article {
+			width: auto;
+		}
+		
+		aside {
+			float: right;
+			width: 170px;
+			height: 220px;
+			background-color: $colorFormBackground;
+			padding: 15px;
+			margin-top: 20px;
+
+			h3 {
+				color: $colorTextHeadingsPreferred;
+				margin-top: 0;
+				line-height: 15px;
+			}
+		}
+	}
+
+	#shareBox {
+		background-color: $colorFormBackground;
+		margin-top: 40px;
+
+		p {
+			font: {
+				family: Arial;
+				size: 14px;
+			}
+			color: $colorTextHeadings;
+			padding: 10px 0;
+		}
+
+		ul {
+			margin: auto;
+
+			li {
+				display: inline-block;
+
+				a {
+					display: block;
+					width: 58px;
+					height: 58px;
+					text-indent: -9999px;
+					margin: 0 36px 36px;
+				}
+
+				a#facebook { background-image: url("../../images/facebook.png"); }
+				a#facebook:hover { background-image: url("../../images/facebookRoll.png"); }
+
+				a#twitter { background-image: url("../../images/twitter.png"); }
+				a#twitter:hover { background-image: url("../../images/twitterRoll.png"); }
+
+				a#email { background-image: url("../../images/email.png"); }
+				a#email:hover { background-image: url("../../images/emailRoll.png"); }
+			}
+		}
+	}
+}
+
+#socialFooter {
+	margin: 45px 0 0;
+	
+	li {
+		width: 225px;
+		height: 35px;
+		background-color: $colorFormBackground;
+		display: inline-block;
+		margin: 0 3px;
+		line-height: 35px;
+
+		
+		a {
+			color: #55585e;
+			text-decoration: none;
+		}
+	}
+
+	li:hover {
+		background-color: #cfc7c3;
+		
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+
+ul {
+	list-style-type: none;
+}
+
+button.default, input.default {
+	background: { 
+		color: $buttonBackgroundDefault;
+		image: none;
+	}
+	color: $buttonTextDefault;
+}
+
+p.required {
+	font: {
+		family: Arial;
+		size: 14px;
+	}
+	color: $colorTextFormRequired;
+}
+
+span.required {
+	float: left;
+	margin-left: -15px;
+	font: {
+		family: Arial;
+		size: 14px;
+		weight: bold;
+	}
+	color: $colorTextFormRequired;
+	line-height: 40px;
+}
+
+span.note {
+	float: none;
+	margin-left: 10px;
+	font-weight: normal;
+	line-height: 20px;
+}
+
+span.review {
+	line-height: 25px;
+}
+
+.padding50 {
+	margin-top: 50px;
+}
+
+.padding30 { margin-top: 30px; }
+
+.strong { font-weight: bold; }
+
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
+
+.form-horizontal .control-label {
+	text-align: left;
+	font-weight: bold;
+}
+
+.form-horizontal .controls input[type=text], .form-horizontal .controls select, .form-horizontal .controls input[type=radio], .form-horizontal .controls input[type=checkbox], .form-horizontal .controls textarea {
+	background-color: #ebebeb;
+}   
+
+span.require {
+	float: left;
+	margin-left: -15px;
+	margin-top: 3px;
+	font: {
+		family: Arial;
+		size: 14px;
+		weight: bold;
+	}
+	color: $colorTextFormRequired;
+}
+
+h2.contact {
+	margin: 30px 0;
+}
+
+.accordion-heading {
+	background-color: #f1ebe3;
+}
+
+span.triUp {
+	float: right;
+	margin-top: 5px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 0 9px 10px 9px;
+	border-color: transparent transparent #8d1d20 transparent;
+	-webkit-transform:rotate(360deg);
+}
+
+span.triDown {
+	float: right;
+	margin-top: 5px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 9px 0 9px;
+	border-color: #8d1d20 transparent transparent transparent;
+}

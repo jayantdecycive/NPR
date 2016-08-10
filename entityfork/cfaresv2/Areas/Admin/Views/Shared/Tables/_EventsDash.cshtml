@@ -1,0 +1,33 @@
+﻿@using cfares.site.modules.com.application
+@model string
+
+
+<div class='admin-table'>
+    <table id="events_@Html.Raw(ViewData["id"]??Model)" data-sort="ResEventId" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                <th data-column-name='ResEventId' data-id-column='true'  data-visible='false'>Event ID</th>                        
+                <th data-column-name='Name'>Event Name</th>                
+                <th data-column-name='RegistrationStart' data-on-display="DataFormat.dateOnly" data-searchable="false">Start Date</th>                
+                <th data-column-name='RegistrationEnd' data-on-display="DataFormat.dateOnly" data-searchable="false">End Date</th>                
+                <th data-column-name='SiteStart' data-on-display="DataFormat.dateOnly" data-searchable="false">Site Start Date</th>                
+                <th data-column-name='SiteEnd' data-on-display="DataFormat.dateOnly" data-searchable="false">Site End Date</th>                
+                <th data-column-name='LocationCount' data-searchable="false" width="10%"  data-visible='false'>Locations</th>                
+                <!--<th data-column-name='RegistrationStartString' data-sortable="false" data-searchable="false">Event Date</th>                -->
+				@if( AppContext.Current.Configuration.ApplicationId == Application.CFA )
+				{
+				    <th data-column-name='ViewEventLink' data-on-display='DataFormat.ResEventUrl' data-column-parent='ResEventId' data-sortable="false"></th>			    
+				}
+				else if( Model == "upcomingEventsBucket" )
+				{
+				    <th data-column-name='ViewEventLink' data-on-display='DataFormat.ResEventUrlSummary' data-column-parent='ResEventId' data-sortable="false"></th>			    
+				}
+				else
+				{
+				    <th data-column-name='ViewEventLink' data-on-display='DataFormat.ResEventUrlStart' data-column-parent='ResEventId' data-sortable="false"></th>			    
+				}
+			    
+		    </tr>
+            </thead>
+      </table>
+      </div>

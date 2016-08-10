@@ -1,0 +1,16 @@
+﻿@model cfares.domain._event.Ticket
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewBag.Brief = "Ticket Detailed Information";
+}
+
+
+<h1>@Model.CardNumber</h1>
+<p>
+@Model.ToString()
+</p>
+        
+        
+@Html.Partial("ModelDetail/_Ticket")     

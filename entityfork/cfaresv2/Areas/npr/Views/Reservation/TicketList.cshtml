@@ -1,0 +1,76 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+@using cfares.site.modules.com.application
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>NPR Event Tickets</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=940px, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="noindex, nofollow">
+
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+   
+    <link href="~/Content/themes/npr/TicketList.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!--BODY-->
+    <div id="container" class="container">
+        <main>
+        <header>
+            <h1>Event Ticket List</h1>
+            <p>Below is a list of all the tickets for your group. Please print this page and give one ticket to each member of your group</p>
+        </header>
+
+        @* A TICKET FOR EACH GROUP MEMBER *@
+        @for (var i = 0; i < Model.GroupSize; i++)
+        {
+             <div class="ticket">
+             
+             <div class="description">
+             <h2>@Html.Raw(Model.Slot.Occurrence.ResEventName)</h2>
+             <p>Please bring this ticket the NPR Event "@Html.Raw(Model.Slot.Occurrence.ResEventName)". <br/>Your ticket will need to be scanned to gain access to this event.</p>
+             <hr>
+             <p><strong>Guest:</strong> @Model.GuestList.ToList()[i]</p>
+             <p><strong>Confirmation Number:</strong> @Model.ConfirmationNumber</p>
+             <p><strong>Location:</strong> @Model.Slot.Occurrence.StoreName</p>
+             @if (Model.Slot.Occurrence.Store.StreetAddress != null)
+             {
+             <p><strong>Address:</strong> @Model.Slot.Occurrence.Store.StreetAddress</p>
+             }
+             <p><strong>Date:</strong> @Model.Slot.Start.ToString("dddd, MMMM dd, yyyy")</p>
+             <p><strong>Time:</strong> @Model.Slot.Start.ToString("hh:mm tt") - @Model.Slot.End.ToString("hh:mm tt")</p>
+             <p><strong>Ticket:</strong> @(i + 1) of @Model.GroupSize</p>
+             </div>  
+                 @{
+             var ticketGuestRecords = ViewBag.guests;
+
+             int ticketGuestId = ticketGuestRecords[i].TicketGuestsId;
+            
+                     }
+                  @Html.QrCode(ticketGuestId +  "")
+            @* @Html.QrCode(Model.CardNumber + i + HttpUtility.HtmlEncode(Model.GuestList.ToList()[i]))*@
+                   
+
+
+             </div>
+             <div class="page-break"></div>   
+        }
+        
+
+        @{
+
+            }
+
+	</main>
+    </div>
+
+</body>
+</html>

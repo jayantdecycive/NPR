@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.Brief = "All Tickets";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+<h1>Ticket Dash</h1>
+<p>
+    A list of all active tickets
+</p>
+
+@section Meta
+{
+    <script>
+        var tickets = new DomainModel.TicketCollection();
+        tickets.abstract = true;
+    </script>
+}
+
+@section Table{
+    @*<table id="ticket_dash" class='data-table' data-data='tickets' data-mode='backbone'>
+        <thead>
+        <tr>
+                <th data-id='TicketLink' data-on-display='DataFormat.TicketUrl' data-column-parent='TicketId'></th>                  
+                <th data-column-name='TicketIdL' data-id-column='true' data-visible="false">Ticket Id</th>                        
+                <th data-column-name='Status' data-id-column='true' data-visible="false">Status</th>                        
+                <th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+                <th data-id='SlotLink' data-column-parent='SlotId' data-on-display='DataFormat.SlotUrl' data-visible="false">Slot</th>
+				<th data-id='SlotStart' data-sortable="true">Slot Start</th>
+				<th data-column-name='OwnerIdL' data-visible='false'>Owner</th> 	
+				<th data-column-name='OwnerName' data-query-name="Owner/NameString" data-sortable="false" >Owner</th>
+				<th data-column-name='ContactPreference' data-sortable="true">Contact Method</th>
+				<th data-column-name='OwnerHomePhone' data-sortable="true">Phone</th>
+				<th data-column-name='OwnerEmail' data-sortable="true">Email</th>
+				<th data-column-name='GroupSize' data-sortable="true">Guests</th>
+			    <th data-column-name='CardNumberI' data-visible="false">Card Number</th>
+                <th data-id='Owner' data-column-parent='OwnerId' data-on-display='DataFormat.UserUrl' data-visible="false">Owner</th>  
+		    </tr>
+        </thead>
+    </table>*@
+    @Html.Partial("Tables/_Ticket","tickets")
+}
+

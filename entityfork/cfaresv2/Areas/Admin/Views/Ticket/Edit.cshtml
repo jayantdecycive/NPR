@@ -1,0 +1,33 @@
+﻿@model cfares.domain._event.Ticket
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.Brief = "Edit Ticket";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+    
+}
+
+
+
+
+<h1>Edit Ticket</h1>
+<p>
+    Edit Ticket @Model.Id()
+    <br />
+    @*Info <strong>info info</strong>*@
+</p>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+@Html.Partial("ModelForm/_Ticket")
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>
+}

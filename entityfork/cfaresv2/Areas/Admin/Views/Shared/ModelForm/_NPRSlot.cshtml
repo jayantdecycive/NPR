@@ -1,0 +1,223 @@
+﻿@model npr.domain._event.slot.NPRSlot
+@{int pk = Model.SlotId;}
+@{bool isNew = pk == 0;}
+
+	<div class="field-block">
+    
+    <fieldset data-pk='@pk' class='slot-@pk create-form'>
+        
+        @Html.HiddenFor(model => model.SlotId)
+      
+        @Html.HiddenFor(model => model.Visibility)
+
+        <div class='legend inline-block'></div>
+        
+        <div class='model-field field-GuideId'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.GuideId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.GuideId, new { CreateTitle = "New User", EditTitle = "Edit User" } )
+                @Html.ValidationMessageFor(model => model.GuideId)
+            </div>
+        </div>
+
+        <div class='model-field'>
+			<div class='model-field field-StartOffsetString inline-block'>
+				<div class="editor-label inline-block">
+					@Html.LabelFor(m => m.StartOffsetString, "Availability Start")
+				</div>                
+				<div class="editor-field inline-block">
+					@Html.EditorFor(m => m.StartOffsetString)
+					<span class="calendar-icon-big"></span>
+                   
+					@Html.ValidationMessageFor(m => m.StartOffsetString)
+				</div>
+			</div>
+
+			<div class='model-field field-EndOffsetString inline-block margin-left-25'>
+				<div class="editor-label inline-block">
+					@Html.LabelFor(m => m.EndOffsetString,"Availability End")
+				</div>                
+				<div class="editor-field inline-block">
+					@Html.EditorFor(m => m.EndOffsetString)
+					<span class="calendar-icon-big"></span>
+					@Html.ValidationMessageFor(m => m.EndOffsetString)
+				</div>
+			</div>
+		</div>
+
+        <div class='model-field field-Cutoff'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CutoffString, "Cutoff")
+            </div>
+            <div class="editor-field inline-block">
+                @Html.TextBoxFor(model => model.Cutoff, "{0:MM/dd/yyyy h:mm tt zz00}", new { @readonly = "readonly", @style="width:166px;background-color:#DDDDDD" })
+                @Html.HiddenFor(model => model.CutoffString)
+				@*<span class="calendar-icon-big"></span>
+                @Html.ValidationMessageFor(model => model.CutoffString)*@
+            </div>
+        </div>
+
+        <div class='model-field field-Capacity'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Capacity)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Capacity )
+                @Html.ValidationMessageFor(model => model.Capacity)
+            </div>
+        </div>
+
+        <div class='model-field field-Occurrence'>
+            <div class="editor-label inline-block">
+                <label>Event Occurrence</label>
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.OccurrenceId, new ViewDataDictionary(ViewData))
+                @Html.ValidationMessageFor(model => model.OccurrenceId)
+            </div>
+        </div>
+
+@*        <div class='model-field field-Schedule'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.ScheduleId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.ScheduleId)
+                @Html.ValidationMessageFor(model => model.ScheduleId)
+            </div>
+        </div>
+
+        <div class='model-field field-IsScheduled'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.IsScheduled)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.IsScheduled)
+                @Html.ValidationMessageFor(model => model.IsScheduled)
+            </div>
+        </div>*@
+        
+       @if (!isNew)
+       {
+
+        @*<div class='model-field field-Tickets'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Tickets)
+            </div>
+            <div class="editor-field inline-block admin-table">
+                @Html.ActionLink("Ticket Summary", "Tickets", new { id = Model.OccurrenceId }, new { @class = "jq-button", data_icon = "ui-icon-circle-arrow-e" })
+            </div>
+        </div>*@
+       }
+
+		<div class='model-field field-Status'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        
+        <div class='model-field field-PrintBadge'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.PrintBadge)
+            </div>
+            <div class="editor-field inline-block">
+				@Html.EditorFor(model => model.PrintBadge)
+            </div>
+        </div>
+
+        <div class='model-field field-Notes'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Notes)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+	</fieldset>
+           
+    </div>
+
+
+
+
+
+
+@*<script type="text/javascript">
+    
+
+
+    $(document).ready(function () {
+        $("#Capacity").mouseenter(function () {
+            alert('Please Select Start Date');
+        });
+        var start_date = document.getElementById("start_date").value;
+        if (start_date == "") {
+            validation.innerHTML = "Please, Enter the date";
+            arrow = document.createElement("div");
+            arrow.className = 'arrow';
+            validation.appendChild(arrow);
+        } else {
+            validation.innerHTML = "";
+            validation.style.display = 'none';
+        }
+    });
+    </script>*@
+
+<script>
+
+  
+
+    $(document).ready(function () {
+        debugger;
+       
+
+        $.validator.addClassRules({
+
+            EndOffsetString: {
+                required: true
+            },
+            StartOffsetString: {
+                required: true
+            }
+        });
+    });
+
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "Hello World";
+    }
+</script>
+@*<script type="text/javascript">
+    $("#Capacity").click(
+        function setCompleteStatus() {
+            debugger;
+            var start = document.getElementsByClassName("hasDatepicker");
+            var x = document.getElementsByName("StartOffsetString");
+            var x = document.getElementsByName("animal");
+           
+            var i;
+            for (i = 0; i < start.length; i++) {
+                start[i];
+                console.log(start[i]);
+
+            }
+            alert(x);
+            if (start == "")
+            {
+                alert('Please Fill Availability Start');
+            }
+            alert("setCompleteStatus called");
+        }
+    );
+</script>*@
+
+
+
+

@@ -1,0 +1,19 @@
+﻿@model cfacore.shared.domain.common.IAdminReference
+
+@{
+    string id = "";
+    
+    string typeName = Model.GetType().Name;
+    if (Model != null){
+        id = Model.Id();        
+        typeName = Html.GetPOCO(Model.GetType()).Name;
+    }
+}
+           
+@if (Model != null && !string.IsNullOrEmpty(Model.Id()))
+{
+<a href='@Model.AnchorHref()' data-pk='@Model.Id()'  data-type='@typeName'>@Model.AnchorLabel()</a>
+}
+else { 
+    <a href='#' data-pk='@id' class='no-link'  data-type='@typeName'>Not Found</a>
+}

@@ -1,0 +1,59 @@
+﻿@using cfacore.shared.modules.helpers
+@model cfares.domain._event.Occurrence        
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}  
+    
+    <fieldset data-pk='@pk' class='occurrence-@pk'>
+        
+        <div class='legend inline-block'>Occurrence</div>
+
+        <div class='model-field field-Start'>
+            <div class="display-label inline-block">Site Start</div>
+            <div class="display-field inline-block">
+                @Model.ResEvent.SiteStart.ToDateStringWithDayOfWeek()
+            </div>
+        </div>
+
+        <div class='model-field field-End'>
+            <div class="display-label inline-block">Site End</div>
+            <div class="display-field inline-block">
+                @Model.ResEvent.SiteEnd.ToDateStringWithDayOfWeek()
+            </div>
+        </div>
+
+        <div class='model-field field-Reservation'>
+            <div class="display-label inline-block">Reservation Event</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.ResEvent)
+            </div>
+        </div>
+        @*
+        <div class='model-field field-Slots'>
+            <div class="display-label inline-block">Slots</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.SlotsList)
+            </div>
+        </div>*@
+
+        <div class='model-field field-Store'>
+            <div class="display-label inline-block">Store</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Store)
+            </div>
+        </div>
+
+       @* <div class='model-field field-RegistrationAvailability'>
+            <div class="display-label inline-block">Registration Availability</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.ResEvent.RegistrationAvailability)
+            </div>
+        </div>*@
+        
+        <div class='model-field field-Status'>
+            <div class="display-label inline-block">Status</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Status)
+            </div>
+        </div>
+           
+
+    </fieldset>

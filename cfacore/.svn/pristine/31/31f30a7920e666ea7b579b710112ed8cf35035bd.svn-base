@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9E6A7EB-9231-4AB4-A502-90DEB88AAC45}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cfacore</RootNamespace>
+    <AssemblyName>cfacore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.4.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.4.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.5.4.0\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.4.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.4.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
+    <Compile Include="DataServices\Food.svc.cs">
+      <DependentUpon>Food.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataServices\Stories.svc.cs">
+      <DependentUpon>Stories.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\App.svc.cs">
+      <DependentUpon>App.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Card.svc.cs">
+      <DependentUpon>Card.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Connect.svc.cs">
+      <DependentUpon>Connect.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ExactTargetReverseProxy.svc.cs">
+      <DependentUpon>ExactTargetReverseProxy.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IApp.cs" />
+    <Compile Include="Services\ICard.cs" />
+    <Compile Include="Services\IConnect.cs" />
+    <Compile Include="Services\IExactTargetReverseProxy.cs" />
+    <Compile Include="Services\IStore.cs" />
+    <Compile Include="Services\IUser.cs" />
+    <Compile Include="Services\Store.svc.cs">
+      <DependentUpon>Store.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\User.svc.cs">
+      <DependentUpon>User.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
+    <Content Include="com\codeplex\htmlagilitypack\HtmlAgilityPack.dll" />
+    <Content Include="com\codeplex\htmlagilitypack\HtmlAgilityPack.pdb" />
+    <Content Include="com\codeplex\htmlagilitypack\HtmlAgilityPack.XML" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-soft_25_74adc7_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_6699cc_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_bedce9_256x240.png" />
+    <Content Include="Content\themes\admin-blue\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-blue\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_45_ebebeb_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_55_ebebeb_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-soft_25_24980a_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_339900_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-green\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-green\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-soft_25_86898a_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_86898a_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-grey\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-grey\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_25_3a3838_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_45_f0f0ed_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-soft_25_3a3838_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cc3300_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-orange-invert\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_highlight-soft_25_383636_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cad4d8_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cc3300_256x240.png" />
+    <Content Include="Content\themes\admin-orange\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-orange\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_flat_0_737373_40x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_45_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_55_d1d1d1_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-hard_25_f3f3ef_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-soft_25_c4c4ba_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_highlight-soft_25_d60000_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_252525_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_d60000_256x240.png" />
+    <Content Include="Content\themes\admin-red\images\ui-icons_feffff_256x240.png" />
+    <Content Include="Content\themes\admin-red\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="DataServices\Food.svc" />
+    <Content Include="DataServices\Stories.svc" />
+    <Content Include="Global.asax" />
+    <Content Include="org\DotNetOpenAuth\DotNetOpenAuth.Contracts.dll" />
+    <Content Include="org\DotNetOpenAuth\DotNetOpenAuth.dll" />
+    <Content Include="org\DotNetOpenAuth\DotNetOpenAuth.pdb" />
+    <Content Include="org\DotNetOpenAuth\DotNetOpenAuth.xml" />
+    <Content Include="org\DotNetOpenAuth\README.Bin.html" />
+    <Content Include="org\DotNetOpenAuth\sr\DotNetOpenAuth.resources.dll" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Services\App.svc" />
+    <Content Include="Services\Card.svc" />
+    <Content Include="Services\Connect.svc" />
+    <Content Include="Services\ExactTargetReverseProxy.svc" />
+    <Content Include="Services\Store.svc" />
+    <Content Include="Services\User.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cfacom.entity.dao\cfacom.entity.dao.csproj">
+      <Project>{19a74ac6-3156-4ada-8433-35598c270be0}</Project>
+      <Name>cfacom.entity.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfacore.external.service\cfacore.external.service.csproj">
+      <Project>{32FE22BA-2D0A-46BA-8365-50EE77258836}</Project>
+      <Name>cfacore.external.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfacore.shared.domain\cfacore.shared.domain.csproj">
+      <Project>{F06B4A08-F390-4206-9FB8-6F8BDE4F9DB7}</Project>
+      <Name>cfacore.shared.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfacore.shared.modules\cfacore.shared.modules.csproj">
+      <Project>{7512E2E7-225D-41D4-B27B-F811F41F9F65}</Project>
+      <Name>cfacore.shared.modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfacore.shared.service\cfacore.shared.service.csproj">
+      <Project>{D47E604D-1E7A-4C0F-910D-BBC58CD1D563}</Project>
+      <Name>cfacore.shared.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfacore.site.modules\cfacore.site.modules.csproj">
+      <Project>{D1475EE3-8EA7-48E2-BF0B-0332BE3CD88A}</Project>
+      <Name>cfacore.site.modules</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="org\DotNetOpenAuth\DotNetOpenAuth.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <None Include="Properties\PublishProfiles\Prod-Alt.pubxml" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>49319</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://core.local.chick-fil-a.com</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://local.id.chick-fil-a.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+</Project>

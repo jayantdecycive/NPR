@@ -1,0 +1,2247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svc:Locations version="2.0" generatedDate="2012-03-15T02:10:59.000-04:00" xmlns:svc="http://xmlns.chick-fil-a.com/services/enterprise/location/v2" xmlns:common="http://xmlns.chick-fil-a.com/enterprise/common/v3" xmlns:loc="http://xmlns.chick-fil-a.com/enterprise/location/v2" xmlns:people="http://xmlns.chick-fil-a.com/enterprise/people/v2" xmlns:dist="http://xmlns.chick-fil-a.com/enterprise/distributor/v1">
+  <loc:Location>
+    <loc:LocationNumber>03121</loc:LocationNumber>
+    <loc:Name>City Creek Center</loc:Name>
+    <loc:MarketableName>citycreekcenter</loc:MarketableName>
+    <people:Operator>
+      <people:PersonID>1056645</people:PersonID>
+      <people:Name>Andrew Allman</people:Name>
+    </people:Operator>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>28 S State St</common:Address1>
+        <common:City>Salt Lake City</common:City>
+        <common:County>Salt Lake</common:County>
+        <common:State>UT</common:State>
+        <common:ZipCode>
+          <common:Zip>84111</common:Zip>
+          <common:ZipExtension>1551</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>28 S State St</common:Address1>
+        <common:City>Salt Lake City</common:City>
+        <common:County>Salt Lake</common:County>
+        <common:State>UT</common:State>
+        <common:ZipCode>
+          <common:Zip>84111</common:Zip>
+          <common:ZipExtension>1551</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>28 S State St</common:Address1>
+        <common:City>Salt Lake City</common:City>
+        <common:County>Salt Lake</common:County>
+        <common:State>UT</common:State>
+        <common:ZipCode>
+          <common:Zip>84111</common:Zip>
+          <common:ZipExtension>1551</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>03121@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>33121</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-03-22</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/citycreekcenter</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>40.76835</loc:Latitude>
+      <loc:Longitude>-111.88973</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>MALL</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>339342</people:PersonID>
+      <people:Name>Brent Townsend</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>21286</people:PersonID>
+      <people:Name>Scott Pickell</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>917304</people:PersonID>
+      <people:Name>Thomas Guerard</people:Name>
+    </people:FinancialConsultant>
+    <people:UnitMarketingDirector>
+      <people:PersonID>1217679</people:PersonID>
+      <people:Name>Wride, Michelle</people:Name>
+    </people:UnitMarketingDirector>
+    <loc:OperatorTeamName>Utah</loc:OperatorTeamName>
+    <loc:ServiceTeamName>West Coast</loc:ServiceTeamName>
+    <loc:RegionName>West Coast</loc:RegionName>
+    <loc:GMTOffset>GMT -07:00</loc:GMTOffset>
+    <loc:TimeZoneName>Mountain Time (US &amp; Canada)</loc:TimeZoneName>
+    <loc:PriceGroupNumber>13</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>DEN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>false</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02981</loc:LocationNumber>
+    <loc:Name>Cornelia FSU</loc:Name>
+    <loc:MarketableName>cornelia</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>330 Furniture Plaza Dr</common:Address1>
+        <common:City>Cornelia</common:City>
+        <common:County>Habersham</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30531</common:Zip>
+          <common:ZipExtension>5460</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>330 Furniture Plaza Dr</common:Address1>
+        <common:City>Cornelia</common:City>
+        <common:County>Habersham</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30531</common:Zip>
+          <common:ZipExtension>5460</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>330 Furniture Plaza Dr</common:Address1>
+        <common:City>Cornelia</common:City>
+        <common:County>Habersham</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30531</common:Zip>
+          <common:ZipExtension>5460</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02981@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32981</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-17</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/cornelia</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>34.53634</loc:Latitude>
+      <loc:Longitude>-83.53549</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>589326</people:PersonID>
+      <people:Name>J.T. Robinson</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1063243</people:PersonID>
+      <people:Name>Wanda Young</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>193086</people:PersonID>
+      <people:Name>Daniel Kelley</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>ATL-Northern Loop</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Piedmont Team 1</loc:ServiceTeamName>
+    <loc:RegionName>Piedmont</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>MCN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02867</loc:LocationNumber>
+    <loc:Name>Costa Mesa FSU</loc:Name>
+    <loc:MarketableName>costamesa</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>3181 Harbor Blvd</common:Address1>
+        <common:City>Costa Mesa</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92626</common:Zip>
+          <common:ZipExtension>2555</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>3181 Harbor Blvd</common:Address1>
+        <common:City>Costa Mesa</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92626</common:Zip>
+          <common:ZipExtension>2555</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>3181 Harbor Blvd</common:Address1>
+        <common:City>Costa Mesa</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92626</common:Zip>
+          <common:ZipExtension>2555</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02867@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32867</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-26</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/costamesa</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>33.68667</loc:Latitude>
+      <loc:Longitude>-117.91988</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>500907</people:PersonID>
+      <people:Name>Ron Pentz</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>21286</people:PersonID>
+      <people:Name>Scott Pickell</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>917304</people:PersonID>
+      <people:Name>Thomas Guerard</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Orange County</loc:OperatorTeamName>
+    <loc:ServiceTeamName>West Coast</loc:ServiceTeamName>
+    <loc:RegionName>West Coast</loc:RegionName>
+    <loc:PriceGroupNumber>16</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>FUL</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02866</loc:LocationNumber>
+    <loc:Name>Deer Park FSU</loc:Name>
+    <loc:MarketableName>deerpark</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>9101 Spencer Highway</common:Address1>
+        <common:City>Deer Park</common:City>
+        <common:County>Harris</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77536</common:Zip>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02866@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32866</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-06-07</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/deerpark</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>29.66452</loc:Latitude>
+      <loc:Longitude>-95.09755</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>484768</people:PersonID>
+      <people:Name>Bill McPeters</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Houston Southeast</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 4</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02909</loc:LocationNumber>
+    <loc:Name>Del Amo In-Line</loc:Name>
+    <loc:MarketableName>delamoinline</loc:MarketableName>
+    <people:Operator>
+      <people:PersonID>218869</people:PersonID>
+      <people:Name>Erwin Arevalo</people:Name>
+    </people:Operator>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>21821 Hawthorne Blvd</common:Address1>
+        <common:City>Torrance</common:City>
+        <common:County>Los Angeles</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>90503</common:Zip>
+          <common:ZipExtension>7003</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>21821 Hawthorne Blvd</common:Address1>
+        <common:City>Torrance</common:City>
+        <common:County>Los Angeles</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>90503</common:Zip>
+          <common:ZipExtension>7003</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>21821 Hawthorne Blvd</common:Address1>
+        <common:City>Torrance</common:City>
+        <common:County>Los Angeles</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>90503</common:Zip>
+          <common:ZipExtension>7003</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02909@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32909</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-03-29</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/delamoinline</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>33.82965</loc:Latitude>
+      <loc:Longitude>-118.35303</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>MALL</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>254081</people:PersonID>
+      <people:Name>Jim Anderson</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>21286</people:PersonID>
+      <people:Name>Scott Pickell</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>917304</people:PersonID>
+      <people:Name>Thomas Guerard</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>LA County South</loc:OperatorTeamName>
+    <loc:ServiceTeamName>West Coast</loc:ServiceTeamName>
+    <loc:RegionName>West Coast</loc:RegionName>
+    <loc:GMTOffset>GMT -08:00</loc:GMTOffset>
+    <loc:TimeZoneName>Pacific Time (US &amp; Canada)</loc:TimeZoneName>
+    <loc:PriceGroupNumber>16</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>FUL</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>false</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>true</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02966</loc:LocationNumber>
+    <loc:Name>Duncan FSU</loc:Name>
+    <loc:MarketableName>duncan</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>1519 E Main St</common:Address1>
+        <common:City>Duncan</common:City>
+        <common:County>Spartanburg</common:County>
+        <common:State>SC</common:State>
+        <common:ZipCode>
+          <common:Zip>29334</common:Zip>
+          <common:ZipExtension>9218</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>1519 E Main St</common:Address1>
+        <common:City>Duncan</common:City>
+        <common:County>Spartanburg</common:County>
+        <common:State>SC</common:State>
+        <common:ZipCode>
+          <common:Zip>29334</common:Zip>
+          <common:ZipExtension>9218</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>1519 E Main St</common:Address1>
+        <common:City>Duncan</common:City>
+        <common:County>Spartanburg</common:County>
+        <common:State>SC</common:State>
+        <common:ZipCode>
+          <common:Zip>29334</common:Zip>
+          <common:ZipExtension>9218</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02966@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32966</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-12</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/duncan</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>34.91068</loc:Latitude>
+      <loc:Longitude>-82.1038</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>1098347</people:PersonID>
+      <people:Name>Maureen Donahue</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>820687</people:PersonID>
+      <people:Name>Will McFaddin</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>6356</people:PersonID>
+      <people:Name>Jim Rasmussen</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Upstate North</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Atlantic Team 8</loc:ServiceTeamName>
+    <loc:RegionName>Atlantic</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>MCN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>03059</loc:LocationNumber>
+    <loc:Name>Fashion Island Mall</loc:Name>
+    <loc:MarketableName>fashionislandmall</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>401 Newport Center Dr Ste A108</common:Address1>
+        <common:City>Newport Beach</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92660</common:Zip>
+          <common:ZipExtension>6963</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>401 Newport Center Dr Ste A108</common:Address1>
+        <common:City>Newport Beach</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92660</common:Zip>
+          <common:ZipExtension>6963</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>401 Newport Center Dr Ste A108</common:Address1>
+        <common:City>Newport Beach</common:City>
+        <common:County>Orange</common:County>
+        <common:State>CA</common:State>
+        <common:ZipCode>
+          <common:Zip>92660</common:Zip>
+          <common:ZipExtension>6963</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>03059@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>33059</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-24</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/fashionislandmall</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>33.615997</loc:Latitude>
+      <loc:Longitude>-117.874725</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>MALL</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>500907</people:PersonID>
+      <people:Name>Ron Pentz</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>21286</people:PersonID>
+      <people:Name>Scott Pickell</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>917304</people:PersonID>
+      <people:Name>Thomas Guerard</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Orange County</loc:OperatorTeamName>
+    <loc:ServiceTeamName>West Coast</loc:ServiceTeamName>
+    <loc:RegionName>West Coast</loc:RegionName>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>FUL</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>false</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02967</loc:LocationNumber>
+    <loc:Name>Harvey FSU</loc:Name>
+    <loc:MarketableName>harvey</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>1128 Manhattan Blvd</common:Address1>
+        <common:City>Harvey</common:City>
+        <common:County>Jefferson</common:County>
+        <common:State>LA</common:State>
+        <common:ZipCode>
+          <common:Zip>70058</common:Zip>
+          <common:ZipExtension>4560</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>1128 Manhattan Blvd</common:Address1>
+        <common:City>Harvey</common:City>
+        <common:County>Jefferson</common:County>
+        <common:State>LA</common:State>
+        <common:ZipCode>
+          <common:Zip>70058</common:Zip>
+          <common:ZipExtension>4560</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>1128 Manhattan Blvd</common:Address1>
+        <common:City>Harvey</common:City>
+        <common:County>Jefferson</common:County>
+        <common:State>LA</common:State>
+        <common:ZipCode>
+          <common:Zip>70058</common:Zip>
+          <common:ZipExtension>4560</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02967@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32967</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-24</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/harvey</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>29.89749</loc:Latitude>
+      <loc:Longitude>-90.06254</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>537069</people:PersonID>
+      <people:Name>Ernest Gibson</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>342866</people:PersonID>
+      <people:Name>Jill Quarles</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>662457</people:PersonID>
+      <people:Name>Joni Per-Lee</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>New Orleans</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Coastal Team 10</loc:ServiceTeamName>
+    <loc:RegionName>Coastal</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02847</loc:LocationNumber>
+    <loc:Name>Homberg Drive FSU</loc:Name>
+    <loc:MarketableName>hombergdrive</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>4944 Kingston Pike</common:Address1>
+        <common:City>Knoxville</common:City>
+        <common:County>Knox</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37919</common:Zip>
+          <common:ZipExtension>5111</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>4944 Kingston Pike</common:Address1>
+        <common:City>Knoxville</common:City>
+        <common:County>Knox</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37919</common:Zip>
+          <common:ZipExtension>5111</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>4944 Kingston Pike</common:Address1>
+        <common:City>Knoxville</common:City>
+        <common:County>Knox</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37919</common:Zip>
+          <common:ZipExtension>5111</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02847@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32847</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-17</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/hombergdrive</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>35.93798</loc:Latitude>
+      <loc:Longitude>-83.9896</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>555768</people:PersonID>
+      <people:Name>Cathy Price</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1063243</people:PersonID>
+      <people:Name>Wanda Young</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>716687</people:PersonID>
+      <people:Name>Mike Calano</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Knoxville West</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Piedmont Team 2</loc:ServiceTeamName>
+    <loc:RegionName>Piedmont</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>MCN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02826</loc:LocationNumber>
+    <loc:Name>I-45 and 1960 FSU</loc:Name>
+    <loc:MarketableName>i45and1960</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>430 FM 1960 West Road</common:Address1>
+        <common:City>Spring</common:City>
+        <common:County>Harris</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77090</common:Zip>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02826@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32826</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-06-07</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/i45and1960</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>30.0183</loc:Latitude>
+      <loc:Longitude>-95.43847</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>915278</people:PersonID>
+      <people:Name>Chris Tyndal</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Houston North</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 4</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02964</loc:LocationNumber>
+    <loc:Name>Katy Mills FSU</loc:Name>
+    <loc:MarketableName>katymills</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>25601 Nelson Way</common:Address1>
+        <common:City>Katy</common:City>
+        <common:County>Fort Bend</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77494</common:Zip>
+          <common:ZipExtension>5388</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>25601 Nelson Way</common:Address1>
+        <common:City>Katy</common:City>
+        <common:County>Fort Bend</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77494</common:Zip>
+          <common:ZipExtension>5388</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>25601 Nelson Way</common:Address1>
+        <common:City>Katy</common:City>
+        <common:County>Fort Bend</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77494</common:Zip>
+          <common:ZipExtension>5388</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02964@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32964</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-26</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/katymills</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>29.77377</loc:Latitude>
+      <loc:Longitude>-95.81881</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>226721</people:PersonID>
+      <people:Name>Jim Ruane</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Houston Southwest</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 4</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02934</loc:LocationNumber>
+    <loc:Name>Kentlands Square In-Line</loc:Name>
+    <loc:MarketableName>kentlandssquareinline</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>104 Main St</common:Address1>
+        <common:City>Gaithersburg</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>MD</common:State>
+        <common:ZipCode>
+          <common:Zip>20878</common:Zip>
+          <common:ZipExtension>5573</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>104 Main St</common:Address1>
+        <common:City>Gaithersburg</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>MD</common:State>
+        <common:ZipCode>
+          <common:Zip>20878</common:Zip>
+          <common:ZipExtension>5573</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>104 Main St</common:Address1>
+        <common:City>Gaithersburg</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>MD</common:State>
+        <common:ZipCode>
+          <common:Zip>20878</common:Zip>
+          <common:ZipExtension>5573</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02934@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32934</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-12</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/kentlandssquareinline</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>39.12447</loc:Latitude>
+      <loc:Longitude>-77.23742</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>MALL</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>67011</people:PersonID>
+      <people:Name>Juliet Hall</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Washington DC ILU</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 5</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <loc:PriceGroupNumber>14</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>ABD</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>false</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>true</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02616</loc:LocationNumber>
+    <loc:Name>Lake Worth South FSU</loc:Name>
+    <loc:MarketableName>lakeworthsouth</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>6275 Lantana Rd</common:Address1>
+        <common:Address2>Lee Square Shopping Center</common:Address2>
+        <common:City>Greenacres</common:City>
+        <common:County>Palm Beach</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33463</common:Zip>
+          <common:ZipExtension>6714</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>6275 Lantana Rd</common:Address1>
+        <common:Address2>Lee Square Shopping Center</common:Address2>
+        <common:City>Greenacres</common:City>
+        <common:County>Palm Beach</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33463</common:Zip>
+          <common:ZipExtension>6714</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>6275 Lantana Rd</common:Address1>
+        <common:Address2>Lee Square Shopping Center</common:Address2>
+        <common:City>Greenacres</common:City>
+        <common:County>Palm Beach</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33463</common:Zip>
+          <common:ZipExtension>6714</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02616@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32616</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-12</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/lakeworthsouth</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>26.5902</loc:Latitude>
+      <loc:Longitude>-80.14382</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>796664</people:PersonID>
+      <people:Name>Anita Costello</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>342866</people:PersonID>
+      <people:Name>Jill Quarles</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>662457</people:PersonID>
+      <people:Name>Joni Per-Lee</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Palm</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Coastal Team 10</loc:ServiceTeamName>
+    <loc:RegionName>Coastal</loc:RegionName>
+    <loc:PriceGroupNumber>8</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>QCD SVCS</dist:Name>
+      <dist:ShortName>QCD</dist:ShortName>
+      <dist:DistributionCenter>APO</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02985</loc:LocationNumber>
+    <loc:Name>Lebanon FSU</loc:Name>
+    <loc:MarketableName>lebanon</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>706 S Cumberland St</common:Address1>
+        <common:Address2>(US Hwy 231)</common:Address2>
+        <common:City>Lebanon</common:City>
+        <common:County>Wilson</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37087</common:Zip>
+          <common:ZipExtension>4110</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>706 S Cumberland St</common:Address1>
+        <common:Address2>(US Hwy 231)</common:Address2>
+        <common:City>Lebanon</common:City>
+        <common:County>Wilson</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37087</common:Zip>
+          <common:ZipExtension>4110</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>706 S Cumberland St</common:Address1>
+        <common:Address2>(US Hwy 231)</common:Address2>
+        <common:City>Lebanon</common:City>
+        <common:County>Wilson</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37087</common:Zip>
+          <common:ZipExtension>4110</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02985@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32985</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-03</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/lebanon</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>36.18806</loc:Latitude>
+      <loc:Longitude>-86.29659</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>19842</people:PersonID>
+      <people:Name>Page Williams</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1063243</people:PersonID>
+      <people:Name>Wanda Young</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>716687</people:PersonID>
+      <people:Name>Mike Calano</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Nashville 1</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Piedmont Team 2</loc:ServiceTeamName>
+    <loc:RegionName>Piedmont</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>MCN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02783</loc:LocationNumber>
+    <loc:Name>Lima FSU</loc:Name>
+    <loc:MarketableName>lima</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>1190 W Baltimore Pike</common:Address1>
+        <common:City>Media</common:City>
+        <common:County>Delaware</common:County>
+        <common:State>PA</common:State>
+        <common:ZipCode>
+          <common:Zip>19063</common:Zip>
+          <common:ZipExtension>5128</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>1190 W Baltimore Pike</common:Address1>
+        <common:City>Media</common:City>
+        <common:County>Delaware</common:County>
+        <common:State>PA</common:State>
+        <common:ZipCode>
+          <common:Zip>19063</common:Zip>
+          <common:ZipExtension>5128</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>1190 W Baltimore Pike</common:Address1>
+        <common:City>Media</common:City>
+        <common:County>Delaware</common:County>
+        <common:State>PA</common:State>
+        <common:ZipCode>
+          <common:Zip>19063</common:Zip>
+          <common:ZipExtension>5128</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02783@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32783</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-03</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/lima</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>39.91215</loc:Latitude>
+      <loc:Longitude>-75.43952</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>805746</people:PersonID>
+      <people:Name>Kim McGrady</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Philadelphia West</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 6</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <loc:PriceGroupNumber>3</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>ABD</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02983</loc:LocationNumber>
+    <loc:Name>Lombard FSU</loc:Name>
+    <loc:MarketableName>lombard</loc:MarketableName>
+    <people:Operator>
+      <people:PersonID>212419</people:PersonID>
+      <people:Name>Bob Gutherz</people:Name>
+    </people:Operator>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>717 E Butterfield Rd</common:Address1>
+        <common:City>Lombard</common:City>
+        <common:County>Dupage</common:County>
+        <common:State>IL</common:State>
+        <common:ZipCode>
+          <common:Zip>60148</common:Zip>
+          <common:ZipExtension>5614</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>717 E Butterfield Rd</common:Address1>
+        <common:City>Lombard</common:City>
+        <common:County>Dupage</common:County>
+        <common:State>IL</common:State>
+        <common:ZipCode>
+          <common:Zip>60148</common:Zip>
+          <common:ZipExtension>5614</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>717 E Butterfield Rd</common:Address1>
+        <common:City>Lombard</common:City>
+        <common:County>Dupage</common:County>
+        <common:State>IL</common:State>
+        <common:ZipCode>
+          <common:Zip>60148</common:Zip>
+          <common:ZipExtension>5614</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02983@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32983</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-03-29</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/lombard</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>41.83958</loc:Latitude>
+      <loc:Longitude>-87.99888</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>284843</people:PersonID>
+      <people:Name>Kevin Malone</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <people:UnitMarketingDirector>
+      <people:PersonID>967558</people:PersonID>
+      <people:Name>Forbes, Diana (Diana)</people:Name>
+    </people:UnitMarketingDirector>
+    <loc:OperatorTeamName>Chicago</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 6</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <loc:GMTOffset>GMT -06:00</loc:GMTOffset>
+    <loc:TimeZoneName>Central Time (US &amp; Canada)</loc:TimeZoneName>
+    <loc:PriceGroupNumber>13</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>COL</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02793</loc:LocationNumber>
+    <loc:Name>Montgomery and San Mateo FSU</loc:Name>
+    <loc:MarketableName>montgomeryandsanmateo</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>5009 Montgomery Blvd Ne</common:Address1>
+        <common:City>Albuquerque</common:City>
+        <common:County>Bernalillo</common:County>
+        <common:State>NM</common:State>
+        <common:ZipCode>
+          <common:Zip>87109</common:Zip>
+          <common:ZipExtension>1307</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>5009 Montgomery Blvd Ne</common:Address1>
+        <common:City>Albuquerque</common:City>
+        <common:County>Bernalillo</common:County>
+        <common:State>NM</common:State>
+        <common:ZipCode>
+          <common:Zip>87109</common:Zip>
+          <common:ZipExtension>1307</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>5009 Montgomery Blvd Ne</common:Address1>
+        <common:City>Albuquerque</common:City>
+        <common:County>Bernalillo</common:County>
+        <common:State>NM</common:State>
+        <common:ZipCode>
+          <common:Zip>87109</common:Zip>
+          <common:ZipExtension>1307</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02793@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32793</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-31</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/montgomeryandsanmateo</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>35.13132</loc:Latitude>
+      <loc:Longitude>-106.58753</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>255946</people:PersonID>
+      <people:Name>John Bermudez</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>El Paso/New Mexico</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 3</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>3</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>DEN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02874</loc:LocationNumber>
+    <loc:Name>Pines and Flamingo FSU</loc:Name>
+    <loc:MarketableName>pinesandflamingo</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>12203 Pines Blvd</common:Address1>
+        <common:City>Pembroke Pines</common:City>
+        <common:County>Broward</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33026</common:Zip>
+          <common:ZipExtension>4119</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>12203 Pines Blvd</common:Address1>
+        <common:City>Pembroke Pines</common:City>
+        <common:County>Broward</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33026</common:Zip>
+          <common:ZipExtension>4119</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>12203 Pines Blvd</common:Address1>
+        <common:City>Pembroke Pines</common:City>
+        <common:County>Broward</common:County>
+        <common:State>FL</common:State>
+        <common:ZipCode>
+          <common:Zip>33026</common:Zip>
+          <common:ZipExtension>4119</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02874@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32874</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-31</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/pinesandflamingo</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>26.00747</loc:Latitude>
+      <loc:Longitude>-80.31212</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>537069</people:PersonID>
+      <people:Name>Ernest Gibson</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>342866</people:PersonID>
+      <people:Name>Jill Quarles</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>662457</people:PersonID>
+      <people:Name>Joni Per-Lee</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Miami/Ft Lauderdale</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Coastal Team 10</loc:ServiceTeamName>
+    <loc:RegionName>Coastal</loc:RegionName>
+    <loc:PriceGroupNumber>8</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>QCD SVCS</dist:Name>
+      <dist:ShortName>QCD</dist:ShortName>
+      <dist:DistributionCenter>APO</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02849</loc:LocationNumber>
+    <loc:Name>Salem FSU</loc:Name>
+    <loc:MarketableName>salem</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>1353 W Main St</common:Address1>
+        <common:City>Salem</common:City>
+        <common:County>Salem (Ind City)</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>24153</common:Zip>
+          <common:ZipExtension>4707</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>1353 W Main St</common:Address1>
+        <common:City>Salem</common:City>
+        <common:County>Salem (Ind City)</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>24153</common:Zip>
+          <common:ZipExtension>4707</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>1353 W Main St</common:Address1>
+        <common:City>Salem</common:City>
+        <common:County>Salem (Ind City)</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>24153</common:Zip>
+          <common:ZipExtension>4707</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02849@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32849</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-24</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/salem</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>37.29001</loc:Latitude>
+      <loc:Longitude>-80.07909</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>192706</people:PersonID>
+      <people:Name>Bill Jerome</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>820687</people:PersonID>
+      <people:Name>Will McFaddin</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1032136</people:PersonID>
+      <people:Name>Todd Hall</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Southern Virginia 1</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Atlantic Team 7</loc:ServiceTeamName>
+    <loc:RegionName>Atlantic</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>QCD SVCS</dist:Name>
+      <dist:ShortName>QCD</dist:ShortName>
+      <dist:DistributionCenter>PIN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02956</loc:LocationNumber>
+    <loc:Name>Sawyer Heights FSU</loc:Name>
+    <loc:MarketableName>sawyerheights</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>2222 Shearn St</common:Address1>
+        <common:City>Houston</common:City>
+        <common:County>Harris</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77007</common:Zip>
+          <common:ZipExtension>3941</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>5200 Buffington Road</common:Address1>
+        <common:City>Atlanta</common:City>
+        <common:County>Fulton</common:County>
+        <common:State>GA</common:State>
+        <common:ZipCode>
+          <common:Zip>30349</common:Zip>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02956@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32956</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-19</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/sawyerheights</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>29.77551</loc:Latitude>
+      <loc:Longitude>-95.38089</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>591322</people:PersonID>
+      <people:Name>Mark Drake</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Houston Central</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 4</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02931</loc:LocationNumber>
+    <loc:Name>Seven Corners In-Line</loc:Name>
+    <loc:MarketableName>sevencornersinline</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>6108 Arlington Blvd</common:Address1>
+        <common:City>Falls Church</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22044</common:Zip>
+          <common:ZipExtension>2901</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>6108 Arlington Blvd</common:Address1>
+        <common:City>Falls Church</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22044</common:Zip>
+          <common:ZipExtension>2901</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>6108 Arlington Blvd</common:Address1>
+        <common:City>Falls Church</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22044</common:Zip>
+          <common:ZipExtension>2901</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02931@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32931</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-06-07</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/sevencornersinline</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>38.86865</loc:Latitude>
+      <loc:Longitude>-77.14409</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>MALL</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>67011</people:PersonID>
+      <people:Name>Juliet Hall</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Washington DC ILU</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 5</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>ABD</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>false</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>true</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02822</loc:LocationNumber>
+    <loc:Name>South College Station FSU</loc:Name>
+    <loc:MarketableName>southcollegestation</loc:MarketableName>
+    <people:Operator>
+      <people:PersonID>222841</people:PersonID>
+      <people:Name>Jerald Huggins</people:Name>
+      <people:Locations>
+        <people:Location locationNumber="02209"/>
+        <people:Location locationNumber="02822"/>
+      </people:Locations>
+    </people:Operator>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>4431 State Highway 6 S</common:Address1>
+        <common:City>College Station</common:City>
+        <common:County>Brazos</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77845</common:Zip>
+          <common:ZipExtension>4428</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>4431 State Highway 6 S</common:Address1>
+        <common:City>College Station</common:City>
+        <common:County>Brazos</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77845</common:Zip>
+          <common:ZipExtension>4428</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>4431 State Highway 6 S</common:Address1>
+        <common:City>College Station</common:City>
+        <common:County>Brazos</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77845</common:Zip>
+          <common:ZipExtension>4428</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02822@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32822</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-03-29</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/southcollegestation</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>30.56234</loc:Latitude>
+      <loc:Longitude>-96.25987</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>960994</people:PersonID>
+      <people:Name>Tony Gragg</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Central Texas</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 3</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02774</loc:LocationNumber>
+    <loc:Name>Springfield In-Line DT</loc:Name>
+    <loc:MarketableName>springfieldinline</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>6681a Backlick Rd</common:Address1>
+        <common:City>Springfield</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22150</common:Zip>
+          <common:ZipExtension>2702</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>6681a Backlick Rd</common:Address1>
+        <common:City>Springfield</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22150</common:Zip>
+          <common:ZipExtension>2702</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>6681a Backlick Rd</common:Address1>
+        <common:City>Springfield</common:City>
+        <common:County>Fairfax</common:County>
+        <common:State>VA</common:State>
+        <common:ZipCode>
+          <common:Zip>22150</common:Zip>
+          <common:ZipExtension>2702</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02774@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32774</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-26</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/springfieldinline</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>38.773655</loc:Latitude>
+      <loc:Longitude>-77.18308</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>67011</people:PersonID>
+      <people:Name>Juliet Hall</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Washington DC ILU</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 5</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <loc:PriceGroupNumber>51</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>ABD</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>none</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02814</loc:LocationNumber>
+    <loc:Name>Turnersville FSU</loc:Name>
+    <loc:MarketableName>turnersville</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>5651 Route 42</common:Address1>
+        <common:City>Turnersville</common:City>
+        <common:County>Gloucester</common:County>
+        <common:State>NJ</common:State>
+        <common:ZipCode>
+          <common:Zip>08012</common:Zip>
+          <common:ZipExtension>1000</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>5651 Route 42</common:Address1>
+        <common:City>Turnersville</common:City>
+        <common:County>Gloucester</common:County>
+        <common:State>NJ</common:State>
+        <common:ZipCode>
+          <common:Zip>08012</common:Zip>
+          <common:ZipExtension>1000</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>5651 Route 42</common:Address1>
+        <common:City>Turnersville</common:City>
+        <common:County>Gloucester</common:County>
+        <common:State>NJ</common:State>
+        <common:ZipCode>
+          <common:Zip>08012</common:Zip>
+          <common:ZipExtension>1000</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02814@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32814</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-24</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/turnersville</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>39.75963</loc:Latitude>
+      <loc:Longitude>-75.04769</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>180536</people:PersonID>
+      <people:Name>Dave Villiger</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1129302</people:PersonID>
+      <people:Name>Eddy Taylor</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1071756</people:PersonID>
+      <people:Name>Selena Roker</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>New Jersey South</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Northern Team 6</loc:ServiceTeamName>
+    <loc:RegionName>Northern</loc:RegionName>
+    <loc:PriceGroupNumber>8</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>ABD</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02865</loc:LocationNumber>
+    <loc:Name>Willis FSU</loc:Name>
+    <loc:MarketableName>willis</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>12310 Old Montgomery Rd</common:Address1>
+        <common:City>Willis</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77318</common:Zip>
+          <common:ZipExtension>5649</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>12310 Old Montgomery Rd</common:Address1>
+        <common:City>Willis</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77318</common:Zip>
+          <common:ZipExtension>5649</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>12310 Old Montgomery Rd</common:Address1>
+        <common:City>Willis</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TX</common:State>
+        <common:ZipCode>
+          <common:Zip>77318</common:Zip>
+          <common:ZipExtension>5649</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02865@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32865</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-05-17</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/willis</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>30.4198</loc:Latitude>
+      <loc:Longitude>-95.4923</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>915278</people:PersonID>
+      <people:Name>Chris Tyndal</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>975519</people:PersonID>
+      <people:Name>Shelby Hepler</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>1067565</people:PersonID>
+      <people:Name>Lukas Johnson</people:Name>
+    </people:FinancialConsultant>
+    <loc:OperatorTeamName>Houston North</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Southwest Team 4</loc:ServiceTeamName>
+    <loc:RegionName>Southwest</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>LEW</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+  <loc:Location>
+    <loc:LocationNumber>02955</loc:LocationNumber>
+    <loc:Name>Wilma Rudolph FSU</loc:Name>
+    <loc:MarketableName>wilmarudolph</loc:MarketableName>
+    <loc:LocationContact>
+      <common:StreetAddress>
+        <common:Address1>3096 Wilma Rudolph Blvd</common:Address1>
+        <common:City>Clarksville</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37040</common:Zip>
+          <common:ZipExtension>5014</common:ZipExtension>
+        </common:ZipCode>
+      </common:StreetAddress>
+      <common:ShippingAddress>
+        <common:Address1>3096 Wilma Rudolph Blvd</common:Address1>
+        <common:City>Clarksville</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37040</common:Zip>
+          <common:ZipExtension>5014</common:ZipExtension>
+        </common:ZipCode>
+      </common:ShippingAddress>
+      <common:BillingAddress>
+        <common:Address1>3096 Wilma Rudolph Blvd</common:Address1>
+        <common:City>Clarksville</common:City>
+        <common:County>Montgomery</common:County>
+        <common:State>TN</common:State>
+        <common:ZipCode>
+          <common:Zip>37040</common:Zip>
+          <common:ZipExtension>5014</common:ZipExtension>
+        </common:ZipCode>
+      </common:BillingAddress>
+      <common:EmailAddress>02955@chick-fil-a.com</common:EmailAddress>
+      <common:VoiceMail>32955</common:VoiceMail>
+    </loc:LocationContact>
+    <loc:Status>future</loc:Status>
+    <loc:SiteStatus>under construction</loc:SiteStatus>
+    <loc:ProjectedOpenDate>2012-04-12</loc:ProjectedOpenDate>
+    <loc:MarketableURL>http://www.chick-fil-a.com/wilmarudolph</loc:MarketableURL>
+    <loc:GPS>
+      <loc:Latitude>36.59806</loc:Latitude>
+      <loc:Longitude>-87.28495</loc:Longitude>
+    </loc:GPS>
+    <loc:ConceptCode>CFA</loc:ConceptCode>
+    <loc:LocationCode>FSU</loc:LocationCode>
+    <people:BusinessConsultant>
+      <people:PersonID>231625</people:PersonID>
+      <people:Name>Scott Stover</people:Name>
+    </people:BusinessConsultant>
+    <people:MarketingConsultant>
+      <people:PersonID>1063243</people:PersonID>
+      <people:Name>Wanda Young</people:Name>
+    </people:MarketingConsultant>
+    <people:FinancialConsultant>
+      <people:PersonID>716687</people:PersonID>
+      <people:Name>Mike Calano</people:Name>
+    </people:FinancialConsultant>
+    <people:UnitMarketingDirector>
+      <people:PersonID>1229585</people:PersonID>
+      <people:Name>Conner, Naomi</people:Name>
+    </people:UnitMarketingDirector>
+    <loc:OperatorTeamName>Nashville 2</loc:OperatorTeamName>
+    <loc:ServiceTeamName>Piedmont Team 2</loc:ServiceTeamName>
+    <loc:RegionName>Piedmont</loc:RegionName>
+    <loc:PriceGroupNumber>1</loc:PriceGroupNumber>
+    <dist:Distributor>
+      <dist:Name>MBM CORPORATION</dist:Name>
+      <dist:ShortName>MBM</dist:ShortName>
+      <dist:DistributionCenter>MCN</dist:DistributionCenter>
+    </dist:Distributor>
+    <loc:Features>
+      <loc:Playground>interior</loc:Playground>
+      <loc:OffersOnlineOrdering>false</loc:OffersOnlineOrdering>
+      <loc:HasDriveThru>true</loc:HasDriveThru>
+      <loc:AcceptsCfaCard>true</loc:AcceptsCfaCard>
+      <loc:HasDiningRoom>false</loc:HasDiningRoom>
+      <loc:ServesBreakfast>false</loc:ServesBreakfast>
+      <loc:OffersWireless>false</loc:OffersWireless>
+    </loc:Features>
+    <loc:Attributes>
+      <loc:Attribute>
+        <loc:Name>SSParticipation</loc:Name>
+        <loc:Value xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</loc:Value>
+      </loc:Attribute>
+    </loc:Attributes>
+  </loc:Location>
+</svc:Locations>

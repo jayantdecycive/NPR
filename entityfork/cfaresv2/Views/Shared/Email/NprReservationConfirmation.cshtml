@@ -1,0 +1,60 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.NprEmailContextModel>
+@*@model npr.domain._event.ticket.NPRTicket*@
+
+<html>
+<head>
+</head>
+<body style="width:700px; padding:0px; margin:0px;">
+    <div id="container" style="border: 3px solid #E6E7E8;">
+        <div id="head" style="padding-left: 65px; border-bottom: 5px solid #BE202E; ">
+            <img src="http://events.npr.org/Content/images/npr_logo_small.png" style="width:150px; margin-top: 20px; margin-bottom: 20px;" />
+        </div>
+        <div id="content" style="font-family: Georgia, serif; font-size: 18px; padding: 20px 65px 25px 65px; clear: both;">
+
+            <p>
+                Dear @Model.Ticket.Owner.FirstName,
+            </p>
+
+            <p>
+                Thank you for your interest in touring our new NPR headquarters at 1111 North Capitol Street, NE! Below are the details of your reservation:
+            </p>
+
+            <p>
+            <span style="font-weight:bold;">First Name: </span>@Model.Ticket.Owner.FirstName<br />
+            <span style="font-weight:bold;">Last Name: </span>@Model.Ticket.Owner.LastName<br />
+            <span style="font-weight:bold;">Tour Date: </span>@Model.Ticket.Slot.Start.ToString("dddd, MMMM dd, yyyy")<br />
+            <span style="font-weight:bold;">Tour Time: </span>@Model.Ticket.Slot.Start.ToString("hh:mmtt") - @Model.Ticket.Slot.End.ToString("hh:mmtt")<br />
+            <span style="font-weight:bold;">Group Size: </span>@Model.Ticket.GroupSize<br />
+            <span style="font-weight:bold;">Confirmation Number: </span>@Model.Ticket.ConfirmationNumber
+            </p>
+
+            <p>
+                Please print this email and bring it with you along with your photo ID on the day of your tour.If you need to cancel or modify your reservation, please visit
+                the <a href="http://tours.npr.org/npr/Reservation/Modify">website</a> and log in using your email address and confirmation number.
+            </p>
+
+            <p>
+                We want your visit to be amazing, so we put together an
+                <a href="http://tours.npr.org/npr/Home/Faq">FAQ</a> and guide to help <a href="http://tours.npr.org/npr/Home/Plan">Plan Your Trip</a>.
+            </p>
+
+            <p>
+                We look forward to seeing you!
+            </p>
+
+            <p class="margin-top-35 margin-bot-60">
+                Sincerely,<br />
+                <img src="http://tours.npr.org/content/themes/npr/images/signature-erin-mcintyre.png" /><br />
+                Erin McIntyre<br />
+                Manager, NPR Audience and Community Relations<br />
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+

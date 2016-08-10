@@ -1,0 +1,19 @@
+﻿@model string
+
+
+<table id="table_@Model" class='data-table' data-jquery-ui="true" data-mode="backbone" @Html.Raw(ViewData["Picker"]!=null?"data-dom='<\"H\"r>t<\"F\"fp>' ":"") data-data='@Model'>
+            <thead>
+                <tr>
+                    @if (ViewData["Picker"]!=null)
+                    {
+                        <th data-id='LocationCategorySelect' data-on-display='DataFormat.Radio' data-column-parent='LocationCategoryId'></th>
+                    }
+                    <th data-column-name='LocationCategoryId' data-id-column='true' >Category Id</th>
+                    <th data-column-name='Name'  >Name</th>			    
+                        
+			    
+                
+                </tr>
+            </thead>
+        </table>
+

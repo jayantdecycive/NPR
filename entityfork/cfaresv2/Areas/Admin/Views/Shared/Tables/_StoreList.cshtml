@@ -1,0 +1,25 @@
+﻿@model string
+
+
+<div class='admin-table'>
+    <table id="stores_@ViewData["id"]" data-sort="LocationNumber" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+				<tr>
+					<!--<th data-id='StoreSelect' data-on-display='DataFormat.Radio' data-column-parent='LocationId'></th>                        -->
+					<th data-column-name='CheckBox' data-searchable="false" data-sortable="false"></th>                
+					<th data-column-name='Cta' data-searchable="false" data-query-name='Name' style="min-width:250px;">Name</th>
+					<th data-column-name='LocationNumberI' data-id-column='true' width="110px">Location Number</th>                
+					<th data-column-name='Name' data-visible="false">Restaurant Name</th>
+					<th data-column-name='MarketableUrlString' data-searchable="false" data-visible="false">Marketable Url</th>
+                
+					<th data-column-name='ConceptCode' data-searchable="false" data-on-display="EnumFormat.ConceptCode" width="175px">Concept Code</th>
+					<th data-column-name='RegionName' data-editable="false" data-visible="false" >Region</th>                
+					<th data-column-name='PhoneString' data-searchable="false" width="140px">Phone</th>			
+					@*			
+					SH - Commenting out due to JS error - Confirmed w/ Gabby not needed at this time
+					<th data-column-name='OperatorName' data-query-name='Operator/NameString'>Operator</th>    	
+					 *@
+				</tr>
+            </thead>
+      </table>
+      </div>

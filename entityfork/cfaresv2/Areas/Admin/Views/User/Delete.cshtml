@@ -1,0 +1,17 @@
+﻿@model cfares.domain.user.ResUser
+
+@{
+    ViewBag.Title = "Delete User";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Event User Detailed Information";
+    
+}
+        
+<h1>@Model.Name</h1>
+<p>
+@Model.ToString()
+</p>
+        
+@section Details{
+@Html.Partial("ModelDetail/_User")
+}

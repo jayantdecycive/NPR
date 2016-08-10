@@ -1,0 +1,331 @@
+﻿@model cfacore.shared.domain.store.Store
+@{
+    string pk = Model.Id();
+    bool isNew = string.IsNullOrEmpty(pk) || pk == "0";
+    }
+           
+
+<fieldset data-pk='@pk' class='store-@pk'>
+    
+    <div class='legend inline-block'>Location</div>
+    <span class="red"> * Required Field</span>
+
+    @if (!isNew)
+    {
+        @Html.HiddenFor(mode => Model.LocationNumber)
+    }
+    else
+    {
+        <div class='model-field field-LocationNumber'>
+            <div class="editor-label inline-block">
+                <span class="red">* </span>@Html.LabelFor(model => model.LocationNumber, "Location Code")
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.LocationNumber, "Location Number")
+                @Html.ValidationMessageFor(model => model.LocationNumber)
+            </div>
+        </div>
+    }
+        
+        
+    @Html.HiddenFor(model => model.CorporateOwned)
+        
+    @Html.HiddenFor(model => model.Email)
+
+
+    @Html.HiddenFor(model => model.AcceptsCfaCard)
+
+
+    @Html.HiddenFor(model => model.HasDiningRoom)
+
+
+    @Html.HiddenFor(model => model.HasDriveThru)
+
+
+    @Html.HiddenFor(model => model.OffersOnlineOrdering)
+    @Html.HiddenFor(model => model.PhoneString)
+
+
+
+    @Html.HiddenFor(model => model.OffersWireless)
+
+
+    @Html.HiddenFor(model => model.Playground)
+
+
+    @Html.HiddenFor(model => model.ServesBreakfast)
+
+
+    @Html.HiddenFor(model => model.GMTOffset)
+
+
+    @Html.HiddenFor(model => model.Lat)
+
+
+    @Html.HiddenFor(model => model.Lon)
+
+
+    @Html.HiddenFor(model => model.LocationCode)
+
+
+    @Html.HiddenFor(model => model.Message)
+
+
+    @Html.HiddenFor(model => model.LocationDescription)
+
+
+    @Html.HiddenFor(model => model.NameNoLocationCode)
+
+
+    @Html.HiddenFor(model => model.OpenDate)
+
+
+    @Html.HiddenFor(model => model.PriceGroupNumber)
+
+
+    @Html.HiddenFor(model => model.ProjectedOpenDate)
+
+
+    @Html.HiddenFor(model => model.RegionName)
+
+
+    @Html.HiddenFor(model => model.ServiceTeamName)
+
+
+    @Html.HiddenFor(model => model.OperatorId)
+
+
+    @Html.HiddenFor(model => model.MarketingConsultantId)
+
+
+    @Html.HiddenFor(model => model.BusinessConsultantId)
+
+
+    @Html.HiddenFor(model => model.FinancialConsultantId)
+
+
+    @Html.HiddenFor(model => model.Distributor)
+
+
+    @Html.HiddenFor(model => model.ChildcareAvailable)
+    @Html.HiddenFor(model => model.StreetAddressId)
+
+
+
+        
+        
+    <div class='model-field field-MarketableName'>
+        <div class="editor-label inline-block">
+            <span class="red">* </span>@Html.LabelFor(model => model.MarketableName,"Marketable Name")
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.MarketableName)
+            @Html.ValidationMessageFor(model => model.MarketableName)
+        </div>
+    </div>
+        
+    <div class='model-field field-Name'>
+        <div class="editor-label inline-block">
+            <span class="red">* </span>@Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+        
+        
+        
+    <div class='model-field field-Status'>
+        <div class="editor-label inline-block">
+            <span class="red">* </span>@Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+    </div>
+        
+        
+        
+    <div class='model-field field-HasParking'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.HasParking, "Has Parking")
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.HasParking)
+            @Html.ValidationMessageFor(model => model.HasParking)
+        </div>
+    </div>
+
+    <div class='model-field field-ParkingNotes'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.ParkingNotes, "Parking Notes")
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.ParkingNotes)
+            @Html.ValidationMessageFor(model => model.ParkingNotes)
+        </div>
+    </div>
+        
+    <div class='model-field field-IsCorporateOffice'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.IsCorporateOffice, "Is Corporate Office")
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.IsCorporateOffice)
+            @Html.ValidationMessageFor(model => model.IsCorporateOffice)
+        </div>
+    </div>
+
+    <div class='model-field field-MaximumCapacity'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.MaximumCapacity, "Maximum Capicity")
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.MaximumCapacity)
+            @Html.ValidationMessageFor(model => model.MaximumCapacity)
+        </div>
+    </div>
+        
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.Comments)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.Comments)
+            @Html.ValidationMessageFor(model => model.Comments)
+        </div>
+    </div>
+        
+        
+   
+
+    @*        
+        @Html.EditorFor(x=>x.BillingAddress)
+        
+        
+        
+        @Html.EditorFor(x=>x.ShippingAddress)
+        *@
+        
+</fieldset>
+
+<fieldset data-pk='@Model.StreetAddressId' data-model="Address" class='address-@Model.StreetAddressId auto-model'>
+    @*@Html.EditorFor(x=>x.StreetAddress)*@
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.NameString)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.NameString)
+            @Html.ValidationMessageFor(model => model.StreetAddress.NameString)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.Line1)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.Line1)
+            @Html.ValidationMessageFor(model => model.StreetAddress.Line1)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.Line2)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.Line2)
+            @Html.ValidationMessageFor(model => model.StreetAddress.Line2)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.Line3)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.Line3)
+            @Html.ValidationMessageFor(model => model.StreetAddress.Line3)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            <span class="red">* </span>@Html.LabelFor(model => model.StreetAddress.ZipString)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.ZipString)
+            @Html.ValidationMessageFor(model => model.StreetAddress.ZipString)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.County)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.County)
+            @Html.ValidationMessageFor(model => model.StreetAddress.County)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.State)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.State)
+            @Html.ValidationMessageFor(model => model.StreetAddress.State)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.Lat)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.Lat)
+            @Html.ValidationMessageFor(model => model.StreetAddress.Lat)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.Lon)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.Lon)
+            @Html.ValidationMessageFor(model => model.StreetAddress.Lon)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.StreetAddress.City)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.StreetAddress.City)
+            @Html.ValidationMessageFor(model => model.StreetAddress.City)
+        </div>
+    </div>
+    
+    <div class='model-field field-Comments'>
+        <div class="editor-label inline-block">
+         @Html.LabelFor(model => model.StreetAddress.Label)
+        </div>
+        <div class="editor-field inline-block">
+        @Html.EditorFor(model => model.StreetAddress.Label)
+        @Html.ValidationMessageFor(model => model.StreetAddress.Label)
+        </div>
+    </div>
+    
+    
+    
+
+
+</fieldset>

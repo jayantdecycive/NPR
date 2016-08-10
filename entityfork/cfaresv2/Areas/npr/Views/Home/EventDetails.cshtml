@@ -1,0 +1,142 @@
+﻿@model cfares.domain._event.ResEvent
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Nav = "Events";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+}
+
+
+
+<div class="breadcrumbs navbar pull-right">
+    <ul class="nav">
+        <li>Event Overview</li>
+        <li class="gt-divider">&gt;</li>
+        <li class="strong">Event Details</li>
+        <li class="gt-divider">&gt;</li>
+        <li>Register</li>
+        <li class="gt-divider">&gt;</li>
+        <li>Overview</li>
+        <li class="gt-divider">&gt;</li>
+        <li>Confirmation</li>
+    </ul>       
+</div>
+
+
+
+<h1>@Html.Raw(Model.Name)</h1>
+
+<section id="event_details">
+    @if (Model.Media != null)
+    {
+        <div class="event-image pull-right">
+            <img src="@Model.Media.Uri()" class="" atl="">
+        </div>
+    }
+    <div class="event-overview">
+        <h3>@Html.Raw(Model.SubHeading)</h3>    
+        <p>@Html.Raw(Model.Description)</p>
+        @*@Html.Partial("_social-events")*@
+        
+
+    </div>
+
+    <div class="event-details">
+        @if (Model.Slots != null&&Model.Slots.Count > 0)
+        {
+            <p><strong>@Model.Slots[0].Start.ToString("dddd, MMMM dd, yyyy")</strong><br />
+                @Model.Slots[0].Start.ToString("hh:mmtt") - @Model.Slots[0].End.ToString("hh:mmtt")</p>
+        }
+        else{
+            <p class="disclaimer">No time slots for this event</p>
+        }
+        @if (Model.Occurrences!=null&&Model.Occurrences.Count > 0)
+        {
+            <address>	
+                @Model.Occurrences[0].Store.Name<br />
+                @Model.Occurrences[0].Store.StreetAddress
+            </address>
+        }
+        else{
+            <p class="disclaimer">No location assigned to this event.</p>   
+        }
+        @if(Model.MustBeOfAgeToAttend) {
+            <p class="age-restriction disclaimer">21 years and over</p>
+        }
+    </div>
+    
+    @if (Model.Slots != null)
+    {
+
+        using (Html.BeginForm(null, null, FormMethod.Post, new {@class="form-horizontal", @style="margin-left: 0px;"}))
+        {
+            if (Model.Slots[0].TicketsAvailable > 0) { 
+                <p class="ticket-availability disclaimer">@Model.Slots[0].TicketsAvailable Tickets available</p>
+            }
+            else {
+                <p class="ticket-availability disclaimer">Sorry, there are no tickets available at this time. Please check back for possible cancellations.</p>
+            }
+
+            <div class="control-group">
+                @Html.Label("groupSize", "Group Size:", new {@class = "control-label"})
+                <div class="controls">
+                    @Html.DropDownList("groupSize", new SelectList(Enumerable.Range(1, Model.Slots[0].TicketsAvailable)))
+                </div>
+            </div>
+		
+			if (Model.IsPaid)
+			{
+			<div class="control-group">  
+				<span class="control-name">Ticket Price:</span>
+				<span class="control-value">@Model.TicketAmount.Value.ToString("C2")</span>
+			</div>
+			}
+		
+            @Html.Hidden("slotId", Model.Occurrences[0].SlotsList[0].SlotId)
+
+            <span class="button-forward" style="padding-top: 5px;">
+                @if (Model.Slots[0].TicketsAvailable <= 0) { 
+                    <input type="submit" value="Start Your Reservation" disabled="disabled" />
+                } else {
+                    <input type="submit" value="Start Your Reservation" />
+                }
+                <span class="button-icon-container">
+                    <span class="button-icon"></span>
+                </span>
+            </span>
+
+            <br />
+
+            <span class="button-back">
+                @Html.ActionLink("Return to Events", "Events", "Home") 
+                <span class="button-icon-container">
+                    <span class="button-icon"></span>
+                </span>
+            </span>
+        }
+    }
+</section>
+
+
+@section scripts {
+	<script type="text/javascript">
+		var facebook_appid = "138837436154588";
+		var facebook_title = "Come to an NPR Event";
+		var facebook_message = "Register today for one of our speaking engagements, live music performances, book signings and much more!";
+		var facebook_url = "http://tours.qa.npr.org/npr/Home/";
+		var facebook_imageurl = "http://media.npr.org/chrome/news/nprlogo_138x46.gif";
+		var twitter_message = "Register today for an NPR Event!";
+
+		$('.facebook-share').click(function () {
+			//var url = "https://www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + facebook_appid + "&picture=" + facebook_appid + "&name=" + facebook_appid + "&description=" + facebook_appid;
+			var url = "http://www.facebook.com/thisisnpr";
+			window.open(url, '_blank');
+		});
+
+		$('.twitter-share').click(function () {
+			//var url = "http://twitter.com/share?text=" + twitter_message;
+			var url = "http://twitter.com/@@npr";
+			window.open(url, '_blank');
+		});
+	</script>
+}

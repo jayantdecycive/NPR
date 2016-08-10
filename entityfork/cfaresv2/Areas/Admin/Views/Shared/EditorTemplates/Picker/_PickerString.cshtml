@@ -1,0 +1,78 @@
+﻿@model string
+
+@{
+    string id = Model;
+
+    if (string.IsNullOrEmpty(id))
+    {
+        id = null;
+    }
+    string fieldName = ViewData.TemplateInfo.HtmlFieldPrefix+Guid.NewGuid().ToString().Replace("-","");
+    string dialogId = "dia" + fieldName;
+        
+}
+<span class='admin-grey table-picker'>
+    <input type="text" id="@fieldName" name="@ViewData.TemplateInfo.HtmlFieldPrefix" value="@id"  class='table-picker'  />
+    <span class='admin-table dia-tools'>
+        <a id="@Html.Raw(fieldName)_btn" data-icon="grip-solid-horizontal" title="Choose from List" href="javascript:void(0);"></a>
+        <a data-icon="plus" title="Create New" href="@Html.Raw(ViewData["AdminCreate"]??string.Format("/Admin/{0}/Create?snip=true&{1}",ViewData["DomainModel"],ViewData["CreateParams"]??""))" data-title="Create new @Html.Raw(ViewData["DomainModel"])" data-toggle="modal"  data-success="@fieldName" ></a>    
+        @if (Model!=null)
+        {
+            <a data-icon="pencil" title="Edit" href="@Html.Raw(ViewData["AdminEdit"]??string.Format("/Admin/{0}/Edit/{1}?snip=true&{2}",ViewData["DomainModel"],ViewData["EditParams"]??"",Model))" data-title="Create new @Html.Raw(ViewData["DomainModel"])" data-toggle="modal"  data-success="@fieldName" ></a>    
+        }
+    </span>
+</span>
+
+<script type="text/javascript">
+    $(function () {
+        
+
+        $("#@fieldName").bind("pk", function(e, val){
+            $(this).val(val);
+        });
+        $("#@Html.Raw(fieldName)_btn").click(function () {
+            $("#@dialogId").dialog("open");
+        });
+        
+        $("#@Html.Raw(fieldName)").click(function () {
+            $("#@dialogId").dialog("open");
+        });
+        
+        $("#@dialogId").dialog({
+            autoOpen: false,
+            open:function() {
+                Page.init(this);
+            },
+            modal: true,
+            width: 800,
+            height: 400,
+            close: function () {
+
+            },
+            buttons: {
+                Cancel: function () {
+                    $(this).dialog("close");
+                },
+                Clear: function () {
+                    $("#@fieldName").val("0");
+                $("#@fieldName").trigger("pk", "0");
+                $(this).dialog("close");
+            },
+            Ok: function () {
+                var val = $(this).find("input:checked").val();
+
+                if (val) {
+                    
+                    $("#@fieldName").trigger("pk", val);
+                }
+                $(this).dialog("close");
+            }
+        }
+        }).parents('.ui-dialog:eq(0)').addClass('admin-table');
+        
+    });
+</script>
+
+<div id="@dialogId" class='event-table vcenter' title="@ViewData["DialogTitle"]">
+    @Html.Partial("Tables/"+ViewData["Table"], id)
+</div>

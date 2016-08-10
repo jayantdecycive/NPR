@@ -1,0 +1,45 @@
+﻿
+@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "Slot Index";
+    ViewBag.ModelName = "Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+    
+    string store = null;
+    if( AppContext.Current.User != null && AppContext.Current.User.OperationRole == cfares.domain.user.UserOperationRole.Operator ) {
+        store = AppContext.Current.User.Email.Split('@')[0];
+    }
+    
+}
+
+
+
+
+<h1>Slot Dashboard</h1>
+<p>A list of all past and future slots.</p>
+
+@section Meta{
+    <script type="text/javascript">
+        var slotList = new DomainModel.SlotCollection();
+        slotList.abstract = true;
+    </script>    
+}
+
+@section Table{
+    <table id="slot_dash" class='data-table' data-data='slotList' 
+        data-mode='backbone'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotUrl' data-column-parent='SlotId'></th>                        
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+			    <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+                <th data-column-name='OccurrenceId'>Occurrence</th>
+			    <th data-column-name='CapacityI' >Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+}
+
+

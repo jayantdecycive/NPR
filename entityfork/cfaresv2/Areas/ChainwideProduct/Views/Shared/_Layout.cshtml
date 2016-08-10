@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	ChainwideProduct Template / Layout Overrides
+----------------------------------------------------*@
+
+@this.RedefineSection("Head")
+@section head{
+    <meta name="description" content="Participating Chick-fil-A® restaurants are giving away one of a variety of FREE Breakfast entrées to customers who make a reservation online!">
+    <meta property="og:description" content="Participating Chick-fil-A® restaurants are giving away one of a variety of FREE Breakfast entrées to customers who make a reservation online!" />
+    <meta property="og:title" content="Chick-fil-a Breakfast Entrée Giveaway"/>
+    <meta property="og:url" content="http://chick-fil-aforbreakfast.com"/>
+    <meta property="og:site_name" content="chick-fil-aforbreakfast"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://chick-fil-aforbreakfast.com/Content/Themes/breakfast-giveaway/images/desktop/mast.png" />
+}
+
+@section SocialHeader{
+    <div class="fb-header-wrapper">
+    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.chick-fil-aforbreakfast.com&amp;width=400&amp;height=35&amp;colorscheme=dark&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:35px;" allowTransparency="true"></iframe>
+    </div>
+}
+
+@section Header{
+    
+	<script src="@Url.Content("~/Scripts/bootstrap/bootstrap-modal.js")" type="text/javascript"></script>
+	<link href="~/content/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+
+	<div class="help-callout pull-right">
+        <p>Need Help?</p>
+        @Html.ActionLink("click here", "FAQs",  new {  })
+    </div>
+
+    <a href="/"><div id="theme_type_mast_chainwide"></div></a>
+    <img class="hidden-phone" id="theme_mast_chainwide" src="@Html.ThemeContent("~/images/desktop/mast.png")" />
+}
+
+@this.RedefineSection("Banner")
+
+@RenderBody()
+@this.RedefineSection("SocialFooter")
+
+@this.RedefineSection("Footer")
+
+@section Footer{
+
+    <div class="row-fluid inline-block-rows">
+    <div class="span10">
+
+            <ul>	
+            <li>lost your invitation? @Html.ActionLink("click here", "Index", "Dashboard", new { Area = "MyAccount" }, new { message = "Please sign in to view your tickets" })</li>
+            </ul>
+
+            <ul>	
+            <li><a href="http://www.chick-fil-a.com/Food/Menu-Section/Breakfast-Items" target="_blank">LEARN MORE ABOUT OUR BREAKFAST MENU</a></li>
+            </ul>
+
+            <ul>
+			<li>@Html.ActionLink("OFFICIAL RULES", "Rules",  new {  })</li>
+            <li>@Html.ActionLink("NEED HELP?", "FAQs",  new {  })</li>
+			<li>@Html.ActionLink("LOST YOUR INVITATION?", "Index", "Dashboard", new { Area = "MyAccount" }, new { message = "Please sign in to view your tickets" })</li>
+			<li><a href="http://www.chick-fil-a.com/legal/" target="_blank">LEGAL</a></li>				
+			<li><a href="http://www.chick-fil-a.com/legal/privacy" target="_blank">PRIVACY</a></li>
+            <li><a href="http://www.chick-fil-a.com/" target="_blank">CHICK-FIL-A.COM</a></li>	
+            </ul>
+
+			<p>&copy;2013 CFA Properties, Inc. All trademarks shown are the property of their respective owners.</p>
+			<p>Franchised Chick-fil-A restaurant businesses are individually owned and operated by franchised Operators.</p>
+            <p>Breakfast served during breakfast hours only. Breakfast not available at all locations. Reservations are on a first come, first served basis.</p>
+
+    </div>
+    </div>
+
+
+
+}
+
+
+@this.RedefineSection("Scripts")

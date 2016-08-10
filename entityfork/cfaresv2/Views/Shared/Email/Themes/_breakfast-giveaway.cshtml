@@ -1,0 +1,22 @@
+﻿@model cfares.domain._event._ticket.FoodTicket
+@{
+	cfares.domain._event.resevent.store.GiveawayEvent resEvent = null;
+	if( Model != null ) {
+        resEvent = Model.Slot.Occurrence.ResEvent as cfares.domain._event.resevent.store.GiveawayEvent;
+    }
+    var store = Model.GetStore();
+}
+
+    <td style="padding: 0 30px"><br />  
+        <p style="padding-bottom:15px;">Dear @Model.Owner.Name.First,<br /><br />
+        This email is to remind you of your upcoming reservation for a FREE Chick-fil-A Breakfast Entree! Please review the details of your reservation below and click the PRINT button to print your invitation. Please remember to bring your invitation and a photo ID with you.<br /><br />
+            If you are unable to attend on the day and/or time of your reservation or need to cancel, please click here to modify your reservation:<br />            <a target="_blank" href="http://res.chick-fil-a.com/Account">http://res.chick-fil-a.com/Account</a>            <br /><br />    
+            <b>Reservation For:</b> @Model.Owner.NameString<br /><br />
+            <b>Restaurant:</b> @store.Name<br /><br />
+        <b>Date:</b> @Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy")<br /><br />
+            <b>Time:</b> @Model.Slot.Start.ToString("h:mmtt")<br /><br />
+            <b>Free Entr&#233;e:</b> @Model.GetMenuItem().Name<br /><br />
+        </p>
+		
+		
+	</td>    

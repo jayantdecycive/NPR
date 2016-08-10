@@ -1,0 +1,560 @@
+
+/*-------------------------------------------------------------
+  Theme Stylesheet - CFA-Reservations-MyAccount
+-------------------------------------------------------------*/
+
+// --- Colors -------------------------------------------------
+
+//Text
+
+$colorTextEventName: #e2383f;
+$colorTextEventRestaurant: #333;
+$colorTextEventDateTime: #6e8c9c;
+$colorTextChangePassword: #a96f3e;
+$colorTextSubNav: #e57200;
+$colorTextSubNavButton: #f8f5ec;
+$colorTextFormRequired: #8e1e22;
+$colorTextError: #8d1d21; 
+
+//Link Text
+$colorTextHREF: #3366cc;
+$colorTextHREFRoll: #032871;
+
+
+//Buttons
+$buttonTextDefault: #fffefe;
+$buttonBackgroundDefault: #11b13a;
+$buttonBackgroundDefaultRoll: #1d7907;
+$buttonBackgroundAlert: #f14a55;
+$buttonBackgroundAlertRoll: #e5303c;
+$buttonBackgroundRemove: #d6d6d1;
+$buttonTextRemove: #666;
+$buttonBackgroundRemoveRoll: #d7d7d2;
+$buttonTextRemoveRoll: #f50909;
+ 
+//Borders
+//$borderHeaderBottom: #79a3d8;
+$borderHeaderBottom: rgba(121, 163, 216, .4);
+$borderSectionBottom: #e3e3dc;
+
+//Backgrounds
+$bgColorNavBar:#fff;
+$bgColorNavBarAlt:#fff;
+$backgroundSubNav: #eee8c5;
+$backgroundSubNavButton: #79a3d8;
+$backgroundSubNavButtonRoll: #5f88bd;
+$containerWidth:1050px;
+
+//default variables
+$colorTextHeaderOne:#e57200;
+$colorTextHeaderTwo: $colorTextHeaderOne;
+$colorTextAlt:#666666;
+$colorText:#666666;
+ 
+$bgColorButtonPrimary:#ba0100 !default;
+$bgColorButtonPrimaryRoll:#930403 !default;
+
+$colorTextFooterLinks: #e57200;
+$colorTextFooterLinksHover: #a33038;
+
+@import '../../Screen.scss';  
+
+ 
+
+
+/* set a max-width for horizontal fluid layout and make it centered */
+
+
+nav {
+	
+	.titlecard {
+		text-align: center;
+	}
+	.titlecard,.logo{
+		padding-top:1em;
+		padding-bottom:1em;
+	}
+	.logo{ position:relative;top:-4px; a{display:block;}}
+	.navbar-inner{
+		filter:none;
+		-ms-filter: "none";
+		border:none;
+		@include box-shadow(0, 0px, 0px, rgba(0, 0, 0, 0.075));
+		@media (max-width: $mobileWidth){
+			border-bottom:solid 1px #D4D4D4;
+			@include box-shadow(0, 1px, 4px, rgba(0, 0, 0, 0.065));
+		}
+	}
+	
+	ul#subNav {
+		background-color: $backgroundSubNav;
+		
+		padding:.2em;		
+		margin-top:16px;
+		@media (max-width: $mobileWidth){
+			padding:0;
+			margin-top:0px;
+			background-color: transparent;
+		}
+
+		form{ 
+			margin-right:0px;
+			@media (max-width: $mobileWidth){
+			line-height:3.2em;
+			}
+			.input-small{ width:8em;}
+
+			@media (max-width: $mobileWidth){
+				.input-small{ width:90%;}
+			}
+			input{ padding: 2px 5px;}
+		}
+		
+		font: {
+			family: Arial;
+			size: 13px;
+			weight: 300;
+		}
+		 
+		li {
+			border-right: solid 1px #fff;
+			line-height:1.2em;
+			
+
+			a, a:active {
+				text-decoration: none;
+				color: $colorTextFooterLinks;
+			}
+
+			a:hover, a:focus {
+				color: $colorTextFooterLinksHover;
+			}
+
+			button, button:active {
+				margin-right: 3px;
+				background-color: $backgroundSubNavButton;
+				font: {
+					family: Tahoma, sans-serif;
+					size: 12px;
+				}
+				color: $colorTextSubNavButton;
+			}
+
+			button:hover, button:focus {
+				background-color: $backgroundSubNavButtonRoll;
+			}
+			font-size:10pt;
+		}
+		
+		a,.welcome{ 
+			@include inline-block; padding:.6em 1.2em; 
+			@media (max-width: $mobileWidth){
+			padding:.6em 0em;
+			}
+		}
+
+		.welcome{ color:#555;font-size:.9em;}
+		a{ 
+			&:hover{
+				background-color:transparent;
+				color:$colorTextFooterLinksHover;
+			}
+		}
+
+		li:last-child {
+			border-right: none;
+		}
+
+		li:first-child {			
+			
+		}
+	}
+}
+
+main {
+	//margin-top: 50px;
+
+	font: {
+		family: Arial, sans-serif;
+		size: 11pt;
+	}
+	p{ 
+		font: {
+			family: Arial, sans-serif;
+			size: 11pt;
+		}
+	}
+
+	color: $colorText;
+	/*> div > div > * { 
+		margin: 0 10px;
+	}*/
+	> div > div > p { 
+		margin: 0 10px 20px;
+	}
+	.field-validation-error {
+		color: $colorTextError;
+		margin: 5px 0 0 0;
+		display: block;
+	}
+	.long-validation-message {
+		display: inline-block;
+		width: 220px;
+		vertical-align: middle;
+		margin-left: 5px;
+	}
+
+	h1 {
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 24px;
+		}
+		color: $colorTextHeaderOne;
+		text-align: center;
+		padding-bottom: 15px;
+		border-bottom: 1px solid $borderHeaderBottom;
+		margin-bottom: 20px;
+	}
+	h2 {
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 20px;
+		}
+		color: $colorTextHeaderTwo;
+		text-align: center;
+
+		a, a:active {
+			color: #3d3d3d;
+		}
+	}
+	h2.intro {
+		padding: 30px 0 35px;
+		border-bottom: 1px solid #bfa56b;
+	}
+	h3 {
+		font: {
+			family: "Caecilia", "Times New Roman", serif;
+			size: 18px;
+		}
+		color: $colorTextHeaderTwo;
+		text-align: center;
+	}
+	p { text-align: left; }
+	a, a:active {
+		color: $colorTextHREF;
+	}
+	a:hover {
+		text-decoration: underline;
+		color: $colorTextHREFRoll;
+	}
+
+	.btn-primary, a.btn.btn-primary {
+		&,&:active{ 
+		background-color: $buttonBackgroundDefault;
+		color: white;
+		border-radius: 0;
+		}
+	}
+
+	.btn-primary,a.btn.btn-primary {
+			&:focus,&:hover{
+		background-color: $buttonBackgroundDefaultRoll;
+		}
+	}
+
+	.btn-danger, a.btn-danger.btn {
+		&,&:active{ 
+		background-color: $buttonBackgroundAlert;
+		color: white;
+		border-radius: 0;
+		}
+	}
+
+	.btn-danger, a.btn.btn-danger {
+		&:hover,&:focus{ 
+		background-color: $buttonBackgroundAlertRoll;
+		}
+	}
+	
+	form{ 
+		.control-label {
+			text-align: right;
+		}
+		@media (max-width: $mobileWidth){
+			.control-label {
+				text-align: left;
+			}
+			
+		}
+		&.form-horizontal{
+		@media (max-width: $mobileWidth){
+		select{ margin-bottom:.5em;}
+		}
+		}
+	}
+
+	// --- Dashboard - Begin ----------
+	.noRecordsFound{padding:2em 2em;}
+	ul#eventsList {
+		height: auto;
+
+		
+		li {
+			//height: 60px;
+			border-top: 1px solid #ccc;
+			padding:26px 0;
+			margin-left:20px;
+			> *:first-child{margin-left:26px;}
+			> .pull-right{margin-right:26px;}
+
+			@media (max-width: $mobileWidth){
+			 > *:first-child{margin-left:0;}
+			> .pull-right{margin-right:0;}
+
+			}
+
+			@media (max-width: $mobileWidth){
+			 padding: 1em 0;
+			}
+
+			div.eventInfo {
+				padding-top: 5px;
+				padding-left: 15px;
+
+				h4 {
+					margin: 5px 0;
+					font: {
+						family: Tahoma, sans-serif;
+						size: 17.75px;
+						weight: bold;
+					}
+					color: $colorTextEventName;
+				}
+
+				span.restaurant {
+					font: {
+						family: Tahoma, sans-serif;
+						size: 17.75px;
+						weight: normal;
+					}
+					color: $colorTextEventRestaurant;
+				}
+
+				span {
+					font: {
+						family: Tahoma, sans-serif;
+						size: 13.75px;
+					}
+					color: $colorTextEventDateTime;
+					
+				}
+			}
+
+			a.eventThumb {
+				margin-top: -3px;
+			}
+
+			.button-a {
+				margin-top: 22px;
+			}
+		}
+
+		li:last-child {
+			border-bottom: 1px solid #ccc;
+		}
+
+		.slot-time{ line-height:1.2em; span{@include inline-block;} strong{ padding-left:1.8em;}
+			@media (max-width: $mobileWidth){
+			  span{ display:block;}
+			  strong{ padding-left:.2em;}
+			}
+		}
+	}
+	// --- Dashboard - End ----------
+
+	// --- Create Account - Begin ----------
+	form#createAccount {
+		label {
+			margin-left: 40px;
+		}
+
+		.radio {
+			margin-left: 5px;
+		}
+	}
+
+	// --- Create Account - End ----------
+
+	// --- Confirm Info - Begin ---------
+	div#confirmInfo {
+		
+		span {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		span.infoName {
+			width: 130px;
+			text-align: right;
+			margin-right: 28px;
+			font-weight: bold;
+		}
+		@media (max-width: $mobileWidth){
+			span.infoName {
+				width:100%;
+				text-align:left;
+				margin-right:none;
+			}
+			a.btn{ 
+				
+				margin-bottom:1.2em;
+			}
+		}
+	}
+	// --- Confirm Info - End ---------
+
+	
+
+	// --- Update Account - Begin ---------
+	#updateAccount {
+		
+		.accountPasswordBlock {
+			border-bottom: 1px solid $borderHeaderBottom;
+			padding: 25px 0;
+		}
+
+		
+
+		.pad25 {
+			margin-top: 25px;
+		}
+
+		.family-members {
+			margin-bottom: 10px;
+		}
+
+		.btn-container { margin-left: 180px; }
+
+		.family-members > .btn-container { margin: 0; }
+	}
+	// --- Update Account - End ---------
+
+	// --- Favorite Restaurants/Preferred Stores - Begin ---------
+	#prefRestaurants, #addRestaurants {
+		
+		
+
+			li {
+				
+
+					.remove-button button{
+						
+						
+						&:hover{background-image:none;}
+						
+					}
+
+				
+			}
+
+			li:last-child { border-bottom: 1px solid $borderSectionBottom; }
+		
+
+		button.centered {
+			position: relative;
+			margin: auto;
+			display: block;
+			margin-top: 25px;
+		}
+	}
+
+
+	#searchPanel {
+		margin: {
+			top: 30px;
+			bottom: 30px;
+		}
+		text-align: center;
+		
+		.searchBoxForm { 
+			background-color: $backgroundSubNav;
+			padding: {
+				top: 20px;
+				bottom: 20px;
+			}
+		}
+	}
+	// --- Favorite Restaurants/Preferred Stores - Begin ---------
+}
+
+footer {
+	ul{li{border-right-color: #f6cda4;border-width:1px;}}
+	.footer-grad {
+		min-width: 737px !important;
+		min-height: 86px !important;
+		margin-left: 0 !important;
+		background: {
+			image: url('Images/footerGradient.png');
+			position: top center;
+			repeat: no-repeat;
+			color: transparent;
+			size: 737px 86px;
+		}
+	}
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
+
+.form-horizontal .control-label {
+	font-weight: bold;
+	text-align: left;
+}
+
+.form-horizontal .check-left {
+	margin-left: 0;
+	
+	label {
+		font-weight: bold;
+
+		span.ageReq {
+			font: {
+				size: 12px;
+				weight: normal;
+			}
+		}
+	}
+}
+
+.form-horizontal .btn-container {
+	margin-top: 25px;
+	margin-left: 40px;
+}
+
+.form-horizontal .controls input[type=text], .form-horizontal .controls select, .form-horizontal .controls input[type=radio], .form-horizontal .controls input[type=checkbox], .form-horizontal .controls textarea, .form-horizontal .controls input[type=password] {
+	background-color: #ebebeb;
+}
+
+span.note {
+	margin-left: 5px !important;
+	margin-top: 0 !important;
+	float: none !important;
+}
+
+span.require {
+	float: left;
+	margin-left: -15px;
+	margin-top: 3px;
+	font: {
+		family: Arial;
+		size: 14px;
+		weight: bold;
+	}
+	color: $colorTextFormRequired;
+}

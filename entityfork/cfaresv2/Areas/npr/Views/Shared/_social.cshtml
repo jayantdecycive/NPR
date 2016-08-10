@@ -1,0 +1,28 @@
+﻿
+<div class="share">
+	<a href="javascript:void(0)" class="facebook-share">Facebook</a>
+	<a href="javascript:void(0)" class="twitter-share">Twitter</a>
+</div>
+
+@section scripts {
+	<script type="text/javascript">
+		var facebook_appid = "138837436154588";
+		var facebook_title = "Take a Tour of NPR";
+		var facebook_message = "Get a glimpse of the life behind your radio speakers by taking a tour of NPR's Washington facility. Register today! ";
+		var facebook_url = "http://tours.qa.npr.org/npr/Home/";
+		var facebook_imageurl = "http://media.npr.org/chrome/news/nprlogo_138x46.gif";
+		var twitter_message = "Take a Tour of NPR's Washington facility - Register today!";
+
+		$('.facebook-share').click(function () {
+			//var url = "https://www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + facebook_appid + "&picture=" + facebook_appid + "&name=" + facebook_appid + "&description=" + facebook_appid;
+			var url = "http://www.facebook.com/thisisnpr";
+			window.open(url, '_blank');
+		});
+
+		$('.twitter-share').click(function () {
+			//var url = "http://twitter.com/share?text=" + twitter_message;
+			var url = "http://twitter.com/@@npr";
+			window.open(url, '_blank');
+		});
+	</script>
+}

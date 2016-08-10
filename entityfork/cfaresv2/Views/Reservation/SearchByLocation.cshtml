@@ -1,0 +1,66 @@
+﻿@model cfares.domain.Reservation.SearchByLocationContext
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@{
+    Layout = AppContext.Current.GetLayoutLocation();
+    var wizard = (IReservationWizard)ViewData["wizard"];
+
+    Model.SelectedRadius = 25;
+
+}
+
+@*----------------------------------------------------
+	Select Location
+----------------------------------------------------*@
+
+@Html.Partial("_Wizard",wizard)
+    @{
+
+        IList<DateTime> dates = null;
+        dates=AppContext.Current.GetDates(false);
+        
+    }
+<section class="row-fluid">
+    @Html.Partial("_EventNotice",dates,new ViewDataDictionary(ViewData)
+        {
+            {"span", Model.SelectedRadius != -1 ? "span5" : "span9"}
+        })
+    
+	@Html.HiddenFor( m => m.SelectedRadius )
+
+    @if (Model.SelectedRadius != -1)
+    {
+        <div class="span7 searchBoxForm" id="searchPanel">
+            @using (Html.BeginForm(null, null, FormMethod.Get, new { action = Request.Url.TranslatePort(Request), id="searchform" }))
+            {
+                <p class="text-center">Find a participating @Html.Raw(AppContext.Current.Configuration.Organization.DisplayName) restaurant near you</p>
+
+                <div class="searchRow text-center">
+                    <label>Search in:</label>
+                    @Html.TextBoxFor(m => m.SelectedLocation)
+                    @Html.DropDownListFor(m => m.SelectedRadius, new SelectList(Model.AvailableRadiusOptions, "Key", "Value"))
+                    <button class="btn btn-primary small default" value="Go">Go</button>
+                </div>
+                <div class="subtext text-center">
+                    <div>@Html.ValidationMessageFor(m => m.SelectedLocation)</div>
+                    (enter city, state or zip code)
+                </div>
+            }
+        </div>
+    }
+</section>
+    
+    @if (Model.EventSearchResults.Count > 0)
+    {
+        <div class="row-fluid" id="chooseCityNearYou">
+            <div class="span12 captionedForm well">
+		
+				@Html.Action( "OccurrenceSelectList", "DynamicReservation", new { id = string.Join(",", Model.EventSearchResults.Select(x=>x.Occurence.OccurrenceId.ToString())) }, true )
+
+            </div>
+        </div>
+    }
+
+@section Scripts{
+}

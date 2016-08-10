@@ -1,0 +1,19 @@
+﻿@model string
+
+
+<div class='admin-table'>
+    <table id="slots_@ViewData["id"]" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+        <thead>
+            <tr>
+                <th data-column-name='AdminDetailsCta' data-searchable="false" data-sortable="false"></th>                
+                <th data-column-name='Icon' data-sortable="false" data-searchable="false">Icon</th>
+                <th data-column-name='MediaUriStr' width='20%'>Uri</th>
+			    <th data-column-name='MediaIdL' data-id-column='true' width='20%' data-visible='false'>Media Id</th>
+			    <th data-column-name='Description' width='20%'>Description</th>
+                <th data-column-name='CreatedDate' data-on-display='DataFormat.date'  width='20%'>Creation Date</th>  
+		    </tr>
+            </thead>
+    </table>
+</div>
+
+ 

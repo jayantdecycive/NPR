@@ -1,0 +1,138 @@
+﻿
+@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.ResEmailContextModel>
+
+@*
+@model cfares.site.modules.mail.ResEmailContextModel
+*@
+@{
+    string emailThemesBasePath = Model.Context.ApplicationBasePath + "\\Views\\Shared\\Email\\Themes";
+}
+
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>New Reservation Confirmation</title>
+        <style type="text/css">
+            body, table, tr, td, img, p {
+                padding:0;
+                margin:0;
+                border:0;
+                font-family: Arial, sans-serif;  
+                color:#000;
+                font-size:16px;
+            }
+            a, a:visited {
+                color:#6d4f21;
+                text-decoration:none;
+            }
+            a:hover, a:focus {
+                color: #6d4f21;
+                text-decoration: underline;
+            } 
+            p { line-height: 25px; }
+        </style>
+    </head>
+    <body>
+        <div>
+        
+            <table border="0" cellspacing="0" cellpadding="0" width="660px" style="border-collapse:collapse; border-spacing: 0;">
+                @if (!Model.IsSite)
+                {
+                    <tr>
+                        <td>
+                            <p style="text-align: center; padding: 10px 0 10px 0"><span>Trouble viewing this Email? </span><a style="text-decoration: none;" href=@(Model.BaseUrl + "/Email/NewReservationConfirmation/" + Model.Ticket.TicketId)><span style="color: #E01B1B">click here</span></a></p>
+                        </td>    
+                    </tr>
+                }
+                <tr>
+                    <td style="text-align:center;">
+                        @if (Model.ThemeName == "breakfast-giveaway")
+                        {
+                            <img src=@(Model.ThemeImagesUrl+"/desktop/type-mast-chainwide.png") />                                                    
+                        }
+                        else
+                        {
+                            <img src=@(Model.ThemeImagesUrl+"/email/header.png") />
+                        }
+                    </td>
+                </tr>
+				<tr>
+					@Raw( this.Render( emailThemesBasePath + "\\_" + Model.ThemeName + ".cshtml", Model.Ticket) )
+				
+				</tr>
+				
+                
+                
+                @if( Model.ThemeName != "reception" )
+				{
+                    if(Model.Ticket.Slot.Occurrence.ResEvent.ProductionUrls.Any()){
+                        var href = Model.Ticket.Slot.Occurrence.ResEvent.ProductionUrls.First() + "/Account/Email/Ticket/" + Model.Ticket.TicketId.ToString();
+                        var onClick = "";
+				        <tr>
+						    <td style="padding:25px 30px">
+							    <a target="_blank" @Raw(onClick) href="@href" style="display:block;width:147px;height:37px;line-height:37px;text-align:center;background-color:#992226;color:white;font-size:17px;font-family:Arial;text-decoration:none;">Print Invitation</a>
+						    </td>
+					    </tr>
+                    }
+                    else
+                    {
+                        <a target="_blank" href="@(Model.BaseUrl + "/Account/Email/Ticket/" + Model.Ticket.TicketId)" style="display:block;width:147px;height:37px;line-height:37px;text-align:center;background-color:#992226;color:white;font-size:17px;font-family:Arial;text-decoration:none;">Print Invitation</a>
+                    }
+				}
+                
+
+                
+                <tr>
+                    <td style="padding:10px 30px 0">
+						@if( Model.ThemeName != "reception" ) {
+							<p>We look forward to serving you,</p><br />
+							if (Model.Ticket.Slot.Occurrence.Store.Operator.UID != null)
+							{
+								<img style="float: left; padding-right: 5px;" src="http://static.cfacdn.com/photos/people/@String.Format("{0}.jpg", Model.Ticket.Slot.Occurrence.Store.Operator.UID)" />
+							}
+							<p style="line-height:25px;">
+								@Model.Ticket.Slot.Occurrence.Store.Operator.NameString<br />
+								Owner/Operator<br />
+								<a style="color:#6d4f21;text-decoration:none;" href="@Model.Ticket.Slot.Occurrence.Store.StreetAddress.ToString().Replace("\n", "")">@Model.Ticket.Slot.Occurrence.Store.Name</a>
+							</p>
+						} else {
+							<p>We look forward to seeing you!</p><br />
+						}
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td style="text-align:center;font-size:12.5px;padding:40px 0 15px;">
+                        <a style="color:#6d4f21;text-decoration:none;" href="http://chick-fil-a.com">VISIT CHICK-FIL-A.COM</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;padding:0;">
+                        <ul style="margin:0;padding:0;list-style-type:none;text-align:center;font-size:12.5px;">
+                            <li style="display:inline;border-right:1px solid #c6d5e7;padding-right:15px;"><a style="color:#6d4f21;text-decoration:none;" href="http://www.chick-fil-a.com/Connect/Email-Insiders-Subscribe" target="_blank">BECOME AN EMAIL INSIDER</a></li>
+                            <li style="display:inline;border-right:1px solid #c6d5e7;padding-left:15px;padding-right:15px;"><a style="color:#6d4f21;text-decoration:none;" href="https://www.facebook.com/ChickfilA" target="_blank">LIKE US ON FACEBOOK</a></li>
+                            <li style="display:inline;padding-left:15px;"><a style="color:#6d4f21;text-decoration:none;" href="https://twitter.com/chickfila" target="_blank">FOLLOW US ON TWITTER</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 35px 5px;text-align:center;">
+                        <p style="font-size:12.5px;"><b>Invitation may not be sold or otherwise transferred and is only valid at this specified Chick-fil-A<sup>&reg;</sup> location, date and time.</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0 5px 35px;text-align:center;">
+                        <p style="font-size:12.5px;"><b>&copy; 2013 CFA Properties, Inc. Chick-fil-A<sup>&reg;</sup> and Chick-fil-A Stylized<sup>&reg;</sup> are registered trademarks of CFA Properties, Inc.</b></p>
+                    </td>
+                </tr>
+            </table>    
+        </div>
+    </body>
+</html>
+
+
+    

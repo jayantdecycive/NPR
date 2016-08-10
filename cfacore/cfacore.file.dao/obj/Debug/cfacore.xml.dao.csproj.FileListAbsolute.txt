@@ -1,0 +1,15 @@
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.dll
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.pdb
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.file.dao\obj\Debug\cfacore.xml.dao.csprojResolveAssemblyReference.cache
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.dll
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.file.dao\obj\Debug\cfacore.xml.dao.csprojResolveAssemblyReference.cache
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.pdb
+E:\Pratap\PratapNew\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.dll
+E:\Pratap\PratapNew\cfacore\cfacore.file.dao\bin\Debug\cfacore.file.dao.pdb
+E:\Pratap\PratapNew\cfacore\cfacore.file.dao\obj\Debug\cfacore.xml.dao.csprojResolveAssemblyReference.cache
+E:\Pratap\PratapNew\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.dll
+E:\Pratap\PratapNew\cfacore\cfacore.file.dao\obj\Debug\cfacore.file.dao.pdb

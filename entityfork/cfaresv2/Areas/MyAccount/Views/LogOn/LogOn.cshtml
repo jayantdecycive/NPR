@@ -1,0 +1,48 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@model cfaresv2.Models.LoginModel
+
+
+@{
+    ViewBag.Title = "Log On";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span10 offset1">
+		<h1>Welcome!</h1>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span6 offset3">
+		<form class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="username">Username:</label>
+				<div class="controls">
+					<!--<input type="text" id="username" placeholder="you@domain.com" />-->
+                    @Html.TextBoxFor(model => model.UserName)
+                    @Html.LabelFor(model => model.UserName)
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">Password:</label>
+				<div class="controls">
+					
+                    <!--<input type="password" id="password" />-->
+                    @Html.TextBoxFor(model => model.Password)
+                    @Html.LabelFor(model => model.Password)
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<!--<label class="checkbox">
+						<input type="checkbox"> Remember me
+					</label>-->
+                    @Html.CheckBoxFor(model => model.RememberMe)
+                    @Html.LabelFor(model => model.RememberMe)
+					<button type="submit" class="btn btn-large green">Sign in</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

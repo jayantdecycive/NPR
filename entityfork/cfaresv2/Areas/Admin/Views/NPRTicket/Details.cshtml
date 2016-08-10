@@ -1,0 +1,55 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+@{
+    ViewBag.Title = "Detail";
+    ViewBag.Brief = "NPR Ticket Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewData["vTicketType"] = "Event";
+}
+        
+<h1>NPR Ticket @Model.Id()</h1>
+<p>
+@Html.Raw(Model.ToString())
+</p>
+        
+@Html.Partial("ModelDetail/_NPRTicket")        
+            
+@section Action{
+
+<div class="button-list">
+
+    <div class="admin-green padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-arrow-e">
+			@Html.ActionLink("Reprint Tickets", "TicketList", "Reservation", new {area = "npr",id = Model.TicketId}, new {})
+		</div>
+	</div>
+
+	<div class="admin-green padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-pencil">
+			@Html.ActionLink("Edit this Ticket", "Edit", new { id = Model.Id() }, new {})
+		</div>
+	</div>
+
+@*	<div class="admin-green padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-arrow-e">
+			@Html.ActionLink("Event Summary", "Summary", "Event", new {id = Model.Slot.Occurrence.ResEventId}, new {})
+		</div>
+	</div>*@
+
+	<div class="admin-green padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-arrow-e">
+			@Html.ActionLink("Slot Details", "Details", "NPRSlot", new {id = Model.SlotId}, new {})
+		</div>
+	</div>    
+
+	<div class="admin-red padding-top-10">
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-close">
+			<a href="@UrlHelpers.GetReferrerUrl()" data-icon="ui-icon-circle-close" class="btn-container-default">Cancel</a>
+		</div>
+	</div>
+    
+</div>    
+}
+       
+@section Table
+{
+}     

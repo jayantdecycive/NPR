@@ -1,0 +1,26 @@
+﻿@using cfares.site.modules.com.application
+
+@if( AppContext.Current.Configuration.Organization.SocialFooterEnabled )
+{
+	<ul id="social_footer" class="text-center unstyled">
+	
+		<li id="visit_our_website">
+			<a href="@AppContext.Current.Configuration.Organization.WebsiteUrl">
+				<img src="/content/images/cfaSign.png" /> Visit @AppContext.Current.Configuration.Organization.WebsiteDisplayName
+			</a>
+		</li>
+
+		<li id="follow_us_on_facebook">
+			<a href="@AppContext.Current.Configuration.Organization.FacebookFollowUrl">
+				<img src="/content/images/fb-medium.png" /> Follow us on Facebook
+			</a>
+		</li>
+
+		<li id="follow_us_on_twitter">
+			<a href="@AppContext.Current.Configuration.Organization.TwitterFollowUrl">
+				<img src="/content/images/twitter-medium.png" /> Follow us on Twitter
+			</a>
+		</li>
+
+	</ul>
+}

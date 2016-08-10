@@ -1,0 +1,145 @@
+﻿@using cfares.domain._event
+@{
+    ViewBag.Title = "Events Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+    <script type="text/javascript" id="mytemplate">
+        debugger;
+        var upcomingEventsBucket = new DomainModel.NPRSlotCollection();
+        upcomingEventsBucket.setWhere('upcomingEventsBucket', { End: { $gt: (new Date()) }, Status: { $ne: 'Archive' }, 'Occurrence/ResEvent/ReservationTypeId': { $eq: 'SpecialEvent' } });
+        upcomingEventsBucket.setWhere('temp', { "Occurrence/ResEvent/Status": { $ne: "Temp" } });
+        upcomingEventsBucket.abstract = true;
+
+        var pastEventsBucket = new DomainModel.NPRSlotCollection();
+        pastEventsBucket.setWhere('pastEventsBucket', { End: { $lte: (new Date()) }, Status: { $ne: 'Archive' }, 'Occurrence/ResEvent/ReservationTypeId': { $eq: 'SpecialEvent' } });
+        pastEventsBucket.abstract = true;
+
+        $(function() {
+
+            var getFilterElement = function(filterElement) {
+                var classes = filterElement.className.split(" ");
+                for (var i = 0, len = classes.length; i < len; i++)
+                    if (/^filter-table-/.test(classes[i])) {
+                        var c = classes[i].replace('filter-table-', '');
+                        var e = window[c];
+                        return e;
+                    }
+                return upcomingToursBucket;
+            };
+
+            $(".filter-event-type").bind("change", function() {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-event-type", null);
+                else e.setWhere("filter-event-type", { "Occurrence/ResEvent/ReservationTypeId": val });
+                e.trigger("redraw");
+            });
+
+            $(".filter-year").bind("change", function() {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-year", null);
+                else e.setWhere("filter-year", { Start: { $year: Number(val) } });
+                e.trigger("redraw");
+            });
+
+            $(".filter-day").bind("change", function() {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.removeQueryParam("day");
+                else e.setQueryParam("day", (Number(val)));
+                e.trigger("redraw");
+            });
+
+            $(".filter-month").bind("change", function() {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-month", null);
+                else e.setWhere("filter-month", { Start: { $month: Number(val) } });
+                e.trigger("redraw");
+            });
+
+            //"filter-day"
+            // TODO - NPR
+
+            $(".filter-guide").bind("pk", function(el, pk) {
+                var e = getFilterElement(this);
+                var val = pk;
+                if (val == null || !val) e.setWhere("filter-guide", null);
+                else e.setWhere("filter-guide", { GuideId: { $eq: Number(val) } });
+                e.trigger("redraw");
+            });
+
+            $(".filter-category").bind("change", function() {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-category", null);
+                else e.setWhere("filter-category", { "Occurrence/ResEvent/Category/Name": val });
+                e.trigger("redraw");
+            });
+
+        });
+
+    </script>
+}
+
+<div class="content rounded" id="main">
+    
+    <!-- UPCOMING EVENTS -->
+    <div class="inner-content wrapper upcoming-tours">
+		<div class='model badge'>  
+			<div class='right'>
+					<a href="@Url.Action("EventDashboard", "Home")" class="button-grey-menu">
+						<span class="button-text">Events Dashboard</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+                </div>
+			<h2>Upcoming Events</h2>
+			<p>View upcoming events and make modifications if necessary</p>
+		</div>
+        <div class='filters model badge'>
+            <p class='inline-block'>Filter by:</p>
+            @Html.Partial("Filters/Input/_SlotDash", "upcomingEventsBucket")
+    </div>
+        @Html.Partial("Tables/_UpcomingSlotsDash", "upcomingEventsBucket")
+    </div>
+
+    <!-- CREATE EVENT-->
+    <div class='inner-content wrapper new-tour-cta create-new-event light-bg'>
+        <div class='model badge rounded'>
+            <div class="inline-block buttons-to-right-small">
+                <h2>Create a New Event</h2>
+            </div>
+            <div class='button-list'>
+                <a href="@Url.Action("Wizard", "Event", new { id = "SpecialEvent" })" class="button-green-next">
+                    <span class="button-text">Create Event</span>
+                    <span class="button-icon-container">
+                        <span class="button-icon"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    @Html.Partial("_AdminDashboards",new ReservationType(){ReservationTypeId = "SpecialEvent"})
+
+        <!-- PAST EVENTS --> 
+    <div class="inner-content wrapper past-tours">
+		<div class='model badge'>
+			<h2>Past Events</h2>
+			<p>View past events and make reports</p>
+		</div>
+		<div class='filters model badge'>
+			<p class='inline-block'>Filter by:</p>
+			@Html.Partial("Filters/Input/_SlotDash", "pastEventsBucket")
+		</div>
+		@Html.Partial("Tables/_UpcomingSlotsDash", "pastEventsBucket")
+    </div>
+
+</div>
+

@@ -1,0 +1,191 @@
+﻿
+@using System.Linq
+@model npr.domain._event.ticket.NPRTicket
+
+@{
+    ViewBag.Title = "Overview";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+    bool isevent = false;
+    if (Model.Slot != null && Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent"){
+        isevent = true;
+        ViewBag.Nav = "Events";
+    }else{
+        ViewBag.Nav = "Tours";    
+    }
+}
+
+    @* =======================================================================
+    PAGE DESCRIPTION *@
+
+    @Html.Partial("Breadcrumbs")
+    <h1 class="margin-bot-60">Overview</h1>
+    <p class="margin-bot-40">Please review the details of your reservation below.  To modify a field, click the <strong>edit this info</strong> link next to the field.</p>
+   
+        
+    @* =======================================================================
+    LEADER DETAILS *@
+@using (Html.BeginForm(null,null,FormMethod.Post, new { @class = "form-horizontal registration"})){     
+   <div class="overview-group">
+		@if (Model.IsSpecialtyTicket){
+			<span class="overview-name">Type of Tour:</span>
+		}
+        else if (isevent){
+			<span class="overview-name">Type of Event:</span>
+		}
+       else{
+			<span class="overview-name">Type of Tour:</span>
+        }
+		
+		@if (Model.IsSpecialtyTicket){
+			<span class="overview-value">Specialized Tour</span>
+		}
+        else if (isevent){
+			<span class="overview-value">Special Event</span>
+		}
+       else{
+            <span class="overview-value">Public Tour</span>   
+        }
+    </div>
+        
+    
+	if( Model.IsSpecialtyTicket ) {
+        <div class="overview-group">    
+		<span class="overview-name">Preferred Dates:</span>
+			<span class="overview-value">
+				@{ 
+					int i = 0;
+					IEnumerable<DateTime> dateList = Model.Dates.Where(o => o != null)
+						.Select( o => o != null ? o.Value : new DateTime() ).ToList();
+				}
+				@foreach( DateTime dt in dateList )
+				{
+					@dt.ToString("dddd, MMMM dd yyyy")
+					if( i++ < dateList.Count() ) { <br /> }
+				}
+			</span>   
+        </div>     
+	}
+    
+	else if(Model.Slot != null){
+        <div class="overview-group">  
+		<span class="overview-name">Date:</span>
+		<span class="overview-value">@(Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy"))</span>
+        </div>   
+        
+        <div class="overview-group">  
+		<span class="overview-name">Time:</span>
+			<span class="overview-value">@Model.Slot.Start.ToString("hh:mm tt") 
+				@*<span class="small">UTC+@Model.Slot.Start.Offset.ToString("hh")</span>*@
+			</span>
+        </div>   
+	}
+	
+    
+    <div class="overview-group">
+		<span class="overview-name">First Name:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.Owner.FirstName)</span>
+    </div>
+
+	<div class="overview-group">
+		<span class="overview-name">Last Name:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.Owner.LastName)</span>
+    </div>
+
+    <div class="overview-group">
+		<span class="overview-name">Email:</span>
+		<span class="overview-value">@Model.Owner.Email</span>
+    </div>
+    if (!Model.IsSpecialtyTicket)
+    {
+        <div class="overview-group margin-bot-40">
+            <span class="overview-name">Best Way to Contact You:</span>
+            @if (Model.ContactPreference == npr.domain._event.ticket.ContactPreference.Email)
+            {
+                <span class="overview-value">@Html.DisplayFor(m => m.ContactPreference) - @Model.Owner.Email</span>
+            }
+            else
+            {
+                <span class="overview-value">@Html.DisplayFor(m => m.ContactPreference) - @Html.DisplayFor(m => m.Owner.HomePhoneString)</span>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="overview-group margin-bot-40">
+            <span class="overview-name">Phone Number:</span>
+            <span class="overview-value">@Model.Owner.HomePhoneString</span>
+        </div>   
+    }
+
+
+    @* =======================================================================
+    GROUP DEATILS *@
+
+    if(Model.IsSpecialtyTicket){
+		<div class="overview-group">
+			<span class="overview-name">Type of Group:</span>
+			<span class="overview-value">@Html.DisplayFor(m => m.GroupType)</span>
+		</div>
+    }
+        
+    <div class="overview-group">
+		<span class="overview-name">Group Size:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.GroupSize)</span>
+    </div>
+    
+    
+	@* MEMBER LIST *@
+	<div class="overview-group margin-bot-40">
+		<span class="overview-name">Guest Names:</span>
+		<span class="overview-value">
+			@foreach(cfacore.shared.domain.user.Name name in Model.GuestList){
+				@name.Full
+				<br />
+			}
+		</span>
+    </div>
+     
+    @* =======================================================================
+    SUBMISSION *@
+
+    <div class="overview-group margin-bot-40">    
+        <span class="button-forward width-override">
+            @if( Model.IsSpecialtyTicket ) {
+                <input type="submit" value="Complete Request" />
+            } else {
+                <input type="submit" value="Complete Reservation" />
+            }
+            <span class="button-icon-container">
+                <span class="button-icon"></span>
+            </span>
+        </span>
+        <br />
+        
+        <span class="button-back width-override">
+			@Html.ActionLink("Edit this Info", "Register", "Reservation", new { id=Model.TicketId }, new { }) 
+			<span class="button-icon-container">
+				<span class="button-icon"></span>
+			</span>
+		</span>
+		<br />
+        <span class="button-cancel width-override">
+			@Html.ActionLink("Cancel Reservation", "Cancel", "Reservation", new { id=Model.TicketId }, new { })  
+			<span class="button-icon-container">
+				<span class="button-icon"></span>
+			</span>
+		</span>
+	</div>
+}
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>

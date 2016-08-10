@@ -1,0 +1,163 @@
+﻿@using System.Collections.ObjectModel
+@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain._event.occ
+@using cfares.domain._event.resevent.store
+@model IOccurrence
+@{
+    ViewBag.Title = "Event Summary";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+
+@section Meta{
+     
+}
+	
+    <div class='message maroon'>    
+    To ensure your saved preferences are reflected once the website launches, you must click <strong>Activate Event</strong> at the bottom of the page.
+    </div>
+
+
+	<div class="clearLine"></div>
+
+
+    <section id="eventName-section">    
+    <h2>Name of Event</h2>   
+    <span>@Model.ResEvent.Name at @Model.Store.Name</span>
+    </section>
+
+
+    <section id="eventName-section">    
+    <h2>Status</h2>        
+    <span>@Model.Status.ToString()</span>
+    </section>
+
+	@if (Model.ResEvent.Occurrences.Count() <= 100) 
+	{ 
+		<section id="eventName-section">     
+		<h2>Capacity</h2>         
+		<span>@Model.ResEvent.TotalCapacity</span> 
+		</section> 
+ 
+		<section id="eventName-section">     
+		<h2>Reservations</h2>         
+		<span>@Model.ResEvent.TotalTicketsIssued</span> 
+		</section> 
+	}
+
+    @if (Model.SlotsList.Any()){
+    <section id="eventName-section">    
+	<h2>Reservation Cuttoff Time</h2>  
+    <span>@Model.SlotsList[0].Cutoff.ToString("MM/dd/yyyy hh:mm")</span>
+	</section>
+    }
+
+
+<div class="clearLine"></div>
+
+	<section id="redemptionPeriod-section">    
+		<h2>Redemption Period</h2>
+            
+        @*<p>Site Launch Date: <strong>@Model.SiteStart.ToString("MMMM dd, yyyy")</strong> 
+            <span class="vr"></span> 
+            Site End Date: <strong>@Model.SiteEnd.ToString("MMMM dd, yyyy")</strong></p>*@
+
+		<ul>
+			<li>Site Launch Date: <strong>@Model.ResEvent.SiteStart.ToString("MMMM dd, yyyy")</strong></li>
+			<li>Site End Date: <strong>@Model.ResEvent.SiteEnd.ToString("MMMM dd, yyyy")</strong></p></li>
+		</ul>
+
+	</section>
+<div class="clearLine"></div>
+
+@if (Model.ResEvent.ReservationType.HasFood())
+{
+    var giveOccurrence = Model as GiveawayOccurrence;
+    giveOccurrence.ItemsAvailable = giveOccurrence.ItemsAvailable ?? new Collection<MenuItem>();
+    
+    <section id="eventName-section" class="food-list well">    
+        <h2>Selected Items</h2>
+        <div id="food_canvas">
+            @foreach (var item in giveOccurrence.ItemsAvailable)
+            {
+                <div class="food-selection" data-pk="@item.DomId">
+                    @Html.Media(item.Media,width:190)
+                    <p class='name'>@item.Name</p> 
+                    <!--<p class="status">@item.Name</p>-->
+                </div>
+            }                    
+        </div>
+    </section>
+   
+    <div class="clearLine"></div>
+}
+
+
+
+	<section id="timeSlots-section">    
+		<h2>Time Slots</h2>
+            
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Time Slots</th>
+                <th>Reservation Limit</th>
+            </tr>
+            @{int row=0;
+                int groupingId = 0;
+                string label = string.Empty;
+                foreach (var slotDate in Model.SlotsList.ToList().GroupBy(x=>x.Start.Date))
+                {
+
+
+                    string newLabel = slotDate.Key.ToString("dddd, MMMM d, yyyy");                    
+                    if (row>0)
+                    {
+                        <tr><td></td><td></td><td></td></tr>
+                    }
+                    int i = 0;
+                    foreach (var slot in slotDate.OrderBy(x=>x.Start))
+                    {
+
+                        <tr>
+                            @if (i==0)
+                            {
+                                <td class="newLabelDate">@newLabel</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            <td>@slot.Start.ToString("h:mm tt") to @slot.End.ToString("h:mm tt")</td>
+                            <td>@slot.Capacity</td>
+                        
+                        </tr>
+                        i++;
+                    }
+                    label = newLabel;
+                    row++;
+                    
+                }
+                
+            }
+        </table>
+	</section>
+
+    <div class="clearLine"></div>
+
+@section Action{
+    <div class='button-cta right-float summary-btn-grp'>            
+        @if (Model.Status != OccurrenceStatus.Live)
+        {
+            @Html.ActionLink("Save Event as Draft", "Index", "Home", new {}, new {data_icon = "ui-icon-locked"})
+            <br class='clearfloat' />
+            <div class="activate-avent-link">
+                @Html.ActionLink("Activate Event", "Activate", new {id = Model.OccurrenceId}, new {data_icon = "ui-icon-circle-check"})
+            </div>
+        }
+        else
+        {
+            @Html.ActionLink("Home", "Index", "Home", new {}, new {data_icon = "ui-icon-circle-arrow-e"})
+        }
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model cfares.domain._event.Schedule
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+
+    <fieldset data-pk='@pk' class='schedule-@pk'>
+            <div class='legend inline-block'>Schedule Details</div>
+            
+            <div class='model-field field-Name'>
+               <div class="display-label inline-block">Name</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class='model-field field-UrlName'>
+               <div class="display-label inline-block">Url Name</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.UrlName)
+                </div>
+            </div>
+
+            <div class='model-field field-Start'>
+               <div class="display-label inline-block">Start</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Start)
+                </div>
+            </div>
+
+            <div class='model-field field-End'>
+               <div class="display-label inline-block">End</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.End)
+                </div>
+            </div>
+
+            
+
+            <div class='model-field field-Capacity'>
+               <div class="display-label inline-block">Capacity</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Capacity)
+                </div>
+            </div>
+
+            
+            
+
+        </fieldset>

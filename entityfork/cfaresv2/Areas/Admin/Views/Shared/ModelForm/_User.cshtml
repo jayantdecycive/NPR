@@ -1,0 +1,195 @@
+﻿@model cfares.domain.user.ResUser
+@{string pk = Model==null||Model.UserId==0?"0":Model.Id();}
+@{bool isNew = pk == "0";}
+
+@using (Html.BeginForm()) {
+    <p>@Html.ValidationSummary(false,"The form was completed with errors. Please fix the problems below.")</p>
+
+    <fieldset data-pk='@pk' class='user-form user-@pk'>
+            @*<div class='legend inline-block'>Reservation User</div>*@
+            @Html.HiddenFor(model=>model.UserId)
+            
+            @if (ViewBag.Membership!=null && ViewBag.Membership.IsLockedOut)
+            {
+                <div class='model-field'>
+                        <div class="editor-label inline-block">
+                            This user is currently locked out!
+                        </div>
+                        <div class="editor-field inline-block admin-table">
+                            @Html.ActionLink("Unlock User", "Unlock", "Account", new { id = pk, redirect = "/Admin/User/Edit/" + pk }, new { @class = "jq-button" })
+                        </div>
+                    </div>
+                
+            }
+            
+            <div class='model-field field-Name'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.NameString)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.NameString)
+                    @Html.ValidationMessageFor(model => model.NameString)
+                </div>
+            </div>
+
+            @*<div class='model-field field-Username'>
+                <div class="editor-label  inline-block">
+                    @Html.LabelFor(model => model.Username)
+                </div>
+                <div class="editor-field  inline-block">
+                    @Html.EditorFor(model => model.Username)
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+            </div>*@
+
+           
+            @if(!isNew && ViewBag.Self!=null && ViewBag.Self){
+                    <div class='model-field field-MobilePhone'>
+                        <div class="editor-label inline-block">
+                
+                        </div>
+                        <div class="editor-field inline-block admin-table">
+                            @Html.ActionLink("Change Password", "ChangePassword", "Account", new { }, new { @class = "jq-button" })
+                        </div>
+                    </div>
+            }else if(!isNew){
+                <div class='model-field'>
+                        <div class="editor-label inline-block">
+                
+                        </div>
+                        <div class="editor-field inline-block admin-table">
+                            @Html.ActionLink("Send Reset Password Email", "ResetPasswordEmail", "Account", new { id=pk,redirect = "/Admin/User/Edit/" + pk }, new { @class = "jq-button" })
+                        </div>
+                    </div>
+                
+                <div class='model-field'>
+                        <div class="editor-label inline-block">
+                
+                        </div>
+                        <div class="editor-field inline-block admin-table">
+                            @Html.ActionLink("Generate New Password", "GeneratePassword", "Account", new { id = pk, redirect = "/Admin/User/Edit/" + pk }, new { @class = "jq-button" })
+                        </div>
+                    </div>
+            }
+
+        @*
+            @if (!isNew)
+            {
+            <div class='model-field field-Authority'>
+                <div class="display-label inline-block">Authority</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Authority)
+                    @Html.HiddenFor(model => model.Authority)
+                </div>
+            </div>
+
+            <div class='model-field field-Authority'>
+                <div class="display-label inline-block">Authority UID</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.AuthorityUID)
+                    @Html.HiddenFor(model => model.AuthorityUID)
+                </div>
+            </div>
+                
+            }
+            else
+            {
+
+
+
+            }*@
+        @Html.HiddenFor(x=>x.Authority)
+        @Html.HiddenFor(x=>x.AuthorityUID)
+            @*<div class='model-field field-UID'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.UID)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.UID)
+                    @Html.ValidationMessageFor(model => model.UID)
+                </div>
+            </div>*@
+
+        <div class='model-field field-Email'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        
+                  
+            <div class='model-field field-AccountStatus'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.AccountStatus)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.AccountStatus)
+                    @Html.ValidationMessageFor(model => model.AccountStatus)
+                </div>
+            </div>
+
+            <div class='model-field field-OperationRole'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.OperationRole)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.OperationRole)
+                    @Html.ValidationMessageFor(model => model.OperationRole)
+                </div>
+            </div>
+                        
+        @*<div class='model-field field-LastActivity'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.LastActivity)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.LastActivity)
+                    @Html.ValidationMessageFor(model => model.LastActivity)
+                </div>
+            </div>*@
+            @Html.HiddenFor(x=>x.LastActivityString)
+                  
+            @Html.HiddenFor(model => model.UID)
+            @Html.HiddenFor(model => model.AddressId)
+                        
+            <div class='model-field field-HomePhone'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.HomePhoneString)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.HomePhoneString)
+                    @Html.ValidationMessageFor(model => model.HomePhoneString)
+                </div>
+            </div>
+
+        <div class='model-field field-MobilePhone'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.MobilePhoneString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.MobilePhoneString)
+                @Html.ValidationMessageFor(model => model.MobilePhoneString)
+            </div>
+        </div>
+        
+            <div class='model-field field-Birthday'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.BirthDayString)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.BirthDayString)
+                    @Html.ValidationMessageFor(model => model.BirthDayString)
+                </div>
+            </div>
+    
+        
+    </fieldset>
+    <div class='submit-block admin-green'>
+        <div class='editor-field inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+    </div>
+}

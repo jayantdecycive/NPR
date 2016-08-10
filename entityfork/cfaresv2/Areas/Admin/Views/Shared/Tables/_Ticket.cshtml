@@ -1,0 +1,20 @@
+﻿@model string
+
+
+<div class='admin-table'>
+    <table id="tickets_@ViewData["id"]" data-sort="LocationNumber" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                <th data-id='TicketLink' data-on-display='DataFormat.TicketUrl' data-column-parent='TicketId'></th>                        
+                <th data-column-name='TicketIdL' data-id-column='true' >Reservation Id</th>                        
+                <th data-column-name='Status' data-id-column='true' data-visible='false'>Status</th>                        
+                <th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+                <th data-id='SlotLink' data-column-parent='SlotId' data-on-display='DataFormat.SlotUrl' >Slot</th>
+			    <th data-column-name='CardNumberI' >Card Number</th>
+                <th data-column-name='OwnerIdL' data-visible='false'>Owner Id</th>  
+                <th data-column-name='OwnerName' data-query-name="Owner/NameString" data-sortable="false" data-searchable="false">Customer</th>  
+                <th data-id='Owner' data-column-parent='OwnerId' data-on-display='DataFormat.UserUrl' data-visible='false'>Owner</th>  
+		    </tr>
+        </thead>
+        </table>
+      </div>

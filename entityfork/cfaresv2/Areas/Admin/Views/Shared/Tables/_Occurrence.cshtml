@@ -1,0 +1,41 @@
+﻿@using cfares.domain._event;
+@model string
+
+@{
+    //var test = 
+
+
+    bool reception = ViewData["ReservationType"] == null ? false : (ViewData["ReservationType"] as ReservationType).ShowOperatorView();
+}
+
+
+<div class='admin-table'>
+    <table id="occurrences_@ViewData["id"]" data-sort="LocationNumber" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                <th data-id='OccurrenceLink' data-on-display='DataFormat.OccurrenceUrl' data-column-parent='OccurrenceId'></th>                        
+                <th data-id='StoreName' width="30%" data-query-name="Store/Name" data-sortable='false'>Restaurant Name</th>   
+                <th data-column-name='StoreIdL' data-id-column='true' >Restaurant Id</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.OccurrenceStatus'>Status</th>
+                
+
+
+                @if(!reception){
+                    <th data-id='ResOpLink' data-on-display='DataFormat.OccurrenceCapacityUrl' data-column-parent='OccurrenceId'>Operator View</th>   
+                }
+
+
+                <th data-column-name='OccurrenceIdL' width="14%" data-id-column='true' data-visible='false'>Occurrence Id</th>
+                <th data-id='ResStoreLink' data-on-display='DataFormat.StoreUrl' data-column-parent='StoreId' data-visible='false'>Store Url</th>                        
+                
+                        
+                <!--<th data-column-name='RegistrationStart' data-visible="false" data-on-display='DataFormat.date' >Registration Start</th>			    
+			    <th data-column-name='RegistrationEnd' data-on-display='DataFormat.date'>Registration End</th>
+                -->
+                	            
+                
+                  
+            </tr>
+            </thead>
+        </table>
+      </div>

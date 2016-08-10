@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Admin Home Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string storeIds = ViewData["stores"] as string;
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+	<script type="text/javascript" id="mytemplate">
+		
+		var upcomingEventsBucket = new DomainModel.ActiveEvents();
+		upcomingEventsBucket.setWhere({ RegistrationEnd: { $gt: (new Date()) }, Status: { $ne: 0 }, Status: { $ne: 5 } });
+		upcomingEventsBucket.abstract = true;
+
+		var pastEventsBucket = new DomainModel.ActiveEvents();
+		pastEventsBucket.setWhere({ RegistrationEnd: { $lte: (new Date()) }, Status: { $ne: 0 }, Status: { $ne: 5 } });
+		pastEventsBucket.abstract = true;
+		var storeIds = "@storeIds";
+
+		if (storeIds) {
+			upcomingEventsBucket.setQueryParam("stores", storeIds);
+			pastEventsBucket.setQueryParam("stores", storeIds);
+		}
+		DataFormat.ResEventUrl = function(row, eventId) {
+
+			var filter = { $or: [] };
+			_.each(storeIds.split(","), function(s) {
+				filter.$or.push({ StoreId: s });
+			});
+			var occFilter = JSON.stringify({ $and: [filter, { ResEventId: eventId }] });
+			var slotFilter = (storeIds);
+
+			return "<a href='/Admin/Occurrence/CombinedSummary?where={0}&event={1}&stores={2}'>View Summary</a>".format(encodeURIComponent(occFilter), eventId, (slotFilter));
+		};
+	</script>
+}
+
+    <div class="content rounded" id="main">
+    
+        <div class="inner-content wrapper upcoming-tours">
+            <div class='model badge admin-table-2'>
+            
+              <!--  <div class='button-cta right'>
+                    @Html.ActionLink("Events Dashboard", "Index", "Event", new {}, new {data_icon = "ui-icon-circle-arrow-e"})
+                </div>-->
+                <h2>Active and Upcoming Events</h2>
+                <p>Your Restaurant is participating in the following events.</p>
+            
+
+            </div>
+            @Html.Partial("Tables/_EventsDash", "upcomingEventsBucket")
+        </div>
+     
+   
+
+        <div class='inner-content wrapper home-dash-cta'>
+            <div class='model badge rounded'>
+                <h2>Dashboards</h2>
+                <p>Create or view data for your Restaurant.</p>
+                <div class='button-list admin-green'>                
+                    <a href="/Admin/User" data-icon="ui-icon-person" class='jq-button'>User Dashboard</a>
+                    @*<a href="/Admin/Event/" data-icon="ui-icon-calendar" class='jq-button'>Event Dashboard</a>*@
+                    @*<a href="/Admin/Slot/" data-icon="ui-icon-calendar" class='jq-button'>Slot Dashboard</a>*@
+                    <a href="/Admin/DateTicket/" data-icon="ui-icon-tag" class='jq-button'>Reservations Dashboard</a>
+                </div>
+            </div>
+        </div>
+        <div class="inner-content wrapper past-tours">
+            <div class='model badge'>
+                <h2>Archive</h2>
+                <p>View past events and make reports</p>
+            </div>
+            <!--<div class='admin-grey'>
+                    <input type="text" class='jq-auto-complete' data-onlabel="CompleteLabel.location" data-columns="LocationNumber,LocationCode,Name,Line1" data-filter="Name,LocationCode"  data-src='http://localhost:65271/DataService/Location.svc/Location_StreetAddress' />
+                </div>-->
+            @Html.Partial("Tables/_EventsDash", "pastEventsBucket")
+        
+        </div>
+    </div>
+

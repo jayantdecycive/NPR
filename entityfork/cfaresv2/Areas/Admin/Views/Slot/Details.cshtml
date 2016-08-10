@@ -1,0 +1,94 @@
+﻿@using Ninject
+@using cfares.domain._event
+@using cfares.domain._event._ticket
+@using cfares.site.modules.com.application
+@model cfares.domain._event.Slot
+
+@{
+    ViewBag.Title = "Slot Details";
+    ViewBag.Brief = "";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+
+    Type ticketType = typeof (Ticket);
+    if (Model.Occurrence != null && Model.Occurrence.ResEvent != null)
+    {
+        ticketType = AppContext.Current.Configuration.GetKernel(Model.Occurrence.ResEvent.ReservationType, null).Get<ITicket>().GetType();
+		if( Model.Occurrence.ResEvent.ReservationTypeId == "Tour" )
+		{
+			ViewBag.Title = "Public Tour Slot";
+		}
+    }
+}
+
+            @*        
+            <h1 class='clean-timezone'>@Model.Start</h1>
+            <p>
+            @Html.Raw(Model.ToHtmlString())
+            </p>
+            *@
+
+            @Html.Partial("ModelDetail/_Slot")        
+
+@section Action{
+
+
+
+    @if( AppContext.Current.User == null || AppContext.Current.User.OperationRole != cfares.domain.user.UserOperationRole.Operator ) {
+
+        <div class="button-list admin-green">
+
+
+            @*
+            Carson: gabby says to remove until ticket create page is reworked
+
+	        <div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-plus">
+            @Html.ActionLink("Create Ticket for This Slot", "Create", ticketType.Name, new {SlotId = Model.SlotId}, new {})
+            </div>
+            
+            *@
+            <div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-pencil">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.SlotId }, new {})
+            </div>
+    
+            @if (Model.Occurrence!=null)
+	        {
+		        <div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-arrow-e">
+			        @Html.ActionLink("Event Summary", "Summary", "Event", new {id = Model.Occurrence.ResEventId}, new {})
+		        </div>
+	        }
+	
+        </div>    
+    }
+}
+       
+@section Table
+{
+	<script type="text/javascript">
+		var ticketsDetails = new DomainModel.@Html.Raw(ticketType.Name)Collection();
+		ticketsDetails.abstract = true;
+		ticketsDetails.setWhere("model",{SlotId: {$eq:@Model.SlotId} });
+		ticketsDetails.setWhere("temp",[{Status: {$ne:"Temp"} }, {Status: {$ne:"Partial"} }]);
+	</script>
+
+	@if( ticketType.Name == typeof( FoodTicket ).Name  ) {
+	<script type="text/javascript">
+		var productSummary = DomainModel.FoodTicketCollection.GetProductSummary(
+			{ slotId: @Model.SlotId, username: "@AppContext.Current.User.Username" }
+		);
+	</script>
+	}
+
+	<h2>Reservations</h2>
+	<div class='admin-table'>
+		@Html.Partial("Tables/_"+ticketType.Name,"ticketsDetails")
+	</div>
+
+	@if( ticketType.Name == typeof( FoodTicket ).Name  ) {
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<h2>Product Summary</h2>
+		<div class='admin-table'>
+			@Html.Partial("Tables/_"+ticketType.Name+"ProductSummary","productSummary")
+		</div>
+	 }
+}     

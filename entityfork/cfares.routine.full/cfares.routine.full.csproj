@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DE0AE18-4EAB-4151-976E-3D18D6D4807C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cfares.routine.full</RootNamespace>
+    <AssemblyName>cfares.routine.full</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S2.Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S2.Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S4.Staging|AnyCPU'">
+    <OutputPath>bin\CFA.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S5.Prod|AnyCPU'">
+    <OutputPath>bin\CFA.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S2.DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S2.DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S4.Staging|AnyCPU'">
+    <OutputPath>bin\NPR.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S5.Prod|AnyCPU'">
+    <OutputPath>bin\NPR.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Web.CFATours.S1.Local.config|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Web.CFATours.S1.Local.config\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S5.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S5.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ado\AlohaLiveDate.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\BreakfastConflict.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\BreakfastConflictAction.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Care.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Category.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\CfaCom.Context.cs">
+      <DependentUpon>CfaCom.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ado\CfaCom.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ado\CfaCom.Designer.cs">
+      <DependentUpon>CfaCom.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ado\Event.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\EventRegistration.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Event_Location.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\FAQ.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\FAQs_Group.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\FavoriteLocation.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Feed.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\First100Attendees.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Food.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\FoodImage.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Food_Category.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Food_Ingredient.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Food_Variation.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Mail.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Press_Group.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Press_Image.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Press_Release.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Press_Store.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\PublishingLog.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\ResponseTag.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\SiteError.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\SiteStory.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\SiteUser.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoreInfo.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryEntry.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryEvent.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryImage.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryLocation.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryRating.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\StoryTopic.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Subscriber.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Subscription.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Tag.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\TagGroup.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\Topic.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\TopicResponse.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\TopicTag.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ado\USState.cs">
+      <DependentUpon>CfaCom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="locations\LocationParserEntity.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ado\CfaCom.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CfaCom.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ado\CfaCom.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CfaCom.edmx</DependentUpon>
+      <LastGenOutput>CfaCom.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ado\CfaCom.edmx.diagram">
+      <DependentUpon>CfaCom.edmx</DependentUpon>
+    </None>
+    <None Include="ado\CfaCom.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CfaCom.edmx</DependentUpon>
+      <LastGenOutput>CfaCom.cs</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cfacore\cfacore.dao\cfacore.shared.dao.csproj">
+      <Project>{1b073c78-ae9e-45e3-b4fd-6c5f95459a6a}</Project>
+      <Name>cfacore.shared.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.domain\cfacore.shared.domain.csproj">
+      <Project>{f06b4a08-f390-4206-9fb8-6f8bde4f9db7}</Project>
+      <Name>cfacore.shared.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.modules\cfacore.shared.modules.csproj">
+      <Project>{7512e2e7-225d-41d4-b27b-f811f41f9f65}</Project>
+      <Name>cfacore.shared.modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.service\cfacore.shared.service.csproj">
+      <Project>{d47e604d-1e7a-4c0f-910d-bbc58cd1d563}</Project>
+      <Name>cfacore.shared.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.domain\cfares.domain.csproj">
+      <Project>{893d1b65-f5fb-429c-bcc5-07f8c834a0ca}</Project>
+      <Name>cfares.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.entity.dbcontext\cfares.entity.dbcontext.csproj">
+      <Project>{8dc3367b-57f6-4e65-8c19-e28bb275e7b0}</Project>
+      <Name>cfares.entity.dbcontext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.repository\cfares.repository.csproj">
+      <Project>{9523a2b9-8086-4dc1-ae32-39ac3d9c6cbc}</Project>
+      <Name>cfares.repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.service\cfares.service.csproj">
+      <Project>{f7af332a-097c-4e4f-8b68-fcb33232ccd2}</Project>
+      <Name>cfares.service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.site.modules\cfares.site.modules.csproj">
+      <Project>{9e60a97b-7bd3-4f03-9515-6f9787ac2b42}</Project>
+      <Name>cfares.site.modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sync\sync.csproj">
+      <Project>{76e44af1-68d8-4410-a24a-0ee94c4c313f}</Project>
+      <Name>sync</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="locations\data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

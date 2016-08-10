@@ -1,0 +1,284 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+@section AdditionalMeta
+{
+    <meta http-equiv="Cache-control" content="no-store">
+}
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+	bool isevent = false;
+	if (Model.Slot != null && Model.Slot.Occurrence != null 
+		&& Model.Slot.Occurrence.ResEvent != null
+		&& Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent")
+	{
+		isevent = true;
+		ViewBag.Nav = "Events";
+    }else{
+        ViewBag.Nav = "Tours";
+    }
+
+}
+
+    @* =======================================================================================================================================
+    PAGE DESCRIPTION *@
+
+    @Html.Partial("Breadcrumbs")
+
+    @using (Html.BeginForm(null,null,FormMethod.Post, new { @class = "form-horizontal registration",id="PayMentReg"})){     
+
+	
+
+    <h1 style="margin-bottom:35px;">Review & Payment</h1>
+    <p>Please complete the following payment information below. <span class="disclaimer"><br />*</span> Indicates required fields.</p>
+	
+	@Html.ValidationSummary(false)
+	
+		
+	<h3 class="margin-top-0">Reservation Information</h3>
+	<div class="overview-group">
+		@if (Model.IsSpecialtyTicket){
+			<span class="overview-name">Type of Tour:</span>
+		}
+        else if (isevent){
+			<span class="overview-name">Type of Event:</span>
+		}
+       else{
+			<span class="overview-name">Type of Tour:</span>
+        }
+		
+		@if (Model.IsSpecialtyTicket){
+			<span class="overview-value">Specialized Tour</span>
+		}
+        else if (isevent){
+			<span class="overview-value">Special Event</span>
+		}
+       else{
+            <span class="overview-value">Public Tour</span>   
+        }
+    </div>
+        
+    
+	if( Model.IsSpecialtyTicket ) {
+        <div class="overview-group">    
+		<span class="overview-name">Preferred Dates:</span>
+			<span class="overview-value">
+				@{ 
+					int i = 0;
+					IEnumerable<DateTime> dateList = Model.Dates.Where(o => o != null)
+						.Select( o => o != null ? o.Value : new DateTime() ).ToList();
+				}
+				@foreach( DateTime dt in dateList )
+				{
+					@dt.ToString("dddd, MMMM dd yyyy")
+					if( i++ < dateList.Count() ) { <br /> }
+				}
+			</span>   
+        </div>     
+	}
+    
+	else if(Model.Slot != null){
+        <div class="overview-group">  
+		<span class="overview-name">Date:</span>
+		<span class="overview-value">@(Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy"))</span>
+        </div>   
+        
+        <div class="overview-group">  
+		<span class="overview-name">Time:</span>
+			<span class="overview-value">@Model.Slot.Start.ToString("hh:mm tt") 
+				@*<span class="small">UTC+@Model.Slot.Start.Offset.ToString("hh")</span>*@
+			</span>
+        </div>   
+	}
+	
+    
+    <div class="overview-group">
+		<span class="overview-name">First Name:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.Owner.FirstName)</span>
+    </div>
+
+	<div class="overview-group">
+		<span class="overview-name">Last Name:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.Owner.LastName)</span>
+    </div>
+
+    <div class="overview-group">
+		<span class="overview-name">Email:</span>
+		<span class="overview-value">@Model.Owner.Email</span>
+    </div>
+    if (!Model.IsSpecialtyTicket)
+    {
+        <div class="overview-group margin-bot-40">
+            <span class="overview-name">Best Way to Contact You:</span>
+            @if (Model.ContactPreference == npr.domain._event.ticket.ContactPreference.Email)
+            {
+                <span class="overview-value">@Html.DisplayFor(m => m.ContactPreference) - @Model.Owner.Email</span>
+            }
+            else
+            {
+                <span class="overview-value">@Html.DisplayFor(m => m.ContactPreference) - @Html.DisplayFor(m => m.Owner.HomePhoneString)</span>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="overview-group margin-bot-40">
+            <span class="overview-name">Phone Number:</span>
+            <span class="overview-value">@Model.Owner.HomePhoneString</span>
+        </div>   
+    }
+
+
+    @* =======================================================================
+    GROUP DEATILS *@
+
+    if(Model.IsSpecialtyTicket){
+		<div class="overview-group">
+			<span class="overview-name">Type of Group:</span>
+			<span class="overview-value">@Html.DisplayFor(m => m.GroupType)</span>
+		</div>
+    }
+        
+    <div class="overview-group">
+		<span class="overview-name">Group Size:</span>
+		<span class="overview-value">@Html.DisplayFor(m => m.GroupSize)</span>
+    </div>
+    
+    
+	@* MEMBER LIST *@
+	<div class="overview-group margin-bot-40">
+		<span class="overview-name">Guest Names:</span>
+		<span class="overview-value">
+			@foreach(cfacore.shared.domain.user.Name name in Model.GuestList){
+				@name.Full
+				<br />
+			}
+		</span>
+    </div>
+     	
+	
+	<h3 class="margin-top-0">Payment Information</h3>
+	<div class="overview-group">
+		<span class="overview-name">Number of guests:</span>
+		<span class="overview-value">@Model.GroupSize.ToString("N0")</span>
+    </div>
+
+	<div class="overview-group">
+		<span class="overview-name">Cost per Ticket:</span>
+		<span class="overview-value">@Model.TicketAmount.Value.ToString("C2")</span>
+    </div>
+
+	<div class="overview-group">
+		<span class="overview-name">Total Cost:</span>
+		<span class="overview-value">@Model.TotalAmount.Value.ToString("C2")</span>
+    </div>
+
+	<p>&nbsp;</p>
+		
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.CCName, new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.CCName, new { @class="required" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.CCName)</span>
+	</div>
+
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.CCType, new { @class = "control-label" })
+		<div class="controls">
+			@Html.DropDownListFor(m => m.CCType, new List<SelectListItem>() { new SelectListItem(){Text="MasterCard", Value="MC"}, new SelectListItem(){Text="Visa", Value="Visa"}, new SelectListItem(){Text="American Express", Value="Amex"} }, new { @class="required" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.CCType)</span>
+	</div>	
+
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.CCNumber, new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.CCNumber, new { @class="required" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.CCNumber)</span>
+	</div>	
+
+		
+	<style>
+		SELECT.ccexp { width: 100px; }
+	</style>
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		<label class="control-label">Expiration</label>
+		<div class="controls">
+			@Html.DropDownListFor(m => m.CCExpDateMonth, new List<SelectListItem>() { new SelectListItem(){Text="1 - Jan", Value="1"}, new SelectListItem(){Text="2 - Feb", Value="2"}, new SelectListItem(){Text="3 - Mar", Value="3"}, new SelectListItem(){Text="4 - Apr", Value="4"}, new SelectListItem(){Text="5 - May", Value="5"}, new SelectListItem(){Text="6 - Jun", Value="6"}, new SelectListItem(){Text="7 - Jul", Value="7"}, new SelectListItem(){Text="8 - Aug", Value="8"}, new SelectListItem(){Text="9 - Sep", Value="9"}, new SelectListItem(){Text="10 - Oct", Value="10"}, new SelectListItem(){Text="11 - Nov", Value="11"}, new SelectListItem(){Text="12 - Dec", Value="12"} }, new { @class="required ccexp" })
+			/
+			@{
+				var years = new List<SelectListItem>();
+				for (int i = DateTime.Now.Year; i < DateTime.Now.Year + 10; i++) { years.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString() }); }
+			}
+			@Html.DropDownListFor(m => m.CCExpDateYear, years, new { @class = "required ccexp" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.CCExpDateMonth)</span>
+		<span class="validation">@Html.ValidationMessageFor(m => m.CCExpDateYear)</span>
+	</div>
+
+	
+
+	@* =======================================================================
+    SUBMISSION *@
+
+    <div class="overview-group margin-bot-40">    
+    
+		<p>By submitting this information, you acknowledge that you have read and agree to be bound by NPR’s <a href="http://www.npr.org/about-npr/179876898/terms-of-use" target="_blank">Terms of Use</a> and <a href="http://www.npr.org/about-npr/179878450/privacy-policy" target="_blank">Privacy Policy</a>.  In addition, you acknowledge that you are agreeing to purchase tickets for a paid event, and that the cost of these tickets will not be refundable as all sales are final.  If you do not agree with these conditions, please exit this site and do not continue to use NPR’s events services. </p>
+
+		<span class="button-forward width-override">
+            <input type="submit" value="Complete Reservation" style="display:none" id="btnReservation" />
+            <input type="button" value="Complete Reservation" onclick="GoforPay();" id="btnRes" />
+            <span class="button-icon-container">
+                <span class="button-icon"></span>
+            </span>
+        </span>
+        <br />
+        
+        <span class="button-back width-override">
+			@Html.ActionLink("Edit this Info", "Register", "Reservation", new { id=Model.TicketId }, new { }) 
+			<span class="button-icon-container">
+				<span class="button-icon"></span>
+			</span>
+		</span>
+		<br />
+        <span class="button-cancel width-override">
+			@Html.ActionLink("Cancel Reservation", "Cancel", "Reservation", new { id=Model.TicketId }, new { })  
+			<span class="button-icon-container">
+				<span class="button-icon"></span>
+			</span>
+		</span>
+	</div>
+
+	}
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript">
+    function GoforPay()
+    {
+       
+        if ($("#PayMentReg").valid()) {
+          //  alert('form valid');
+            $('#btnRes').attr("disabled", true);
+           // alert('disabled');
+        }
+        $("#btnReservation").click();
+    }
+</script>

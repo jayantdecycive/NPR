@@ -1,0 +1,80 @@
+﻿
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence - Event Type Specific
+----------------------------------------------------*@
+
+<div class="row-fluid">
+	<div class="span10 offset1" id="intro">
+
+		<p class="text-center center">Participating Chick-fil-A<sup>&copy;</sup> restaurants are hosting a <b>Mother-Son Date Knight</b> for yourself and your son(s). To make your table reservation, enter a preferred location in the search box for a list of participating Restaurants. The only charge is the price of the food.</p>
+
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span10 offset1 captionedForm">
+
+		<p>Choose from your preferred restaurants:</p>
+		
+		<form id="yourPreferredRestaurants">
+			<ul class="locations list">
+				<li>
+					<div class="overview">
+						<h3 class="name">Chick-fil-A at Cherrydale Point</h3>
+						<p class="address">1544 Poinsett Hwy<br />Greenville, SC 29609</p>
+						<div class="tools"><a href="#">view map</a></div>
+					</div>
+					<div class="reservationDetail">
+						<div class="date">September 6, 2013</div>
+						<div class="remaining">24 reservations remaining</div>
+					</div>
+					<div class="commands">
+						<button class="btn large">Make Reservation</button>
+					</div>
+				</li>
+			</ul>
+			<div class="location">
+				<h3></h3>
+			</div>
+
+		</form>
+		
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span10 offset1 captionedForm">
+		
+		<p>Choose from your preferred Restaurant's:</p>
+		
+		<form>
+			<ul class="locations list">
+				<li>
+					<div class="overview">
+						<h3 class="name">Chick-fil-A at Cherrydale Point</h3>
+						<p class="address">1544 Poinsett Hwy<br />Greenville, SC 29609</p>
+						<div class="tools"><a href="#">view map</a></div>
+					</div>
+					<div class="reservationDetail">
+						<div class="date">September 6, 2013</div>
+						<div class="remaining">24 reservations remaining</div>
+					</div>
+					<div class="commands">
+						<button class="btn large">Make Reservation</button>
+					</div>
+				</li>
+			</ul>
+			<div class="location">
+				<h3></h3>
+			</div>
+
+		</form>
+		
+
+	</div>
+</div>
+
+@Html.Partial("_WizardContainerPartial")

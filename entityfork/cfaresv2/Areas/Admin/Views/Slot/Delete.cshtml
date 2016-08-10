@@ -1,0 +1,18 @@
+﻿@model cfares.domain._event.ISlot
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Edit Time Slot";
+}
+
+
+<p>
+@Html.Raw(Model.ToHtmlString())
+</p>
+        
+        
+@section Details{    
+    @Html.Partial("ModelDetail/_Slot")        
+}
+        

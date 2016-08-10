@@ -1,0 +1,36 @@
+﻿@using cfares.site.modules.com.application
+@using cfares.domain.user
+
+@{
+    ViewBag.Title = "Event Overview";
+    ViewBag.ModelName = "Occurrence";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+    string store = null;
+    
+}
+
+
+
+<h1>Participating Restaurant Details</h1>
+<p>A list of your participating Restaurants.</p>
+
+
+
+@section Meta{
+    <script type="text/javascript">
+        var OccurrenceList = new DomainModel.OccurrenceCollection();
+        
+
+
+        OccurrenceList.abstract = true;
+
+    </script>    
+}    
+
+
+
+<h1>A list of your event's time slots.</h1>
+
+@section Table{
+    @Html.Partial("Tables/_Occurrence","OccurrenceList")
+}

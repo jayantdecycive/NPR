@@ -1,0 +1,29 @@
+﻿@model cfacore.shared.domain.common.ILoadableAdminReference
+@{
+    string id = "";
+    string clientLabel = "";
+    string clientModel = "";
+    string typeName = "";
+    if (Model != null){
+        id = Model.Id();
+        clientLabel = Model.ClientLabel();
+        clientModel = Model.ClientModel();
+        typeName = Model.GetEntityType();
+    }
+    
+}
+@if (Model!=null&&Model.IsBound()&&Model.Loaded())
+{
+<a href='@Model.AnchorHref()' data-pk='@Model.Id()' data-client-label='@Model.ClientLabel()' data-client-model="@Model.ClientModel()" data-type='@typeName'>@Model.AnchorLabel()</a>
+}
+else if (Model != null && !string.IsNullOrEmpty(Model.Id()))
+{
+<a href='@Model.AnchorHref()' data-pk='@Model.Id()' data-client-label='@Model.ClientLabel()' data-client-model="@Model.ClientModel()" class='auto-load' data-type='@typeName'>@Model.AnchorLabel()</a>
+}
+else
+{ 
+<a href='#' data-pk='@id' data-client-label='@clientLabel' data-client-model="@clientModel" class='no-link' data-type='@typeName'>
+    N/A
+</a>
+}
+

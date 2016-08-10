@@ -1,0 +1,16 @@
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll.config
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.pdb
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.dll
+D:\Projects\DecyciveFarm.NPR\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll.config
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.pdb
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll.config
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.dll
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\bin\Debug\cfacore.external.service.pdb
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.csprojResolveAssemblyReference.cache
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.dll
+E:\Pratap\PratapNew\cfacore\cfacore.external.service\obj\Debug\cfacore.external.service.pdb

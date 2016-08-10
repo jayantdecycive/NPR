@@ -1,0 +1,20 @@
+﻿@model cfares.domain._event._ticket.tours.TourTicket
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Delete Ticket";
+}
+
+
+<h1>@Model.GroupName</h1>
+<p>
+@Model.ToString()
+</p>
+        
+        
+@section Details{
+    @Html.Partial("ModelDetail/Tickets/_TourTicket")     
+    @Html.Partial("ModelDetail/_Ticket")        
+}
+        

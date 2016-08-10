@@ -1,0 +1,31 @@
+﻿@model int?
+
+    @{string storeIds = ViewData["stores"] as string;}
+    @if(!string.IsNullOrEmpty(storeIds)){
+    <script>
+        window.slots = new DomainModel.SlotCollection();
+        window.slots.abstract = true;
+        window.slots.setQueryParam("stores", "@storeIds");
+    </script>    
+    }else{
+    <script>
+        window.slots = new DomainModel.SlotCollection();
+        window.slots.abstract = true;    
+    </script>  
+    }
+
+
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="slot_select" class='data-table' data-jquery-ui="true" data-mode="backbone" data-dom='<"H"r>t<"F"fp>' data-data='slots'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.Radio' data-column-parent='SlotId'></th>                       
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+                        
+			    <th data-column-name='CapacityI' >Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th> 
+		    </tr>
+            </thead>
+        </table>
+      </div>

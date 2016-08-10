@@ -1,0 +1,18 @@
+﻿@model cfares.domain.store.ResStore
+
+@{string pk = Model.IsBound() ? Model.LocationNumber.ToString() : "new";}
+
+        <fieldset data-pk='@pk' class='store-@pk'>
+            
+            <div class='legend inline-block'>Reservation Location</div>
+
+            <div class='model-field field-LocationNumber'>
+                <div class="display-label inline-block">Category</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.CategoryId)
+                </div>
+            </div>
+            
+            
+        </fieldset>
+        

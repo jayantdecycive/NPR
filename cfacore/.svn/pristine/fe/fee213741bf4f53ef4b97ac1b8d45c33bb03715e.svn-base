@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\cfa.admin.context\packages.config" />
+  <repository path="..\cfa.admin\packages.config" />
+  <repository path="..\cfacom.entity.dao\packages.config" />
+  <repository path="..\cfacore.console\packages.config" />
+  <repository path="..\cfacore.dao\packages.config" />
+  <repository path="..\cfacore.elasticache.dao\packages.config" />
+  <repository path="..\cfacore.repository\packages.config" />
+  <repository path="..\cfacore.shared.domain\packages.config" />
+  <repository path="..\cfacore.shared.modules\packages.config" />
+  <repository path="..\cfacore.shared.service\packages.config" />
+  <repository path="..\cfacore\packages.config" />
+</repositories>

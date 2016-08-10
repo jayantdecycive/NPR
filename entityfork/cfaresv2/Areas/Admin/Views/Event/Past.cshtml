@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Past";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+        <div class='model badge'>
+            <h1>Past Events</h1>
+            <p>
+                These are past events
+            </p>
+        </div>  
+        @Html.Partial("Tables/_PastSlotsDash")      
+     </div>
+</div>

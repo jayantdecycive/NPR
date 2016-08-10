@@ -1,0 +1,43 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+
+<fieldset data-pk='@Model.TicketId' class='resevent-@Model.TicketId'>
+
+    <div class='model-field field-Name'>                
+        <div class="display-label inline-block">Owner Name</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.OwnerName)
+        </div>
+    </div>
+    
+    <div class='model-field field-Email'>                
+        <div class="display-label inline-block">Owner Email</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    </div>
+    
+    <div class='model-field field-GroupSize'>                
+        <div class="display-label inline-block">Number in Group</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.GroupSize)
+        </div>
+    </div>
+    
+    <div class='model-field field-GroupSize'>                
+        <div class="display-label inline-block">Owner Phone</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+    </div>
+    
+    @if(!string.IsNullOrEmpty(Model.GroupType))
+    {
+        <div class='model-field field-GroupSize'>                
+            <div class="display-label inline-block">Group Type</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.GroupType)
+            </div>
+        </div>
+    }
+    
+</fieldset>

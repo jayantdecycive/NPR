@@ -1,0 +1,29 @@
+﻿@using cfares.site.modules.com.application
+@model HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = AppContext.Current.GetLayoutLocation();
+}
+
+<section id="errorPage" class="system-page">
+	<h1>
+		We apologize, but we are experiencing momentary difficulty 
+		@if( AppContext.Current != null && AppContext.Current.Event != null ) {
+
+	  			<text>with the</text> @AppContext.Current.Event.Name <text>reservation system.</text>
+		
+		}
+	</h1>
+	@if( AppContext.Current != null && ! string.IsNullOrWhiteSpace( AppContext.Current.Configuration.Organization.TwitterFollowDisplayName ) ) {
+		<h2 class="padding50">
+			Please check back soon or follow us on Twitter <a href="@AppContext.Current.Configuration.Organization.TwitterFollowUrl">@AppContext.Current.Configuration.Organization.TwitterFollowDisplayName</a> for updates.
+		</h2>
+	}
+</section>
+@if (Model != null)
+{
+    <input type="hidden" name="errorActionName" value="@Model.ActionName" />
+    <input type="hidden" name="errorControllerName" value="@Model.ControllerName" />
+    <input type="hidden" name="errorException" value="@Model.Exception.ToString()" />
+}
+

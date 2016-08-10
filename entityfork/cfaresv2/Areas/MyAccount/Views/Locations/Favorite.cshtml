@@ -1,0 +1,38 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "My Preferred Restaurants";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>My Preferred Restaurants</h1>
+		<p class="text-center">Below are the Chick-fil-A Restaurants you have chosen as your preferred stores.</p>
+	</div>
+</div>
+<div class="row-fluid">
+	<div id="prefRestaurants" class="span8 offset2">
+		<ul>
+			<li>
+				<div class="pull-right">
+					<span class="remove-button">
+						<button class="btn btn-small">Remove</button>
+					</span>
+					<span class="upcoming-events">
+						<a href="#">view upcoming events at this restaurant</a>
+					</span>
+				</div>
+				<div>
+					<address>
+						<strong>Chick-fil-A at Cherrydale Point</strong><br />
+						1544 Poinsett Hwy<br />
+						Greenville, SC 29609
+						<span class="view-map"><a href="#">view map</a></span>
+					</address>
+				</div>
+			</li>
+		</ul>
+		<button class="btn-large btn btn-primary centered">Add a Restaurant</button>
+	</div>
+</div>

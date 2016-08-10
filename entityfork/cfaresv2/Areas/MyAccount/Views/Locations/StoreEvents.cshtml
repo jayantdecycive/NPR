@@ -1,0 +1,35 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@model IList<cfares.domain._event.Occurrence>
+@{
+    ViewBag.Title = "Restaurant Events";
+    Layout = "../Shared/_Layout.cshtml";
+    var location = ViewBag.Location as cfares.domain.store.ResStore;
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>Events at @location.Name</h1>
+		<p class="text-center">These are the upcoming events for @location.Name.</p>
+	</div>
+</div>
+<div class="row-fluid">
+	<ul id="eventsList" class="media-list span8 offset2">
+		@foreach(var occurrence in Model){
+      var resLink = string.Format("{0}/Occurrence?occurrence={1}",occurrence.ResEvent.Url,occurrence.OccurrenceId);
+			<li class="media span12">
+				<a class="pull-left eventThumb" href="@resLink">
+					@Html.Media(occurrence.ResEvent.Template.Preview,width:66,height:66)
+				</a>
+				<a href="@resLink" class="btn-large btn btn-primary pull-right">Create Reservation</a>
+				<!-- if no reservation, use below
+				<button class="btn-large btn btn-primary pull-right">Make Reservation</button>
+				-->
+				<div class="media-body eventInfo">
+					<h4>@occurrence.ResEvent.Name</h4>
+					<span>Date: <strong>@occurrence.ResEvent.RegistrationStart</strong> - <strong>@occurrence.ResEvent.RegistrationEnd</strong></span>
+				</div>
+			</li>
+  }
+	</ul>
+</div>

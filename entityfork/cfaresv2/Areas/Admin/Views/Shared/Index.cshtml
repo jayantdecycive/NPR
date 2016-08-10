@@ -1,0 +1,68 @@
+﻿@using System.Diagnostics
+@using System.Text.RegularExpressions
+@model IQueryable
+
+@{
+    Type subclassedType = Model.GetType().GetGenericArguments()[0];
+	string subclassedTypeModelId = subclassedType.Name;
+
+	List<string> parentModels = new List<string>();
+    Type currentType = Model.GetType().GetGenericArguments()[0].BaseType;
+	Debug.Assert(currentType != null, "currentType != null");
+	string modelId = currentType.Name;
+	string modelName = Regex.Replace(modelId, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ");
+    while (currentType != typeof(cfacore.domain._base.DomainObject) && currentType!=null)
+    {
+		modelId = currentType.Name;
+		modelName = Regex.Replace(modelId, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ");
+        parentModels.Add(currentType.Name);
+		currentType = currentType.BaseType;
+    }
+    
+    if(modelName.Contains("Ticket")) {
+		ViewBag.Title = "Reservations Index";
+	} else if(modelName.Contains("Slot")) {
+		ViewBag.Title = "Slot Index";
+	} else {
+		ViewBag.Title = "All " + modelName;
+	}
+	
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+<h2>@(modelName=="Ticket" ? "Reservations" : modelName) Dashboard</h2>
+<p>
+	@if(modelName.Contains("Ticket")) {
+		<span>A list of all reservations for upcoming events.</span>
+	} else if(modelName.Contains("Slot")) {
+		<span>A list of all upcoming time slots.</span>
+	} else {
+		<span></span>
+	}
+</p>
+
+@section Meta
+{
+    @* NPR-487 - Special case for NPR tickets ( partial status filter ) *@
+    @if( subclassedTypeModelId == "NPRTicket" )
+	{
+		<script>
+    		var models = new DomainModel.@Html.Raw(subclassedTypeModelId)Collection();
+			models.setWhere('tables', [{ Status: { $ne: 'Partial' } }]);
+			models.abstract = true;
+		</script>
+	}
+	else
+	{
+		<script>
+    		var models = new DomainModel.@Html.Raw(subclassedTypeModelId)Collection();
+    		models.abstract = true;
+		</script>
+	}
+}
+
+@section Table{
+	
+	@Html.Partial("Tables/_"+subclassedTypeModelId,"models")
+}

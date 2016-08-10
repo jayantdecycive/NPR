@@ -1,0 +1,36 @@
+﻿@model cfares.domain._event._ticket.GuestTicket
+
+@{
+	cfares.domain._event.resevent.store.SpeakerEvent receptionEvent = null;
+	if( Model != null ) {
+		receptionEvent = Model.Slot.Occurrence.ResEvent as cfares.domain._event.resevent.store.SpeakerEvent; }
+}
+
+    <td style="padding: 0 30px"><br />  
+        <p style="padding-bottom:15px;">Dear @Model.Owner.Name.First,</p>
+        <p>We're excited you'll be joining us for our Customer Reception event with Dan Cathy! Please print this email or save it on your phone and bring it with you along with your photo ID on the day of the event.</p>
+        <p>Below are the details of your reservation: </p>
+        <br />
+        <p><b>First Name:</b> @Model.Owner.Name.First</p>
+        <p><b>Last Name:</b> @Model.Owner.Name.Last</p>
+        <p><b>Event Date:</b> @Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy")</p>
+        <p><b>Event Time:</b> @Model.Slot.Start.ToString("h:mmtt")</p>
+		<p><b>Guests:</b> @Model.NumberOfGuests</p>
+		@if( receptionEvent != null && receptionEvent.OffSiteAddress != null )
+		{
+			<p style="padding: 0 0 5px 0"><b>Location:</b></p>
+			<p>@receptionEvent.OffSiteAddress.Label</p>
+			<p>@receptionEvent.OffSiteAddress.Line1 @receptionEvent.OffSiteAddress.Line2</p>
+			<p>@receptionEvent.OffSiteAddress.City, @receptionEvent.OffSiteAddress.State @receptionEvent.OffSiteAddress.ZipString</p>@*
+			<p style="padding: 5px 0"><a href="@Model.Slot.Occurrence.Store.MapUrl">Find on Google Maps</a></p>*@
+			if( receptionEvent.HasChildCare ) {
+				<p><span style="color: red">*</span>Childcare is available at this location</p>
+			}
+		}
+		@if( receptionEvent != null && ! string.IsNullOrWhiteSpace( receptionEvent.OffSiteParkingDescription ) )
+		{
+			<br/>
+			<p><b>Parking:</b></p>
+			<p>@receptionEvent.OffSiteParkingDescription</p>
+		}
+	</td>    

@@ -1,0 +1,23 @@
+﻿@model cfacore.shared.modules.com.datatypes.YesNo
+
+@if(Model == cfacore.shared.modules.com.datatypes.YesNo.Yes)
+{
+    @Html.RadioButtonFor(x => x, (int)cfacore.shared.modules.com.datatypes.YesNo.Yes, new { @checked = "checked", id = "yesno_yes" });
+}
+else
+{
+    @Html.RadioButtonFor(x => x, (int)cfacore.shared.modules.com.datatypes.YesNo.Yes, new { id = "yesno_yes" });
+}
+@Html.LabelFor(x => x, "Yes", new { @class = "radio", @for = "yesno_yes" } )
+
+@if(Model == cfacore.shared.modules.com.datatypes.YesNo.No)
+{
+    @Html.RadioButtonFor(x => x, (int)cfacore.shared.modules.com.datatypes.YesNo.No, new { @checked = "checked", id = "yesno_no" });
+}
+else
+{
+    @Html.RadioButtonFor(x => x, (int)cfacore.shared.modules.com.datatypes.YesNo.No, new { id = "yesno_no" });
+}
+@Html.LabelFor(x => x, "No", new { @class = "radio", @for = "yesno_no" } )
+
+

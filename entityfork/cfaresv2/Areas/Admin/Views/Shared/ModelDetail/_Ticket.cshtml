@@ -1,0 +1,55 @@
+﻿@model cfares.domain._event.Ticket
+
+@{string pk = Model.Id();}
+
+    <fieldset data-pk='@pk' class='ticket-@pk'>
+            
+            <div class='legend inline-block'>Ticket</div>
+            
+            <div class='model-field field-CardNumber'>
+                <div class="display-label inline-block">Card Number</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.CardNumber)
+                </div>
+            </div>
+            <div class='model-field field-Slot'>
+                <div class="display-label inline-block">Slot</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Slot)             
+                </div>
+            </div>
+            <div class='model-field field-Owner'>
+                <div class="display-label inline-block">Owner</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Owner)             
+                </div>
+            </div>
+
+            <div class='model-field field-CreationSrc'>
+                <div class="display-label inline-block">Creation Source</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.CreationSrc)             
+                </div>
+            </div>
+        
+        <div class='model-field field-Status'>
+            <div class="display-label inline-block">Status</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Status)             
+            </div>
+        </div>
+        <div class='model-field field-CreatedOn'>
+                <div class="display-label inline-block">Created On</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.CreatedDate)             
+                </div>
+            </div>
+
+        <div class='model-field field-Note'>
+                <div class="display-label inline-block">Note</div>
+                <div class="display-field inline-block">
+                    @Html.DisplayFor(model => model.Note)             
+                </div>
+            </div>
+    </fieldset>
+

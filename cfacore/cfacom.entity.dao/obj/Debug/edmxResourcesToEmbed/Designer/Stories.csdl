@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoriesEntityModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CfaComStoriesEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="V2StoryImageAuthorWithTagRating" EntityType="StoriesEntityModel.V2StoryImageAuthorWithTagRating" />
+    <EntitySet Name="V2StoryRatingSummary" EntityType="StoriesEntityModel.V2StoryRatingSummary" />
+    <EntitySet Name="V2StoryTagSummary" EntityType="StoriesEntityModel.V2StoryTagSummary" />
+    <EntitySet Name="V2StoryWithImageAuthor" EntityType="StoriesEntityModel.V2StoryWithImageAuthor" />
+    <EntitySet Name="V2StoryWithImageAuthorQuality" EntityType="StoriesEntityModel.V2StoryWithImageAuthorQuality" />
+    <EntitySet Name="V2StoryWithImageAuthorQualityTags" EntityType="StoriesEntityModel.V2StoryWithImageAuthorQualityTags" />
+    <EntitySet Name="Tags" EntityType="StoriesEntityModel.Tag" />
+    <EntitySet Name="TagGroups" EntityType="StoriesEntityModel.TagGroup" />
+    <EntitySet Name="StoryLocations" EntityType="StoriesEntityModel.StoryLocation" />
+    <EntitySet Name="Foods" EntityType="StoriesEntityModel.Food" />
+    <EntitySet Name="Food_Ingredient" EntityType="StoriesEntityModel.Food_Ingredient" />
+    <EntitySet Name="Food_Variation" EntityType="StoriesEntityModel.Food_Variation" />
+    <EntitySet Name="FoodImages" EntityType="StoriesEntityModel.FoodImage" />
+    <EntitySet Name="StoryLocation_Location" EntityType="StoriesEntityModel.StoryLocation_Location" />
+    <EntitySet Name="Location_Story" EntityType="StoriesEntityModel.Location_Story" />
+  </EntityContainer>
+  <EntityType Name="V2StoryImageAuthorWithTagRating">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="StoryContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="AuthorID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ImageID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PostingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CurrentEntryID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="StoryVersion" Type="Int32" Nullable="false" />
+    <Property Name="EditorID" Type="Int32" Nullable="false" />
+    <Property Name="ReviewApproval" Type="Boolean" Nullable="false" />
+    <Property Name="FinalApproval" Type="Boolean" Nullable="false" />
+    <Property Name="Reviewed" Type="Boolean" />
+    <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CategoryID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsDraft" Type="Boolean" />
+    <Property Name="IsUnusable" Type="Boolean" />
+    <Property Name="Comment" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ReviewUnsure" Type="Boolean" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="Boolean" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Owner" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="Poster" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Width" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MdWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MdHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="LgWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="LgHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PromoWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PromoHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="StoryRating" Type="Decimal" Precision="38" Scale="6" />
+    <Property Name="NumberOfRatings" Type="Int32" />
+    <Property Name="TagDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="Quality" />
+    <Property Type="Int32" Name="IsFavorite" />
+    <Property Type="Guid" Name="NewID" />
+  </EntityType>
+  <EntityType Name="V2StoryRatingSummary">
+    <Key>
+      <PropertyRef Name="StoryID" />
+    </Key>
+    <Property Name="StoryID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="StoryRating" Type="Decimal" Precision="38" Scale="6" />
+    <Property Name="NumberOfRatings" Type="Int32" />
+  </EntityType>
+  <EntityType Name="V2StoryTagSummary">
+    <Key>
+      <PropertyRef Name="StoryID" />
+    </Key>
+    <Property Name="StoryID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DescriptionSummary" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="Int32" Name="IsFavorite" />
+  </EntityType>
+  <EntityType Name="V2StoryWithImageAuthor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="StoryContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="AuthorID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ImageID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PostingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CurrentEntryID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="StoryVersion" Type="Int32" Nullable="false" />
+    <Property Name="EditorID" Type="Int32" Nullable="false" />
+    <Property Name="ReviewApproval" Type="Boolean" Nullable="false" />
+    <Property Name="FinalApproval" Type="Boolean" Nullable="false" />
+    <Property Name="Reviewed" Type="Boolean" />
+    <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CategoryID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsDraft" Type="Boolean" />
+    <Property Name="IsUnusable" Type="Boolean" />
+    <Property Name="Comment" Type="String" MaxLength="1" Unicode="false" FixedLength="false" Nullable="false" />
+    <Property Name="ReviewUnsure" Type="Boolean" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="Boolean" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Owner" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="Poster" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Width" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MdWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="MdHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="LgWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="LgHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PromoWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PromoHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="V2StoryWithImageAuthorQuality">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StoryContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="AuthorID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ImageID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="PostingDate" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="CurrentEntryID" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="StoryVersion" Nullable="false" />
+    <Property Type="Int32" Name="EditorID" Nullable="false" />
+    <Property Type="Boolean" Name="ReviewApproval" Nullable="false" />
+    <Property Type="Boolean" Name="FinalApproval" Nullable="false" />
+    <Property Type="Boolean" Name="Reviewed" />
+    <Property Type="Decimal" Name="Views" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="CategoryID" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="IsDraft" />
+    <Property Type="Boolean" Name="IsUnusable" />
+    <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ReviewUnsure" Nullable="false" />
+    <Property Type="Boolean" Name="IsUnusableNegative" Nullable="false" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Owner" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Poster" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Width" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Height" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="Quality" />
+    <Property Type="Int32" Name="IsFavorite" Nullable="false" />
+    <Property Type="Decimal" Name="StoryRating" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Guid" Name="NewID" />
+  </EntityType>
+  <EntityType Name="V2StoryWithImageAuthorQualityTags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StoryContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="AuthorID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ImageID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="PostingDate" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="CurrentEntryID" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="StoryVersion" Nullable="false" />
+    <Property Type="Int32" Name="EditorID" Nullable="false" />
+    <Property Type="Boolean" Name="ReviewApproval" Nullable="false" />
+    <Property Type="Boolean" Name="FinalApproval" Nullable="false" />
+    <Property Type="Boolean" Name="Reviewed" />
+    <Property Type="Decimal" Name="Views" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="CategoryID" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="IsDraft" />
+    <Property Type="Boolean" Name="IsUnusable" />
+    <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ReviewUnsure" Nullable="false" />
+    <Property Type="Boolean" Name="IsUnusableNegative" Nullable="false" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Owner" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Poster" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Width" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Height" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="TagID" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="IsFavorite" />
+    <Property Type="Int32" Name="Quality" />
+    <Property Type="Int32" Name="GroupID" />
+    <Property Type="String" Name="TagDescription" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Guid" Name="NewID" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GroupID" Nullable="false" />
+    <Property Type="Int32" Name="OrderHint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="GroupName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StoryLocation">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Type="Decimal" Name="StoryID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="StoreID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="food_id" />
+    </Key>
+    <Property Type="Int32" Name="food_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="short_name" MaxLength="180" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="food_name" MaxLength="180" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="extended_name" MaxLength="180" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="url_name" Nullable="false" MaxLength="180" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="url_hint" MaxLength="180" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="order_hint" Nullable="false" />
+    <Property Type="String" Name="img" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="dom_id" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ingredients" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="calories" />
+    <Property Type="Int32" Name="calories_fat" />
+    <Property Type="Double" Name="protein" />
+    <Property Type="Double" Name="carbs" />
+    <Property Type="Double" Name="carbs_daily" />
+    <Property Type="Double" Name="sugar" />
+    <Property Type="Double" Name="sugar_daily" />
+    <Property Type="Double" Name="cholesterol" />
+    <Property Type="Double" Name="cholesterol_daily" />
+    <Property Type="Double" Name="sodium" />
+    <Property Type="Double" Name="sodium_daily" />
+    <Property Type="Double" Name="calcium" />
+    <Property Type="Double" Name="calcium_daily" />
+    <Property Type="Double" Name="iron" />
+    <Property Type="Double" Name="iron_daily" />
+    <Property Type="Double" Name="fiber" />
+    <Property Type="Double" Name="fiber_daily" />
+    <Property Type="Double" Name="fat" />
+    <Property Type="Double" Name="fat_daily" />
+    <Property Type="Double" Name="trans_fat" />
+    <Property Type="Double" Name="trans_fat_daily" />
+    <Property Type="Double" Name="saturated_fat" />
+    <Property Type="Double" Name="saturated_fat_daily" />
+    <Property Type="Double" Name="vitamin_a" />
+    <Property Type="Double" Name="vitamin_a_daily" />
+    <Property Type="Double" Name="vitamin_c" />
+    <Property Type="Double" Name="vitamin_c_daily" />
+    <Property Type="Double" Name="serving_size" />
+    <Property Type="Double" Name="serving_size_international" />
+    <Property Type="Int32" Name="parent_item" />
+    <Property Type="Boolean" Name="non_menu" Nullable="false" />
+    <Property Type="Boolean" Name="no_image" Nullable="false" />
+    <Property Type="String" Name="notice" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="show_serving" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Ingredient">
+    <Key>
+      <PropertyRef Name="food_ingredient_id" />
+    </Key>
+    <Property Type="Int32" Name="food_ingredient_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int32" Name="food_id" Nullable="false" />
+    <Property Type="Int32" Name="ingredient_id" Nullable="false" />
+    <Property Type="Double" Name="amount" Nullable="false" />
+    <Property Type="Boolean" Name="optional" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Variation">
+    <Key>
+      <PropertyRef Name="variation_id" />
+    </Key>
+    <Property Type="Int32" Name="variation_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int32" Name="parent_food_id" Nullable="false" />
+    <Property Type="Int32" Name="child_food_id" Nullable="false" />
+    <Property Type="Boolean" Name="is_option" Nullable="false" />
+    <Property Type="String" Name="hint" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FoodImage">
+    <Key>
+      <PropertyRef Name="image_id" />
+    </Key>
+    <Property Type="Int32" Name="image_id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="img_url_name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="src" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="width" Nullable="false" />
+    <Property Type="Int32" Name="height" Nullable="false" />
+    <Property Type="String" Name="brief" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="ratio" Nullable="false" />
+    <Property Type="Int32" Name="size" Nullable="false" />
+    <Property Type="Int32" Name="food_id" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryLocation_Location">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="LocationNumber" />
+      <PropertyRef Name="CorporateOwned" />
+    </Key>
+    <Property Type="Decimal" Name="StoryID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="StoreID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+    <Property Type="String" Name="LocationNumber" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MarketableName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="OperatorContact_PersonID" Precision="18" Scale="0" />
+    <Property Type="String" Name="OperatorContact_Name" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_Address1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_City" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_County" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_State" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_Zip" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StreetAddress_ZipExtension" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_Address1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_City" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_County" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_State" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_Zip" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingAddress_ZipExtension" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_Address1" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_City" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_County" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_State" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_Zip" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress_ZipExtension" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AreaCode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PhoneNumber" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EmailAddress" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VoiceMail" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Status" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="OpenDate" Precision="3" />
+    <Property Type="DateTime" Name="ProjectedOpenDate" Precision="3" />
+    <Property Type="String" Name="MarketableURL" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GPS_Latitude" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GPS_Longitude" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ConceptCode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LocationCode" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Playground" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="OffersOnlineOrdering" />
+    <Property Type="Boolean" Name="HasDriveThru" />
+    <Property Type="Boolean" Name="AcceptsCfaCard" />
+    <Property Type="Boolean" Name="HasDiningRoom" />
+    <Property Type="Boolean" Name="ServesBreakfast" />
+    <Property Type="Boolean" Name="OffersWireless" />
+    <Property Type="Boolean" Name="NoUpdate" />
+    <Property Type="String" Name="FaxNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FaxAreaCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="CorporateOwned" Nullable="false" />
+    <Property Type="String" Name="LocationDescription" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Location_Story">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="StoryContent" />
+      <PropertyRef Name="AuthorID" />
+      <PropertyRef Name="ImageID" />
+      <PropertyRef Name="PostingDate" />
+      <PropertyRef Name="StoryVersion" />
+      <PropertyRef Name="EditorID" />
+      <PropertyRef Name="ReviewApproval" />
+      <PropertyRef Name="FinalApproval" />
+      <PropertyRef Name="Comment" />
+      <PropertyRef Name="ReviewUnsure" />
+      <PropertyRef Name="IsUnusableNegative" />
+      <PropertyRef Name="FileName" />
+      <PropertyRef Name="Owner" />
+      <PropertyRef Name="Poster" />
+      <PropertyRef Name="Width" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="MdWidth" />
+      <PropertyRef Name="MdHeight" />
+      <PropertyRef Name="LgWidth" />
+      <PropertyRef Name="LgHeight" />
+      <PropertyRef Name="PromoWidth" />
+      <PropertyRef Name="PromoHeight" />
+    </Key>
+    <Property Type="Decimal" Name="StoryID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="StoreID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StoryContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="AuthorID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ImageID" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="PostingDate" Nullable="false" Precision="3" />
+    <Property Type="Decimal" Name="CurrentEntryID" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="StoryVersion" Nullable="false" />
+    <Property Type="Int32" Name="EditorID" Nullable="false" />
+    <Property Type="Boolean" Name="ReviewApproval" Nullable="false" />
+    <Property Type="Boolean" Name="FinalApproval" Nullable="false" />
+    <Property Type="Boolean" Name="Reviewed" />
+    <Property Type="Decimal" Name="Views" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="CategoryID" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="IsDraft" />
+    <Property Type="Boolean" Name="IsUnusable" />
+    <Property Type="String" Name="Comment" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ReviewUnsure" Nullable="false" />
+    <Property Type="Boolean" Name="IsUnusableNegative" Nullable="false" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Owner" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Poster" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Width" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Height" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="MdHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="LgHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoWidth" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="PromoHeight" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="StoryRating" Precision="38" Scale="6" />
+    <Property Type="Int32" Name="NumberOfRatings" />
+    <Property Type="String" Name="TagDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Quality" />
+    <Property Type="Int32" Name="IsFavorite" />
+    <Property Type="Guid" Name="NewID" />
+  </EntityType>
+</Schema>

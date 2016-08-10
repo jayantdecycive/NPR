@@ -1,0 +1,354 @@
+﻿@using System.Collections.Specialized
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@model cfaresv2.Models.ContactUsViewModel
+@{
+    ViewBag.Title = "Contact Us";
+    if (AppContext.Current.Configuration.ApplicationId == Application.NPR)
+    {
+        Layout = "/Areas/npr/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = AppContext.Current.GetLayoutLocation();
+    }
+}
+
+@section Scripts{
+    <script src="http://www.chick-fil-a.com/Scripts/API/CFA.0.3.js"></script>
+    <script>
+        var ContactPage = window.ContactPage || {};
+        
+        var labelKey = "Name";
+        var to = null;
+        var delay = 500;
+        var locationCache = null;
+        var otherLocationCache = null;
+        ContactPage.ResStoreSource = function (q, success) {            
+            if (to != null)
+                clearTimeout(to);
+            to = setTimeout(function () {
+                $cfa.Location("Search", q, function (result) {
+                    if (!result.HasLocations) {                        
+                        return;
+                    }
+                    otherLocationCache = null;
+                    locationCache = result.Locations;
+                    var names = (_.pluck(result.Locations, "Name"));
+                    success(names);
+                });
+
+            },delay);
+        };
+
+        ContactPage.ResStoreUpdater = function(item) {
+            var pk = 0;
+            $(this.$element).val(item);
+            var index = this.$menu.find(':contains("' + item + '")').index();
+            if (!locationCache||!locationCache[index])
+                return;
+            var item = locationCache[index];
+            var address = item.LocationContact.StreetAddress;
+            $("input[name='LocationNumber']").trigger("pk", item.LocationNumber);
+            $("input[name='LocationNumber']").val(item.LocationNumber);
+            
+            setTimeout(function () {
+                $("input[name='Location.Name']").val(item.Name);
+            }, 1);
+            $("input[name='Location.StreetAddress.Line1']").val(address.Address1);
+            $("input[name='Location.StreetAddress.City']").val(address.City);
+            $("select[name='Location.StreetAddress.State']").val(address.State);
+            $("input[name='Location.StreetAddress.ZipString']").val(address.ZipCode.Zip);
+
+        };
+
+        var translateCaresName = function (val) {
+
+            var key = { Comments: "message", Title: "userTitle", "User.FirstName": "userFirstName", "User.LastName": "userLastName", "User.Email": "userEmail", "User.Address.Line1": "userAddress1", "User.Address.Line2": "userAddress2", "User.Address.City": "userCity", "User.Address.State": "userState", "User.Address.ZipString": "userZip", "User.HomePhoneString": "userPhone", "AgeRange": "userAge", "User.EmailInsiders": "futurePromos", "LocationNumber": "location", "DiningFrequency": "howOften"};
+            
+
+            return key[val];
+        }
+
+        $("#ZipSearch").hide();
+        $(function () {
+            $("#Search").typeahead({
+                source: ContactPage.ResStoreSource,
+                updater: ContactPage.ResStoreUpdater,
+                minLength: 3,
+                matcher: function (item) {
+                    return true;
+                }
+
+            });
+            $("#Find").click(function () {
+                $("#ZipSearch").slideDown("FAST");
+            });
+            var busy = false;
+            $("#submit").click(function () {
+                window.setTimeout(function () { 
+                    var errors = $("#cares_form").validate().errorList;
+                    errors = _.filter(errors, function (error) {
+                        var id = $(error.element).attr("id");
+                        return id.search(/ZipString$/gi)==-1
+                    });
+                    
+                console.log(errors);
+                if (errors && errors.length)
+                    return;
+                if (!$("#AgeCheck:checked").length) {
+                    alert("You must be 13 years or older to submit this request");
+                    return;
+                }
+                
+                if ($("#EmailConfirm").val() != $("#User_Email").val()) {
+                    if (!$("#User_Email").next(".field-validation-error").length) {
+                        $("#User_Email").next(".field-validation-valid").attr("class", "field-validation-error");
+                    }
+                    $("#User_Email").next(".field-validation-error").append('<span for="User_Email" generated="true">Please confirm your email address.</span>');
+                    return;
+                } else {
+                    $("#User_Email").next(".field-validation-error").empty();
+                    $("#User_Email").next(".field-validation-error").attr("class", "field-validation-valid");
+                }
+                if (busy)
+                    return;
+                var busy = true;
+                var data = $("#cares_form").serializeArray();
+                var result = {};
+                _.each(data, function (item, i) {
+                    var newName = translateCaresName(item.name);
+                    if (!newName)
+                        return;
+                    result[newName] = item.value;
+                }, 1);
+                result["browserInfo"] = navigator.userAgent;
+                result["siteid"] = "reservation_javascript";
+                if(!result.location)
+                    result["location"]=$("Location.Name").val();
+
+                    $cfa.Connect("Cares", result, function () {
+                        window.location = "/?message=" + encodeURIComponent("Thank you. We have received your contact form request.");
+                    });
+
+                });
+
+                
+            });
+        });
+    </script>
+}
+
+<section class="row-fluid" id="cares_form_wrapper">
+
+    <div class="span11 offset1">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { action = Request.Url.TranslatePort(Request), id = "cares_form", @class = "form-horizontal form-inline" }))
+        {
+	        
+            <fieldset>
+                <p>Please fill out the form below so we can best answer your question about the Chick-fil-A&reg; &quot;Reserve Your FREE Breakfast Entr&eacute;e&quot; Giveaway website.</p>
+                <p><strong>Completing this form will not create a reservation.</strong></p>
+                <ul class="unstyled">
+                    <li>
+                        * Indicates a required field
+                        <br />
+                        @Html.ValidationSummary(true)
+                    </li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.HiddenFor(x => x.UserId)
+                    }
+                    
+                        <li>
+                            @Html.LabelFor(x => x.Title, "Title:")
+
+                            @Html.DropDownListFor(x => x.Title, new SelectList(new[]
+                                    {
+                                        "Mr",
+                                        "Mrs",
+                                        "Ms",
+                                        "Dr",
+                                    }), "Select a Title")
+                            @Html.ValidationMessageFor(x => x.Title)
+                        </li>
+
+                        <li>
+                            <span class="required">*</span>
+                            @Html.LabelFor(x => x.User.FirstName, "First Name:")
+                            @Html.EditorFor(x => x.User.FirstName)
+                            @Html.ValidationMessageFor(x => x.User.FirstName)
+                        </li>
+
+                        <li>
+                            <span class="required">*</span>
+                            @Html.LabelFor(x => x.User.LastName, "Last Name:")
+                            @Html.EditorFor(x => x.User.LastName)
+                            @Html.ValidationMessageFor(x => x.User.LastName)
+                        </li>
+
+                        <li>
+                            <span class="required">*</span>
+                            @Html.LabelFor(x => x.User.Email, "Email:")
+                            @Html.EditorFor(x => x.User.Email)
+                            @Html.ValidationMessageFor(x => x.User.Email)
+                        </li>
+
+                        <li>
+                            <span class="required">*</span>
+                            @Html.Label("EmailConfirm", "Re-enter Email:")
+                            @Html.TextBox("EmailConfirm",Model.User!=null?Model.User.Email:"")
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(x => x.User.HomePhoneString, "Phone:")
+                            @Html.EditorFor(x => x.User.HomePhoneString)
+                            @Html.ValidationMessageFor(x => x.User.HomePhoneString)
+                        </li>
+                         
+                        <li>
+                            @Html.LabelFor(x => x.User.Address.Line1, "Address 1:")
+                            @Html.EditorFor(x => x.User.Address.Line1)
+                            @Html.ValidationMessageFor(x => x.User.Address.Line1)
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(x => x.User.Address.Line2, "Address 2:")
+                            @Html.EditorFor(x => x.User.Address.Line2)
+                            @Html.ValidationMessageFor(x => x.User.Address.Line2)
+                        </li>
+                         
+                        <li class="city-state-zip">
+                            @Html.LabelFor(x => x.User.Address.City, "City:")
+                            @Html.TextBoxFor(x => x.User.Address.City, new { @class="city"})
+                            @Html.EditorFor(x => x.User.Address.State)
+                            @Html.TextBoxFor(x => x.User.Address.ZipString, new { placeholder="Zip",@class="city"})
+                            @Html.ValidationMessageFor(x => x.User.Address.City)
+                            
+                        </li>
+                         
+                        
+                         
+                    
+
+                    <li>
+                        @Html.LabelFor(x => x.AgeRange, "Age")
+                        @{
+                    var ages = new List<string>()
+                                        {
+                                            "Under 13"
+                                        };
+                    var chunk = 10;
+                    var span = Enumerable.Range(14, 94);
+                    for (var i = span.First(); i < span.Last(); i += chunk)
+                    {
+                        ages.Add(string.Format("{0} - {1}", i, i + chunk - 1));
+                    }
+                        }
+                        @Html.DropDownListFor(x => x.AgeRange, new SelectList(ages))
+                        @Html.ValidationMessageFor(x => x.AgeRange)
+                    </li>
+
+
+                </ul>
+
+            </fieldset>
+         
+            <fieldset>
+                <h2 class="h1">Restaurant Information</h2>
+
+                <a href="javascript:void(0);" id="Find">Find</a>
+                <ul class="unstyled">
+
+                    <li id="ZipSearch">                        
+                        @Html.Label("Search","Search by zip:")
+                        @Html.TextBox("Search","",new {autocomplete="off"})                        
+                    </li>
+                    
+                    <li>
+                        @Html.HiddenFor(x=>x.LocationNumber)
+                        @Html.LabelFor(x => x.Location.Name, "Restaurant Name:")
+                        @Html.TextBoxFor(x => x.Location.Name)
+                        @Html.ValidationMessageFor(x => x.Location.Name)
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(x => x.Location.StreetAddress.Line1, "Address:")
+                        @Html.EditorFor(x => x.Location.StreetAddress.Line1)
+                        @Html.ValidationMessageFor(x => x.Location.StreetAddress.Line1)
+                    </li>
+
+                  
+                    <li class="city-state-zip">
+                        @Html.LabelFor(x => x.Location.StreetAddress.City, "City:")
+                            @Html.TextBoxFor(x => x.Location.StreetAddress.City, new { @class="city"})
+                            @Html.EditorFor(x => x.Location.StreetAddress.State)
+                            @Html.TextBoxFor(x => x.Location.StreetAddress.ZipString, new { placeholder="Zip",@class="zip"})
+                            @Html.ValidationMessageFor(x => x.Location.StreetAddress.City)
+                            
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(x => x.PrefeddedContact, "Preferred Contact:")
+
+                        @Html.DropDownListFor(x => x.PrefeddedContact, new SelectList(new[]
+                                    {
+                                        "Phone",
+                                        "Email",
+                                        "Mail",
+                                        
+                                    }))
+                        @Html.ValidationMessageFor(x => x.PrefeddedContact)
+                    </li>
+
+                    <li>
+
+                        <fieldset>
+                            @Html.LabelFor(x => x.User.EmailInsiders,"I would like to receive information on future Chick-fil-A promotions:")
+                            
+                            @Html.EditorFor(x => x.User.EmailInsiders)
+                            @Html.ValidationMessageFor(x => x.User.EmailInsiders)
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(x => x.DiningFrequency, "How often per month do you eat with us?")
+
+                        @Html.DropDownListFor(x => x.DiningFrequency, new SelectList(new[]
+                                    {
+                                        "First Time",
+                                        "Less than Once a Month",
+                                        "Once a Month",
+                                        "2-5 Times a Month",
+                                        "More than 5 times a Month",
+                                        
+                                    }))
+                        @Html.ValidationMessageFor(x => x.DiningFrequency)
+                    </li>
+
+                    <li>
+
+                        <fieldset>
+                            <span class="required">*</span>
+                            
+                            @Html.LabelFor(x=>x.AgeCheck,"I am 13 years of age or older:")
+                            @Html.EditorFor(x => x.AgeCheck)
+                            @Html.ValidationMessageFor(x => x.AgeCheck)
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(x => x.Comments, "Comments:")
+
+                        @Html.TextAreaFor(x => x.Comments)
+                        @Html.ValidationMessageFor(x => x.Comments)
+                    </li>
+
+                </ul>
+
+            </fieldset>
+            <button type="button" id="submit" class="btn medium default reserve btn-primary">Save &amp; Continue <i class="icon-arrow-right"></i></button>
+	        
+        }
+    </div>
+</section>

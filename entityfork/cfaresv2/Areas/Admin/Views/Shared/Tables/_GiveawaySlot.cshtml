@@ -1,0 +1,19 @@
+﻿@model string
+
+
+<div class='admin-table'>
+    <table id="slots_giveaway" class='data-table' data-sort="Start" data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotUrl' data-column-parent='SlotId' data-searchable='false'></th>                        
+                <th data-column-name='SlotIdL' data-id-column='true'  data-searchable='false'>Slot Id</th>
+                <th data-column-name='Start' data-on-display='DataFormat.date' data-searchable='false' >Start</th>			    
+			    <th data-column-name='End' data-on-display='DataFormat.date' data-searchable='false'>End</th>
+                <th data-column-name='OccurrenceId' data-searchable='false'>Occurrence</th>
+                <th data-column-name='TotalTickets'  data-searchable='false'>Total Reservations</th>
+			    <th data-column-name='CapacityScheduledI'  data-searchable='false'>Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+      </div>

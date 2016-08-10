@@ -1,0 +1,25 @@
+﻿@{
+    string brief = string.Empty;
+    string title = string.Empty;
+    if(ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Title"]!=null){
+        title = ViewContext.ParentActionViewContext.ViewData["Title"].ToString();
+    }else if (ViewContext != null && ViewContext.ViewData["Title"] != null){
+        title = ViewContext.ViewData["Title"].ToString();
+    }
+
+    if (ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Brief"] != null){
+        brief = ViewContext.ParentActionViewContext.ViewData["Brief"].ToString();
+    }else if (ViewContext != null && ViewContext.ViewData["Brief"] != null){
+        brief = ViewContext.ViewData["Brief"].ToString();
+    }
+}
+<div class="wizard-summary inline-block">
+    @if( ! string.IsNullOrWhiteSpace( brief ) ) {
+		<h3>@brief</h3>
+	}
+
+	@if( ! string.IsNullOrWhiteSpace( title ) ) {
+		<h2>@title</h2>
+	}
+</div>
+

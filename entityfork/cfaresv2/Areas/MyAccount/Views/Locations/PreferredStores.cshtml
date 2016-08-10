@@ -1,0 +1,77 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@model IList<cfares.domain.user.LocationSubscription>
+@{
+    ViewBag.Title = "My Preferred Restaurants";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#btnAddRestaurant').click(function() {
+			$('#btnAddRestaurant').fadeOut(400);
+			$('#searchPanel').delay(400).fadeIn(400);
+		});
+	});
+</script>
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>My Preferred Restaurants</h1>
+		<p class="text-center">Below are the Chick-fil-A restaurants you have selected as your preferred locations</p>
+	</div>
+</div>
+<div class="row-fluid">
+	
+		<ul id="prefRestaurants" class="span8 offset2 unstyled">
+            @foreach(var subscription in Model){
+			<li class="row-fluid">
+				
+				<div class="span6">
+					<address>
+						<strong>@subscription.Store.Name</strong><br />
+						@subscription.Store.StreetAddress.Line1<br />
+						@subscription.Store.StreetAddress.City, @subscription.Store.StreetAddress.State @subscription.Store.StreetAddress.ZipString
+						<a href="#" class="view-map">view map</a><br />
+                        <a href="/Account/Locations/StoreEvents/@Html.Raw(subscription.StoreId)">view upcoming events at this restaurant</a>
+					</address>
+				</div>
+                <div  class="span4 offset2">
+					<div class="remove-button text-right">
+                        <form method="post" class="row-fluid" action="/Account/Locations/Remove">
+                            <input type="hidden" name="StoreId" value="@subscription.StoreId" />
+						    <button type="hidden" class="span12 btn btn-danger btn-large pull-right">Remove</button>
+                        </form>
+					</div>
+					
+				</div>
+			</li>
+            }
+		</ul>
+		<!--<button type="button" id="btnAddRestaurant" class="btn-large btn btn-primary centered">Add a Restaurant</button>-->
+	
+</div>
+<div class="row-fluid" id="searchPanel" style="display:none;">	
+	<div class="span8 offset2 searchBoxForm">
+		<p class="text-center"><strong>Find a participating Chick-fil-A<sup>&reg;</sup> restaurant near you</strong></p>
+		<div class="searchRow">
+			<form class="form-inline" action="http://mothersondateknight.res.local.chick-fil-a.com/?SelectedLocation=30318&amp;SelectedRadius=25" method="get">
+				<label>Search in:</label>
+				<input class="span3" id="SelectedLocation" name="SelectedLocation" type="text" value="30318" />
+				<select class="span3" data-val="true" data-val-number="The field SelectedRadius must be a number." data-val-required="The SelectedRadius field is required." id="SelectedRadius" name="SelectedRadius">
+					<option value="10">10 miles</option>
+					<option selected="selected" value="25">25 miles</option>
+					<option value="50">50 miles</option>
+					<option value="100">100 miles</option>
+					<option value="200">200 miles</option>
+					<option value="500">500 miles</option>
+				</select>
+			
+				<button class="btn-small green" value="Go">Go</button>
+			</form>
+		</div>
+		<div class="subtext text-center">
+			(enter city, state or zip code)
+		</div>
+	</div>
+</div>

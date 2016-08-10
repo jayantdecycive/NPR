@@ -1,0 +1,18 @@
+﻿@{
+    cfacore.domain.user.User filterUser = new cfacore.domain.user.User();
+    filterUser.Name = new cfacore.shared.domain.user.Name("Filter by Guide");
+    filterUser.Id("0");
+}
+            <div class='admin-table inline-block'>
+                <select class="load-on-click filter" data-source="/api/ReservationType" id="filter-tour-type" data-label="Name" data-value="ReservationTypeId">
+                    <option  value="">Type</option>                    
+                </select>
+            </div>
+
+             <div class='admin-table inline-block'>
+                <label class="filter filter-past" id="filter-past">
+                    Show Past Events
+                    <input type="checkbox" name='filter' value='true' />
+                </label>
+            </div>
+            

@@ -1,0 +1,10 @@
+﻿@model int?
+
+@Html.Partial("EditorTemplates/Picker/_Picker",Model,new ViewDataDictionary(ViewData)
+    {
+        {"Table","_EventSelection"},
+        {"DialogTitle","Please Select an Event"},
+        {"DomainModel","ResEvent"},
+        {"AdminCreate","/Admin/Event/Create?snip=true"},
+        {"AdminEdit",string.Format("/Admin/Event/Edit/{0}?snip=true",Model)},
+    })

@@ -1,0 +1,219 @@
+﻿@using cfares.domain._event
+@model npr.domain._event.ticket.NPRTicket
+@{int pk = Model.TicketId;}
+@{
+    bool isNew = pk == 0;
+
+    if (isNew && Model.Status == TicketStatus.Partial)
+    {
+        Model.Status = TicketStatus.Reserved;
+    }
+
+    int max = 20;
+}
+<style>
+    .model .editor-field select {
+        height: 25px;
+        line-height: 25px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+    }
+</style>
+<script src="/Areas/npr/Scripts/init.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#GroupSize").change(function () {
+            debugger;
+            UpdateGuestListCount();            
+        });
+    });
+</script>
+
+<fieldset data-pk='@pk' class='slot-@pk'>
+
+    @Html.HiddenFor(model => model.TicketId)
+
+    <div class='legend inline-block'></div>
+
+    @if (!isNew)
+    {
+        <div class='model-field field-ConfirmationNumber'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.ConfirmationNumber)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.DisplayFor(model => model.ConfirmationNumber)
+                @Html.ValidationMessageFor(model => model.ConfirmationNumber)
+            </div>
+        </div>
+	  
+        <div class='model-field field-SlotId'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SlotId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SlotId)
+                @Html.ValidationMessageFor(model => model.SlotId)
+            </div>
+        </div>
+    }
+
+    <div class='model-field field-OwnerId'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.OwnerId)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.OwnerId)
+            @Html.ValidationMessageFor(model => model.OwnerId)
+        </div>
+    </div>
+
+    <div class='model-field field-ContactPreference'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.ContactPreference)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.ContactPreference)
+            @Html.ValidationMessageFor(model => model.ContactPreference)
+        </div>
+    </div>
+
+
+    <div class='model-field field-HomePhone invisible'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.Owner.HomePhoneString)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.Owner.HomePhoneString)
+            @Html.ValidationMessageFor(model => model.Owner.HomePhoneString)
+        </div>
+    </div>
+
+    <div class='model-field field-GroupSize'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(m => m.GroupSize, "Group Size:")
+        </div>
+        <div class="editor-field inline-block">
+           @* @Html.TextBoxFor(model => model.GroupSize, new { type="number", min="1" }) *@
+            @Html.DropDownListFor(m => m.GroupSize, new SelectList(Enumerable.Range(1, max)))
+            @if (ViewBag.SizeMessage != null)
+            {
+                <span class="validation">@ViewBag.SizeMessage</span>
+            }
+        </div>
+    </div>
+    <div class='model-field field-GuestListString'>
+        <div class="editor-label inline-block valign-top">
+            @Html.LabelFor(model => model.GuestListString, "Guest List")
+        </div>
+        <div class="editor-field inline-block" style="width: 50%;">
+            <div class="guest-list">
+                @for (var i = 1; i <= Model.GroupSize; i++)
+                {
+                    var lst = Model.GuestList.ToList();
+                    string firstName = lst[i-1].First;
+                    string lastName = lst[i-1].Last;
+                    
+                    <div class="name" id="name_@(i)">
+                        <span class="asterisk">*</span> <span class="guest-label">Guest @(i): </span>
+                        <input type="text" value="@firstName" class="first required" name="first@(i)"/>
+                        <input type="text" value="@lastName" class="last required" name="last@(i)"/>
+                    </div>    
+                }
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.GuestListString, new { id = "guestlist-field" })
+
+
+
+
+
+    @*        <div class='model-field field-GroupSize'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.GroupSize)
+            </div>
+            <div class="editor-field inline-block">               
+				@Html.TextBoxFor(model => model.GroupSize, new { type="number", min="1" }) 
+                @Html.ValidationMessageFor(model => model.GroupSize)
+            </div>
+        </div>
+		
+        <div class='model-field field-GuestListString'>
+            <div class="editor-label inline-block valign-top">
+                @Html.LabelFor(model => model.GuestListString, "Guest List")
+				<p style="padding-top: 4px; font-size: 0.95em;">(names separated by comma)</p>
+            </div>
+            <div class="editor-field inline-block">                
+                @Html.EditorFor(model => model.GuestListString)
+                @Html.ValidationMessageFor(model => model.GuestListString)
+            </div>
+        </div>*@
+
+
+
+
+    @*	
+        <div class='model-field field-Notes'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Notes)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>*@
+
+    @*        <div class='model-field field-DatesString'>
+            <div class="editor-label inline-block valign-top">
+                @Html.LabelFor(model => model.DatesString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.DatesString)
+                @Html.ValidationMessageFor(model => model.DatesString)
+            </div>
+        </div>*@
+
+    <div class='model-field field-Status'>
+        <div class="editor-label inline-block">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field inline-block">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+    </div>
+
+    @if (!isNew)
+    {
+	  
+        <div class='model-field field-CardNumber'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CardNumber)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.CardNumber)
+                @Html.ValidationMessageFor(model => model.CardNumber)
+            </div>
+        </div>
+	  
+        <div class='model-field field-CreationSrc'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CreationSrc)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.CreationSrc)
+                @Html.ValidationMessageFor(model => model.CreationSrc)
+            </div>
+        </div>
+    }
+    else
+    {
+        <input id="CreationSrc" name="CreationSrc" type="hidden" value="Admin">
+        @Html.HiddenFor(model => model.SlotId)
+    }
+
+</fieldset>

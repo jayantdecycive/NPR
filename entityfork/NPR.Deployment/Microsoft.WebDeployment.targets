@@ -1,0 +1,1971 @@
+﻿<!--
+***********************************************************************************************
+Microsoft.WebDeploy.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your web deploy projects from the command-line or the IDE.
+
+This file defines the steps in the standard build process for web deploy projects.
+
+Copyright (C) 2005 Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.ReplaceConfigSections" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.CreateVirtualDirectory" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.AspNetMerge" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.GrantServerAccess" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.ToggleDebugCompilation" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.GenerateAssemblyInfo" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+  <UsingTask TaskName="Microsoft.WebDeployment.Tasks.AspNetRegIisInstallScriptMaps" AssemblyFile="../~Assemblies/Microsoft.WebDeployment.Tasks.dll"/>
+
+  <UsingTask TaskName="FilterByItems" AssemblyFile="../~Assemblies/Microsoft.Web.Publishing.Tasks.dll" Condition="Exists('../~Assemblies/Microsoft.Web.Publishing.Tasks.dll')"/>
+  <UsingTask TaskName="CollectFilesinFolder" AssemblyFile="../~Assemblies/Microsoft.Web.Publishing.Tasks.dll" Condition="Exists('../~Assemblies/Microsoft.Web.Publishing.Tasks.dll')"/>
+  <UsingTask TaskName="CopyPipelineFiles" AssemblyFile="../~Assemblies/Microsoft.Web.Publishing.Tasks.dll" Condition="Exists('../~Assemblies/Microsoft.Web.Publishing.Tasks.dll')"/>
+  <UsingTask TaskName="GetProjectProperties" AssemblyFile="../~Assemblies/Microsoft.Web.Publishing.Tasks.dll" Condition="Exists('../~Assemblies/Microsoft.Web.Publishing.Tasks.dll')"/>
+
+  <UsingTask TaskName="Csc" AssemblyName="Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+  <UsingTask TaskName="AssignProjectConfiguration"      AssemblyName="Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+  <UsingTask TaskName="ResolveNonMSBuildProjectOutput"  AssemblyName="Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+
+
+  <!--***************************************************************-->
+  <!-- Setting up the property like MS.Common.Targets files has it.  -->
+  <!--This is to handle some project doesn't include the MS.Common.Targets file-->
+  <!--***************************************************************-->
+  <PropertyGroup>
+    <!--Version the target file.  This is in case that later version might take advantage of this -->
+    <WebDeployProjectTargetsVersion>10.0</WebDeployProjectTargetsVersion>
+    <OutputPath Condition="'$(OutputPath)' != '' and !HasTrailingSlash('$(OutputPath)')">$(OutputPath)\</OutputPath>
+    <OutDir Condition=" '$(OutDir)' == '' ">$(OutputPath)</OutDir>
+    <!-- Example, bin\Debug\ -->
+    <!-- Ensure OutDir has a trailing slash, so it can be concatenated -->
+    <OutDir Condition="'$(OutDir)' != '' and !HasTrailingSlash('$(OutDir)')">$(OutDir)\</OutDir>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)'==''">v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(BaseIntermediateOutputPath)'=='' ">
+    <BaseIntermediateOutputPath >obj\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition="!HasTrailingSlash('$(BaseIntermediateOutputPath)')">$(BaseIntermediateOutputPath)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IntermediateOutputPath)' == '' ">
+    <IntermediateOutputPath Condition=" '$(PlatformName)' == 'AnyCPU' Or '$(PlatformName)' == ''">$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath Condition=" '$(IntermediateOutputPath)' == '' ">$(BaseIntermediateOutputPath)$(PlatformName)\$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath Condition="!HasTrailingSlash('$(IntermediateOutputPath)')">$(IntermediateOutputPath)\</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworkIdentifier Condition="'$(TargetFrameworkIdentifier)' == ''">.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+
+  
+  
+
+  <!--Port the following from the MS.Common.Target because WPP needs it when Packag edoesn't depend on build.-->
+  <PropertyGroup>
+    <BuildingProject>false</BuildingProject>
+  </PropertyGroup>
+  <Target
+      Name="BuildOnlySettings">
+    <PropertyGroup>
+      <BuildingProject>true</BuildingProject>
+    </PropertyGroup>
+  </Target>
+  
+  
+  <Target
+      Name="PrepareResourceNames">
+  </Target>
+  <Target
+        Name="ComputeIntermediateSatelliteAssemblies">
+  </Target>
+  <Target
+        Name="GetCopyToOutputDirectoryItems">
+  </Target>
+  <Target
+        Name="_SGenCheckForOutputs">
+  </Target>
+
+  <!--
+    ============================================================
+  Initialial setup
+    ============================================================
+  -->
+    <PropertyGroup>
+      <!-- Make sure OutputPath has a trailing slash on it -->
+      <WDOutDir Condition="'$(OutDir)' != '$(OutputPath)'">$(OutDir)</WDOutDir>
+      <CopyBeforeBuildTargetPath  Condition="'$(CopyBeforeBuildTargetPath)' == ''">$(IntermediateOutputPath)Source</CopyBeforeBuildTargetPath>
+      <_Force>true</_Force>
+      <_ExcludeWAPBaseIntermediateOutputPath Condition="'$(_ExcludeWAPBaseIntermediateOutputPath)' == ''
+                                             And !$([System.IO.Path]::IsPathRooted($(_ExcludeWAPBaseIntermediateOutputPath)))">$(BaseIntermediateOutputPath)</_ExcludeWAPBaseIntermediateOutputPath>
+      <!--<_ExcludeWAPObjFolderFromBuild Condition="'$(_ExcludeWAPObjFolderFromBuild)' == ''">True</_ExcludeWAPObjFolderFromBuild>-->
+      <WDP_InstallScriptMapsRecursive Condition="'$(WDP_InstallScriptMapsRecursive)'==''">False</WDP_InstallScriptMapsRecursive>
+      <WDP_AspNetRegIisInstallScriptMaps Condition="'$(WDP_AspNetRegIisInstallScriptMaps)'==''">False</WDP_AspNetRegIisInstallScriptMaps>
+      <_WDP_WPPExists>False</_WDP_WPPExists>
+      <_WDP_WPPExists Condition="Exists('$(MSBuildThisFileDirectory)\..\..\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets')">True</_WDP_WPPExists>
+
+      <!--Default _WDPSourceWebPhysicalPath to SourceWebPhysicalPath
+      Note that this will change for WAP, because the WAP output in the team build is other in $(OutDir)\_PublishedWebsites\$(WAPProjectFileName)-->
+      <_UserDefineWDPSourceWebPhysicalPath Condition="'$(_WDPSourceWebPhysicalPath)' == ''">False</_UserDefineWDPSourceWebPhysicalPath>
+      <_WDPSourceWebPhysicalPath Condition="'$(_UserDefineWDPSourceWebPhysicalPath)' == 'False'">$(SourceWebPhysicalPath)</_WDPSourceWebPhysicalPath>
+      <TempBuildDir Condition="'$(TempBuildDir)' == ''" >$(IntermediateOutputPath)TempBuildDir</TempBuildDir>
+    </PropertyGroup>
+
+    
+  <!--MSBuild4 new syntax to setup $(UseIis) and $(IisUrl) before the target import-->
+  <PropertyGroup Condition="'$(SourceWebProject)' != ''">
+    <_SourceWebProjectLastGUIDIndex>$(SourceWebProject.LastIndexof('|'))</_SourceWebProjectLastGUIDIndex>
+    <_SourceWebProjectIndex>$([MSBuild]::Add(1, $(_SourceWebProjectLastGUIDIndex)))</_SourceWebProjectIndex>
+    <_SourceWebProjectPath>$(SourceWebProject.SubString($(_SourceWebProjectIndex)))</_SourceWebProjectPath>
+    <_SourceWebProjectGUID>$(SourceWebProject.SubString(0,$(_SourceWebProjectLastGUIDIndex)))</_SourceWebProjectGUID>
+    <_SourceWebProjectPathBeginWith Condition="'$(_SourceWebProjectPath)' != '' And ($(_SourceWebProjectPath.Length) &gt;= 4)">$(_SourceWebProjectPath.SubString(0,4))</_SourceWebProjectPathBeginWith>
+    <_SourceWebProjectPathFileName>$([System.IO.Path]::GetFileName($(_SourceWebProjectPath)))</_SourceWebProjectPathFileName>
+    <_SourceWebProjectPathExtension>$([System.IO.Path]::GetExtension($(_SourceWebProjectPath)))</_SourceWebProjectPathExtension>
+    <_SourceWebProjectName>$([System.IO.Path]::GetFileNameWithoutExtension($(_SourceWebProjectPath)))</_SourceWebProjectName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SourceWebMetabasePath)' != '' And '$(_SourceWebProjectPathBeginWith)' == 'http'">
+    <!--Website http project-->
+    <UseIis Condition="'$(UseIis)'==''">True</UseIis>
+    <IisUrl Condition="'$(IisUrl)'==''">$(_SourceWebProjectPath)</IisUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(SourceWebMetabasePath)' == '' And ('$(_SourceWebProjectPathExtension)'=='.vbproj' Or '$(_SourceWebProjectPathExtension)'=='.csproj')">
+    <!--WAP project-->
+    <_WDPOnWAPProject>True</_WDPOnWAPProject>
+    <WebPublishPipelineWAPProjectSettings>$([System.IO.Path]::Combine($(SourceWebPhysicalPath),$(_SourceWebProjectPathFileName)))</WebPublishPipelineWAPProjectSettings>
+  </PropertyGroup>
+
+  <!-- We should have the code in the IDE to automatically add the P2P reference for WAP -->
+  <!--
+  <ItemGroup Condition="'$(_WDPOnWAPProject)' == 'True'">
+    <ProjectReference Include="$(WebPublishPipelineWAPProjectSettings)">
+      <Project>$(_SourceWebProjectGUID)</Project>
+      <Name>$(_SourceWebProjectPathFileName)</Name>
+    </ProjectReference>
+  </ItemGroup>
+  -->
+
+  <!--Overwrite _WDPSourceWebPhysicalPath if it is team build for WAP -->
+  <PropertyGroup Condition="'$(_WDPOnWAPProject)' == 'True' And '$(OutDir)' != '$(OutputPath)' And '$(_UserDefineWDPSourceWebPhysicalPath)' == 'False'">
+    <_WDPSourceWebPhysicalPath>$(OutDir)_PublishedWebsites\$(_SourceWebProjectName)</_WDPSourceWebPhysicalPath>
+  </PropertyGroup>
+
+
+  <!-- Create the output path as an item so that we can use %(FullPath) on it. -->
+  <!-- _PublishedWebsites folder enables team build scenarios when OutDir is overiden -->
+  <ItemGroup>
+    <_WDOutputPathItem Condition="'$(WDOutDir)' != '' and !HasTrailingSlash('$(WDOutDir)')" Include="$(WDOutDir)\_PublishedWebsites\$(MSBuildProjectName)\"/>
+    <_WDOutputPathItem Condition="'$(WDOutDir)' != '' and HasTrailingSlash('$(WDOutDir)')" Include="$(WDOutDir)_PublishedWebsites\$(MSBuildProjectName)\"/>
+    <_WDOutputPathItem Condition="'$(WDOutDir)' == ''" Include="$(OutputPath)"/>
+    <_WDPSourceWebPathItem Include="$(_WDPSourceWebPhysicalPath)"/>
+    <_KeyFile Include="$(KeyFile)"/>
+  </ItemGroup>
+
+  <!-- AvailablePlatforms is the list of platform targets available. -->
+  <PropertyGroup>
+    <AvailablePlatforms>Any CPU</AvailablePlatforms>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <WDTargetDir Condition="'$(WDTargetDir)' == ''">@(_WDOutputPathItem->'%(FullPath)')</WDTargetDir>
+    <_FullSourceWebDir>@(_WDPSourceWebPathItem->'%(FullPath)')</_FullSourceWebDir>
+    <_FullKeyFile Condition="'$(KeyFile)' != ''">@(_KeyFile->'%(FullPath)')</_FullKeyFile>
+  </PropertyGroup>
+
+
+
+
+  <!--
+    The set of properties passed to the aspnet_compiler when merge is not enabled
+    -->
+    <PropertyGroup>
+        <_AspNetCompilerFixedNames  Condition="'$(UseMerge)' != 'true'">$(UseFixedNames)</_AspNetCompilerFixedNames>
+        <_AspNetCompilerKeyContainer Condition="'$(UseMerge)' != 'true'">$(KeyContainer)</_AspNetCompilerKeyContainer>
+        <_AspNetCompilerMetabasePath Condition="'$(UseMetabasePath)' == 'true'">$(SourceWebMetabasePath)</_AspNetCompilerMetabasePath>
+        <_AspNetCompilerSourceWebPath Condition="'$(UseMetabasePath)' != 'true'">$(_FullSourceWebDir)</_AspNetCompilerSourceWebPath>
+        <_AspNetCompilerVirtualPath Condition="'$(UseMetabasePath)' != 'true'">$(SourceWebVirtualPath)</_AspNetCompilerVirtualPath>
+    </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildingProject>true</BuildingProject>
+  </PropertyGroup>
+
+
+
+
+  <PropertyGroup>
+    <TargetFrameworkMoniker Condition="'$(TargetFrameworkMoniker)' == '' and '$(TargetFrameworkProfile)' != ''">$(TargetFrameworkIdentifier),Version=$(TargetFrameworkVersion),Profile=$(TargetFrameworkProfile)</TargetFrameworkMoniker>
+    <TargetFrameworkMoniker Condition="'$(TargetFrameworkMoniker)' == ''">$(TargetFrameworkIdentifier),Version=$(TargetFrameworkVersion)</TargetFrameworkMoniker>
+
+    <!-- The FrameworkPathOverride is required for the inproc visual basic compiler to initialize when targeting target frameworks less than 4.0. If .net 2.0 is not installed then the property value above will not provide the location
+             of mscorlib. This is also true if the build author overrides this property to some other directory which does not contain mscorlib.dll. In the case we cannot find mscorlib.dll at the correct location
+             we need to find a directory which does contain mscorlib to allow the inproc compiler to initialize and give us the chance to show certain dialogs in the IDE (which only happen after initialization).-->
+    <FrameworkPathOverride Condition="'$(FrameworkPathOverride)' == ''">$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPathToStandardLibraries($(TargetFrameworkIdentifier), $(TargetFrameworkVersion), $(TargetFrameworkProfile)))</FrameworkPathOverride>
+    <FrameworkPathOverride Condition="!Exists('$(FrameworkPathOverride)\mscorlib.dll')">$(MSBuildToolsPath)</FrameworkPathOverride>
+
+  </PropertyGroup>
+
+  <!--
+    These parameters control where to look in the registry for directories to search for
+    assemblies in the assembly resolution tasks.
+    -->
+  <PropertyGroup>
+    <AssemblyFoldersSuffix Condition=" '$(AssemblyFoldersSuffix)' == '' ">AssemblyFoldersEx</AssemblyFoldersSuffix>
+    <FrameworkRegistryBase Condition=" '$(FrameworkRegistryBase)' == '' ">Software\Microsoft\$(TargetFrameworkIdentifier)</FrameworkRegistryBase>
+    <!--
+        The SearchPaths property is set to find assemblies in the following order:
+
+            (1) Files from current project - indicated by {CandidateAssemblyFiles}
+            (2) $(ReferencePath) - the reference path property, which comes from the .USER file.
+            (3) The hintpath from the referenced item itself, indicated by {HintPathFromItem}.
+            (4) The directory of MSBuild's "target" runtime from GetFrameworkPath.
+                The "target" runtime folder is the folder of the runtime that MSBuild is a part of.
+            (5) Registered assembly folders, indicated by {Registry:*,*,*}
+            (6) Legacy registered assembly folders, indicated by {AssemblyFolders}
+            (7) Resolve to the GAC.
+            (8) Treat the reference's Include as if it were a real file name.
+            (9) Look in the application's output folder (like bin\debug)
+        -->
+    <AssemblySearchPaths Condition=" '$(AssemblySearchPaths)' == ''">
+      {CandidateAssemblyFiles};
+      $(ReferencePath);
+      {HintPathFromItem};
+      {TargetFrameworkDirectory};
+      {Registry:$(FrameworkRegistryBase),$(TargetFrameworkVersion),$(AssemblyFoldersSuffix)$(AssemblyFoldersExConditions)};
+      {AssemblyFolders};
+      {GAC};
+      {RawFileName};
+      $(_WDPSourceWebPhysicalPath)\bin;
+    </AssemblySearchPaths>
+
+    <!--
+        These are the extensions that assembly reference resolution will consider for resolution.
+        Add new extensions here if you want to add new file types to consider (for example, .metadata_dll).
+        Put the most likely extensions first for reference resolution speed.
+        -->
+    <AllowedReferenceAssemblyFileExtensions Condition=" '$(AllowedReferenceAssemblyFileExtensions)' == '' ">
+      .dll;
+      .exe
+    </AllowedReferenceAssemblyFileExtensions>
+
+    <!--
+        These are the extensions that reference resolution will consider when looking for files related
+        to resolved references.  Add new extensions here if you want to add new file types to consider.
+        -->
+    <AllowedReferenceRelatedFileExtensions Condition=" '$(AllowedReferenceRelatedFileExtensions)' == '' ">
+      .pdb;
+      .xml
+    </AllowedReferenceRelatedFileExtensions>
+
+    <!--
+        These names are used when determining which TargetFramework subset to use. If the any of the FullReferenceAssemblyNames
+        are seen in the list of client subsets, RAR will assume that no client subset is being used. The list is semicolon seperated
+        For example :   Full;Complete;AllThere
+        -->
+    <FullReferenceAssemblyNames Condition="'$(FullReferenceAssemblyNames)' == ''">Full</FullReferenceAssemblyNames>
+
+    <AutoUnifyAssemblyReferences>true</AutoUnifyAssemblyReferences>
+    <AutoUnifyAssemblyReferences Condition="'$(OutputType)'=='exe'">false</AutoUnifyAssemblyReferences>
+    <AutoUnifyAssemblyReferences Condition="'$(OutputType)'=='winexe'">false</AutoUnifyAssemblyReferences>
+
+  </PropertyGroup>
+
+
+
+
+  <!--
+    ============================================================
+  Basic Hook in for WPP
+    ============================================================
+  -->
+
+  <PropertyGroup>
+    <WebPublishPipelineProjectDirectory Condition="'$(WebPublishPipelineProjectDirectory)'==''">$([System.IO.Path]::GetFullPath($(MSBuildProjectDirectory)\$(OutputPath)))</WebPublishPipelineProjectDirectory>
+    <DefaultMsDeployAltSuffix>WDP</DefaultMsDeployAltSuffix>
+    <DefaultDeployIisAppPhysicalPath Condition="'$(DefaultDeployIisAppPhysicalPath)'==''">$(MSBuildProjectDirectory)$(DefaultMsDeployAltSuffix)</DefaultDeployIisAppPhysicalPath>
+    <FilesToIncludeForPublish Condition="'$(AllFilesInProjectFolder)'==''">AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <!--We do want to exclude TransformAssistFile-->
+    <ExcludeTransformAssistFilesFromPublish Condition="'$(ExcludeTransformAssistFilesFromPublish)'==''">True</ExcludeTransformAssistFilesFromPublish>
+    <ExcludeGeneratedDebugSymbol Condition="'$(ExcludeGeneratedDebugSymbol)'=='' And '$(DebugSymbols)' == 'true'">False</ExcludeGeneratedDebugSymbol>
+    <WebPublishPipelineCustomizeTargetFile Condition="'$(WebPublishPipelineCustomizeTargetFile)'=='' And Exists('$(MSBuildProjectDirectory)\$(WebPublishPipelineProjectName).wpp.targets')">$(WebPublishPipelineProjectName).wpp.targets</WebPublishPipelineCustomizeTargetFile>
+    <ProjectParametersXMLFile Condition="'$(ProjectParametersXMLFile)'=='' And Exists('$(MSBuildProjectDirectory)\Parameters.xml')">$(MSBuildProjectDirectory)\Parameters.xml</ProjectParametersXMLFile>
+    <_WDPDefaultIntermediateOutputPathPathRoot Condition="'$(_WPPDefaultIntermediateOutputPathPathRoot)' == ''">$(MSBuildProjectDirectory)\</_WDPDefaultIntermediateOutputPathPathRoot>
+  </PropertyGroup>
+
+
+  <PropertyGroup
+    Condition="'$(EnableCopyBeforeBuild)' != 'True'
+                 And '$(_ExcludeWAPObjFolderFromBuild)' == 'True'
+                 And '$(_WDPOnWAPProject)'=='true'
+                 And '$(_ExcludeWAPBaseIntermediateOutputPath)' != '' ">
+    <_CheckExcludeWAPObjFolderFromBuild>True</_CheckExcludeWAPObjFolderFromBuild>
+  </PropertyGroup>
+  
+  <!--We need this to be a target because we need the runtime evaluation-->
+  <!--Default to true, since Empty string will enable this-->
+  <Target Name="_CheckExcludeWAPObjFolderFromBuild"
+          Condition="'$(EnableCopyBeforeBuild)' != 'True'
+          And '$(_CheckExcludeWAPObjFolderFromBuild)' != 'False' 
+          And  '$(_ExcludeWAPBaseIntermediateOutputPath)' != '' 
+          And '$(_WDPOnWAPProject)'=='true'"
+          BeforeTargets="_ExcludeWAPObjFolderFromBuild">
+    <ItemGroup>
+      <_CheckExcludeWAPObjWebConfig Include="$(_WDPSourceWebPhysicalPath)\$(_ExcludeWAPBaseIntermediateOutputPath)\**\web.config"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'@(_CheckExcludeWAPObjWebConfig)' != ''">
+      <EnableCopyBeforeBuild>True</EnableCopyBeforeBuild>
+    </PropertyGroup>
+    
+  </Target>
+  
+  
+  <Target Name="_ExcludeWAPObjFolderFromBuild" 
+          Condition="'$(_WDPOnWAPProject)'=='true'
+                 And '$(_ExcludeWAPBaseIntermediateOutputPath)' != '' 
+                 And Exists('$(_WDPSourceWebPhysicalPath)\$(_ExcludeWAPBaseIntermediateOutputPath)')"
+          BeforeTargets ="_CollectFilesForCopyBeforeBuild;_CollectFilesForCopyToOutputDir "
+          DependsOnTargets="_CheckExcludeWAPObjFolderFromBuild">
+    <!--Work around the issue from picking up the obj folder-->
+
+    <PropertyGroup  Condition="'$(_ExcludeWAPObjFolderFromBuild)' != 'False'">
+      <!--GetFullPath on _WAPObjBaseFolder, then generate the escape statement-->
+      <_WAPObjBaseFolder>$([System.IO.Path]::GetFullPath("$(_WDPSourceWebPhysicalPath)\$(_ExcludeWAPBaseIntermediateOutputPath)"))</_WAPObjBaseFolder>
+      <_WAPObjBaseFolderRegex>$([System.Text.RegularExpressions.Regex]::Escape($(_WAPObjBaseFolder)))</_WAPObjBaseFolderRegex>
+      <_WAPTempBuildDirObjFolder>$([System.IO.Path]::GetFullPath("$(TempBuildDir)\$(_ExcludeWAPBaseIntermediateOutputPath)"))</_WAPTempBuildDirObjFolder>
+      <_WAPTempBuildDirObjFolderRegex>$([System.Text.RegularExpressions.Regex]::Escape($(_WAPTempBuildDirObjFolder)))</_WAPTempBuildDirObjFolderRegex>
+      
+      <!--Finally setting up the exclude regex-->
+      <_WDPExcludeFullPathFromBuildRegEx>$(_WDPExcludeFullPathFromBuildRegEx);$(_WAPObjBaseFolderRegex)</_WDPExcludeFullPathFromBuildRegEx>
+      <_WDPExcludeFullPathToOutputDirRegEx>$(_WDPExcludeFullPathToOutputDirRegEx);$(_WAPTempBuildDirObjFolderRegex)</_WDPExcludeFullPathToOutputDirRegEx>
+  </PropertyGroup>
+    
+    <!--<Message Importance="high" Text="_WAPObjBaseFolder is $(_WAPObjBaseFolder) 
+                                    _WDPExcludeFullPathFromBuildRegEx is $(_WDPExcludeFullPathFromBuildRegEx)" />-->
+  </Target>
+
+  <Target Name="_ExcludeKnownExtensionFromCopyForBuild"
+          Condition ="'$(_ExcludeKnownExtensionFromCopyForBuild)' != 'False' "
+          BeforeTargets ="_CollectFilesForCopyBeforeBuild;_CollectFilesForCopyToOutputDir ">
+
+    <PropertyGroup>
+      <!--Known extension exclude-->
+      <_WDPExcludeRelativePathFromBuildRegex>$(_WDPExcludeRelativePathFromBuildRegex);^[^\\]*\.out$;[^\\]*\.scc$;[^\\]*\.vssscc$;[^\\]*\.vspscc$;[^\\]*\.targets$;[^\\]*\$(_SourceWebProjectPathExtension)$;[^\\]*\$(_SourceWebProjectPathExtension)\.user$</_WDPExcludeRelativePathFromBuildRegex>
+      <_WDPExcludeRelativePathToOutputDirRegex>$(_WDPExcludeRelativePathFromBuildRegex);^[^\\]*\.out$;[^\\]*\.scc$;[^\\]*\.vssscc$;[^\\]*\.vspscc$;[^\\]*\.targets$;[^\\]*\$(_SourceWebProjectPathExtension)$;[^\\]*\$(_SourceWebProjectPathExtension)\.user$</_WDPExcludeRelativePathToOutputDirRegex>
+    </PropertyGroup>
+
+  </Target>
+  
+          
+  
+  <PropertyGroup Condition="'$(_WDPDefaultIntermediateOutputPath)' == ''">
+    <_WDPDefaultIntermediateOutputPath>$(IntermediateOutputPath)</_WDPDefaultIntermediateOutputPath>
+    <_WDPDefaultIntermediateOutputPath Condition="!$([System.IO.path]::IsPathRooted($(IntermediateOutputPath)))">$(_WDPDefaultIntermediateOutputPathPathRoot)$(IntermediateOutputPath)</_WDPDefaultIntermediateOutputPath>
+  </PropertyGroup>
+
+  
+  <!--******************************************************-->
+  <!--Include the WPP targets file-->
+    <Import Project="..\..\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets" Condition="$(_WDP_WPPExists)" />
+  <!--******************************************************-->
+
+
+  <PropertyGroup Condition="'$(_WPPVerstion)' == '' Or ($(_WPPVerstion) &lt;= 1.0 ) ">
+    <!--In earlier version of WPP, Web.config transformation doesn't support anthing other than the Msbuild Project project folder to find the web.config-->
+    <AutoParameterizationWebConfigConnectionStrings>True</AutoParameterizationWebConfigConnectionStrings>
+    <TransformWebConfigEnabled>True</TransformWebConfigEnabled>
+    <AutoParameterizationWebConfigConnectionStringsLocation>$(_WDPDefaultIntermediateOutputPath)$(AutoParameterizationWebConfigConnectionStringsIntermediateOutput)</AutoParameterizationWebConfigConnectionStringsLocation>
+    <DatabaseDeployIntermediateOutputPath>$(_WDPDefaultIntermediateOutputPath)$(DatabaseDeployIntermediateRelativePath)</DatabaseDeployIntermediateOutputPath>
+    <TransformWebConfigIntermediateLocation>$(_WDPDefaultIntermediateOutputPath)$(TransformWebConfigIntermediateOutput)</TransformWebConfigIntermediateLocation>
+
+    <OnAfterPipelineCollectFilesPhase>
+      $(OnAfterPipelineCollectFilesPhase);
+      FixupWPPPipeLineItemsForConfigTransform;
+      </OnAfterPipelineCollectFilesPhase>
+    <!--Inject this before CollectFilesFromProjectFolder_ExcludeSccFiles-->
+    <OnAfterCollectFilesFromProjectFolder_ExcludeSccFiles Condition="'$(_WDPOnWAPProject)' == 'True'">
+      $(OnAfterCollectFilesFromProjectFolder_ExcludeSccFiles);
+      CollectFilesFromProjectFolder_WDPExcludeProjectFiles;
+    </OnAfterCollectFilesFromProjectFolder_ExcludeSccFiles>
+
+    <PreTransformWebConfigDependsOn>
+      $(PreTransformWebConfigDependsOn);
+      FixupTransformAssistFilesAsExclude;
+    </PreTransformWebConfigDependsOn>
+
+    <GetProjectWebPropertiesDependsOn Condition="'$(_WDPOnWAPProject)' == 'True'">
+      $(GetProjectWebPropertiesDependsOn);
+      GetWapProjectIISUrl;
+    </GetProjectWebPropertiesDependsOn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_WDPUseWPPAspMerge)'==''">
+    <_WDPUseWPPAspMerge>False</_WDPUseWPPAspMerge>
+    <_WDPUseWPPAspMerge Condition="'$(_WPPSupports.Contains(&quot;AspNetMerge&quot;))' == 'true'">True</_WDPUseWPPAspMerge>
+  </PropertyGroup>
+
+<!--***********************************************************************************-->
+  <!--WPP 1.0 work arounds Begin--> 
+  <!--***********************************************************************************-->
+  
+  
+  <!--********************************************************************-->
+  <!-- Task FixupWPPPipeLineItemsForConfigTransform -->
+  <!--This is a workaround for WPP 1.0's bug that Web.config tranformaiton 
+      can't handle the root other than the project folder.  
+      Instead of full path, we workaround by expand to full path-->
+  <!--********************************************************************-->
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBeforeFixupWPPPipeLineItemsForConfigTransform Condition="'$(OnBeforeFixupWPPPipeLineItemsForConfigTransform)'==''">
+    </OnBeforeFixupWPPPipeLineItemsForConfigTransform>
+    <!--Targets get execute after this Target-->
+    <OnAfterFixupWPPPipeLineItemsForConfigTransform Condition="'$(OnAfterFixupWPPPipeLineItemsForConfigTransform)'==''">
+    </OnAfterFixupWPPPipeLineItemsForConfigTransform>
+    <FixupWPPPipeLineItemsForConfigTransformDependsOn Condition="'$(FixupWPPPipeLineItemsForConfigTransformDependsOn)'==''">
+      $(OnBeforeFixupWPPPipeLineItemsForConfigTransform);
+    </FixupWPPPipeLineItemsForConfigTransformDependsOn>
+  </PropertyGroup>
+  <Target Name="FixupWPPPipeLineItemsForConfigTransform"
+          DependsOnTargets="$(FixupWPPPipeLineItemsForConfigTransformDependsOn)"
+          Condition="'$(FixupWPPPipeLineItemsForConfigTransform)' != 'False'
+          And $(_WDP_WPPExists)">
+
+    <PropertyGroup>
+      <_WDPProjectTransformAssistFileName Condition="'$(_WDPProjectTransformAssistFileName)'==''">@(_VSProjectConfigFileName->'%(FileName)')</_WDPProjectTransformAssistFileName>
+      <_WDPProjectTransformAssistExtension Condition="'$(_WDPProjectTransformAssistExtension)'==''">@(_VSProjectConfigFileName->'%(Extension)')</_WDPProjectTransformAssistExtension>
+
+      <!--Create the rgulare expression to exclude all root folder *.out, all folder *.scc and all folder*.vspscc file-->
+      <!--Note split by semicolon (;)-->
+        <_WDP_IdentifyTransformAssistFile>$(_WDPProjectTransformAssistFileName)\.[^\\\.]*\$(_WDPProjectTransformAssistExtension)$</_WDP_IdentifyTransformAssistFile>
+      
+    </PropertyGroup>
+
+    <!--Find all item with web.*.config-->
+    <CollectFilesinFolder RootPath="$(WebPublishPipelineProjectDirectory)"
+                          RelativePathMatchs="$(_WDP_IdentifyTransformAssistFile)" >
+      <Output TaskParameter="Result" ItemName="_WDP_WebConfigAssistFilesToFixupTemp" />
+    </CollectFilesinFolder>
+
+    <!--Filter it with the list, such that we persist the metadata.
+    This is the list we need to covert to full path such that we can conver these item to full path.
+    Changet these to full path so the web.config transformation works. 
+    WPP 1.0 web.config transformation only works on relative path to the project or absolated path-->
+    <FilterByItems PipelineItems="@(FilesForPackagingFromProject)"
+                  Filter="@(_WDP_WebConfigAssistFilesToFixupTemp)">
+      <Output TaskParameter="InFilter" ItemName="_WDP_WebConfigAssistFilesToFixup"/>
+    </FilterByItems>
+    
+
+    <ItemGroup>
+      <_WDP_WebConfigsToFixup Include="@(FilesForPackagingFromProject)"
+                         Condition="'%(FilesForPackagingFromProject.Filename)%(FilesForPackagingFromProject.Extension)'=='$(ProjectConfigFileName)'
+                         And !Exists(%(FilesForPackagingFromProject.Identity))">
+      </_WDP_WebConfigsToFixup>
+
+      <!--Change all web.config to full path-->
+      <FilesForPackagingFromProject Remove="@(_WDP_WebConfigsToFixup)"/>
+      <FilesForPackagingFromProject Include="@(_WDP_WebConfigsToFixup->'$(WebPublishPipelineProjectDirectory)%(Identity)')"/>
+
+
+      <!--Change all web.*.config to full path and add DependentUpon with Web.config-->
+      <FilesForPackagingFromProject Remove="@(_WDP_WebConfigAssistFilesToFixup)" />
+      <FilesForPackagingFromProject Include="@(_WDP_WebConfigAssistFilesToFixup->'$(WebPublishPipelineProjectDirectory)%(Identity)')">
+        <DependentUpon>Web.config</DependentUpon>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+
+    <CallTarget Targets="$(OnAfterFixupWPPPipeLineItemsForConfigTransform)" RunEachTargetSeparately="false" />
+  </Target>
+
+
+  <!--********************************************************************-->
+  <!-- Target FixupTransformAssistFilesAsExclude -->
+  <!--  This is a workaround a bug in WPP 1.0 where to exclude Web.debug.config.
+        It should only work on Web.config for DependentUpon metadata -->
+  <!-- ********************************************************************-->
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBeforeFixupTransformAssistFilesAsExclude Condition="'$(OnBeforeFixupTransformAssistFilesAsExclude)'==''">
+      CollectWebConfigsToTransform;
+    </OnBeforeFixupTransformAssistFilesAsExclude>
+    <!--Targets get execute after this Target-->
+    <OnAfterFixupTransformAssistFilesAsExclude Condition="'$(OnAfterFixupTransformAssistFilesAsExclude)'==''">
+    </OnAfterFixupTransformAssistFilesAsExclude>
+
+    <FixupTransformAssistFilesAsExcludeDependsOn Condition="'$(FixupTransformAssistFilesAsExcludeDependsOn)'==''">
+      $(OnBeforeFixupTransformAssistFilesAsExclude);
+    </FixupTransformAssistFilesAsExcludeDependsOn>
+  </PropertyGroup>
+  <Target Name="FixupTransformAssistFilesAsExclude"
+          DependsOnTargets="$(FixupTransformAssistFilesAsExcludeDependsOn)"
+          Condition="'$(FixupTransformAssistFilesAsExclude)' != 'False' And $(_WDP_WPPExists)">
+    <!--Mark all the assistent file whose DependsOn is web.config to Exclude-->
+    
+    <FilterByItems PipelineItems="@(FilesForPackagingFromProject)"
+                   SourceMetadataName="DependentUpon"
+                   Filter="Web.Config"
+                   Condition="$(ExcludeTransformAssistFilesFromPublish)"
+                   >
+      <Output TaskParameter="InFilter" ItemName="_NeedtoMarkasExclude_ConfigAssistFiles"/>
+    </FilterByItems>
+
+    <CallTarget Targets="$(OnAfterFixupTransformAssistFilesAsExclude)" RunEachTargetSeparately="false" />
+  </Target>
+  
+  
+
+  <!--********************************************************************-->
+  <!-- Target CollectFilesFromProjectFolder_WDPExcludeProjectFiles -->
+  <!--  This is a workaround to supress the pproject and project.user file-->
+  <!--********************************************************************-->
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBeforeCollectFilesFromProjectFolder_WDPExcludeProjectFiles Condition="'$(OnBeforeCollectFilesFromProjectFolder_WDPExcludeProjectFiles)'==''">
+      SetExcludeFromProjectFolder;
+    </OnBeforeCollectFilesFromProjectFolder_WDPExcludeProjectFiles>
+    <!--Targets get execute after this Target-->
+    <OnAfterCollectFilesFromProjectFolder_WDPExcludeProjectFiles Condition="'$(OnAfterCollectFilesFromProjectFolder_WDPExcludeProjectFiles)'==''">
+    </OnAfterCollectFilesFromProjectFolder_WDPExcludeProjectFiles>
+
+    <CollectFilesFromProjectFolder_WDPExcludeProjectFilesDependsOn Condition="'$(CollectFilesFromProjectFolder_WDPExcludeProjectFilesDependsOn)'==''">
+      $(OnBeforeCollectFilesFromProjectFolder_WDPExcludeProjectFiles);
+    </CollectFilesFromProjectFolder_WDPExcludeProjectFilesDependsOn>
+  </PropertyGroup>
+  <Target Name="CollectFilesFromProjectFolder_WDPExcludeProjectFiles"
+          DependsOnTargets="$(CollectFilesFromProjectFolder_WDPExcludeProjectFilesDependsOn)"
+          Condition="'$(CollectFilesFromProjectFolder_WDPExcludeProjectFiles)' != 'False' And $(_WDP_WPPExists)">
+    <!--Note split by semicolon (;)-->
+    <PropertyGroup>
+      <_ExcludeFullPathFromProjectFolder>$(_ExcludeFullPathFromProjectFolder);\\[^\\]*\$(_SourceWebProjectPathExtension)$;\\[^\\]*\$(_SourceWebProjectPathExtension)\.user$</_ExcludeFullPathFromProjectFolder>
+    </PropertyGroup>
+
+    <CallTarget Targets="$(OnAfterCollectFilesFromProjectFolder_WDPExcludeProjectFiles)" RunEachTargetSeparately="false" />
+  </Target>
+  
+
+  <!--********************************************************************-->
+  <!-- Target GetWapProjectIISUrl -->
+  <!--  This is a workaround to supress the pproject and project.user file-->
+  <!--********************************************************************-->
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBeforeGetWapProjectIISUrl Condition="'$(OnBeforeGetWapProjectIISUrl)'==''">
+    </OnBeforeGetWapProjectIISUrl>
+    <!--Targets get execute after this Target-->
+    <OnAfterGetWapProjectIISUrl Condition="'$(OnAfterGetWapProjectIISUrl)'==''">
+    </OnAfterGetWapProjectIISUrl>
+
+    <GetWapProjectIISUrlDependsOn Condition="'$(GetWapProjectIISUrlDependsOn)'==''">
+      $(OnBeforeGetWapProjectIISUrl);
+    </GetWapProjectIISUrlDependsOn>
+  </PropertyGroup>
+  <Target Name="GetWapProjectIISUrl"
+          DependsOnTargets="$(GetWapProjectIISUrlDependsOn)"
+          Condition="'$(GetWapProjectIISUrl)' != 'False' And '$(_WDPOnWAPProject)'=='True' 
+          And $(_WDP_WPPExists) And ('$(UseIis)' == '' Or '$(IisUrl)' == '')">
+
+    <GetProjectProperties ProjectFileFullPath="$(WebPublishPipelineWAPProjectSettings)">
+      <Output TaskParameter="UseIis"  PropertyName="UseIis" Condition="'$(UseIis)' == ''" />
+      <Output TaskParameter="IisUrl"  PropertyName="IisUrl" Condition="'$(IisUrl)' == ''"/>
+    </GetProjectProperties>
+
+    <CallTarget Targets="$(OnAfterGetWapProjectIISUrl)" RunEachTargetSeparately="false" />
+  </Target>
+
+
+
+  <!--***********************************************************************************-->
+  <!--WPP 1.0 work arounds End-->
+  <!--***********************************************************************************-->
+
+
+
+
+  <!--
+    ============================================================
+                            _PrepareForBuild
+
+    Sets up variables in preparation to build.
+    ============================================================
+    -->
+    <Target Name="_PrepareForBuild">
+        <!-- 
+        These CreateProperty calls are required because TargetDir and TargetPath are defined 
+        to contain an item list. We want that item list to be expanded so that it can be used
+        as a regular property value and not as an item-list-with-transform.
+        -->
+
+      <CreateProperty Value="$(WDTargetDir)">
+        <Output TaskParameter="Value" PropertyName="WDTargetDir" />
+      </CreateProperty>
+      <CreateProperty Value="$(_FullSourceWebDir)">
+        <Output TaskParameter="Value" PropertyName="_FullSourceWebDir" />
+      </CreateProperty>
+      
+      <MakeDir Condition="!Exists('$(IntermediateOutputPath)')" Directories="$(IntermediateOutputPath)" />
+      
+    </Target>
+
+
+  <!--
+    ============================================================
+                              _CopyBeforeBuild
+
+    Copy the web to a new folder excluding predefined items in @(ExcludeFromBuild)
+    <ItemGroup>
+      <ExcludeFromBuild Include="$(SourceWebPhysicalPath)\Test\**\*.*"/>
+      <ExcludeFromBuild Include="$(SourceWebPhysicalPath)\Images\**\*.*"/>
+    </ItemGroup>
+    The following support regular expreesion Exclude For example
+    <PropertyGroup>
+      <_WDPExcludeFullPathFromBuildRegEx>$(_WDPExcludeFullPathFromBuildRegEx);C:\\myfoo</_WDPExcludeFullPathFromBuildRegEx>
+      <_WDPExcludeRelativePathFromBuildRegex>$(_WDPExcludeRelativePathFromBuildRegex);[^\\]*\.scc$;[^\\]*\.vssscc$;[^\\]*\.vspscc$</_WDPExcludeRelativePathFromBuildRegex>
+    </PropertyGroup>
+    <CopyBeforeBuildTargetPath  Condition="'$(CopyBeforeBuildTargetPath)' == ''">$(IntermediateOutputPath)Source</CopyBeforeBuildTargetPath>
+    ============================================================
+    -->
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBefore_CollectFilesForCopyBeforeBuild Condition="'$(OnBefore_CollectFilesForCopyBeforeBuild)'==''">
+    </OnBefore_CollectFilesForCopyBeforeBuild>
+    <!--Targets get execute after this Target-->
+    <OnAfter_CollectFilesForCopyBeforeBuild Condition="'$(OnAfter_CollectFilesForCopyBeforeBuild)'==''">
+    </OnAfter_CollectFilesForCopyBeforeBuild>
+    <_CollectFilesForCopyBeforeBuildDependsOn Condition="'$(_CollectFilesForCopyBeforeBuildDependsOn)'==''">
+      $(OnBefore_CollectFilesForCopyBeforeBuild);
+    </_CollectFilesForCopyBeforeBuildDependsOn>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <_WebFiles>
+      <DestinationRelativePath></DestinationRelativePath>
+      <Exclude>False</Exclude>
+      <FromTarget>Unknown</FromTarget>
+      <Category>Run</Category>
+      <ProjectFileType>Default</ProjectFileType>
+    </_WebFiles>
+  </ItemDefinitionGroup>
+
+  <Target Name="_CollectFilesForCopyBeforeBuild"
+          DependsOnTargets="$(_CollectFilesForCopyBeforeBuildDependsOn)">
+
+    <!--********************************************************************-->
+    <!--Enforce all item have these metadata value for all pipeline metadata-->
+    <!--Default for Exclude is False-->
+    <!--********************************************************************-->
+    
+    <CollectFilesinFolder RootPath="$(_WDPSourceWebPhysicalPath)"
+                         ExcludeFullPathMatchs="$(_WDPExcludeFullPathFromBuildRegEx)"
+                         ExcludeRelativePathMatchs="$(_WDPExcludeRelativePathFromBuildRegex)" >
+      <Output TaskParameter="Result" ItemName="_WebFilesNoMetadata" />
+    </CollectFilesinFolder>
+
+
+    <PropertyGroup>
+      <_OriginalSourceWebPhysicalFullPath>$([System.IO.Path]::GetFullPath($(SourceWebPhysicalPath)))</_OriginalSourceWebPhysicalFullPath>
+      <_OriginalSourceWebPhysicalFullPath Condition="!HasTrailingSlash('$(_OriginalSourceWebPhysicalFullPath)')">$(_OriginalSourceWebPhysicalFullPath)\</_OriginalSourceWebPhysicalFullPath>
+    </PropertyGroup>
+
+    <!--We are in the team build for WAP, where you exclude doesn't equate to where we see-->
+    <ItemGroup Condition ="'$(_WDPSourceWebPhysicalPath)' != '$(SourceWebPhysicalPath)'">
+      <_WebFilesExclude Include="%(ExcludeFromBuild.Identity)">
+        <SourceRelativePath Condition="$([System.String]::new(%(ExcludeFromBuild.FullPath)).StartsWith($(_OriginalSourceWebPhysicalFullPath), StringComparison.OrdinalIgnoreCase ))" >$([System.String]::new(%(ExcludeFromBuild.FullPath)).SubString($(_OriginalSourceWebPhysicalFullPath.Length)))</SourceRelativePath>
+      </_WebFilesExclude>
+      <_WebFilesExclude Condition="'%(SourceRelativePath)'==''">
+        <SourceRelativePath>%(Identity)</SourceRelativePath>
+      </_WebFilesExclude>
+      <_WebFilesNoMetadata Remove="%(_WebFilesExclude.SourceRelativePath)" Condition="'%(_WebFilesExclude.SourceRelativePath)' != ''"/>
+    </ItemGroup>
+
+    <!--Log debug for potential issue-->
+    <WriteLinesToFile Condition ="$(EnablePackageProcessLoggingAndAssert) And '$(_WDPSourceWebPhysicalPath)' != '$(SourceWebPhysicalPath)'"
+                  Encoding="utf-8"
+                  File="$(IntermediateOutputPath)\_WebFilesExclude.txt"
+                  Lines="@(_WebFilesExclude->'
+                      Files:%(Identity) 
+                      SourceRelativePath:%(SourceRelativePath)')"
+                  Overwrite="True" />
+
+
+    <!--_WebFilesNoMetadata doesn't have metadata yet, need to fill the data.  Fill in the metadata now for CopyPipelineFiles to use-->
+    <ItemGroup>
+      <_WebFiles Include="$([System.IO.Path]::Combine($(_WDPSourceWebPhysicalPath), %(_WebFilesNoMetadata.Identity)))" >
+        <DestinationRelativePath>%(_WebFilesNoMetadata.Identity)</DestinationRelativePath>
+      </_WebFiles>
+    </ItemGroup>
+
+    <!--Maintain old syntax-->
+    <ItemGroup Condition ="'$(_WDPSourceWebPhysicalPath)' == '$(SourceWebPhysicalPath)'">
+      <_WebFiles Remove="@(ExcludeFromBuild)" />
+    </ItemGroup>
+
+
+
+    <MakeDir Directories="$(IntermediateOutputPath)" Condition="!Exists('$(IntermediateOutputPath)')"/>
+
+    <WriteLinesToFile Condition="$(EnablePackageProcessLoggingAndAssert)"
+                      Encoding="utf-8"
+                      File="$(IntermediateOutputPath)\webfilesToBeCopied.txt"
+                      Lines="@(_WebFiles->'
+                      Files:%(Identity) 
+                      FromTarget:%(FromTarget)
+                      DestinationRelativePath:%(DestinationRelativePath)')"
+                      Overwrite="True" />
+
+
+    <CallTarget Targets="$(OnAfter_CollectFilesForCopyBeforeBuild)" RunEachTargetSeparately="false" />
+  </Target>
+
+
+    <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBefore_CopyBeforeBuild Condition="'$(OnBefore_CopyBeforeBuild)'==''">
+    </OnBefore_CopyBeforeBuild>
+    <!--Targets get execute after this Target-->
+    <OnAfter_CopyBeforeBuild Condition="'$(OnAfter_CopyBeforeBuild)'==''">
+    </OnAfter_CopyBeforeBuild>
+    <_CopyBeforeBuildDependsOn Condition="'$(_CopyBeforeBuildDependsOn)'==''">
+      $(OnBefore_CopyBeforeBuild);
+      _CollectFilesForCopyBeforeBuild;
+    </_CopyBeforeBuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="_CopyBeforeBuild"
+          Condition=" '$(EnableCopyBeforeBuild)' == 'true' or '@(ExcludeFromBuild)' != ''  "
+          DependsOnTargets="$(_CopyBeforeBuildDependsOn)">
+
+    <ItemGroup>
+      <_WDPAllExtraFilesUnderTempFolder Condition="'$(CopyBeforeBuildTargetPath)' != ''" Include="$(CopyBeforeBuildTargetPath)\**" />
+      <_WDPAllExtraFilesUnderTempFolder
+        Remove="@(_WebFiles->'$(CopyBeforeBuildTargetPath)\%(DestinationRelativePath)')" />
+    </ItemGroup>
+    <!--Remove all extra files in the temp folder that's not in the @(FilesForPackagingFromProject-->
+    <Delete Files="@(_WDPAllExtraFilesUnderTempFolder)"  />
+
+    <!--This method support incremental copy instead of wipe out everytime-->
+    <!--We already expand the path as relative path to the project, there is no need for sourceDirectory-->
+    <CopyPipelineFiles PipelineItems="@(_WebFiles)"
+                           SourceDirectory="$(MSBuildProjectDirectory)" 
+                           TargetDirectory="$(CopyBeforeBuildTargetPath)"
+                           SkipMetadataExcludeTrueItems="True"
+                           UpdateItemSpec="False"
+                           DeleteItemsMarkAsExcludeTrue ="True">
+      <Output TaskParameter="UpdatedPipelineItems" ItemName="_WebFilesCopied"/>
+    </CopyPipelineFiles>
+    
+    <CreateProperty Value="$(CopyBeforeBuildTargetPath)">
+      <Output TaskParameter="Value" PropertyName="_AspNetCompilerSourceWebPath" />
+    </CreateProperty>
+
+    <CallTarget Targets="$(OnAfter_CopyBeforeBuild)" RunEachTargetSeparately="false" />
+
+  </Target>
+
+
+  <!--
+    ============================================================
+                              Clean
+
+    Clean target.
+    ============================================================
+    -->
+  <PropertyGroup>
+    <CleanWDPDependsOn Condition="'$(CleanWDPDependsOn)'==''">
+    </CleanWDPDependsOn>
+    <CleanDependsOn>
+      $(CleanDependsOn);
+      CleanWDP;
+    </CleanDependsOn>
+  </PropertyGroup>
+    <Target Name="CleanWDP"  DependsOnTargets="$(CleanWDPDependsOn)">
+        <!-- 
+        Create a Clean boolean property
+        -->
+        <CreateProperty Value="true">
+            <Output TaskParameter="Value" PropertyName="Clean" />
+        </CreateProperty>
+      
+      <RemoveDir Condition="Exists('$(CopyBeforeBuildTargetPath)')" Directories="$(CopyBeforeBuildTargetPath)"/>
+      <RemoveDir Condition="Exists('$(TempBuildDir)')" Directories="$(TempBuildDir)" />
+      <RemoveDir Condition="Exists('$(WDTargetDir)')" Directories="$(WDTargetDir)" />
+      
+    </Target>
+
+  <Target Name="Clean"  DependsOnTargets="$(CleanDependsOn)">
+  </Target>
+
+  <!--
+    ============================================================
+                              Reference Resolving
+
+    Updates the bin folder with the lastest .refresh files
+    ============================================================
+    -->
+    <Target Name="_ResolveReferences" DependsOnTargets="_PrepareForBuild;GetRedistLists">
+        <CreateItem Include="$(_FullSourceWebDir)\Bin\*.refresh">
+            <Output TaskParameter="Include" ItemName="References_RefreshFile" />
+        </CreateItem>
+        <ReadLinesFromFile File="%(References_RefreshFile.Identity)" Condition=" '%(References_RefreshFile.Identity)' != '' ">
+            <Output TaskParameter="Lines" ItemName="References_ReferenceRelPath" />
+        </ReadLinesFromFile>
+        <CombinePath BasePath="$(_FullSourceWebDir)" Paths="@(References_ReferenceRelPath)">
+            <Output TaskParameter="CombinedPaths" ItemName="References" />
+        </CombinePath>
+        <Copy 
+          SourceFiles="@(References->'%(FullPath)')" 
+          DestinationFolder="$(_FullSourceWebDir)\Bin\" 
+          Condition="!Exists('%(References.Identity)')" 
+          ContinueOnError="true" 
+          SkipUnchangedFiles="true"
+          Retries="$(CopyRetryCount)"
+          RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+      
+        <!--Leave the References collection for ResolveReference to resolve.-->
+    </Target>
+
+
+  <!--
+    ============================================================
+                                        ResolveReferences
+    ============================================================
+    -->
+  <PropertyGroup>
+    <ResolveReferencesDependsOn>
+      BeforeResolveReferences;
+      AssignProjectConfiguration;
+      ResolveProjectReferences;
+      ResolveNativeReferences;
+      ResolveAssemblyReferences;
+      ResolveComReferences;
+      AfterResolveReferences
+    </ResolveReferencesDependsOn>
+  </PropertyGroup>
+  <Target
+      Name="ResolveReferences"
+      DependsOnTargets="$(ResolveReferencesDependsOn)"/>
+
+  
+  <!--
+    ============================================================
+                                        BeforeResolveReferences
+
+    Redefine this target in your project in order to run tasks just before ResolveReferences
+    ============================================================
+    -->
+  <Target Name="BeforeResolveReferences"/>
+
+
+  <!--
+    ============================================================
+                                        AssignProjectConfiguration
+
+    Assigns the appropriate configuration to each project in the list of project references passed in.
+
+        [IN]
+        @(ProjectReference) - the list of all project references
+
+        [OUT]
+        @(ProjectReferenceWithConfiguration) - the list of project references (MSBuild and potentially VSIP projects)
+                                               with metadata values FullConfiguration, Configuration, Platform,
+                                               SetConfiguration, and SetPlatform
+    ============================================================
+    -->
+  <Target
+      Name="AssignProjectConfiguration"
+      Condition="'@(ProjectReference)'!=''">
+
+    <PropertyGroup>
+      <OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration Condition="'$(OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration)' == ''">false</OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration>
+      <ShouldUnsetParentConfigurationAndPlatform Condition="'$(ShouldUnsetParentConfigurationAndPlatform)' == '' and ('$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingSolutionFile)' == 'true')">true</ShouldUnsetParentConfigurationAndPlatform>
+      <ShouldUnsetParentConfigurationAndPlatform Condition="'$(ShouldUnsetParentConfigurationAndPlatform)' == ''">false</ShouldUnsetParentConfigurationAndPlatform>
+    </PropertyGroup>
+
+    <!-- Assign a project configuration to each project reference if we're building a solution file. -->
+    <AssignProjectConfiguration
+        ProjectReferences="@(ProjectReference)"
+        CurrentProjectConfiguration="$(Configuration)"
+        CurrentProjectPlatform="$(Platform)"
+        DefaultToVcxPlatformMapping="$(DefaultToVcxPlatformMapping)"
+        VcxToDefaultPlatformMapping="$(VcxToDefaultPlatformMapping)"
+        OutputType="$(OutputType)"
+        ResolveConfigurationPlatformUsingMappings="false"
+        SolutionConfigurationContents="$(CurrentSolutionConfigurationContents)"
+        OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration = "$(OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration)"
+        ShouldUnsetParentConfigurationAndPlatform = "$(ShouldUnsetParentConfigurationAndPlatform)" >
+
+      <!-- EMITTED FOR COMPATIBILITY REASONS ONLY. CONSUME PROJECTREFERENCEWITHCONFIGURATION INSTEAD -->
+      <Output TaskParameter="AssignedProjects" ItemName="_ProjectReferenceWithConfiguration"/>
+      <Output TaskParameter="UnassignedProjects" ItemName="_ProjectReferenceWithConfiguration"/>
+
+      <Output TaskParameter="AssignedProjects" ItemName="ProjectReferenceWithConfiguration"/>
+      <Output TaskParameter="UnassignedProjects" ItemName="ProjectReferenceWithConfiguration"/>
+    </AssignProjectConfiguration>
+
+    <ItemGroup>
+      <_ProjectReferenceWithConfiguration>
+        <BuildReference Condition="'%(_ProjectReferenceWithConfiguration.BuildReference)' == ''">true</BuildReference>
+        <ReferenceOutputAssembly Condition="'%(_ProjectReferenceWithConfiguration.ReferenceOutputAssembly)' == ''">true</ReferenceOutputAssembly>
+      </_ProjectReferenceWithConfiguration>
+      <ProjectReferenceWithConfiguration>
+        <BuildReference Condition="'%(ProjectReferenceWithConfiguration.BuildReference)' == ''">true</BuildReference>
+        <ReferenceOutputAssembly Condition="'%(ProjectReferenceWithConfiguration.ReferenceOutputAssembly)' == ''">true</ReferenceOutputAssembly>
+      </ProjectReferenceWithConfiguration>
+    </ItemGroup>
+  </Target>
+
+
+  <!--
+    ============================================================
+                                        _SplitProjectReferencesByFileExistence
+
+    Split referenced projects into two lists: those that exist on
+    disk and those that don't.
+    ============================================================
+    -->
+
+  <Target
+    Name="_SplitProjectReferencesByFileExistence">
+
+    <!--
+        Use this task for matching projects with pre-resolved project outputs set by the IDE
+        if building inside the IDE.  The IDE only includes non-MSBuild projects in the output list.  We'll
+        use MSBuild to resolve MSBuild projects.
+        This task will resolve VSIP (3rd party) project references and create a new item list with only project references
+        to projects in the MSBuild format.
+        -->
+    <ResolveNonMSBuildProjectOutput
+        ProjectReferences="@(ProjectReferenceWithConfiguration)"
+        PreresolvedProjectOutputs="$(VSIDEResolvedNonMSBuildProjectOutputs)"
+        Condition="'$(BuildingInsideVisualStudio)'=='true' and '@(ProjectReferenceWithConfiguration)'!=''">
+
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="_ResolvedProjectReferencePaths"/>
+      <Output TaskParameter="UnresolvedProjectReferences" ItemName="_MSBuildProjectReference"/>
+
+    </ResolveNonMSBuildProjectOutput>
+
+    <!--
+       If building from the command line, simply copy the ProjectReferenceWithConfiguration item list to _MSBuildProjectReference,
+       since we have to assume all projects are in the MSBuild format. We have no way of building
+       VSIP (3rd party) projects from the command line.
+       -->
+    <ItemGroup>
+      <_MSBuildProjectReference Include="@(ProjectReferenceWithConfiguration)" Condition="'$(BuildingInsideVisualStudio)'!='true' and '@(ProjectReferenceWithConfiguration)'!=''"/>
+    </ItemGroup>
+
+    <!-- Break the project list into two lists: those that exist on disk and those that don't. -->
+    <ItemGroup>
+      <_MSBuildProjectReferenceExistent Include="@(_MSBuildProjectReference)" Condition="Exists('%(Identity)')"/>
+      <_MSBuildProjectReferenceNonexistent Include="@(_MSBuildProjectReference)" Condition="!Exists('%(Identity)')"/>
+    </ItemGroup>
+
+  </Target>
+
+  <!--
+    ============================================================
+                                        ResolveProjectReferences
+
+    Build referenced projects:
+
+        [IN]
+        @(ProjectReferenceWithConfiguration) - The list of project references.
+
+        [OUT]
+        @(_ResolvedNativeProjectReferencePaths) - Paths to referenced native projects.
+        @(_ResolvedProjectReferencePaths) - Paths to referenced managed projects.
+    ============================================================
+    -->
+  <!-- By default, the outputs of project references are passed to the compiler -->
+  <ItemDefinitionGroup>
+    <ProjectReference>
+      <!-- Target to build in the project reference; by default, this property is blank, indicating the default targets-->
+      <Targets>$(ProjectReferenceBuildTargets)</Targets>
+      <!-- Extra item type to emit outputs of the destination into. Defaults to blank. To emit only into this list, set the ReferenceOutputAssembly metadata to false as well. -->
+      <OutputItemType/>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+
+  <Target
+      Name="ResolveProjectReferences"
+      DependsOnTargets="AssignProjectConfiguration;_SplitProjectReferencesByFileExistence"
+      Returns="@(_ResolvedNativeProjectReferencePaths);@(_ResolvedProjectReferencePaths)">
+
+    <!--
+        When building this project from the IDE, just gather the referenced build outputs.
+        The IDE will already have built the project, so there's no need to do it again here.
+
+        The ContinueOnError setting is here so that, during project load, as
+        much information as possible will be passed to the compilers.
+        -->
+
+    <MSBuild
+        Projects="@(_MSBuildProjectReferenceExistent)"
+        Targets="%(_MSBuildProjectReferenceExistent.Targets);GetTargetPath"
+        BuildInParallel="$(BuildInParallel)"
+        Properties="%(_MSBuildProjectReferenceExistent.SetConfiguration); %(_MSBuildProjectReferenceExistent.SetPlatform)"
+        Condition="'%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and ('$(BuildingInsideVisualStudio)' == 'true' or '$(BuildProjectReferences)' != 'true') and '@(_MSBuildProjectReferenceExistent)' != ''"
+        ContinueOnError="!$(BuildingProject)"
+        RemoveProperties="%(_MSBuildProjectReferenceExistent.GlobalPropertiesToRemove)">
+
+      <Output TaskParameter="TargetOutputs" ItemName="_ResolvedProjectReferencePaths" Condition="'%(_MSBuildProjectReferenceExistent.ReferenceOutputAssembly)'=='true'"/>
+      <Output TaskParameter="TargetOutputs" ItemName="%(_MSBuildProjectReferenceExistent.OutputItemType)" Condition="'%(_MSBuildProjectReferenceExistent.OutputItemType)' != ''"/>
+
+    </MSBuild>
+
+    <!--
+        Build referenced projects when building from the command line.
+        -->
+    <MSBuild
+        Projects="@(_MSBuildProjectReferenceExistent)"
+        Targets="%(_MSBuildProjectReferenceExistent.Targets)"
+        BuildInParallel="$(BuildInParallel)"
+        Properties="%(_MSBuildProjectReferenceExistent.SetConfiguration); %(_MSBuildProjectReferenceExistent.SetPlatform)"
+        Condition="'%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildProjectReferences)' == 'true' and '@(_MSBuildProjectReferenceExistent)' != ''"
+        RemoveProperties="%(_MSBuildProjectReferenceExistent.GlobalPropertiesToRemove)">
+
+      <Output TaskParameter="TargetOutputs" ItemName="_ResolvedProjectReferencePaths" Condition="'%(_MSBuildProjectReferenceExistent.ReferenceOutputAssembly)'=='true' or '$(DesignTimeBuild)' == 'true'"/>
+      <Output TaskParameter="TargetOutputs" ItemName="%(_MSBuildProjectReferenceExistent.OutputItemType)" Condition="'%(_MSBuildProjectReferenceExistent.OutputItemType)' != ''"/>
+
+    </MSBuild>
+
+    <!--
+        Get manifest items from the (non-exe) built project references (to feed them into ResolveNativeReference).
+        -->
+    <MSBuild
+        Projects="@(_MSBuildProjectReferenceExistent)"
+        Targets="GetNativeManifest"
+        BuildInParallel="$(BuildInParallel)"
+        Properties="%(_MSBuildProjectReferenceExistent.SetConfiguration); %(_MSBuildProjectReferenceExistent.SetPlatform)"
+        Condition="'%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and '$(BuildingProject)' == 'true' and '@(_MSBuildProjectReferenceExistent)' != ''"
+        RemoveProperties="%(_MSBuildProjectReferenceExistent.GlobalPropertiesToRemove)">
+
+      <Output TaskParameter="TargetOutputs" ItemName="NativeReference" Condition="'%(_MSBuildProjectReferenceExistent.ReferenceOutputAssembly)' == 'true'"/>
+    </MSBuild>
+
+    <ItemGroup>
+      <_ResolvedProjectReferencePaths Remove="@(_ResolvedProjectReferencePaths)" Condition="'%(_ResolvedProjectReferencePaths.ResolveableAssembly)' == 'false'" />
+      <!--
+          Copy OriginalItemSpec to OriginalProjectReferenceItemSpec, so that when ResolveAssemblyReferences
+          takes these items and resolves them to ReferencePath, we can still recover the _real_ OriginalItemSpec
+          for the unresolved reference items.
+          -->
+      <_ResolvedProjectReferencePaths>
+        <OriginalProjectReferenceItemSpec>%(_ResolvedProjectReferencePaths.OriginalItemSpec)</OriginalProjectReferenceItemSpec>
+      </_ResolvedProjectReferencePaths>
+    </ItemGroup>
+
+    <!-- Issue a warning for each non-existent project. -->
+    <Warning
+        Text="The referenced project '%(_MSBuildProjectReferenceNonexistent.Identity)' does not exist."
+        Condition="'@(ProjectReferenceWithConfiguration)' != '' and '@(_MSBuildProjectReferenceNonexistent)' != ''"/>
+
+  </Target>
+
+  <!--
+    ============================================================
+                                        ResolveNativeReferences
+
+    Resolve native references
+
+        [IN]
+        @(NativeReference) - The manifest reference (or list of manifest references)
+
+        [OUT]
+        @(NativeReferenceFile)  - List of manifest files referenced.
+        @(_DeploymentNativePrerequisite)   - List of native assembly prerequisites contained in the manifest.
+        @(ComClassReference)    - List of COM components contained in the manifest.
+        @(COMReferenceFromNative) List of type libraries contained in the manifest.
+        @(COMFileReference)     - List of loose files contained in the manifest.
+        @(_DeploymentLooseManifestFile)    - List of extra files that should be published.
+    ============================================================
+    -->
+  <Target
+      Name="ResolveNativeReferences"
+      Condition="'@(NativeReference)'!=''"
+      DependsOnTargets="ResolveProjectReferences">
+
+    <ResolveNativeReference
+        NativeReferences="@(NativeReference)"
+        AdditionalSearchPaths="$(ReferencePath);$(OutDir)"
+            >
+      <Output TaskParameter="ContainingReferenceFiles" ItemName="NativeReferenceFile"/>
+      <Output TaskParameter="ContainedPrerequisiteAssemblies" ItemName="_DeploymentNativePrerequisite"/>
+      <Output TaskParameter="ContainedComComponents" ItemName="ComClassReference"/>
+      <Output TaskParameter="ContainedTypeLibraries" ItemName="COMReferenceFromNative"/>
+      <Output TaskParameter="ContainedLooseTlbFiles" ItemName="COMFileReference"/>
+      <Output TaskParameter="ContainedLooseEtcFiles" ItemName="_DeploymentLooseManifestFile"/>
+    </ResolveNativeReference>
+
+  </Target>
+
+
+
+  <!--
+    ============================================================
+                                        GetReferenceAssemblyPaths
+
+    Get the paths for the Reference Assemblies for the known versions of the
+    .NET Framework.
+
+    These paths are used by the build process in order to resolve the correct
+    assemblies from the various directories, and to support multi-targeting
+    ============================================================
+    -->
+  <Target
+      Name="GetReferenceAssemblyPaths"
+      DependsOnTargets="$(GetReferenceAssemblyPathsDependsOn)">
+
+    <!-- if TargetFrameworkDirectory doesn't have a custom value, clear it out; that way we can get reference paths and target framework directories all in the right order -->
+    <PropertyGroup>
+      <TargetFrameworkDirectory Condition="'@(_CombinedTargetFrameworkDirectoriesItem)' == '$(TargetFrameworkDirectory)'"/>
+    </PropertyGroup>
+
+    <!-- By default if there is no root path set then the task will assume it is Program Files\Reference Assemblies\Microsoft\Framework-->
+    <GetReferenceAssemblyPaths
+        Condition="'$(TargetFrameworkMoniker)' != '' and ('$(_TargetFrameworkDirectories)' == '' or '$(_FullFrameworkReferenceAssemblyPaths)' == '')"
+        TargetFrameworkMoniker="$(TargetFrameworkMoniker)"
+        RootPath="$(TargetFrameworkRootPath)"
+        BypassFrameworkInstallChecks="$(BypassFrameworkInstallChecks)"
+        >
+      <Output TaskParameter="ReferenceAssemblyPaths" PropertyName="_TargetFrameworkDirectories"/>
+      <Output TaskParameter="FullFrameworkReferenceAssemblyPaths" PropertyName="_FullFrameworkReferenceAssemblyPaths"/>
+      <Output TaskParameter="TargetFrameworkMonikerDisplayName" PropertyName="TargetFrameworkMonikerDisplayName" Condition="'$(TargetFrameworkMonikerDisplayName)' == ''"/>
+    </GetReferenceAssemblyPaths>
+
+    <PropertyGroup>
+      <TargetFrameworkDirectory>$(_TargetFrameworkDirectories);$(TargetFrameworkDirectory);$(WinFXAssemblyDirectory)</TargetFrameworkDirectory>
+    </PropertyGroup>
+
+    <!-- Remove the AssemblyFolders if no target framework directories could be found. This is to prevent us from
+             resolving from the assemblyfolders global location if we are not acutally targeting a framework-->
+
+    <PropertyGroup>
+      <RemoveAssemblyFoldersIfNoTargetFramework Condition="'$(RemoveAssemblyFoldersIfNoTargetFramework)' == ''">true</RemoveAssemblyFoldersIfNoTargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_TargetFrameworkDirectories)' == '' and '$(AssemblySearchPaths)' != '' and '$(RemoveAssemblyFoldersIfNoTargetFramework)' == 'true'">
+      <AssemblySearchPaths>$(AssemblySearchPaths.Replace('{AssemblyFolders}', '').Split(';'))</AssemblySearchPaths>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_TargetFrameworkDirectories)' == ''">
+      <TargetFrameworkProfile/>
+    </PropertyGroup>
+  </Target>
+
+
+
+  <!--
+    ============================================================
+
+                                        ResolveAssemblyReferences
+
+    Given the list of assemblies, find the closure of all assemblies that they depend on. These are
+    what we need to copy to the output directory.
+
+        [IN]
+        @(Reference) - List of assembly references as fusion names.
+        @(_ResolvedProjectReferencePaths) - List of project references produced by projects that this project depends on.
+
+            The 'Private' attribute on the reference corresponds to the Copy Local flag in IDE.
+            The 'Private' flag can have three possible values:
+                - 'True' means the reference should be Copied Local
+                - 'False' means the reference should not be Copied Local
+                - [Missing] means this task will decide whether to treat this reference as CopyLocal or not.
+
+        [OUT]
+        @(ReferencePath) - Paths to resolved primary files.
+        @(ReferenceDependencyPaths) - Paths to resolved dependency files.
+        @(_ReferenceRelatedPaths) - Paths to .xmls and .pdbs.
+        @(ReferenceSatellitePaths) - Paths to satellites.
+        @(_ReferenceSerializationAssemblyPaths) - Paths to XML serialization assemblies created by sgen.
+        @(_ReferenceScatterPaths) - Paths to scatter files.
+        @(ReferenceCopyLocalPaths) - Paths to files that should be copied to the local directory.
+    ============================================================
+    -->
+  <PropertyGroup>
+    <ResolveAssemblyReferencesDependsOn>
+      GetFrameworkPaths;
+      GetReferenceAssemblyPaths;
+      GetRedistLists;
+      _PrepareForBuild
+    </ResolveAssemblyReferencesDependsOn>
+  </PropertyGroup>
+  <Target
+      Name="ResolveAssemblyReferences"
+      Condition="'@(Reference)'!='' or '@(_ResolvedProjectReferencePaths)'!='' or '@(_ExplicitReference)' != ''"
+      Returns="@(ReferencePath)"
+      DependsOnTargets="$(ResolveAssemblyReferencesDependsOn)">
+
+    <ItemGroup>
+      <_ReferenceInstalledAssemblyDirectory Include="$(TargetFrameworkDirectory)" />
+      <_ReferenceInstalledAssemblySubsets Include="$(TargetFrameworkSubset)" />
+    </ItemGroup>
+
+    <!--
+        Only read and write cache file at build time, skip it for load time because its more
+        expensive to write the newly created cache file.
+        -->
+    <PropertyGroup>
+      <ResolveAssemblyReferencesStateFile Condition="'$(BuildingProject)'=='true'">$(IntermediateOutputPath)ResolveAssemblyReference.cache</ResolveAssemblyReferencesStateFile>
+    </PropertyGroup>
+
+    <!-- Make an App.Config item that exists when AutoUnify is false. -->
+    <ItemGroup>
+      <_ResolveAssemblyReferencesApplicationConfigFileForExes Include="@(AppConfigWithTargetPath)" Condition="'$(AutoUnifyAssemblyReferences)'=='false'"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+      <!-- Default in task is true -->
+      <_FindDependencies Condition="'$(BuildingProject)' != 'true' and '$(_ResolveReferenceDependencies)' != 'true'">false</_FindDependencies>
+      <ResolveAssemblyReferencesSilent Condition="'$(ResolveAssemblyReferencesSilent)' == '' and '$(TraceDesignTime)' != 'true' and '$(BuildingProject)' == 'false'">true</ResolveAssemblyReferencesSilent>
+      <ResolveAssemblyReferencesSilent Condition="'$(ResolveAssemblyReferencesSilent)' == ''">false</ResolveAssemblyReferencesSilent>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <!-- Remove any references which we have added as explicit reference so that we do not get duplicates. We need to make sure we do not have duplicates
+             because this confuses the IDE  when it tries to compare the list of references passed in to the list of resolved references. If it does not match then the
+             ide will show one of the references as not resolved, this will not break the build but is a display issue -->
+      <Reference Remove="$(AdditionalExplicitAssemblyReferences)"/>
+      <Reference Include="$(AdditionalExplicitAssemblyReferences)"/>
+    </ItemGroup>
+
+    <ResolveAssemblyReference
+        Assemblies="@(Reference)"
+        AssemblyFiles="@(_ResolvedProjectReferencePaths);@(_ExplicitReference)"
+        TargetFrameworkDirectories="@(_ReferenceInstalledAssemblyDirectory)"
+        InstalledAssemblyTables="@(InstalledAssemblyTables);@(RedistList)"
+        IgnoreDefaultInstalledAssemblyTables="$(IgnoreDefaultInstalledAssemblyTables)"
+        IgnoreDefaultInstalledAssemblySubsetTables="$(IgnoreInstalledAssemblySubsetTables)"
+        CandidateAssemblyFiles="@(Content);@(None)"
+        SearchPaths="$(AssemblySearchPaths)"
+        AllowedAssemblyExtensions="$(AllowedReferenceAssemblyFileExtensions)"
+        AllowedRelatedFileExtensions="$(AllowedReferenceRelatedFileExtensions)"
+        TargetProcessorArchitecture="$(ProcessorArchitecture)"
+        AppConfigFile="@(_ResolveAssemblyReferencesApplicationConfigFileForExes)"
+        AutoUnify="$(AutoUnifyAssemblyReferences)"
+        FindDependencies="$(_FindDependencies)"
+        FindSatellites="$(BuildingProject)"
+        FindSerializationAssemblies="$(BuildingProject)"
+        FindRelatedFiles="$(BuildingProject)"
+        Silent="$(ResolveAssemblyReferencesSilent)"
+        TargetFrameworkVersion="$(TargetFrameworkVersion)"
+        TargetFrameworkMoniker="$(TargetFrameworkMoniker)"
+        TargetFrameworkMonikerDisplayName="$(TargetFrameworkMonikerDisplayName)"
+        TargetedRuntimeVersion="$(TargetedRuntimeVersion)"
+        StateFile="$(ResolveAssemblyReferencesStateFile)"
+        InstalledAssemblySubsetTables="@(InstalledAssemblySubsetTables)"
+        TargetFrameworkSubsets="@(_ReferenceInstalledAssemblySubsets)"
+        FullTargetFrameworkSubsetNames="$(FullReferenceAssemblyNames)"
+        FullFrameworkFolders="$(_FullFrameworkReferenceAssemblyPaths)"
+        FullFrameworkAssemblyTables="@(FullFrameworkAssemblyTables)"
+        ProfileName="$(TargetFrameworkProfile)"
+        LatestTargetFrameworkDirectories="@(LatestTargetFrameworkDirectories)"
+        CopyLocalDependenciesWhenParentReferenceInGac="$(CopyLocalDependenciesWhenParentReferenceInGac)"
+            >
+
+      <Output TaskParameter="ResolvedFiles" ItemName="ReferencePath"/>
+      <Output TaskParameter="ResolvedFiles" ItemName="_ResolveAssemblyReferenceResolvedFiles"/>
+      <Output TaskParameter="ResolvedDependencyFiles" ItemName="ReferenceDependencyPaths"/>
+      <Output TaskParameter="RelatedFiles" ItemName="_ReferenceRelatedPaths"/>
+      <Output TaskParameter="SatelliteFiles" ItemName="ReferenceSatellitePaths"/>
+      <Output TaskParameter="SerializationAssemblyFiles" ItemName="_ReferenceSerializationAssemblyPaths"/>
+      <Output TaskParameter="ScatterFiles" ItemName="_ReferenceScatterPaths"/>
+      <Output TaskParameter="CopyLocalFiles" ItemName="ReferenceCopyLocalPaths"/>
+      <Output TaskParameter="SuggestedRedirects" ItemName="SuggestedBindingRedirects"/>
+      <Output TaskParameter="FilesWritten" ItemName="FileWrites"/>
+
+    </ResolveAssemblyReference>
+
+  </Target>
+
+
+  <!--
+    ============================================================
+                                        ResolveComReferences
+
+    Resolve COM references
+
+        [IN]
+        @(COMReference) - The list of COM references
+        $(BaseIntermediateOutputPath) - The output directory in which to generate wrapper assemblies
+
+        [OUT]
+        @(ReferencePath) - Paths to referenced wrappers.
+
+        If ResolveComReferences is invoked from the IDE, PrepareForBuild may need to run to create directories.
+    ============================================================
+    -->
+  <PropertyGroup>
+    <ComReferenceExecuteAsTool Condition="'$(ComReferenceExecuteAsTool)'==''">false</ComReferenceExecuteAsTool>
+  </PropertyGroup>
+
+  <Target
+      Name="ResolveComReferences"
+      Condition="'@(COMReference)'!='' or '@(COMFileReference)'!=''"
+      Returns="@(ReferencePath)"
+      DependsOnTargets="PrepareForBuild;ResolveKeySource;ResolveAssemblyReferences"
+        >
+
+    <PropertyGroup Condition=" '$(InteropOutputPath)' == '' ">
+      <InteropOutputPath>$(IntermediateOutputPath)</InteropOutputPath>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(InteropOutputPath)"/>
+
+    <!--
+        Note: This task should not be batched, since it relies on having all the COM references fed into it at once.
+        -->
+    <ResolveComReference
+          TypeLibNames="@(COMReference)"
+          TypeLibFiles="@(COMFileReference)"
+          ResolvedAssemblyReferences="@(ReferencePath)"
+          WrapperOutputDirectory="$(InteropOutputPath)"
+          IncludeVersionInInteropName="$(IncludeVersionInInteropName)"
+          KeyContainer="$(KeyContainerName)"
+          KeyFile="$(KeyOriginatorFile)"
+          DelaySign="$(DelaySign)"
+          StateFile="@(_ResolveComReferenceCache)"
+          TargetFrameworkVersion="$(TargetFrameworkVersion)"
+          TargetProcessorArchitecture="$(ProcessorArchitecture)"
+          NoClassMembers="$(ComReferenceNoClassMembers)"
+          EnvironmentVariables="$(ResolveComReferenceEnvironment)"
+          SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)"
+          ExecuteAsTool="$(ComReferenceExecuteAsTool)">
+
+      <Output TaskParameter="ResolvedFiles" ItemName="ReferencePath"/>
+      <Output TaskParameter="ResolvedFiles" ItemName="ComReferenceWrappers"/>
+      <Output TaskParameter="ResolvedFiles" ItemName="FileWrites"/>
+      <!-- This output list only includes items with Isolated attribute set to True.  It's done by the task itself. -->
+      <Output TaskParameter="ResolvedModules" ItemName="ResolvedIsolatedComModules"/>
+
+    </ResolveComReference>
+
+    <ItemGroup>
+      <FileWrites Include="@(_ResolveComReferenceCache)"/>
+      <ReferenceComWrappersToCopyLocal Include="@(ComReferenceWrappers)" Condition="'%(ComReferenceWrappers.CopyLocal)'!='false'"/>
+    </ItemGroup>
+
+  </Target>
+
+
+
+  <!--
+    ============================================================
+                                        AfterResolveReferences
+
+    Redefine this target in your project in order to run tasks just after ResolveReferences
+    ============================================================
+    -->
+  <Target Name="AfterResolveReferences">
+    <Copy
+    SourceFiles="@(ReferencePath->'%(FullPath)')"
+    DestinationFolder="$(_FullSourceWebDir)\Bin\"
+    ContinueOnError="true"
+    SkipUnchangedFiles="true"
+    Retries="$(CopyRetryCount)"
+    RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+    <!--<Copy
+      SourceFiles="@(_ReferenceRelatedPaths->'%(FullPath)')"
+      DestinationFolder="$(_FullSourceWebDir)\Bin\"
+      ContinueOnError="true"
+      SkipUnchangedFiles="true"
+      Retries="$(CopyRetryCount)"
+      RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+    <Copy
+      SourceFiles="@(_ReferenceScatterPaths->'%(FullPath)')"
+      DestinationFolder="$(_FullSourceWebDir)\Bin\"
+      ContinueOnError="true"
+      SkipUnchangedFiles="true"
+      Retries="$(CopyRetryCount)"
+      RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+    <Copy
+      SourceFiles="@(ReferenceSatellitePaths->'%(FullPath)')"
+      DestinationFolder="$(_FullSourceWebDir)\Bin\%(DestinationSubDirectory)"
+      ContinueOnError="true"
+      SkipUnchangedFiles="true"
+      Retries="$(CopyRetryCount)"
+      RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+    <Copy
+      SourceFiles="@(ReferenceDependencyPaths->'%(FullPath)')"
+      DestinationFolder="$(_FullSourceWebDir)\Bin\"
+      ContinueOnError="true"
+      SkipUnchangedFiles="true"
+      Retries="$(CopyRetryCount)"
+      RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>-->
+
+    <Copy SourceFiles="@(ReferenceComWrappersToCopyLocal); @(ResolvedIsolatedComModules); @(_DeploymentLooseManifestFile); @(NativeReferenceFile)"
+        DestinationFolder="$(_FullSourceWebDir)\bin"
+        SkipUnchangedFiles="true"
+        Retries="$(CopyRetryCount)"
+        RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+
+    <Copy SourceFiles="@(ReferenceCopyLocalPaths)"
+         DestinationFiles="@(ReferenceCopyLocalPaths->'$(_FullSourceWebDir)\bin\%(DestinationSubDirectory)%(Filename)%(Extension)')"
+         SkipUnchangedFiles="true"
+         Retries="$(CopyRetryCount)"
+         RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"/>
+
+
+  </Target>
+
+
+  <!--
+    ============================================================
+                              Build
+
+    The main build entry point.
+    ============================================================
+    -->
+    <PropertyGroup>
+        <BuildDependsOn>
+          _PrepareForBuild;
+          ResolveProjectReferences;
+          <!--For the websites.-->
+        _ResolveReferences;
+        ResolveReferences;
+        _CheckExcludeWAPObjFolderFromBuild;
+        _CopyBeforeBuild;
+        BeforeBuild;
+        AspNetCompiler;
+        BeforeMerge;
+        AspNetMerge;
+        AfterMerge;
+        CopyToOutputDir;
+        ReplaceWebConfigSections;
+        CreateVirtualDirectory;
+        AfterBuild
+      </BuildDependsOn>
+    </PropertyGroup>
+
+    <Target
+        Name="Build"
+        DependsOnTargets="$(BuildDependsOn)">
+    </Target>
+
+    <!--
+    ============================================================
+                              Rebuild
+
+    Clean build entry point
+    ============================================================
+    -->
+    <Target
+        Name="Rebuild"
+        DependsOnTargets="Clean;$(BuildDependsOn)">
+    </Target>
+
+    <!--
+    ============================================================
+                              BeforeBuild
+   
+    Redefine this target in your project in order to run tasks 
+    just before any targets (except _prepareforBuild) have 
+    executed
+    ============================================================
+    -->
+    <Target Name="BeforeBuild"/>
+
+    <!--
+    ============================================================
+                              AfterBuild
+
+    Redefine this target in your project in order to run tasks 
+    after all other targets have been executed 
+    ============================================================
+    -->
+    <Target Name="AfterBuild"/>
+
+    <!--
+    ============================================================
+                              BeforeMerge
+    
+    Redefine this target in your project in order to run tasks just 
+    before AspNetMerge occurs.
+    ============================================================
+    -->
+    <Target Name="BeforeMerge" />
+
+    <!--
+    ============================================================
+                             AfterMerge
+
+    Redefine this target in your project in order to run tasks just 
+    after AspNetMerge occurs.
+    ============================================================
+    -->
+    <Target Name="AfterMerge" />
+
+
+    <!--
+    ============================================================
+                             AspNetCompiler
+
+    The Asp.Net precompilation build
+    ============================================================
+    -->
+    <PropertyGroup>
+      <PrecompDependsOn>
+        _PrepareForBuild;
+        GetFrameworkPaths;
+      </PrecompDependsOn>
+    </PropertyGroup>
+
+    <Target Name="AspNetCompiler" DependsOnTargets="$(PrecompDependsOn)">
+
+        <AspNetCompiler 
+          PhysicalPath="$(_AspNetCompilerSourceWebPath)"
+          TargetPath="$(TempBuildDir)"
+          VirtualPath="$(_AspNetCompilerVirtualPath)"
+          Force="$(_Force)"
+          Debug="$(DebugSymbols)"
+          Updateable="$(EnableUpdateable)" 
+          KeyFile="$(_FullKeyFile)" 
+          KeyContainer="$(_AspNetCompilerKeyContainer)"
+          DelaySign="$(DelaySign)" 
+          AllowPartiallyTrustedCallers="$(AllowPartiallyTrustedCallers)" 
+          FixedNames="$(_AspNetCompilerFixedNames)" 
+          Clean="$(Clean)"
+          MetabasePath="$(_AspNetCompilerMetabasePath)"
+          ToolPath="$(AspnetCompilerPath)"
+        />
+      
+        <!--
+        Removing APP_DATA is done here so that the output groups reflect the fact that App_data is
+        not present
+        -->
+        <RemoveDir Condition="'$(DeleteAppDataFolder)' == 'true'" Directories="$(TempBuildDir)App_Data"/>
+
+        <CreateItem Include="$(TempBuildDir)\**\*.*"  Condition="'$(UseMerge)' != 'true'">
+            <Output ItemName="PrecompiledOutput" TaskParameter="Include" />
+        </CreateItem>
+    </Target>
+
+
+    <!--
+    ============================================================
+                                        GetAspNetMergePath
+
+    Get the paths for AspNet_Merge.exe Path.
+    Use Framework SDK's Path.  If not exist, fall back to WDP installpath.
+    ============================================================
+    -->
+    <PropertyGroup>
+        <GetAspNetMergePathDependsOn>
+            GetFrameworkPaths;
+        </GetAspNetMergePathDependsOn>
+    </PropertyGroup>
+    <Target
+        Name="GetAspNetMergePath"
+        DependsOnTargets="$(GetAspNetMergePathDependsOn)">
+        <PropertyGroup>
+            <AspnetMergeName>aspnet_merge.exe</AspnetMergeName>
+            <AspnetMergePath>$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v10.0</AspnetMergePath>
+            <AspnetMergePath Condition="Exists('$(TargetFrameworkSDKDirectoryBin)$(AspnetMergeName)')">$(TargetFrameworkSDKDirectoryBin)</AspnetMergePath>
+        </PropertyGroup>
+    </Target>
+
+    <!--
+    ============================================================
+                              AspNetMerge
+
+    The Asp.Net Merge build
+    ============================================================
+    -->
+    <PropertyGroup>
+        <MergeDependsOn>
+          GetFrameworkPaths;
+          _PrepareForBuild;
+          AspNetCompiler;
+          GenerateAssemblyInfo;
+	        GetAspNetMergePath;
+        </MergeDependsOn>
+    </PropertyGroup>
+    <Target Name="AspNetMerge" Condition="'$(UseMerge)' == 'true'" DependsOnTargets="$(MergeDependsOn)">
+        <AspNetMerge
+          ExePath="$(AspnetMergePath)" 
+          ApplicationPath="$(TempBuildDir)"
+          KeyFile="$(_FullKeyFile)"
+          DelaySign="$(DelaySign)"
+          Prefix="$(AssemblyPrefixName)"
+          SingleAssemblyName="$(SingleAssemblyName)"
+          Debug="$(DebugSymbols)"
+          Nologo="$(NoLogo)"
+          ContentAssemblyName="$(ContentAssemblyName)"
+          ErrorStack="$(ErrorStack)"
+          RemoveCompiledFiles="$(DeleteAppCodeCompiledFiles)"
+          CopyAttributes="$(CopyAssemblyAttributes)" 
+          AssemblyInfo="$(AssemblyInfoDll)" 
+          MergeXmlDocs="$(MergeXmlDocs)" 
+          ErrorLogFile="$(MergeErrorLogFile)" 
+          />
+
+        <CreateItem Include="$(TempBuildDir)\**\*.*">
+            <Output ItemName="PrecompiledOutput" TaskParameter="Include" />
+        </CreateItem>
+    </Target>
+
+    <!--
+    ============================================================
+                            ReplaceWebConfigSections
+
+    Replace config sections build target
+    ============================================================
+    -->
+    <PropertyGroup>
+        <ConfigReplaceDependsOn>
+            _PrepareForBuild;
+            AspNetCompiler;
+            AspNetMerge;
+        </ConfigReplaceDependsOn>
+    </PropertyGroup>
+
+    <Target Name="ReplaceWebConfigSections" Condition="'$(UseWebConfigReplacement)' == 'true'" DependsOnTargets="$(ConfigReplaceDependsOn)">
+        <ReplaceConfigSections
+           RootPath="$(WDTargetDir)"
+           WebConfigReplacementFiles="@(WebConfigReplacementFiles)"
+           UseExternalConfigSource="$(UseExernalWebConfigReplacementFile)"
+           ValidateSectionElements="$(ValidateWebConfigReplacement)"
+         />
+    </Target>
+
+    <!--
+    ============================================================
+                              CopyToOutputDir
+
+    Copy the output to the real output directory from the temporary 
+    building location 
+    ============================================================
+    -->
+
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBefore_CollectFilesForCopyToOutputDir Condition="'$(OnBefore_CollectFilesForCopyToOutputDir)'==''">
+    </OnBefore_CollectFilesForCopyToOutputDir>
+    <!--Targets get execute after this Target-->
+    <OnAfter_CollectFilesForCopyToOutputDir Condition="'$(OnAfter_CollectFilesForCopyToOutputDir)'==''">
+    </OnAfter_CollectFilesForCopyToOutputDir>
+    <_CollectFilesForCopyToOutputDirDependsOn Condition="'$(_CollectFilesForCopyToOutputDirDependsOn)'==''">
+      $(OnBefore_CollectFilesForCopyToOutputDir);
+    </_CollectFilesForCopyToOutputDirDependsOn>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <_WDPOutputFiles>
+      <DestinationRelativePath></DestinationRelativePath>
+      <Exclude>False</Exclude>
+      <FromTarget>Unknown</FromTarget>
+      <Category>Run</Category>
+      <ProjectFileType>Default</ProjectFileType>
+    </_WDPOutputFiles>
+  </ItemDefinitionGroup>
+
+  <Target Name="_CollectFilesForCopyToOutputDir"
+          DependsOnTargets="$(_CollectFilesForCopyToOutputDirDependsOn)">
+
+    <!--********************************************************************-->
+    <!--Enforce all item have these metadata value for all pipeline metadata-->
+    <!--Default for Exclude is False-->
+    <!--********************************************************************-->
+
+    <CollectFilesinFolder RootPath="$(TempBuildDir)"
+                         ExcludeFullPathMatchs="$(_WDPExcludeFullPathToOutputDirRegEx)"
+                         ExcludeRelativePathMatchs="$(_WDPExcludeRelativePathToOutputDirRegex)" >
+      <Output TaskParameter="Result" ItemName="_WDPOutputFilesNoMetadata" />
+    </CollectFilesinFolder>
+
+
+    <!--_WDPOutputFilesNoMetadata doesn't have metadata yet, need to fill the data.  Fill in the metadata now for CopyPipelineFiles to use-->
+    <ItemGroup>
+      <_WDPOutputFiles Include="@(_WDPOutputFilesNoMetadata)" >
+        <DestinationRelativePath>%(_WDPOutputFilesNoMetadata.Identity)</DestinationRelativePath>
+      </_WDPOutputFiles>
+    </ItemGroup>
+
+    <MakeDir Directories="$(IntermediateOutputPath)" Condition="!Exists('$(IntermediateOutputPath)')"/>
+    <WriteLinesToFile Condition="$(EnablePackageProcessLoggingAndAssert)"
+                      Encoding="utf-8"
+                      File="$(IntermediateOutputPath)\WDPOutputFilesToBeCopied.txt"
+                      Lines="@(_WDPOutputFiles->'
+                      Files:%(Identity) 
+                      FromTarget:%(FromTarget)
+                      DestinationRelativePath:%(DestinationRelativePath)')"
+                      Overwrite="True" />
+
+    <CallTarget Targets="$(OnAfter_CollectFilesForCopyToOutputDir)" RunEachTargetSeparately="false" />
+  </Target>
+
+
+  <PropertyGroup>
+    <!--Targets get execute before this Target-->
+    <OnBefore_CopyToOutputDir Condition="'$(OnBefore_CopyToOutputDir)'==''">
+    </OnBefore_CopyToOutputDir>
+    <!--Targets get execute after this Target-->
+    <OnAfter_CopyToOutputDir Condition="'$(OnAfter_CopyToOutputDir)'==''">
+      CleanTempBuildDir;
+      ToggleDebugCompilation;
+    </OnAfter_CopyToOutputDir>
+    <_CopyToOutputDirDependsOn Condition="'$(_CopyToOutputDirDependsOn)'==''">
+      $(OnBefore_CopyToOutputDir);
+      _CollectFilesForCopyToOutputDir;
+    </_CopyToOutputDirDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CopyToOutputDir"
+          Condition=" '$(CopyToOutputDir)' != 'False'"
+          DependsOnTargets="$(_CopyToOutputDirDependsOn)">
+
+    <ItemGroup>
+      <_WDPAllExtraFilesUnderTargetDir Condition="'$(WDTargetDir)' != ''" Include="$(WDTargetDir)\**" />
+      <_WDPAllExtraFilesUnderTargetDir
+        Remove="@(_WDPOutputFiles->'$(WDTargetDir)\%(DestinationRelativePath)')" />
+    </ItemGroup>
+    <!--Remove all extra files in the temp folder that's not in the @(FilesForPackagingFromProject-->
+    <Delete Files="@(_WDPAllExtraFilesUnderTargetDir)"  />
+
+    <!--This method support incremental copy instead of wipe out everytime-->
+    <!--@(_WDPOutputFiles) contain relative path to $(TempBuildDir), pass in sourceDirectory-->
+    <CopyPipelineFiles PipelineItems="@(_WDPOutputFiles)"
+                           SourceDirectory="$(TempBuildDir)"
+                           TargetDirectory="$(WDTargetDir)"
+                           SkipMetadataExcludeTrueItems="True"
+                           UpdateItemSpec="False"
+                           DeleteItemsMarkAsExcludeTrue ="True">
+      <Output TaskParameter="UpdatedPipelineItems" ItemName="_WDPOutputFilesCopied"/>
+    </CopyPipelineFiles>
+    
+    <CallTarget Targets="$(OnAfter_CopyToOutputDir)" RunEachTargetSeparately="false" />
+  </Target>
+
+
+
+  <!--
+    ============================================================
+                              ToggleDebugCompilation
+
+    ToggleDebugCompilation
+    ============================================================
+    -->
+
+  <Target Name="ToggleDebugCompilation"
+          Condition="'$(ToggleDebugCompilation)' != 'False'">
+    <ToggleDebugCompilation
+            RootPath="$(WDTargetDir)"
+            Debug="$(DebugSymbols)"
+            Condition="'$(DisableDebugCompilationTask)' != 'true'"
+      />
+  </Target>
+
+
+  <!--
+    ============================================================
+                              CleanTempBuildDir
+
+    Clean Temp Build Dir
+    ============================================================
+    -->
+  <Target Name="CleanTempBuildDir"
+          Condition="'$(CleanTempBuildDir)' == 'True'">
+    <RemoveDir Directories="$(TempBuildDir)" />
+  </Target>
+
+  
+    <!--
+    ============================================================
+                              CreateVirtualDirectory
+
+    Creates a Virtual Directory
+    
+    Metabase properties can be set using @(VirtualDirectoryMetabaseProperties)
+
+       <ItemGroup>
+         <VirtualDirectoryMetabaseProperties Include="EnableDirBrowsing">
+           <value>true</value>
+         </VirtualDirectoryMetabaseProperties>
+         <VirtualDirectoryMetabaseProperties Include="AccessWrite">
+           <value>true</value>
+         </VirtualDirectoryMetabaseProperties>
+       </ItemGroup>
+    
+    ============================================================
+    -->
+
+  <Target Name="CreateVirtualDirectory" Condition=" '$(VirtualDirectoryAlias)' != ''  ">
+    <CreateVirtualDirectory
+      SiteId ="$(VirtualDirectorySiteId)"
+      Alias = "$(VirtualDirectoryAlias)"
+      ServerName ="$(VirtualDirectoryServer)"
+      Path =  "$(WDTargetDir)"
+      ReplaceExisting = "$(ReplaceExistingVirtualDirectory)"
+      MetabaseProperties="@(VirtualDirectoryMetabaseProperties)"
+    >
+      <Output TaskParameter="IisPath" PropertyName="_WDP_CreateVirtualDirectoryIisPath" />
+    </CreateVirtualDirectory>
+    
+    <AspNetRegIisInstallScriptMaps
+      MetaKeyPath="$(_WDP_CreateVirtualDirectoryIisPath)"
+      ExePath="$(AspnetCompilerPath)"
+      Recursively="$(WDP_InstallScriptMapsRecursive)" 
+      Condition="'$(WDP_AspNetRegIisInstallScriptMaps)' !=  'False'"/>
+
+    <GrantServerAccess Path = "$(WDTargetDir)" />
+    <GrantServerAccess Path =  "$(WDTargetDir)App_Data" WriteAccess="true" DeleteAccess="true" />
+  </Target>
+
+  <!--
+    Output group to allow the deployed web to be consumed by a setup project
+    -->
+  <Target Name="BuiltProjectOutputGroup" DependsOnTargets="_PrepareForBuild">
+    <CreateItem Include="$(WDTargetDir)**\*.*">
+      <Output ItemName="_BuiltProjectOutputGroupOutput" TaskParameter="Include"/>
+    </CreateItem>
+    <CreateItem 
+      Include="@(_BuiltProjectOutputGroupOutput)"
+      AdditionalMetadata="TargetPath=%(_BuiltProjectOutputGroupOutput.SubFolder)%(_BuiltProjectOutputGroupOutput.RecursiveDir)%(Filename)%(Extension)">
+      <Output ItemName="BuiltProjectOutputGroupOutput" TaskParameter="Include"/>
+    </CreateItem>
+  </Target>
+
+  <!--
+    ============================================================
+                              GenerateAssemblyInfo
+
+    Generates an Assembly with the AssemblyAttributes contained in @(AssebmlyAttributes)
+    The output is in property AssemblyInfoDll
+
+    The assembly attributes can be defined as follows:
+    
+           <ItemGroup>
+             <AssebmlyAttributes Include="AssemblyVersion">
+               <value>3.0.0.0</value>
+             </AssebmlyAttributes>
+             <AssebmlyAttributes Include="AssemblyFileVersion">
+               <value>3.0.0.0</value>
+             </AssebmlyAttributes>
+             <AssemblyAttributes Include="AssemblyTitle">
+               <value>MyCompany MyWeb</value>
+             </AssemblyAttributes>
+             <AssemblyAttributes Include="AssemblyDescription">
+               <value>Corporate Site</value>
+             </AssemblyAttributes>
+             <AssemblyAttributes Include="AssemblyCompany">
+               <value>MyCompany</value>
+             </AssemblyAttributes>
+             <AssemblyAttributes Include="AssemblyCopyright">
+               <value>Copyright © MyCompany 2005</value>
+             </AssemblyAttributes>
+           </ItemGroup>
+    
+    ============================================================
+    -->
+  <Target Name="GenerateAssemblyInfo" Condition=" '@(AssemblyAttributes)' != '' ">
+    <GenerateAssemblyInfo
+       AssemblyAttributes="@(AssemblyAttributes)"
+       OutputDir="$(MSBuildProjectDirectory)\AssemblyInfo\$(Configuration)"
+       />
+    <Csc
+      TargetType="library" 
+      Sources="$(MSBuildProjectDirectory)\AssemblyInfo\$(Configuration)\AssemblyInfo.cs"
+      OutputAssembly="$(MSBuildProjectDirectory)\AssemblyInfo\$(Configuration)\AssemblyInfo.dll" 
+      />
+    <CreateProperty Value="$(MSBuildProjectDirectory)\AssemblyInfo\$(Configuration)\AssemblyInfo.dll">
+      <Output TaskParameter="Value" PropertyName="AssemblyInfoDll" />
+    </CreateProperty>
+  </Target>
+
+
+  <!--
+    ============================================================
+                                        GetFrameworkPaths
+
+    Get the paths for the .NET Framework installation directory, and the .NET Framework
+    SDK installation directory.
+
+    These paths are not used directly by this .targets file but are available for pre and
+    post build steps.
+    ============================================================
+    -->
+    <PropertyGroup>
+        <GetFrameworkPathsDependsOn></GetFrameworkPathsDependsOn>
+    </PropertyGroup>
+    <Target
+        Name="GetFrameworkPaths"
+        DependsOnTargets="$(GetFrameworkPathsDependsOn)">
+
+        <!-- Get the paths to all of the target .NET framework directories. -->
+        <GetFrameworkPath>
+          <Output TaskParameter="FrameworkVersion40Path" PropertyName="Framework40Dir"/>
+          <Output TaskParameter="FrameworkVersion20Path" PropertyName="Framework20Dir"/>
+            <Output Condition=" '$(TargetFrameworkVersion)' == 'v4.0' "                                                                                  TaskParameter="FrameworkVersion40Path"  ItemName="_CombinedTargetFrameworkDirectoriesItem" />
+            <Output Condition=" '$(TargetFrameworkVersion)' == 'v3.5' "                                                                                  TaskParameter="FrameworkVersion35Path"  ItemName="_CombinedTargetFrameworkDirectoriesItem" />
+            <Output Condition=" '$(TargetFrameworkVersion)' == 'v3.0' or '$(TargetFrameworkVersion)' == 'v3.5' "                                         TaskParameter="FrameworkVersion30Path"  ItemName="_CombinedTargetFrameworkDirectoriesItem" />
+            <Output Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.0' or '$(TargetFrameworkVersion)' == 'v3.5'" TaskParameter="FrameworkVersion20Path"  ItemName="_CombinedTargetFrameworkDirectoriesItem" />
+        </GetFrameworkPath>
+
+        <PropertyGroup>
+          <_WDPFrameworkLowerThan4>False</_WDPFrameworkLowerThan4>
+          <_WDPFrameworkLowerThan4 Condition="'$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.0' or '$(TargetFrameworkVersion)' == 'v3.5'">True</_WDPFrameworkLowerThan4>
+        </PropertyGroup>
+      
+      <PropertyGroup Condition="'$(TargetFrameworkDirectory)'==''">
+        <TargetFrameworkDirectory>@(_CombinedTargetFrameworkDirectoriesItem)</TargetFrameworkDirectory>
+      </PropertyGroup>
+
+      <PropertyGroup Condition="'$(TargetFrameworkSDKDirectoryBin)'==''">
+        <TargetFrameworkSDKDirectoryBin>$(SDK40ToolsPath)</TargetFrameworkSDKDirectoryBin>
+        <TargetFrameworkSDKDirectoryBin Condition="'$(_WDPFrameworkLowerThan4)' == 'True'">$(SDK35ToolsPath)</TargetFrameworkSDKDirectoryBin>
+      </PropertyGroup>
+
+      <PropertyGroup Condition="'$(AspnetCompilerPath)'==''">
+        <AspnetCompilerPath >$(Framework40Dir)</AspnetCompilerPath>
+        <AspnetCompilerPath Condition=" '$(_WDPFrameworkLowerThan4)' == 'True' ">$(Framework20Dir)</AspnetCompilerPath>
+      </PropertyGroup>
+
+
+
+    </Target>
+
+
+  <!--
+    ============================================================
+                                        GetRedistLists
+
+    Get the set of Redist lists (typically, *.xml). A 'Redist List' identifies assemblies that are 
+    part of a redistributable package.
+
+        [IN]
+        $(TargetFrameworkDirectory) - Name of the target framework directory.
+        $(NoDefaultRedistLists) - When false, the default set of redist lists will be ignored.
+        @(RedistList) - Paths to any extra redist list files to be included directly.
+
+        [OUT]
+        @(InstalledAssemblyTables) - Paths to all redist list files.
+    ============================================================
+    -->
+  <PropertyGroup>
+    <GetRedistListsDependsOn>
+      GetFrameworkPaths
+    </GetRedistListsDependsOn>
+  </PropertyGroup>
+  <Target
+      Name="GetRedistLists"
+      DependsOnTargets="$(GetRedistListsDependsOn)">
+
+    <!--
+        InstalledAssemblyTables item list is a list of .XML files that contain a set of assemblies that are expected to 
+        exist on the target machine.
+        -->
+    <CreateItem Include="$(TargetFrameworkDirectory)" Condition="'$(NoDefaultRedistLists)'!='false'">
+      <Output TaskParameter="Include" ItemName="_ReferenceInstalledAssemblyDirectory" />
+    </CreateItem>
+
+    <CreateItem Include="@(_ReferenceInstalledAssemblyDirectory->'%(Identity)\RedistList\*.xml');@(RedistList)">
+      <Output TaskParameter="Include" ItemName="InstalledAssemblyTables" />
+    </CreateItem>
+  </Target>
+
+</Project>

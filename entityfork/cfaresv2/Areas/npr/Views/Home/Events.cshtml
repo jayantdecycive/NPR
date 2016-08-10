@@ -1,0 +1,287 @@
+﻿@using System.Globalization;
+@model List<cfares.domain._event.IResEvent>
+<style type="text/css">
+.link,
+.link a,
+#SignUp .signupframe {
+	color: #226699;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+    
+	}
+	.link,
+	.link a {
+		text-decoration: none;
+		}
+	#SignUp .signupframe {
+		border: none;
+		background: #ffffff;
+        width: 918px;
+		}
+#SignUp .signupframe .required {
+	font-size: 10px;
+   
+	}
+#events_header {
+    padding: 0 15px 32px;
+    height: 230px;
+    margin-top: 32px;
+    border-bottom: 1px solid #999; }
+    table tr
+    {
+        float:left;
+    }
+    input, textarea, .uneditable-input
+    {
+        width: 170px;
+    }
+    tr:nth-of-type(4) {display:none }
+    input[type="file"], input[type="image"], input[type="submit"], input[type="reset"], input[type="button"], input[type="radio"], input[type="checkbox"]
+    {
+        width: 98px;
+       
+        background-position: -20px top;
+  background-repeat: no-repeat;
+        background: #e0e7f3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e0e7f3), to(#e0e7f3) );
+  background: -moz-linear-gradient(-90deg, #e0e7f3, #e0e7f3);
+  background: -o-linear-gradient(top, #e0e7f3 0%,#e0e7f3 100%);
+  background: -ms-linear-gradient(top, #e0e7f3 0%,#e0e7f3 100%);
+  background: linear-gradient(to bottombottom, #e0e7f3 0%,#e0e7f3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e0e7f3', endColorstr='#e0e7f3');
+  text-decoration: none;
+  border: none;
+    font-weight: bold;
+  color: #4f74b8;
+  font-size: 13px;
+          height: 32px;
+          text-align: left;
+  padding-left: 13px;
+    }
+    input[type="file"], input[type="image"], input[type="submit"], input[type="reset"], input[type="button"], input[type="radio"], input[type="checkbox"]:active
+    {
+        
+        background-position: -20px top;
+        text-align: left;
+  padding-left: 13px;
+          font-weight: bold;
+  background-repeat: no-repeat;
+         background: #e0e7f3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e0e7f3), to(#e0e7f3) );
+  background: -moz-linear-gradient(-90deg, #e0e7f3, #e0e7f3);
+  background: -o-linear-gradient(top, #e0e7f3 0%,#e0e7f3 100%);
+  background: -ms-linear-gradient(top, #e0e7f3 0%, #e0e7f3 100%);
+  background: linear-gradient(to bottombottom, #e0e7f3 0%, #e0e7f3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e0e7f3', endColorstr='#e0e7f3');
+    }
+   
+    
+
+</style>
+
+@{
+    ViewBag.Title = "Events";
+    ViewBag.Nav = "Events";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+    DateTimeFormatInfo info = new DateTimeFormatInfo();
+}
+
+@{
+    int currentMonth = DateTime.Now.Month;
+    int currentYear = DateTime.Now.Year;
+    int currentDay = DateTime.Now.Day;
+    int loopMonth = currentMonth;
+    int loopYear = currentYear;
+    int loopDay = currentDay;
+}
+
+
+
+<section id="events_header">
+	<img class="pull-left push-right" src="~/Content/themes/npr/images/events-image.jpg" />
+	<h2>Welcome to NPR Events</h2>
+	<p>Welcome to NPR Events! Our house is open to you and your friends to find entertainment, information and a good time in the form of speaking engagements, live music performances, book signings and much more. Browse through our listings to find an event that interests you, and don’t forget to tell your friends! We look forward to seeing you!</p>
+	@*<p>If you are interested in booking an event in one of our public spaces,<br /><a href="mailto:events@npr.org" target="_blank">click here</a>.</p>*@
+    
+ @*  <p> First Name * <input type="text" name="Fname" /> Email  <input type="text" name="Email" /> Last Nmae <input type="text" name="Lname" /></p>*@
+
+</section>
+<section style="border-bottom: 1px solid #999;margin-top: 10px;">
+    <p>Provide your name and email to be notified of upcoming events.</p>
+     <script type="text/javascript" src="//app.icontact.com/icp/loadsignup.php/form.js?c=1552488&l=13514&f=1222"></script>
+   <span class="button-forward" style="float:right;margin-top:-65px;margin-right:-9px;">
+                   
+                    <span class="button-icon-container" style="height:32px;width:30px;">
+                        <span class="button-icon"></span>
+                    </span>
+                </span>
+   @*<span  class="link"><a href="http://www.icontact.com">Email Marketing</a> You Can Trust</span>*@
+    
+@*<form method="post" class="iContactForm" action="http://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup6837" accept-charset="UTF-8" onsubmit="return verifyRequired6837();" >
+<div>
+
+<div class="SignUp">
+<table width="260" class="signupframe" border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td valign="top" align="right">
+<span class="required">*</span> Email
+</td>
+<td align="left">
+<input type="text" size="10" name="fields_email" />
+</td>
+</tr>
+<tr>
+<td valign="top" align="right">
+<span class="required">*</span> First Name
+</td>
+<td align="left">
+<input type="text" size="10" name="fields_fname" />
+</td>
+</tr>
+<tr>
+<td valign="top" align="right">
+<span class="required">*</span> Last Name
+</td>
+<td align="left">
+<input type="text" size="10" name="fields_lname" />
+</td>
+</tr>
+<input type="hidden" name="listid" value="45211" />
+<input type="hidden" name="specialid:45211" value="UAB8" />
+
+<input type="hidden" name="clientid" value="1022688" />
+<input type="hidden" name="formid" value="6837" />
+<input type="hidden" name="reallistid" value="1" />
+<input type="hidden" name="doubleopt" value="0" />
+<tr>
+<td> </td>
+<td><span class="required">*</span> = Required Field</td>
+</tr>
+<tr>
+<td> </td>
+<td><input type="submit" name="Submit" value="Submit" /></td>
+</tr>
+</table>
+</div>
+</form>*@
+</section>
+
+<section id="events_info">
+	<p style="margin-bottom:40px;">To see a list of events in a certain month, just click the preferred month on the side tab.  When you’re ready to make a reservation, click the <strong>Check Out the Details to Begin Your Reservation</strong> button under the appropriate event.</p>
+	<div class="events-wrapper">
+		<div class="filters pull-left">
+			<ul>
+				<li  class="active"><a data-filter="featured" data-value="true" data-description="Featured Events" href="javascript:void(0)">Featured Events</a></li>
+                <li><a href="javascript:void(0)" data-filter="past" data-value="false" data-description="Upcoming Events">Upcoming Events</a></li>
+
+                @for (int i = 0; i < info.MonthNames.Length - 1; i++){
+                    <li><a data-filter="month" data-value="@(loopMonth)_@(loopYear)" data-description="For @(@info.MonthNames[loopMonth-1]) @loopYear" href="javascript:void(0)">@info.MonthNames[loopMonth-1] @loopYear</a></li>
+                    loopMonth++;
+                    if(loopMonth > 12){
+                        loopYear++;
+                        loopMonth = 1;    
+                    }
+                }
+                
+
+                <li><a data-filter="past" data-value="true" data-description="Past Events" href="javascript:void(0)">Past Events</a></li>
+			</ul>
+		</div>
+
+		<div class="events-list pull-right">
+            <div class="header">
+                <h3>List of Upcoming Events</h3>
+                <p class="event-container-description">All Events</p>
+            </div>
+
+			<div class="events-container"></div>
+		</div>
+	</div>
+</section>
+
+
+@section scripts{
+<script type="text/javascript">
+
+    var events;
+    var filters = false;
+
+    //loadEvents
+    $.ajax({
+        url: "/npr/Home/EventList",
+        cache: false,
+        success: function(html) {
+            if (html != null && html != "") {
+                debugger;
+                $(".events-container").html(html);
+                events = $(".event-listing");
+                filters = true;
+                filterEvents("featured", "true", "Featured Events");
+            }
+            else {
+                $(".events-container").html("<p>No Available Events</p>");
+            }
+        }
+    });
+
+
+    
+
+    //filter events on nav click
+    $(".filters a").click(function () {
+        debugger;
+        $(".filters li").removeClass("active");
+        $(this).parent().addClass("active");
+
+        var filter = $(this).attr("data-filter");
+        var value = $(this).attr("data-value");
+        var description = $(this).attr("data-description");
+        filterEvents(filter, value, description);
+    });
+    
+    function filterEvents(filter, value, description) {
+        debugger;
+        if (filter == "" || filter == null) {
+            $(".events-container").html(events);
+            return;
+        }
+        if (filters) {
+            var filteredevents = events.filter("[data-" + filter + "=\"" + value + "\"]");
+            if (filter == 'month') {
+                filteredevents = filteredevents.filter("[data-past=\"" + false + "\"]");
+            }
+
+            if (filteredevents.length > 0) {
+                //$(".events-container").html(filteredevents);
+                $(".events-container").empty();
+                $(".events-container").append(filteredevents);
+            }
+            else {
+                $(".events-container").empty();
+                $(".events-container").append("<p>No Available Events</p>");
+            }
+        }
+        $(".event-container-description").empty();
+        $(".event-container-description").append(description);
+    }
+
+    
+
+
+
+
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>
+}

@@ -1,0 +1,164 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.domain._event._ticket.tours.TourTicket>
+@{
+    string baseurl = "http://tours.chick-fil-a.com";
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+
+    DateTime correctedStart = oServ.ConvertToTimeZoneContext(Model.Slot.Start);
+    DateTime correctedEnd = oServ.ConvertToTimeZoneContext(Model.Slot.End);
+
+    string lunch = "";
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>EmailConfirmation</title>
+    <style type="text/css">
+        
+    body, table, tr, td, img, p
+    {
+          padding:0px;
+          margin:0px;
+          border:0px;
+          font-family: Arial, sans-serif;     
+          color:#666;        
+    }
+    
+    li
+    {
+        padding-bottom:15px;
+    }
+    
+    </style>
+    
+    
+</head>
+<body>
+<div>
+        
+<table border="0" cellspacing="0" cellpadding="0" width="612" style="border-collapse:collapse; border-spacing: 0;">
+<tr>
+<td>
+    
+<p style="text-align:center; font-size:10pt; font-weight:bold; padding: 10px 0px 10px 0px"><span>Trouble viewing this Email? </span><a href=@(baseurl+"/Email/EmailConfirmation/"+Model.TicketId)><span style="color:#E01B1B">click here</span></a></p>
+    
+</td>    
+</tr>   
+<tr>
+<td>
+    
+<img src=@(baseurl+"/Areas/tours/Content/Img/email/header.png") alt="Home Office Backstage Tours"/>
+    
+</td>    
+</tr>
+<tr>
+<td style="padding-left:30px">
+<br/>  
+<p style="padding-bottom:15px;">Dear @Model.Owner.Name.First, </p>
+<br/>
+<p style="padding-bottom:15px;"><b>This email is to remind you of your upcoming Chick-fil-A<sup>®</sup> Home Office Backstage Tour!</b> Please print this email and bring it with you along with your photo ID on the day of your tour.</p>
+<br/>
+<p>Below are the details of your reservation and a few reminders:</p>
+<br/>
+
+
+<p><b>First Name: </b>@Model.Owner.Name.First</p>
+<p><b>Last Name: </b>@Model.Owner.Name.Last</p>
+<p><b>Tour Date: </b>@Model.Slot.Start.ToString("dddd, MMMM, dd, yyyy")</p>
+<p><b>Tour Time: </b>@correctedStart.ToString("h:mmtt") - @correctedEnd.ToString("h:mmtt")</p>
+<p><b>Group Size: </b>@Model.GuestCount</p>
+<p><b>Group Name: </b>@Model.GroupName</p>
+@if (Model.OptInForLunch)
+    {
+        <p><b>Lunch Total: </b>@Model.TotalCostOfLunches.ToString("C2")</p>
+    }
+
+<br/>
+<p>
+    Security procedures for Chick-fil-A Corporate Headquarters require that each person in your tour group, 
+    regardless of age, must be previously registered on our website to receive admittance onto the Chick-fil-A campus and tour. 
+    All additions and modifications of names to your tour party have to be submitted <span class="underline">at least one week</span> in advance of the scheduled tour.  
+</p>
+<br/>
+<p>
+    Please visit the <a href=@(baseurl + "/Home/CustomerPlan")>Plan Your Visit page</a> prior to your tour date for arrival and check-in instructions. 
+</p>
+<br/>
+<p>
+    It is our pleasure to host you,<br /> The Chick-fil-A<sup>®</sup> Home Office Backstage Tour Team
+</p>
+<br/>
+<p style="font-size:9pt">
+    *While we would like to accommodate your request, due to the limited space during each tour time,  
+    please note that any change in the number of people in your party could result in your tour date and time needing to be rescheduled.
+</p> 
+
+<p style="font-size:9pt">
+    *Due to the high demand and tour schedules, if you tour group is not present within 15 minutes of your appointed tour time and/or Chick-fil-A does not receive notification 
+    (<a href="mailto:homeofficebackstagetour@chick-fil-a.com">homeofficebackstagetour@chick-fil-a.com</a> or 404-530-1854), you will not receive admittance to Chick-fil-A and you will need to reschedule your tour for another date and time. 
+</p>
+
+<br/>
+
+</td>               
+</tr>
+<tr>
+<td>
+
+   
+<table border="0" cellspacing="0" cellpadding="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0; line-height:0;">   
+<tr>
+<td>   
+    <table cellspacing="0" cellpadding="0" border="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0;">
+        
+    <tr style="height:62px;">
+        <td height="62" style="height:62px"> 
+            <a href="http://www.chick-fil-a.com/"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-header.png") alt="" width="604" height="62"/></a>    
+        </td>
+        </tr>
+        <tr>
+        <table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tr>
+            <td> 
+                <a href="http://www.chick-fil-a.com/Connect/Email-Insiders"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-email.png") alt="" width="299" height="44"/></a>   
+            </td>   
+            <td> 
+                <a href="http://www.facebook.com/ChickfilA"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-fb.png") alt="" width="305" height="44"/></a>  
+            </td>       
+        </tr>
+        <tr>
+            <td> 
+            <a href="http://www.chick-fil-a.com/Connect/Text-Insiders"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-text.png") alt="" width="299" height="57"/></a>     
+            </td>   
+            <td> 
+                <a href="http://twitter.com/#!/ChickfilA"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-tw.png") alt="" width="305" height="57"/></a>    
+            </td> 
+        </tr>    
+        </table>       
+    </tr> 
+    <tr>
+    <td>
+
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">Please do not reply to this email.</p><br/><br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">For specific customer service requests, please contact us at</p><br/><br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px"><a href="mailto:homeofficebackstagetour@chick-fil-a.com">homeofficebackstagetour@chick-fil-a.com</a></p><br/>
+    <br/>
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">© 2012 CFA Properties, Inc. All trademarks shown are the property of their respective owners.</p><br/>
+
+    </td>
+    </tr>   
+    </table>  
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+   
+</div>
+</body>
+</html>
+​
+​

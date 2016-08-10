@@ -1,0 +1,163 @@
+﻿@using cfacore.shared.modules.helpers
+@model cfacore.shared.domain.media.Media
+@{string pk = !string.IsNullOrEmpty(Model.Id())?Model.Id() : "0";}
+@{bool isNew = pk=="0";}
+
+@{
+    var combinedDictionary = new[] { 
+		Request.QueryString.AllKeys.Where(x=>!string.IsNullOrEmpty(Request.QueryString[x]))
+			.ToDictionary(d=>d,d=>Request.QueryString[d]), 
+			ViewData.Where(x=>!Request.QueryString.AllKeys.Contains(x.Key))
+				.ToDictionary(x => x.Key, x => x.Value.ToStringSafe()) }.SelectMany(d => d)
+				.ToDictionary(x => x.Key, x => x.Value);
+    
+    int? autoOwner = !combinedDictionary.ContainsKey("OwnerId") ? null : 
+        (int?)(combinedDictionary["OwnerId"] == "auto" ? ViewData["auth_user"] : int.Parse(combinedDictionary["OwnerId"]));
+    if (autoOwner != null) {
+        Model.OwnerId = autoOwner.Value;
+    }
+    string autoDescription = !combinedDictionary.ContainsKey("Description") ? null : combinedDictionary["Description"];
+    if (autoDescription != null){ Model.Description = autoDescription;}
+    string autoName = !combinedDictionary.ContainsKey("Name") ? null : combinedDictionary["Name"];
+    if (autoName != null){ Model.Name = autoName;}
+    bool? autoSystem = !combinedDictionary.ContainsKey("IsSystem") ? null : (bool?)(combinedDictionary["IsSystem"] == "true");
+    if (autoSystem != null) { Model.IsSystem = autoSystem.Value; }
+}
+ 
+
+    
+    <fieldset data-pk='@pk' class='media-@pk'>
+        
+        <div class='legend inline-block'>Event Image</div>
+        
+        @*<div data-scaffold="editor-for">
+        @Html.EditorForModel()
+        </div>*@
+        <div class="well">
+            <div class='model-field field-Uri'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.ExternalUriStr, "External URI")
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.ExternalUriStr)
+                    @Html.ValidationMessageFor(model => model.ExternalUriStr)
+                </div>
+            </div>
+
+            <hr />
+
+            <div class='model-field field-Uri'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.MediaUri,"Upload File", new { @for = "media_upload" })
+                </div>
+                <div class="editor-field inline-block">
+                    <input type="file" id="media_upload" name="media_upload" />
+                    @Html.ValidationMessage("media_upload")
+                </div>
+            </div>
+
+        </div>
+        
+        @if (autoName != null)
+        {
+            @Html.HiddenFor(x => x.Name)
+        }
+        else
+        {
+
+            <div class='model-field field-Name'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.Name)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+        }
+        
+        @if (autoDescription != null)
+        {
+            @Html.HiddenFor(x => x.Description)
+        }
+        else
+        {
+
+            <div class='model-field field-Description'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.Description)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+        }
+
+        @Html.HiddenFor(model => model.CreatedDate)
+
+        @Html.HiddenFor(model => model.Length)
+        
+        @if (autoOwner != null)
+        {
+            @Html.HiddenFor(x=>x.OwnerId)
+        }
+        else
+        {
+
+            <div class='model-field field-OwnerId'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.OwnerId)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.OwnerId)
+                    @Html.ValidationMessageFor(model => model.OwnerId)
+                </div>
+            </div>
+        }
+        
+        @if (autoSystem != null)
+        {
+            @Html.HiddenFor(x => x.IsSystem)
+        }
+        else
+        {
+
+            <div class='model-field field-IsSystem'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.IsSystem)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.IsSystem)
+                    @Html.ValidationMessageFor(model => model.IsSystem)
+                </div>
+            </div>
+        }
+        
+        @Html.HiddenFor(x=>x.CropX)
+        @Html.HiddenFor(x=>x.CropY)
+        @Html.HiddenFor(x=>x.CropWidth)
+        @Html.HiddenFor(x=>x.CropHeight)
+        
+        @if (!isNew)
+        {
+            <div class='model-field field-Uri'>
+                <div class="editor-label inline-block">
+                    
+                </div>
+                <div class="editor-field inline-block admin-table">
+                    
+                    @Html.ActionLink("Crop", "Crop", new { id=pk }, new { @class = "jq-button" })
+                </div>
+            </div>
+            
+        }
+        @Html.HiddenFor(x=>x.MediaUriStr)
+        @Html.HiddenFor(x=>x.MediaId)
+        @Html.HiddenFor(x=>x.MediaType)
+        
+        @Html.HiddenFor(x=>x.Width)
+        @Html.HiddenFor(x=>x.Height)
+        
+    </fieldset>
+  

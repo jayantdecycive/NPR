@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StoriesEntityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="StoriesEntityModelStoreContainer">
+          <EntitySet Name="V2StoryImageAuthorWithTagRating" EntityType="StoriesEntityModel.Store.V2StoryImageAuthorWithTagRating" store:Type="Views" store:Schema="dbo" store:Name="V2StoryImageAuthorWithTagRating">
+            <DefiningQuery>SELECT 
+      [V2StoryImageAuthorWithTagRating].[ID] AS [ID], 
+      [V2StoryImageAuthorWithTagRating].[Title] AS [Title], 
+      [V2StoryImageAuthorWithTagRating].[StoryContent] AS [StoryContent], 
+      [V2StoryImageAuthorWithTagRating].[AuthorID] AS [AuthorID], 
+      [V2StoryImageAuthorWithTagRating].[ImageID] AS [ImageID], 
+      [V2StoryImageAuthorWithTagRating].[PostingDate] AS [PostingDate], 
+      [V2StoryImageAuthorWithTagRating].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryImageAuthorWithTagRating].[StoryVersion] AS [StoryVersion], 
+      [V2StoryImageAuthorWithTagRating].[EditorID] AS [EditorID], 
+      [V2StoryImageAuthorWithTagRating].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryImageAuthorWithTagRating].[FinalApproval] AS [FinalApproval], 
+      [V2StoryImageAuthorWithTagRating].[Reviewed] AS [Reviewed], 
+      [V2StoryImageAuthorWithTagRating].[Views] AS [Views], 
+      [V2StoryImageAuthorWithTagRating].[CategoryID] AS [CategoryID], 
+      [V2StoryImageAuthorWithTagRating].[IsDraft] AS [IsDraft], 
+      [V2StoryImageAuthorWithTagRating].[IsUnusable] AS [IsUnusable], 
+      [V2StoryImageAuthorWithTagRating].[Comment] AS [Comment], 
+      [V2StoryImageAuthorWithTagRating].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryImageAuthorWithTagRating].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryImageAuthorWithTagRating].[FileName] AS [FileName], 
+      [V2StoryImageAuthorWithTagRating].[Owner] AS [Owner], 
+      [V2StoryImageAuthorWithTagRating].[Poster] AS [Poster], 
+      [V2StoryImageAuthorWithTagRating].[Width] AS [Width], 
+      [V2StoryImageAuthorWithTagRating].[Height] AS [Height], 
+      [V2StoryImageAuthorWithTagRating].[MdWidth] AS [MdWidth], 
+      [V2StoryImageAuthorWithTagRating].[MdHeight] AS [MdHeight], 
+      [V2StoryImageAuthorWithTagRating].[LgWidth] AS [LgWidth], 
+      [V2StoryImageAuthorWithTagRating].[LgHeight] AS [LgHeight], 
+      [V2StoryImageAuthorWithTagRating].[PromoWidth] AS [PromoWidth], 
+      [V2StoryImageAuthorWithTagRating].[PromoHeight] AS [PromoHeight], 
+      [V2StoryImageAuthorWithTagRating].[StoryRating] AS [StoryRating], 
+      [V2StoryImageAuthorWithTagRating].[NumberOfRatings] AS [NumberOfRatings], 
+      [V2StoryImageAuthorWithTagRating].[TagDescription] AS [TagDescription]
+      FROM [dbo].[V2StoryImageAuthorWithTagRating] AS [V2StoryImageAuthorWithTagRating]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V2StoryRatingSummary" EntityType="StoriesEntityModel.Store.V2StoryRatingSummary" store:Type="Views" store:Schema="dbo" store:Name="V2StoryRatingSummary">
+            <DefiningQuery>SELECT 
+      [V2StoryRatingSummary].[StoryID] AS [StoryID], 
+      [V2StoryRatingSummary].[StoryRating] AS [StoryRating], 
+      [V2StoryRatingSummary].[NumberOfRatings] AS [NumberOfRatings]
+      FROM [dbo].[V2StoryRatingSummary] AS [V2StoryRatingSummary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V2StoryTagSummary" EntityType="StoriesEntityModel.Store.V2StoryTagSummary" store:Type="Views" store:Schema="dbo" store:Name="V2StoryTagSummary">
+            <DefiningQuery>SELECT 
+      [V2StoryTagSummary].[StoryID] AS [StoryID], 
+      [V2StoryTagSummary].[DescriptionSummary] AS [DescriptionSummary]
+      FROM [dbo].[V2StoryTagSummary] AS [V2StoryTagSummary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V2StoryWithImageAuthor" EntityType="StoriesEntityModel.Store.V2StoryWithImageAuthor" store:Type="Views" store:Schema="dbo" store:Name="V2StoryWithImageAuthor">
+            <DefiningQuery>SELECT 
+      [V2StoryWithImageAuthor].[ID] AS [ID], 
+      [V2StoryWithImageAuthor].[Title] AS [Title], 
+      [V2StoryWithImageAuthor].[StoryContent] AS [StoryContent], 
+      [V2StoryWithImageAuthor].[AuthorID] AS [AuthorID], 
+      [V2StoryWithImageAuthor].[ImageID] AS [ImageID], 
+      [V2StoryWithImageAuthor].[PostingDate] AS [PostingDate], 
+      [V2StoryWithImageAuthor].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryWithImageAuthor].[StoryVersion] AS [StoryVersion], 
+      [V2StoryWithImageAuthor].[EditorID] AS [EditorID], 
+      [V2StoryWithImageAuthor].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryWithImageAuthor].[FinalApproval] AS [FinalApproval], 
+      [V2StoryWithImageAuthor].[Reviewed] AS [Reviewed], 
+      [V2StoryWithImageAuthor].[Views] AS [Views], 
+      [V2StoryWithImageAuthor].[CategoryID] AS [CategoryID], 
+      [V2StoryWithImageAuthor].[IsDraft] AS [IsDraft], 
+      [V2StoryWithImageAuthor].[IsUnusable] AS [IsUnusable], 
+      [V2StoryWithImageAuthor].[Comment] AS [Comment], 
+      [V2StoryWithImageAuthor].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryWithImageAuthor].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryWithImageAuthor].[FileName] AS [FileName], 
+      [V2StoryWithImageAuthor].[Owner] AS [Owner], 
+      [V2StoryWithImageAuthor].[Poster] AS [Poster], 
+      [V2StoryWithImageAuthor].[Width] AS [Width], 
+      [V2StoryWithImageAuthor].[Height] AS [Height], 
+      [V2StoryWithImageAuthor].[MdWidth] AS [MdWidth], 
+      [V2StoryWithImageAuthor].[MdHeight] AS [MdHeight], 
+      [V2StoryWithImageAuthor].[LgWidth] AS [LgWidth], 
+      [V2StoryWithImageAuthor].[LgHeight] AS [LgHeight], 
+      [V2StoryWithImageAuthor].[PromoWidth] AS [PromoWidth], 
+      [V2StoryWithImageAuthor].[PromoHeight] AS [PromoHeight]
+      FROM [dbo].[V2StoryWithImageAuthor] AS [V2StoryWithImageAuthor]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryImageAuthorWithTagRating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V2StoryImageAuthorWithTagRating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+          <Property Name="AuthorID" Type="numeric" Nullable="false" />
+          <Property Name="ImageID" Type="numeric" Nullable="false" />
+          <Property Name="PostingDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrentEntryID" Type="numeric" />
+          <Property Name="StoryVersion" Type="int" Nullable="false" />
+          <Property Name="EditorID" Type="int" Nullable="false" />
+          <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+          <Property Name="FinalApproval" Type="bit" Nullable="false" />
+          <Property Name="Reviewed" Type="bit" />
+          <Property Name="Views" Type="numeric" />
+          <Property Name="CategoryID" Type="numeric" />
+          <Property Name="IsDraft" Type="bit" />
+          <Property Name="IsUnusable" Type="bit" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+          <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Poster" Type="numeric" Nullable="false" />
+          <Property Name="Width" Type="numeric" Nullable="false" />
+          <Property Name="Height" Type="numeric" Nullable="false" />
+          <Property Name="MdWidth" Type="numeric" Nullable="false" />
+          <Property Name="MdHeight" Type="numeric" Nullable="false" />
+          <Property Name="LgWidth" Type="numeric" Nullable="false" />
+          <Property Name="LgHeight" Type="numeric" Nullable="false" />
+          <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+          <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+          <Property Name="StoryRating" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="NumberOfRatings" Type="int" />
+          <Property Name="TagDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryRatingSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V2StoryRatingSummary">
+          <Key>
+            <PropertyRef Name="StoryID" />
+          </Key>
+          <Property Name="StoryID" Type="numeric" Nullable="false" />
+          <Property Name="StoryRating" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="NumberOfRatings" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryTagSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V2StoryTagSummary">
+          <Key>
+            <PropertyRef Name="StoryID" />
+          </Key>
+          <Property Name="StoryID" Type="numeric" Nullable="false" />
+          <Property Name="DescriptionSummary" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryWithImageAuthor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V2StoryWithImageAuthor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+          <Property Name="AuthorID" Type="numeric" Nullable="false" />
+          <Property Name="ImageID" Type="numeric" Nullable="false" />
+          <Property Name="PostingDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrentEntryID" Type="numeric" />
+          <Property Name="StoryVersion" Type="int" Nullable="false" />
+          <Property Name="EditorID" Type="int" Nullable="false" />
+          <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+          <Property Name="FinalApproval" Type="bit" Nullable="false" />
+          <Property Name="Reviewed" Type="bit" />
+          <Property Name="Views" Type="numeric" />
+          <Property Name="CategoryID" Type="numeric" />
+          <Property Name="IsDraft" Type="bit" />
+          <Property Name="IsUnusable" Type="bit" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+          <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Poster" Type="numeric" Nullable="false" />
+          <Property Name="Width" Type="numeric" Nullable="false" />
+          <Property Name="Height" Type="numeric" Nullable="false" />
+          <Property Name="MdWidth" Type="numeric" Nullable="false" />
+          <Property Name="MdHeight" Type="numeric" Nullable="false" />
+          <Property Name="LgWidth" Type="numeric" Nullable="false" />
+          <Property Name="LgHeight" Type="numeric" Nullable="false" />
+          <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+          <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoriesEntityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CfaComStoriesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="V2StoryImageAuthorWithTagRating" EntityType="StoriesEntityModel.V2StoryImageAuthorWithTagRating" />
+          <EntitySet Name="V2StoryRatingSummary" EntityType="StoriesEntityModel.V2StoryRatingSummary" />
+          <EntitySet Name="V2StoryTagSummary" EntityType="StoriesEntityModel.V2StoryTagSummary" />
+          <EntitySet Name="V2StoryWithImageAuthor" EntityType="StoriesEntityModel.V2StoryWithImageAuthor" />
+        </EntityContainer>
+        <EntityType Name="V2StoryImageAuthorWithTagRating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="StoryContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ImageID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PostingDate" Type="DateTime" Nullable="false" />
+          <Property Name="CurrentEntryID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StoryVersion" Type="Int32" Nullable="false" />
+          <Property Name="EditorID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewApproval" Type="Boolean" Nullable="false" />
+          <Property Name="FinalApproval" Type="Boolean" Nullable="false" />
+          <Property Name="Reviewed" Type="Boolean" />
+          <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CategoryID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsDraft" Type="Boolean" />
+          <Property Name="IsUnusable" Type="Boolean" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ReviewUnsure" Type="Boolean" Nullable="false" />
+          <Property Name="IsUnusableNegative" Type="Boolean" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Owner" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="Poster" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Width" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MdWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MdHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LgWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LgHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PromoWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PromoHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="StoryRating" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="NumberOfRatings" Type="Int32" />
+          <Property Name="TagDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="V2StoryRatingSummary">
+          <Key>
+            <PropertyRef Name="StoryID" />
+          </Key>
+          <Property Name="StoryID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="StoryRating" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="NumberOfRatings" Type="Int32" />
+        </EntityType>
+        <EntityType Name="V2StoryTagSummary">
+          <Key>
+            <PropertyRef Name="StoryID" />
+          </Key>
+          <Property Name="StoryID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DescriptionSummary" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="V2StoryWithImageAuthor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="StoryContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ImageID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PostingDate" Type="DateTime" Nullable="false" />
+          <Property Name="CurrentEntryID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StoryVersion" Type="Int32" Nullable="false" />
+          <Property Name="EditorID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewApproval" Type="Boolean" Nullable="false" />
+          <Property Name="FinalApproval" Type="Boolean" Nullable="false" />
+          <Property Name="Reviewed" Type="Boolean" />
+          <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CategoryID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsDraft" Type="Boolean" />
+          <Property Name="IsUnusable" Type="Boolean" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ReviewUnsure" Type="Boolean" Nullable="false" />
+          <Property Name="IsUnusableNegative" Type="Boolean" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Owner" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="Poster" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Width" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MdWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MdHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LgWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LgHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PromoWidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PromoHeight" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoriesEntityModelStoreContainer" CdmEntityContainer="CfaComStoriesEntities">
+          <EntitySetMapping Name="V2StoryImageAuthorWithTagRating"><EntityTypeMapping TypeName="StoriesEntityModel.V2StoryImageAuthorWithTagRating"><MappingFragment StoreEntitySet="V2StoryImageAuthorWithTagRating">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+            <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+            <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+            <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+            <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+            <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+            <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+            <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+            <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+            <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+            <ScalarProperty Name="Views" ColumnName="Views" />
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+            <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+            <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+            <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="Owner" ColumnName="Owner" />
+            <ScalarProperty Name="Poster" ColumnName="Poster" />
+            <ScalarProperty Name="Width" ColumnName="Width" />
+            <ScalarProperty Name="Height" ColumnName="Height" />
+            <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+            <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+            <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+            <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+            <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+            <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+            <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+            <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+            <ScalarProperty Name="TagDescription" ColumnName="TagDescription" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V2StoryRatingSummary"><EntityTypeMapping TypeName="StoriesEntityModel.V2StoryRatingSummary"><MappingFragment StoreEntitySet="V2StoryRatingSummary">
+            <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+            <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+            <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V2StoryTagSummary"><EntityTypeMapping TypeName="StoriesEntityModel.V2StoryTagSummary"><MappingFragment StoreEntitySet="V2StoryTagSummary">
+            <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+            <ScalarProperty Name="DescriptionSummary" ColumnName="DescriptionSummary" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V2StoryWithImageAuthor"><EntityTypeMapping TypeName="StoriesEntityModel.V2StoryWithImageAuthor"><MappingFragment StoreEntitySet="V2StoryWithImageAuthor">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+            <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+            <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+            <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+            <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+            <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+            <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+            <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+            <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+            <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+            <ScalarProperty Name="Views" ColumnName="Views" />
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+            <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+            <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+            <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="Owner" ColumnName="Owner" />
+            <ScalarProperty Name="Poster" ColumnName="Poster" />
+            <ScalarProperty Name="Width" ColumnName="Width" />
+            <ScalarProperty Name="Height" ColumnName="Height" />
+            <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+            <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+            <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+            <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+            <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+            <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Stories" ZoomLevel="68">
+        <EntityTypeShape EntityType="StoriesEntityModel.V2StoryImageAuthorWithTagRating" Width="1.5" PointX="0.75" PointY="0.75" Height="7.3647265625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoriesEntityModel.V2StoryRatingSummary" Width="1.5" PointX="2.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoriesEntityModel.V2StoryTagSummary" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoriesEntityModel.V2StoryWithImageAuthor" Width="1.5" PointX="4.75" PointY="0.75" Height="6.787822265625" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

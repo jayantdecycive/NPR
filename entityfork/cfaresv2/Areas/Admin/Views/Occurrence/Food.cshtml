@@ -1,0 +1,84 @@
+﻿@using System.Data.Entity
+@using System.Web.Script.Serialization
+@using System.Linq
+@using cfares.domain._event.menu
+@using cfares.domain._event.resevent.store
+@using cfares.site.modules.com.application
+@using cfares.domain.user
+@model cfares.domain._event.occ.GiveawayOccurrence
+
+@{
+    ViewBag.Title = "Product Selection";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+    GiveawayEvent evnt = ViewBag.ResEvent as GiveawayEvent;
+    int pk = Model.OccurrenceId;
+}
+
+@section Meta{
+    
+}
+
+<h1 style="padding-left:20px;">Customize Your Product Offering</h1>
+
+
+<div class='message maroon'>    
+To save any changes to product offering, you must click <strong>Save & Continue</strong> at the bottom of the page.
+</div>
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(false)
+    <div class="field-block food-block">
+        <fieldset data-pk='@pk' class='occurrence-@pk inline-block fullwidth'>
+            
+            @Html.HiddenFor(model => model.OccurrenceId)
+                           
+            <p>There is a minimum number of @evnt.MinItems and a maximum number of @evnt.MaxItems that must be offered.</p>
+            
+            <section class='food-list well'>
+                
+                <div id="food_canvas">
+                    @foreach (var itemAllowance in evnt.ProductAllowances.AsQueryable().Include("AllowedItem.Media").ToList())
+                    {
+                        string inputName = string.Format("food[{0}]", itemAllowance.AllowedItemId);
+                        var itemExists = Model.ItemsAvailable.Any(x => x.DomId == itemAllowance.AllowedItemId);
+                        bool inputValue = itemExists||itemAllowance.Condition == MenuItemCondition.DefaultOn;
+                        <div class="food-selection" data-pk="@Html.Raw(itemAllowance.AllowedItem.DomId)">
+                            @try{
+                                @Html.Media(itemAllowance.AllowedItem.Media,width:180)    
+                            }
+                            catch (Exception e){
+                                <p>Sorry there was a, Problem loading that image.</p>
+                            }
+                            <p>@itemAllowance.AllowedItem.Name</p> 
+                            
+                            @if (itemAllowance.Condition == MenuItemCondition.LockedOn)
+                            {
+                                @Html.Hidden(inputName, true)
+                                <em>This item is required</em>
+                            }
+                            else
+                            {
+                                @Html.DropDownList(inputName,new SelectList(new Dictionary<string,bool>
+                                    {
+                                        {"I would like to offer this item",true},
+                                        {"I do not want to offer this item",false}
+                                    },"Value","Key",inputValue))
+                            }
+                        </div>
+                    }
+                </div>
+            </section>
+
+        </fieldset>
+    </div>
+    <div class='submit-block admin-red submit-block-override'>
+        <div class='button-cta' data-icon="ui-icon-plus">
+            <input type="hidden" id="hdn-stores" name="stores" />
+            @* <input type="submit" value="Submit and Continue" class="submit" /> *@
+            <input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+        </div>
+    </div>
+    
+    
+}

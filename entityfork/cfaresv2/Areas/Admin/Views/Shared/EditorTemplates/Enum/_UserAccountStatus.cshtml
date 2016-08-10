@@ -1,0 +1,10 @@
+﻿@model cfacore.domain.user.UserAccountStatus?
+<div class='admin-table'>
+    @Html.DropDownListFor(model => model,
+                          new SelectList(
+                              from cfacore.domain.user.UserAccountStatus e in Enum.GetValues(typeof(cfacore.domain.user.UserAccountStatus))
+                              select new { Id=(int)e,Name=e.ToString()},
+                              "Id", "Name",
+                              (int)(Model ?? cfacore.domain.user.UserAccountStatus.Normal)
+                              ), new { @class = " jq-select" })
+</div>

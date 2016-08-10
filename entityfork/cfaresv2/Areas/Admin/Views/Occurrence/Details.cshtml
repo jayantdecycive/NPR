@@ -1,0 +1,58 @@
+﻿@using Ninject
+@using cfares.domain._event
+@model cfares.domain._event.Occurrence
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewBag.Brief = "Occurrence Detailed Information";
+    Type slotType = typeof(Slot);
+    if (Model.ResEvent != null)
+    {
+        slotType = Model.ResEvent.ReservationType.GetKernel().Get<ISlot>().GetType();
+    }
+}
+
+
+<h1>Occurrence Detail</h1>
+<p>
+    @Model.ToString()
+</p>
+
+@Html.Partial("ModelDetail/_Occurrence")
+
+@section Action
+{
+    <div class='button-cta'>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OccurrenceId }, new { data_icon = "ui-icon-pencil" })
+    </div>
+    
+    <div class='button-cta'>
+            @Html.ActionLink("Create Slot for this Occurrence", "Create", slotType.Name, new {OccurrenceId = Model.OccurrenceId}, new {data_icon = "ui-icon-circle-plus"})
+    </div>
+    
+}
+
+@section Table
+{
+    <script type="text/javascript">
+
+    	// SH - Issue identified w/ duplicate data for subclassed collections when paging, searching and sorting
+		// .. FUTURE - Research cause .. For now, utilize base class collection ( as fix )
+    	//var slots = new DomainModel.@Html.Raw(slotType.Name)Collection(); // GiveawaySlot
+    	var slots = new DomainModel.SlotCollection();
+    	slots.setWhere("model",{OccurrenceId: {$eq:@Model.OccurrenceId} });
+    	slots.setOrder({ Start: 1 });
+    	slots.abstract = true;
+
+    	$(function() {
+			// SH - Needed since I don't have time to research further and I need sorting to retain from a DT POV 
+    		$('#slots_giveaway th[data-column-name=Start]').click();
+    	});
+
+	</script>
+	<div class='admin-table'>
+		@Html.Partial("Tables/_"+slotType.Name,"slots")
+	</div>
+	<input type="hidden" id="slotType" value="@Html.Raw(slotType.Name)"/>
+}

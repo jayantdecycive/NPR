@@ -1,0 +1,11 @@
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\cfares.monitor\bin\Release\cfares.monitor.exe.config
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\cfares.monitor\bin\Release\cfares.monitor.exe
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\cfares.monitor\bin\Release\cfares.monitor.pdb
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\cfares.monitor\obj\Release\cfares.monitor.exe
+G:\Alex_Avendano\Pratap\NPR\App\entityfork\cfares.monitor\obj\Release\cfares.monitor.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\bin\Release\cfares.monitor.exe.config
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\bin\Release\cfares.monitor.exe
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\bin\Release\cfares.monitor.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\obj\Release\cfares.monitor.csprojResolveAssemblyReference.cache
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\obj\Release\cfares.monitor.exe
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\cfares.monitor\obj\Release\cfares.monitor.pdb

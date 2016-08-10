@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<response code="1">
+	<collection name="poi" count="20" country="US" city="DULUTH" radius="25" radiusuom="mile" postalcode="30097" province="" address="" centerpoint="-84.15,34.02" state="GA">
+		<poi>
+			<name>Howell Station</name>
+			<_distance>1.69</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>3555 Peachtree Industrial Blvd</address1>
+			<address2></address2>
+			<city>Duluth</city>
+			<clientkey>00821</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.00139</latitude>
+			<llpoint>0101000020E6100000AD174339D10A55C04E452A8C2D004140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.16902</longitude>
+			<marketablename>howellstation</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/howellstation</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Jeff Howard</operatorname>
+			<phone>(770) 497-1270</phone>
+			<playground>exterior</playground>
+			<postalcode>30096</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483281</uid>
+			<zipextension>4819</zipextension>
+		</poi>
+		<poi>
+			<name>Johns Creek</name>
+			<_distance>3.68</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>3643 Peachtree Pkwy</address1>
+			<address2></address2>
+			<city>Suwanee</city>
+			<clientkey>00593</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Forsyth</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0714275074267</latitude>
+			<llpoint>0101000020E61000007FFB7452AB0A55C05A375C8924094140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.1667066709906</longitude>
+			<marketablename>johnscreek</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/johnscreek</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>false</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Steve Troutman</operatorname>
+			<phone>(770) 813-1594</phone>
+			<playground>exterior</playground>
+			<postalcode>30024</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483319</uid>
+			<zipextension>1028</zipextension>
+		</poi>
+		<poi>
+			<name>Moore Road</name>
+			<_distance>4.05</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>1035 Peachtree Industrial Blvd</address1>
+			<address2></address2>
+			<city>Suwanee</city>
+			<clientkey>02052</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0512717401925</latitude>
+			<llpoint>0101000020E6100000073F7680C40555C0FFAA871290064140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.0901185183285</longitude>
+			<marketablename>mooreroad</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/mooreroad</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Brad Williams</operatorname>
+			<phone>(770) 831-1177</phone>
+			<playground>interior</playground>
+			<postalcode>30024</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483474</uid>
+			<zipextension>1919</zipextension>
+		</poi>
+		<poi>
+			<name>Sugarloaf Corporate Center</name>
+			<_distance>4.15</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>2020 Satellite Blvd</address1>
+			<address2></address2>
+			<city>Duluth</city>
+			<clientkey>01208</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.9885653065025</latitude>
+			<llpoint>0101000020E610000053F20C44A70555C0BCB1D64E89FE4040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.0883340956146</longitude>
+			<marketablename>sugarloafcorporatecenter</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/sugarloafcorporatecenter</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Brad Williams</operatorname>
+			<phone>(770) 232-0034</phone>
+			<playground>interior</playground>
+			<postalcode>30097</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483821</uid>
+			<zipextension>4073</zipextension>
+		</poi>
+		<poi>
+			<name>Pleasant Hill Dwarf House</name>
+			<_distance>5.48</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>1570 Pleasant Hill Rd</address1>
+			<address2></address2>
+			<city>Duluth</city>
+			<clientkey>70042</clientkey>
+			<conceptcode>DWH</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.9436160784314</latitude>
+			<llpoint>0101000020E6100000961B542AF00755C0D86B6269C8F84040</llpoint>
+			<locationcode>TDNC</locationcode>
+			<longitude>-84.1240335294118</longitude>
+			<marketablename>pleasanthilldwarfhouse</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/pleasanthilldwarfhouse</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Chris Bruno</operatorname>
+			<phone>(770) 717-7522</phone>
+			<playground>none</playground>
+			<postalcode>30096</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483579</uid>
+			<zipextension>4618</zipextension>
+		</poi>
+		<poi>
+			<name>Alpharetta Commons</name>
+			<_distance>5.53</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>4285 State Bridge Rd</address1>
+			<address2></address2>
+			<city>Alpharetta</city>
+			<clientkey>00686</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Fulton</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0586421428571</latitude>
+			<llpoint>0101000020E6100000196A921B040F55C091DEF29581074140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.2346257142857</longitude>
+			<marketablename>alpharettacommons</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/alpharettacommons</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>John Moraitakis</operatorname>
+			<phone>(770) 521-2132</phone>
+			<playground>interior</playground>
+			<postalcode>30022</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071484100</uid>
+			<zipextension>4449</zipextension>
+		</poi>
+		<poi>
+			<name>Suwanee Road</name>
+			<_distance>6.06</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>2835 Lawrenceville Suwanee Rd</address1>
+			<address2></address2>
+			<city>Suwanee</city>
+			<clientkey>00530</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0251928825894</latitude>
+			<llpoint>0101000020E6100000D8A6D62FD80255C02068378539034140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.0444449993332</longitude>
+			<marketablename>suwaneeroad</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/suwaneeroad</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Mark Treadwell</operatorname>
+			<phone>(770) 932-5797</phone>
+			<playground>interior</playground>
+			<postalcode>30024</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483827</uid>
+			<zipextension>2529</zipextension>
+		</poi>
+		<poi>
+			<name>Peachtree Corners</name>
+			<_distance>6.72</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>6105 Peachtree Pkwy</address1>
+			<address2></address2>
+			<city>Norcross</city>
+			<clientkey>00824</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.95242</latitude>
+			<llpoint>0101000020E6100000E2CCAFE6000F55C0350708E6E8F94040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.23443</longitude>
+			<marketablename>peachtreecorners</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/peachtreecorners</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Wayne Farr</operatorname>
+			<phone>(770) 368-0833</phone>
+			<playground>none</playground>
+			<postalcode>30092</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071484111</uid>
+			<zipextension>3304</zipextension>
+		</poi>
+		<poi>
+			<name>Sugarloaf &amp; 316</name>
+			<_distance>6.86</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>4965 Sugarloaf Pkwy</address1>
+			<address2></address2>
+			<city>Lawrenceville</city>
+			<clientkey>02077</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.9566400302103</latitude>
+			<llpoint>0101000020E6100000171D76F9B20355C01FE6352E73FA4040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.0577987340406</longitude>
+			<marketablename>sugarloafand316</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/sugarloafand316</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Daniel Perry</operatorname>
+			<phone>(678) 376-7447</phone>
+			<playground>interior</playground>
+			<postalcode>30044</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483820</uid>
+			<zipextension>6997</zipextension>
+		</poi>
+		<poi>
+			<name>Rivermont Station</name>
+			<_distance>7.31</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>8475 Holcomb Bridge Rd</address1>
+			<address2></address2>
+			<city>Alpharetta</city>
+			<clientkey>00448</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Fulton</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.98661</latitude>
+			<llpoint>0101000020E610000013D55B035B1155C00AF4893C49FE4040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.27118</longitude>
+			<marketablename>rivermontstation</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/rivermontstation</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Wayne Farr</operatorname>
+			<phone>(770) 640-8280</phone>
+			<playground>exterior</playground>
+			<postalcode>30022</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483691</uid>
+			<zipextension>5318</zipextension>
+		</poi>
+		<poi>
+			<name>Jimmy Carter Blvd.</name>
+			<_distance>8.41</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>5455 Jimmy Carter Blvd</address1>
+			<address2></address2>
+			<city>Norcross</city>
+			<clientkey>00745</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.9075773242643</latitude>
+			<llpoint>0101000020E6100000EB6F163C320D55C03D27677E2BF44040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.2061910838235</longitude>
+			<marketablename>jimmycarterboulevard</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/jimmycarterboulevard</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Chug Shafe</operatorname>
+			<phone>(770) 248-1088</phone>
+			<playground>interior</playground>
+			<postalcode>30093</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483318</uid>
+			<zipextension>1512</zipextension>
+		</poi>
+		<poi>
+			<name>North Point Parkway</name>
+			<_distance>8.46</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>6085 N Point Pkwy</address1>
+			<address2></address2>
+			<city>Alpharetta</city>
+			<clientkey>00873</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Fulton</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0461566666667</latitude>
+			<llpoint>0101000020E61000001A09F8E6D51255C0B1E92E76E8054140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.2943055555556</longitude>
+			<marketablename>northpointparkway</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/northpointparkway</marketableurl>
+			<offersonlineordering>false</offersonlineordering>
+			<offerswireless>false</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>David Thornsberry</operatorname>
+			<phone>(770) 667-8080</phone>
+			<playground>interior</playground>
+			<postalcode>30022</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483527</uid>
+			<zipextension>4888</zipextension>
+		</poi>
+		<poi>
+			<name>North Point Mall</name>
+			<_distance>8.57</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>2180 N Point Cir</address1>
+			<address2></address2>
+			<city>Alpharetta</city>
+			<clientkey>00468</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Fulton</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>false</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.050858490566</latitude>
+			<llpoint>0101000020E6100000008B2FE1DF1255C03FDAF08782064140</llpoint>
+			<locationcode>MALL</locationcode>
+			<longitude>-84.2949145283019</longitude>
+			<marketablename>northpointmall</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/northpointmall</marketableurl>
+			<offersonlineordering>false</offersonlineordering>
+			<offerswireless>false</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>David Thornsberry</operatorname>
+			<phone>(770) 410-9393</phone>
+			<playground>none</playground>
+			<postalcode>30022</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483526</uid>
+			<zipextension>6587</zipextension>
+		</poi>
+		<poi>
+			<name>Lilburn</name>
+			<_distance>8.64</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>4801 Lawrenceville Hwy Nw</address1>
+			<address2></address2>
+			<city>Lilburn</city>
+			<clientkey>00826</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.8952333333333</latitude>
+			<llpoint>0101000020E6100000EE006225F90855C0567A800197F24040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.1402066666667</longitude>
+			<marketablename>lilburn</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/lilburn</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Bryan Shepard</operatorname>
+			<phone>(770) 925-2027</phone>
+			<playground>exterior</playground>
+			<postalcode>30047</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483383</uid>
+			<zipextension>3844</zipextension>
+		</poi>
+		<poi>
+			<name>Pike Street</name>
+			<_distance>8.79</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>680 Duluth Hwy</address1>
+			<address2></address2>
+			<city>Lawrenceville</city>
+			<clientkey>00831</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.96615</latitude>
+			<llpoint>0101000020E6100000A9BC1DE1B40055C0E4839ECDAAFB4040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.01104</longitude>
+			<marketablename>pikestreet</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/pikestreet</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Mark Treadwell</operatorname>
+			<phone>(770) 962-7844</phone>
+			<playground>interior</playground>
+			<postalcode>30046</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483634</uid>
+			<zipextension>7695</zipextension>
+		</poi>
+		<poi>
+			<name>Windward Parkway</name>
+			<_distance>8.83</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>5180 Windward Pkwy</address1>
+			<address2></address2>
+			<city>Alpharetta</city>
+			<clientkey>01170</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Fulton</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.0924666666667</latitude>
+			<llpoint>0101000020E6100000F5AE542ABB1155C0D8A69EF2D50B4140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.2770486666667</longitude>
+			<marketablename>windwardparkway</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/windwardparkway</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Steve Williams</operatorname>
+			<phone>(770) 410-3533</phone>
+			<playground>interior</playground>
+			<postalcode>30004</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071484077</uid>
+			<zipextension>3841</zipextension>
+		</poi>
+		<poi>
+			<name>The Avenue Forsyth</name>
+			<_distance>9.21</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>430 Peachtree Pkwy</address1>
+			<address2></address2>
+			<city>Cumming</city>
+			<clientkey>02242</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Forsyth</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.1518709399652</latitude>
+			<llpoint>0101000020E6100000D2638A95220B55C07B2EC88170134140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.1739858485664</longitude>
+			<marketablename>avenueforsyth</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/avenueforsyth</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Gene Reeves</operatorname>
+			<phone>(770) 889-5288</phone>
+			<playground>interior</playground>
+			<postalcode>30041</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483843</uid>
+			<zipextension>6818</zipextension>
+		</poi>
+		<poi>
+			<name>Mall of Georgia at Mill Creek</name>
+			<_distance>9.85</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>3235 Buford Dr</address1>
+			<address2></address2>
+			<city>Buford</city>
+			<clientkey>01163</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.066738075234</latitude>
+			<llpoint>0101000020E61000001D91E6F031FF54C097438DDF8A084140</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-83.9874231578473</longitude>
+			<marketablename>mallofgaatmillcreek</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/mallofgaatmillcreek</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Steve Warnstrom</operatorname>
+			<phone>(678) 482-4448</phone>
+			<playground>interior</playground>
+			<postalcode>30519</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483414</uid>
+			<zipextension>4937</zipextension>
+		</poi>
+		<poi>
+			<name>Mall of Georgia</name>
+			<_distance>10.02</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>3333 Buford Dr Spc No1071</address1>
+			<address2></address2>
+			<city>Buford</city>
+			<clientkey>01141</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Gwinnett</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>false</hasdrivethru>
+			<icon>default</icon>
+			<latitude>34.06898</latitude>
+			<llpoint>0101000020E6100000FE9AAC510FFF54C0FF092E56D4084140</llpoint>
+			<locationcode>MALL</locationcode>
+			<longitude>-83.98531</longitude>
+			<marketablename>mallofgeorgia</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/mallofgeorgia</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>false</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Lem Durden</operatorname>
+			<phone>(678) 482-6787</phone>
+			<playground>none</playground>
+			<postalcode>30519</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071483413</uid>
+			<zipextension>4913</zipextension>
+		</poi>
+		<poi>
+			<name>Doraville Plaza</name>
+			<_distance>10.44</_distance>
+			<_distanceuom>mile</_distanceuom>
+			<acceptscfacard>true</acceptscfacard>
+			<address1>5700 Buford Hwy Ne</address1>
+			<address2></address2>
+			<city>Doraville</city>
+			<clientkey>00819</clientkey>
+			<conceptcode>CFA</conceptcode>
+			<country>US</country>
+			<county>Dekalb</county>
+			<fax></fax>
+			<georesult>10 ORAADDRESS</georesult>
+			<hasdiningroom>false</hasdiningroom>
+			<hasdrivethru>true</hasdrivethru>
+			<icon>default</icon>
+			<latitude>33.90635</latitude>
+			<llpoint>0101000020E610000077F86BB2461155C0645DDC4603F44040</llpoint>
+			<locationcode>FSU</locationcode>
+			<longitude>-84.26994</longitude>
+			<marketablename>doravilleplaza</marketablename>
+			<marketableurl>http://www.chick-fil-a.com/doravilleplaza</marketableurl>
+			<offersonlineordering>true</offersonlineordering>
+			<offerswireless>true</offerswireless>
+			<onlineorder></onlineorder>
+			<operatorname>Brian Jones</operatorname>
+			<phone>(770) 936-9701</phone>
+			<playground>interior</playground>
+			<postalcode>30340</postalcode>
+			<province></province>
+			<servesbreakfast>false</servesbreakfast>
+			<state>GA</state>
+			<status>open</status>
+			<type>S</type>
+			<uid>1071484142</uid>
+			<zipextension>1207</zipextension>
+		</poi>
+	</collection>
+</response>

@@ -1,0 +1,101 @@
+﻿@model cfares.domain._event.Ticket
+@{string pk = (Model != null && Model.IsBound()) ? Model.Id().ToString() : "";}
+@{bool isNew = string.IsNullOrEmpty(pk);}
+
+
+
+
+    @Html.HiddenFor(mode=>Model.TicketId)
+
+
+    <fieldset data-pk='@pk' class='ticket-@pk'>
+
+        <div class='legend inline-block'>Basic Ticket Information</div>
+
+        <div class='model-field field-CardNumber'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CardNumber)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.CardNumber)
+                @Html.ValidationMessageFor(model => model.CardNumber)
+            </div>
+        </div>
+
+        
+        <div class='model-field field-Owner'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.OwnerId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.OwnerId)
+                @Html.ValidationMessageFor(model => model.OwnerId)
+                    
+            </div>
+        </div>
+        
+        
+       <!--<div id="dialog" title="Basic dialog">
+            <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+        </div>
+        <script>
+  $(function() {
+      $("#dialog").dialog({
+          height: 140,
+          modal: true
+      });
+  });
+  </script>-->
+
+   
+        <div class='model-field field-Slot'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SlotId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SlotId)
+                @Html.ValidationMessageFor(model => model.SlotId)
+            </div>
+        </div>
+
+        <div class='model-field field-CreationSrc'>
+            <div class="editor-label  inline-block" data-field="CreationSrc">
+                @Html.LabelFor(model => model.CreationSrc)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.CreationSrc)
+                @Html.ValidationMessageFor(model => model.CreationSrc)
+            </div>
+        </div>
+        
+        <div class='model-field field-Status'>
+            <div class="editor-label  inline-block" data-field="Status">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        
+        <div class='model-field field-CreatedDate'>
+            <div class="editor-label  inline-block" data-field="CreatedDate">
+                @Html.LabelFor(model => model.CreatedDate)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </div>
+        </div>
+
+        <div class='model-field field-Note'>
+            <div class="editor-label inline-block valign-top" data-field="Note">
+                @Html.LabelFor(model => model.Note)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Note)
+                @Html.ValidationMessageFor(model => model.Note)
+            </div>
+        </div>
+       
+    </fieldset>
+    

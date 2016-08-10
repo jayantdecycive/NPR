@@ -1,0 +1,102 @@
+﻿@model cfares.domain._event.ResEvent
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+    int pk = Model.ResEventId;
+}
+
+
+
+
+<h1>Name This Event</h1>
+<p style="width:510px;">Creating a name for your event helps you organize the events and also assigns a URL to the event. The landing page will be universal for all events of a certain template but once the user chooses an event the URL changes to what you decide here. Please keep make the name short and direct to the point.</p>
+<br /><br />
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(false)
+    <div class="field-block name-block">
+        <fieldset data-pk='@pk' class='resevent-@pk inline-block'>
+            @*<div class='legend inline-block'>Reservation Event</div>*@
+            @Html.HiddenFor(model => model.ResEventId)
+            <div class='model-field field-Name'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.Name,"Create the Name of This Event")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            
+            @* //rclark: moved to times page
+			<div class='model-field field-Start'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.SiteStart,"Site Launch Date")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.SiteStart)
+                    @Html.ValidationMessageFor(model => model.SiteStart)
+                </div>
+            </div>
+
+            <div class='model-field field-End'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.SiteEnd,"Site End Date")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.SiteEnd)
+                    @Html.ValidationMessageFor(model => model.SiteEnd)
+                </div>
+            </div>
+			*@
+
+        
+        </fieldset>
+
+        <fieldset data-pk='@pk' class='resevent-@pk inline-block url-example'>
+            @*<div class='legend inline-block'>URL</div>*@
+            
+            <div class='model-field field-UrlName'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.Urls,"Example of the URL")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.Urls)
+                    @Html.ValidationMessageFor(model => model.Urls)
+                </div>
+            </div>
+
+            @* //rclark: moved to times page
+            <div class='model-field field-RegistrationStart'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.RegistrationStart,"First Slot Date")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.RegistrationStart)
+                    @Html.ValidationMessageFor(model => model.RegistrationStart)
+                </div>
+            </div>
+
+            <div class='model-field field-RegistrationEnd'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(model => model.RegistrationEnd,"Last Slot Date")
+                </div>                
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(model => model.RegistrationEnd)
+                    @Html.ValidationMessageFor(model => model.RegistrationEnd)
+                </div>
+            </div>
+			*@
+
+        
+        </fieldset>
+    </div>
+    <div class='submit-block admin-red submit-block-override'>
+        <div class='button-cta' data-icon="ui-icon-plus">
+            <input type="hidden" id="hdn-stores" name="stores" />
+            @* <input type="submit" value="Submit and Continue" class="submit" /> *@
+			<input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+        </div>
+    </div>
+}

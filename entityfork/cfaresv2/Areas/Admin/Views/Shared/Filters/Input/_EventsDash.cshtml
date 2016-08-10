@@ -1,0 +1,67 @@
+﻿@using cfares.domain._event
+@using System.Linq
+@using cfares.domain._event.slot
+@using cfares.repository._event
+@model string
+@{
+    cfacore.domain.user.User filterUser = new cfacore.domain.user.User();
+    filterUser.Name = new cfacore.shared.domain.user.Name("Filter by Guide");
+    filterUser.Id("0");
+}
+
+@if( !string.IsNullOrWhiteSpace( Model ) )
+{
+	<div class='admin-table inline-block'>
+                
+		@Html.DropDownList("filter-event-type",
+Html.RepositorySelectList<ReservationTypeRepository,cfares.domain._event.ReservationType,string>(type => true),
+			"Event Type",
+			new {@class="jq-select filter filter-event-type filter-table-" + Model,data_label="Name",data_value="ReservationTypeId"})
+                
+	</div>
+}
+
+<div class='admin-table inline-block'>
+
+    @Html.DropDownList("filter-status",new SelectList(((ResEventStatus[])Enum.GetValues(typeof(ResEventStatus))).Where<ResEventStatus>(x=>x!=ResEventStatus.Temp).ToArray()),"Status", new { @class = " jq-select filter filter-status filter-table-" + Model })
+
+</div>
+
+<div class='admin-table inline-block'>
+    <select class='jq-select filter filter-year filter-table-@Model' id="filter-year">
+        <option value="">Year</option>
+        @for (int i = DateTime.Now.Year; i <= (DateTime.Now.Year+4); i++)
+        {
+            <option value="@i">@i</option>
+        }
+    </select>
+</div>
+            
+<div class='admin-table inline-block'>
+    <select class="jq-select filter filter-month filter-table-@Model" id="filter-month">
+		<option value="">Month</option>
+		@if( System.Globalization.DateTimeFormatInfo.CurrentInfo != null )
+		{
+			for (int i = 1; i <= 12; i++)
+			{
+				string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(i);
+				<option value="@i">@label</option>
+			}
+		}
+    </select>
+</div>
+
+
+@*
+
+
+<div class='admin-table inline-block'>
+                <label class="filter filter-temp filter-table-@Model" id="filter-temp">
+                    Show Temp Events
+                    <input type="checkbox" name='filter' value='true' />
+                </label>
+    </div>
+*@          
+            
+
+

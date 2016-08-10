@@ -1,0 +1,71 @@
+/*-------------------------------------------------------------
+  Custom Event Variant - CFA-Reservations-FI-MotherSon
+  .. from [ CFA-Reservations-FI-MotherSon ]
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------
+  Theme Stylesheet - CFA-Reservations-FI-MotherSon
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------
+  Reservation System - Master Stylesheet
+-------------------------------------------------------------*/
+html, body {
+  overflow-x: hidden;
+  background: none repeat scroll 0 0 white;
+  margin: 0;
+  padding: 0; }
+
+.topbar {
+  height: 40px;
+  background: #8d1d21; }
+
+/* set a max-width for horizontal fluid layout and make it centered */
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 840px; }
+
+header {
+  position: relative; }
+  header h1 {
+    text-align: center;
+    margin: 0 auto 40px; }
+  header .needHelp {
+    width: 129px;
+    height: 71px;
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    background-image: url("images/needhelp.png");
+    background-position: right center;
+    background-repeat: no-repeat; }
+
+main {
+  text-align: center;
+  color: #666666; }
+  main > div > div > * {
+    margin: 0 10px; }
+  main > div > div > p {
+    margin: 0 10px 20px; }
+  main form, main .captionedForm {
+    background: #f1ebe3; }
+    main form h3, main .captionedForm h3 {
+      margin: 0 10px;
+      color: #8d1d21; }
+  main .captionedForm p {
+    margin: 4px 10px; }
+  main #searchPanel form {
+    padding: 10px;
+    margin: 0 0 20px; }
+    main #searchPanel form p {
+      margin: 4px 10px; }
+  main .leadin {
+    text-align: left;
+    position: relative;
+    left: 10px; }
+
+ul {
+  list-style-type: none; }
+
+ul {
+  list-style-type: none; }
+

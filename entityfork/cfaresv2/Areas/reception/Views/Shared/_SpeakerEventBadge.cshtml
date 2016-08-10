@@ -1,0 +1,43 @@
+﻿@using cfares.site.modules.com.reservations.res
+@using cfares.domain._event
+@model cfares.domain._event.resevent.store.SpeakerEvent
+@{
+    var hasMedia = Model.SpeakerMediaId != null;
+    var wizard = ViewBag.wizard as ReceptionWizard;
+    var ticket = ViewData["Ticket"] as ITicket;
+    
+    var ctaLanguage = (ticket!=null && ticket.GetOccurrence()!=null&&ticket.Slot.Occurrence.ResEventId==Model.ResEventId)?"Modify Reservation":"Make Reservation";
+}
+
+<section  class="row-fluid @Html.Raw(hasMedia?"":"no-portrait") speaker_badge">
+    @if (hasMedia)
+    {
+        <div class="span3">@Html.Media(Model.SpeakerMedia, width: 140,htmlAttributes:new {@class="img-polaroid hidden-phone"})
+            @Html.Media(Model.SpeakerMedia, width: 480,htmlAttributes:new {@class="img-polaroid visible-phone"})
+        </div>
+    }
+    <div class="span8 @Html.Raw(hasMedia?"":"offset3")">
+    <h2 class="h1 span12">@Model.SpeakerName</h2>
+    <time datetime="@Html.Raw(Model.Schedule.Start.ToString("yyyy-MM-ddTHH:mmzz:00"))">
+        @Model.Schedule.Start.ToString("MMMM d, yyyy")<br />
+        @Model.Schedule.Start.ToString("h:mm tt")-@Model.Schedule.End.ToString("h:mm tt")
+    </time>
+    <br/>
+    <p>@Model.OffSiteDescription</p>
+    <br/>
+
+    <p>Participating Chick-fil-A restaurants will be hosting this free customer reception on @Model.RegistrationStart.ToString("MMMM dd, yyyy") 
+        @if (!String.IsNullOrEmpty(Model.OffSiteAddress.Name.ToString()))
+        {<span>at @Model.OffSiteAddress.Name</span>}
+    </p>
+        @*
+        <address>
+            @Model.OffSiteAddress.Label<br />
+            @Model.OffSiteAddress.Line1<br />
+            @Model.OffSiteAddress.Line2<br />
+            @Model.OffSiteAddress.City, @Model.OffSiteAddress.State @Model.OffSiteAddress.ZipString
+        </address>
+        *@
+        <a class="btn-primary btn" href="@Html.Raw(wizard.Prime(Model).NextStep.Uri(ViewContext))">@ctaLanguage</a>
+    </div>
+</section>

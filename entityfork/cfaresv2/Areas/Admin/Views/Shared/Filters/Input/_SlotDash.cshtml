@@ -1,0 +1,86 @@
+﻿@using cfares.domain._event
+@using cfares.domain._event.slot
+@using cfares.repository._event
+@using cfares.site.modules.com.application
+@model string
+@{
+    cfacore.domain.user.User filterUser = new cfacore.domain.user.User();
+    filterUser.Name = new cfacore.shared.domain.user.Name("Filter by Guide");
+    filterUser.Id("0");
+}
+
+@if( string.IsNullOrWhiteSpace( Model ) )
+{
+	<div class='admin-table inline-block'>
+                
+		@Html.DropDownList("filter-event-type",
+Html.RepositorySelectList<ReservationTypeRepository,cfares.domain._event.ReservationType,string>(type => true),
+			"Event Type",
+			new {@class="jq-select filter filter-event-type filter-table-" + Model,data_label="Name",data_value="ReservationTypeId"})
+                
+	</div>
+}
+
+<div class='admin-table inline-block'>
+@if( string.IsNullOrWhiteSpace( Model ) )
+{
+    @Html.DropDownList("filter-visibility",new SelectList(Enum.GetValues(typeof(SlotVisibility))),"Slot Visibility", new { @class = " jq-select filter filter-visibility filter-table-" + Model })
+} 
+else if( Model.Contains( "Tours" ) )
+{
+    @Html.DropDownList("filter-visibility",new SelectList(Enum.GetValues(typeof(SlotVisibility))),"Tour Type", new { @class = " jq-select filter filter-visibility filter-table-" + Model })
+}
+else if( Model.Contains( "Events" ) )
+{
+    @Html.DropDownList("filter-category",new SelectList(ReservationConfig.GetContext().ReservationCategories.OrderBy( o => o.Name ).Select( o => o.Name ).AsEnumerable()),"Type of Event", new { @class = " jq-select filter filter-category filter-table-" + Model })
+}
+</div>
+
+
+<div class='admin-table inline-block'>
+    <select class='jq-select filter filter-year filter-table-@Model' id="filter-year">
+        <option value="">Year</option>
+        @for (int i = DateTime.Now.Year; i <= (DateTime.Now.Year+4); i++)
+        {
+            <option value="@i">@i</option>
+        }
+    </select>
+</div>
+            
+<div class='admin-table inline-block'>
+    <select class="jq-select filter filter-month filter-table-@Model" id="filter-month">
+		<option value="">Month</option>
+		@if( System.Globalization.DateTimeFormatInfo.CurrentInfo != null )
+		{
+			for (int i = 1; i <= 12; i++)
+			{
+				string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(i);
+				<option value="@i">@label</option>
+			}
+		}
+    </select>
+</div>
+
+
+
+<div class='admin-table inline-block'>
+    <select class="jq-select filter filter-day filter-table-@Model" id="filter-day">
+        <option value="">Day Of Week</option>
+        @for (int i = 1; i <= 7; i++)
+        {
+            string label = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetDayName((DayOfWeek)(i-1));
+            <option value="@i">@label</option>
+        }
+    </select>
+</div>
+
+
+<div class='admin-table inline-block filter-guide filter-table-@Model' id="filter-guide">
+                
+	@Html.Partial("EditorTemplates/AutoComplete/_UserId", filterUser.UserId, new ViewDataDictionary(ViewData)
+        {
+            {"modal",false},
+			{"DefaultLabelOverride", "Guide"}
+        })
+
+</div>

@@ -1,0 +1,7 @@
+﻿@model System.Collections.Generic.List<cfares.domain._event.ReservationType>
+@if (ViewData["Value"] == null)
+{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ReservationTypeId", "Name", Model.First().Id()), new { @class = "res-type picker-dropdown jq-select" })
+}else{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ReservationTypeId", "Name", ViewData["Value"]), new { @class = "res-type picker-dropdown jq-select" })
+}

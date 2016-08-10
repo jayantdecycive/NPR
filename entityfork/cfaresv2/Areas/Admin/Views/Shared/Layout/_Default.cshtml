@@ -1,0 +1,23 @@
+﻿@model cfacore.domain._base.DomainObject
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Meta{
+@RenderSection("Meta",false)
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+        <div class='model badge dash'>
+            
+            
+            @RenderBody()
+        </div>
+        
+    </div>
+</div>
+
+@this.RedefineSection("Scripts")
+
+@if (IsSectionDefined("Footer")) {DefineSection("Footer", () => RenderSection("Footer"));}
+@if (IsSectionDefined("Header")) {DefineSection("Header", () => RenderSection("Header"));}

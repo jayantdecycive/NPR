@@ -1,0 +1,23 @@
+﻿@model cfares.domain._event.IResEvent
+@{
+    ViewBag.Title = "TemplateSelect";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Template.cshtml";
+    string url = Request.Url.PathAndQuery;
+}
+
+<h1 class="templateHeader">Choose a @Model.ReservationType.Name Template</h1> @* needs to be updated to be dynamic *@
+
+<div id="template-grid" class="text-center">
+	<ul>
+		@foreach (cfares.domain._event.ResTemplate template in ViewBag.Templates)
+		{
+			<li>
+				<a href="@Html.Raw(url+(url.IndexOf("?")>0?"&":"?")+"template="+template.ResTemplateId)" class="template-badge inline-block">
+					@Html.Media(template.Preview,width:280,height:280)
+					<span class="template-name block">@template.Name</span>
+					<span class="btn-select">Select</span>
+				</a>
+			</li>
+		}
+	</ul>
+</div>

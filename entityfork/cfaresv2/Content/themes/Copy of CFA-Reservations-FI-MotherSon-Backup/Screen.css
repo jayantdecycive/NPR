@@ -1,0 +1,608 @@
+/*-------------------------------------------------------------
+  Theme Stylesheet - CFA-Reservations-FI-MotherSon
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------
+  Reservation System - Master Stylesheet
+-------------------------------------------------------------*/
+@font-face {
+  font-family: "Caecilia";
+  src: url("../../Media/Font/caeciliacom-75bold-webfont.ttf");
+  font-weight: bold; }
+
+html, body {
+  overflow-x: hidden;
+  background: none repeat scroll 0 0 white;
+  margin: 0;
+  padding: 0; }
+
+.topbar {
+  position: relative;
+  height: 40px;
+  background: #8d1d21;
+  min-width: 100%; }
+  .topbar ul {
+    margin: auto;
+    width: 880px; }
+    .topbar ul li {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: white;
+      line-height: 40px;
+      padding-right: 5px; }
+      .topbar ul li a, .topbar ul li a:hover, .topbar ul li a:active {
+        color: white; }
+      .topbar ul li input {
+        height: 14px;
+        padding: 5px;
+        margin: 0px;
+        border-radius: 0; }
+      .topbar ul li select {
+        height: 28px;
+        padding: 0;
+        margin: 0 0 0 15px;
+        border-radius: 0;
+        background-color: #a5373b;
+        border: transparent;
+        color: #d0a0a2;
+        font-family: "Helvetica Neue", helvetica, sans-serif;
+        font-size: 12px;
+        width: auto; }
+      .topbar ul li button {
+        padding: 3px 8px;
+        border-radius: 0;
+        font-font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 12px;
+        color: #8e1e22;
+        background-color: #cf9fa1; }
+      .topbar ul li button:hover {
+        color: #8e1e22;
+        background-color: #c19193; }
+    .topbar ul li.welcome {
+      margin-right: 50px; }
+    .topbar ul li.modify {
+      margin-right: 20px; }
+    .topbar ul li.account {
+      margin-right: 50px; }
+    .topbar ul li.fb {
+      float: right;
+      margin-right: 50px; }
+      .topbar ul li.fb span {
+        padding: 0 3px;
+        font-size: 11px; }
+
+footer {
+  margin: 40px 0; }
+  footer ul {
+    margin: 0px auto 20px; }
+    footer ul li {
+      display: inline;
+      border-right: solid 2px #cfcfcf;
+      padding: 0 13px; }
+      footer ul li a, footer ul li a:active {
+        text-decoration: none;
+        font-family: Arial;
+        font-size: 11px;
+        font-weight: bold;
+        color: #8d1d21; }
+      footer ul li a:hover, footer ul li a:focus {
+        color: #c19193; }
+    footer ul li:last-child {
+      border-right: none; }
+  footer p {
+    font-family: Arial;
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+    line-height: 11px; }
+
+/* set a max-width for horizontal fluid layout and make it centered */
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 840px; }
+
+header {
+  position: relative; }
+  header h1 {
+    text-align: center;
+    margin: 0 auto 20px; }
+  header .needHelp {
+    width: 129px;
+    height: 71px;
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    background-image: url("images/needhelp.png");
+    background-position: right center;
+    background-repeat: no-repeat; }
+
+main {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #666666;
+  /* --- Page: Search By Location ------------------------ */
+  /* --- Page: Reservation Form ------------------------ */
+  /* --- Page: Review Form ------------------------ */
+  /* --- Page: Success ------------------------ */ }
+  main .wizard {
+    display: none; }
+  main > div > div > * {
+    margin: 0 10px; }
+  main > div > div > p {
+    margin: 0 10px 20px; }
+  main h1 {
+    font-family: "Caecilia", "Times New Roman", serif;
+    font-size: 30px;
+    color: #8d1d21;
+    text-align: center; }
+  main h2 {
+    line-height: 33px;
+    font-family: "Caecilia", "Times New Roman", serif;
+    font-size: 24px;
+    color: #8d1d21;
+    text-align: center; }
+    main h2 a, main h2 a:active {
+      color: #3d3d3d; }
+  main h2.intro {
+    padding: 30px 0 35px;
+    border-bottom: 1px solid #bfa56b; }
+  main h3 {
+    font-family: "Caecilia", "Times New Roman", serif;
+    font-size: 18px;
+    color: #333333;
+    text-align: center; }
+  main p {
+    text-align: left; }
+  main a, main a:active {
+    color: #8d1d21;
+    font-weight: bold; }
+  main a:hover {
+    text-decoration: underline;
+    color: #c19193; }
+  main form .captionedForm {
+    background-color: #f1ebe3; }
+  main form h2 {
+    text-align: left !important;
+    margin: 60px 0 45px; }
+  main form h3 {
+    margin: 0 10px;
+    color: #333333; }
+  main .captionedForm p {
+    margin: 4px 10px; }
+  main .field-validation-error {
+    color: #8d1d21;
+    margin: 0 0 0 10px; }
+  main #searchPanel form {
+    background-color: #f1ebe3;
+    padding: 10px;
+    margin: 0 0 20px; }
+    main #searchPanel form p {
+      margin: 4px 10px; }
+    main #searchPanel form .searchRow label {
+      display: inline-block;
+      line-height: 30px;
+      margin-right: 5px;
+      font-family: Arial;
+      font-size: 14px;
+      font-weight: bold;
+      color: #999; }
+    main #searchPanel form .searchRow input[type=text] {
+      display: inline-block;
+      width: 150px;
+      margin-right: 5px;
+      margin-bottom: 0px; }
+    main #searchPanel form .searchRow select {
+      display: inline-block;
+      width: 100px;
+      line-height: 30px;
+      margin-right: 5px;
+      margin-bottom: 0px; }
+    main #searchPanel form .searchRow button {
+      display: inline-block;
+      line-height: 30px;
+      width: 45px;
+      padding: 0px; }
+    main #searchPanel form .subtext {
+      display: inline-block;
+      font-family: Arial;
+      font-size: 11px;
+      color: #999; }
+  main .leadin {
+    text-align: left;
+    position: relative;
+    font-family: Arial;
+    font-size: 14px; }
+  main #chooseCityNearYou {
+    margin-top: 40px; }
+    main #chooseCityNearYou #eventsList {
+      margin: 0; }
+      main #chooseCityNearYou #eventsList li.event {
+        display: block;
+        position: relative;
+        height: auto;
+        margin: auto;
+        border-bottom: 1px solid #e5dad1;
+        padding: 0;
+        				/* Will revisit for more responsiveness on locations box
+        				h3 {
+        					font: {
+        						family: Arial;
+        						size: 16px;
+        						weight: bold;
+        					}
+        					text-align: left;
+        					margin: 10px;
+        					line-height: 20px;
+        				}
+        
+        				ul {
+        					
+        					li {
+        						display: inline-block;
+        						margin: auto;
+        					}
+        
+        					li.address {
+        						width: auto;
+        					}
+        
+        					li.resCount {
+        						min-width: 150px;
+        					}
+        
+        					li.commands {
+        						min-width: 170px;
+        					}
+        				}
+        				*/ }
+        main #chooseCityNearYou #eventsList li.event div.locationBlock {
+          display: block;
+          height: auto;
+          width: 100%;
+          margin: 10px 0; }
+          main #chooseCityNearYou #eventsList li.event div.locationBlock div.overview {
+            display: block;
+            width: 60%;
+            margin: 0;
+            padding: 10px; }
+            main #chooseCityNearYou #eventsList li.event div.locationBlock div.overview h3 {
+              font-family: Arial;
+              font-size: 16px;
+              font-weight: bold;
+              text-align: left;
+              margin: 10px;
+              line-height: 20px; }
+            main #chooseCityNearYou #eventsList li.event div.locationBlock div.overview p {
+              font-family: Arial;
+              font-size: 14px;
+              color: #666666;
+              line-height: 14px;
+              text-align: left; }
+            main #chooseCityNearYou #eventsList li.event div.locationBlock div.overview p.tools a {
+              color: #6d4f21;
+              padding-top: 5px;
+              line-height: 18px; }
+          main #chooseCityNearYou #eventsList li.event div.locationBlock div.reservationDetail {
+            position: absolute;
+            left: 300px;
+            top: 47px; }
+            main #chooseCityNearYou #eventsList li.event div.locationBlock div.reservationDetail p {
+              padding: 0;
+              margin: 0;
+              color: #000;
+              font-weight: bold;
+              text-align: left; }
+          main #chooseCityNearYou #eventsList li.event div.locationBlock div.commands {
+            position: absolute;
+            top: 45px;
+            right: 40px;
+            margin: 0;
+            font-size: 17px;
+            font-weight: bold; }
+            main #chooseCityNearYou #eventsList li.event div.locationBlock div.commands button {
+              width: 150px;
+              height: 40px;
+              font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+        main #chooseCityNearYou #eventsList li.event div.locationBlock.preferred {
+          background-color: #f7f3ef; }
+          main #chooseCityNearYou #eventsList li.event div.locationBlock.preferred div.overview h3 {
+            color: #8d1d21; }
+      main #chooseCityNearYou #eventsList li.event:last-child {
+        border-bottom: none; }
+  main #eventInfoBanner {
+    height: 130px;
+    border-bottom: 1px solid #bfa56b; }
+    main #eventInfoBanner ul li {
+      display: inline-block;
+      text-align: left;
+      padding: 0 45px 0 20px;
+      height: 100px;
+      vertical-align: top; }
+      main #eventInfoBanner ul li h3 {
+        font-family: Arial;
+        font-size: 16px;
+        font-weight: bold;
+        color: #8d1d21;
+        line-height: 16px; }
+      main #eventInfoBanner ul li p {
+        font-family: Arial;
+        font-size: 14px;
+        color: #666666;
+        line-height: 18px; }
+      main #eventInfoBanner ul li span.viewMap {
+        font-family: Arial;
+        font-size: 14px;
+        color: #694f1f;
+        line-height: 14px;
+        padding-left: 15px; }
+      main #eventInfoBanner ul li span.modSetting {
+        font-family: Arial;
+        font-size: 10px;
+        color: #694f1f;
+        line-height: 10px; }
+    main #eventInfoBanner ul li:first-child {
+      border-right: 1px solid #ece5d6; }
+    main #eventInfoBanner ul li:last-child {
+      padding-top: 20px; }
+  main #reservationForm {
+    margin-top: 25px;
+    background: none; }
+    main #reservationForm fieldset ul li {
+      display: block;
+      text-align: left;
+      margin: 5px 0;
+      /* rclark: removed span.note and span.required from here for global usage */ }
+      main #reservationForm fieldset ul li p {
+        display: inline-block;
+        font-family: Arial;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333; }
+      main #reservationForm fieldset ul li label, main #reservationForm fieldset ul li legend {
+        display: inline-block;
+        width: 200px;
+        font-family: Arial;
+        font-size: 14px;
+        font-weight: bold;
+        color: #666666; }
+        main #reservationForm fieldset ul li label span.ageReq, main #reservationForm fieldset ul li legend span.ageReq {
+          font-family: Arial;
+          font-size: 12px;
+          font-weight: bold; }
+      main #reservationForm fieldset ul li label.check {
+        width: auto;
+        padding-left: 15px; }
+      main #reservationForm fieldset ul li label.radio {
+        width: auto;
+        padding-left: 0; }
+      main #reservationForm fieldset ul li legend {
+        border: none;
+        width: auto;
+        margin: 0;
+        line-height: 20px;
+        float: left; }
+      main #reservationForm fieldset ul li input {
+        display: inline-block;
+        height: 20px;
+        background-color: #ebebeb;
+        border-radius: 2px; }
+      main #reservationForm fieldset ul li input[type=checkbox] {
+        margin: 0; }
+      main #reservationForm fieldset ul li input[type=radio] {
+        margin: 0 0 0 10px; }
+      main #reservationForm fieldset ul li select {
+        display: inline-block;
+        height: 30px;
+        background-color: #ebebeb;
+        border-radius: 2px; }
+      main #reservationForm fieldset ul li select.birth {
+        width: auto; }
+      main #reservationForm fieldset ul li .date {
+        margin-left: 10px; }
+    main #reservationForm fieldset button.reserve {
+      margin: 20px 65px 0 0; }
+  main #overviewIntro p {
+    font-family: Arial, sans-serif;
+    font-size: 14px; }
+  main #resReview {
+    margin-top: 25px; }
+    main #resReview ul li {
+      display: block;
+      text-align: left;
+      margin: 5px 0; }
+    main #resReview ul li.reviewBlockEnd {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #efefe9; }
+    main #resReview ul li.groupBegin {
+      padding-top: 15px; }
+    main #resReview ul li.groupEnd {
+      padding-bottom: 15px; }
+    main #resReview ul li.groupButton {
+      float: right;
+      padding-top: 25px; }
+      main #resReview ul li.groupButton button {
+        margin-left: 15px; }
+    main #resReview ul span.itemName, main #resReview ul label.check {
+      display: inline-block;
+      width: 215px;
+      font-family: Arial;
+      font-size: 14px;
+      font-weight: bold;
+      color: #666666; }
+    main #resReview ul span.itemInfo {
+      display: inline-block;
+      font-family: Arial;
+      font-size: 14px;
+      font-weight: bold;
+      color: #999999; }
+    main #resReview ul span.editInfo {
+      float: right;
+      font-family: Arial;
+      font-size: 14px;
+      color: #8d1d21; }
+      main #resReview ul span.editInfo a, main #resReview ul span.editInfo a:hover, main #resReview ul span.editInfo a:active {
+        text-decoration: none;
+        color: #8d1d21; }
+    main #resReview ul label.check {
+      display: inline-block;
+      width: auto;
+      padding-left: 15px; }
+    main #resReview ul input[type=checkbox] {
+      margin: 0; }
+    main #resReview ul span.ageReq {
+      font-family: Arial;
+      font-size: 12px;
+      font-weight: bold; }
+  main #intro {
+    text-align: left; }
+    main #intro h2 {
+      text-align: center; }
+    main #intro a, main #intro a:hover, main #intro a:active {
+      color: #8d1d21; }
+    main #intro article {
+      width: auto; }
+    main #intro aside {
+      float: right;
+      width: 170px;
+      height: 220px;
+      background-color: #f1ebe3;
+      padding: 15px;
+      margin-top: 20px; }
+      main #intro aside h3 {
+        color: #8d1d21;
+        margin-top: 0;
+        line-height: 15px; }
+  main #shareBox {
+    background-color: #f1ebe3;
+    margin-top: 40px; }
+    main #shareBox p {
+      font-family: Arial;
+      font-size: 14px;
+      color: #333333;
+      padding: 10px 0; }
+    main #shareBox ul {
+      margin: auto; }
+      main #shareBox ul li {
+        display: inline-block; }
+        main #shareBox ul li a {
+          display: block;
+          width: 58px;
+          height: 58px;
+          text-indent: -9999px;
+          margin: 0 36px 36px; }
+        main #shareBox ul li a#facebook {
+          background-image: url("../../images/facebook.png"); }
+        main #shareBox ul li a#facebook:hover {
+          background-image: url("../../images/facebookRoll.png"); }
+        main #shareBox ul li a#twitter {
+          background-image: url("../../images/twitter.png"); }
+        main #shareBox ul li a#twitter:hover {
+          background-image: url("../../images/twitterRoll.png"); }
+        main #shareBox ul li a#email {
+          background-image: url("../../images/email.png"); }
+        main #shareBox ul li a#email:hover {
+          background-image: url("../../images/emailRoll.png"); }
+
+#socialFooter {
+  margin: 45px 0 0; }
+  #socialFooter li {
+    width: 225px;
+    height: 35px;
+    background-color: #f1ebe3;
+    display: inline-block;
+    margin: 0 3px;
+    line-height: 35px; }
+    #socialFooter li a {
+      color: #55585e;
+      text-decoration: none; }
+  #socialFooter li:hover {
+    background-color: #cfc7c3; }
+    #socialFooter li:hover a {
+      color: #fff;
+      text-decoration: none; }
+
+ul {
+  list-style-type: none; }
+
+button.default, input.default {
+  background-color: #ad2c31;
+  background-image: none;
+  color: #edc68a; }
+
+p.required {
+  font-family: Arial;
+  font-size: 14px;
+  color: #8e1e22; }
+
+span.required {
+  float: left;
+  margin-left: -15px;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8e1e22;
+  line-height: 40px; }
+
+span.note {
+  float: none;
+  margin-left: 10px;
+  font-weight: normal;
+  line-height: 20px; }
+
+span.review {
+  line-height: 25px; }
+
+.padding50 {
+  margin-top: 50px; }
+
+.padding30 {
+  margin-top: 30px; }
+
+.strong {
+  font-weight: bold; }
+
+.form-horizontal .control-group {
+  margin-bottom: 10px; }
+
+.form-horizontal .control-label {
+  text-align: left;
+  font-weight: bold; }
+
+.form-horizontal .controls input[type=text], .form-horizontal .controls select, .form-horizontal .controls input[type=radio], .form-horizontal .controls input[type=checkbox], .form-horizontal .controls textarea {
+  background-color: #ebebeb; }
+
+span.require {
+  float: left;
+  margin-left: -15px;
+  margin-top: 3px;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8e1e22; }
+
+h2.contact {
+  margin: 30px 0; }
+
+.accordion-heading {
+  background-color: #f1ebe3; }
+
+span.triUp {
+  float: right;
+  margin-top: 5px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 9px 10px 9px;
+  border-color: transparent transparent #8d1d20 transparent;
+  -webkit-transform: rotate(360deg); }
+
+span.triDown {
+  float: right;
+  margin-top: 5px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 9px 0 9px;
+  border-color: #8d1d20 transparent transparent transparent; }
+

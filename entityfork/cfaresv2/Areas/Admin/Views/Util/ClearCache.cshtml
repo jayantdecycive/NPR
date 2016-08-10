@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Clear Cache";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+	var url = Url.Action("FAQs", "Reservation", new { area = "ChainwideProduct" } );
+	
+	HttpResponse.RemoveOutputCacheItem("/");
+	HttpResponse.RemoveOutputCacheItem( url );
+}
+
+Cache cleared ... @DateTime.Now
+
+<br/>
+@url

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<medias>
+  <media>
+    <uri>http://www.chick-fil-a.com/Media/Img/content/Home/main/apr2012/feature-bagel.png</uri>
+    <description>A Chick-fil-A Featured Bagel</description>
+    <name>Chick-fil-A Bagel</name>
+  </media>
+  <directory filebase="file:///C:/Users/Matt/projects/chickfila/CFA3" webbase="http://www.chick-fil-a.com">
+    <uri>/Media/Img/catalog/Food/Large</uri>
+  </directory>
+</medias>

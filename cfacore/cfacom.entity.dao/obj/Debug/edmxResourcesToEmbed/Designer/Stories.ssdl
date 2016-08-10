@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoriesEntityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="StoriesEntityModelStoreContainer">
+    <EntitySet Name="Food" EntityType="StoriesEntityModel.Store.Food" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Food_Ingredient" EntityType="StoriesEntityModel.Store.Food_Ingredient" store:Type="Tables" Schema="dbo" Table="Food.Ingredient" />
+    <EntitySet Name="Food_Variation" EntityType="StoriesEntityModel.Store.Food_Variation" store:Type="Tables" Schema="dbo" Table="Food.Variation" />
+    <EntitySet Name="FoodImage" EntityType="StoriesEntityModel.Store.FoodImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryLocation" EntityType="StoriesEntityModel.Store.StoryLocation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="StoriesEntityModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagGroup" EntityType="StoriesEntityModel.Store.TagGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Location~Story" EntityType="StoriesEntityModel.Store.Location~Story" store:Type="Views" store:Schema="dbo" store:Name="Location~Story">
+      <DefiningQuery>SELECT 
+      [Location~Story].[StoryID] AS [StoryID], 
+      [Location~Story].[StoreID] AS [StoreID], 
+      [Location~Story].[CreationDate] AS [CreationDate], 
+      [Location~Story].[ID] AS [ID], 
+      [Location~Story].[Title] AS [Title], 
+      [Location~Story].[StoryContent] AS [StoryContent], 
+      [Location~Story].[AuthorID] AS [AuthorID], 
+      [Location~Story].[ImageID] AS [ImageID], 
+      [Location~Story].[PostingDate] AS [PostingDate], 
+      [Location~Story].[CurrentEntryID] AS [CurrentEntryID], 
+      [Location~Story].[StoryVersion] AS [StoryVersion], 
+      [Location~Story].[EditorID] AS [EditorID], 
+      [Location~Story].[ReviewApproval] AS [ReviewApproval], 
+      [Location~Story].[FinalApproval] AS [FinalApproval], 
+      [Location~Story].[Reviewed] AS [Reviewed], 
+      [Location~Story].[Views] AS [Views], 
+      [Location~Story].[CategoryID] AS [CategoryID], 
+      [Location~Story].[IsDraft] AS [IsDraft], 
+      [Location~Story].[IsUnusable] AS [IsUnusable], 
+      [Location~Story].[Comment] AS [Comment], 
+      [Location~Story].[ReviewUnsure] AS [ReviewUnsure], 
+      [Location~Story].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [Location~Story].[FileName] AS [FileName], 
+      [Location~Story].[Owner] AS [Owner], 
+      [Location~Story].[Poster] AS [Poster], 
+      [Location~Story].[Width] AS [Width], 
+      [Location~Story].[Height] AS [Height], 
+      [Location~Story].[MdWidth] AS [MdWidth], 
+      [Location~Story].[MdHeight] AS [MdHeight], 
+      [Location~Story].[LgWidth] AS [LgWidth], 
+      [Location~Story].[LgHeight] AS [LgHeight], 
+      [Location~Story].[PromoWidth] AS [PromoWidth], 
+      [Location~Story].[PromoHeight] AS [PromoHeight], 
+      [Location~Story].[StoryRating] AS [StoryRating], 
+      [Location~Story].[NumberOfRatings] AS [NumberOfRatings], 
+      [Location~Story].[TagDescription] AS [TagDescription], 
+      [Location~Story].[Quality] AS [Quality], 
+      [Location~Story].[IsFavorite] AS [IsFavorite], 
+      [Location~Story].[NewID] AS [NewID]
+      FROM [dbo].[Location~Story] AS [Location~Story]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StoryLocation~Location" EntityType="StoriesEntityModel.Store.StoryLocation~Location" store:Type="Views" store:Schema="dbo" store:Name="StoryLocation~Location">
+      <DefiningQuery>SELECT 
+      [StoryLocation~Location].[StoryID] AS [StoryID], 
+      [StoryLocation~Location].[StoreID] AS [StoreID], 
+      [StoryLocation~Location].[CreationDate] AS [CreationDate], 
+      [StoryLocation~Location].[LocationNumber] AS [LocationNumber], 
+      [StoryLocation~Location].[Name] AS [Name], 
+      [StoryLocation~Location].[MarketableName] AS [MarketableName], 
+      [StoryLocation~Location].[OperatorContact_PersonID] AS [OperatorContact_PersonID], 
+      [StoryLocation~Location].[OperatorContact_Name] AS [OperatorContact_Name], 
+      [StoryLocation~Location].[StreetAddress_Address1] AS [StreetAddress_Address1], 
+      [StoryLocation~Location].[StreetAddress_City] AS [StreetAddress_City], 
+      [StoryLocation~Location].[StreetAddress_County] AS [StreetAddress_County], 
+      [StoryLocation~Location].[StreetAddress_State] AS [StreetAddress_State], 
+      [StoryLocation~Location].[StreetAddress_Zip] AS [StreetAddress_Zip], 
+      [StoryLocation~Location].[StreetAddress_ZipExtension] AS [StreetAddress_ZipExtension], 
+      [StoryLocation~Location].[ShippingAddress_Address1] AS [ShippingAddress_Address1], 
+      [StoryLocation~Location].[ShippingAddress_City] AS [ShippingAddress_City], 
+      [StoryLocation~Location].[ShippingAddress_County] AS [ShippingAddress_County], 
+      [StoryLocation~Location].[ShippingAddress_State] AS [ShippingAddress_State], 
+      [StoryLocation~Location].[ShippingAddress_Zip] AS [ShippingAddress_Zip], 
+      [StoryLocation~Location].[ShippingAddress_ZipExtension] AS [ShippingAddress_ZipExtension], 
+      [StoryLocation~Location].[BillingAddress_Address1] AS [BillingAddress_Address1], 
+      [StoryLocation~Location].[BillingAddress_City] AS [BillingAddress_City], 
+      [StoryLocation~Location].[BillingAddress_County] AS [BillingAddress_County], 
+      [StoryLocation~Location].[BillingAddress_State] AS [BillingAddress_State], 
+      [StoryLocation~Location].[BillingAddress_Zip] AS [BillingAddress_Zip], 
+      [StoryLocation~Location].[BillingAddress_ZipExtension] AS [BillingAddress_ZipExtension], 
+      [StoryLocation~Location].[AreaCode] AS [AreaCode], 
+      [StoryLocation~Location].[PhoneNumber] AS [PhoneNumber], 
+      [StoryLocation~Location].[EmailAddress] AS [EmailAddress], 
+      [StoryLocation~Location].[VoiceMail] AS [VoiceMail], 
+      [StoryLocation~Location].[Status] AS [Status], 
+      [StoryLocation~Location].[OpenDate] AS [OpenDate], 
+      [StoryLocation~Location].[ProjectedOpenDate] AS [ProjectedOpenDate], 
+      [StoryLocation~Location].[MarketableURL] AS [MarketableURL], 
+      [StoryLocation~Location].[GPS_Latitude] AS [GPS_Latitude], 
+      [StoryLocation~Location].[GPS_Longitude] AS [GPS_Longitude], 
+      [StoryLocation~Location].[ConceptCode] AS [ConceptCode], 
+      [StoryLocation~Location].[LocationCode] AS [LocationCode], 
+      [StoryLocation~Location].[Playground] AS [Playground], 
+      [StoryLocation~Location].[OffersOnlineOrdering] AS [OffersOnlineOrdering], 
+      [StoryLocation~Location].[HasDriveThru] AS [HasDriveThru], 
+      [StoryLocation~Location].[AcceptsCfaCard] AS [AcceptsCfaCard], 
+      [StoryLocation~Location].[HasDiningRoom] AS [HasDiningRoom], 
+      [StoryLocation~Location].[ServesBreakfast] AS [ServesBreakfast], 
+      [StoryLocation~Location].[OffersWireless] AS [OffersWireless], 
+      [StoryLocation~Location].[NoUpdate] AS [NoUpdate], 
+      [StoryLocation~Location].[FaxNumber] AS [FaxNumber], 
+      [StoryLocation~Location].[FaxAreaCode] AS [FaxAreaCode], 
+      [StoryLocation~Location].[Message] AS [Message], 
+      [StoryLocation~Location].[CorporateOwned] AS [CorporateOwned], 
+      [StoryLocation~Location].[LocationDescription] AS [LocationDescription]
+      FROM [dbo].[StoryLocation~Location] AS [StoryLocation~Location]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryImageAuthorWithTagRating" EntityType="StoriesEntityModel.Store.V2StoryImageAuthorWithTagRating" store:Type="Views" store:Schema="dbo" store:Name="V2StoryImageAuthorWithTagRating">
+      <DefiningQuery>SELECT 
+      [V2StoryImageAuthorWithTagRating].[ID] AS [ID], 
+      [V2StoryImageAuthorWithTagRating].[Title] AS [Title], 
+      [V2StoryImageAuthorWithTagRating].[StoryContent] AS [StoryContent], 
+      [V2StoryImageAuthorWithTagRating].[AuthorID] AS [AuthorID], 
+      [V2StoryImageAuthorWithTagRating].[ImageID] AS [ImageID], 
+      [V2StoryImageAuthorWithTagRating].[PostingDate] AS [PostingDate], 
+      [V2StoryImageAuthorWithTagRating].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryImageAuthorWithTagRating].[StoryVersion] AS [StoryVersion], 
+      [V2StoryImageAuthorWithTagRating].[EditorID] AS [EditorID], 
+      [V2StoryImageAuthorWithTagRating].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryImageAuthorWithTagRating].[FinalApproval] AS [FinalApproval], 
+      [V2StoryImageAuthorWithTagRating].[Reviewed] AS [Reviewed], 
+      [V2StoryImageAuthorWithTagRating].[Views] AS [Views], 
+      [V2StoryImageAuthorWithTagRating].[CategoryID] AS [CategoryID], 
+      [V2StoryImageAuthorWithTagRating].[IsDraft] AS [IsDraft], 
+      [V2StoryImageAuthorWithTagRating].[IsUnusable] AS [IsUnusable], 
+      [V2StoryImageAuthorWithTagRating].[Comment] AS [Comment], 
+      [V2StoryImageAuthorWithTagRating].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryImageAuthorWithTagRating].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryImageAuthorWithTagRating].[FileName] AS [FileName], 
+      [V2StoryImageAuthorWithTagRating].[Owner] AS [Owner], 
+      [V2StoryImageAuthorWithTagRating].[Poster] AS [Poster], 
+      [V2StoryImageAuthorWithTagRating].[Width] AS [Width], 
+      [V2StoryImageAuthorWithTagRating].[Height] AS [Height], 
+      [V2StoryImageAuthorWithTagRating].[MdWidth] AS [MdWidth], 
+      [V2StoryImageAuthorWithTagRating].[MdHeight] AS [MdHeight], 
+      [V2StoryImageAuthorWithTagRating].[LgWidth] AS [LgWidth], 
+      [V2StoryImageAuthorWithTagRating].[LgHeight] AS [LgHeight], 
+      [V2StoryImageAuthorWithTagRating].[PromoWidth] AS [PromoWidth], 
+      [V2StoryImageAuthorWithTagRating].[PromoHeight] AS [PromoHeight], 
+      [V2StoryImageAuthorWithTagRating].[StoryRating] AS [StoryRating], 
+      [V2StoryImageAuthorWithTagRating].[NumberOfRatings] AS [NumberOfRatings], 
+      [V2StoryImageAuthorWithTagRating].[TagDescription] AS [TagDescription], 
+      [V2StoryImageAuthorWithTagRating].[Quality] AS [Quality], 
+      [V2StoryImageAuthorWithTagRating].[IsFavorite] AS [IsFavorite], 
+      [V2StoryImageAuthorWithTagRating].[NewID] AS [NewID]
+      FROM [dbo].[V2StoryImageAuthorWithTagRating] AS [V2StoryImageAuthorWithTagRating]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryRatingSummary" EntityType="StoriesEntityModel.Store.V2StoryRatingSummary" store:Type="Views" store:Schema="dbo" store:Name="V2StoryRatingSummary">
+      <DefiningQuery>SELECT 
+      [V2StoryRatingSummary].[StoryID] AS [StoryID], 
+      [V2StoryRatingSummary].[StoryRating] AS [StoryRating], 
+      [V2StoryRatingSummary].[NumberOfRatings] AS [NumberOfRatings]
+      FROM [dbo].[V2StoryRatingSummary] AS [V2StoryRatingSummary]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryTagSummary" EntityType="StoriesEntityModel.Store.V2StoryTagSummary" store:Type="Views" store:Schema="dbo" store:Name="V2StoryTagSummary">
+      <DefiningQuery>SELECT 
+      [V2StoryTagSummary].[StoryID] AS [StoryID], 
+      [V2StoryTagSummary].[DescriptionSummary] AS [DescriptionSummary], 
+      [V2StoryTagSummary].[IsFavorite] AS [IsFavorite]
+      FROM [dbo].[V2StoryTagSummary] AS [V2StoryTagSummary]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryWithImageAuthor" EntityType="StoriesEntityModel.Store.V2StoryWithImageAuthor" store:Type="Views" store:Schema="dbo" store:Name="V2StoryWithImageAuthor">
+      <DefiningQuery>SELECT 
+      [V2StoryWithImageAuthor].[ID] AS [ID], 
+      [V2StoryWithImageAuthor].[Title] AS [Title], 
+      [V2StoryWithImageAuthor].[StoryContent] AS [StoryContent], 
+      [V2StoryWithImageAuthor].[AuthorID] AS [AuthorID], 
+      [V2StoryWithImageAuthor].[ImageID] AS [ImageID], 
+      [V2StoryWithImageAuthor].[PostingDate] AS [PostingDate], 
+      [V2StoryWithImageAuthor].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryWithImageAuthor].[StoryVersion] AS [StoryVersion], 
+      [V2StoryWithImageAuthor].[EditorID] AS [EditorID], 
+      [V2StoryWithImageAuthor].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryWithImageAuthor].[FinalApproval] AS [FinalApproval], 
+      [V2StoryWithImageAuthor].[Reviewed] AS [Reviewed], 
+      [V2StoryWithImageAuthor].[Views] AS [Views], 
+      [V2StoryWithImageAuthor].[CategoryID] AS [CategoryID], 
+      [V2StoryWithImageAuthor].[IsDraft] AS [IsDraft], 
+      [V2StoryWithImageAuthor].[IsUnusable] AS [IsUnusable], 
+      [V2StoryWithImageAuthor].[Comment] AS [Comment], 
+      [V2StoryWithImageAuthor].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryWithImageAuthor].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryWithImageAuthor].[FileName] AS [FileName], 
+      [V2StoryWithImageAuthor].[Owner] AS [Owner], 
+      [V2StoryWithImageAuthor].[Poster] AS [Poster], 
+      [V2StoryWithImageAuthor].[Width] AS [Width], 
+      [V2StoryWithImageAuthor].[Height] AS [Height], 
+      [V2StoryWithImageAuthor].[MdWidth] AS [MdWidth], 
+      [V2StoryWithImageAuthor].[MdHeight] AS [MdHeight], 
+      [V2StoryWithImageAuthor].[LgWidth] AS [LgWidth], 
+      [V2StoryWithImageAuthor].[LgHeight] AS [LgHeight], 
+      [V2StoryWithImageAuthor].[PromoWidth] AS [PromoWidth], 
+      [V2StoryWithImageAuthor].[PromoHeight] AS [PromoHeight]
+      FROM [dbo].[V2StoryWithImageAuthor] AS [V2StoryWithImageAuthor]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryWithImageAuthorQuality" EntityType="StoriesEntityModel.Store.V2StoryWithImageAuthorQuality" store:Type="Views" store:Schema="dbo" store:Name="V2StoryWithImageAuthorQuality">
+      <DefiningQuery>SELECT 
+      [V2StoryWithImageAuthorQuality].[ID] AS [ID], 
+      [V2StoryWithImageAuthorQuality].[Title] AS [Title], 
+      [V2StoryWithImageAuthorQuality].[StoryContent] AS [StoryContent], 
+      [V2StoryWithImageAuthorQuality].[AuthorID] AS [AuthorID], 
+      [V2StoryWithImageAuthorQuality].[ImageID] AS [ImageID], 
+      [V2StoryWithImageAuthorQuality].[PostingDate] AS [PostingDate], 
+      [V2StoryWithImageAuthorQuality].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryWithImageAuthorQuality].[StoryVersion] AS [StoryVersion], 
+      [V2StoryWithImageAuthorQuality].[EditorID] AS [EditorID], 
+      [V2StoryWithImageAuthorQuality].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryWithImageAuthorQuality].[FinalApproval] AS [FinalApproval], 
+      [V2StoryWithImageAuthorQuality].[Reviewed] AS [Reviewed], 
+      [V2StoryWithImageAuthorQuality].[Views] AS [Views], 
+      [V2StoryWithImageAuthorQuality].[CategoryID] AS [CategoryID], 
+      [V2StoryWithImageAuthorQuality].[IsDraft] AS [IsDraft], 
+      [V2StoryWithImageAuthorQuality].[IsUnusable] AS [IsUnusable], 
+      [V2StoryWithImageAuthorQuality].[Comment] AS [Comment], 
+      [V2StoryWithImageAuthorQuality].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryWithImageAuthorQuality].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryWithImageAuthorQuality].[FileName] AS [FileName], 
+      [V2StoryWithImageAuthorQuality].[Owner] AS [Owner], 
+      [V2StoryWithImageAuthorQuality].[Poster] AS [Poster], 
+      [V2StoryWithImageAuthorQuality].[Width] AS [Width], 
+      [V2StoryWithImageAuthorQuality].[Height] AS [Height], 
+      [V2StoryWithImageAuthorQuality].[MdWidth] AS [MdWidth], 
+      [V2StoryWithImageAuthorQuality].[MdHeight] AS [MdHeight], 
+      [V2StoryWithImageAuthorQuality].[LgWidth] AS [LgWidth], 
+      [V2StoryWithImageAuthorQuality].[LgHeight] AS [LgHeight], 
+      [V2StoryWithImageAuthorQuality].[PromoWidth] AS [PromoWidth], 
+      [V2StoryWithImageAuthorQuality].[PromoHeight] AS [PromoHeight], 
+      [V2StoryWithImageAuthorQuality].[Quality] AS [Quality], 
+      [V2StoryWithImageAuthorQuality].[IsFavorite] AS [IsFavorite], 
+      [V2StoryWithImageAuthorQuality].[StoryRating] AS [StoryRating], 
+      [V2StoryWithImageAuthorQuality].[NewID] AS [NewID]
+      FROM [dbo].[V2StoryWithImageAuthorQuality] AS [V2StoryWithImageAuthorQuality]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V2StoryWithImageAuthorQualityTags" EntityType="StoriesEntityModel.Store.V2StoryWithImageAuthorQualityTags" store:Type="Views" store:Schema="dbo" store:Name="V2StoryWithImageAuthorQualityTags">
+      <DefiningQuery>SELECT 
+      [V2StoryWithImageAuthorQualityTags].[ID] AS [ID], 
+      [V2StoryWithImageAuthorQualityTags].[Title] AS [Title], 
+      [V2StoryWithImageAuthorQualityTags].[StoryContent] AS [StoryContent], 
+      [V2StoryWithImageAuthorQualityTags].[AuthorID] AS [AuthorID], 
+      [V2StoryWithImageAuthorQualityTags].[ImageID] AS [ImageID], 
+      [V2StoryWithImageAuthorQualityTags].[PostingDate] AS [PostingDate], 
+      [V2StoryWithImageAuthorQualityTags].[CurrentEntryID] AS [CurrentEntryID], 
+      [V2StoryWithImageAuthorQualityTags].[StoryVersion] AS [StoryVersion], 
+      [V2StoryWithImageAuthorQualityTags].[EditorID] AS [EditorID], 
+      [V2StoryWithImageAuthorQualityTags].[ReviewApproval] AS [ReviewApproval], 
+      [V2StoryWithImageAuthorQualityTags].[FinalApproval] AS [FinalApproval], 
+      [V2StoryWithImageAuthorQualityTags].[Reviewed] AS [Reviewed], 
+      [V2StoryWithImageAuthorQualityTags].[Views] AS [Views], 
+      [V2StoryWithImageAuthorQualityTags].[CategoryID] AS [CategoryID], 
+      [V2StoryWithImageAuthorQualityTags].[IsDraft] AS [IsDraft], 
+      [V2StoryWithImageAuthorQualityTags].[IsUnusable] AS [IsUnusable], 
+      [V2StoryWithImageAuthorQualityTags].[Comment] AS [Comment], 
+      [V2StoryWithImageAuthorQualityTags].[ReviewUnsure] AS [ReviewUnsure], 
+      [V2StoryWithImageAuthorQualityTags].[IsUnusableNegative] AS [IsUnusableNegative], 
+      [V2StoryWithImageAuthorQualityTags].[FileName] AS [FileName], 
+      [V2StoryWithImageAuthorQualityTags].[Owner] AS [Owner], 
+      [V2StoryWithImageAuthorQualityTags].[Poster] AS [Poster], 
+      [V2StoryWithImageAuthorQualityTags].[Width] AS [Width], 
+      [V2StoryWithImageAuthorQualityTags].[Height] AS [Height], 
+      [V2StoryWithImageAuthorQualityTags].[MdWidth] AS [MdWidth], 
+      [V2StoryWithImageAuthorQualityTags].[MdHeight] AS [MdHeight], 
+      [V2StoryWithImageAuthorQualityTags].[LgWidth] AS [LgWidth], 
+      [V2StoryWithImageAuthorQualityTags].[LgHeight] AS [LgHeight], 
+      [V2StoryWithImageAuthorQualityTags].[PromoWidth] AS [PromoWidth], 
+      [V2StoryWithImageAuthorQualityTags].[PromoHeight] AS [PromoHeight], 
+      [V2StoryWithImageAuthorQualityTags].[TagID] AS [TagID], 
+      [V2StoryWithImageAuthorQualityTags].[IsFavorite] AS [IsFavorite], 
+      [V2StoryWithImageAuthorQualityTags].[Quality] AS [Quality], 
+      [V2StoryWithImageAuthorQualityTags].[GroupID] AS [GroupID], 
+      [V2StoryWithImageAuthorQualityTags].[TagDescription] AS [TagDescription], 
+      [V2StoryWithImageAuthorQualityTags].[NewID] AS [NewID]
+      FROM [dbo].[V2StoryWithImageAuthorQualityTags] AS [V2StoryWithImageAuthorQualityTags]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="food_id" />
+    </Key>
+    <Property Name="food_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="short_name" Type="nvarchar" MaxLength="180" />
+    <Property Name="food_name" Type="nvarchar" MaxLength="180" />
+    <Property Name="extended_name" Type="varchar" MaxLength="180" />
+    <Property Name="url_name" Type="nvarchar" Nullable="false" MaxLength="180" />
+    <Property Name="url_hint" Type="varchar" MaxLength="180" />
+    <Property Name="order_hint" Type="int" Nullable="false" />
+    <Property Name="img" Type="nvarchar(max)" />
+    <Property Name="dom_id" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="ingredients" Type="nvarchar(max)" />
+    <Property Name="calories" Type="int" />
+    <Property Name="calories_fat" Type="int" />
+    <Property Name="protein" Type="float" />
+    <Property Name="carbs" Type="float" />
+    <Property Name="carbs_daily" Type="float" />
+    <Property Name="sugar" Type="float" />
+    <Property Name="sugar_daily" Type="float" />
+    <Property Name="cholesterol" Type="float" />
+    <Property Name="cholesterol_daily" Type="float" />
+    <Property Name="sodium" Type="float" />
+    <Property Name="sodium_daily" Type="float" />
+    <Property Name="calcium" Type="float" />
+    <Property Name="calcium_daily" Type="float" />
+    <Property Name="iron" Type="float" />
+    <Property Name="iron_daily" Type="float" />
+    <Property Name="fiber" Type="float" />
+    <Property Name="fiber_daily" Type="float" />
+    <Property Name="fat" Type="float" />
+    <Property Name="fat_daily" Type="float" />
+    <Property Name="trans_fat" Type="float" />
+    <Property Name="trans_fat_daily" Type="float" />
+    <Property Name="saturated_fat" Type="float" />
+    <Property Name="saturated_fat_daily" Type="float" />
+    <Property Name="vitamin_a" Type="float" />
+    <Property Name="vitamin_a_daily" Type="float" />
+    <Property Name="vitamin_c" Type="float" />
+    <Property Name="vitamin_c_daily" Type="float" />
+    <Property Name="serving_size" Type="float" />
+    <Property Name="serving_size_international" Type="float" />
+    <Property Name="parent_item" Type="int" />
+    <Property Name="non_menu" Type="bit" Nullable="false" />
+    <Property Name="no_image" Type="bit" Nullable="false" />
+    <Property Name="notice" Type="nvarchar(max)" />
+    <Property Name="show_serving" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Ingredient">
+    <Key>
+      <PropertyRef Name="food_ingredient_id" />
+    </Key>
+    <Property Name="food_ingredient_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="food_id" Type="int" Nullable="false" />
+    <Property Name="ingredient_id" Type="int" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+    <Property Name="optional" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Variation">
+    <Key>
+      <PropertyRef Name="variation_id" />
+    </Key>
+    <Property Name="variation_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="parent_food_id" Type="int" Nullable="false" />
+    <Property Name="child_food_id" Type="int" Nullable="false" />
+    <Property Name="is_option" Type="bit" Nullable="false" />
+    <Property Name="hint" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FoodImage">
+    <Key>
+      <PropertyRef Name="image_id" />
+    </Key>
+    <Property Name="image_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="img_url_name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="src" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="width" Type="int" Nullable="false" />
+    <Property Name="height" Type="int" Nullable="false" />
+    <Property Name="brief" Type="text" />
+    <Property Name="ratio" Type="float" Nullable="false" />
+    <Property Name="size" Type="int" Nullable="false" />
+    <Property Name="food_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryLocation">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="StoreID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="OrderHint" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.Location~Story' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Location~Story">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="StoryContent" />
+      <PropertyRef Name="AuthorID" />
+      <PropertyRef Name="ImageID" />
+      <PropertyRef Name="PostingDate" />
+      <PropertyRef Name="StoryVersion" />
+      <PropertyRef Name="EditorID" />
+      <PropertyRef Name="ReviewApproval" />
+      <PropertyRef Name="FinalApproval" />
+      <PropertyRef Name="Comment" />
+      <PropertyRef Name="ReviewUnsure" />
+      <PropertyRef Name="IsUnusableNegative" />
+      <PropertyRef Name="FileName" />
+      <PropertyRef Name="Owner" />
+      <PropertyRef Name="Poster" />
+      <PropertyRef Name="Width" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="MdWidth" />
+      <PropertyRef Name="MdHeight" />
+      <PropertyRef Name="LgWidth" />
+      <PropertyRef Name="LgHeight" />
+      <PropertyRef Name="PromoWidth" />
+      <PropertyRef Name="PromoHeight" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="StoreID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="ID" Type="numeric" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+    <Property Name="StoryVersion" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Comment" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+    <Property Name="StoryRating" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="NumberOfRatings" Type="int" />
+    <Property Name="TagDescription" Type="nvarchar(max)" />
+    <Property Name="Quality" Type="int" />
+    <Property Name="IsFavorite" Type="int" />
+    <Property Name="NewID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.StoryLocation~Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="StoryLocation~Location">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="LocationNumber" />
+      <PropertyRef Name="CorporateOwned" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="StoreID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LocationNumber" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="MarketableName" Type="varchar" MaxLength="100" />
+    <Property Name="OperatorContact_PersonID" Type="numeric" />
+    <Property Name="OperatorContact_Name" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="AreaCode" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+    <Property Name="VoiceMail" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="100" />
+    <Property Name="OpenDate" Type="datetime" />
+    <Property Name="ProjectedOpenDate" Type="datetime" />
+    <Property Name="MarketableURL" Type="varchar" MaxLength="500" />
+    <Property Name="GPS_Latitude" Type="varchar" MaxLength="100" />
+    <Property Name="GPS_Longitude" Type="varchar" MaxLength="100" />
+    <Property Name="ConceptCode" Type="varchar" MaxLength="100" />
+    <Property Name="LocationCode" Type="varchar" MaxLength="100" />
+    <Property Name="Playground" Type="varchar" MaxLength="100" />
+    <Property Name="OffersOnlineOrdering" Type="bit" />
+    <Property Name="HasDriveThru" Type="bit" />
+    <Property Name="AcceptsCfaCard" Type="bit" />
+    <Property Name="HasDiningRoom" Type="bit" />
+    <Property Name="ServesBreakfast" Type="bit" />
+    <Property Name="OffersWireless" Type="bit" />
+    <Property Name="NoUpdate" Type="bit" />
+    <Property Name="FaxNumber" Type="varchar" MaxLength="50" />
+    <Property Name="FaxAreaCode" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="text" />
+    <Property Name="CorporateOwned" Type="bit" Nullable="false" />
+    <Property Name="LocationDescription" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryImageAuthorWithTagRating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryImageAuthorWithTagRating">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+    <Property Name="StoryVersion" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+    <Property Name="StoryRating" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="NumberOfRatings" Type="int" />
+    <Property Name="TagDescription" Type="nvarchar(max)" />
+    <Property Name="Quality" Type="int" />
+    <Property Name="IsFavorite" Type="int" />
+    <Property Name="NewID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryRatingSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryRatingSummary">
+    <Key>
+      <PropertyRef Name="StoryID" />
+    </Key>
+    <Property Name="StoryID" Type="numeric" Nullable="false" />
+    <Property Name="StoryRating" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="NumberOfRatings" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryTagSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryTagSummary">
+    <Key>
+      <PropertyRef Name="StoryID" />
+    </Key>
+    <Property Name="StoryID" Type="numeric" Nullable="false" />
+    <Property Name="DescriptionSummary" Type="nvarchar(max)" />
+    <Property Name="IsFavorite" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryWithImageAuthor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryWithImageAuthor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+    <Property Name="StoryVersion" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Comment" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryWithImageAuthorQuality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryWithImageAuthorQuality">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+    <Property Name="StoryVersion" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+    <Property Name="Quality" Type="int" />
+    <Property Name="IsFavorite" Type="int" Nullable="false" />
+    <Property Name="StoryRating" Type="decimal" Nullable="false" Precision="38" Scale="6" />
+    <Property Name="NewID" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.V2StoryWithImageAuthorQualityTags' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V2StoryWithImageAuthorQualityTags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+    <Property Name="StoryVersion" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+    <Property Name="TagID" Type="numeric" />
+    <Property Name="IsFavorite" Type="int" />
+    <Property Name="Quality" Type="int" />
+    <Property Name="GroupID" Type="int" />
+    <Property Name="TagDescription" Type="varchar" MaxLength="50" />
+    <Property Name="NewID" Type="uniqueidentifier" />
+  </EntityType>
+</Schema>

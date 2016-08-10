@@ -1,0 +1,70 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@model cfares.domain._event._ticket.FoodTicket
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+    
+    GiveawayOccurrence occurrence = ViewBag.Occurrence as GiveawayOccurrence;
+    ResStore store = occurrence.Store;
+    ProductGiveawayWizard wizard = ViewBag.wizard as ProductGiveawayWizard;
+}
+
+@section Scripts {
+<script>
+
+    $(function () {
+
+    });
+
+</script>
+}
+
+
+@Html.Partial("_Wizard",wizard)
+
+
+<section class="row-fluid food">
+	
+    <div class="span12 title">
+        <h1>Choose a breakfast entr&eacute;e</h1>
+        <h3>Please choose an entr&eacute;e from the available options below.</h3>
+    </div>
+
+    <div id="food_selection" class="container-fluid row inline-block-rows">
+          
+        @foreach (var menuItem in occurrence.ItemsAvailable.ToList())
+        {
+            <section class="span2 row-fluid food-choice" data-dom="@menuItem.DomId">
+                
+                <div class="image-wrapper">
+                    <a class="hidden-phone" href="@wizard.Prime(menuItem).NextStep.Uri(ViewContext)">
+                        @Html.Media(menuItem.Media,width:134)
+                    </a>
+                    <a class="visible-phone" href="@wizard.Prime(menuItem).NextStep.Uri(ViewContext)">
+                        @Html.Media(menuItem.Media,width:64)
+                    </a>
+                </div>
+                <h2 class="item-name">@menuItem.Name</h2>
+                
+                <div class="cta-wrapper span12">
+                    <a class="btn btn-primary hidden-phone  span12" href="@wizard.Prime(menuItem).NextStep.Uri(ViewContext)">
+                        Select
+                    </a>
+                    <a class="btn btn-primary visible-phone  span12" href="@wizard.Prime(menuItem).NextStep.Uri(ViewContext)">
+                        <i class="icon-arrow-right"></i>
+                    </a>
+                </div>
+                
+            </section>
+            if (menuItem != occurrence.ItemsAvailable.Last())
+            {
+                    <hr class="visible-phone" />
+            }
+        }
+    </div>
+</section>

@@ -1,0 +1,51 @@
+﻿@using cfacore.shared.modules.helpers
+@model npr.domain._event.slot.NPRSlot
+@{
+    ViewBag.Title = "Create NPR Slot";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+	
+    //if( ! Model.Id().IsValid() && ViewBag.ReservationTypeId == "Tour" ) {
+    //    Model.PrintBadge = true;
+    //}
+    Model.PrintBadge = true;
+	
+}
+
+<h2>NPR Slot Details</h2>
+<p>Enter Basic NPR Slot Information.</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	@Html.Partial("ModelForm/_NPRSlot")
+
+	<div class="button-cta left-float summary-btn-grp admin">
+	
+		<p>&nbsp;</p>
+
+		<div class="admin-green">
+			<input type="submit" style="display: none;" id="saveTrigger" value="Save" />
+			@*<a class="btn-container-default" onclick="$('#saveTrigger').click(); return false;"  data-icon="ui-icon-circle-check" href="">Save Event</a>*@
+
+            <a class="btn-container-default" onclick="SubmitForm()"  data-icon="ui-icon-circle-check" href="#">Save Event</a>
+		</div>
+
+		<div class="admin-red">
+			<a href="@UrlHelpers.GetReferrerUrl()" data-icon="ui-icon-circle-close" class="btn-container-default">Cancel</a>
+		</div>
+
+		@*	 SH - Removing per ticket NPR-98	
+		<div class="admin-table-2">
+			@Html.ActionLink("Tour Slot Dashboard", "Index", "NPRSlot", new { }, new { data_icon = "ui-icon-grip-solid-horizontal", @class = "btn-container-default" })
+		</div>	
+		
+		@if( ViewBag.ResEventId != null )
+		{
+			<div class="admin-table-2">
+				@Html.ActionLink("Event Summary", "Summary", "Event", new { id = ViewBag.ResEventId }, new { data_icon = "ui-icon-container", @class = "btn-container-default" })
+			</div>	
+		}*@
+
+	</div>	
+}
+

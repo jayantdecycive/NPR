@@ -1,0 +1,62 @@
+﻿@model cfares.domain._event.Slot
+@{
+    string id=null;
+    if(Model!=null){        
+        id = Model.Id();
+    }
+    if(id==null){
+        id = "0";
+    }    
+    string dialogId = "dia" + ViewData.TemplateInfo.HtmlFieldPrefix;
+    string fieldName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if(string.IsNullOrEmpty(fieldName)){
+        fieldName = "slot_picker";
+    }
+        
+}
+<span class='admin-grey table-picker'>    
+    <input type="text" id="@fieldName" name="@fieldName" value="@id"  class='res-slot'  />
+</span>
+
+<div id="@dialogId" class='event-table vcenter' title="Please Select a Slot">
+    @Html.Partial("Tables/_TourSlotSelection",id)
+</div>
+<script type="text/javascript">
+    $(function(){
+    $("#@fieldName").focus(function () {
+        $("#@dialogId").dialog("open");
+    });
+
+    $("#@dialogId").dialog({
+        autoOpen: false,
+        modal: true,
+        width: 800,
+        height: 400,
+        close: function () { $("body").remove(".ui-widget-overlay");
+            
+        },
+        buttons: {
+            Cancel: function() {
+                $("#@dialogId").dialog("close").trigger("dialogclose");
+            },
+            Clear: function() {
+                $("#@fieldName").val("0");
+                $("#@fieldName").trigger("pk", "0");
+                $("#@dialogId").dialog("close").trigger("dialogclose");
+            },
+            Ok: function() {
+                var val = $(this).find("input:checked").val();
+
+                if (val) {
+                    $("#@fieldName").val(val);
+                    $("#@fieldName").trigger("pk", val);
+                }
+                $(this).dialog("close").trigger("dialogclose");
+            }
+        }
+    }).parents('.ui-dialog:eq(0)').wrap('<div class="admin-table"></div>');
+        $("#@dialogId").bind("dialogclose",function() {
+            alert("close");
+        });
+    });
+</script>

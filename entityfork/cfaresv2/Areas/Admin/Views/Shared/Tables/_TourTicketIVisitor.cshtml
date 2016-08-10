@@ -1,0 +1,80 @@
+﻿@model string
+           
+    <script type="text/javascript">
+        
+        if (!window.DataFunction)
+            window.DataFunction = {};
+        window.DataFunction=$.extend(window.DataFunction, {
+
+            visitorfilter: function (col) {
+                var year = $("#filter-year").val();
+                var month = $("#filter-month").val();
+                var tourType = $("#filter-tour-type").val();
+                var dayOfWeek = $("#filter-day").val();
+                var guide = $($("#filter-guide .jq-auto-complete").data("pk")).val();
+
+
+                var filterArr = [];
+
+                if (guide && guide != "0")
+                    filterArr.push("{0} eq {1}L".format("GuideId", guide));
+
+                var past = !!$("#filter-past input:checked").length;
+                if (!past)
+                    filterArr.push("{0} gt datetime'{1}'".format("Start", (new Date()).toString("yyyy-MM-dd-hh:mm")));
+
+                var picker = $("#filter-event input").val();
+                if (picker && picker != "0")
+                    filterArr.push("{0} eq {1}L".format("OccurrenceId", picker));
+
+                if (filterArr.length)
+                    return "(" + filterArr.join(" and ") + ")";
+            }
+            
+        });
+        if (!DataFunction.slotFilter)
+            slotfilter = function () {
+                
+                return "";
+            };
+    </script>
+<table id="tourslot_details" class='data-table filterable' data-data='/DataService/Ticket.svc/Ticket_Tour_Owner?$orderby=Creation' 
+                data-filter='DataFunction.visitorfilter'>
+                 <thead>
+                    <tr>
+                        <th data-id='TicketLink' data-searchable="false" data-on-display='DataFormat.TourTicketUrl' data-column-parent='TicketId'>View</th>                        
+                        <th data-id='TicketDeleteLink' data-searchable="false" data-on-display='DataFormat.TourTicketDeleteUrl' data-column-parent='TicketId'>Delete</th>
+                        <th data-column-name='TicketId' data-searchable="false" data-visible='false' data-id-column='true' >Ticket Id</th>
+                        
+		            </tr>
+                 </thead>
+             </table>
+             @if (!string.IsNullOrEmpty(Model))
+             {
+             <script type="text/javascript">
+                $("#tourslot_details").data("tools", ["copy", {
+                    "sExtends": "ajax",
+                    "sButtonText": "Report",
+                    "fnClick": function (nButton, oConfig) {
+                        var sData = this.fnGetTableData(oConfig);
+                    
+                    
+                        $.ajax({
+                            "url": "/Admin/Csv/Table/"+@Model,
+                            "data": { "data": sData },
+                            "success": function(d,xhr){
+                                var href = d.href;
+                                $("#xcel_src").attr("src",href);
+                            },
+                            "dataType": "json",
+                            "type": "POST",
+                            "cache": false,
+                            "error": function () {
+                                alert("Error detected when sending table data to server");
+                            }
+                        });
+                    }
+
+                }]);
+            </script>
+             }

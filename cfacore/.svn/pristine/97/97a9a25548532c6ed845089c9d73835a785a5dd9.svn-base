@@ -1,0 +1,2317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://memberlink.ws.alohatechnologies.com/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" name="MemberLinkWS" targetNamespace="http://memberlink.ws.alohatechnologies.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://memberlink.ws.alohatechnologies.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="activateNewCard" type="tns:activateNewCard" />
+      <xs:element name="activateNewCardResponse" type="tns:activateNewCardResponse" />
+      <xs:element name="addMemberProfile" type="tns:addMemberProfile" />
+      <xs:element name="addMemberProfileResponse" type="tns:addMemberProfileResponse" />
+      <xs:element name="adjustCredit" type="tns:adjustCredit" />
+      <xs:element name="adjustCreditResponse" type="tns:adjustCreditResponse" />
+      <xs:element name="assignForgottenCard" type="tns:assignForgottenCard" />
+      <xs:element name="assignForgottenCardResponse" type="tns:assignForgottenCardResponse" />
+      <xs:element name="changeCardNumber" type="tns:changeCardNumber" />
+      <xs:element name="changeCardNumberResponse" type="tns:changeCardNumberResponse" />
+      <xs:element name="checkNetwork" type="tns:checkNetwork" />
+      <xs:element name="checkNetworkResponse" type="tns:checkNetworkResponse" />
+      <xs:element name="combineAccount" type="tns:combineAccount" />
+      <xs:element name="combineAccountCount" type="tns:combineAccountCount" />
+      <xs:element name="combineAccountCountResponse" type="tns:combineAccountCountResponse" />
+      <xs:element name="combineAccountGetChildren" type="tns:combineAccountGetChildren" />
+      <xs:element name="combineAccountGetChildrenResponse" type="tns:combineAccountGetChildrenResponse" />
+      <xs:element name="combineAccountGetParent" type="tns:combineAccountGetParent" />
+      <xs:element name="combineAccountGetParentResponse" type="tns:combineAccountGetParentResponse" />
+      <xs:element name="combineAccountResponse" type="tns:combineAccountResponse" />
+      <xs:element name="createNewCard" type="tns:createNewCard" />
+      <xs:element name="createNewCardResponse" type="tns:createNewCardResponse" />
+      <xs:element name="deactivateNewCard" type="tns:deactivateNewCard" />
+      <xs:element name="deactivateNewCardResponse" type="tns:deactivateNewCardResponse" />
+      <xs:element name="eMailExists" type="tns:eMailExists" />
+      <xs:element name="eMailExistsAll" type="tns:eMailExistsAll" />
+      <xs:element name="eMailExistsAllResponse" type="tns:eMailExistsAllResponse" />
+      <xs:element name="eMailExistsResponse" type="tns:eMailExistsResponse" />
+      <xs:element name="getBonusPlanHistory" type="tns:getBonusPlanHistory" />
+      <xs:element name="getBonusPlanHistoryResponse" type="tns:getBonusPlanHistoryResponse" />
+      <xs:element name="getBonusPlanStandings" type="tns:getBonusPlanStandings" />
+      <xs:element name="getBonusPlanStandingsResponse" type="tns:getBonusPlanStandingsResponse" />
+      <xs:element name="getCardBalance" type="tns:getCardBalance" />
+      <xs:element name="getCardBalanceResponse" type="tns:getCardBalanceResponse" />
+      <xs:element name="getCardNumberByEmail" type="tns:getCardNumberByEmail" />
+      <xs:element name="getCardNumberByEmailResponse" type="tns:getCardNumberByEmailResponse" />
+      <xs:element name="getCardNumberByPhone" type="tns:getCardNumberByPhone" />
+      <xs:element name="getCardNumberByPhoneResponse" type="tns:getCardNumberByPhoneResponse" />
+      <xs:element name="getCardStatus" type="tns:getCardStatus" />
+      <xs:element name="getCardStatusResponse" type="tns:getCardStatusResponse" />
+      <xs:element name="getCheckDetail" type="tns:getCheckDetail" />
+      <xs:element name="getCheckDetailResponse" type="tns:getCheckDetailResponse" />
+      <xs:element name="getClaimCount" type="tns:getClaimCount" />
+      <xs:element name="getClaimCountResponse" type="tns:getClaimCountResponse" />
+      <xs:element name="getCreateNewCardStatus" type="tns:getCreateNewCardStatus" />
+      <xs:element name="getCreateNewCardStatusResponse" type="tns:getCreateNewCardStatusResponse" />
+      <xs:element name="getDeferRewardsSetting" type="tns:getDeferRewardsSetting" />
+      <xs:element name="getDeferRewardsSettingResponse" type="tns:getDeferRewardsSettingResponse" />
+      <xs:element name="getDynamicCompBalance" type="tns:getDynamicCompBalance" />
+      <xs:element name="getDynamicCompBalanceResponse" type="tns:getDynamicCompBalanceResponse" />
+      <xs:element name="getDynamicCompConfig" type="tns:getDynamicCompConfig" />
+      <xs:element name="getDynamicCompConfigResponse" type="tns:getDynamicCompConfigResponse" />
+      <xs:element name="getMemberProfile" type="tns:getMemberProfile" />
+      <xs:element name="getMemberProfileResponse" type="tns:getMemberProfileResponse" />
+      <xs:element name="getNewCardBatchID" type="tns:getNewCardBatchID" />
+      <xs:element name="getNewCardBatchIDResponse" type="tns:getNewCardBatchIDResponse" />
+      <xs:element name="getNewCardList" type="tns:getNewCardList" />
+      <xs:element name="getNewCardListResponse" type="tns:getNewCardListResponse" />
+      <xs:element name="getSVHistory" type="tns:getSVHistory" />
+      <xs:element name="getSVHistoryResponse" type="tns:getSVHistoryResponse" />
+      <xs:element name="optIn" type="tns:optIn" />
+      <xs:element name="optInResponse" type="tns:optInResponse" />
+      <xs:element name="optOut" type="tns:optOut" />
+      <xs:element name="optOutResponse" type="tns:optOutResponse" />
+      <xs:element name="phoneNumberExists" type="tns:phoneNumberExists" />
+      <xs:element name="phoneNumberExistsAll" type="tns:phoneNumberExistsAll" />
+      <xs:element name="phoneNumberExistsAllResponse" type="tns:phoneNumberExistsAllResponse" />
+      <xs:element name="phoneNumberExistsResponse" type="tns:phoneNumberExistsResponse" />
+      <xs:element name="processDynamicCompDeposit" type="tns:processDynamicCompDeposit" />
+      <xs:element name="processDynamicCompDepositResponse" type="tns:processDynamicCompDepositResponse" />
+      <xs:element name="setDeferRewardsSetting" type="tns:setDeferRewardsSetting" />
+      <xs:element name="setDeferRewardsSettingResponse" type="tns:setDeferRewardsSettingResponse" />
+      <xs:element name="unCombineAccount" type="tns:unCombineAccount" />
+      <xs:element name="unCombineAccountResponse" type="tns:unCombineAccountResponse" />
+      <xs:element name="updateMemberProfile" type="tns:updateMemberProfile" />
+      <xs:element name="updateMemberProfileResponse" type="tns:updateMemberProfileResponse" />
+      <xs:element name="validateEmailByPassCode" type="tns:validateEmailByPassCode" />
+      <xs:element name="validateEmailByPassCodeResponse" type="tns:validateEmailByPassCodeResponse" />
+      <xs:element name="validatePassCode" type="tns:validatePassCode" />
+      <xs:element name="validatePassCodeResponse" type="tns:validatePassCodeResponse" />
+      <xs:complexType name="getCheckDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCheckDetailRequest" type="tns:GetCheckDetailRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCheckDetailRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="checkNumber" type="xs:int" />
+              <xs:element minOccurs="0" name="claimID" type="xs:string" />
+              <xs:element minOccurs="0" name="dateOfBusiness" type="xs:string" />
+              <xs:element name="storeID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Request" abstract="true">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyID" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element name="requestTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="userID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCheckDetailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCheckDetail" type="tns:GetCheckDetailResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCheckDetailResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="forgottenCardInfo" type="tns:unassignedTransactionData" />
+              <xs:element minOccurs="0" name="checkDetails" type="tns:checkDetails" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyID" type="xs:string" />
+          <xs:element name="executionStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="executionStatusDescription" type="xs:string" />
+          <xs:element name="responseTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="userID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unassignedTransactionData">
+        <xs:sequence>
+          <xs:element name="checkID" type="xs:int" />
+          <xs:element minOccurs="0" name="claimId" type="xs:string" />
+          <xs:element minOccurs="0" name="dateOfBusiness" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element name="storeID" type="xs:int" />
+          <xs:element minOccurs="0" name="storeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="checkDetails">
+        <xs:sequence>
+          <xs:element name="checkTotal" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="checkitems" nillable="true" type="tns:checkItemDetail" />
+          <xs:element name="nonEligiblePurchaseTotal" type="xs:float" />
+          <xs:element minOccurs="0" name="payment" type="xs:float" />
+          <xs:element name="postLoyaltyCheckTotal" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="checkItemDetail">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:checkItem">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="combineOnCheck" type="xs:boolean" />
+              <xs:element name="parentItemID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="checkItem">
+        <xs:sequence>
+          <xs:element name="basePrice" type="xs:float" />
+          <xs:element name="discountPrice" type="xs:float" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="longName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="checkNetwork">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckNetworkRequest" type="tns:CheckNetworkRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CheckNetworkRequest">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="checkNetworkResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckNetworkResult" type="tns:CheckNetworkResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CheckNetworkResult">
+        <xs:sequence>
+          <xs:element name="executionStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="executionStatusDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="responseTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="optOut">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="optOutRequest" type="tns:OptOutRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OptOutRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="optOutResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="optOutResult" type="tns:OptOutResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OptOutResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardBalance">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getCardBalanceRequest" type="tns:GetCardBalanceRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardBalanceRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardBalanceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getCardBalanceResult" type="tns:GetCardBalanceResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardBalanceResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardBalance" type="xs:decimal" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getNewCardBatchID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetNewCardBatchIDRequest" type="tns:GetNewCardBatchIDRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNewCardBatchIDRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getNewCardBatchIDResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetNewCardBatchIDResult" type="tns:GetNewCardBatchIDResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNewCardBatchIDResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getCardStatusRequest" type="tns:GetCardStatusRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardStatusRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getCardStatusResult" type="tns:GetCardStatusResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardStatusResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element name="accountActive" type="xs:boolean" />
+              <xs:element name="cardExists" type="xs:boolean" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element name="profileExists" type="xs:boolean" />
+              <xs:element name="requirePin" type="xs:boolean" />
+              <xs:element name="seriesActive" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="changeCardNumber">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeCardNumberRequest" type="tns:ChangeCardNumberRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeCardNumberRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="existingCardNumber" type="xs:string" />
+              <xs:element name="newCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="changeCardNumberResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeCardNumberResult" type="tns:ChangeCardNumberResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ChangeCardNumberResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="existingCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="newCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getBonusPlanHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetBonusPlanHistoryRequest" type="tns:GetBonusPlanHistoryRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBonusPlanHistoryRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="endDate" type="xs:string" />
+              <xs:element name="numberOfAssignments" type="xs:int" />
+              <xs:element name="numberOfDays" type="xs:int" />
+              <xs:element minOccurs="0" name="startDate" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getBonusPlanHistoryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetBonusPlanHistoryResult" type="tns:GetBonusPlanHistoryResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBonusPlanHistoryResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="assignment" nillable="true" type="tns:assignment" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="assignment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assignmentDate" type="xs:dateTime" />
+          <xs:element name="assignmentID" type="xs:int" />
+          <xs:element name="checkId" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="checkItem" nillable="true" type="tns:checkItem" />
+          <xs:element name="checkTotal" type="xs:float" />
+          <xs:element name="nonEligiblePurchaseTotal" type="xs:float" />
+          <xs:element minOccurs="0" name="payment" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="rewardProgramDetail" nillable="true" type="tns:rewardProgramDetail" />
+          <xs:element name="storeId" type="xs:int" />
+          <xs:element minOccurs="0" name="storeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rewardProgramDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bonusPlanType" type="tns:bonusPlanType" />
+          <xs:element name="creditEarned" type="xs:double" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="reward" nillable="true" type="tns:Reward" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Reward">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="amount" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="optIn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="optInRequest" type="tns:OptInRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OptInRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="optInResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="optInResult" type="tns:OptInResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OptInResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getClaimCount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getClaimCountRequest" type="tns:GetClaimCountRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetClaimCountRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="numHour" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getClaimCountResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getClaimCountResult" type="tns:GetClaimCountResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetClaimCountResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="claimCount" type="xs:int" />
+              <xs:element minOccurs="0" name="numHour" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="processDynamicCompDeposit">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProcessDynamicCompDepositRequest" type="tns:ProcessDynamicCompDepositRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProcessDynamicCompDepositRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="activationID" type="xs:int" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="depositAmount" type="xs:decimal" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="processDynamicCompDepositResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProcessDynamicCompDepositResult" type="tns:ProcessDynamicCompDepositResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProcessDynamicCompDepositResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="depositAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="dynamicCompBalance" type="xs:decimal" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getBonusPlanStandings">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getBonusPlanStandingsRequest" type="tns:GetBonusPlanStandingsRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBonusPlanStandingsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="availableItemsReturn" type="xs:boolean" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="purchasedItemsReturn" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getBonusPlanStandingsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getBonusPlanStandingsResult" type="tns:GetBonusPlanStandingsResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBonusPlanStandingsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="bonusPlanStanding" nillable="true" type="tns:BonusPlanStanding" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BonusPlanStanding">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="availableItem" nillable="true" type="tns:categoryItem" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="availableSmartReward" nillable="true" type="tns:availableSmartReward" />
+          <xs:element minOccurs="0" name="BPCredit" type="xs:string" />
+          <xs:element minOccurs="0" name="BPDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="BPExpireDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPID" type="xs:int" />
+          <xs:element minOccurs="0" name="BPLifeTimeRewardCount" type="xs:int" />
+          <xs:element minOccurs="0" name="BPMemberExpireDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPMeritEndDay" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPMeritStartDay" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPName" type="xs:string" />
+          <xs:element minOccurs="0" name="BPOccasionType" type="tns:occasionType" />
+          <xs:element minOccurs="0" name="BPProfileQualification" type="xs:boolean" />
+          <xs:element minOccurs="0" name="BPReward" type="xs:string" />
+          <xs:element minOccurs="0" name="BPRewardResetDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPRewardThreshold" type="xs:string" />
+          <xs:element minOccurs="0" name="BPStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="BPType" type="xs:string" />
+          <xs:element minOccurs="0" name="nextBirthdayReward" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="purchasedItem" nillable="true" type="tns:categoryItem" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="queuedReward" nillable="true" type="tns:QueuedReward" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="categoryItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element name="iD" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="availableSmartReward">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="createDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="eligibleDate" type="xs:dateTime" />
+          <xs:element name="rewardProgramId" type="xs:int" />
+          <xs:element name="tierId" type="xs:int" />
+          <xs:element minOccurs="0" name="tierName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QueuedReward">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="rewardProgramID" type="xs:int" />
+          <xs:element minOccurs="0" name="tierID" type="xs:int" />
+          <xs:element minOccurs="0" name="tierName" type="xs:string" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="issuedDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="eMailExists">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="eMailExistsRequest" type="tns:eMailExistsRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="eMailExistsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="eMailAddress" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="eMailExistsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="eMailExistsResult" type="tns:EMailExistsResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EMailExistsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="eMailAddress" type="xs:string" />
+              <xs:element name="EMailAddressExists" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="validatePassCode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="validatePassCodeRequest" type="tns:ValidatePassCodeRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValidatePassCodeRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="passCode" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="validatePassCodeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="validatePassCodeResult" type="tns:ValidatePassCodeResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValidatePassCodeResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="eMailExistsAll">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="eMailExistsAllRequest" type="tns:EMailExistsAllRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EMailExistsAllRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="EMailAddress" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="eMailExistsAllResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="eMailExistsAllResult" type="tns:EMailExistsAllResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EMailExistsAllResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="eMailAddress" type="xs:string" />
+              <xs:element name="EMailAddressExists" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="addMemberProfile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addMemberProfileRequest" type="tns:AddMemberProfileRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddMemberProfileRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="profile" type="tns:MemberProfile" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MemberProfile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address1" type="xs:string" />
+          <xs:element minOccurs="0" name="address2" type="xs:string" />
+          <xs:element minOccurs="0" name="anniversaryDate" type="tns:VanityDate" />
+          <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="ccNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="company" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined1" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined10" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined11" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined12" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined13" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined14" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined15" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined16" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined17" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined18" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined19" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined2" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined20" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined21" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined22" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined23" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined24" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined25" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined26" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined27" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined28" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined29" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined3" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined30" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined4" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined5" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined6" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined7" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined8" type="xs:string" />
+          <xs:element minOccurs="0" name="companyDefined9" type="xs:string" />
+          <xs:element minOccurs="0" name="country" type="xs:string" />
+          <xs:element minOccurs="0" name="dateOfBirth" type="tns:VanityDate" />
+          <xs:element minOccurs="0" name="driversLicense" type="xs:string" />
+          <xs:element minOccurs="0" name="emailAddress" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" type="xs:string" />
+          <xs:element name="memberAccountId" type="xs:int" />
+          <xs:element minOccurs="0" name="otherPhoneNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="postalCode" type="xs:string" />
+          <xs:element name="profileExists" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ssNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="stateProvince" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VanityDate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:string" />
+          <xs:element minOccurs="0" name="locale" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addMemberProfileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addMemberProfileResult" type="tns:AddMemberProfileResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddMemberProfileResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getMemberProfile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getMemberProfileRequest" type="tns:GetMemberProfileRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMemberProfileRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getMemberProfileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="getMemberProfileResult" type="tns:GetMemberProfileResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMemberProfileResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="profile" type="tns:MemberProfile" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountRequest" type="tns:CombineAccountRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountResult" type="tns:CombineAccountResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="assignForgottenCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assignForgottenCardRequest" type="tns:AssignForgottenCardRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AssignForgottenCardRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="claimID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="assignForgottenCardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assignForgottenCardResult" type="tns:AssignForgottenCardResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AssignForgottenCardResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="claimID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="phoneNumberExists">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PhoneNumberExistsRequest" type="tns:PhoneNumberExistsRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PhoneNumberExistsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="phoneNumberExistsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PhoneNumberExistsResult" type="tns:PhoneNumberExistsResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PhoneNumberExistsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+              <xs:element name="phoneNumberExists" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCreateNewCardStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCreateNewCardStatusRequest" type="tns:GetCreateNewCardStatusRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCreateNewCardStatusRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCreateNewCardStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCreateNewCardStatusResult" type="tns:GetCreateNewCardStatusResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCreateNewCardStatusResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="batchID" type="xs:int" />
+              <xs:element minOccurs="0" name="cardNumberList" type="tns:CardNumberList" />
+              <xs:element minOccurs="0" name="failedCardNumberList" type="tns:FailedCardNumberList" />
+              <xs:element minOccurs="0" name="failureCount" type="xs:int" />
+              <xs:element minOccurs="0" name="finishTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="listSegmentNumber" type="xs:int" />
+              <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="successCount" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CardNumberList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="c" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FailedCardNumberList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="c" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCardNumberByPhone">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCardNumberByPhoneRequest" type="tns:GetCardNumberByPhoneRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardNumberByPhoneRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="status" type="tns:accountStatus" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardNumberByPhoneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCardNumberByPhoneResult" type="tns:GetCardNumberByPhoneResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardNumberByPhoneResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="cardNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="phoneNumberExistsAll">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PhoneNumberExistsAllRequest" type="tns:PhoneNumberExistsAllRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PhoneNumberExistsAllRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="phoneNumberExistsAllResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PhoneNumberExistsAllResult" type="tns:PhoneNumberExistsAllResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PhoneNumberExistsAllResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+              <xs:element name="phoneNumberExists" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getDynamicCompBalance">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDynamicCompBalanceRequest" type="tns:GetDynamicCompBalanceRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDynamicCompBalanceRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getDynamicCompBalanceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDynamicCompBalanceResult" type="tns:GetDynamicCompBalanceResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDynamicCompBalanceResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardBalance" type="xs:decimal" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountCount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountCountRequest" type="tns:CombineAccountCountRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountCountRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountCountResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountCountResult" type="tns:CombineAccountCountResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountCountResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumberCount" type="xs:int" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getNewCardList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetNewCardListRequest" type="tns:GetNewCardListRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNewCardListRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+              <xs:element minOccurs="0" name="listSegmentNumber" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getNewCardListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetNewCardListResult" type="tns:GetNewCardListResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNewCardListResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="batchID" type="xs:int" />
+              <xs:element minOccurs="0" name="cardNumberList" type="tns:CardNumberList" />
+              <xs:element minOccurs="0" name="failedCardNumberList" type="tns:FailedCardNumberList" />
+              <xs:element minOccurs="0" name="failureCount" type="xs:int" />
+              <xs:element minOccurs="0" name="finishTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="listSegmentNumber" type="xs:int" />
+              <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="successCount" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="createNewCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateNewCardRequest" type="tns:CreateNewCardRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateNewCardRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="activateCard" type="xs:boolean" />
+              <xs:element minOccurs="0" name="batchDesc" type="xs:string" />
+              <xs:element name="batchID" type="xs:int" />
+              <xs:element name="cardSeries" type="xs:string" />
+              <xs:element name="numberOfCards" type="xs:int" />
+              <xs:element name="numericSequenceType" type="xs:int" />
+              <xs:element minOccurs="0" name="startingCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="createNewCardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateNewCardResult" type="tns:CreateNewCardResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreateNewCardResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="activateCard" type="xs:boolean" />
+              <xs:element minOccurs="0" name="batchDesc" type="xs:string" />
+              <xs:element minOccurs="0" name="batchID" type="xs:int" />
+              <xs:element minOccurs="0" name="cardNumberList" type="tns:CardNumberList" />
+              <xs:element minOccurs="0" name="cardSeries" type="xs:string" />
+              <xs:element minOccurs="0" name="failedCardNumberList" type="tns:FailedCardNumberList" />
+              <xs:element minOccurs="0" name="failureCount" type="xs:int" />
+              <xs:element minOccurs="0" name="numberOfCards" type="xs:int" />
+              <xs:element minOccurs="0" name="numericSequenceType" type="xs:int" />
+              <xs:element minOccurs="0" name="startingCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="successCount" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="activateNewCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivateNewCardRequest" type="tns:ActivateNewCardRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ActivateNewCardRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="activateNewCardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivateNewCardResult" type="tns:ActivateNewCardResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ActivateNewCardResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getDynamicCompConfig">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDynamicCompConfigRequest" type="tns:GetDynamicCompConfigRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDynamicCompConfigRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="storeID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getDynamicCompConfigResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDynamicCompConfigResult" type="tns:GetDynamicCompConfigResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDynamicCompConfigResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="dynamicCards" nillable="true" type="tns:DynamicCards" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DynamicCards">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cardSeries" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="compReasons" nillable="true" type="tns:dynamicReason" />
+          <xs:element minOccurs="0" name="maxBalance" type="xs:decimal" />
+          <xs:element minOccurs="0" name="maxPerTransaction" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dynamicReason">
+        <xs:sequence>
+          <xs:element name="activationId" type="xs:int" />
+          <xs:element minOccurs="0" name="activationReason" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCardNumberByEmail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCardNumberByEmailRequest" type="tns:GetCardNumberByEmailRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardNumberByEmailRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="emailAddress" type="xs:string" />
+              <xs:element minOccurs="0" name="status" type="tns:accountStatus" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCardNumberByEmailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCardNumberByEmailResult" type="tns:GetCardNumberByEmailResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCardNumberByEmailResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="cardNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="validateEmailByPassCode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValidateEmailByPassCodeRequest" type="tns:ValidateEmailByPassCodeRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValidateEmailByPassCodeRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="emailAddress" type="xs:string" />
+              <xs:element minOccurs="0" name="passCode" type="xs:string" />
+              <xs:element minOccurs="0" name="status" type="tns:accountStatus" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="validateEmailByPassCodeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValidateEmailByPassCodeResult" type="tns:ValidateEmailByPassCodeResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValidateEmailByPassCodeResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="cardNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountGetParent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountGetParentRequest" type="tns:CombineAccountGetParentRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountGetParentRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountGetParentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountGetParentResult" type="tns:CombineAccountGetParentResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountGetParentResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="setDeferRewardsSetting">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SetDeferRewardsSettingRequest" type="tns:SetDeferRewardsSettingRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SetDeferRewardsSettingRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element name="deferredRewardsOn" type="xs:boolean" />
+              <xs:element name="rewardProgramID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="setDeferRewardsSettingResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SetDeferRewardsSettingResult" type="tns:SetDeferRewardsSettingResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SetDeferRewardsSettingResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element name="deferredRewardsOn" type="xs:boolean" />
+              <xs:element name="rewardProgramID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="adjustCredit">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adjustCreditRequest" type="tns:AdjustCreditRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdjustCreditRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="adjustmentType" type="xs:int" />
+              <xs:element minOccurs="0" name="BPCredit" type="xs:double" />
+              <xs:element minOccurs="0" name="BPID" type="xs:int" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="reason" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="adjustCreditResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adjustCreditResult" type="tns:AdjustCreditResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdjustCreditResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountGetChildren">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountGetChildrenRequest" type="tns:CombineAccountGetChildrenRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountGetChildrenRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="combineAccountGetChildrenResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CombineAccountGetChildrenResult" type="tns:CombineAccountGetChildrenResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CombineAccountGetChildrenResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="childCardNumber" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="deactivateNewCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeactivateNewCardRequest" type="tns:DeactivateNewCardRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeactivateNewCardRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="deactivateNewCardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeactivateNewCardResult" type="tns:DeactivateNewCardResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeactivateNewCardResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element name="batchID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="unCombineAccount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UnCombineAccountRequest" type="tns:UnCombineAccountRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnCombineAccountRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="unCombineAccountResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UnCombineAccountResult" type="tns:UnCombineAccountResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnCombineAccountResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="childCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="parentCardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="updateMemberProfile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="updateMemberProfileRequest" type="tns:UpdateMemberProfileRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateMemberProfileRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="profile" type="tns:MemberProfile" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="updateMemberProfileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="updateMemberProfileResult" type="tns:UpdateMemberProfileResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdateMemberProfileResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getSVHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetSVHistoryRequest" type="tns:GetSVHistoryRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSVHistoryRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getSVHistoryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetSVHistoryResult" type="tns:GetSVHistoryResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSVHistoryResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardCurrentBalance" type="xs:decimal" />
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="expirationDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="history" nillable="true" type="tns:SVTransactionHistory" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SVTransactionHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+          <xs:element name="checkID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateOfBusiness" type="xs:dateTime" />
+          <xs:element name="storeID" type="xs:int" />
+          <xs:element minOccurs="0" name="storeName" type="xs:string" />
+          <xs:element minOccurs="0" name="transAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="transBalance" type="xs:decimal" />
+          <xs:element name="transTypeID" type="xs:int" />
+          <xs:element minOccurs="0" name="transTypeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDeferRewardsSetting">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDeferRewardsSettingRequest" type="tns:GetDeferRewardsSettingRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeferRewardsSettingRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Request">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element name="rewardProgramID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getDeferRewardsSettingResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetDeferRewardsSettingResult" type="tns:GetDeferRewardsSettingResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeferRewardsSettingResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+              <xs:element name="deferredRewardsOn" type="xs:boolean" />
+              <xs:element name="rewardProgramID" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:simpleType name="bonusPlanType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="UNKNOWN" />
+          <xs:enumeration value="ITEM" />
+          <xs:enumeration value="CURRENCY" />
+          <xs:enumeration value="POINT" />
+          <xs:enumeration value="VISIT" />
+          <xs:enumeration value="LOTTERY" />
+          <xs:enumeration value="GUEST" />
+          <xs:enumeration value="EMPLOYEE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="occasionType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="BIRTHDAY" />
+          <xs:enumeration value="ANNIVERSARY" />
+          <xs:enumeration value="ENROLLMENT_SIGNUP" />
+          <xs:enumeration value="REGISTRATION" />
+          <xs:enumeration value="PROFILE_UPDATE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="accountStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACTIVE" />
+          <xs:enumeration value="BOTH" />
+          <xs:enumeration value="INACTIVE" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getBonusPlanStandingsResponse">
+    <wsdl:part name="parameters" element="tns:getBonusPlanStandingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="optOut">
+    <wsdl:part name="parameters" element="tns:optOut" />
+  </wsdl:message>
+  <wsdl:message name="addMemberProfileResponse">
+    <wsdl:part name="parameters" element="tns:addMemberProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateMemberProfile">
+    <wsdl:part name="parameters" element="tns:updateMemberProfile" />
+  </wsdl:message>
+  <wsdl:message name="validateEmailByPassCodeResponse">
+    <wsdl:part name="parameters" element="tns:validateEmailByPassCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="optInResponse">
+    <wsdl:part name="parameters" element="tns:optInResponse" />
+  </wsdl:message>
+  <wsdl:message name="validatePassCode">
+    <wsdl:part name="parameters" element="tns:validatePassCode" />
+  </wsdl:message>
+  <wsdl:message name="phoneNumberExists">
+    <wsdl:part name="parameters" element="tns:phoneNumberExists" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountGetChildren">
+    <wsdl:part name="parameters" element="tns:combineAccountGetChildren" />
+  </wsdl:message>
+  <wsdl:message name="setDeferRewardsSetting">
+    <wsdl:part name="parameters" element="tns:setDeferRewardsSetting" />
+  </wsdl:message>
+  <wsdl:message name="getCardNumberByEmail">
+    <wsdl:part name="parameters" element="tns:getCardNumberByEmail" />
+  </wsdl:message>
+  <wsdl:message name="createNewCardResponse">
+    <wsdl:part name="parameters" element="tns:createNewCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCardNumberByPhone">
+    <wsdl:part name="parameters" element="tns:getCardNumberByPhone" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountCount">
+    <wsdl:part name="parameters" element="tns:combineAccountCount" />
+  </wsdl:message>
+  <wsdl:message name="getCardNumberByEmailResponse">
+    <wsdl:part name="parameters" element="tns:getCardNumberByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBonusPlanStandings">
+    <wsdl:part name="parameters" element="tns:getBonusPlanStandings" />
+  </wsdl:message>
+  <wsdl:message name="adjustCredit">
+    <wsdl:part name="parameters" element="tns:adjustCredit" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountCountResponse">
+    <wsdl:part name="parameters" element="tns:combineAccountCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="validatePassCodeResponse">
+    <wsdl:part name="parameters" element="tns:validatePassCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deactivateNewCardResponse">
+    <wsdl:part name="parameters" element="tns:deactivateNewCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateMemberProfileResponse">
+    <wsdl:part name="parameters" element="tns:updateMemberProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDeferRewardsSetting">
+    <wsdl:part name="parameters" element="tns:getDeferRewardsSetting" />
+  </wsdl:message>
+  <wsdl:message name="activateNewCardResponse">
+    <wsdl:part name="parameters" element="tns:activateNewCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="processDynamicCompDeposit">
+    <wsdl:part name="parameters" element="tns:processDynamicCompDeposit" />
+  </wsdl:message>
+  <wsdl:message name="checkNetworkResponse">
+    <wsdl:part name="parameters" element="tns:checkNetworkResponse" />
+  </wsdl:message>
+  <wsdl:message name="addMemberProfile">
+    <wsdl:part name="parameters" element="tns:addMemberProfile" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountGetParent">
+    <wsdl:part name="parameters" element="tns:combineAccountGetParent" />
+  </wsdl:message>
+  <wsdl:message name="getCheckDetail">
+    <wsdl:part name="parameters" element="tns:getCheckDetail" />
+  </wsdl:message>
+  <wsdl:message name="getSVHistory">
+    <wsdl:part name="parameters" element="tns:getSVHistory" />
+  </wsdl:message>
+  <wsdl:message name="getDeferRewardsSettingResponse">
+    <wsdl:part name="parameters" element="tns:getDeferRewardsSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDynamicCompConfig">
+    <wsdl:part name="parameters" element="tns:getDynamicCompConfig" />
+  </wsdl:message>
+  <wsdl:message name="unCombineAccount">
+    <wsdl:part name="parameters" element="tns:unCombineAccount" />
+  </wsdl:message>
+  <wsdl:message name="eMailExistsAll">
+    <wsdl:part name="parameters" element="tns:eMailExistsAll" />
+  </wsdl:message>
+  <wsdl:message name="setDeferRewardsSettingResponse">
+    <wsdl:part name="parameters" element="tns:setDeferRewardsSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeCardNumberResponse">
+    <wsdl:part name="parameters" element="tns:changeCardNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateEmailByPassCode">
+    <wsdl:part name="parameters" element="tns:validateEmailByPassCode" />
+  </wsdl:message>
+  <wsdl:message name="createNewCard">
+    <wsdl:part name="parameters" element="tns:createNewCard" />
+  </wsdl:message>
+  <wsdl:message name="getMemberProfile">
+    <wsdl:part name="parameters" element="tns:getMemberProfile" />
+  </wsdl:message>
+  <wsdl:message name="phoneNumberExistsAll">
+    <wsdl:part name="parameters" element="tns:phoneNumberExistsAll" />
+  </wsdl:message>
+  <wsdl:message name="getBonusPlanHistory">
+    <wsdl:part name="parameters" element="tns:getBonusPlanHistory" />
+  </wsdl:message>
+  <wsdl:message name="deactivateNewCard">
+    <wsdl:part name="parameters" element="tns:deactivateNewCard" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountResponse">
+    <wsdl:part name="parameters" element="tns:combineAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="activateNewCard">
+    <wsdl:part name="parameters" element="tns:activateNewCard" />
+  </wsdl:message>
+  <wsdl:message name="getClaimCount">
+    <wsdl:part name="parameters" element="tns:getClaimCount" />
+  </wsdl:message>
+  <wsdl:message name="getDynamicCompConfigResponse">
+    <wsdl:part name="parameters" element="tns:getDynamicCompConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkNetwork">
+    <wsdl:part name="parameters" element="tns:checkNetwork" />
+  </wsdl:message>
+  <wsdl:message name="eMailExistsResponse">
+    <wsdl:part name="parameters" element="tns:eMailExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="optIn">
+    <wsdl:part name="parameters" element="tns:optIn" />
+  </wsdl:message>
+  <wsdl:message name="getNewCardBatchID">
+    <wsdl:part name="parameters" element="tns:getNewCardBatchID" />
+  </wsdl:message>
+  <wsdl:message name="getCardStatusResponse">
+    <wsdl:part name="parameters" element="tns:getCardStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCreateNewCardStatusResponse">
+    <wsdl:part name="parameters" element="tns:getCreateNewCardStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSVHistoryResponse">
+    <wsdl:part name="parameters" element="tns:getSVHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="eMailExistsAllResponse">
+    <wsdl:part name="parameters" element="tns:eMailExistsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="adjustCreditResponse">
+    <wsdl:part name="parameters" element="tns:adjustCreditResponse" />
+  </wsdl:message>
+  <wsdl:message name="unCombineAccountResponse">
+    <wsdl:part name="parameters" element="tns:unCombineAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="phoneNumberExistsResponse">
+    <wsdl:part name="parameters" element="tns:phoneNumberExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNewCardList">
+    <wsdl:part name="parameters" element="tns:getNewCardList" />
+  </wsdl:message>
+  <wsdl:message name="getNewCardBatchIDResponse">
+    <wsdl:part name="parameters" element="tns:getNewCardBatchIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCardStatus">
+    <wsdl:part name="parameters" element="tns:getCardStatus" />
+  </wsdl:message>
+  <wsdl:message name="assignForgottenCardResponse">
+    <wsdl:part name="parameters" element="tns:assignForgottenCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCardBalance">
+    <wsdl:part name="parameters" element="tns:getCardBalance" />
+  </wsdl:message>
+  <wsdl:message name="changeCardNumber">
+    <wsdl:part name="parameters" element="tns:changeCardNumber" />
+  </wsdl:message>
+  <wsdl:message name="getCardNumberByPhoneResponse">
+    <wsdl:part name="parameters" element="tns:getCardNumberByPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDynamicCompBalance">
+    <wsdl:part name="parameters" element="tns:getDynamicCompBalance" />
+  </wsdl:message>
+  <wsdl:message name="getDynamicCompBalanceResponse">
+    <wsdl:part name="parameters" element="tns:getDynamicCompBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountGetChildrenResponse">
+    <wsdl:part name="parameters" element="tns:combineAccountGetChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMemberProfileResponse">
+    <wsdl:part name="parameters" element="tns:getMemberProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="assignForgottenCard">
+    <wsdl:part name="parameters" element="tns:assignForgottenCard" />
+  </wsdl:message>
+  <wsdl:message name="phoneNumberExistsAllResponse">
+    <wsdl:part name="parameters" element="tns:phoneNumberExistsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCheckDetailResponse">
+    <wsdl:part name="parameters" element="tns:getCheckDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCreateNewCardStatus">
+    <wsdl:part name="parameters" element="tns:getCreateNewCardStatus" />
+  </wsdl:message>
+  <wsdl:message name="eMailExists">
+    <wsdl:part name="parameters" element="tns:eMailExists" />
+  </wsdl:message>
+  <wsdl:message name="optOutResponse">
+    <wsdl:part name="parameters" element="tns:optOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="processDynamicCompDepositResponse">
+    <wsdl:part name="parameters" element="tns:processDynamicCompDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNewCardListResponse">
+    <wsdl:part name="parameters" element="tns:getNewCardListResponse" />
+  </wsdl:message>
+  <wsdl:message name="combineAccount">
+    <wsdl:part name="parameters" element="tns:combineAccount" />
+  </wsdl:message>
+  <wsdl:message name="getClaimCountResponse">
+    <wsdl:part name="parameters" element="tns:getClaimCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBonusPlanHistoryResponse">
+    <wsdl:part name="parameters" element="tns:getBonusPlanHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCardBalanceResponse">
+    <wsdl:part name="parameters" element="tns:getCardBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="combineAccountGetParentResponse">
+    <wsdl:part name="parameters" element="tns:combineAccountGetParentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MemberLinkWS">
+    <wsdl:operation name="getCheckDetail">
+      <wsdl:input name="getCheckDetail" message="tns:getCheckDetail" />
+      <wsdl:output name="getCheckDetailResponse" message="tns:getCheckDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkNetwork">
+      <wsdl:input name="checkNetwork" message="tns:checkNetwork" />
+      <wsdl:output name="checkNetworkResponse" message="tns:checkNetworkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="optOut">
+      <wsdl:input name="optOut" message="tns:optOut" />
+      <wsdl:output name="optOutResponse" message="tns:optOutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCardBalance">
+      <wsdl:input name="getCardBalance" message="tns:getCardBalance" />
+      <wsdl:output name="getCardBalanceResponse" message="tns:getCardBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNewCardBatchID">
+      <wsdl:input name="getNewCardBatchID" message="tns:getNewCardBatchID" />
+      <wsdl:output name="getNewCardBatchIDResponse" message="tns:getNewCardBatchIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCardStatus">
+      <wsdl:input name="getCardStatus" message="tns:getCardStatus" />
+      <wsdl:output name="getCardStatusResponse" message="tns:getCardStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="changeCardNumber">
+      <wsdl:input name="changeCardNumber" message="tns:changeCardNumber" />
+      <wsdl:output name="changeCardNumberResponse" message="tns:changeCardNumberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBonusPlanHistory">
+      <wsdl:input name="getBonusPlanHistory" message="tns:getBonusPlanHistory" />
+      <wsdl:output name="getBonusPlanHistoryResponse" message="tns:getBonusPlanHistoryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="optIn">
+      <wsdl:input name="optIn" message="tns:optIn" />
+      <wsdl:output name="optInResponse" message="tns:optInResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getClaimCount">
+      <wsdl:input name="getClaimCount" message="tns:getClaimCount" />
+      <wsdl:output name="getClaimCountResponse" message="tns:getClaimCountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="processDynamicCompDeposit">
+      <wsdl:input name="processDynamicCompDeposit" message="tns:processDynamicCompDeposit" />
+      <wsdl:output name="processDynamicCompDepositResponse" message="tns:processDynamicCompDepositResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBonusPlanStandings">
+      <wsdl:input name="getBonusPlanStandings" message="tns:getBonusPlanStandings" />
+      <wsdl:output name="getBonusPlanStandingsResponse" message="tns:getBonusPlanStandingsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eMailExists">
+      <wsdl:input name="eMailExists" message="tns:eMailExists" />
+      <wsdl:output name="eMailExistsResponse" message="tns:eMailExistsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validatePassCode">
+      <wsdl:input name="validatePassCode" message="tns:validatePassCode" />
+      <wsdl:output name="validatePassCodeResponse" message="tns:validatePassCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eMailExistsAll">
+      <wsdl:input name="eMailExistsAll" message="tns:eMailExistsAll" />
+      <wsdl:output name="eMailExistsAllResponse" message="tns:eMailExistsAllResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addMemberProfile">
+      <wsdl:input name="addMemberProfile" message="tns:addMemberProfile" />
+      <wsdl:output name="addMemberProfileResponse" message="tns:addMemberProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMemberProfile">
+      <wsdl:input name="getMemberProfile" message="tns:getMemberProfile" />
+      <wsdl:output name="getMemberProfileResponse" message="tns:getMemberProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="combineAccount">
+      <wsdl:input name="combineAccount" message="tns:combineAccount" />
+      <wsdl:output name="combineAccountResponse" message="tns:combineAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="assignForgottenCard">
+      <wsdl:input name="assignForgottenCard" message="tns:assignForgottenCard" />
+      <wsdl:output name="assignForgottenCardResponse" message="tns:assignForgottenCardResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="phoneNumberExists">
+      <wsdl:input name="phoneNumberExists" message="tns:phoneNumberExists" />
+      <wsdl:output name="phoneNumberExistsResponse" message="tns:phoneNumberExistsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCreateNewCardStatus">
+      <wsdl:input name="getCreateNewCardStatus" message="tns:getCreateNewCardStatus" />
+      <wsdl:output name="getCreateNewCardStatusResponse" message="tns:getCreateNewCardStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCardNumberByPhone">
+      <wsdl:input name="getCardNumberByPhone" message="tns:getCardNumberByPhone" />
+      <wsdl:output name="getCardNumberByPhoneResponse" message="tns:getCardNumberByPhoneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="phoneNumberExistsAll">
+      <wsdl:input name="phoneNumberExistsAll" message="tns:phoneNumberExistsAll" />
+      <wsdl:output name="phoneNumberExistsAllResponse" message="tns:phoneNumberExistsAllResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDynamicCompBalance">
+      <wsdl:input name="getDynamicCompBalance" message="tns:getDynamicCompBalance" />
+      <wsdl:output name="getDynamicCompBalanceResponse" message="tns:getDynamicCompBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountCount">
+      <wsdl:input name="combineAccountCount" message="tns:combineAccountCount" />
+      <wsdl:output name="combineAccountCountResponse" message="tns:combineAccountCountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNewCardList">
+      <wsdl:input name="getNewCardList" message="tns:getNewCardList" />
+      <wsdl:output name="getNewCardListResponse" message="tns:getNewCardListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createNewCard">
+      <wsdl:input name="createNewCard" message="tns:createNewCard" />
+      <wsdl:output name="createNewCardResponse" message="tns:createNewCardResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="activateNewCard">
+      <wsdl:input name="activateNewCard" message="tns:activateNewCard" />
+      <wsdl:output name="activateNewCardResponse" message="tns:activateNewCardResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDynamicCompConfig">
+      <wsdl:input name="getDynamicCompConfig" message="tns:getDynamicCompConfig" />
+      <wsdl:output name="getDynamicCompConfigResponse" message="tns:getDynamicCompConfigResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCardNumberByEmail">
+      <wsdl:input name="getCardNumberByEmail" message="tns:getCardNumberByEmail" />
+      <wsdl:output name="getCardNumberByEmailResponse" message="tns:getCardNumberByEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validateEmailByPassCode">
+      <wsdl:input name="validateEmailByPassCode" message="tns:validateEmailByPassCode" />
+      <wsdl:output name="validateEmailByPassCodeResponse" message="tns:validateEmailByPassCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountGetParent">
+      <wsdl:input name="combineAccountGetParent" message="tns:combineAccountGetParent" />
+      <wsdl:output name="combineAccountGetParentResponse" message="tns:combineAccountGetParentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setDeferRewardsSetting">
+      <wsdl:input name="setDeferRewardsSetting" message="tns:setDeferRewardsSetting" />
+      <wsdl:output name="setDeferRewardsSettingResponse" message="tns:setDeferRewardsSettingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="adjustCredit">
+      <wsdl:input name="adjustCredit" message="tns:adjustCredit" />
+      <wsdl:output name="adjustCreditResponse" message="tns:adjustCreditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountGetChildren">
+      <wsdl:input name="combineAccountGetChildren" message="tns:combineAccountGetChildren" />
+      <wsdl:output name="combineAccountGetChildrenResponse" message="tns:combineAccountGetChildrenResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deactivateNewCard">
+      <wsdl:input name="deactivateNewCard" message="tns:deactivateNewCard" />
+      <wsdl:output name="deactivateNewCardResponse" message="tns:deactivateNewCardResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="unCombineAccount">
+      <wsdl:input name="unCombineAccount" message="tns:unCombineAccount" />
+      <wsdl:output name="unCombineAccountResponse" message="tns:unCombineAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateMemberProfile">
+      <wsdl:input name="updateMemberProfile" message="tns:updateMemberProfile" />
+      <wsdl:output name="updateMemberProfileResponse" message="tns:updateMemberProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSVHistory">
+      <wsdl:input name="getSVHistory" message="tns:getSVHistory" />
+      <wsdl:output name="getSVHistoryResponse" message="tns:getSVHistoryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDeferRewardsSetting">
+      <wsdl:input name="getDeferRewardsSetting" message="tns:getDeferRewardsSetting" />
+      <wsdl:output name="getDeferRewardsSettingResponse" message="tns:getDeferRewardsSettingResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MemberLinkWSSoapBinding" type="tns:MemberLinkWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getCheckDetail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCheckDetail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCheckDetailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkNetwork">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="checkNetwork">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkNetworkResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="optOut">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="optOut">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="optOutResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardBalance">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCardBalance">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCardBalanceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeCardNumber">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="changeCardNumber">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="changeCardNumberResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardStatus">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCardStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCardStatusResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNewCardBatchID">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getNewCardBatchID">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getNewCardBatchIDResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBonusPlanHistory">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getBonusPlanHistory">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBonusPlanHistoryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="optIn">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="optIn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="optInResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimCount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getClaimCount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getClaimCountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processDynamicCompDeposit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="processDynamicCompDeposit">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="processDynamicCompDepositResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBonusPlanStandings">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getBonusPlanStandings">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBonusPlanStandingsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eMailExists">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="eMailExists">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="eMailExistsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validatePassCode">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="validatePassCode">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validatePassCodeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eMailExistsAll">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="eMailExistsAll">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="eMailExistsAllResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMemberProfile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="addMemberProfile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addMemberProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="combineAccount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="combineAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="combineAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMemberProfile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getMemberProfile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMemberProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assignForgottenCard">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="assignForgottenCard">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="assignForgottenCardResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="phoneNumberExists">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="phoneNumberExists">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="phoneNumberExistsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCreateNewCardStatus">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCreateNewCardStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCreateNewCardStatusResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardNumberByPhone">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCardNumberByPhone">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCardNumberByPhoneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="phoneNumberExistsAll">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="phoneNumberExistsAll">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="phoneNumberExistsAllResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDynamicCompBalance">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getDynamicCompBalance">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDynamicCompBalanceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountCount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="combineAccountCount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="combineAccountCountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createNewCard">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createNewCard">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createNewCardResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNewCardList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getNewCardList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getNewCardListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="activateNewCard">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="activateNewCard">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="activateNewCardResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardNumberByEmail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCardNumberByEmail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCardNumberByEmailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDynamicCompConfig">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getDynamicCompConfig">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDynamicCompConfigResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountGetParent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="combineAccountGetParent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="combineAccountGetParentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateEmailByPassCode">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="validateEmailByPassCode">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validateEmailByPassCodeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="adjustCredit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="adjustCredit">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="adjustCreditResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeferRewardsSetting">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="setDeferRewardsSetting">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setDeferRewardsSettingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="combineAccountGetChildren">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="combineAccountGetChildren">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="combineAccountGetChildrenResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deactivateNewCard">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deactivateNewCard">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deactivateNewCardResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unCombineAccount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="unCombineAccount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="unCombineAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeferRewardsSetting">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getDeferRewardsSetting">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDeferRewardsSettingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSVHistory">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getSVHistory">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getSVHistoryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMemberProfile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateMemberProfile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateMemberProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MemberLinkWS">
+    <wsdl:port name="MemberLinkWSImplPort" binding="tns:MemberLinkWSSoapBinding">
+      <soap:address location="https://memberlink.alohaenterprise.com/insightws/MemberLinkWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

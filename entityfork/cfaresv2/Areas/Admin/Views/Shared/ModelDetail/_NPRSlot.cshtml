@@ -1,0 +1,178 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event.resevent
+@using cfares.domain._event.slot
+@using cfares.site.modules.com.application
+@model npr.domain._event.slot.NPRSlot
+@{string pk = Model.IsBound() ? Model.Id() : "new";}
+
+<fieldset data-pk='@pk' class='slot-@pk'>
+	<div class='legend inline-block'>Slot Details</div>
+
+	<div class='model-field field-Occurance'>
+		<div class="display-label inline-block">Event Name</div>
+		<div class="display-field inline-block">
+			@Html.Raw(Model.Occurrence.ResEventName)
+		</div>
+	</div>
+
+	@if (Model.Occurrence != null && Model.Occurrence.ResEvent != null)
+	{
+		<div class='model-field field-Start'>
+			<div class="display-label inline-block">Event Type</div>
+			<div class="display-field inline-block">
+				@Model.Visibility @Model.Occurrence.ResEvent.ReservationType.Name
+			</div>
+		</div>
+     
+       	<div class='model-field field-Start'>
+			<div class="display-label inline-block">Location</div>
+			<div class="display-field inline-block">
+				@Model.Occurrence.StoreName
+			</div>
+		</div>
+	 }
+
+	<div class='model-field field-Start'>
+		<div class="display-label inline-block">Start</div>
+		<div class="display-field inline-block">
+			<span class='clean-timezone' data-date-format='M/dd/yyyy' data-time-format='M/dd/yyyy h:mm tt'>@Model.Start.ToDateTimeStringLong()</span>
+		</div>
+	</div>
+
+	<div class='model-field field-End'>
+		<div class="display-label inline-block">End</div>
+		<div class="display-field inline-block">
+			<span class='clean-timezone' data-date-format='M/dd/yyyy' data-time-format='M/dd/yyyy h:mm tt'>@Model.End.ToDateTimeStringLong()</span>
+		</div>
+	</div>
+
+	<div class='model-field field-Cutoff'>
+		<div class="display-label inline-block">Cutoff</div>
+		<div class="display-field inline-block">
+			<span class='clean-timezone' data-date-format='M/dd/yyyy' data-time-format='M/dd/yyyy h:mm tt'>@Model.Cutoff.ToDateTimeStringLong()</span>
+		</div>
+	</div>
+
+	<div class='model-field field-Guide'>
+		<div class="display-label inline-block">Guide</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.Guide)
+		</div>
+	</div>
+
+	@* SH - Commenting out per ticket NPR-463 - caused confusion usability wise when presented to users
+	<div class='model-field field-Occurance'>
+		<div class="display-label inline-block">Status</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.Status)
+		</div>
+	</div>*@
+
+	@if( Model.Visibility != SlotVisibility.Specialty )
+	{
+		<div class='model-field field-Capacity'>
+			<div class="display-label inline-block">Capacity</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.Capacity)
+			</div>
+		</div>
+
+		<div class='model-field field-TicketsAvailable'>
+			<div class="display-label inline-block">Tickets Available</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.TicketsAvailable)
+			</div>
+		</div>
+	}
+
+	<div class='model-field field-TotalTickets'>
+		<div class="display-label inline-block">Tickets Reserved</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.TotalTickets)
+		</div>
+	</div>
+
+	<div class='model-field field-PrintBadge'>
+		<div class="display-label inline-block">Print Badge?</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.PrintBadge)
+		</div>
+	</div>
+
+	@*	SH - Commenting out below two sections as per wireframes, adding spacing below
+	
+	<div class='model-field field-Schedule'>
+		<div class="display-label inline-block">Schedule</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.Schedule)
+		</div>
+	</div>
+
+	<div class='model-field field-IsScheduled'>
+		<div class="display-label inline-block">Is Scheduled</div>
+		<div class="display-field inline-block">
+			@Html.DisplayFor(model => model.IsScheduled)
+		</div>
+	</div>*@
+
+    <div class='model-field field-Notes'>
+        <div class="display-label inline-block">Notes</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Notes)
+        </div>
+    </div>
+    @if (Model.Occurrence != null && Model.Occurrence.ResEvent != null)
+    {
+        
+        
+        var siteUrls = Model.Occurrence.ResEvent.SiteUrls == null ? new List<ResSiteUrl>() :
+                            Model.Occurrence.ResEvent.ProductionUrls;
+        if (siteUrls.Count() == 0)
+        {
+            siteUrls = Model.Occurrence.ResEvent.ReservationType.SiteUrls == null ? new List<ResSiteUrl>() :
+                            Model.Occurrence.ResEvent.ReservationType.ProductionUrls;
+        }
+        
+        foreach (var siteUrl in siteUrls)
+        {
+            //string link = siteUrl.Url.TrimEnd('/') + "/Slot/" + Model.SlotId;
+            //string detailsLink;
+            //if (Model.Occurrence.ResEvent.ReservationTypeId != "Tour")
+            //{
+            //    detailsLink = siteUrl.Url.TrimEnd('/') + "/npr/Home/EventDetails/" + Model.Occurrence.ResEvent.ResEventId;
+            //}
+            //else
+            //{
+            //    detailsLink = siteUrl.Url.TrimEnd('/') + "/npr/Home/EventDetails/" + Model.SlotId;
+            //}
+            string link = "http://" + HttpContext.Current.Request.Url.Authority + "/" + siteUrl.Url.TrimEnd('/');
+            string detailsLink;
+            if (Model.Occurrence.ResEvent.ReservationTypeId != "Tour")
+            {
+                detailsLink = "http://" + HttpContext.Current.Request.Url.Authority + "/" + siteUrl.Url.TrimEnd('/');
+            }
+            else
+            {
+                detailsLink = "http://" + HttpContext.Current.Request.Url.Authority + "/" + siteUrl.Url.TrimEnd('/');
+            }
+            
+            <div class='model-field field-Shortcut'>
+                <div class="display-label inline-block">Details Link</div>
+                <div class="display-field inline-block">
+                    <a href="@Html.Raw(detailsLink)" target="_blank">@Html.Raw(detailsLink)</a>
+                      <a href="@detailsLink" target="_blank">@Html.Raw(detailsLink)</a>
+                </div>
+            </div>
+            <div class='model-field field-Shortcut'>
+                <div class="display-label inline-block">Registration Link</div>
+                <div class="display-field inline-block">
+                    <a href="@Html.Raw(link)" target="_blank">@Html.Raw(link)</a>
+                </div>
+            </div>
+        }
+        
+    }
+    <p>&nbsp;</p>
+
+
+</fieldset>

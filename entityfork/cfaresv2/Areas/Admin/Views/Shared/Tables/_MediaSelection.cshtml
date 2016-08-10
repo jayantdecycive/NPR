@@ -1,0 +1,25 @@
+﻿@model int?
+
+
+<script type="text/javascript">
+    var mediaList = new DomainModel.MediaCollection();
+    mediaList.abstract = true;
+</script>
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="media_select" class='data-table' data-jquery-ui="true" data-dom='<"H"r>t<"F"fp>' data-data='mediaList' 
+        data-mode='backbone'>
+            <thead>
+                <tr>
+                    <th data-id='MediaSelect' data-on-display='DataFormat.Radio' data-column-parent='MediaId'></th>                        
+                    <th data-column-name='AdminDetailsCta' data-searchable="false" data-sortable="false">Name</th>                
+                    <th data-id='IconLink' data-sortable="false" data-searchable="false">Icon</th>
+                    <!--<th data-column-name='MediaUriStr' width='20%' data-visible="false">Uri</th>-->
+                    <th data-column-name='MediaIdL' data-id-column='true'>Media Id</th>
+                    <th data-column-name='Description' width='20%'>Description</th>
+                    <th data-column-name='CreatedDate' data-on-display='DataFormat.date'  width='20%'>Creation Date</th>  
+                </tr>
+            </thead>
+    </table>
+</div>
+
+ 

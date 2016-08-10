@@ -1,0 +1,12 @@
+﻿@model int?
+
+@Html.Partial("EditorTemplates/AutoComplete/_AutoComplete",Model,new ViewDataDictionary(ViewData)
+    {
+        {"DefaultLabel","No User"},
+        {"Filter","Email,NameString,Username,UserId"},
+        {"Label","NameString,Email"},   
+        {"DomainModel","ResUser"},    
+        //{"Title","User"},    
+        {"AdminCreate","/Admin/User/Create?snip=true"},
+        {"AdminEdit",string.Format("/Admin/User/Edit/{0}?snip=true",Model)},
+    })

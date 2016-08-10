@@ -1,0 +1,208 @@
+﻿@using cfares.domain._event
+@{
+    ViewBag.Title = "Tour Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+	Type slotType = typeof(Slot);
+    if (Model != null) {
+        slotType = Model.ReservationType.GetKernel().Get<ISlot>().GetType();
+        
+    }
+}
+<style>
+    .SpecialtyCancelled {
+    color:red;
+    }
+</style>
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+
+    <script type="text/javascript" id="mytemplate">
+      
+        var upcomingToursBucket = new DomainModel.NPRSlotCollection();
+        //	upcomingToursBucket.setWhere('upcomingToursBucket', { End: { $gt: (new Date()) }, Status: { $ne: 'Archive' }, 'Occurrence/ResEvent/ReservationTypeId': { $eq: 'Tour' }});
+        upcomingToursBucket.setWhere('upcomingToursBucket', { End: { $gt: (new Date()) }, Status: { $ne: 'Archive' } });
+        upcomingToursBucket.abstract = true;      
+
+        var pastToursBucket = new DomainModel.NPRSlotCollection();
+        // pastToursBucket.setWhere('pastToursBucket', { End: { $lte: (new Date()) }, Status: { $ne: 'Archive' }, 'Occurrence/ResEvent/ReservationTypeId': { $eq: 'Tour' } });
+        pastToursBucket.setWhere('pastToursBucket', { End: { $lte: (new Date()) }, Status: { $ne: 'Archive' } });
+        pastToursBucket.abstract = true;
+
+
+
+        $(function () {
+          
+            $("#upcoming_tour_table_upcomingToursBucket_filter input,#past_events_bucket_filter input").keydown(function(event) {
+                // Allow: backspace, delete, tab, escape, and enter
+                if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+                    // Allow: Ctrl+A
+                    (event.keyCode == 65 && event.ctrlKey === true) || 
+                    // Allow: home, end, left, right
+                    (event.keyCode >= 35 && event.keyCode <= 39)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                else {
+                    // Ensure that it is a number and stop the keypress
+                    if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                        event.preventDefault(); 
+                    }   
+                }
+            });
+
+        	var getFilterElement = function ( filterElement ) {
+        		var classes = filterElement.className.split(" ");
+        		for (var i = 0, len = classes.length; i < len; i++) 
+        			if (/^filter-table-/.test(classes[i])) {
+        				var c = classes[i].replace('filter-table-', '');
+        				var e = window[c];
+        				return e;
+        			}
+        		return upcomingToursBucket;
+        	};
+
+        	$(".filter-event-type").bind("change", function () {        	   
+        		var e = getFilterElement(this);
+        		var val = $(this).val() || null;
+        		if (val == null) e.setWhere("filter-event-type", null);
+        		else e.setWhere("filter-event-type", { "Occurrence/ResEvent/ReservationTypeId": val });
+        		e.trigger("redraw");
+            });
+
+        	$(".filter-year").bind("change", function () {
+            	var e = getFilterElement(this);
+            	var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-year", null);
+                else e.setWhere("filter-year", { Start: { $year: Number(val) } });
+                e.trigger("redraw");
+        	});
+            
+        	$(".filter-day").bind("change", function () {
+        	    var e = getFilterElement(this);
+        	    var val = $(this).val() || null;
+        	    if (val == null) e.removeQueryParam("day");
+        	    else e.setQueryParam("day", (Number(val) ));
+        	    e.trigger("redraw");
+        	});
+
+            $(".filter-month").bind("change", function() {
+	            var e = getFilterElement(this);
+	            var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-month", null);
+                else e.setWhere("filter-month", { Start: { $month: Number(val) } });
+                e.trigger("redraw");
+            });
+
+        	//"filter-day"
+	        // TODO - NPR
+
+            $(".filter-guide").bind("pk", function (el,pk) {
+            	var e = getFilterElement(this);
+            	var val = pk;
+            	if (val == null || !val) e.setWhere("filter-guide", null);
+            	else e.setWhere("filter-guide", { GuideId: { $eq: Number(val) } });
+            	e.trigger("redraw");
+            });
+            
+            $(".filter-visibility").bind("change", function () {
+            	var e = getFilterElement(this);
+            	var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-visibility", null);
+                else e.setWhere("filter-visibility", { Visibility: val });
+                e.trigger("redraw");
+            });
+
+
+
+        });
+
+
+    </script>
+}
+
+    <div class="content rounded" id="main">
+    
+        <!-- UPCOMING TOUR TICKETS -->
+        <div class="inner-content wrapper upcoming-tours">
+            <div class='model badge'>  
+                <div class='right'>
+					<a href="@Url.Action("TourDashboard", "Home", new { })" class="button-grey-menu">
+						<span class="button-text">Tour Dashboard</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+                </div>
+                <h2>Upcoming Tours</h2>
+                <p>View upcoming tours and make modifcations if necessary</p>
+            </div>  
+            <div class='filters model badge'>
+                <p class='inline-block'>Filter by:</p>
+                @Html.Partial("Filters/Input/_SlotDash", "upcomingToursBucket")
+            </div>
+            @Html.Partial("Tables/_UpcomingSlotsDash", "upcomingToursBucket")
+           
+        </div>
+        
+        <!-- CREATE TICKET-->
+        <div class='inner-content wrapper new-tour-cta create-new-tour light-bg'>
+            <div class='model badge rounded'>
+                <div class="inline-block buttons-to-right">
+					<h2>Create a New Public Tour</h2>
+				</div>
+                <div class='button-list'>
+					<a href="@Url.Action("Wizard", "Event", new { id = "Tour" })" class="button-green-next">
+						<span class="button-text">Create Public Tour</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+                </div>
+            </div>
+        </div>
+        
+        @if (ViewBag.NumberOfRequests > 0)
+        {
+
+            <!-- CREATE SPECIALTITY TICKET-->
+            <div class='inner-content wrapper new-tour-cta specialty-tours'>
+                <div class='model badge rounded'>
+                    <div class="inline-block buttons-to-right">
+						<h2>Personalized Tours</h2>
+						<p>You have <span class="red-highlight">@ViewBag.NumberOfRequests</span> requests for new personalized tours</p>
+					</div>
+                    <div class='button-list inline-block'>
+						<a href="@Url.Action("Request-Dash", "Home")" class="button-grey-view button-request-dash">
+							<span class="button-text">View Requests</span>
+							<span class="button-icon-container">
+								<span class="button-icon"></span>
+							</span>
+						</a>
+					</div>
+                </div>
+            </div>
+        }
+
+        @Html.Partial("_AdminDashboards",new ReservationType(){ReservationTypeId = "Tour"})
+
+        <!-- PAST TOUR TICKETS -->
+        <div class="inner-content wrapper past-tours">
+            <div class='model badge'>
+                <h2>Past Tours</h2>
+                <p>View past tours and make reports</p>
+            </div>
+            <div class='filters model badge'>
+                <p class='inline-block'>Filter by:</p>
+                @Html.Partial("Filters/Input/_SlotDash", "pastToursBucket")
+            </div>
+        @Html.Partial("Tables/_UpcomingSlotsDash","pastToursBucket",new ViewDataDictionary(ViewData)
+            {
+                {"id","past_events_bucket"}
+            })
+        </div>
+
+    </div>
+
+

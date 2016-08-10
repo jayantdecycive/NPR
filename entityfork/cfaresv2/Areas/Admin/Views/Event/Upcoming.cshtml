@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Upcoming";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    <script type="text/javascript">
+        var DataFunction = {
+            upcomingfilter: function (col) {
+                //return "{0} ne '{1}'".format(col, "MALL");
+            }
+        }
+    </script>
+}
+
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+        <div class='model badge'>
+            <h1>Upcoming Events</h1>
+            <p>
+                Upcoming Events
+            </p>
+        </div>  
+        @Html.Partial("Tables/_UpcomingSlotsDash")      
+     </div>
+</div>

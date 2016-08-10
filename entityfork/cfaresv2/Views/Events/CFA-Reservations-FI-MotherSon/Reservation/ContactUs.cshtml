@@ -1,0 +1,186 @@
+﻿@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "CARES Form";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span10 offset1">
+		<h2 class="contact">CARES Form</h2>
+
+		<p class="strong">Please fill out the form below so we can best answer your question about the Chick-fil-A<sup>&reg;</sup> Mother-Son Date Knight event.</p>
+		<p class="strong">Completing this form will not create a reservation.</p>
+		<p class="required">* Indicates required field</p>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span11 offset1">
+		<form class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label label-left" for="title">Title:</label>
+				<div class="controls">
+					<select class="span2" id="title">
+						<option>Mr.</option>
+						<option>Ms.</option>
+						<option>Mrs.</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="firstName">
+				<span class="require">*</span>First Name:</label>
+				<div class="controls">
+					<input class="span6" id="firstName" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="lastName">
+				<span class="require">*</span>Last Name:</label>
+				<div class="controls">
+					<input class="span6" id="lastName" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="email">
+				<span class="require">*</span>Email:</label>
+				<div class="controls">
+					<input class="span6" id="email" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="reEmail">
+				<span class="require">*</span>Re-enter Email:</label>
+				<div class="controls">
+					<input class="span6" id="reEmail" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="phone">
+				<span class="require">*</span>Phone:</label>
+				<div class="controls">
+					<input class="span6" id="phone" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="address1">Address 1:</label>
+				<div class="controls">
+					<input class="span8" id="address1" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="address2">Address 2:</label>
+				<div class="controls">
+					<input class="span8" id="address2" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="city">City:</label>
+				<div class="controls controls-row">
+					<input class="span3" id="city" type="text" />
+					<select class="span3" id="state">
+						<option>State</option>
+						<option>Alabama</option>
+						<option>Alaska</option>
+						<option>Georgia</option>
+					</select>
+					<input class="span2" id="zip" type="text" placeholder="Zip" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="gender">Gender:</label>
+				<div class="controls">
+					<select class="span3" id="gender">
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="agecheck">Age:</label>
+				<div class="controls">
+					<select class="span3" id="agecheck">
+						<option>Under 13</option>
+						<option>Over 13</option>
+					</select>
+				</div>
+			</div>
+			<h2>Restaurant Information:</h2>
+			<div class="control-group">
+				<label class="control-label" for="restaurantName">Restaurant Name:</label>
+				<div class="controls">
+					<input class="span6" id="restaurantName" type="text" /><span class="help-inline"><a href="#">Find</a></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="restaurantAddress">Address:</label>
+				<div class="controls">
+					<input class="span6" id="restaurantAddress" type="text" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="restaurantCity">City:</label>
+				<div class="controls controls-row">
+					<input class="span3" id="restaurantCity" type="text" />
+					<select class="span3" id="restaurantState">
+						<option>State</option>
+						<option>Alabama</option>
+						<option>Alaska</option>
+						<option>Georgia</option>
+					</select>
+					<input class="span2" id="restaurantZip" type="text" placeholder="Zip" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="contactPref">Preferred Contact:</label>
+				<div class="controls">
+					<select class="span3" id="contactPref">
+						<option>Phone</option>
+						<option>Email</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label span8">I would like to receive information on future Chick-fil-A promotions.</label>
+				<div class="controls span2">
+					<label class="radio inline">
+						<input type="radio" /> Yes
+					</label>
+					<label class="radio inline">
+						<input type="radio" /> No
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label span5" for="eatFreq">How often per month do you eat with us?</label>
+				<div class="controls">
+					<select class="span3" id="eatFreq">
+						<option>First Time</option>
+						<option>All the time</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label span4"><span class="require">*</span>I am 13 years of age or older:</label>
+				<div class="controls span2">
+					<label class="radio inline">
+						<input type="radio" /> Yes
+					</label>
+					<label class="radio inline">
+						<input type="radio" /> No
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="comments">Comments:</label>
+				<div class="controls">
+					<textarea class="span6" id="comments"></textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-large default padding30">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

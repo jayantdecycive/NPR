@@ -1,0 +1,665 @@
+/* --- Variables ------------------------------------------------------ */
+/* --- Mixins ------------------------------------------------------ */
+/* --- Buttons ------------------------------------------------------ */
+.button-green-next {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  position: relative;
+  width: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url("../Img/NPR/buttons/btn-bg-green.png");
+  background-position: 0 top;
+  background-repeat: repeat-x;
+  background-color: #379f0f;
+  border: 1px solid #fff;
+  text-decoration: none;
+  font-size: 0;
+  padding: 5px 0; }
+  .button-green-next:hover, .button-green-next focus {
+    background-position: 0 bottom;
+    text-decoration: none; }
+  .button-green-next span.button-text {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 15px;
+    color: #fff;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    border-right: 1px solid #738287; }
+  .button-green-next span.button-icon-container {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 50px;
+    border-left: 1px solid #a5f486; }
+    .button-green-next span.button-icon-container span.button-icon {
+      display: block;
+      position: relative;
+      margin: auto;
+      margin-top: -5px;
+      height: 35px;
+      width: 50px;
+      background-image: url("../Img/NPR/buttons/btn-icons-large.png");
+      background-position: -50px center;
+      background-repeat: no-repeat; }
+
+.button-grey-view {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  position: relative;
+  width: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url("../Img/NPR/buttons/btn-bg-grey.png");
+  background-position: 0 top;
+  background-repeat: repeat-x;
+  background-color: #92a0a6;
+  border: 1px solid #fff;
+  text-decoration: none;
+  font-size: 0;
+  padding: 5px 0; }
+  .button-grey-view:hover, .button-grey-view focus {
+    background-position: 0 bottom;
+    text-decoration: none; }
+  .button-grey-view span.button-text {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 15px;
+    color: #fff;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    border-right: 1px solid #738287; }
+  .button-grey-view span.button-icon-container {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 35px;
+    border-left: 1px solid white; }
+    .button-grey-view span.button-icon-container span.button-icon {
+      display: block;
+      position: relative;
+      margin: auto;
+      margin-top: -5px;
+      height: 35px;
+      width: 35px;
+      background-image: url("../Img/NPR/buttons/btn-icons.png");
+      background-position: -280px center;
+      background-repeat: no-repeat; }
+
+.button-grey-menu {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  position: relative;
+  width: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url("../Img/NPR/buttons/btn-bg-grey.png");
+  background-position: 0 top;
+  background-repeat: repeat-x;
+  background-color: #92a0a6;
+  border: 1px solid #fff;
+  text-decoration: none;
+  font-size: 0;
+  padding: 5px 0; }
+  .button-grey-menu:hover, .button-grey-menu focus {
+    background-position: 0 bottom;
+    text-decoration: none; }
+  .button-grey-menu span.button-text {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 15px;
+    color: #fff;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    border-right: 1px solid #738287; }
+  .button-grey-menu span.button-icon-container {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 35px;
+    border-left: 1px solid white; }
+    .button-grey-menu span.button-icon-container span.button-icon {
+      display: block;
+      position: relative;
+      margin: auto;
+      margin-top: -5px;
+      height: 35px;
+      width: 35px;
+      background-image: url("../Img/NPR/buttons/btn-icons.png");
+      background-position: -315px center;
+      background-repeat: no-repeat; }
+
+/* --- Styles ------------------------------------------------------ */
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.header-bar {
+  background-color: #111;
+  height: 10px;
+  width: 100%; }
+
+#logo {
+  position: relative;
+  top: -12px;
+  left: 0px;
+  background-image: url("/Content/Themes/npr/Images/logo-admin.png");
+  width: 228px;
+  height: 107px; }
+
+.top-menu {
+  width: 765px;
+  padding-top: 16px; }
+
+.secondary-bar {
+  background-color: #454545;
+  height: 60px;
+  width: 100%;
+  margin-bottom: -60px; }
+
+.nav-bar .nav {
+  height: 29px;
+  line-height: 30px;
+  padding-left: 20px;
+  padding-right: 200px;
+  background: #666;
+  margin-left: 50px;
+  position: absolute;
+  right: 10px;
+  min-width: 403px; }
+  .nav-bar .nav li {
+    margin-right: 35px; }
+    .nav-bar .nav li a {
+      color: #cdcfbb;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: normal;
+      vertical-align: top; }
+    .nav-bar .nav li a:hover, .nav-bar .nav li a:focus {
+      color: white;
+      text-decoration: none;
+      text-shadow: 1px 0px 0px white; }
+.nav-bar .admin-section-title {
+  font-weight: bold;
+  color: #eee;
+  padding-right: 10px; }
+.nav-bar .selectpicker {
+  padding: 2px; }
+
+#logindisplay {
+  float: right;
+  position: relative;
+  z-index: 2; }
+  #logindisplay .status {
+    color: #8da5af;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px; }
+
+.wizard.content {
+  text-align: left;
+  border-top: 2px solid #efefeb;
+  border-bottom: 2px solid #e2e2dc; }
+  .wizard.content .wizard.wrapper {
+    width: auto;
+    height: auto;
+    margin: 0;
+    border-top: 2px solid #e2e2dc;
+    border-bottom: 2px solid #efefeb; }
+    .wizard.content .wizard.wrapper .wizard-summary {
+      float: none;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      margin-left: 50px; }
+      .wizard.content .wizard.wrapper .wizard-summary h2 {
+        color: #252525;
+        font-family: Tahoma, Arial, sans-serif;
+        font-size: 17.75px;
+        font-weight: bold; }
+      .wizard.content .wizard.wrapper .wizard-summary.with-steps {
+        margin-top: 25px;
+        margin-bottom: 25px; }
+    .wizard.content .wizard.wrapper .wizard-steps {
+      float: right;
+      position: relative;
+      top: 10px;
+      cursor: hand;
+      cursor: pointer; }
+      .wizard.content .wizard.wrapper .wizard-steps a.wizard-step {
+        cursor: hand;
+        cursor: pointer;
+        width: auto;
+        margin: 0 5px; }
+        .wizard.content .wizard.wrapper .wizard-steps a.wizard-step .wizard-icon {
+          cursor: hand;
+          cursor: pointer;
+          margin: 0 14px; }
+        .wizard.content .wizard.wrapper .wizard-steps a.wizard-step .wizard-text {
+          cursor: hand;
+          cursor: pointer; }
+        .wizard.content .wizard.wrapper .wizard-steps a.wizard-step.current-true .wizard-bar {
+          bottom: -16px; }
+
+.inner-content.wrapper {
+  width: auto;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: 2px solid #e2e2dc;
+  border-bottom: 2px solid #efefeb; }
+  .inner-content.wrapper:first-child {
+    border-top: none; }
+  .inner-content.wrapper.no-border-top {
+    border-top: none; }
+  .inner-content.wrapper .button-list.landing-page {
+    margin-top: 20px; }
+  .inner-content.wrapper .model.badge {
+    padding: 23px 25px; }
+    .inner-content.wrapper .model.badge h2 {
+      margin-bottom: 0;
+      padding-bottom: 0; }
+    .inner-content.wrapper .model.badge p {
+      color: #666;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20pt;
+      letter-spacing: 1px; }
+    .inner-content.wrapper .model.badge.filters {
+      padding-top: 0; }
+    .inner-content.wrapper .model.badge .button-list.dashboards {
+      margin-top: 10px; }
+    .inner-content.wrapper .model.badge div.buttons-to-right {
+      width: 360px; }
+    .inner-content.wrapper .model.badge div.buttons-to-right-small {
+      width: 215px; }
+    .inner-content.wrapper .model.badge fieldset {
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0; }
+      .inner-content.wrapper .model.badge fieldset .model-field .editor-label {
+        padding-left: 0; }
+        .inner-content.wrapper .model.badge fieldset .model-field .editor-label label {
+          font-family: Tahoma, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: normal; }
+      .inner-content.wrapper .model.badge fieldset .model-field .editor-field {
+        width: 225px; }
+        .inner-content.wrapper .model.badge fieldset .model-field .editor-field input {
+          margin-left: 0; }
+    .inner-content.wrapper .model.badge .submit-block {
+      padding-left: 0; }
+      .inner-content.wrapper .model.badge .submit-block .button-cta {
+        padding-left: 175px; }
+  .inner-content.wrapper span.red-highlight {
+    font-weight: bold;
+    color: #cc0000; }
+  .inner-content.wrapper.new-tour-cta.create-new-tour div.model.badge div.inline-block, .inner-content.wrapper.new-tour-cta.create-new-event div.model.badge div.inline-block {
+    line-height: 35px;
+    vertical-align: top; }
+  .inner-content.wrapper.new-tour-cta.create-new-tour div.model.badge .button-list, .inner-content.wrapper.new-tour-cta.create-new-event div.model.badge .button-list {
+    display: inline-block;
+    position: relative; }
+  .inner-content.wrapper.new-tour-cta.specialty-tours .button-list {
+    display: inline-block;
+    position: relative;
+    top: -4px; }
+  .inner-content.wrapper.light-bg {
+    background-color: #f3f3f0; }
+  .inner-content.wrapper.upcoming-tours {
+    padding-bottom: 30px;
+    border-top: none; }
+  .inner-content.wrapper .details.dashboard .date-grid {
+    padding-top: 10px; }
+
+span.calendar-icon-big {
+  display: inline-block;
+  width: 39px;
+  height: 37px;
+  background-image: url(../Img/NPR/calendar-icon.png);
+  vertical-align: middle;
+  line-height: 1;
+  margin-left: 5px; }
+
+.action-detailssummary.controller-event .inner-content.wrapper .model.badge fieldset .model-field .editor-field,
+.action-edit.controller-event .inner-content.wrapper .model.badge fieldset .model-field .editor-field {
+  width: 58%; }
+
+.action-request.controller-nprticket .inner-content.wrapper .model.badge fieldset .model-field .editor-field {
+  width: 200px; }
+
+.admin-table .dataTables_wrapper a {
+  display: inline-block;
+  width: auto;
+  padding: 0 5px;
+  line-height: 22px;
+  text-align: center;
+  background-color: #8da5af;
+  color: #fff;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 10px; }
+  .admin-table .dataTables_wrapper a:hover, .admin-table .dataTables_wrapper a:focus {
+    background-color: #cc3300;
+    text-decoration: none; }
+.admin-table .dataTables_wrapper tbody td:first-child {
+  width: 30px; }
+.admin-table .dataTables_wrapper tbody tr td {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 25px;
+  line-height: 25px;
+  border-left: 1px solid #ecefec;
+  border-right: 1px solid #ecefec; }
+.admin-table .dataTables_wrapper #media_select td a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px; }
+.admin-table .dataTables_wrapper #media_select tr td:nth-child(2) a {
+  width: 70px;
+  margin-right: -30px; }
+.admin-table .dataTables_wrapper #media_select tr td:nth-child(4) a {
+  width: 100px;
+  margin-right: -30px; }
+.admin-table .dataTables_wrapper #media_select tr td:nth-child(5) {
+  width: 0px; }
+.admin-table .dataTables_wrapper .dataTables_paginate a {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 14px;
+  line-height: 14px; }
+
+.dashboard-create-button {
+  width: 20%; }
+
+.clearLine {
+  display: none !important; }
+
+#button_group_week p {
+  padding-left: 10px; }
+
+#button_group_all p, #details_segment p {
+  padding-left: 0; }
+
+.admin-table-2 .ui-accordion .ui-accordion-content {
+  padding: 1em; }
+
+.slot-row ul li {
+  padding-right: 3px;
+  vertical-align: middle; }
+
+.model.badge, .dashboard {
+  padding: 0; }
+
+form .inner-content.wrapper {
+  margin-left: 0;
+  margin-right: 0; }
+
+#npr-admin-landing .intro {
+  padding-top: 25px; }
+
+#npr-admin-landing .inner-content {
+  padding-left: 15px; }
+
+.npr.action-index.controller-home h2 {
+  position: relative;
+  left: -10px; }
+
+.action-request-dash.controller-home .model.badge.dash {
+  display: none; }
+
+#redemptionPeriod-section ul, #redemptionPeriod-tour-section ul, #timeSlots-section ul {
+  font-size: 14px; }
+  #redemptionPeriod-section ul strong, #redemptionPeriod-tour-section ul strong, #timeSlots-section ul strong {
+    display: inline-block;
+    padding: 0 20px; }
+
+.resevent-new {
+  padding-top: 20px !important; }
+
+#summaryTickets-section {
+  padding-top: 25px; }
+
+.model.badge h1, .model.badge h2, .dashboard h1, .dashboard h2 {
+  padding-bottom: 10px; }
+
+.inner-content.wrapper.model.details {
+  border-bottom: none; }
+
+.inner-content.wrapper.model.details.dashboard {
+  padding-top: 0;
+  border-bottom: none; }
+
+.model.edit fieldset {
+  width: 75%;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 14px; }
+  .model.edit fieldset .dateTimeFieldContainer.start > input, .model.edit fieldset .dateTimeFieldContainer.end > input {
+    width: 40%; }
+
+.model-field .editor-label {
+  padding-left: 0; }
+
+#details_segment .details-input {
+  padding-top: 10px;
+  padding-left: 0; }
+
+#voiceBtn {
+  display: none; }
+
+.model-field.field-SubHeading > .editor-label, .model-field.field-Description > .editor-label {
+  width: 60%; }
+
+.model-field.field-SubHeading > .editor-label > label:first-child, .model-field.field-Description > .editor-label > label:first-child {
+  font-weight: bold; }
+
+.model-field.field-MustBeOfAgeToAttend .editor-field {
+  width: 20px; }
+  .model-field.field-MustBeOfAgeToAttend .editor-field #MustBeOfAgeToAttend {
+    margin-top: 0px !important; }
+.model-field.field-MustBeOfAgeToAttend .editor-label {
+  width: 40%; }
+
+.model-field.field-Media .editor-label {
+  width: 60%; }
+  .model-field.field-Media .editor-label label {
+    font-weight: bold; }
+.model-field.field-Media .editor-field #media_preview {
+  display: inline-block;
+  padding-bottom: 10px;
+  max-width: 110px; }
+.model-field.field-Media .editor-field .table-picker {
+  width: 70%;
+  margin-left: 10px; }
+
+.ui-tooltip {
+  display: none !important; }
+
+.ui-button-icon-only.ui-dialog-titlebar-close .ui-button-icon-primary.ui-icon.ui-icon-closethick {
+  top: 0 !important; }
+.ui-button-icon-only.ui-dialog-titlebar-close .ui-button-text {
+  display: none !important; }
+
+.inner-content.wrapper.event-details {
+  margin: 20px 0 0; }
+  .inner-content.wrapper.event-details fieldset {
+    padding: 20px 0; }
+
+.inner-content.wrapper.site-availability {
+  margin: 0 0 20px; }
+  .inner-content.wrapper.site-availability section {
+    margin-left: 0 !important; }
+
+div.DTTT_container {
+  left: 370px !important; }
+
+.summary-btn-grp {
+  padding-top: 0 !important;
+  padding-left: 0 !important; }
+
+.model fieldset {
+  padding-left: 0; }
+
+.npr.action-detailssummary .edit-button {
+  display: none; }
+
+.model-field.field-EndOffsetString .editor-label {
+  width: 100px; }
+
+.summary-btn-grp {
+  margin-top: 20px; }
+
+.filters.model.badge .admin-table {
+  vertical-align: middle; }
+
+.margin-left-0 {
+  margin-left: 0; }
+
+.margin-left-25 {
+  margin-left: 25px; }
+
+.padding-left-0 {
+  padding-left: 0 !important; }
+
+.padding-top-10 {
+  padding-top: 10px !important; }
+
+.padding-bot-10 {
+  padding-bottom: 10px !important; }
+
+.padding-bot-20 {
+  padding-bottom: 20px; }
+
+.border-top-none {
+  border-top: none !important; }
+
+.border-bottom-none {
+  border-bottom: none; }
+
+.valign-top {
+  vertical-align: top; }
+
+.action-delete.controller-nprslot fieldset {
+  display: none; }
+
+.action-delete.controller-nprslot fieldset:first-child {
+  display: block; }
+
+.button-request-dash {
+  position: relative;
+  top: 8px; }
+
+.jq-time {
+  padding: 6px 10px !important; }
+
+.action-request.controller-nprticket .badge .request-page input[type=text] {
+  height: 25px;
+  width: 44%;
+  vertical-align: middle;
+  line-height: 0px;
+  margin-bottom: 0px; }
+.action-request.controller-nprticket .customDateInput {
+  padding-top: 1px;
+  padding-left: 14px; }
+  .action-request.controller-nprticket .customDateInput input {
+    width: 120px !important; }
+.action-request.controller-nprticket .datetimeLabel {
+  padding-top: 12px;
+  padding-left: 14px; }
+.action-request.controller-nprticket .well fieldset {
+  position: relative;
+  left: -10px; }
+
+.action-note textarea {
+  width: 100%;
+  height: 300px; }
+
+.action-summary.controller-event .button-cta.right-float.summary-btn-grp.status-action {
+  margin-top: 30px; }
+
+.action-edit.controller-nprticket .editor-label {
+  width: 230px; }
+.action-edit.controller-nprticket textarea {
+  width: 530px !important;
+  height: 200px !important; }
+
+.action-request.controller-nprticket .notesContainer ul {
+  padding: 0;
+  margin: 0; }
+  .action-request.controller-nprticket .notesContainer ul li {
+    display: block;
+    padding: 0 0 10px 0; }
+.action-request.controller-nprticket .notesContainer a {
+  margin-top: 10px;
+  display: block; }
+.action-request.controller-nprticket textarea {
+  width: 100%;
+  height: 200px !important; }
+
+.action-edit.controller-nprslot .model-field .editor-label {
+  vertical-align: top;
+  margin-top: 10px; }
+.action-edit.controller-nprslot textarea {
+  width: 550px !important;
+  height: 200px !important; }
+.action-edit.controller-nprslot .jq-date-time {
+  width: 166px; }
+
+.auto-dialog .inner-content.wrapper .model.badge {
+  padding: 20px 0 0 0 !important;
+  margin: 0 !important; }
+
+@media (max-width: 767px) {
+  body {
+    padding-right: 0;
+    padding-left: 0; } }
+.validation-summary-valid {
+  display: none; }
+
+.invisible {
+  display: none; }
+
+.filters div {
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+
+.error {
+  color: red; }
+
+.details-input label.admin-table-2 {
+  vertical-align: middle; }
+
+#loggedInAsGuest span,
+#signInButton {
+  display: none; }
+

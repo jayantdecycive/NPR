@@ -1,0 +1,78 @@
+﻿@model cfaresv2.Models.ITicketAccountModel
+
+               
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.User.FirstName,"First Name:")
+	            @Html.EditorFor(x=>x.User.FirstName)
+	            @Html.ValidationMessageFor(x=>x.User.FirstName)
+            </li>
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.User.LastName,"Last Name:")
+	            @Html.EditorFor(x=>x.User.LastName)
+	            @Html.ValidationMessageFor(x=>x.User.LastName)
+            </li>
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.EmailAddress,"Email Address:")
+	            @Html.EditorFor(x=>x.EmailAddress)
+                <span class="note tooltip-why" style="top:0px;" data-content="Your confirmation and invitation will be sent to your email. The printed invitation is required on the day of your event.">Why?</span>
+	            <div>@Html.ValidationMessageFor(x=>x.EmailAddress)</div>
+            </li>
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.ConfirmEmail, "Re-Enter Email Address:")
+	            @Html.EditorFor(x=>x.ConfirmEmail)
+	            <div>@Html.ValidationMessageFor(x=>x.ConfirmEmail)</div>
+            </li>
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.Password,"Password:")
+	            @Html.EditorFor(x=>x.Password)
+	            @Html.ValidationMessageFor(x=>x.Password)
+	            <span class="note tooltip-why" data-content="By registering, you are creating an account that will help you manage your reservations.">Why?</span>
+            </li>
+            <li>
+	            <span class="required"><div class="long-validation-message-required">*</div></span>
+	            @Html.LabelFor(x=>x.ConfirmPassword,"Confirm Password:")
+	            @Html.EditorFor(x=>x.ConfirmPassword)
+				<div class="long-validation-message">@Html.ValidationMessageFor(x=>x.ConfirmPassword)</div>
+            </li>
+            <li>
+	            <span class="required">*</span>
+	            @Html.LabelFor(x=>x.User.Address.ZipString,"Zip Code:")
+	            @Html.EditorFor(x=>x.User.Address.ZipString)
+	            @Html.ValidationMessageFor(x=>x.User.Address.ZipString)
+            </li>
+            <li>
+                @Html.LabelFor(x=>x.BirthMonth,"Birthday:")
+                @Html.DropDownListFor(x=>x.BirthMonth,
+                                      new SelectList(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames.Take(12)),new {@class="birth"}
+                     )
+                @Html.ValidationMessageFor(x=>x.BirthMonth)
+						
+                @Html.DropDownListFor(x=>x.BirthDate,
+                                      new SelectList(
+                                          Enumerable.Range(1,31).Select(x=>new {Value=x,Label=x}),
+                                          "Label","Value"
+                                          ),new {@class="birth date-input input-small"}
+                     )
+                @Html.ValidationMessageFor(x=>x.BirthDate)
+						
+            </li>
+            <li>
+                @Html.HiddenFor(x=>x.User.Gender)
+	            @Html.LabelFor(x=>x.User.Gender, "Gender:")
+	            <select name="User.Gender" id="User.Gender">
+                <option value="0">Select your Gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                </select>
+	            <div>@Html.ValidationMessageFor(x=>x.User.Gender)</div>
+            </li>
+            <li>
+	            @Html.CheckBoxFor(x=>x.User.EmailInsiders)
+	            @Html.LabelFor(x=>x.User.EmailInsiders,"Join the Email Insiders and receive exclusive updates from Chick-fil-A, Inc.", new{@class="check"})<span class='ageReq'> (must be 18 or older)</span>
+	            @Html.ValidationMessageFor(x=>x.User.EmailInsiders)
+            </li>

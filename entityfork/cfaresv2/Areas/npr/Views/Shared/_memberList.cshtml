@@ -1,0 +1,74 @@
+﻿
+@model npr.domain._event.ticket.NPRTicket
+
+@{
+    int max = 20;
+    if(ViewBag.TicketsAvailable != null)
+    {
+        max = Convert.ToInt32(ViewBag.TicketsAvailable);
+        if (max == 0){
+            ViewBag.SizeMessage = "Sorry, there are no tickets available at this time. Please check back for possible cancellations.";
+        }
+        else if (Model.GroupSize > max){
+            Model.GroupSize = max;
+            ViewBag.SizeMessage ="Only " + max.ToString() + " tickets are available for this date";
+        }
+    }
+}
+
+
+@* GROUP SIZE *@
+<div class="control-group">
+	<span class="asterisk">*</span>
+	@if(Model.IsSpecialtyTicket) {
+		@Html.LabelFor(m => m.GroupSize, "How many people are in your group?", new { @class = "control-label special-group-size"})
+      
+	}
+	else
+	{
+		@Html.LabelFor(m => m.GroupSize, "Group Size:", new { @class = "control-label"})
+        
+	}
+    <div class="controls">
+        
+        @Html.DropDownListFor(m => m.GroupSize, new SelectList(Enumerable.Range(1, max)) )
+        @if(ViewBag.SizeMessage != null)
+        {
+            <span class="validation">@ViewBag.SizeMessage</span>
+        }
+    </div>
+	<span class="validation">@Html.ValidationMessageFor(m => m.GroupSize)</span>
+</div>
+        
+
+<p class="names-directions"><span class="asterisk">*</span> Please enter the first and last names of each member in your group:</p>
+    
+    
+@* MEMBER LIST *@   
+<div class="control-group">   
+@if (Model.GuestList != null && Model.GuestList.Any())
+{
+    <label>Names of Attendees:</label>
+    <div class="guest-list">
+    @foreach(cfacore.shared.domain.user.Name name in Model.GuestList){
+        <div class="name name-display">
+        <input type="text" class="first required" name="first" value="@name.First"/>
+        <input type="text" class="last required" name="last" value="@name.Last"/>
+        </div>    
+    }
+    </div>
+}
+else
+{
+    <div class="guest-list">
+    @for (var i = 1; i <= Model.GroupSize; i++){
+        <div class="name" id="name_@(i)">
+			<span class="asterisk">*</span> <span class="guest-label">Guest @(i): </span>
+			<input type="text" value="" class="first required" name="first@(i)"/>
+			<input type="text" value="" class="last required" name="last@(i)"/>
+        </div>    
+    }
+    </div>
+}
+</div>
+

@@ -1,0 +1,160 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+
+@{
+    ViewBag.Title = "Registration Confirmation";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+    bool isevent = false;
+	bool istour = false;
+    if(Model.Slot != null && Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent"){
+        isevent = true;
+        ViewBag.Nav = "Events";
+    }else{
+        ViewBag.Nav = "Tours";
+		istour = true;
+    }
+	
+	bool ispaid = false;
+	if (Model.Slot != null && Model.Slot.Occurrence != null && Model.Slot.Occurrence.ResEvent != null && Model.Slot.Occurrence.ResEvent.IsPaid)
+	{
+		ispaid = true;
+	}
+
+}
+@if (isevent && ispaid) { 
+<script>
+    // It works without the History API, but will clutter up the history
+    var history_api = typeof history.pushState !== 'undefined'
+    // The previous page asks that it not be returned to
+    if (location.hash == '#no-back') {
+        // Push "#no-back" onto the history, making it the most recent "page"
+        if (history_api) history.pushState(null, '', '#stay')
+        else location.hash = '#stay'
+        // When the back button is pressed, it will harmlessly change the url
+        // hash from "#stay" to "#no-back", which triggers this function
+        window.onhashchange = function () {
+            // User tried to go back; warn user, rinse and repeat
+            if (location.hash == '#no-back') {
+                alert("Your reservation has already been confirmed. You may not re-submit the payment form. If you need to purchase additional tickets, please restart the process.")
+                if (history_api) history.pushState(null, '', '#stay')
+                else location.hash = '#stay'
+            }
+        }
+    }
+</script>
+}
+<div class="noprint">
+@Html.Partial("Breadcrumbs")
+</div>
+<h1 class="margin-bot-60">Request Submitted</h1>
+
+@if(Model.IsSpecialtyTicket){
+
+    <p>Thank you @Model.FirstName for your interest in touring our headquarters at <strong>1111 North Capitol Street, NE!</strong> We will be reviewing the details of your reservation and will either call or email you to confirm a date and time for your tour within the next four business days.</p>
+    <p class="margin-top-35">In the meantime, start planning your group’s visit by viewing our @Html.ActionLink("FAQ", "Faq", "Home") and @Html.ActionLink("Plan Your Visit", "Plan", "Home") pages. If you have any questions, please feel free to contact us at <a href="mailto:tours@npr.org" target="_self"> tours@npr.org</a>.</p>
+    <p class="margin-top-35">Be sure to spread the word about your upcoming visit, and maybe invite your friends to come along – the more the merrier!</p>
+
+	@Html.Partial("_social-tours")
+	
+    <p class="margin-top-35 margin-bot-60">Your NPR host,<br />
+    @*<img src="http://tours.npr.org/content/themes/npr/images/justin-signature.png" /><br />*@
+         <img src="/content/themes/npr/images/justin-signature.png" /><br />
+    Justin Winn<br />
+    Manager, NPR Audience and Community Relations<br />
+    </p>
+
+}
+else
+{
+
+    if (isevent)
+    {
+        if (ispaid)
+        {
+            <p>Dear @Model.FirstName,</p>
+            <p>Thank you for purchasing tickets to @Model.Slot.Occurrence.ResEvent.Name. You will receive an email shortly with your credit card receipt and the tickets to the event. Your confirmation number is <span class="disclaimer strong">@Model.ConfirmationNumber</span>. Please retain this number in case you need to modify your reservation or cancel your purchase.</p>
+        }
+		<p>Thank you! <span>Your reservation is complete!</span> Your confirmation number is <span class="disclaimer strong">@Model.ConfirmationNumber</span>. Please retain this number in the case of @Html.ActionLink("modifying or cancelling your reservation", "Modify", "Reservation").</p>	
+	} else {
+		<p>Thank you @Model.FirstName for your interest in touring our new headquarters at <span class="strong">1111 North Capitol St. NE!</span> You will receive an email shortly confirming your reservation. Your confirmation number is <span class="disclaimer strong">@Model.ConfirmationNumber</span>.</p>
+	}
+
+	if(isevent) {
+        if (ispaid)
+        {
+            <p>We can’t wait to see you on @Model.Slot.Start.ToString("MMMM dd ") at @Model.Slot.Start.ToString(" hh:mmtt"). We want your visit to be amazing, so we put together an @Html.ActionLink("FAQ", "Faq", "Home") and a guide to help you @Html.ActionLink("plan your trip", "Plan", "Home"). If you have any questions about your purchase, please feel free to email us at <a href="mailto:events@npr.org">events@npr.org</a> or call us at 202-513-2031. Our staff is available Monday through Friday 10 AM to 5 PM.</p>
+        }
+		<p class="margin-top-35">We look forward to seeing you. You will receive an email with your ticket and confirming your reservation. Please be sure to print out the ticket and bring it with you along with a photo ID for each attendee on the day of the event. To modify or cancel your reservation, please visit our @Html.ActionLink("website", "Events", "Home").</p>	 
+	} else {
+		<p class="margin-top-35">We can’t wait to see you @Model.Slot.Start.ToString("MMMM dd ") at @Model.Slot.Start.ToString(" hh:mmtt")! We want your visit to be amazing, so we put together an @Html.ActionLink("FAQ", "Faq", "Home") and a guide to help you @Html.ActionLink("plan your trip", "Plan", "Home").  If you have any questions, please feel free to contact us at <a href="mailto:tours@npr.org" target="_self"> tours@npr.org</a>.</p>
+
+		<p class="margin-top-35">We suggest you also print this page in case your mailbox eats your confirmation number: <span class="disclaimer strong">@Model.ConfirmationNumber</span>.</p>
+	}
+    
+	<p class="margin-top-35">Be sure to spread the word about your upcoming visit, and maybe invite your friends to come along &mdash; the more the merrier!</p>
+
+    if(isevent) {
+		@Html.Partial("_social-events")
+     <p class="margin-top-35 margin-bot-60">Your NPR host,<br />
+  
+         <img src="/content/themes/npr/images/justin-signature.png" /><br />
+    Justin Winn<br />
+    Manager, NPR Audience and Community Relations<br />
+    </p>
+    }
+    else
+    {
+		@Html.Partial("_social-tours")
+    }
+
+    if (!isevent)
+    {
+		<p class="margin-top-35">We’re looking forward to seeing you real soon!</p>
+		<p class="margin-top-35 margin-bot-60">Your NPR host,<br />
+		<img src="/content/themes/npr/images/justin-signature.png" /><br />
+		Justin Winn<br/>
+		Manager, NPR Audience and Community Relations<br/>
+		</p>
+    }
+}
+
+
+
+
+
+
+@section scripts {
+	<script type="text/javascript">
+		var facebook_appid = "138837436154588";
+		var facebook_title = "Take a Tour of NPR";
+		var facebook_message = "Get a glimpse of the life behind your radio speakers by taking a tour of NPR's Washington facility. Register today! ";
+		var facebook_url = "@Url.Action("Tours", "Home", null, Request.Url.Scheme)";
+		var twitter_url = facebook_url;
+		var facebook_imageurl = "http://media.npr.org/chrome/news/nprlogo_138x46.gif";
+		var twitter_message = "Take a Tour of NPR's Washington facility - Register today!";
+
+		$('.facebook-share').click(function () {
+			//var url = "https://www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + facebook_appid + "&picture=" + facebook_appid + "&name=" + facebook_appid + "&description=" + facebook_appid;
+			var url = "http://www.facebook.com/thisisnpr";
+			window.open(url, '_blank');
+		});
+
+		$('.twitter-share').click(function () {
+			//var url = "http://twitter.com/share?text=" + twitter_message + "&url=" + twitter_url;
+			var url = "http://twitter.com/@@npr";
+			window.open(url, '_blank');
+		});
+	</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>
+}

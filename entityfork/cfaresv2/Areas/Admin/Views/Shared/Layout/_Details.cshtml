@@ -1,0 +1,53 @@
+﻿
+@using cfares.site.modules.com.application
+@model cfacore.domain._base.DomainObject
+@{    
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details">
+        <div class='model badge'>
+        
+            @RenderBody()
+            <div>
+            @if (IsSectionDefined("Action"))
+            {
+                @RenderSection("Action")
+            }
+            else{ 
+                <div class='button-cta edit-button' data-icon="ui-icon-pencil">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id() })
+                </div>
+            } 
+            @if (IsSectionDefined("Cancel"))
+            {
+                @RenderSection("Cancel")
+            }
+            else { 
+                <div class='dash-cta'>
+                    @Html.ActionLink("Back to Dash", "Index")
+                </div>
+            }   
+                </div>        
+                @if (IsSectionDefined("Table"))
+            {
+                 <div class='model-table'>
+                @RenderSection("Table")
+                     </div>
+            }
+            
+        </div>
+    </div>
+</div>
+@section Meta{
+    @if (IsSectionDefined("Meta") ){
+        @RenderSection("Meta")
+    }
+    
+}
+
+@this.RedefineSection("Scripts")
+
+@if (IsSectionDefined("Footer")) {DefineSection("Footer", () => RenderSection("Footer"));}
+@if (IsSectionDefined("Header")) {DefineSection("Header", () => RenderSection("Header"));}

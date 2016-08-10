@@ -1,0 +1,51 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@model cfares.domain.user.ResUser 
+@{
+    ViewBag.Title = "My Account Information";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>My Account Information</h1>
+		<p class="text-center">Your Profile has been updated!</p>
+	</div>
+</div>
+<div class="row-fluid">
+	<div id="confirmInfo" class="span8 offset3">
+		<div class="control-group">
+			<span class="infoName">First Name:</span>
+			<span>@Model.FirstName</span>
+		</div>
+		<div class="control-group">
+			<span class="infoName">Last Name:</span>
+			<span>@Model.LastName</span>
+		</div>
+		<div class="control-group">
+			<span class="infoName">Email:</span>
+			<span>@Model.Email</span>
+		</div>
+		
+		<div class="control-group">
+			<span class="infoName">Birthday:</span>
+			<span>@Model.BirthDay.ToString("MMMM d")</span>
+		</div>
+		<div class="control-group">
+			<span class="infoName">Zip Code:</span>
+			<span>@Model.Address.ZipString</span>
+		</div>
+		@*<div class="control-group">
+			<span class="infoName">Gender:</span>
+			<span>Male</span>
+		</div>*@
+		@*<div class="control-group">
+			<span class="infoName">Family Members:</span>
+			<span>Alice (Daughter)<br />June (Daughter)<br />Scott (Son)</span>
+		</div>*@
+		<div class="control-group">
+			<a href="/Account/" class="btn-large btn btn-primary">Back to Home</a>
+			<a href="/Account/Profile/Update" class="btn-large btn btn-info">Edit Information</a>
+		</div>
+	</div>
+</div>

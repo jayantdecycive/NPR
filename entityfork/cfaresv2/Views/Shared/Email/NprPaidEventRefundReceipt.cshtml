@@ -1,0 +1,43 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.NprEmailContextModel>
+@*@model npr.domain._event.ticket.NPRTicket*@
+
+<html>
+<head>
+</head>
+<body style="width:700px; padding:0px; margin:0px;">
+    <div id="container" style="border: 3px solid #E6E7E8;">
+        <div id="head" style="padding-left: 65px; border-bottom: 5px solid #BE202E; ">
+            <img src="http://events.npr.org/Content/images/npr_logo_small.png" style="width:150px; margin-top: 20px; margin-bottom: 20px;" />
+        </div>
+        <div id="content" style="font-family: Georgia, serif; font-size: 18px; padding: 20px 65px 25px 65px; clear: both;">
+
+            <p>
+                Dear @Model.Ticket.Owner.FirstName,
+            </p>
+
+            <p>
+                The following purchasing for an NPR Event has been refunded. Below is your receipt info:
+            </p>
+
+            <p>
+                <span style="font-weight:bold;">Total Amount Refunded: </span>@Model.Ticket.TotalAmount<br />
+                <span style="font-weight:bold;">Cardholder Name: </span>@Model.Ticket.CCName<br />
+                <span style="font-weight:bold;">Card Expiration: </span>@String.Format("{0}/{1}", Model.Ticket.CCExpDateMonth, Model.Ticket.CCExpDateYear)<br />
+            </p>
+
+            <p>
+                If you have any questions, please visit <a href="http://www.npr.org/contact">npr.org/contact</a>.
+            </p>
+
+            <p class="margin-top-35 margin-bot-60">
+                Sincerely,<br />
+                <img src="http://tours.npr.org/content/themes/npr/images/signature-erin-mcintyre.png" /><br />
+                Erin McIntyre<br />
+                Manager, NPR Audience and Community Relations<br />
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>

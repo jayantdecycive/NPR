@@ -1,0 +1,118 @@
+﻿@using cfares.Global
+@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "Create an Account";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>Create an Account</h1>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span9 offset2">
+		<p>Complete the form below to create your Chick-fil-A Reservation System account. <span class="note require">* Indicates required field</span></p>
+		<form id="createAccount" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="nameFirst"><span class="require">*</span>First Name:</label>
+				<div class="controls">
+					<input type="text" id="nameFirst" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="nameLast"><span class="require">*</span>Last Name:</label>
+				<div class="controls">
+					<input type="text" id="nameLast" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="email"><span class="require">*</span>Email:</label>
+				<div class="controls">
+					<input type="text" id="email" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="emailRe"><span class="require">*</span>Re-enter Email:</label>
+				<div class="controls">
+					<input type="text" id="emailRe" />
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls check-left">
+					<label for="emailJoin" class="checkbox">
+						<input id="emailJoin" type="checkbox"> Join the Email Insiders and receive exclusive updates from Chick-fil-A, Inc. <span class="ageReq">(must be 18 or older)</span>
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls check-left">
+					<label for="emailUpdates" class="checkbox">
+						<input id="emailUpdates" type="checkbox"> Receive updates about promotions and events from this Chick-fil-A restaurant. <span class="ageReq">(must be 18 or older)</span>
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password"><span class="require">*</span>Password:</label>
+				<div class="controls">
+					<input type="password" id="password" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="passwordRe"><span class="require">*</span>Re-enter Password:</label>
+				<div class="controls">
+					<input type="password" id="passwordRe" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="zipCode"><span class="require">*</span>Zip Code:</label>
+				<div class="controls">
+					<input type="text" id="zipCode" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="gender"><span class="require">*</span>Gender:</label>
+				<div class="controls">
+					<select id="gender" class="span2">
+						<option>Gender</option>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label span4"><span class="require">*</span>I am 13 years of age or older:</label>
+				<div class="controls span2 check-left">
+					<label class="radio inline">
+						<input type="radio" /> Yes
+					</label>
+					<label class="radio inline">
+						<input type="radio" /> No
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="birthMonth"><span class="require">*</span>Birthday:</label>
+				<div class="controls">
+					<select id="birthMonth" class="span3">
+						<option>Month</option>
+						<option>January</option>
+						<option>February</option>
+					</select>
+					<select id="birthDay" class="span2">
+						<option>Day</option>
+						<option>1</option>
+						<option>11</option>
+						<option>21</option>
+						<option>31</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls btn-container">
+					<button type="submit" class="btn-large btn btn-primary">Create Account</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+﻿@using System.Text.RegularExpressions
+@model cfacore.domain._base.IDomainObject
+
+@{
+    Type pocoType = Html.GetPOCO(Model.GetType());
+    string ModelId = pocoType.Name;
+    string ModelName = Regex.Replace(ModelId, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ");
+    //string[] parentModels = Model.GetType().
+    List<string> parentModels = new List<string>(){pocoType.Name};
+    Type currentType = pocoType.BaseType;
+    while (currentType != typeof(cfacore.domain._base.DomainObject) && currentType != null)
+    {
+        parentModels.Add(currentType.Name);
+        currentType = currentType.BaseType;
+    }
+    
+    
+    ViewBag.Title = "Detail";
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    ViewBag.Brief = ModelName+" Detailed Information";
+}
+
+
+
+
+<h1>@ModelName @Model.Id()</h1>
+<p>
+@Model.ToString()
+</p>
+        
+
+   
+    @if (ViewBag.IgnoreParent != null && ViewBag.IgnoreParent)
+    {
+        @Html.Partial("ModelDetail/_" + ModelId)
+    }
+    else
+    {
+        foreach (string type in parentModels)
+        {
+            @Html.Partial("ModelDetail/_" + type)
+        }
+    }

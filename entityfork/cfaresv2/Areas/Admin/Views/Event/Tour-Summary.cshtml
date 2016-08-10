@@ -1,0 +1,159 @@
+﻿@using Ninject
+@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.site.modules.com.application
+@model ResEvent
+@{
+    ViewBag.Title = "Event Summary"; // Overridden by wizard name
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+	var occurrenceId = (Model.Occurrences.Count > 0 ? Model.Occurrences.First().OccurrenceId : -1);
+
+    Type ticketType = AppContext.Current.Configuration.GetKernel(Model.ReservationType).Get<ITicket>().GetType();
+    Type slotType = AppContext.Current.Configuration.GetKernel(Model.ReservationType).Get<ISlot>().GetType();
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+    <script>
+
+        var initialStores = @Html.Raw(Json.Encode(ViewBag.ParticipatingStores));
+        var storeDeck;
+        if (initialStores)
+            storeDeck = new DomainModel.ResStoreCollection(initialStores);
+        else
+            storeDeck = new DomainModel.ResStoreCollection();
+
+        var slots = new DomainModel.SlotCollection();
+        slots.viewUrl = "/DataService/TourViews.svc/TourSlot_Summary";
+        slots.abstract = true;
+        slots.setType({ StartDay:"Int32",GuideId:"Int32" });
+        slots.setWhere("model", { OccurrenceId: { $eq: @occurrenceId } });
+
+
+        $(function() {
+            $("#delete").click(function() {
+                var toDelete = [];
+                $("input[name='tableselect']:checked", "#slots_slots").each(function() {
+                    toDelete.push($(this).val());
+                });
+                $("#delete").bind("dialog-success", function() {
+                    console.log('redraw');
+                    slots.trigger("redraw");
+                });
+
+                $("#delete").trigger("modal", "/Admin/Slot/Destroy?snip=true&ids=" + toDelete.join(","));
+            });
+
+            $("#filter-month").change(function() {
+                var val = $(this).val();
+                if (!val) {
+                    slots.setWhere("month", null);
+                } else {
+                    slots.setWhere("month", { Start: { $month: Number(val) } });
+
+                }
+                slots.trigger("redraw");
+            });
+
+            $("#filter-day").change(function() {
+                var val = $(this).val();
+                if (!val) {
+                    slots.setWhere("day", null);
+                } else {
+                    slots.setWhere("day", { StartDay: Number(val) });
+
+                }
+                slots.trigger("redraw");
+            });
+
+            $("#filter-year").change(function() {
+                var val = $(this).val();
+                if (!val) {
+                    slots.setWhere("year", null);
+                } else {
+                    slots.setWhere("year", { Start: { $year: Number(val) } });
+
+                }
+                slots.trigger("redraw");
+            });
+            
+            $("#filter-guide input").bind("pk",function(e,pk) {
+                
+                var val = pk;
+                
+                if (!val) {
+                    slots.setWhere("guide", null);
+                } else {
+                    slots.setWhere("guide", { GuideId: Number(val) });
+
+                }
+                slots.trigger("redraw");
+            });
+
+        });
+
+    </script>    
+}
+	
+		<h1>Confirmation</h1>
+	 
+	
+	 	<section id="eventName-section">    
+			<h2>Name of Event</h2>
+			<span>@Model.Name</span>
+		</section>
+		<div class="clearLine"></div>
+	
+	
+		<div class='button-cta right-float summary-btn-grp' style="position: absolute; right: 30px;">
+			@Html.ActionLink("Create Single Slot", "Create", slotType.Name, new {OccurrenceId = Model.Occurrences.First().OccurrenceId}, new {data_icon = "ui-icon-locked", @class = "btn-container-default"})
+		</div>
+
+		
+	 
+		
+
+		<div class='filters model badge'>
+			<p class='inline-block'>Filter by:</p>
+			@Html.Partial("Filters/Input/_SlotDash", Model.ReservationTypeId)
+		</div>
+		
+		@Html.Partial("Tables/_" + slotType.Name + "Checkbox","slots")
+	 	 
+		<div class="clearLine"></div>
+	
+        <div class="inner-content wrapper event-details border-top-none">
+			@Html.Partial("ModelDetail/_ResEvent", Model, new ViewDataDictionary {{ "Mode", "DetailsSummary" }})
+		</div>
+
+		<div class="inner-content wrapper site-availability">
+			<section id="redemptionPeriod-tour-section">    
+				<h2>Site Availability Dates</h2>
+				<ul>
+					<li>Site Launch Date: <strong>@Model.SiteStart.ToString("MMMM dd, yyyy")</strong></li>
+					<li>Site End Date: <strong>@Model.SiteEnd.ToString("MMMM dd, yyyy")</strong></li>
+				</ul>
+			</section>
+		</div>
+
+
+
+@section Action{
+	<div class='button-cta right-float summary-btn-grp admin'>
+
+		
+		<div class="admin-green">
+			@Html.ActionLink("Save Event", "Activate", "Event", new { id = Model.ResEventId }, new { data_icon = "ui-icon-circle-check", @class = "btn-container-default" })
+		</div>
+
+		<div class="admin-red">
+			<a href="/Admin/Event/Delete/@Model.ResEventId?snip=true" data-icon="ui-icon-circle-close" class="btn-container-default" data-toggle="modal" data-title="Delete Event" data-submit-title="Delete">Delete Event</a>
+		</div>
+
+		<div class="admin-table-2">
+			@Html.ActionLink("Save as Draft", "SaveAsDraft", "Event", new { id = Model.ResEventId }, new { data_icon = "ui-icon-locked", @class = "btn-container-default" })
+		</div>
+        
+	</div>
+}
+

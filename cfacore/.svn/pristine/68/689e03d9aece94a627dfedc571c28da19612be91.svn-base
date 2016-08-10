@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <connectionStrings>
+    <add name="CfaComStoriesEntities" connectionString="metadata=res://*/Designer.Stories.csdl|res://*/Designer.Stories.ssdl|res://*/Designer.Stories.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;Persist Security Info=True;User ID=445396_CDSadmin;Password=G7e5Kz783ps3!;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" /><add name="CfaComFoodEntities" connectionString="metadata=res://*/Designer.Food.csdl|res://*/Designer.Food.ssdl|res://*/Designer.Food.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=174.143.28.35,4120;initial catalog=445396_CUSTOMER_DATA_STORE;persist security info=True;user id=445396_CDSadmin;password=G7e5Kz783ps3!;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />    
+  </connectionStrings>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+  </entityFramework>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+</configuration>

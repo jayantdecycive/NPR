@@ -1,0 +1,105 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.domain._event._ticket.tours.TourTicket>
+@{
+    string baseurl = "http://tours.chick-fil-a.com";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CustomerCancellationNotification</title>
+    <style type="text/css">
+        
+    body, table, tr, td, img, p
+    {
+        padding:0px;
+        margin:0px;
+        border:0px;
+        font-family: Arial, sans-serif;     
+        color:#666;        
+    }
+    
+    li
+    {
+        padding-bottom:15px;
+    }
+    
+    </style>
+    
+    
+</head>
+<body>
+<div>
+        
+<table border="0" cellspacing="0" cellpadding="0" width="612" style="border-collapse:collapse; border-spacing: 0;">
+<tr>
+<td>
+    
+<img src=@(baseurl+"/Areas/tours/Content/Img/email/header.png") alt="Home Office Backstage Tours"/>
+    
+</td>    
+</tr>
+<tr>
+<td style="padding-left:30px">
+<br/>  
+<p>Dear @Model.Owner.Name.First,</p><br/>
+        <p>We have received your notification to cancel your Chick-fil-A<sup>®</sup> Home Office Backstage Tour reservation. If this cancellation was made in error, please call us at 1-800-232-2677.</p><br/>
+        <p>Thank you, <br /> The Chick-fil-A<sup>®</sup> Home Office Backstage Tour Team</p>
+    <br/>
+    <br/>
+
+</td>               
+</tr>
+<tr>
+<td>
+
+   
+<table border="0" cellspacing="0" cellpadding="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0; line-height:0;">   
+<tr>
+<td>   
+    <table cellspacing="0" cellpadding="0" border="0" width="612" align="center" style="border-collapse:collapse; border-spacing: 0;">
+        
+    <tr style="height:62px;">
+        <td height="62" style="height:62px"> 
+            <a href="http://www.chick-fil-a.com/"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-header.png") alt="" width="604" height="62"/></a>    
+        </td>
+        </tr>
+        <tr>
+        <table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tr>
+            <td> 
+                <a href="http://www.chick-fil-a.com/Connect/Email-Insiders"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-email.png") alt="" width="299" height="44"/></a>   
+            </td>   
+            <td> 
+                <a href="http://www.facebook.com/ChickfilA"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-fb.png") alt="" width="305" height="44"/></a>  
+            </td>       
+        </tr>
+        <tr>
+            <td> 
+            <a href="http://www.chick-fil-a.com/Connect/Text-Insiders"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-text.png") alt="" width="299" height="57"/></a>     
+            </td>   
+            <td> 
+                <a href="http://twitter.com/#!/ChickfilA"><img src=@(baseurl+"/Areas/tours/Content/Img/email/brag-tw.png") alt="" width="305" height="57"/></a>    
+            </td> 
+        </tr>    
+        </table>       
+    </tr> 
+    <tr>
+    <td>
+
+    <p style="font-size:8pt; color:#666; text-align:center; padding-top:20px">© 2012 CFA Properties, Inc. Chick-fil-A<sup>®</sup> and Chick-fil-A Stylized® are trademarks of CFA Properties, Inc.</p>
+        
+    </td>
+    </tr>   
+    </table>  
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+   
+</div>
+</body>
+</html>
+​

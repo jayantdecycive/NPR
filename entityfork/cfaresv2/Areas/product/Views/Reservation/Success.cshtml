@@ -1,0 +1,44 @@
+﻿@model cfares.domain._event._ticket.FoodTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence - Success
+----------------------------------------------------*@
+
+<section class="row-fluid" id="success">
+	
+	<h1 class="span12">Reservation Successful!</h1>
+		
+	<article class="span7">
+	    <h3>You're Almost Done&hellip;</h3>
+	    <p>A message has been sent to your email (@Model.Owner.Email) with instructions on how to open and print your personal invitation to try our <strong>@Model.Item.Name.</strong></p>
+	    <p>We notified @if(Model.Slot.Occurrence.Store.Operator != null){<span>@Model.Slot.Occurrence.Store.Operator.Name.Full, </span>} the Operator of the Chick-fil-A at @Model.Slot.Occurrence.Store.Name of your reservation. They are looking forward to seeing you on <time datetime="@Html.Raw(Model.Slot.Start.ToString("yyyy-MM-dd")+"T"+Model.Slot.Start.ToString("HH:mmzzz"))">@Model.Slot.Start.ToString("dddd, MMMM d, yyyy"),</time> from <strong>@Model.Slot.Start.ToString("h:mm tt")</strong> to <time datetime="@Html.Raw(Model.Slot.End.ToString("yyyy-MM-dd")+"T"+Model.Slot.End.ToString("HH:mmzzz"))">@Model.Slot.End.ToString("h:mm tt")</time>.@*<br /><a href="#" class="calAdd">(Add this to your calendar)</a>*@</p>
+	    <p>You must print out and bring your personal invitation to receive your FREE <strong>@Model.Item.Name</strong>. A photo ID may also be requested.</p>
+	</article>
+        
+    <aside id="accountInfoBox" class="well span3 offset1">
+		<h3>Good News!</h3>
+		<p>Your new account gives you access to all of your reservations.</p>
+		<p>Even better, we've stored your information for an easier and faster future reservation!</p>
+		<p>Manage your account and reservations @Html.ActionLink( "here", "Index", "Dashboard", new{ Area = "MyAccount" }, new {} ).</p>
+	</aside>
+
+	
+</section>
+@* -- Removed for test as per GA's request
+<div class="row-fluid">
+	<div class="span6 offset3 text-center" id="shareBox">
+
+		<p>Tell your friends about the Chick-fil-A<br /><strong>Mother-Son Date Knight!</strong></p>
+		<ul>
+			<li><a href="#" id="facebook">Facebook</a></li>
+			<li><a href="#" id="twitter">Twitter</a></li>
+			<li><a href="#" id="email">Email</a></li>
+		</ul>
+		
+	</div>
+</div>
+*@
+

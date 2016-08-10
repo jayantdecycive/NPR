@@ -1,0 +1,10 @@
+﻿@model string
+
+@Html.Partial("EditorTemplates/Picker/_PickerString",Model,new ViewDataDictionary(ViewData)
+    {
+        {"Table","_StoreSelection"},
+        {"DialogTitle","Please Select a Location"},
+        {"DomainModel","ResStore"},
+        {"AdminCreate","/Admin/Store/Create?snip=true"},
+        {"AdminEdit",string.Format("/Admin/Store/Edit/{0}?snip=true",Model)},
+    })

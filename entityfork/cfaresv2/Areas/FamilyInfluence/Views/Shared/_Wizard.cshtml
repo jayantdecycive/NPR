@@ -1,0 +1,76 @@
+﻿@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain._event.occ
+@using cfares.domain._event.resevent.store
+@using cfares.domain.store
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@model cfares.site.modules.com.reservations.res.IReservationWizard
+@{
+    var wizard = Model as FamilyInfluenceReservationWizard;
+    ResEvent evt = (ResEvent)AppContext.Current.Event;
+    ResStore store = null;
+    if (wizard.IsComplete("Reservation.SearchByLocation"))
+    {
+        store = wizard.GetStore();
+    }
+    IOccurrence oc = null;
+    string dateOrDateRange = string.Empty;
+    DateTime startDate = DateTime.Now;
+    if (wizard.IsComplete("Reservation.SearchByLocation"))
+    {
+        oc = wizard.GetOccurrence();
+        var dates = oc.GetDates();
+        startDate = dates.First();
+        dateOrDateRange = Occurrence.GetFormattedDateRange(dates,true);
+    }
+    ISlot slot = null;
+    //wizard.Prime(evt);    
+}
+<section class="row-fluid hidden-phone" id="wizard">
+  
+   
+   
+    @if (store!=null)
+    {
+        <div class="span4 offset2 locationBlock">
+        
+            <div class="step-height">
+                @Html.Partial("_StoreBadge", store)
+            </div>
+            <a href="@Html.Raw(wizard.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+    }
+    
+    @if (!string.IsNullOrEmpty(dateOrDateRange))
+    {
+        <div class="span4">
+        
+            <time class="date" datetime="@Html.Raw(startDate.ToString("yyyy-MM-dd"))">
+                @dateOrDateRange
+            </time>
+
+            
+            <a href="@Html.Raw(wizard.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+    }
+    
+    
+    
+</section>
+
+<section class="row-fluid visible-phone" id="wizard_phone">
+    <div class="wizard-wrapper">
+    <span class="pull-left">Step</span>
+    
+        <a class="@Html.Raw(Model.IsCurrent("Reservation.SearchByLocation")?"active":"")" href="@Html.Raw(Model.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">1</a>@if (evt!=null)
+    {<a class="@Html.Raw(Model.IsCurrent("Reservation.Reservation")?"active":"")" href="@Html.Raw(Model.GetStep("Reservation.Reservation").Uri(ViewContext))">2</a>}
+    
+        </div>
+</section>
+@if (store != null)
+{
+    <hr />
+}

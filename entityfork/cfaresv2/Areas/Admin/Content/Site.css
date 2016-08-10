@@ -1,0 +1,1362 @@
+﻿/*------------------------------------------------------
+Abstract classes for general use. USE THESE AS MUCH AS POSSIBLE
+
+GLOBAL */    
+    
+    
+    /*------------------------------------------------------
+    LAYOUT */
+    
+    .content
+    {
+        width:1002px;
+    }
+    
+    /* END LAYOUT
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    TAGS */
+    a.no-link{text-decoration:none;cursor:default;}
+
+    body
+    {
+        background-color:#eaeae5;
+        background-image:url('/Areas/Admin/Content/Img/Master/topshadow.png');
+        background-repeat:repeat-x;
+        background-position:left 11px;
+    }
+
+    .text-center {
+        text-align:center;
+    }
+
+
+    /* END TAGS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    CONTROLLERS */
+    
+  
+    #header
+    {
+        vertical-align:top;
+    }
+        
+     
+
+        #logo,.top-menu,#toptitle,#logindisplay
+        {
+            vertical-align:top;   
+        }
+
+ 
+
+        
+
+        #toptitle
+        {
+            float:left;    
+            position:relative;
+            top:-10px;
+        }
+            #toptitle h2, #toptitle h3
+            {
+                font-size:13.5pt;
+                text-transform:uppercase;
+                padding:9px 11px;
+                margin:0px;
+            }
+            .legend{font-weight:bold;margin-bottom:15px;}
+            #toptitle h2
+            {
+                color:#384350;   
+                font-weight:bold; 
+            /*    border-right:solid 1px #becdd5;*/
+                
+            }
+            #toptitle h3
+            {
+                color:#495969;
+                font-weight:normal;    
+            }
+        
+      
+        #logindisplay .logged-in .status{}
+   
+
+        #logindisplay select{width:150px;}
+        
+        .wizard.content
+        {
+            background-color:#eaeae5;                        
+        }
+        
+        .wizard.content .wizard-summary
+        {
+            float:left;
+            margin-left:35px;
+            margin-top:21px;
+        }
+        .wizard.content .wizard-summary h3,.wizard.content .wizard-summary h2{text-align:left;}
+        .wizard.content .wizard-summary h3{color:#6e8c9c;font-size:10.5pt;margin-bottom:5px;}
+        .wizard.content .wizard-summary h2{color:#6e8c9c;font-size:13.5pt;font-weight:bold;}
+        
+        .wizard.wrapper
+        {
+            width:99%;
+            height:79px;
+            border-top:1px solid #dfdfd8;
+            border-bottom:1px solid #dfdfd8;
+            margin-left:auto;
+            margin-right:auto;    
+            margin-bottom: 51px;
+        }
+        
+        .wizard.content .jq-info .ui-state-highlight
+        {
+            padding:10px;
+            
+            margin-top:13px;
+            
+        }
+        .wizard.content .jq-info .ui-state-highlight p,.wizard.content .jq-info .ui-state-error p
+        {
+           text-align:left;
+        }
+        .wizard.content .jq-info .ui-state-highlight .ui-icon
+        {
+            top:5px;    
+            position:relative;
+        }
+        
+        .wizard.content 
+        {
+            text-align:right;
+            vertical-align:top;
+        }
+        
+        .wizard.content .wizard-step
+        {
+            width:86px;
+            height:100%;
+            text-align:center;
+            position:relative;
+            vertical-align:top;
+        }
+        
+        .wizard.content .wizard-step .wizard-text{font-size:10pt;}
+        
+        
+        .wizard.content .wizard-step.complete-true .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-complete.png');
+        }
+        
+        .wizard.content .wizard-step:hover,.wizard.content .wizard-step:hover span
+        {
+            text-decoration:none;    
+        }
+        
+        .wizard.content .wizard-step.complete-false,.wizard.content .wizard-step.current-true,
+        .wizard.content .wizard-step.complete-false span,.wizard.content .wizard-step.current-true span{cursor:text;}
+        
+        .wizard.content .wizard-step.complete-true .wizard-text
+        {
+            color:#9f9e9d;    
+        }
+        
+        .wizard.content .wizard-step.complete-false .wizard-text
+        {            
+            color:#fffefe;
+            font-weight:bold;    
+        }
+        
+        .wizard.content .wizard-step.complete-false .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-todo.png');
+        }
+        
+        .wizard.content .wizard-step.current-true .wizard-text,.wizard.content .wizard-step:hover .wizard-text
+        {
+            color:#9ab6c3;    
+            font-weight:bold;
+        }
+        
+        .wizard.content .wizard-step.current-true .wizard-icon,.wizard.content .wizard-step:hover .wizard-icon
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/wizard-current.png');
+        }
+        .wizard.content .wizard-step.current-true .wizard-bar
+        {
+            width:100%;
+            background-color:#9ab6c3;    
+            height:6px;
+            position:absolute;
+            bottom:0px;
+            left:0px;
+        }
+        
+        
+        
+        .wizard.content .wizard-step .wizard-icon
+        {
+            width:29px;
+            height:29px;  
+            overflow:hidden;
+            background-repeat:no-repeat;  
+            margin-top:7px;
+            margin-bottom:4px;
+        }
+        
+        .wizard.content .wizard-step.step-0 .wizard-icon{ background-position:0px top;}
+        .wizard.content .wizard-step.step-1 .wizard-icon{ background-position:-29px top;}
+        .wizard.content .wizard-step.step-2 .wizard-icon{ background-position:-58px top;}
+        .wizard.content .wizard-step.step-3 .wizard-icon{ background-position:-87px top;}
+        .wizard.content .wizard-step.step-4 .wizard-icon{ background-position:-116px top;}
+        .wizard.content .wizard-step.step-5 .wizard-icon{ background-position:-145px top;}
+        .wizard.content .wizard-step.step-6 .wizard-icon{ background-position:-174px top;}
+        
+        #main.content
+        {
+            background-image:url('/Areas/Admin/Content/Img/Master/content-grad.png');
+            background-position:center -2px;
+            background-repeat:repeat-x;
+            padding-bottom:60px;
+        }
+        
+        .inner-content.wrapper
+        {
+            width:97%;
+            margin-left:auto;
+            margin-right:auto;  
+            padding-top:18px;             
+            padding-bottom:24px;  
+        }
+        
+        .model.badge,.dashboard
+        {
+             padding-left:23px;
+             padding-right:23px;
+             padding-top:10px;
+             padding-bottom:10px;
+        }
+        .model.badge.short
+        {
+             padding-top:0px;
+             padding-bottom:0px;
+        }
+            .model.badge h1,.model.badge h2,.dashboard h1,.dashboard h2
+            {
+                /*color:#252525;
+                font-size:13.5pt;
+                padding-bottom:8px;*/
+				font-family: Tahoma;
+				font-size: 17.75px;
+				font-weight: bold;
+				color: #6e8c9c;
+				padding-bottom: 25px; /* rclark: increase from 8 */
+            }
+
+			.model.badge h1 {
+				color: #000;
+			}
+
+            .model.badge p,.dashboard p
+            {
+                line-height:1.1em;
+				font-family: Tahoma, Arial, sans-serif;
+				font-size: 14px;
+				font-weight: normal;
+                color: #666;
+            }
+
+    /* END CONTROLLERS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL DEFAULT */
+    
+    .dash-cta,.edit-cta,.button-cta
+    {
+        padding-top: 10px;
+        padding-left: 23px;
+    }
+    .filters .button-cta{position:relative;top:-10px;}
+    .dash p{min-height:24px;}
+    
+    .model fieldset,.model .submit-block
+    {
+        /* rclark: overwritten - if too disruptive, better workaround can be implemented
+            mdrake: too distruptive!*/
+		/* background-color:#dededb; //rclark: removed per Clarke's feedback */
+        /*width:43%; //rclark: removed to provide enough width for info, might need to look at how these pages should look*/
+        min-width:300px;
+        font-size:10.5pt;
+        padding-right:5px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:23px;
+        margin-top:10px;
+        /*
+		width: auto;
+		padding-right: 45px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		float: right;
+            */
+    }
+    .action-times.controller-event .model fieldset, .action-times.controller-event .model .submit-block {
+        width: auto;
+		padding-right: 45px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		float: right;
+    }
+    .action-times.controller-event .hidden {
+        display: none;
+    }
+    .model .submit-block
+    {
+        margin-top:0px;    
+    }
+    
+        .model fieldset legend
+        {
+            display:block;
+
+        }
+    
+        .model .model-field
+        {
+            padding:4px 0px;    
+        }
+    
+        .model .display-label,.model .display-field,.model .editor-label,.model .editor-field
+        {
+            width:58%;
+            position: relative;
+            text-align:left;
+        }
+        .editor-field{ position: relative;}
+
+        .model .display-label,.model .editor-label
+        {
+            width:160px; /* rclark: changed from 30% */
+            padding-right:15px; /* rclark: changed from 7% */
+        }
+        .model .editor-field .text-box,.model .editor-field .ui-autocomplete-input,.model .editor-field .table-picker
+        {
+            width:100%;
+            position: relative;
+        }
+        .model .editor-field .ui-autocomplete-input,.model .editor-field .table-picker {
+            width:100%;
+            position: relative;
+        }
+
+        
+        .model .guide-collection .guide
+        {
+            padding:3px;
+            font-size:9pt;
+            
+        }
+        .model .guide-collection .guide a
+        {
+            float:right;
+            position:relative;
+            right:-3px;    
+            color:#6E8C9C;
+        }
+        
+        .model .editor-field .multi-line
+        {
+            height:7em;
+        }
+        
+    
+    /* END MODEL DEFAULT
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL DETAILS */
+    
+    .model.details fieldset
+    {
+        
+        
+    }
+    
+        .model.details .model-field
+        {
+            
+        }
+    
+        .model.details .display-label,.model.details .display-field
+        {
+            
+        }
+        .model.details .display-field,.model.details .display-field a,.model.details .display-field a.jq-button:hover
+        {
+            color:#333;    font-weight:bold;
+        }
+        .model.details .display-field a.jq-button {
+            color: #fffefe;
+        }
+        .model.edit .display-field
+        {
+            color:#666;
+            
+            background-color:#fefefe;
+            padding:2px 1px;
+            border: 2px inset;
+        }
+        .model.details .display-field a{text-decoration:underline;}
+        .model.details .display-field a:hover{text-decoration:none;}
+        .model.details .display-label
+        {
+            
+        }
+        
+    
+    /* END MODEL DETAILS
+    ------------------------------------------------------*/
+    
+    /*------------------------------------------------------
+    MODEL EDIT */
+    
+    .model.edit fieldset,.model.edit .submit-block
+    {
+        width:45%;        
+    }
+
+    .user-form .field-AccountStatus select{min-width:120px;}
+    
+        .model.edit .model-field
+        {
+            
+        }
+    
+        .model.edit .editor-label,.model.edit .editor-field
+        {
+                
+        }
+        
+        .model.edit .editor-label
+        {
+            
+        }
+        
+        .model .editor-field select
+        {
+            width:100%;   
+        }
+        
+        /*==WIDGET==*/
+        .in-daterange input
+        {
+             width:42%;
+             font-size:8.5pt;
+        }
+        
+        .in-daterange-to
+        {
+             font-size:8pt;   
+        }
+        
+        .validation-summary-errors
+        {
+            width:48%;
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        .validation-summary-errors .ui-state-highlight,.validation-summary-errors .ui-state-error
+        {
+            padding:15px;
+        }
+        
+        .validation-summary-errors ul,.validation-summary-errors li
+        {
+            display:block;
+            font-size:9pt;            
+        }
+        .validation-summary-errors ul
+        {
+            margin-top:5px;    
+        }
+        .validation-summary-errors li
+        {
+            padding:10px;  
+            font-weight:bold;  
+        }
+        .field-validation-error
+        {
+            font-size:8pt;
+            color:#CD0A0A;    
+            display:block;
+        }
+    
+    /* END MODEL EDIT
+    ------------------------------------------------------*/
+
+/* END GLOBAL
+----------------------------------------------------------*/
+
+
+/*------------------------------------------------------
+PAGES */    
+    
+    /*--------------------------------------------------
+    controller-home */
+    
+        /*----------------------------------------------
+        action-index controller-home */
+    
+            .action-index.controller-home
+            {
+                
+            }
+            .action-index.controller-home .button-cta,.dash-header.button-cta{position:relative;top:0px;}
+            
+            
+            #filter-tour-type.filter
+            {
+                width:10em;
+            }
+            
+            #filter-year.filter
+            {
+                width:6em;
+            }
+            
+            #filter-month.filter
+            {
+                width:8em;
+            }
+            
+            #filter-day.filter
+            {
+                width:10em;
+            }
+            
+            .filter-past{}
+            
+            .filter-past input{margin:0px;position:relative;top:2px;margin-left:5px;}
+            
+            .action-index.controller-home .new-tour-cta .badge,.rounded.segment,.action-index.controller-home .home-dash-cta .badge
+            {
+                background-image:url('/Areas/Admin/Content/Img/Master/content-grad.png');
+                background-position:center top;
+                background-repeat:repeat-x;
+            }
+        
+            .action-index.controller-home .button-list
+            {
+                padding-top:10px;
+            }
+    
+        /* END action-index controller-home
+        ----------------------------------------------*/
+    
+    /* END controller-home
+    --------------------------------------------------*/
+    
+    /*--------------------------------------------------
+    controller-event */
+    
+        /*----------------------------------------------
+        event template */
+
+		.action-template.controller-event .templateHeader {
+			font-family: Tahoma;
+			font-size: 17.75px;
+			font-weight: bold;
+			color: #000;
+			padding-bottom: 20px;
+			padding-left: 20px;
+		}
+
+
+        .action-template.controller-event #template-grid ul li {
+			display:inline-block;
+		    zoom:1;
+		    *display:inline;
+			width: 280px;
+			height: auto;
+			padding: 12px;
+			background-color: #f3f3f0;
+			margin-bottom: 15px;
+			border-radius: 5px;
+			border: 2pt solid transparent;
+		}
+
+		.action-template.controller-event #template-grid ul li:hover, .action-template.controller-event #template-grid ul li:focus {
+			border: 2pt solid #8da5af;
+		}
+
+		.action-template.controller-event #template-grid ul li:hover .btn-select, .action-template.controller-event #template-grid ul li:focus .btn-select {
+			font-weight: bold;
+		}
+
+			.action-template.controller-event #template-grid ul li:nth-child(3n + 1)  {
+				margin-right: 15px;
+			}
+
+			.action-template.controller-event #template-grid ul li:nth-child(3n + 3)  {
+				margin-left: 15px;
+			}
+		
+				.action-template.controller-event #template-grid .template-badge {
+					width:280px;
+				}
+
+				.action-template.controller-event #template-grid .template-badge .template-name {
+					font-family: Tahoma, Arial, sans-serif;
+					font-size:12px;
+					font-weight: bold;
+					color: #666;
+					padding-top: 15px;
+				}
+
+					.action-template.controller-event #template-grid a.template-badge:hover {
+						text-decoration: none;
+					}
+
+				.action-template.controller-event #template-grid .template-badge .btn-select {
+					display: block;
+					width: 70px;
+					height: 35px;
+					line-height: 35px;
+					background-color: #e8e7e2;
+					margin: 15px auto 10px auto;
+					font-family: Tahoma, Arial, sans-serif;
+					font-size:12px;
+					color: #8da5af;
+					border-radius: 5px;
+				}
+
+        /* END event template
+        ----------------------------------------------*/
+
+        /*----------------------------------------------
+        action-create-dash controller-event */
+    
+            .action-create-dash.controller-event
+            {
+            
+            }
+            
+            .action-create-dash.controller-event .model.edit fieldset,.action-create-dash.controller-event .model.edit .submit-block
+            {
+                width:60%;
+            }            
+    
+        /* END action-create-dash controller-event
+        ----------------------------------------------*/
+    
+    /* END controller-event
+    --------------------------------------------------*/
+
+.clearfloat {
+    width:100%;
+    height:1px;
+    line-height:1px;
+    clear:both;
+}
+    
+    /*--------------------------------------------------
+    controller-event */
+
+        /*----------------------------------------------
+        action-reception controller-event */
+
+            .action-reception.controller-event
+            {
+                
+            }
+
+            .action-reception.controller-event fieldset
+            {
+                width:90%;
+            }
+                .action-reception.controller-event .model.details .model-field {
+                    float:left;
+                    width:45%;                                        
+                }
+                .action-reception.controller-event .model.details input.table-picker{
+                    height:0px;
+                    width:0px;
+                    position:relative;
+                    top:0px;
+                    left:0px;
+                    visibility: hidden;
+                }
+                .action-reception.controller-event .model.details img {
+                    display:block;
+                }
+                .action-reception.controller-event .model.details .dia-tools {
+                    position:static;
+                    display:block;
+                }
+                    .action-reception.controller-event .model.details .model-field .editor-label, .action-reception.controller-event .model.details .model-field .editor-field {
+                        display:block;                    
+                    }
+
+        /* END action-reception controller-event
+        ----------------------------------------------*/
+    
+        /*----------------------------------------------
+        action-summary controller-event */
+    
+            .action-summary.controller-event
+            {
+            
+            }
+            
+            .action-summary.controller-event .bottom .button-cta
+            {                    
+                text-align:right;
+            }
+            
+            .action-summary.controller-event .bottom .button-cta a
+            {
+                margin-bottom:10px;
+                position:relative;top:20px;   
+                width:150px;
+                float:right;
+            }            
+    
+        /* END action-summary controller-event
+        ----------------------------------------------*/
+    
+    /* END controller-event
+    --------------------------------------------------*/
+    
+    
+    /*--------------------------------------------------
+    controller-slot */
+    
+        /*----------------------------------------------
+        action-edit-dash controller-slot */
+    
+		.action-details.controller-slot h2 {
+			padding-bottom: 10px;
+		}
+
+            .action-edit-dash.controller-occurrence
+            {
+            
+            }
+            
+                .action-edit-dash.controller-occurrence .date-grid
+                {
+                    margin-top:10px;    
+                }
+            
+                .action-edit-dash.controller-occurrence .date-grid,.action-edit-dash.controller-occurrence .date-grid.admin-table .item
+                {
+                    vertical-align:top;    
+                }
+            
+                .action-edit-dash.controller-occurrence .details-input
+                {
+                    padding-top:15px;
+                    vertical-align:middle;
+                }
+                
+                .action-edit-dash.controller-occurrence .details-input select
+                {
+                    width:200px;    
+                }
+            
+                .action-edit-dash.controller-occurrence .details-input .submit-block
+                {
+                    float:right;
+                    position:relative;
+                    top:-7px;
+                    padding-right:20px;
+                }
+                
+                .action-edit-dash.controller-occurrence #inline_cal
+                {
+                    margin-right:20px;    
+                }
+                
+                .action-edit-dash.controller-occurrence #date_summary_list
+                {
+                    height:166px;
+                    width:17em;
+                    border:solid 1px #AAA;
+                    background-color:#F3F3EF;
+                    overflow:auto;
+                }
+                
+                .action-edit-dash.controller-occurrence #date_summary_list li
+                {
+                    border-bottom:solid 1px #AAA;
+                    display:block;
+                    position:relative;
+                    padding-left:4px;
+                    padding-top:5px;
+                    padding-bottom:7px;
+                }
+                .action-edit-dash.controller-occurrence #date_summary_list li.last
+                {
+                     
+                }
+                
+                .close-icon{
+                    margin: 2px !important;
+                    position: relative !important;
+                    padding: 3px 0 !important;
+                    cursor: pointer !important;                    
+                    
+                 }
+                 .remove-date{                    
+                    position:absolute !important;
+                    right:3px !important;
+                    top:1px !important;
+                 }
+                 .admin-table .ui-button-icon-only.close-icon
+                 {
+                     width:1.2em;
+                 }
+                 .All .ui-button-icon-only.close-icon
+                 {
+                     visibility:hidden;
+                 }
+
+                 .dia-tools {
+                     top: 4px;position: absolute;left: 105%;width: 100px;
+                 }
+                 .table-picker .dia-tools{ top: -1px;left:102%}
+                 .auto-dialog .dia-tools{top: 11px; right: 105%;left: auto;display: block;text-align: right;}
+
+                 .dia-tools .ui-button-icon-only {
+                     width: 1.5em;
+                    height: 1.4em;
+                 } 
+                 
+                 .action-edit-dash.controller-occurrence .table-wrapper{width:90%;}
+                 
+                 .table-picker input{width:6em;}
+                 
+                 .select-wrapper input{margin:0px;}
+                 
+                 .action-edit-dash.controller-occurrence .slot-wrapper{margin-top:20px;}
+                
+                .action-edit-dash.controller-occurrence .inline-header
+                {
+                    cursor:pointer;    
+                }
+                .action-edit-dash.controller-occurrence .inline-header:hover
+                {
+                    text-decoration:underline;    
+                }
+                
+                .action-edit-dash.controller-occurrence .remove-slot
+                {
+                    position:relative;
+                    top: 6px;
+                    left: 4px;
+                }
+                .action-edit-dash.controller-occurrence .slot-rows
+                {
+                    padding-top:10px;
+                    padding-bottom:10px;
+                }
+                .action-edit-dash.controller-occurrence .slot-row
+                {
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    border-bottom:solid 1px #aaa;
+                }
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos
+                {
+                    
+                }
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-label,
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input
+                {
+                    
+                }
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-label{width:35%;padding-right:4%;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input{width:55%;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .subform-label{vertical-align:top;position:relative;top:9px;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .subform-input input{width:100%;}
+                
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .dormant{color:#666;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-set,
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas{position:relative;display:block;}
+                
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas .remove-cameo{position:absolute !important;right: -3px;top: 2px;}
+                .action-edit-dash.controller-occurrence .dialog-cameos .cameos .cameo-canvas .add-cameo{position:absolute !important;right: -27px;top: 2px;}
+                
+                
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_all{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week{padding-left:10px;}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week p{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_week .wrapper{}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment .button-group-master p{width:30%}
+                
+                .action-edit-dash.controller-occurrence #date_accordian_segment .button-group-master .wrapper{width:60%;}
+                .action-edit-dash.controller-occurrence #date_accordian_segment #button_group_all .wrapper{padding-left:9px;}
+                
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-header a {
+                    
+                }
+
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-header span.ui-icon {
+                    
+                }
+                
+                .action-edit-dash.controller-occurrence .slot-accordion.mode-all .mode-date,
+                .action-edit-dash.controller-occurrence .slot-accordion.mode-date .mode-all{
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    height:0px;
+                    width:0px;
+                    visibility:hidden;
+                }
+                .action-edit-dash.controller-occurrence .slot-accordion .ui-accordion-content
+                {
+                    padding-bottom:10px !important;    
+                }
+                
+                .action-edit-dash.controller-occurrence .summary{position:relative;top: -36px;left:-4px;}
+                .action-edit-dash.controller-occurrence .summary .legend{display:none;}
+                .action-edit-dash.controller-occurrence .summary h2{font-size:11pt;padding-left:23px;}
+            
+    
+        /* END action-edit-dash controller-slot
+        --------------------------------------------------*/
+    
+    /* END controller-slot
+    ------------------------------------------------------*/
+
+/* PAGES
+----------------------------------------------------------*/
+
+/* Overrides - Rusty */
+.dash-cta {
+	display: none; /* rclark: Hide "Back to Dashboard" button until needed */
+}
+
+.right-float {
+	float: right;
+}
+
+/* Events Times Page*/
+#event_summary {
+	display:none;
+}
+
+#inline_cal {
+	vertical-align: top;
+	-moz-box-shadow: 1px 1px 4px #ccc;
+	-webkit-box-shadow: 1px 1px 4px #ccc;
+	box-shadow: 1px 1px 4px #ccc;
+}
+
+ul#date_summary_list {
+	width: 330px;
+	height: auto;
+	margin: 0px 15px;
+	-moz-box-shadow: 1px 1px 4px #ccc;
+	-webkit-box-shadow: 1px 1px 4px #ccc;
+	box-shadow: 1px 1px 4px #ccc;
+}
+
+	ul#date_summary_list li {
+		display: block;
+		height: 25px;
+		line-height: 25px;
+		font-size: 12px;
+		font-family: Verdana;
+		padding: 0 0 0 10px;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		border-radius: 0px;
+		moz-border-radius: 0px;
+	}
+
+	ul#date_summary_list li:first-child {
+		border-top: 1px solid #ccc;
+	}
+	
+	ul#date_summary_list li:nth-child(odd) {
+		background-color: #FFF;
+	}
+
+	ul#date_summary_list li:nth-child(even) {
+		background-color: #eaeae5;
+	}
+
+.remove-summary {
+	float: right;
+	background: none !important;
+	border: none !important;
+	padding: 5px 0 !important;
+}
+
+#button_group_all p {
+	padding-left: 20px;
+}
+
+#button_group_all .wrapper {
+	padding-left: 30px;
+}
+
+#button_group_week {
+	background-color: #ccc;
+	margin-bottom: 15px;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 14px;
+}
+#button_group_all {
+	
+	margin-bottom: 15px;
+	
+}
+
+	#button_group_week p {
+		padding-left: 65px;
+	}
+
+	#button_group_week .wrapper {
+		padding-left: 30px;
+	}
+
+.clearLine {
+	height: 2px;
+	clear: both;
+	background-color: #eeeee9;
+	border-bottom: 2px solid #e2e2dc;
+}
+
+.slot-rows {
+	padding-bottom: 10px;
+}
+
+.slot-row {
+	border-bottom: 1px solid #e2e2dc;
+	height: 55px;
+	line-height: 55px;
+}
+
+	.slot-row ul li {
+		padding-right: 15px;
+		font-family: Tahoma, Arial, sans-serif;
+		color: #666;
+	}
+
+		.slot-row ul li input {
+			height: 25px;
+			line-height: 25px;
+			font-family: Tahoma, Arial, sans-serif;
+			font-size: 10pt;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			padding-left: 5px;
+		}
+
+.remove-slot {
+	background: none !important;
+	border: none !important;
+	padding: 5px 0 !important;
+}
+
+#details_segment p {
+	padding-left: 15px;
+}
+
+#details_segment .details-input {
+	padding-left: 15px;
+}
+
+#details_segment_min_daily_capacity label {
+	display: block;
+	margin: 0 0 15px;
+	width: 70%;
+	line-height: 18px;
+}
+#details_segment_min_daily_capacity h2 {
+	padding-bottom: 0px;
+}
+
+#cutoff_time {
+	height: 25px;
+	line-height: 25px;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 10pt;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding-left: 5px;
+}
+
+.model-table{ margin-top: 30px;}
+
+.submit-times {
+	background-color: transparent !important;
+	width: auto !important;
+	min-width: 0 !important;
+}
+
+/* For summary page */
+section {
+	margin: 30px 0;
+}
+
+	section h2 {
+		padding-bottom: 15px !important; /* rclark: need to fix overall and not use this ugly workaround */
+	}
+
+#eventName-section span,#eventUrl-section a {
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+}
+
+#redemptionPeriod-section ul li {
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #666;
+}
+
+	#redemptionPeriod-section ul li:last-child {
+		padding-left: 40px;
+	}
+
+	#redemptionPeriod-section ul li strong {
+		font-weight: bold;
+		color: black;
+	}
+
+#timeSlots-section table {
+	width: 620px;
+}
+
+#timeSlots-section table tr:first-child {
+	border-bottom: 2px solid #e2e2dc;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #666;
+	text-align: left;
+}
+
+#timeSlots-section table tr th {
+	padding-bottom: 3px;
+}
+
+#timeSlots-section table tr td {
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #252525;
+	padding-right: 60px;
+	line-height: 20px;
+}
+
+	#timeSlots-section table tr td:first-child {
+		font-weight: bold;
+	}
+
+	#timeSlots-section table tr td.newLabelDate {
+		padding-top: 25px;
+	}
+
+.summary-btn-grp a {
+	margin-bottom: 10px;
+	margin-right: 10px !important;
+}
+
+/* For Store Page */
+
+.submit-block-override {
+	float:right !important;
+	background:none !important;
+}
+
+/* For Name Page */
+
+.model-field .editor-label {
+	padding-left: 5px;
+	margin-bottom: 5px;
+}
+.auto-dialog .model-field .editor-label {
+    width: 25%;
+    margin-left: 15px;
+}
+
+.auto-dialog .model-field .editor-field{ width: 53%;padding-top: 6px;padding-bottom: 6px;}
+.auto-dialog .model-field .editor-field input[type=text],
+.auto-dialog .model-field .editor-field input[type=datetime],
+.auto-dialog .model-field .editor-field input[type=date],
+.auto-dialog .model-field .editor-field input[type=number],
+.auto-dialog .model-field .editor-field input[type=password] {
+    width: 100%;
+}
+
+.auto-dialog .validation,.auto-dialog .validation li {
+    color:#CD0A0A;
+    display: block;
+	margin-bottom: 20px;
+}
+.auto-dialog .field-validation-error{ display: block !important;}
+
+.action-name.controller-event .editor-label label, .model-field .editor-label label {
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+.action-name.controller-event .editor-field input[type=text], 
+.action-name.controller-event .editor-field input[type=datetime],
+.action-name.controller-event .editor-field input[type=date], 
+.action-logon.controller-account .editor-field input[type=text], 
+input[type=password], 
+.model-field .editor-field input[type=text], 
+.model-field .editor-field input[type=number],
+.badge input[type=number],
+.badge input[type=date],
+.badge input[type=datetime],
+.badge input[type=time],
+.badge input[type=text], 
+.model-field .editor-field input[type=email]{
+	height: 25px;
+	line-height: 25px;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 10pt;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding-left: 5px;
+}
+
+.action-name.controller-event .field-block fieldset {
+	border-radius: 5px;
+	vertical-align: top;
+}
+
+.no-pad-top {
+	padding-top: 0 !important;
+}
+
+.pad10 {
+	padding-top: 10px;
+}
+
+.btn-container-default {
+	width: 170px;
+}
+
+/*
+    mdrake: not sure why this was here
+    .ui-dialog .ui-button-icon-primary.ui-icon.ui-icon-closethick {
+    position: relative;
+    
+    top: -1px;
+}*/
+.ui-widget-overlay{ position: fixed;}
+
+/* Admin: Names Page */
+.name-block fieldset {
+	width: 40%;
+	padding-left: 0;
+}
+
+	.name-block fieldset.url-example {
+		width: 50%;
+		padding-left: 0;
+	}
+
+	.name-block fieldset .editor-label {
+		width: auto;
+		font-family: Tahoma, Arial, sans-serif;
+		font-size: 14px;
+		color: #6e8c9c;
+	}
+
+	.name-block fieldset .editor-field {
+		width: 80%;
+	}
+
+	.name-block fieldset .editor-field input {
+		font-family: Tahoma, Arial, sans-serif;
+		font-size: 12px !important;
+		color: #afafaf;
+		padding: 5px 10px !important;
+	}
+
+    .dataTables_wrapper tbody td{ vertical-align: middle;}
+	.dataTables_paginate .previous { width: 45px !important; }
+
+    .loading{ width: 100%;text-align: center;}
+
+    .badge .request-page input[type=text]{
+        height: 1em;
+        width: 60%;
+        vertical-align: middle;
+        line-height: 0px;
+        margin-bottom: 0px;
+    }
+    .request-page form,.request-page .well{ font-size: 10pt;}
+
+    .admin-table .ui-button[type='submit'] {
+        padding: .4em 1em;
+    }
+
+    .fullwidth{ width: 100%;}
+
+
+    
+.jq-date-time{
+	width:244px;
+}
+
+.help-link {
+    font-size: 16px;
+    vertical-align: top;
+    position: absolute;
+    margin-right: 168px;
+    padding-left: 20px;
+    font-weight: bold;
+    color: #6e8c9c;
+    right: 0;
+    text-decoration: none;
+}
+
+
+.activate-avent-link a{
+    background: #24980A !important;
+    border-color: #125E1B !important;
+    color: #fff !important;
+}
+
+
+.activate-avent-link a:hover{
+    backgorund:#ccc !important;
+}
+
+.disabled-link {
+    pointer-events: none;
+    cursor: default;
+    color:#aaa;
+}

@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CUSTOMER_DATA_STOREModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CUSTOMER_DATA_STOREModelStoreContainer">
+    <EntitySet Name="AlohaLiveDate" EntityType="CUSTOMER_DATA_STOREModel.Store.AlohaLiveDate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BreakfastConflict" EntityType="CUSTOMER_DATA_STOREModel.Store.BreakfastConflict" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BreakfastConflictAction" EntityType="CUSTOMER_DATA_STOREModel.Store.BreakfastConflictAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cares" EntityType="CUSTOMER_DATA_STOREModel.Store.Cares" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="CUSTOMER_DATA_STOREModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Event" EntityType="CUSTOMER_DATA_STOREModel.Store.Event" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Event_Location" EntityType="CUSTOMER_DATA_STOREModel.Store.Event_Location" store:Type="Tables" Schema="dbo" Table="Event.Location" />
+    <EntitySet Name="EventRegistration" EntityType="CUSTOMER_DATA_STOREModel.Store.EventRegistration" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FAQs" EntityType="CUSTOMER_DATA_STOREModel.Store.FAQs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FAQs_Group" EntityType="CUSTOMER_DATA_STOREModel.Store.FAQs_Group" store:Type="Tables" Schema="dbo" Table="FAQs.Group" />
+    <EntitySet Name="FavoriteLocations" EntityType="CUSTOMER_DATA_STOREModel.Store.FavoriteLocations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feed" EntityType="CUSTOMER_DATA_STOREModel.Store.Feed" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="First100Attendees" EntityType="CUSTOMER_DATA_STOREModel.Store.First100Attendees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Food" EntityType="CUSTOMER_DATA_STOREModel.Store.Food" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Food_Category" EntityType="CUSTOMER_DATA_STOREModel.Store.Food_Category" store:Type="Tables" Schema="dbo" Table="Food.Category" />
+    <EntitySet Name="Food_Ingredient" EntityType="CUSTOMER_DATA_STOREModel.Store.Food_Ingredient" store:Type="Tables" Schema="dbo" Table="Food.Ingredient" />
+    <EntitySet Name="Food_Variation" EntityType="CUSTOMER_DATA_STOREModel.Store.Food_Variation" store:Type="Tables" Schema="dbo" Table="Food.Variation" />
+    <EntitySet Name="FoodImage" EntityType="CUSTOMER_DATA_STOREModel.Store.FoodImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mail" EntityType="CUSTOMER_DATA_STOREModel.Store.Mail" store:Type="Tables" store:Schema="dbo" store:Name="Mail">
+      <DefiningQuery>SELECT 
+      [Mail].[ID] AS [ID], 
+      [Mail].[FormName] AS [FormName], 
+      [Mail].[Subject] AS [Subject], 
+      [Mail].[Body] AS [Body], 
+      [Mail].[FromAddress] AS [FromAddress], 
+      [Mail].[ToAddress] AS [ToAddress], 
+      [Mail].[CreationDate] AS [CreationDate]
+      FROM [dbo].[Mail] AS [Mail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Press_Group" EntityType="CUSTOMER_DATA_STOREModel.Store.Press_Group" store:Type="Tables" Schema="dbo" Table="Press.Group" />
+    <EntitySet Name="Press_Image" EntityType="CUSTOMER_DATA_STOREModel.Store.Press_Image" store:Type="Tables" Schema="dbo" Table="Press.Image" />
+    <EntitySet Name="Press_Release" EntityType="CUSTOMER_DATA_STOREModel.Store.Press_Release" store:Type="Tables" Schema="dbo" Table="Press.Release" />
+    <EntitySet Name="Press_Store" EntityType="CUSTOMER_DATA_STOREModel.Store.Press_Store" store:Type="Tables" store:Schema="dbo" store:Name="Press.Store">
+      <DefiningQuery>SELECT 
+      [Press_Store].[release_id] AS [release_id], 
+      [Press_Store].[store_id] AS [store_id]
+      FROM [dbo].[Press.Store] AS [Press_Store]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PublishingLog" EntityType="CUSTOMER_DATA_STOREModel.Store.PublishingLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ResponseTag" EntityType="CUSTOMER_DATA_STOREModel.Store.ResponseTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteError" EntityType="CUSTOMER_DATA_STOREModel.Store.SiteError" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteStory" EntityType="CUSTOMER_DATA_STOREModel.Store.SiteStory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteUser" EntityType="CUSTOMER_DATA_STOREModel.Store.SiteUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoreInfo" EntityType="CUSTOMER_DATA_STOREModel.Store.StoreInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryEntry" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryEntry" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryEvent" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryEvent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryImage" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryLocation" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryLocation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryRating" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryRating" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryTags" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoryTopic" EntityType="CUSTOMER_DATA_STOREModel.Store.StoryTopic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subscribers" EntityType="CUSTOMER_DATA_STOREModel.Store.Subscribers" store:Type="Tables" store:Schema="dbo" store:Name="Subscribers">
+      <DefiningQuery>SELECT 
+      [Subscribers].[ID] AS [ID], 
+      [Subscribers].[FIRST_NAME] AS [FIRST_NAME], 
+      [Subscribers].[LAST_NAME] AS [LAST_NAME], 
+      [Subscribers].[EMAIL_ADDRESS] AS [EMAIL_ADDRESS], 
+      [Subscribers].[PHONE_NUMBER] AS [PHONE_NUMBER], 
+      [Subscribers].[ADDRESS1] AS [ADDRESS1], 
+      [Subscribers].[ADDRESS2] AS [ADDRESS2], 
+      [Subscribers].[CITY] AS [CITY], 
+      [Subscribers].[STATE] AS [STATE], 
+      [Subscribers].[ZIP_CODE] AS [ZIP_CODE], 
+      [Subscribers].[DATE_OF_BIRTH] AS [DATE_OF_BIRTH], 
+      [Subscribers].[GENDER] AS [GENDER], 
+      [Subscribers].[OPT_IN_FLAG] AS [OPT_IN_FLAG], 
+      [Subscribers].[OPT_IN_DATE] AS [OPT_IN_DATE], 
+      [Subscribers].[OPT_OUT_DATE] AS [OPT_OUT_DATE], 
+      [Subscribers].[KIDS_AND_FAMILY_NEWSLETTER] AS [KIDS_AND_FAMILY_NEWSLETTER]
+      FROM [dbo].[Subscribers] AS [Subscribers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Subscription" EntityType="CUSTOMER_DATA_STOREModel.Store.Subscription" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="CUSTOMER_DATA_STOREModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagGroup" EntityType="CUSTOMER_DATA_STOREModel.Store.TagGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Topic" EntityType="CUSTOMER_DATA_STOREModel.Store.Topic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TopicResponse" EntityType="CUSTOMER_DATA_STOREModel.Store.TopicResponse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TopicTag" EntityType="CUSTOMER_DATA_STOREModel.Store.TopicTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USState" EntityType="CUSTOMER_DATA_STOREModel.Store.USState" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SiteStory_SiteUser" Association="CUSTOMER_DATA_STOREModel.Store.FK_SiteStory_SiteUser">
+      <End Role="SiteUser" EntitySet="SiteUser" />
+      <End Role="SiteStory" EntitySet="SiteStory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoryRating_SiteStory" Association="CUSTOMER_DATA_STOREModel.Store.FK_StoryRating_SiteStory">
+      <End Role="SiteStory" EntitySet="SiteStory" />
+      <End Role="StoryRating" EntitySet="StoryRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoryTags_SiteStory" Association="CUSTOMER_DATA_STOREModel.Store.FK_StoryTags_SiteStory">
+      <End Role="SiteStory" EntitySet="SiteStory" />
+      <End Role="StoryTags" EntitySet="StoryTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StoryTags_Tag" Association="CUSTOMER_DATA_STOREModel.Store.FK_StoryTags_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="StoryTags" EntitySet="StoryTags" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AlohaLiveDate">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="decimal" Nullable="false" Precision="5" />
+    <Property Name="LiveDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BreakfastConflict">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="eventID" Type="varchar" MaxLength="150" />
+    <Property Name="regID" Type="varchar" MaxLength="150" />
+    <Property Name="storeID" Type="int" />
+    <Property Name="firstName" Type="varchar" MaxLength="150" />
+    <Property Name="lastName" Type="varchar" MaxLength="150" />
+    <Property Name="fullName" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="conflict" Type="int" Nullable="false" />
+    <Property Name="slotID" Type="varchar" MaxLength="150" />
+    <Property Name="foodID" Type="varchar" MaxLength="150" />
+    <Property Name="dob" Type="bigint" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="subscriber" Type="bit" Nullable="false" />
+    <Property Name="newuser" Type="bit" Nullable="false" />
+    <Property Name="barcode" Type="bigint" />
+    <Property Name="finished" Type="bit" Nullable="false" />
+    <Property Name="hash" Type="varchar" MaxLength="160" />
+    <Property Name="city" Type="varchar" MaxLength="150" />
+    <Property Name="state" Type="varchar" MaxLength="2" />
+    <Property Name="address" Type="varchar" MaxLength="150" />
+    <Property Name="zip" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="emailed" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BreakfastConflictAction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="food" Type="varchar" MaxLength="50" />
+    <Property Name="acted" Type="datetime" Nullable="false" />
+    <Property Name="conflictID" Type="int" Nullable="false" />
+    <Property Name="slot" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Cares">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SITE_ID" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="TITLE" Type="varchar" Nullable="false" MaxLength="5" />
+    <Property Name="FIRST_NAME" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="LAST_NAME" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="EMAIL_ADDRESS" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ADDRESS1" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ADDRESS2" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="CITY" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="STATE" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="ZIP_CODE" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="PHONE_NUMBER" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ALT_PHONE_NUMBER" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="GENDER" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="AGE" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CONTACTED_OPERATOR" Type="bit" Nullable="false" />
+    <Property Name="STORE_NUMBER" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="LOCATION" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="STORE_ADDRESS" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="STORE_CITY" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="STORE_ZIP_CODE" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="DATE_OF_VISIT" Type="datetime" Nullable="false" />
+    <Property Name="MEAL" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="MEAL_TYPE" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="COMM_METHOD" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="COMMENTS" Type="text" Nullable="false" />
+    <Property Name="HOW_OFTEN" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="AGENT_STR" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="varchar(max)" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="category_url_name" Type="varchar" MaxLength="250" />
+    <Property Name="aux" Type="int" Nullable="false" />
+    <Property Name="category_order_hint" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="dom_id" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Begins" Type="datetime" Nullable="false" />
+    <Property Name="Expires" Type="datetime" Nullable="false" />
+    <Property Name="Body" Type="varchar(max)" />
+    <Property Name="Brief" Type="varchar(max)" />
+    <Property Name="Location" Type="varchar" MaxLength="250" />
+    <Property Name="AuthorID" Type="decimal" />
+    <Property Name="Venue" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Event_Location">
+    <Key>
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="EventID" Type="decimal" Nullable="false" />
+    <Property Name="LocationID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Brief" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="EventRegistration">
+    <Key>
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="SiteUserID" />
+    </Key>
+    <Property Name="EventID" Type="decimal" Nullable="false" />
+    <Property Name="SiteUserID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Notify" Type="bit" Nullable="false" />
+    <Property Name="Confirmed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FAQs">
+    <Key>
+      <PropertyRef Name="faq_id" />
+    </Key>
+    <Property Name="faq_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="question" Type="text" Nullable="false" />
+    <Property Name="answer" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FAQs_Group">
+    <Key>
+      <PropertyRef Name="faq_group_id" />
+    </Key>
+    <Property Name="faq_group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="group_url_name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="hidden" Type="bit" Nullable="false" />
+    <Property Name="cover_story" Type="int" />
+  </EntityType>
+  <EntityType Name="FavoriteLocations">
+    <Key>
+      <PropertyRef Name="UserTrackingID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="UserTrackingID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LocationID" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Feed">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Body" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="First100Attendees">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="LocationID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserID" Type="numeric" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="food_id" />
+    </Key>
+    <Property Name="food_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="short_name" Type="nvarchar" MaxLength="180" />
+    <Property Name="food_name" Type="nvarchar" MaxLength="180" />
+    <Property Name="extended_name" Type="varchar" MaxLength="180" />
+    <Property Name="url_name" Type="nvarchar" Nullable="false" MaxLength="180" />
+    <Property Name="url_hint" Type="varchar" MaxLength="180" />
+    <Property Name="order_hint" Type="int" Nullable="false" />
+    <Property Name="img" Type="nvarchar(max)" />
+    <Property Name="dom_id" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="ingredients" Type="nvarchar(max)" />
+    <Property Name="calories" Type="int" />
+    <Property Name="calories_fat" Type="int" />
+    <Property Name="protein" Type="float" />
+    <Property Name="carbs" Type="float" />
+    <Property Name="carbs_daily" Type="float" />
+    <Property Name="sugar" Type="float" />
+    <Property Name="sugar_daily" Type="float" />
+    <Property Name="cholesterol" Type="float" />
+    <Property Name="cholesterol_daily" Type="float" />
+    <Property Name="sodium" Type="float" />
+    <Property Name="sodium_daily" Type="float" />
+    <Property Name="calcium" Type="float" />
+    <Property Name="calcium_daily" Type="float" />
+    <Property Name="iron" Type="float" />
+    <Property Name="iron_daily" Type="float" />
+    <Property Name="fiber" Type="float" />
+    <Property Name="fiber_daily" Type="float" />
+    <Property Name="fat" Type="float" />
+    <Property Name="fat_daily" Type="float" />
+    <Property Name="trans_fat" Type="float" />
+    <Property Name="trans_fat_daily" Type="float" />
+    <Property Name="saturated_fat" Type="float" />
+    <Property Name="saturated_fat_daily" Type="float" />
+    <Property Name="vitamin_a" Type="float" />
+    <Property Name="vitamin_a_daily" Type="float" />
+    <Property Name="vitamin_c" Type="float" />
+    <Property Name="vitamin_c_daily" Type="float" />
+    <Property Name="serving_size" Type="float" />
+    <Property Name="serving_size_international" Type="float" />
+    <Property Name="parent_item" Type="int" />
+    <Property Name="non_menu" Type="bit" Nullable="false" />
+    <Property Name="no_image" Type="bit" Nullable="false" />
+    <Property Name="notice" Type="nvarchar(max)" />
+    <Property Name="show_serving" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Category">
+    <Key>
+      <PropertyRef Name="food_category_id" />
+    </Key>
+    <Property Name="food_category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="food_id" Type="int" />
+    <Property Name="category_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Food_Ingredient">
+    <Key>
+      <PropertyRef Name="food_ingredient_id" />
+    </Key>
+    <Property Name="food_ingredient_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="food_id" Type="int" Nullable="false" />
+    <Property Name="ingredient_id" Type="int" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+    <Property Name="optional" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food_Variation">
+    <Key>
+      <PropertyRef Name="variation_id" />
+    </Key>
+    <Property Name="variation_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="parent_food_id" Type="int" Nullable="false" />
+    <Property Name="child_food_id" Type="int" Nullable="false" />
+    <Property Name="is_option" Type="bit" Nullable="false" />
+    <Property Name="hint" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FoodImage">
+    <Key>
+      <PropertyRef Name="image_id" />
+    </Key>
+    <Property Name="image_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="img_url_name" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="src" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="width" Type="int" Nullable="false" />
+    <Property Name="height" Type="int" Nullable="false" />
+    <Property Name="brief" Type="text" />
+    <Property Name="ratio" Type="float" Nullable="false" />
+    <Property Name="size" Type="int" Nullable="false" />
+    <Property Name="food_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.Mail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Mail">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Subject" />
+      <PropertyRef Name="Body" />
+      <PropertyRef Name="FromAddress" />
+      <PropertyRef Name="ToAddress" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormName" Type="varchar" MaxLength="100" />
+    <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Body" Type="varchar(max)" Nullable="false" />
+    <Property Name="FromAddress" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ToAddress" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CreationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Press_Group">
+    <Key>
+      <PropertyRef Name="press_group_id" />
+    </Key>
+    <Property Name="press_group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="press_group_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="press_group_url_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="cover_story" Type="int" Nullable="false" />
+    <Property Name="date_mode" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Press_Image">
+    <Key>
+      <PropertyRef Name="img_id" />
+    </Key>
+    <Property Name="img_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="width" Type="int" Nullable="false" />
+    <Property Name="height" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="src" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="release_id" Type="int" Nullable="false" />
+    <Property Name="not_found" Type="bit" Nullable="false" />
+    <Property Name="ratio" Type="float" Nullable="false" />
+    <Property Name="size" Type="int" Nullable="false" />
+    <Property Name="brief" Type="varchar" MaxLength="255" />
+    <Property Name="img_url_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Press_Release">
+    <Key>
+      <PropertyRef Name="release_id" />
+    </Key>
+    <Property Name="release_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="publish_date" Type="date" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="body" Type="text" />
+    <Property Name="doc" Type="varchar(max)" />
+    <Property Name="pdf" Type="varchar(max)" />
+    <Property Name="brief" Type="text" Nullable="false" />
+    <Property Name="url_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="press_group_id" Type="int" Nullable="false" />
+    <Property Name="dom_id" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.Press.Store' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Press_Store">
+    <Key>
+      <PropertyRef Name="release_id" />
+      <PropertyRef Name="store_id" />
+    </Key>
+    <Property Name="release_id" Type="int" Nullable="false" />
+    <Property Name="store_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PublishingLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="User" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Action" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Info" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ResponseTag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ResponseID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IP" Type="bigint" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Score" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteError">
+    <Key>
+      <PropertyRef Name="site_error_id" />
+    </Key>
+    <Property Name="site_error_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="error_code" Type="int" Nullable="false" />
+    <Property Name="creation_date" Type="datetime" Nullable="false" />
+    <Property Name="message" Type="text" Nullable="false" />
+    <Property Name="context_data" Type="text" />
+    <Property Name="callstack" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteStory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorID" Type="numeric" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="ReviewApproval" Type="bit" Nullable="false" />
+    <Property Name="FinalApproval" Type="bit" Nullable="false" />
+    <Property Name="Reviewed" Type="bit" />
+    <Property Name="Views" Type="numeric" />
+    <Property Name="CategoryID" Type="numeric" />
+    <Property Name="IsDraft" Type="bit" />
+    <Property Name="IsUnusable" Type="bit" />
+    <Property Name="Location" Type="varchar" MaxLength="100" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="IsUnusableNegative" Type="bit" Nullable="false" />
+    <Property Name="ReviewUnsure" Type="bit" Nullable="false" />
+    <Property Name="CurrentEntryID" Type="numeric" />
+  </EntityType>
+  <EntityType Name="SiteUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address1" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address2" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="State" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ZipCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="FavoriteStore" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TrackingID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SecurityQuestionID" Type="numeric" Nullable="false" />
+    <Property Name="SecurityAnswer" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Roles" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="RecoverHash" Type="varchar" MaxLength="100" />
+    <Property Name="HashCreation" Type="datetime" />
+    <Property Name="PasswordMode" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="Gender" Type="varchar" MaxLength="1" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="CanAuthenticate" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoreInfo">
+    <Key>
+      <PropertyRef Name="LocationNumber" />
+    </Key>
+    <Property Name="LocationNumber" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="MarketableName" Type="varchar" MaxLength="100" />
+    <Property Name="OperatorContact_PersonID" Type="numeric" />
+    <Property Name="OperatorContact_Name" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_Address1" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_City" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_County" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_State" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_Zip" Type="varchar" MaxLength="100" />
+    <Property Name="BillingAddress_ZipExtension" Type="varchar" MaxLength="100" />
+    <Property Name="AreaCode" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+    <Property Name="VoiceMail" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="100" />
+    <Property Name="OpenDate" Type="datetime" />
+    <Property Name="ProjectedOpenDate" Type="datetime" />
+    <Property Name="MarketableURL" Type="varchar" MaxLength="500" />
+    <Property Name="GPS_Latitude" Type="varchar" MaxLength="100" />
+    <Property Name="GPS_Longitude" Type="varchar" MaxLength="100" />
+    <Property Name="ConceptCode" Type="varchar" MaxLength="100" />
+    <Property Name="LocationCode" Type="varchar" MaxLength="100" />
+    <Property Name="Playground" Type="varchar" MaxLength="100" />
+    <Property Name="OffersOnlineOrdering" Type="bit" />
+    <Property Name="HasDriveThru" Type="bit" />
+    <Property Name="AcceptsCfaCard" Type="bit" />
+    <Property Name="HasDiningRoom" Type="bit" />
+    <Property Name="ServesBreakfast" Type="bit" />
+    <Property Name="OffersWireless" Type="bit" />
+    <Property Name="NoUpdate" Type="bit" />
+    <Property Name="FaxNumber" Type="varchar" MaxLength="50" />
+    <Property Name="FaxAreaCode" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="text" />
+    <Property Name="CorporateOwned" Type="bit" Nullable="false" />
+    <Property Name="LocationDescription" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="StoryEntry">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="StoryContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="ImageID" Type="numeric" Nullable="false" />
+    <Property Name="PostingDate" Type="datetime" Nullable="false" />
+    <Property Name="EditorID" Type="numeric" />
+    <Property Name="StoryID" Type="numeric" Nullable="false" />
+    <Property Name="StoryVersion" Type="numeric" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryEvent">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="EventID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Poster" Type="numeric" Nullable="false" />
+    <Property Name="Width" Type="numeric" Nullable="false" />
+    <Property Name="Height" Type="numeric" Nullable="false" />
+    <Property Name="LgWidth" Type="numeric" Nullable="false" />
+    <Property Name="LgHeight" Type="numeric" Nullable="false" />
+    <Property Name="MdWidth" Type="numeric" Nullable="false" />
+    <Property Name="MdHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoHeight" Type="numeric" Nullable="false" />
+    <Property Name="PromoWidth" Type="numeric" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryLocation">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="StoreID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryRating">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="UserTrackingID" />
+    </Key>
+    <Property Name="StoryID" Type="numeric" Nullable="false" />
+    <Property Name="UserTrackingID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Rating" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="RatingDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryTags">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="StoryID" Type="numeric" Nullable="false" />
+    <Property Name="TagID" Type="numeric" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoryTopic">
+    <Key>
+      <PropertyRef Name="StoryID" />
+      <PropertyRef Name="TopicID" />
+    </Key>
+    <Property Name="StoryID" Type="decimal" Nullable="false" />
+    <Property Name="TopicID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view '445396_CUSTOMER_DATA_STORE.dbo.Subscribers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Subscribers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FIRST_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="LAST_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="100" />
+    <Property Name="PHONE_NUMBER" Type="varchar" MaxLength="20" />
+    <Property Name="ADDRESS1" Type="varchar" MaxLength="100" />
+    <Property Name="ADDRESS2" Type="varchar" MaxLength="100" />
+    <Property Name="CITY" Type="varchar" MaxLength="50" />
+    <Property Name="STATE" Type="varchar" MaxLength="20" />
+    <Property Name="ZIP_CODE" Type="varchar" MaxLength="20" />
+    <Property Name="DATE_OF_BIRTH" Type="datetime" />
+    <Property Name="GENDER" Type="varchar" MaxLength="1" />
+    <Property Name="OPT_IN_FLAG" Type="varchar" MaxLength="50" />
+    <Property Name="OPT_IN_DATE" Type="datetime" />
+    <Property Name="OPT_OUT_DATE" Type="datetime" />
+    <Property Name="KIDS_AND_FAMILY_NEWSLETTER" Type="bit" />
+  </EntityType>
+  <EntityType Name="Subscription">
+    <Key>
+      <PropertyRef Name="FeedID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="FeedID" Type="decimal" Nullable="false" />
+    <Property Name="UserID" Type="decimal" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="OrderHint" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ref_ID" Type="varchar" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="StatusCode" Type="int" Nullable="false" />
+    <Property Name="dom_id" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="Brief" Type="varchar" MaxLength="250" />
+    <Property Name="Tags" Type="int" Nullable="false" />
+    <Property Name="Img" Type="varchar" MaxLength="100" />
+    <Property Name="order_hint" Type="smallint" Nullable="false" />
+    <Property Name="Visibility" Type="smallint" Nullable="false" />
+    <Property Name="Uri" Type="varchar" MaxLength="150" />
+    <Property Name="Style" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TopicResponse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TopicID" Type="int" Nullable="false" />
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="Body" Type="varchar(max)" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Info" Type="varchar(max)" />
+    <Property Name="dom_id" Type="varchar" MaxLength="150" />
+    <Property Name="Tags" Type="bigint" Nullable="false" />
+    <Property Name="Visibility" Type="smallint" Nullable="false" />
+    <Property Name="Brief" Type="varchar" MaxLength="255" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="Attachment" Type="varchar" MaxLength="100" />
+    <Property Name="Img" Type="varchar" MaxLength="100" />
+    <Property Name="order_hint" Type="smallint" Nullable="false" />
+    <Property Name="Uri" Type="varchar" MaxLength="150" />
+    <Property Name="Score" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TopicTag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TopicID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="UID" Type="varchar" Nullable="false" MaxLength="36" />
+    <Property Name="IP" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="USState">
+    <Key>
+      <PropertyRef Name="state_id" />
+    </Key>
+    <Property Name="state_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="state_short" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="state_long" Type="varchar(max)" Nullable="false" />
+    <Property Name="boundaries" Type="text" Nullable="false" />
+    <Property Name="relative_boundaries" Type="text" />
+    <Property Name="x" Type="float" Nullable="false" />
+    <Property Name="y" Type="float" Nullable="false" />
+    <Property Name="img" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="img_roll" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="px" Type="float" Nullable="false" />
+    <Property Name="py" Type="float" Nullable="false" />
+    <Property Name="width" Type="float" Nullable="false" />
+    <Property Name="height" Type="float" Nullable="false" />
+    <Property Name="parent_id" Type="int" Nullable="false" />
+    <Property Name="contiguous" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_SiteStory_SiteUser">
+    <End Role="SiteUser" Type="CUSTOMER_DATA_STOREModel.Store.SiteUser" Multiplicity="1" />
+    <End Role="SiteStory" Type="CUSTOMER_DATA_STOREModel.Store.SiteStory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiteUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SiteStory">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoryRating_SiteStory">
+    <End Role="SiteStory" Type="CUSTOMER_DATA_STOREModel.Store.SiteStory" Multiplicity="1" />
+    <End Role="StoryRating" Type="CUSTOMER_DATA_STOREModel.Store.StoryRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiteStory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StoryRating">
+        <PropertyRef Name="StoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoryTags_SiteStory">
+    <End Role="SiteStory" Type="CUSTOMER_DATA_STOREModel.Store.SiteStory" Multiplicity="1" />
+    <End Role="StoryTags" Type="CUSTOMER_DATA_STOREModel.Store.StoryTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiteStory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StoryTags">
+        <PropertyRef Name="StoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StoryTags_Tag">
+    <End Role="Tag" Type="CUSTOMER_DATA_STOREModel.Store.Tag" Multiplicity="1" />
+    <End Role="StoryTags" Type="CUSTOMER_DATA_STOREModel.Store.StoryTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StoryTags">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

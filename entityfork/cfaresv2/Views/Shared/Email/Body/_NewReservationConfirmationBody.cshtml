@@ -1,0 +1,94 @@
+﻿
+@*
+Model is set outside this view of type <cfares.site.modules.mail.ResEmailContextModel>, not <DateTicket>
+.. Be sure to adjust before releasing if modifications are made below
+*@
+
+@model cfares.domain._event._tickets.DateTicket
+
+@{
+    cfares.domain._event._tickets.DateTicket Ticket = Model;
+    Layout = null;
+    }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Reservation Confirmation</title>
+    
+    <style type="text/css">
+    body, table, tr, td, img, p {
+        padding:0;
+        margin:0;
+        border:0;
+        font-family: Arial, sans-serif;  
+        color:#000;
+		font-size:16px;
+    }
+	a, a:visited {
+		color:#6d4f21;
+		text-decoration:none;
+	}
+    a:hover, a:focus {
+    	color: #6d4f21;
+    	text-decoration: underline;
+    } 
+    p { line-height: 25px; }
+    </style>
+</head>
+<body>
+<div>
+        
+<table border="0" cellspacing="0" cellpadding="0" width="660px" style="border-collapse:collapse; border-spacing: 0;">
+	@*<tr>
+		<td>
+			<p style="text-align:center; padding: 10px 0 10px 0"><span>Trouble viewing this Email? </span><a style="text-decoration:none;" href=@(Model.BaseUrl+"/Email/NewReservationConfirmation/"+Ticket.TicketId)><span style="color:#E01B1B">click here</span></a></p>
+		</td>    
+	</tr>*@
+	<tr>
+		<td style="text-align:center;">
+			<img src="/Content/Themes/FamilyInfluence/images/email/header.png" />
+		</td>    
+	</tr>
+	<tr>
+		<td style="padding: 0 30px"><br />  
+			<p style="padding-bottom:15px;">Dear @Ticket.Owner.Name.First,</p>
+			<p>Thank you for registering for the <b>Mother-Son Date Knight!</b> Please review the details of your reservation below and click the <b>PRINT</b> button to print your confirmation ticket. Please remember to bring your invitation and a photo ID with you.</p>
+			<br />
+			<p>Reservation For: <b>@Ticket.Owner.Name.First @Ticket.Owner.Name.Last</b></p>
+			<p>Restaurant Name: <b>@Ticket.Slot.Occurrence.Store.Name</b></p>
+			<p>Date: <b>@Ticket.Slot.Start.ToString("dddd, MMMM, dd, yyyy")</b></p>
+			<p>Time: <b>@Ticket.Slot.Start.ToString("h:mmtt")</b></p>
+			<p>Group Size: <b>@Ticket.GroupSize</b></p>
+		</td>              
+	</tr>
+	
+	<tr>
+		<td style="padding:10px 30px 0">
+		    <p>We look forward to serving you,</p><br />
+            @if (Ticket.Slot.Occurrence.Store.Operator.UID != null)
+            {
+                <img style="float: left; padding-right: 5px;" src="http://static.cfacdn.com/photos/people/@String.Format("{0}.jpg", Ticket.Slot.Occurrence.Store.Operator.UID)" />
+            }
+			<p style="line-height:25px;">
+				@Ticket.Slot.Occurrence.Store.Operator.NameString<br />
+				Owner/Operator<br />
+				<a style="color:#6d4f21;text-decoration:none;" href="@Ticket.Slot.Occurrence.Store.StreetAddress.ToString().Replace("\n", "")">@Ticket.Slot.Occurrence.Store.Name</a>
+			</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<td style="padding: 35px 5px;text-align:center;">
+			<p style="font-size:12.5px;"><b>Invitation may not be sold or otherwise transferred and is only valid at this specified Chick-fil-A<sup>&reg;</sup> location, date and time.</b></p>
+		</td>
+	</tr>
+	
+</table>    
+</div> 
+    <script>
+        window.print();
+    </script>
+</body>
+</html>
+​

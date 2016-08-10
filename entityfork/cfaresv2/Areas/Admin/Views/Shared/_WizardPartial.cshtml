@@ -1,0 +1,45 @@
+@using cfacore.shared.modules.com.admin;
+@model IWizard
+@{
+    string brief = Model.Description;
+    string title = Model.Name;
+    if( string.IsNullOrWhiteSpace( title ) && ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Title"]!=null && ViewContext.ParentActionViewContext != null ) {
+			title = ViewContext.ParentActionViewContext.ViewData["Title"].ToString();
+	} else if (ViewContext != null && ViewContext.ViewData["Title"] != null){
+        title = ViewContext.ViewData["Title"].ToString();
+    }
+
+    if( string.IsNullOrWhiteSpace( brief ) && ViewContext != null && ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Brief"] != null ) {
+        brief = ViewContext.ParentActionViewContext.ViewData["Brief"].ToString();
+    }else if (ViewContext != null && ViewContext.ViewData["Brief"] != null){
+        brief = ViewContext.ViewData["Brief"].ToString();
+    }
+	
+	if( title == "Index" || string.IsNullOrWhiteSpace( title ) ) { title = string.Empty; }
+	if( brief == "Index" || string.IsNullOrWhiteSpace( brief ) ) { brief = string.Empty; }
+}
+
+@* Floated to the right *@
+<div class="wizard-steps breadcrumbs">
+	@for (int i=0;i<Model.Steps.Count;i++)    
+	{
+		WizardStep step = Model.Steps[i];
+		bool asComplete = step.Complete || (i > 0 && Model.Steps[i - 1].Complete);
+		string currentCss = (step == Model.CurrentStep?"current-true":"current-false");
+		string stepUri = (asComplete && step != Model.CurrentStep) ? step.Uri(ViewContext) : "javascript:void(0);";
+		<a href='@stepUri' class='wizard-step step-@i complete-@asComplete.ToString().ToLower() inline-block @currentCss'>
+			<span class="inline-block wizard-icon"></span>
+			<span class="block wizard-text">@step.Name</span>        
+			<span class="block wizard-bar"></span>        
+		</a>
+	}
+</div>
+
+<div class="wizard-summary with-steps inline-block">
+	@if( brief != string.Empty ) {
+		<h3>@Html.Raw( brief )</h3>
+	}
+	@if( title != string.Empty ) {
+		<h2>@Html.Raw( title )</h2>
+	}
+</div>

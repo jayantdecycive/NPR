@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<faqs>
+  <group title="Making a Reservation">
+    <faq>
+      <q>
+        Question One
+      </q>
+      <a>
+        Answer One
+      </a>
+    </faq>
+    <faq>
+      <q>
+        Question Two
+      </q>
+      <a>
+        Answer Two
+      </a>
+    </faq>
+  </group>
+  <group title="Difficulty Using Website">
+    <faq>
+      <q>
+        Question One
+      </q>
+      <a>
+        Answer One
+      </a>
+    </faq>
+    <faq>
+      <q>
+        Question Two
+      </q>
+      <a>
+        Answer Two
+      </a>
+    </faq>
+  </group>
+</faqs>

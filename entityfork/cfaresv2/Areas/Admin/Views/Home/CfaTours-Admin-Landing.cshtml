@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Admin Home Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+    <script type="text/javascript" id="mytemplate">
+        var upcomingEventsBucket = new DomainModel.ActiveEvents();
+        upcomingEventsBucket.setWhere("table", { RegistrationEnd: { $gt: (new Date()) } });
+        upcomingEventsBucket.setWhere("filter-deleted", { Status: { $ne: "Deleted" } });
+        upcomingEventsBucket.setWhere("filter-temp", { Status: { $ne: "Temp" } });
+
+        upcomingEventsBucket.abstract = true;
+
+        var pastEventsBucket = new DomainModel.ActiveEvents();
+        pastEventsBucket.setWhere("table", { RegistrationEnd: { $lte: (new Date()) } });
+        pastEventsBucket.setWhere("filter-deleted", { Status: { $ne: "Deleted" } });
+        pastEventsBucket.setWhere("filter-temp", { Status: { $ne: "Temp" } });
+        pastEventsBucket.abstract = true;
+
+        $(function () {
+
+            var getFilterElement = function (filterElement) {
+                var classes = filterElement.className.split(" ");
+                for (var i = 0, len = classes.length; i < len; i++)
+                    if (/^filter-table-/.test(classes[i])) {
+                        var c = classes[i].replace('filter-table-', '');
+                        var e = window[c];
+                        return e;
+                    }
+                return upcomingToursBucket;
+            };
+
+            $(".filter-event-type").bind("change", function () {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-event-type", null);
+                else e.setWhere("filter-event-type", { "ReservationTypeId": val });
+                e.trigger("redraw");
+            });
+
+            $(".filter-year").bind("change", function () {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-year", null);
+                else e.setWhere("filter-year", { RegistrationStart: { $year: Number(val) } });
+                e.trigger("redraw");
+            });
+
+
+            $(".filter-month").bind("change", function () {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-month", null);
+                else e.setWhere("filter-month", { RegistrationStart: { $month: Number(val) } });
+                e.trigger("redraw");
+            });
+
+
+            $(".filter-status").bind("change", function () {
+                var e = getFilterElement(this);
+                var val = $(this).val() || null;
+                if (val == null) e.setWhere("filter-status", null);
+                else e.setWhere("filter-status", { Status: val });
+                e.trigger("redraw");
+            });
+
+
+
+            $(".filter-temp input").bind("change", function () {
+                var e = getFilterElement($(this).closest(".filter-temp").get(0));
+                var val = $(this).is("input:checked");
+
+                if (!val) e.setWhere("filter-temp", { Status: { $ne: "Temp" } });
+                else e.setWhere("filter-temp", null);
+                e.trigger("redraw");
+            });
+
+
+        });
+    </script>
+}
+
+<div class="content rounded" id="main">
+    
+    
+    
+    <div class="inner-content wrapper upcoming-tours">
+        <div class='model badge'>
+            
+          
+            <h2>Active and Upcoming</h2>
+            <p></p>
+            
+
+        </div>
+        
+        <div class='filters model badge'>
+            <p class='inline-block'>Filter by:</p>
+            @Html.Partial("Filters/Input/_EventsDash", "upcomingEventsBucket")
+        </div>
+        
+        @Html.Partial("Tables/_EventsDash","upcomingEventsBucket")
+     </div>
+     
+     <div class='inner-content wrapper new-tour-cta'>
+        <div class='model badge rounded'>
+            <h2>Create a New Event</h2>
+            <p>Choose the type of event you wish to create</p>
+            <div class='button-list admin-green'>
+        
+                <a href="/Admin/Event/Wizard/story" data-icon="ui-icon-triangle-1-e" class='jq-button'>Story</a>
+                <a href="/Admin/Event/Wizard/lgstory" data-icon="ui-icon-triangle-1-e" class='jq-button'>Large Story</a>
+                <a href="/Admin/Event/Wizard/team" data-icon="ui-icon-triangle-1-e" class='jq-button'>Team Tour</a>
+            </div>
+        </div>
+     </div>
+
+     <div class='inner-content wrapper home-dash-cta'>
+        <div class='model badge rounded'>
+            <h2>Dashboards</h2>
+            <p>Create or view data for the application</p>
+            <div class='button-list admin-green'>                
+                <a href="/Admin/User" data-icon="ui-icon-person" class='jq-button'>User Dashboard</a>
+                <a href="/Admin/Event/" data-icon="ui-icon-calendar" class='jq-button'>Event Dashboard</a>
+                <a href="/Admin/TourSlot/" data-icon="ui-icon-calendar" class='jq-button'>Slot Dashboard</a>
+                <a href="/Admin/TourTicket/" data-icon="ui-icon-tag" class='jq-button'>Ticket Dashboard</a>
+            </div>
+        </div>
+     </div>
+     <div class="inner-content wrapper past-tours">
+        <div class='model badge'>
+            <h2>Archive</h2>
+            <p>View past events and make reports</p>
+        </div>
+        
+
+         @Html.Partial("Tables/_EventsDash","pastEventsBucket")
+        
+     </div>
+</div>
+

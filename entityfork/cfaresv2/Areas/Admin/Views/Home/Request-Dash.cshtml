@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Personalized Tours Request Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+@section Action
+{
+    
+}
+    
+@section Table{
+
+    <!-- CURRENT REQUESTS -->
+@*    <div class="inner-content wrapper upcoming-requests">*@
+    <div class='model badge'>  
+    @*<div class='right'>
+				Currently not supporting creating requests from the dashboard
+		<a href="@Url.Action("Wizard", "Event", new { id = "SpecialEvent" })" class="button-green-next">
+			<span class="button-text">New Event</span>
+			<span class="button-icon-container">
+				<span class="button-icon"></span>
+			</span>
+		</a>
+    </div>*@
+    <h2>Current Requests</h2>
+    <p>View requests that have been submitted for review and approval.</p>
+    </div>
+@*    </div>*@
+
+	<script type="text/javascript">
+        var ticks = new DomainModel.NPRTicketCollection();
+        ticks.abstract = true;
+        ticks.setWhere("show-undated", [{ DatesString: { $ne: null } }, { Status: { $ne: 'Partial' } }, { Status: { $ne: 'Canceled' } }]);
+    </script>
+    <table id="npr_tick_dash" class='data-table' data-data='ticks' 
+           data-mode='backbone'>
+        <thead>
+            <tr>
+                <th data-id='RequestCta' data-searchable='false' data-sortable="false"></th>  
+                <th data-column-name='OwnerName' data-query-name="Owner/NameString" data-sortable="false">Name</th>  
+                <th data-column-name='OwnerEmail' data-query-name="Owner/Email" data-sortable="false">Email</th>  
+                <th data-column-name='OwnerHomePhone' data-query-name="Owner/HomePhone" data-searchable='false' data-sortable="false">Phone</th>  
+                <th data-id='DateOne' data-searchable='false' data-sortable="false">Date 1</th>  
+                <th data-id='DateTwo' data-searchable='false' data-sortable="false">Date 2</th>  
+                <th data-id='DateThree' data-searchable='false' data-sortable="false">Date 3</th>  
+                <th data-column-name='GroupSize' style="width:110px">Tickets Requested</th>  
+                <th data-column-name='Status'>Status</th>
+@*                <th data-column-name='GuestListString'>Guests</th>  *@
+            </tr>
+        </thead>
+    </table>
+}

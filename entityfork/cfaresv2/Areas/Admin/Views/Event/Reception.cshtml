@@ -1,0 +1,201 @@
+﻿@using cfacore.shared.domain.user
+@model cfares.domain._event.resevent.store.SpeakerEvent
+
+@{
+    ViewBag.Title = "Reception Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+    int pk = Model.ResEventId;
+    if (Model.OffSiteAddressId == null && Model.OffSiteAddress == null)
+    {
+        Model.OffSiteAddress=new Address();
+    }
+}
+
+@section Meta
+{
+    <script>
+        $(function() {
+            $("input[name='SpeakerMediaId']").bind("pk", function(e, pk) {
+                var media = new DomainModel.Media({ MediaId: Number(pk) });
+                media.SetImage($(this).closest(".model-field"), {
+                    success: function () {
+                        $(this).removeClass("hide");
+                    }
+                });
+            });
+        });
+    </script>
+
+}
+
+
+
+<h1>Speaker Details</h1>
+<p style="width:510px;">Creating a name for your event helps you organize the events and also assigns a URL to the event. The landing page will be universal for all events of a certain template but once the user chooses an event the URL changes to what you decide here. Please keep make the name short and direct to the point.</p>
+<br /><br />
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(false)
+    <div class="field-block name-block">
+        <fieldset data-pk='@pk' class='resevent-@pk inline-block'>
+            
+
+            @*[MODEL BINDING: ResEvent]*@
+            @Html.HiddenFor(model => model.OffSiteAddressId)
+            @Html.HiddenFor(model => model.ScheduleId)
+            @Html.HiddenFor(model => model.AutomaticallyEnableOccurrences)
+            @Html.HiddenFor(model => model.Schedule.ScheduleId)
+            @Html.HiddenFor(model => model.OffSiteAddress.AddressId)
+@*            @Html.HiddenFor(model => model.MinOccurrenceCapacity)*@
+            
+
+            @*
+            Regex Templates
+
+            SpeakerName
+            Name
+            SpeakerMediaId            
+            OffSiteAddress.Line1
+            OffSiteAddress.Line2
+            OffSiteAddress.Line3
+            OffSiteAddress.City
+            OffSiteAddress.State
+            OffSiteAddress.ZipString
+            OffSiteDescription
+            OffSiteParkingDescription
+            HasChildCare
+            RegistrationStartString
+            RegistrationEndString
+            SiteStartString
+            SiteEndString
+            OffSiteCapacity
+            
+            <div class='model-field field-\1'><div class="editor-label inline-block">@Html.LabelFor\(model => model.\1\)</div><div class="editor-field inline-block">@Html.EditorFor\(model => model.\1\) @Html.ValidationMessageFor\(model => model.\1\)</div></div>
+            *@
+            
+            
+            <div class='model-field field-SpeakerName'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.SpeakerName)</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.SpeakerName) @Html.ValidationMessageFor(model => model.SpeakerName)</div>
+            </div>
+            <div class='model-field field-Name'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.Name)</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.Name) @Html.ValidationMessageFor(model => model.Name)</div>
+            </div>
+            <div class='model-field field-SpeakerMediaId'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.SpeakerMediaId)</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.SpeakerMediaId,new 
+                                                           {
+                                                              Name=(Model.Name+" Speaker Image"),
+                                                              OwnerId="auto",
+                                                              IsSystem="false",
+                                                              Description=(Model.Name+" Speaker Image")
+                                                           }) @Html.ValidationMessageFor(model => model.SpeakerMediaId)</div>
+            </div>
+            <br class="clearfloat" />
+            
+            <div class='model-field field-OffSiteAddress-Label'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteAddress.Label,"Location Name")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteAddress.Label) @Html.ValidationMessageFor(model => model.OffSiteAddress.Label)</div>
+            </div>
+            <div class='model-field field-OffSiteAddress-Line1'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteAddress.Line1,"Address")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteAddress.Line1) @Html.ValidationMessageFor(model => model.OffSiteAddress.Line1)</div>
+            </div>
+         
+            <div class='model-field field-OffSiteAddress-City'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteAddress.City,"City")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteAddress.City) @Html.ValidationMessageFor(model => model.OffSiteAddress.City)</div>
+            </div>
+            
+            <div class='model-field field-OffSiteAddress-ZipString'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteAddress.ZipString)</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteAddress.ZipString) @Html.ValidationMessageFor(model => model.OffSiteAddress.ZipString)</div>
+            </div>
+            
+            <div class='model-field field-OffSiteAddress-State'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteAddress.State)</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteAddress.State) @Html.ValidationMessageFor(model => model.OffSiteAddress.State)</div>
+            </div>
+            
+            <br class="clearfloat" />
+            <div class='model-field field-OffSiteDescription'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteDescription,"Location Description")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteDescription) @Html.ValidationMessageFor(model => model.OffSiteDescription)</div>
+            </div>
+            <div class='model-field field-OffSiteParkingDescription'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.OffSiteParkingDescription,"Parking Description")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.OffSiteParkingDescription) @Html.ValidationMessageFor(model => model.OffSiteParkingDescription)</div>
+            </div>
+            <div class='model-field field-HasChildCare'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.HasChildCare,"Offers Child Care")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.HasChildCare) @Html.ValidationMessageFor(model => model.HasChildCare)</div>
+            </div>
+           
+            <br class="clearfloat" />
+            <div class='model-field field-StartDate'>
+                <div class="editor-label inline-block">@Html.Label("StartDate","Start Date and Time")</div>
+                <div class="editor-field inline-block">
+                    @Html.TextBox("StartDate",@Model.Schedule.Start.Date.ToString("MM/dd/yyyy"),new {@class="jq-date"}) @Html.ValidationMessageFor(model => model.Schedule.StartString)
+                    @Html.TextBox("StartTime",@Model.Schedule.Start.Date.ToString("hh:mmtt"),new {@class="jq-time"})
+                </div>
+            </div>
+            @Html.Hidden("StartDateTz",(Model.Schedule.Start.Offset.TotalSeconds>0?"+":"-")+Model.Schedule.Start.Offset.ToString("hh':'mm"))
+            
+            
+            
+        
+            <div class='model-field field-EndDate'>
+                <div class="editor-label inline-block">@Html.Label("EndDate","End Date and Time")</div>
+                <div class="editor-field inline-block">
+                    @Html.TextBox("EndDate",@Model.Schedule.End.Date.ToString("MM/dd/yyyy"),new {@class="jq-date"}) 
+                    @Html.ValidationMessageFor(model => model.Schedule.EndString) @Html.TextBox("EndTime",@Model.Schedule.End.Date.ToString("hh:mmtt"),new {@class="jq-time"})
+
+                </div>
+            </div>
+            @Html.Hidden("EndDateTz",(Model.Schedule.End.Offset.TotalSeconds>0?"+":"-")+Model.Schedule.End.Offset.ToString("hh':'mm"))
+            
+
+            <br class="clearfloat" />
+            <div class='model-field field-SiteStartString'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.SiteStartString,"Site Start")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.SiteStartString) @Html.ValidationMessageFor(model => model.SiteStartString)</div>
+            </div>
+            <div class='model-field field-SiteEndString'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.SiteEndString,"Site End")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.SiteEndString) @Html.ValidationMessageFor(model => model.SiteEndString)</div>
+            </div>
+            <br class="clearfloat" />
+
+
+
+            @* Max Event Capacity *@
+            <div class='model-field field-OffSiteCapacity'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.MaximumCapacity)</div>
+                <div class="editor-field inline-block">@Html.TextBoxFor(model => model.MaximumCapacity, new { min="0", value="0", type="number"}) @Html.ValidationMessageFor(model => model.MaximumCapacity)</div>
+                <br/>
+                <p>Note: Setting the Total Event Capacity will not limit capacities by individual stores but rather the whole event.</p>
+            </div>
+            
+            @* Capacity per slot 
+            <div class='model-field field-OffSiteCapacity'>
+                <div class="editor-label inline-block">@Html.LabelFor(model => model.Schedule.Capacity, "Capacity per slot")</div>
+                <div class="editor-field inline-block">@Html.EditorFor(model => model.Schedule.Capacity) @Html.ValidationMessageFor(model => model.Schedule.Capacity)</div>
+            </div>
+            *@
+
+       
+        
+        </fieldset>
+
+        
+    </div>
+    <br class="clearfloat" />
+    <div class='submit-block admin-red submit-block-override'>
+        <div class='button-cta' data-icon="ui-icon-plus">
+            <input type="hidden" id="hdn-stores" name="stores" />
+            
+			<input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+        </div>
+    </div>
+}

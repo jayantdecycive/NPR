@@ -1,0 +1,8 @@
+﻿@model int?
+
+@Html.Partial("EditorTemplates/Picker/_Picker",Model,new ViewDataDictionary(ViewData)
+    {
+        {"Table","_SlotSelection"},
+        {"DialogTitle","Please Select a Slot"},
+        {"DomainModel","Slot"},
+    })

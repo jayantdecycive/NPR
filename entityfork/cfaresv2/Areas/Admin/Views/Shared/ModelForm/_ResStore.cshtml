@@ -1,0 +1,24 @@
+﻿@model cfares.domain.store.ResStore
+
+@{
+    string pk = Model.Id();
+    bool isNew = !string.IsNullOrEmpty(pk) && pk != "0";
+}
+           
+
+<fieldset data-pk='@pk' class='store-@pk'>
+    <div class='legend inline-block'>Res Location</div>
+
+
+
+      <div class='model-field field-CategoryId'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.CategoryId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.CategoryId)
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+        </div>
+
+</fieldset>

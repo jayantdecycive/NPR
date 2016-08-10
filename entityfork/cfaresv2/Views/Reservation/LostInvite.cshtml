@@ -1,0 +1,15 @@
+﻿@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "PLACEHOLDER - ADJUST CONTENT BELOW";
+    Layout = AppContext.Current.GetLayoutLocation();
+}
+<section class="system-page">
+<h1>PLACEHOLDER - ADJUST CONTENT BELOW</h1>
+
+<p>To ensure you don't miss out on future exclusive @Html.Raw(ReservationConfig.GetConfig().Organization.DisplayName) opportunities,</p>
+<p><a href="@Html.Raw(ReservationConfig.GetConfig().Organization.EventEndedEmail)">click here</a> to become an <b>Email Insider</b></p>
+</section>
+@section SocialFooter {
+	@Html.Partial("_SocialFooterPartial")
+}    
+

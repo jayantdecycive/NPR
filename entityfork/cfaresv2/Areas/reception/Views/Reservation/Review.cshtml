@@ -1,0 +1,79 @@
+﻿@using System.Globalization
+@using cfacore.shared.modules.helpers
+@using cfares.domain._event.resevent.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@model cfares.domain._event._ticket.GuestTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    var wizard = ViewBag.wizard as ReceptionWizard;
+    var evt = (AppContext.Current.Event??wizard.GetEvent()) as SpeakerEvent;
+}
+
+@*----------------------------------------------------
+	Family Influence - Reservation Overview
+----------------------------------------------------*@
+@using (Html.BeginForm(null,null,FormMethod.Post,new {action=Request.Url.TranslatePort(Request),id="reviewForm"})) {
+	
+	<section class="row-fluid" id="overview_intro">
+		<div class="span10 offset1">
+
+			<h1>Reservation Overview</h1>
+		    <p>Please review the details of your reservation below. Click <strong>Confirm</strong> to complete your reservation, or click <strong>Edit this Information</strong> to modify any of your details. <br /><span class="required note">* Indicates required field</span></p>
+
+		</div>
+	</section>
+	<section class="row-fluid" id="res_review">
+		<div class="span12" >
+			<div id="block1">
+				<ul class="overview block unstyled">
+				    
+                    <li class="groupButton" id="confirm_cancel">
+                    <input type="submit" name="action" class="btn btn-primary large default reserve" value="Confirm Reservation" />
+                    </li>
+
+                    @Html.Partial("_TicketSummaryMixin",Model,new ViewDataDictionary(ViewData)
+                        {
+                            {"OwnerLabel",string.Empty},
+                            {"SlotStep","Reservation.ReceptionList"},
+                            {"LocationLabel","Event"},
+                            {"LocationValue",evt.SpeakerName},
+                            {"LocationAddress",evt.OffSiteAddress},
+                            {"AddressStep","Reservation.ReceptionList"},
+                            //{"LocationAddressLabel",evt.OffSiteAddress.Label},      
+                            {"LocationAddressLabel", "Event Location"},      
+                            {"NumberOfGuests",Model.NumberOfGuests}                            
+                        })
+                    
+                    <li>
+						<span class="required review">*</span>
+						<span class="itemName">Location that referred you:</span>
+                        <span class="itemInfo">
+                        @if(Model.Slot.Occurrence.StoreId!="00000"){
+						<text>@Model.Slot.Occurrence.StoreName</text>
+                        }else{
+						<text>Other</text>
+                        }
+                        </span>
+					</li>
+                    
+
+
+				    <li class="groupEnd">
+				        @Html.CheckBox("storeupdates",(bool)ViewBag.StoreUpdates,new {@readonly="readonly", disabled="disabled"})
+				        <label class="check" for="promoJoin">Receive updates about promotions and events from this Chick-fil-A restaurant. <span class="ageReq">(must be 18 or older)</span></label>
+				    </li>
+             
+
+				    <li class="groupButton" id="confirm_cancel">
+					
+						
+						<input type="submit" name="action" class="btn btn-info large cancel default" value="Cancel Reservation" />
+
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section> }
+

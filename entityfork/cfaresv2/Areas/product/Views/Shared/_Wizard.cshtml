@@ -1,0 +1,82 @@
+﻿@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain.store
+@using cfares.site.modules.com.reservations.res
+@model IReservationWizard
+@{
+    var wizard = Model as ProductGiveawayWizard;
+    MenuItem food = null;
+    if (wizard.IsComplete("Reservation.Food"))
+    {
+        food = wizard.GetFood();
+    }
+    ResStore store = null;
+    if (wizard.IsComplete("Reservation.SearchByLocation"))
+    {
+        store = wizard.GetStore();
+    }
+    ISlot slot = null;
+    if (wizard.IsComplete("Reservation.Calendar"))
+    {
+        slot = wizard.GetSlot();
+    }
+}
+<hr>
+
+<section class="row-fluid hidden-phone" id="wizard">
+    @if (store!=null)
+    {
+        <div class="span4 locationBlock">
+        
+            <div class="step-height">
+                @Html.Partial("_StoreBadge", store)
+            </div>
+            <a href="@Html.Raw(wizard.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+    }
+    @if (slot!=null)
+    {
+        <div class="span4" id="step_reservation_calendar">
+        
+            <div class="step-height">
+                @Html.Partial("_SlotBadge", slot)
+            </div>
+            <a href="@Html.Raw(wizard.GetStep("Reservation.Calendar").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+    }
+    @if (food!=null)
+    {
+        <div class="span4" id="step_reservation_food">
+            
+            <div>
+                @Html.Media(food.Media, width: 115)
+            </div>
+            <div id="wizard_food_name">
+                <div class="step-height">
+                    <h2 class="item-name step-height">@food.Name</h2>
+                </div>
+                <a href="@Html.Raw(wizard.GetStep("Reservation.Food").Uri(ViewContext))">modify this setting</a>
+            </div>
+        
+        </div>
+        
+    }
+</section>
+
+<section class="row-fluid visible-phone" id="wizard_phone">
+    <div class="wizard-wrapper">
+    <span class="pull-left">Step</span>
+    
+        <a class="@Html.Raw(wizard.IsCurrent("Reservation.SearchByLocation")?"active":"")" href="@Html.Raw(wizard.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">1</a>@if (store!=null)
+    {<a class="@Html.Raw(wizard.IsCurrent("Reservation.Calendar")?"active":"")" href="@Html.Raw(wizard.GetStep("Reservation.Calendar").Uri(ViewContext))">2</a>}@if (slot!=null)
+    {<a class="@Html.Raw(wizard.IsCurrent("Reservation.Food")?"active":"")"  href="@Html.Raw(wizard.GetStep("Reservation.Food").Uri(ViewContext))">3</a>}@if (food!=null)
+    {<a class="@Html.Raw(wizard.IsCurrent("Reservation.Reservation")?"active":"")"  href="@Html.Raw(wizard.GetStep("Reservation.Food").Uri(ViewContext))">4</a>
+    }
+        </div>
+</section>
+@if (store != null)
+{
+    <hr />
+}

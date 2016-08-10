@@ -1,0 +1,183 @@
+
+/*-------------------------------------------------------------
+  Theme Stylesheet - Breakfast Giveaway
+-------------------------------------------------------------*/
+
+@import '../../Giveaway.scss';  
+
+$colorTextHeadings: #a33038; 
+$colorFormBackground: #fbf7df;
+
+#theme_type_mast{ 	
+	background-repeat:no-repeat;
+	background-position:center center;
+	   
+		background-image:url("/Content/Themes/breakfast-giveaway/images/desktop/type-mast.png");
+		width:419px;  
+		height:166px;		  
+	 
+	@media (max-width: $mobileWidth){ 
+		background-image:url("/Content/Themes/breakfast-giveaway/images/mobile/type-mast.png");
+		width:287px;       
+		height:53px;	
+	 	padding-top:15px;         
+		padding-bottom:18px;            
+	}           
+	@include inline-block;   
+	vertical-align:middle;	 		             
+}        
+ 
+  
+#theme_type_mast_chainwide { 	
+	background-repeat:no-repeat;
+	background-position:center center;
+	   
+		background-image:url("/Content/Themes/breakfast-giveaway/images/desktop/type-mast-chainwide.png");
+		width:515px;  
+		height:370px;		  
+	 
+	@media (max-width: $mobileWidth){ 
+		background-image:url("/Content/Themes/breakfast-giveaway/images/mobile/type-mast-chainwide.png");
+		width:287px;       
+		height:140px;	
+	 	padding-top:15px;         
+		padding-bottom:18px;           
+	}           
+	@include inline-block;   
+	vertical-align:middle;	 		             
+}        
+#theme_mast_chainwide {
+	max-width: 36%;
+}
+#theme_mast_chainwide {
+  max-width: 36%;
+  display: none !important;
+}
+
+/*
+#theme_type_mast_chainwide {
+background-position: top center;
+background-image: url("/Content/Themes/breakfast-giveaway/images/desktop/type-mast-chainwide.png");
+width: 562px;
+height: 349px;
+display: inline-block;
+zoom: 0.9;
+vertical-align: middle;
+}
+*/
+.popover-title button{
+	
+}
+
+.popover{
+	max-width:700px;
+	top:-32px !important;
+}
+
+.popover-tooltip-place{
+	top: 0px;
+}
+
+.long-validation-message {
+	display: inline-block;
+	width: 220px;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+
+.long-validation-message-required {
+	top: 7px;
+}
+
+.row-fluid [class*="span"]{
+	margin-left: 1%;
+}
+
+#shareBox {
+	background-color: $colorFormBackground;
+	margin-top: 40px;
+
+	p {
+		font: {
+			family: Arial;
+			size: 14px;
+		}
+		color: $colorTextHeadings;
+		padding: 20px 0 10px 0;
+	}
+
+	ul {
+		margin: auto;
+
+		li {
+			display: inline-block;
+
+			a {
+				display: block;
+				width: 58px;
+				height: 58px;
+				text-indent: -9999px;
+				margin: 0 28px 26px;
+				cursor: pointer; cursor: hand;
+			}
+
+			a#facebook { background-image: url("../../images/facebook.png"); }
+			a#facebook:hover { background-image: url("../../images/facebookRoll.png"); }
+
+			a#twitter { background-image: url("../../images/twitter.png"); }
+			a#twitter:hover { background-image: url("../../images/twitterRoll.png"); }
+
+			a#email { background-image: url("../../images/email.png"); }
+			a#email:hover { background-image: url("../../images/emailRoll.png"); }
+		}
+	}
+}
+
+
+
+.searchBoxForm { 
+
+	background-color: rgb(251, 247, 223);
+	padding: 20px 20px;
+	margin-top:30px;
+	label{display:inline-block;}
+	button{margin-top: -8px;}
+	p{font-size:16px; color:#a33038; }
+	#SelectedRadius{width:120px;}
+	#SelectedLocation{width:160px;}
+	.subtext {color:#999; font-size:14px;}
+	form{margin:0px}
+}
+
+header{position:relative;}
+
+
+.help-callout{
+	p{color:#e57200; margin-bottom:0px; font-size:16px; font-weight: bold;}	
+	position:absolute;
+	right:0;
+	@media (max-width: $mobileWidth){ 
+		display:none;     
+	} 
+}
+
+ 
+    
+
+#faq{
+	h2{text-align:center; color:#af7b51;}
+
+	.accordion-heading{
+		background: #fbf5dd;
+		font-size:16px;
+		border:none;
+		border-radius:0px;
+		a{text-decoration:none; font-weight:bold}
+
+	}
+	.accordion-inner p{
+		font-size:14px; 
+		color:#333;
+	}
+}
+

@@ -1,0 +1,82 @@
+﻿@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ThemeStyleSheet = "MyAccount";
+}
+
+@*----------------------------------------------------
+	My Account Template / Layout Overrides
+----------------------------------------------------*@
+@this.RedefineSection("Meta")
+
+@this.RedefineSection("Head",
+                      @<text> </text>
+)
+@section Header{
+    
+}
+
+@this.RedefineSection("Banner")
+
+@this.RedefineSection("Nav",
+                      @<nav class="navbar ">
+                           <div class="navbar-inner">
+                               <div class="container row-fluid">
+                                          <a href="@Url.Action( "Index", "Dashboard" )" id="cfa_icon" class="hidden-desktop"></a>
+                               <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </a>
+                                   <div class="nav-collapse collapse">
+                                       <div class="span2 logo visible-desktop offset1">
+                                           <a class="" href="@Url.Action( "Index", "Dashboard" )">
+                                               @Html.ThemeImage("logo.png", "MyAccount")
+                                           </a>
+                                       </div>
+                                       <div class="span3 titlecard visible-desktop">
+                                           <a href="@Url.Action( "Index", "Dashboard" )">
+                                               @Html.ThemeImage("reservationcenter.png", "MyAccount")
+                                           </a>
+                                       </div>
+                                       <div class="span6">
+                                           <ul id="subNav" class="unstyled nav">
+                                            @if (AppContext.Current.User != null)
+                                            {
+                                                @*<li>
+                                                    <span class="welcome">Welcome@( AppContext.Current.User == null ? "" : ", " + AppContext.Current.User.FirstName )</span>
+                                                </li>*@
+                                                     <li>@Html.ActionLink("My Events", "Index", "Dashboard")</li>
+                                                <li>@Html.ActionLink("Modify Account Info", "Update", "Profile")</li>
+                                                <li>@Html.ActionLink("Preferred Restaurants", "PreferredStores", "Locations")</li>
+                                                <li>@Html.ActionLink("Log Out", "LogOff", "Home", new {ReturnUrl=Request.Url.TranslatePort(Request)},new {})</li>
+                                            }
+                                            else
+                                            {
+                                                 @*
+                                                 <li>
+                                                 @using (Html.BeginForm("Index", "LogOn", new { area = "MyAccount", ReturnUrl=Request.Url.TranslatePort(Request) }, FormMethod.Post, new { id = "login", @class = "form-horizontal" }))
+                                                 {
+                                                    <input class="input-small" type="text" name="UserName" placeholder="Username" />
+                                                    <input class="input-small" type="password" name="Password" placeholder="Password" />
+                                                    <button type="submit" class="btn small default btn-primary" value="login">login</button>
+                                                 }
+                                                 </li>
+                                                 *@
+                                            }
+                                          </ul>
+                                       </div>
+                                   </div>
+                                   </div>
+                           </div>
+				</nav>)
+
+<main>
+@RenderBody()
+    </main>
+@this.RedefineSection("SocialFooter")
+
+@this.RedefineSection("Footer")
+
+@this.RedefineSection("Scripts")

@@ -1,0 +1,26 @@
+﻿@model int?
+<script type="text/javascript">
+    var eventList = new DomainModel.ResEventCollection();
+    eventList.abstract = true;
+</script>
+<!--<form class='' action="javascript:void(0);">-->
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="event_select" class='data-table' data-jquery-ui="true" data-dom='<"H"r>t<"F"fp>' data-data='eventList' 
+        data-mode='backbone'>
+            <thead>
+            <tr>
+                <th data-id='ResEventSelect' data-on-display='DataFormat.Radio' data-column-parent='ResEventId'></th>                        
+                <th data-column-name='ResEventIdL' data-id-column='true' >Event Id</th>
+                <th data-column-name='Name' >Name</th>
+                <!--<th data-column-name='Urls' data-searchable='false' >URLs</th>-->
+                <!--<th data-column-name='Description' data-visible="false" >Description</th>
+                <th data-column-name='ReservationType' data-editable="false" data-visible="false" >Reservation Type</th>                -->
+                <th data-column-name='SiteStartD' data-on-display='DataFormat.date' data-searchable='false' >Site Start</th>			    
+			   <!-- <th data-column-name='SiteEndD' data-visible="false" data-on-display='DataFormat.date'>Site End</th>		-->
+                
+                <th data-column-name='Status' data-on-display='EnumFormat.ResEventStatus'>Status</th>  
+		    </tr>
+            </thead>
+      </table>
+      </div>
+<!--</form>-->

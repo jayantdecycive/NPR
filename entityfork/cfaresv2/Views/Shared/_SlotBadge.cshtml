@@ -1,0 +1,10 @@
+﻿@model cfares.domain._event.ISlot
+<section>
+<time class="date" datetime="@Html.Raw(Model.Start.Date.ToString("yyyy-MM-dd"))">
+    @Model.Start.Date.ToString("dddd, MMMM d, yyyy")
+</time>
+
+<time datetime="@Html.Raw(Model.Start.ToString("yyyy-MM-dd")+"T"+Model.Start.ToString("HH:mmzzz"))">
+    @Model.Start.ToString("hh:mm tt") - @Model.End.ToString("hh:mm tt")
+</time>
+</section>

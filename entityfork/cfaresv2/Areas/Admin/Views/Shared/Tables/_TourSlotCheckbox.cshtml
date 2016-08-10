@@ -1,0 +1,23 @@
+﻿@model string
+
+<div class='admin-table'>
+	<table id="slots_@Model" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+		<thead>
+			<tr>
+				<th data-id='SlotSelect' data-on-display='DataFormat.Checkbox' data-column-parent='SlotId'></th>
+				<th data-id='SlotLink' data-column-parent='SlotId' data-on-display='DataFunction.onSlotLinkdisplay'></th>
+				<th data-id='SlotIdL' data-id-column='true' data-visible="false" style="width:82px;">Slot ID</th>
+				<th data-column-name='StartDay' data-on-display='DataFormat.weekday' width="15%">Day</th>
+				<th data-column-name='StartD' data-on-display='DataFormat.date' width="15%">Start</th>
+				<th data-column-name='EndD' data-on-display='DataFormat.date' width="15%">End</th>
+				<th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Slot Status</th>
+				<th data-column-name='TicketsReserved' data-searchable='false'>Reservations Reserved</th>
+				<th data-id='TicketsAvailable' data-sortable="false" data-searchable='false'>Reservations Available</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<div class='button-cta left summary-btn-grp'>
+	<a href="javascript:void(0);" id="delete" data-modal="lazy" data-toggle="modal" data-title="Delete Slots?" data-submit-title="Delete" data-icon="ui-icon-circle-close" class="btn-container-default">Delete</a>
+</div>

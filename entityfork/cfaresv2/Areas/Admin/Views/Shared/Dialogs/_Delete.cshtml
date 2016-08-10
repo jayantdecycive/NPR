@@ -1,0 +1,45 @@
+﻿@model string
+
+<div id="modal-from-dom" class="modal hide fade">
+	<div class="modal-header">
+		<a href="#" class="close">&times;</a>
+		<h3>Delete</h3>
+	</div>
+	<div class="modal-body">
+		<p>You are about to delete this record, this procedure is irreversible.</p>
+		<p>Do you want to proceed?</p>
+	</div>
+	<div class="modal-footer">
+		<a href="@Model" class="btn danger">Yes</a>
+		<a href="javascript:$('#modal-from-dom').modal('hide')" class="btn secondary">No</a>
+	</div>
+</div>
+
+<script>
+
+	//$('#modal-from-dom').on('show', function() {
+	//	var id = $(this).data('id'),
+	//	    removeBtn = $(this).find('.danger');
+
+	//	removeBtn.attr('href', removeBtn.attr('href').replace(/(&|\?)ref=\d*/, '$1ref=' + id));
+	//})
+	//	.modal({ backdrop: true });
+
+	$('.confirm-delete').on('click', function (e) {
+		e.preventDefault();
+
+		var id = $(this).data('id');
+		$('#modal-from-dom').data('id', id).modal();
+	});
+	
+</script>
+
+<style>
+button {
+    border: 1px #AAA solid;
+    padding: 4px 10px;
+}
+.hide {
+    display: none;
+}
+</style>

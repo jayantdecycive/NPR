@@ -1,0 +1,7 @@
+﻿@model List<cfares.domain._event.ReservationCategory>
+@if (ViewData["Value"] == null)
+{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ReservationCategoryId", "Name", Model.First().Id()),"Select a Category", new { @class = "res-category picker-dropdown jq-select" })
+}else{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ReservationCategoryId", "Name", ViewData["Value"]),"Select a Category", new { @class = "res-category picker-dropdown jq-select" })
+}

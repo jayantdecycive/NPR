@@ -1,0 +1,8 @@
+﻿@model string
+
+@Html.Partial("EditorTemplates/Picker/_PickerString",Model,new ViewDataDictionary(ViewData)
+    {
+        {"Table","_LocationCategorySelection"},
+        {"DialogTitle","Please Select a Location Category"},
+        {"DomainModel","LocationCategory"},
+    })

@@ -1,0 +1,33 @@
+﻿@using cfares.site.modules.com.application
+@model cfares.domain.user.ResUser
+
+@{
+    ViewBag.Title = "Create User";
+
+
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+    ViewBag.Brief = "Create New Event User";
+    
+}
+
+
+<h1>Reservation User Detail</h1>
+@if( AppContext.Current.Configuration.ApplicationId == Application.CFA )
+{
+	<p>
+		<br /><strong>Note:</strong> the user will be added to the site database. If you intend to create a user that logs in through @@cfa, please contact a site administrator for Chick-fil-A IT.
+	</p>
+}
+else
+{
+	<p>&nbsp;</p>
+}
+@Html.Partial("ModelForm/_User")

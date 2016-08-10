@@ -1,0 +1,40 @@
+﻿@model cfares.domain._event._ticket.tours.TourTicket
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewBag.Brief = "Tour Ticket Detailed Information";
+}
+
+@section Meta{
+    <script type="text/javascript">
+        $(function () {
+            ///Admin/Slot/Details/1981
+            var id = $(".field-Slot a").attr("data-pk");
+            $(".field-Slot a").attr("href", "/Admin/Slot/TourSlot-Details/{0}".format(id));
+        });
+        
+    </script>
+}
+            <div class='button-cta right' data-icon="ui-icon-calendar">
+                        @Html.ActionLink("View the Slot for this Ticket", "TourSlot-Details", "Slot", new { id = Model.Slot.Id() }, new { })
+            </div>
+<h1>@Model.GroupName</h1>
+<p>
+@Model.ToString()
+</p>
+        
+@Html.Partial("ModelDetail/Tickets/_TourTicket")     
+@Html.Partial("ModelDetail/_Ticket")     
+        
+            
+@section Action{
+    <div class='button-cta' data-icon="ui-icon-pencil">
+        @Html.ActionLink("Edit", "TourTicket-Edit", new { id = Model.Id() })
+    </div>
+}
+@section Cancel{
+    <div class='dash-cta'>
+        @Html.ActionLink("Tour Ticket Dash", "TourTicket-Index")
+    </div>
+}

@@ -1,0 +1,156 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain._event.slot
+@using cfares.domain.store
+@using cfares.repository._event
+@using cfares.repository.slot
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@model cfaresv2.Models.TicketAccountModel<cfares.domain._event._ticket.FoodTicket>
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+    ProductGiveawayWizard wizard = ViewBag.wizard as ProductGiveawayWizard;
+}
+
+@section Scripts {
+    <script>
+        $(function() {
+           /* $("li > label").each(function() {
+                $(this).prev("span.required").prependTo(this);
+                $(this).wrap("<div class='control-label' />");
+            });
+        
+            
+            $("input").addClass("controls");
+        */
+        });
+        
+    </script>
+}
+
+
+@Html.Partial("_Wizard",wizard)
+
+
+
+<section class="row-fluid" id="reservation_form">
+	
+	<div class="span11 offset1">
+	    @using (Html.BeginForm(null, null, FormMethod.Post, new { action = Request.Url.TranslatePort(Request), id = "reservationForm", @class = "form-horizontal form-inline" }))
+     {
+	        
+	            <fieldset>
+
+                    @if (!String.IsNullOrWhiteSpace(ViewBag.AlreadyRegistered))
+                    {
+                        <p class="field-validation-error">@ViewBag.AlreadyRegistered</p>
+                        <br/>
+                    }
+
+
+
+                    <p>Complete your reservation by filling out the form below. <span class="indicates-required"><span>*Indicates</span> required field</span></p>
+	                <ul  class="unstyled">
+	                    <li>
+	                        
+							
+							@Html.ValidationSummary(true)
+	                    </li>
+	                    
+	                        
+						    @Html.HiddenFor(x=>x.Ticket.CardNumber)
+	                  
+	                 
+	                    
+	                    @if (!Request.IsAuthenticated)
+                        {
+                            @Html.Partial("_ResUserMixin")
+                        }
+                        else
+                        {
+                            @*@Html.HiddenFor(x=>x.Ticket.OwnerId)*@
+                        }
+                        
+                        
+
+	                    
+	                    
+
+	                                
+	                    <li>
+	                        @Html.CheckBoxFor(x=>x.StoreOptIn)
+	                        @Html.LabelFor(x=>x.StoreOptIn,"Receive updates about promotions and events from this Chick-fil-A restaurant.", new{@class="check"})<span class='ageReq'> (must be 18 or older)</span>
+	                        @Html.ValidationMessageFor(x=>x.StoreOptIn)
+                        </li>
+
+	                    <li>
+	                        
+	                        <fieldset>
+	                            <span class="required">*</span>
+	                            <label>I am 13 years of age or older:</label>
+	                            @Html.EditorFor(x=>x.AgeCheck)
+	                            @Html.ValidationMessageFor(x=>x.AgeCheck)
+	                        </fieldset>
+	                    </li>
+                        
+                        @if (Model.Ticket.SlotId != null)
+                        {
+                            @Html.HiddenFor(x => x.Ticket.SlotId)
+                        }
+                        else if(ViewBag.Occurrence!=null)
+                        {
+                            var giveawayOccurrence = ViewBag.Occurrence as GiveawayOccurrence;
+                            <li>
+                                @Html.LabelFor(x=>x.Ticket.SlotId,"Time Slot:")
+	            
+                                @Html.DropDownListFor(x=>x.Ticket.SlotId,
+                                                      new SelectList(
+                                                          giveawayOccurrence.AvailableSlots.Select(x=>new{Label=x.Start.ToDateTimeString(),Value=x.SlotId}),
+                                                          "Value","Label"
+                                                          ),new {@class=""}
+                                     )
+                                @Html.ValidationMessageFor(x=>x.Ticket.SlotId)
+                            </li>
+                        }
+                        
+                        @if (Model.Ticket.MenuItemId != null)
+                        {
+                            @Html.HiddenFor(x => x.Ticket.MenuItemId)
+                        }
+                        else if(ViewBag.Occurrence!=null)
+                        {
+                            var giveawayOccurrence = ViewBag.Occurrence as GiveawayOccurrence;
+                            <li>
+                                @Html.LabelFor(x=>x.Ticket.MenuItemId,"Menu Item:")
+	            
+                                @Html.DropDownListFor(x=>x.Ticket.SlotId,
+                                                      new SelectList(
+                                                          giveawayOccurrence.ItemsAvailable.Select(x=>new{Label=x.Name,Value=x.DomId}),
+                                                          "Value","Label"
+                                                          ),new {@class=""}
+                                     )
+                                @Html.ValidationMessageFor(x=>x.Ticket.MenuItemId)
+                            </li>
+                        }
+	                    
+	                    <li>
+	                        <fieldset>
+	                            <label>Have you tried Chick-fil-A for breakfast before?</label>
+	                        @Html.RadioButton("TriedBreakfast", "yes",Model.Ticket.AdditionalField("TriedBreakfast")=="yes",new {id="TriedBreakfastYes"})
+                                <label for="TriedBreakfastYes" class="radio">Yes</label>
+	                        @Html.RadioButton("TriedBreakfast", "no",Model.Ticket.AdditionalField("TriedBreakfast")=="no",new {id="TriedBreakfastNo"})
+                                <label for="TriedBreakfastNo" class="radio">No</label>
+                                </fieldset>
+                        </li>
+	                    
+	                </ul>
+
+	                <button type="submit" class="btn medium default reserve btn-primary">Save &amp; Continue <i class="icon-arrow-right"></i></button>
+
+	            </fieldset>
+	        
+     }
+	</div>
+</section>

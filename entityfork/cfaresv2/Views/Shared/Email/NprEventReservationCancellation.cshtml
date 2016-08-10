@@ -1,0 +1,42 @@
+﻿@using cfacore.shared.modules.helpers
+@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.NprEmailContextModel>
+@*@model npr.domain._event.ticket.NPRTicket*@
+
+<html>
+<head>
+</head>
+<body style="width:600px; padding:0px; margin:0px;">
+@*<div id="head" style="background:#ddd; width:600px; height:200px">
+
+    <img src="http://www.npr.org/about/images/press/Logos/npr_logo_rgb.JPG" style="float:left; width:150px; margin-left: 38px; margin-top: 70px;"/>
+    <img src="http://tours.qa.npr.org/Content/themes/npr/images/npr-headquarters-email.jpg" style="float:right;"/>
+
+</div>*@
+    <div id="content" style="padding:50px 20px; clear:both;">
+
+
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            Dear @Model.Ticket.Owner.FirstName,
+        </p>
+
+		<p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+
+        <span>We are sorry that you will not be able to join us for @Model.Ticket.Slot.Occurrence.ResEventName @if( Model.Ticket.Slot != null ) {<span> on @Model.Ticket.Slot.Start.ToDateStringLong()</span>}. Per your request, your reservation (confirmation @Model.Ticket.ConfirmationNumber) has been cancelled.   We hope to see you at a future event. You can view the full list of events at NPR <a href="http://events.npr.org">here</a>.</span>
+
+		</p>
+
+		<p class="margin-top-35 margin-bot-60" style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">Sincerely,<br />
+		<img src="http://tours.npr.org/content/themes/npr/images/signature-erin-mcintyre.png" /><br />
+		Erin McIntyre<br/>
+		Manager, NPR Audience and Community Relations<br/>
+		</p>
+
+    </div>
+
+
+</body>
+</html>
+
+
+
+

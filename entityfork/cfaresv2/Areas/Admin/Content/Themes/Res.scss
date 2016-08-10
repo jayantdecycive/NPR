@@ -1,0 +1,90 @@
+   
+    .header-bar
+    {
+        background-color:#454545;
+        border-bottom:2px solid #fefefe;
+        height:10px;
+        width:100%;
+    }
+
+        #logo
+        {
+            
+            position:relative;
+            top:-12px;
+            left:0px;
+            background-image:url('/Areas/Admin/Content/Img/Master/cfa-logo.png');
+            width:228px;
+            height:107px; 
+        }
+
+             .top-menu
+        {
+            width:765px; 
+            padding-top:24px;   
+        }
+
+                #logindisplay
+        {
+            float:right;      
+            position:relative;          
+            top:-10px;
+        }
+
+                  #logindisplay .status
+        {
+            color:#8da5af;
+            font-size:7.5pt;
+            text-transform:uppercase;
+            position:relative;
+            left:-10px;            
+            
+        }
+
+
+                          .wizard.content .wizard-summary h2{color:#e2383f;font-size:13.5pt;font-weight:bold;}
+        
+
+		.wizard.content .wizard-step{height:79px;}
+		.wizard-steps{float:right;}
+		.food-selection{display:inline-block;width:22%;padding:3% 1%;}
+		.food-list h3{display:inline-block;margin-right:30px;}
+		.food-list .admin-table{display:inline-block;}
+		#food_canvas{text-align:center;}
+		#food_canvas p{padding:4px 0px;}
+		#food_canvas p.status{font-weight:bold;}
+#summary section ul{display:block; li{display:block;}}
+
+#summary {
+	//margin-left: 23px;
+	section{ img{ float:right;}}
+	ul {
+		font-size: 14px;
+		li{padding:.2em 0;}
+		strong {
+			display: inline-block;
+			padding: 0 1em;
+		}
+	}
+}
+
+
+
+.model-field{
+	label{ color:#666; font-size:14px;}
+}
+
+
+.action-details.controller-event .model .display-label {
+	width: 220px;
+}
+
+.message{
+	margin:20px 0px 30px 0px;
+	font-size:14px;
+	font-weifght:bold;
+
+
+}
+
+.maroon{color:#940F0F;}

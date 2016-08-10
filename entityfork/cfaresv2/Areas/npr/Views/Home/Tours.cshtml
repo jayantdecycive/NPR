@@ -1,0 +1,77 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+
+@{
+    ViewBag.Title = "Tours";
+    ViewBag.Nav = "Tours";
+ //  Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+   Layout = "~/Areas/npr/Views/Shared/_layout.cshtml";
+}
+
+<section id="homepage_header">
+	<img class="pull-left push-right" src="~/Content/themes/npr/images/npr-headquarters.jpg" />
+	<h2>Welcome to NPR Headquarters Tour</h2>
+	<p>Take a tour of the Washington, D.C., world headquarters of NPR. Each weekday at 11 a.m., a one-hour, guided tour will take you through the NPR Newsroom and studios, and tell you about our history, mission and give you a glimpse of daily life here. The tour is free of charge.</p>
+	<p>To begin your reservation, select the number of guests and a preferred date. Then click <strong>Make Reservation</strong>.</p>
+</section>
+<section id="tours_info">
+	<div class="slot-box pull-right">
+		@using (Html.BeginForm(null, null, FormMethod.Post, new { autocomplete="off" }))
+        {
+			<h3>How many guests will be attending?</h3>    
+			@Html.DropDownListFor(m => m.GroupSize, new SelectList(Enumerable.Range(1, 20)) )
+			@Html.ValidationMessageFor(m => m.GroupSize)
+        
+			<h3>Choose an available date:<br /><span class="disclaimer">* Availability depends on the amount of people in your party</span></h3>  
+			<span class="slot-picker-container">
+				
+                @Html.TextBox("slotdatepicker", null, new {id="slotdatepicker", @class="slot", autocomplete="off"})
+                <label for="slotdatepicker" generated="true" class="error no-slot-error" style="display:none;">Please select a date</label>
+                @Html.HiddenFor(m => m.SlotId, new { id="slotId" })
+				<!--<span class="slot-cal-icon"></span>-->
+				@Html.ValidationMessageFor(m => m.Slot.Start)
+			</span>
+            <br /><br />
+      
+        
+            <input type="submit" value="Make Reservation" class="invisible"/>
+      
+			<span class="button-forward">
+				<input type="submit" value="Make Reservation" />
+				<span class="button-icon-container">
+					<span class="button-icon"></span>
+				</span>
+			</span>
+        }
+	</div>
+	<div class="tours-info-data">
+		<span class="pull-left push-right" style="display:block;">
+			<img src="~/Content/themes/npr/images/public-tours-clock.jpg" />
+		</span>
+		<h3>Public Tours</h3>
+		<p class="strong">
+			Monday-Friday<br/>
+			at 11:00am EDT<br />
+			<span class="disclaimer">(except national holidays)</span>
+		</p>
+		<p><span class="strong">Group Size:</span> Maximum 20 guests</p>
+		<p><span class="strong">For:</span> General public 16 years of age or older</p>
+		<div class="text-well">For professional or student groups with a background in journalism or a related field, continue your reservation @Html.ActionLink("here", "Register", "Reservation", new { type="custom" }, new{  }).</div>
+	</div>
+</section>
+
+@if(ViewBag.Event != null){
+    <script type="text/javascript">
+        var event = @(ViewBag.Event);
+    </script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51138297-1', 'npr.org');
+  ga('send', 'pageview');
+
+</script>
+}

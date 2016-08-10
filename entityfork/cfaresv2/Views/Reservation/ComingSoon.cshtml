@@ -1,0 +1,32 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.Global
+@using cfares.site.modules.com.application
+@{
+    ViewBag.Title = "Event Has Ended";
+    Layout = AppContext.Current.GetLayoutLocation();
+}
+
+    @* if template json ("/content/text/") contains a "UcomingPromo" key *@
+    @if(!String.IsNullOrWhiteSpace(Html.ThemeText("UpcomingPromo", noParagraph: true).ToStringSafe())){
+
+        <section class="system-page ">
+        <h1>Coming Soon!</h1>
+        @Html.ThemeText("UpcomingPromo", noParagraph: true)
+        </section>   
+    }
+        
+    @* Default Event Ended message *@  
+    else{
+
+        <section class="system-page ">
+        <h1>This event has ended.<br/>Thanks to all our fans who participated!</h1>
+        <p class="padding50 text-center">To ensure you don't miss out on future exclusive @Html.Raw(ReservationConfig.GetConfig().Organization.DisplayName) opportunities,<br /><a href="@Html.Raw(ReservationConfig.GetConfig().Organization.EventEndedEmail)">click here</a> to become an <b>Email Insider</b>.</p>
+        </section>   
+    }
+
+
+
+@section SocialFooter {
+	@Html.Partial("_SocialFooterPartial")
+}
+

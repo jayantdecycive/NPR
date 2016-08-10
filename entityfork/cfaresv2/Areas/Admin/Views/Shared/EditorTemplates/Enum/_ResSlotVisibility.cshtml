@@ -1,0 +1,4 @@
+﻿@model cfares.domain._event.slot.SlotVisibility ?
+<div class='admin-table'>
+	@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(cfares.domain._event.slot.SlotVisibility)), Model ?? cfares.domain._event.slot.SlotVisibility.Public), new { @class = " jq-select" })
+</div>

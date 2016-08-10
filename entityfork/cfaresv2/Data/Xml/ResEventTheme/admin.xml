@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResEventTheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TemplateName>Chick-fil-A Tours</TemplateName>  
+  <Name>Proto</Name>
+  <ResEventThemeId>admin</ResEventThemeId>  
+  <TemplateId>admin</TemplateId>  
+  <ReservationTypeName>admin</ReservationTypeName>
+  <ReservationTypeId>admin</ReservationTypeId>
+</ResEventTheme>

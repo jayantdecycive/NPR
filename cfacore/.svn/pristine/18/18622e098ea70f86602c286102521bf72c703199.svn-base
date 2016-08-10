@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=152368
+  -->
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <connectionStrings>
+    <add name="cfa-site-rackspace" connectionString="Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;User ID=445396_CDSadmin; Password=G7e5Kz783ps3!;" />
+    <add name="cfa-id-mssql" connectionString="Data Source=id.chick-fil-a.com;Initial Catalog=idApplication;User ID=idSqlAdmin; Password=drake7;" />
+    <add name="cfa-id-mysql" connectionString="server=idcfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=idSqlAdmin;pwd=drake7;database=idApplication;" />
+    <add name="cfa-res-mssql" connectionString="Data Source=id.chick-fil-a.com;Initial Catalog=resApplication;User ID=resSqlAdmin; Password=drake7;" />
+    <add name="cfa-res-mysql" connectionString="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=resSqlAdmin;pwd=drake7;database=resApplication;" />
+    <add name="ApplicationServices" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true" providerName="System.Data.SqlClient" />
+    <add name="CFA-ADService" connectionString="LDAP://id.chick-fil-a.com:389/CN=Users,DC=id,DC=chick-fil-a,DC=com" />
+    <add name="cfa-elasti-cache" connectionString="cfacore.hjywkp.0001.use1.cache.amazonaws.com:11211" />
+    <add name="cfa-app-fabric" connectionString="telnet://localhost:22233/cfaId" />
+    <add name="CfaComStoriesEntities" connectionString="metadata=res://*/Designer.Stories.csdl|res://*/Designer.Stories.ssdl|res://*/Designer.Stories.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;Persist Security Info=True;User ID=445396_CDSadmin;Password=G7e5Kz783ps3!;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  <appSettings>
+    <add key="webpages:Version" value="2.0.0.0" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+  </appSettings>
+  <!--
+    For a description of web.config changes for .NET 4.5 see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <customErrors mode="Off" />
+    <compilation debug="true" targetFramework="4.5">
+      <assemblies>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+      </assemblies>
+    </compilation>
+    <authentication mode="Forms">
+      <forms loginUrl="~/Account/LogOn" timeout="2880" />
+    </authentication>
+    <membership defaultProvider="LDAPProvider">
+      <providers>
+        <clear />
+        <!--<add name="Chick-fil-A-ID-Membership"
+type="System.Web.Security.ActiveDirectoryMembershipProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+connectionStringName="CFA-ADService"
+attributeMapUsername="sAMAccountName"
+connectionUsername="Administrator@id.chick-fil-a.com" connectionPassword="WuNR8Q*xEA2"
+ connectionProtection="None" applicationName="/" trustedConnection="True" />-->
+        <add name="LDAPProvider" type="cfacore.site.modules.auth.LDAPProvider" connectionStringName="CFA-ADService" attributeMapUsername="sAMAccountName" connectionUsername="Administrator@id.chick-fil-a.com" connectionPassword="WuNR8Q*xEA2" connectionProtection="None" applicationName="/" trustedConnection="True" domain="id.chick-fil-a.com" />
+      </providers>
+    </membership>
+    <profile>
+      <providers>
+        <clear />
+        <add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="ApplicationServices" applicationName="/" />
+      </providers>
+    </profile>
+    <roleManager enabled="false">
+      <providers>
+        <clear />
+        <add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="ApplicationServices" applicationName="/" />
+        <add name="AspNetWindowsTokenRoleProvider" type="System.Web.Security.WindowsTokenRoleProvider" applicationName="/" />
+      </providers>
+    </roleManager>
+    <pages controlRenderingCompatibilityVersion="4.0">
+      <namespaces>
+        <add namespace="System.Web.Helpers" />
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="System.Web.WebPages" />
+      </namespaces>
+    </pages>
+  </system.web>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules runAllManagedModulesForAllRequests="true" />
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="4.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0" newVersion="2.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-1.0.0.0" newVersion="1.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Razor" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+    <bypassTrustedAppStrongNames enabled="false" />
+  </runtime>
+  <system.serviceModel>
+    <bindings>
+      <webHttpBinding>
+        <binding name="webHttpBindingWithJsonP" crossDomainScriptAccessEnabled="true" />
+      </webHttpBinding>
+    </bindings>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+      <endpointBehaviors>
+        <behavior name="AjaxEndpoint">
+          <webHttp />
+        </behavior>
+        <behavior name="" />
+      </endpointBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" aspNetCompatibilityEnabled="false" />
+    <services>
+      <!--<service name="cfacore.Services.ExactTargetReverseProxy">
+        <endpoint behaviorConfiguration="" address="" binding="basicHttpBinding" bindingConfiguration="usernameWithTransport"  contract="cfacore.Services.IExactTargetReverseProxy">
+        </endpoint>
+      </service>-->
+      <service name="cfacore.Services.Connect">
+        <endpoint behaviorConfiguration="AjaxEndpoint" binding="webHttpBinding" bindingConfiguration="webHttpBindingWithJsonP" contract="cfacore.Services.IConnect" />
+      </service>
+    </services>
+  </system.serviceModel>
+  <!--<system.diagnostics>
+    <trace autoflush="true"/>
+    <sources>
+      <source name="System.Net" maxdatasize="1024">
+        <listeners>
+          <add name="TraceFile"/>
+        </listeners>
+      </source>
+      <source name="System.Net.Sockets" maxdatasize="1024">
+        <listeners>
+          <add name="TraceFile"/>
+        </listeners>
+      </source>
+    </sources>
+    <sharedListeners>
+      <add name="TraceFile" type="System.Diagnostics.TextWriterTraceListener"
+        initializeData="trace.log"/>
+    </sharedListeners>
+    <switches>
+      <add name="System.Net" value="Verbose"/>
+      <add name="System.Net.Sockets" value="Verbose"/>
+    </switches>
+  </system.diagnostics>-->
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+  </entityFramework>
+</configuration>

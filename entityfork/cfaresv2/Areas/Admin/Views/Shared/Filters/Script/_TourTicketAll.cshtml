@@ -1,0 +1,56 @@
+﻿<script type="text/javascript">
+    var DataFunction = {
+
+        tablefilter: function (col) {
+            var year = $("#filter-year").val();
+            var month = $("#filter-month").val();
+            var tourType = $("#filter-tour-type").val();
+            var dayOfWeek = $("#filter-day").val();
+            var guide = $($("#filter-guide .jq-auto-complete").data("pk")).val();
+            var month = $("#filter-month").val();
+
+            var filterArr = [];
+
+            if (guide && guide != "0")
+                filterArr.push("{0} eq {1}L".format("GuideId", guide));
+
+            var odataFormat = "yyyy-MM-dd-hh:mm";
+            
+
+            if (month) {
+                var thisyear = Number((new Date()).getFullYear());
+                month = Number(month);
+                var monthStart = Date.parse("{0}/01/{1}".format(month, thisyear));
+                
+                if (month == 12)
+                    thisyear++;
+
+                var monthEnd = Date.parse("{0}/01/{1}".format(month + 1, thisyear));
+
+                var toFilter = "{0} gt datetime'{1}' and {0} lt datetime'{2}'".format("Start", (monthStart).toString(odataFormat), (monthEnd).toString(odataFormat));
+                console.log(toFilter);
+                filterArr.push(toFilter);
+            }
+
+            var slotVal = "";
+            if (DataFunction.slotfilter)
+                slotVal = DataFunction.slotfilter(col);
+
+
+            if (slotVal) {
+                filterArr.push(slotVal);
+            } else {
+                var picker = $("#filter-slot input").val();
+
+                if (picker && picker != "0")
+                    filterArr.push("{0} eq {1}L".format("SlotId", picker));
+            }
+
+            if (filterArr.length)
+                return "(" + filterArr.join(" and ") + ")";
+        }
+
+
+    };
+
+</script>

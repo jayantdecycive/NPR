@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CUSTOMER_DATA_STOREModelStoreContainer" CdmEntityContainer="CfaComEntities">
+    <EntitySetMapping Name="AlohaLiveDates">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.AlohaLiveDate">
+        <MappingFragment StoreEntitySet="AlohaLiveDate">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="LiveDate" ColumnName="LiveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BreakfastConflicts">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.BreakfastConflict">
+        <MappingFragment StoreEntitySet="BreakfastConflict">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+          <ScalarProperty Name="regID" ColumnName="regID" />
+          <ScalarProperty Name="storeID" ColumnName="storeID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="conflict" ColumnName="conflict" />
+          <ScalarProperty Name="slotID" ColumnName="slotID" />
+          <ScalarProperty Name="foodID" ColumnName="foodID" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="subscriber" ColumnName="subscriber" />
+          <ScalarProperty Name="newuser" ColumnName="newuser" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="finished" ColumnName="finished" />
+          <ScalarProperty Name="hash" ColumnName="hash" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="emailed" ColumnName="emailed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BreakfastConflictActions">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.BreakfastConflictAction">
+        <MappingFragment StoreEntitySet="BreakfastConflictAction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="food" ColumnName="food" />
+          <ScalarProperty Name="acted" ColumnName="acted" />
+          <ScalarProperty Name="conflictID" ColumnName="conflictID" />
+          <ScalarProperty Name="slot" ColumnName="slot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cares">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Care">
+        <MappingFragment StoreEntitySet="Cares">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="EMAIL_ADDRESS" ColumnName="EMAIL_ADDRESS" />
+          <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+          <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="ALT_PHONE_NUMBER" ColumnName="ALT_PHONE_NUMBER" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="CONTACTED_OPERATOR" ColumnName="CONTACTED_OPERATOR" />
+          <ScalarProperty Name="STORE_NUMBER" ColumnName="STORE_NUMBER" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="STORE_ADDRESS" ColumnName="STORE_ADDRESS" />
+          <ScalarProperty Name="STORE_CITY" ColumnName="STORE_CITY" />
+          <ScalarProperty Name="STORE_ZIP_CODE" ColumnName="STORE_ZIP_CODE" />
+          <ScalarProperty Name="DATE_OF_VISIT" ColumnName="DATE_OF_VISIT" />
+          <ScalarProperty Name="MEAL" ColumnName="MEAL" />
+          <ScalarProperty Name="MEAL_TYPE" ColumnName="MEAL_TYPE" />
+          <ScalarProperty Name="COMM_METHOD" ColumnName="COMM_METHOD" />
+          <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="HOW_OFTEN" ColumnName="HOW_OFTEN" />
+          <ScalarProperty Name="AGENT_STR" ColumnName="AGENT_STR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="category_url_name" ColumnName="category_url_name" />
+          <ScalarProperty Name="aux" ColumnName="aux" />
+          <ScalarProperty Name="category_order_hint" ColumnName="category_order_hint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+          <ScalarProperty Name="Begins" ColumnName="Begins" />
+          <ScalarProperty Name="Expires" ColumnName="Expires" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Brief" ColumnName="Brief" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event_Location">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Event_Location">
+        <MappingFragment StoreEntitySet="Event_Location">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Brief" ColumnName="Brief" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventRegistrations">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.EventRegistration">
+        <MappingFragment StoreEntitySet="EventRegistration">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="SiteUserID" ColumnName="SiteUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Notify" ColumnName="Notify" />
+          <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.FAQ">
+        <MappingFragment StoreEntitySet="FAQs">
+          <ScalarProperty Name="faq_id" ColumnName="faq_id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs_Group">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.FAQs_Group">
+        <MappingFragment StoreEntitySet="FAQs_Group">
+          <ScalarProperty Name="faq_group_id" ColumnName="faq_group_id" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+          <ScalarProperty Name="group_url_name" ColumnName="group_url_name" />
+          <ScalarProperty Name="hidden" ColumnName="hidden" />
+          <ScalarProperty Name="cover_story" ColumnName="cover_story" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriteLocations">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.FavoriteLocation">
+        <MappingFragment StoreEntitySet="FavoriteLocations">
+          <ScalarProperty Name="UserTrackingID" ColumnName="UserTrackingID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feeds">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Feed">
+        <MappingFragment StoreEntitySet="Feed">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="First100Attendees">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.First100Attendees">
+        <MappingFragment StoreEntitySet="First100Attendees">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Foods">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+          <ScalarProperty Name="food_name" ColumnName="food_name" />
+          <ScalarProperty Name="extended_name" ColumnName="extended_name" />
+          <ScalarProperty Name="url_name" ColumnName="url_name" />
+          <ScalarProperty Name="url_hint" ColumnName="url_hint" />
+          <ScalarProperty Name="order_hint" ColumnName="order_hint" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+          <ScalarProperty Name="calories_fat" ColumnName="calories_fat" />
+          <ScalarProperty Name="protein" ColumnName="protein" />
+          <ScalarProperty Name="carbs" ColumnName="carbs" />
+          <ScalarProperty Name="carbs_daily" ColumnName="carbs_daily" />
+          <ScalarProperty Name="sugar" ColumnName="sugar" />
+          <ScalarProperty Name="sugar_daily" ColumnName="sugar_daily" />
+          <ScalarProperty Name="cholesterol" ColumnName="cholesterol" />
+          <ScalarProperty Name="cholesterol_daily" ColumnName="cholesterol_daily" />
+          <ScalarProperty Name="sodium" ColumnName="sodium" />
+          <ScalarProperty Name="sodium_daily" ColumnName="sodium_daily" />
+          <ScalarProperty Name="calcium" ColumnName="calcium" />
+          <ScalarProperty Name="calcium_daily" ColumnName="calcium_daily" />
+          <ScalarProperty Name="iron" ColumnName="iron" />
+          <ScalarProperty Name="iron_daily" ColumnName="iron_daily" />
+          <ScalarProperty Name="fiber" ColumnName="fiber" />
+          <ScalarProperty Name="fiber_daily" ColumnName="fiber_daily" />
+          <ScalarProperty Name="fat" ColumnName="fat" />
+          <ScalarProperty Name="fat_daily" ColumnName="fat_daily" />
+          <ScalarProperty Name="trans_fat" ColumnName="trans_fat" />
+          <ScalarProperty Name="trans_fat_daily" ColumnName="trans_fat_daily" />
+          <ScalarProperty Name="saturated_fat" ColumnName="saturated_fat" />
+          <ScalarProperty Name="saturated_fat_daily" ColumnName="saturated_fat_daily" />
+          <ScalarProperty Name="vitamin_a" ColumnName="vitamin_a" />
+          <ScalarProperty Name="vitamin_a_daily" ColumnName="vitamin_a_daily" />
+          <ScalarProperty Name="vitamin_c" ColumnName="vitamin_c" />
+          <ScalarProperty Name="vitamin_c_daily" ColumnName="vitamin_c_daily" />
+          <ScalarProperty Name="serving_size" ColumnName="serving_size" />
+          <ScalarProperty Name="serving_size_international" ColumnName="serving_size_international" />
+          <ScalarProperty Name="parent_item" ColumnName="parent_item" />
+          <ScalarProperty Name="non_menu" ColumnName="non_menu" />
+          <ScalarProperty Name="no_image" ColumnName="no_image" />
+          <ScalarProperty Name="notice" ColumnName="notice" />
+          <ScalarProperty Name="show_serving" ColumnName="show_serving" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food_Category">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Food_Category">
+        <MappingFragment StoreEntitySet="Food_Category">
+          <ScalarProperty Name="food_category_id" ColumnName="food_category_id" />
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food_Ingredient">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Food_Ingredient">
+        <MappingFragment StoreEntitySet="Food_Ingredient">
+          <ScalarProperty Name="food_ingredient_id" ColumnName="food_ingredient_id" />
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+          <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="optional" ColumnName="optional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food_Variation">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Food_Variation">
+        <MappingFragment StoreEntitySet="Food_Variation">
+          <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+          <ScalarProperty Name="parent_food_id" ColumnName="parent_food_id" />
+          <ScalarProperty Name="child_food_id" ColumnName="child_food_id" />
+          <ScalarProperty Name="is_option" ColumnName="is_option" />
+          <ScalarProperty Name="hint" ColumnName="hint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodImages">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.FoodImage">
+        <MappingFragment StoreEntitySet="FoodImage">
+          <ScalarProperty Name="image_id" ColumnName="image_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="img_url_name" ColumnName="img_url_name" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="brief" ColumnName="brief" />
+          <ScalarProperty Name="ratio" ColumnName="ratio" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mails">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Mail">
+        <MappingFragment StoreEntitySet="Mail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+          <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Press_Group">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Press_Group">
+        <MappingFragment StoreEntitySet="Press_Group">
+          <ScalarProperty Name="press_group_id" ColumnName="press_group_id" />
+          <ScalarProperty Name="press_group_name" ColumnName="press_group_name" />
+          <ScalarProperty Name="press_group_url_name" ColumnName="press_group_url_name" />
+          <ScalarProperty Name="cover_story" ColumnName="cover_story" />
+          <ScalarProperty Name="date_mode" ColumnName="date_mode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Press_Image">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Press_Image">
+        <MappingFragment StoreEntitySet="Press_Image">
+          <ScalarProperty Name="img_id" ColumnName="img_id" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="release_id" ColumnName="release_id" />
+          <ScalarProperty Name="not_found" ColumnName="not_found" />
+          <ScalarProperty Name="ratio" ColumnName="ratio" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="brief" ColumnName="brief" />
+          <ScalarProperty Name="img_url_name" ColumnName="img_url_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Press_Release">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Press_Release">
+        <MappingFragment StoreEntitySet="Press_Release">
+          <ScalarProperty Name="release_id" ColumnName="release_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="doc" ColumnName="doc" />
+          <ScalarProperty Name="pdf" ColumnName="pdf" />
+          <ScalarProperty Name="brief" ColumnName="brief" />
+          <ScalarProperty Name="url_name" ColumnName="url_name" />
+          <ScalarProperty Name="press_group_id" ColumnName="press_group_id" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Press_Store">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Press_Store">
+        <MappingFragment StoreEntitySet="Press_Store">
+          <ScalarProperty Name="release_id" ColumnName="release_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublishingLogs">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.PublishingLog">
+        <MappingFragment StoreEntitySet="PublishingLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResponseTags">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.ResponseTag">
+        <MappingFragment StoreEntitySet="ResponseTag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ResponseID" ColumnName="ResponseID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteErrors">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.SiteError">
+        <MappingFragment StoreEntitySet="SiteError">
+          <ScalarProperty Name="site_error_id" ColumnName="site_error_id" />
+          <ScalarProperty Name="error_code" ColumnName="error_code" />
+          <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="context_data" ColumnName="context_data" />
+          <ScalarProperty Name="callstack" ColumnName="callstack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteStories">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.SiteStory">
+        <MappingFragment StoreEntitySet="SiteStory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteUsers">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.SiteUser">
+        <MappingFragment StoreEntitySet="SiteUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="FavoriteStore" ColumnName="FavoriteStore" />
+          <ScalarProperty Name="TrackingID" ColumnName="TrackingID" />
+          <ScalarProperty Name="SecurityQuestionID" ColumnName="SecurityQuestionID" />
+          <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="RecoverHash" ColumnName="RecoverHash" />
+          <ScalarProperty Name="HashCreation" ColumnName="HashCreation" />
+          <ScalarProperty Name="PasswordMode" ColumnName="PasswordMode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="CanAuthenticate" ColumnName="CanAuthenticate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreInfoes">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoreInfo">
+        <MappingFragment StoreEntitySet="StoreInfo">
+          <ScalarProperty Name="LocationNumber" ColumnName="LocationNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MarketableName" ColumnName="MarketableName" />
+          <ScalarProperty Name="OperatorContact_PersonID" ColumnName="OperatorContact_PersonID" />
+          <ScalarProperty Name="OperatorContact_Name" ColumnName="OperatorContact_Name" />
+          <ScalarProperty Name="StreetAddress_Address1" ColumnName="StreetAddress_Address1" />
+          <ScalarProperty Name="StreetAddress_City" ColumnName="StreetAddress_City" />
+          <ScalarProperty Name="StreetAddress_County" ColumnName="StreetAddress_County" />
+          <ScalarProperty Name="StreetAddress_State" ColumnName="StreetAddress_State" />
+          <ScalarProperty Name="StreetAddress_Zip" ColumnName="StreetAddress_Zip" />
+          <ScalarProperty Name="StreetAddress_ZipExtension" ColumnName="StreetAddress_ZipExtension" />
+          <ScalarProperty Name="ShippingAddress_Address1" ColumnName="ShippingAddress_Address1" />
+          <ScalarProperty Name="ShippingAddress_City" ColumnName="ShippingAddress_City" />
+          <ScalarProperty Name="ShippingAddress_County" ColumnName="ShippingAddress_County" />
+          <ScalarProperty Name="ShippingAddress_State" ColumnName="ShippingAddress_State" />
+          <ScalarProperty Name="ShippingAddress_Zip" ColumnName="ShippingAddress_Zip" />
+          <ScalarProperty Name="ShippingAddress_ZipExtension" ColumnName="ShippingAddress_ZipExtension" />
+          <ScalarProperty Name="BillingAddress_Address1" ColumnName="BillingAddress_Address1" />
+          <ScalarProperty Name="BillingAddress_City" ColumnName="BillingAddress_City" />
+          <ScalarProperty Name="BillingAddress_County" ColumnName="BillingAddress_County" />
+          <ScalarProperty Name="BillingAddress_State" ColumnName="BillingAddress_State" />
+          <ScalarProperty Name="BillingAddress_Zip" ColumnName="BillingAddress_Zip" />
+          <ScalarProperty Name="BillingAddress_ZipExtension" ColumnName="BillingAddress_ZipExtension" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="VoiceMail" ColumnName="VoiceMail" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="ProjectedOpenDate" ColumnName="ProjectedOpenDate" />
+          <ScalarProperty Name="MarketableURL" ColumnName="MarketableURL" />
+          <ScalarProperty Name="GPS_Latitude" ColumnName="GPS_Latitude" />
+          <ScalarProperty Name="GPS_Longitude" ColumnName="GPS_Longitude" />
+          <ScalarProperty Name="ConceptCode" ColumnName="ConceptCode" />
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="Playground" ColumnName="Playground" />
+          <ScalarProperty Name="OffersOnlineOrdering" ColumnName="OffersOnlineOrdering" />
+          <ScalarProperty Name="HasDriveThru" ColumnName="HasDriveThru" />
+          <ScalarProperty Name="AcceptsCfaCard" ColumnName="AcceptsCfaCard" />
+          <ScalarProperty Name="HasDiningRoom" ColumnName="HasDiningRoom" />
+          <ScalarProperty Name="ServesBreakfast" ColumnName="ServesBreakfast" />
+          <ScalarProperty Name="OffersWireless" ColumnName="OffersWireless" />
+          <ScalarProperty Name="NoUpdate" ColumnName="NoUpdate" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="FaxAreaCode" ColumnName="FaxAreaCode" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CorporateOwned" ColumnName="CorporateOwned" />
+          <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryEntries">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryEntry">
+        <MappingFragment StoreEntitySet="StoryEntry">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryEvents">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryEvent">
+        <MappingFragment StoreEntitySet="StoryEvent">
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryImages">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryImage">
+        <MappingFragment StoreEntitySet="StoryImage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryLocations">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryLocation">
+        <MappingFragment StoreEntitySet="StoryLocation">
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryRatings">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryRating">
+        <MappingFragment StoreEntitySet="StoryRating">
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="UserTrackingID" ColumnName="UserTrackingID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="RatingDate" ColumnName="RatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryTopics">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.StoryTopic">
+        <MappingFragment StoreEntitySet="StoryTopic">
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscribers">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Subscriber">
+        <MappingFragment StoreEntitySet="Subscribers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="EMAIL_ADDRESS" ColumnName="EMAIL_ADDRESS" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+          <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="OPT_IN_FLAG" ColumnName="OPT_IN_FLAG" />
+          <ScalarProperty Name="OPT_IN_DATE" ColumnName="OPT_IN_DATE" />
+          <ScalarProperty Name="OPT_OUT_DATE" ColumnName="OPT_OUT_DATE" />
+          <ScalarProperty Name="KIDS_AND_FAMILY_NEWSLETTER" ColumnName="KIDS_AND_FAMILY_NEWSLETTER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriptions">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Subscription">
+        <MappingFragment StoreEntitySet="Subscription">
+          <ScalarProperty Name="FeedID" ColumnName="FeedID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="OrderHint" ColumnName="OrderHint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagGroups">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.TagGroup">
+        <MappingFragment StoreEntitySet="TagGroup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Topics">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.Topic">
+        <MappingFragment StoreEntitySet="Topic">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ref_ID" ColumnName="ref_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+          <ScalarProperty Name="Brief" ColumnName="Brief" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="order_hint" ColumnName="order_hint" />
+          <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopicResponses">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.TopicResponse">
+        <MappingFragment StoreEntitySet="TopicResponse">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+          <ScalarProperty Name="Brief" ColumnName="Brief" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="order_hint" ColumnName="order_hint" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopicTags">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.TopicTag">
+        <MappingFragment StoreEntitySet="TopicTag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USStates">
+      <EntityTypeMapping TypeName="CUSTOMER_DATA_STOREModel.USState">
+        <MappingFragment StoreEntitySet="USState">
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+          <ScalarProperty Name="state_short" ColumnName="state_short" />
+          <ScalarProperty Name="state_long" ColumnName="state_long" />
+          <ScalarProperty Name="boundaries" ColumnName="boundaries" />
+          <ScalarProperty Name="relative_boundaries" ColumnName="relative_boundaries" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="img_roll" ColumnName="img_roll" />
+          <ScalarProperty Name="px" ColumnName="px" />
+          <ScalarProperty Name="py" ColumnName="py" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="contiguous" ColumnName="contiguous" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="StoryTags" TypeName="CUSTOMER_DATA_STOREModel.StoryTags" StoreEntitySet="StoryTags">
+      <EndProperty Name="SiteStory">
+        <ScalarProperty Name="ID" ColumnName="StoryID" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="ID" ColumnName="TagID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

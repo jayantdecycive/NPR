@@ -1,0 +1,4 @@
+﻿@model cfacore.domain.store.StoreStatus?
+<div class='admin-table'>
+@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(cfacore.domain.store.StoreStatus)), Model != null ? Model : cfacore.domain.store.StoreStatus.future), new { @class = " jq-select" })
+</div>

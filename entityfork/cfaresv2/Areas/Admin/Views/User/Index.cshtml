@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "User Index";
+    ViewBag.ModelName = "User";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+<h2>User Dashboard</h2>
+<p>A list of all admin and customers in the system.</p>
+
+@section Meta{
+    <script type="text/javascript">
+        var users = new DomainModel.ResUserCollection();
+        users.abstract = true;
+    </script>
+}
+
+@section Table{
+    <table id="user_dash" class='data-table' data-mode='backbone' data-data='users' >
+        <thead>
+        <tr>
+            <th data-id='UserLink' data-column-parent='UserId' data-on-display='DataFormat.UserUrl'></th> 
+            <th data-column-name='UserId' data-searchable='false' data-visible="false" data-id-column='true'>User Id</th>
+			<th data-column-name='NameString'>Name</th>
+            <th data-column-name='Email' >Email</th>
+			<th data-column-name='HomePhoneString' >Phone Number</th>			    
+			<th data-column-name='Authority' >Authority</th>
+			<th data-column-name='Username' data-visible="false">Username</th>
+            
+            <th data-column-name='CreatedDate' data-searchable="false" data-visible="false" data-on-display='DataFormat.date' >Creation Date</th>  
+		</tr>
+        </thead>
+    </table>
+}

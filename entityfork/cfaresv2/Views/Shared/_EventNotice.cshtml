@@ -1,0 +1,20 @@
+﻿@using cfares.domain._event
+@using cfares.site.modules.com.application
+@model IList<DateTime>
+
+@{
+	object noticeSpan = ViewData["span"] ?? "span12";
+	if( AppContext.Current.EventType.ReservationTypeId.ToString()=="ChainwideProduct" ) {
+		noticeSpan = "span5"; }
+	string fromOn = Model.Count() == 1 ? "On " : "From ";
+	const string familyinfluence = "Participating Chick-fil-A restaurants are hosting a Mother-Son Date Knight for yourself and your son(s). To make your table reservation, enter a preferred location in the search box for a list of participating Restaurants. The only charge is the price of the food.";
+}
+    <div class="@noticeSpan leadin" id="event-notice">
+
+		@if( AppContext.Current.EventType.ReservationTypeId.ToString()=="ChainwideProduct" ) {
+			<p>From <strong>September 9 - 14, 2013</strong>, @Html.Raw( AppContext.Current.EventType.ReservationTypeId.ToString()=="FamilyInfluence" ? familyinfluence : Html.ThemeText("SearchPromo", noParagraph: true).ToString())</p>
+		} else {
+			<p>@fromOn <strong>@Html.Raw(Occurrence.GetFormattedDateRange(Model))</strong>, @Html.Raw( AppContext.Current.EventType.ReservationTypeId.ToString()=="FamilyInfluence" ? familyinfluence : Html.ThemeText("SearchPromo", noParagraph: true).ToString())</p>
+		}
+
+    </div>

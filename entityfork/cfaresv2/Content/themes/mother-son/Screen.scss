@@ -1,0 +1,70 @@
+
+/*-------------------------------------------------------------
+  Theme Stylesheet - CFA-Reservations-FI-MotherSon
+-------------------------------------------------------------*/
+
+
+// Place theme specific overrides below
+
+// --- Colors -------------------------------------------------
+
+$colorTextDefault: #666;
+$colorTextInfo: #999; 
+$colorTextError: red; //#8d1d21; 
+$colorTextHeadings: #333; 
+$colorFormBackground: #f1ebe3;
+$colorTextSettings: #694f1f;
+$colorTextFormRequired: red;
+$colorTextHREF: #6d4f21;
+//$colorTextHREF: #8d1d21;
+$colorTextHREFRoll: #c19193;
+
+$colorTextHeadingsPreferred: #8d1d21; 
+
+$buttonTextDefault: #edc68a;
+$buttonBackgroundDefault: #ad2c31;
+$buttonBackgroundDefaultHover: #982226;
+
+$borderReservationBannerHorizontal: #bfa56b;
+$borderReservationBannerVertical: #ece5d6;
+
+$borderReviewBlock: #efefe9;
+
+// --- Override Colors -------------------------------------------------
+ 
+$bgColorNavBar:#8d1d21;
+$bgColorNavBarAlt:#a5373b; 
+$bgColorNavBarAltHover:#ba5458;	 
+ 
+$colorTextHeaderOne:#8e1e22; 
+$colorTextHeaderTwo: $colorTextHeaderOne;
+$colorTextAlt:#666666;
+ 
+$bgColorButtonPrimary:#932024 !default;
+$bgColorButtonPrimaryRoll:#a83a3e !default;
+
+$colorTextFooterLinks: #8e1e22 !default;
+$colorTextFooterLinksHover: #96363a !default;
+
+$colorText:#666666;
+$colorTextWelcome:#fdfbfb;
+ 
+// END Override Colors -------------------------------------------------
+
+// --- Global ------------------------------------------------- 
+
+    
+nav button.btn-primary{ 
+	background-color:#cf9fa1;    
+	color:#8e1e22;   
+	&:hover,&.hover,&:focus{     
+		background-color:#ceb4b5;
+	}      
+}                 
+ 
+@import '../FamilyInfluence/Screen.scss';
+
+
+ 
+ 
+     

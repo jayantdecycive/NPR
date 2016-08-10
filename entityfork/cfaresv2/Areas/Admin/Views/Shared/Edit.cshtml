@@ -1,0 +1,67 @@
+﻿
+@using System.Text.RegularExpressions
+@model cfacore.domain._base.IDomainObject
+
+@{
+    Type pocoType = Html.GetPOCO(Model.GetType());
+    string ModelId = pocoType.Name;
+    string ModelName = Regex.Replace(ModelId, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ");
+    //string[] parentModels = Model.GetType().
+    
+    List<string> parentModels = new List<string>(){pocoType.Name};
+    
+    Type currentType = pocoType.BaseType;
+    while (currentType != typeof(cfacore.domain._base.DomainObject) && currentType!=null)
+    {
+        parentModels.Add(currentType.Name);
+        currentType = currentType.BaseType;
+    }
+    ViewBag.Title = "Edit " + ModelName;
+    
+    
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+    ViewBag.Brief = "Edit " + ModelName + " "+Model.Id();
+}
+
+
+<h1>Edit @ModelName</h1>
+<p>
+    @ViewBag.Brief
+    <br />
+    @*Info <strong>info info</strong>*@ 
+</p>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+
+    if (ViewBag.IgnoreParent != null && ViewBag.IgnoreParent)
+    {
+        @Html.Partial("ModelForm/_" + ModelId)
+    }
+    else
+    {
+        foreach (string type in parentModels)
+        {
+            @Html.Partial("ModelForm/_" + type)
+        }
+    }
+	
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>
+}

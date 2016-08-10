@@ -1,0 +1,15 @@
+D:\Projects\DecyciveFarm.NPR\cfacore\core.synchronization\bin\Debug\core.synchronization.exe.config
+D:\Projects\DecyciveFarm.NPR\cfacore\core.synchronization\bin\Debug\core.synchronization.exe
+D:\Projects\DecyciveFarm.NPR\cfacore\core.synchronization\bin\Debug\core.synchronization.pdb
+D:\Projects\DecyciveFarm.NPR\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.exe
+D:\Projects\DecyciveFarm.NPR\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\core.synchronization\bin\Debug\core.synchronization.exe.config
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\core.synchronization\bin\Debug\core.synchronization.exe
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\core.synchronization\bin\Debug\core.synchronization.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.exe
+D:\Alex_Avendano\Pratap\NPR\SRC\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.pdb
+E:\Pratap\PratapNew\cfacore\core.synchronization\bin\Debug\core.synchronization.exe.config
+E:\Pratap\PratapNew\cfacore\core.synchronization\bin\Debug\core.synchronization.exe
+E:\Pratap\PratapNew\cfacore\core.synchronization\bin\Debug\core.synchronization.pdb
+E:\Pratap\PratapNew\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.exe
+E:\Pratap\PratapNew\cfacore\core.synchronization\obj\x86\Debug\core.synchronization.pdb

@@ -1,0 +1,209 @@
+﻿@using cfares.site.modules.com.application
+
+@{
+    var eventsUrl = "";
+    var toursUrl = "";                                      
+    #if DEBUG
+        toursUrl = Url.Action("Tours", "Home");
+        eventsUrl = Url.Action("Events", "Home");
+    #else
+        eventsUrl = "http://events.npr.org";
+        toursUrl = "http://tours.npr.org";               
+    #endif
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>@ViewBag.Title - Reservations</title>
+		<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		@* SH - Commenting out below and replacing w/ explicit viewport width for navbar width correction
+		RE: https://developer.apple.com/library/safari/#documentation/appleapplications/reference/safarihtmlref/articles/MetaTags.html *@
+		@*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+		<meta name="viewport" content="width=940px, initial-scale=1.0" />
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="robots" content="noindex, nofollow">
+        @RenderSection("AdditionalMeta", false)
+
+	    @Styles.Render("~/Content/bootstrap")
+        @Styles.Render("~/Content/datepicker.css")
+		@Html.RegisterThemeStylesheets()
+		@Scripts.Render("~/bundles/modernizr")
+		@Scripts.Render("~/bundles/jquery")
+		@this.RenderSection("Head", required: false)
+        <link href="/Content/Themes/npr/Screen.css" rel="stylesheet"/>
+
+		<!--[if lt IE 9]>
+			<script>
+			document.createElement('header');
+			document.createElement('nav');
+			document.createElement('section');
+			document.createElement('article');
+			document.createElement('aside');
+			document.createElement('footer');
+			document.createElement('hgroup');
+			</script>
+		<![endif]-->
+
+		<style>
+	  
+			UL.footer-right
+			{
+				display: block;
+				float: right;
+				margin: 0;
+				padding: 0;
+				margin: 0 10px 0 0;
+				margin-left: 30px;
+			}
+			UL.footer-right LI
+			{
+				text-transform: lowercase;
+				line-height: 20px;
+				display: list-item;
+				text-align: -webkit-match-parent;
+				float: left;
+				margin-left: 15px;
+				list-style: none;
+				vertical-align: baseline;
+				font-family: Helvetica, Arial, sans-serif;
+				font-size: 12px;
+			}
+			UL.footer-right LI A
+			{
+				display: block;
+				color: #999;
+				text-decoration: none;
+				line-height: 20px;
+				vertical-align: baseline;
+				text-transform: lowercase;
+				padding: 10px 5px 10px;
+				height: 20px;
+			}
+			UL.footer-right LI.copyright
+			{
+				display: block;
+				color: #999;
+				text-decoration: none;
+				line-height: 20px;
+				vertical-align: baseline;
+				text-transform: uppercase;
+				padding: 10px 5px 10px;
+				height: 20px;
+				
+			}
+
+		</style>
+
+    </head>
+    <body>
+	    
+
+        <!--NAVBAR-->
+	    <div class="navbar header noprint">
+	    <div class="navbar-inner">
+            <div class="container">
+    	    <ul class="nav">
+                <li><a href="@Url.Action("Index", "Home")" class="brand"><img src="/content/themes/npr/images/logo.png" alt="npr"/></a></li>
+
+                <li class="@(ViewBag.Nav == "Tours" ? "black" : "" )"><a href="http://tours.npr.org">tours</a></li>
+                <li class="@(ViewBag.Nav == "Events" ? "black" : "" )"><a href="http://events.npr.org">events</a></li>
+                
+                @*@if (ViewBag.Subdomain == "events"){
+                    <li class="@(ViewBag.Nav == "Events" ? "black" : "" )">@Html.ActionLink("events", "events", "Home")</li>
+                }
+                else{
+                    <li class="@(ViewBag.Nav == "Tours" ? "black" : "" )">@Html.ActionLink("tours", "Index", "Home")</li>
+                }
+                *@
+                <li class="@(ViewBag.Nav == "Plan" ? "black" : "" )">@Html.ActionLink("plan your visit", "Plan", "Home")</li>
+                <li class="@(ViewBag.Nav == "Modify" ? "black" : "" )">@Html.ActionLink("modify/cancel reservation", "Modify", "Reservation")</li>
+                <li class="@(ViewBag.Nav == "Faq" ? "black" : "" )">@Html.ActionLink("FAQs", "Faq", "Home")</li>
+		    </ul>
+            <ul class="nav pull-right">
+						<li><a href="http://www.npr.org" target="_blank"><span class="return-arrow"></span>return to npr.org</a></li>
+            </ul>
+            </div>
+        </div>
+	    </div>
+
+
+        <!--BODY-->
+	    <div id="container" class="container">
+			<main>
+			@RenderBody()
+			@this.RenderSection("SocialFooter", required: false)
+			</main>
+		</div>
+
+
+        <!--FOOTER BAR-->
+        <div class="navbar footer noprint">
+			<div class="navbar-inner">
+				<div class="container">
+					<div class="pull-left social-footer">
+						<span class="social-title">follow us:</span>
+						<a href="https://www.facebook.com/thisisnpr" target="_blank" class="facebook"></a>
+						<a href="https://twitter.com/&#64;npr" target="_blank" class="twitter"></a>
+						<a href="http://instagram.com/npr" target="_blank" class="flickr"></a>
+						<a href="http://www.youtube.com/user/npr" target="_blank" class="youtube"></a>
+					</div>
+                    <div style="clear:both"></div>
+                    <ul class="nav">
+            
+						@*
+						@if (ViewBag.Subdomain == "events"){
+							<li>@Html.ActionLink("events", "Index", "Home")</li>
+						}
+						else{
+							<li>@Html.ActionLink("tours", "Index", "Home")</li>    
+						}
+						*@
+
+						<li ><a style="padding-left:0px!important" href="http://tours.npr.org">tours</a></li>
+						<li><a href="http://events.npr.org">events</a></li>
+
+						<li>@Html.ActionLink("plan your visit", "Plan", "Home")</li>
+						<li>@Html.ActionLink("modify/cancel reservation", "Modify", "Reservation")</li>
+						<li>@Html.ActionLink("FAQs", "Faq", "Home")</li>
+					</ul>
+
+					<ul class="footer-right">
+						<li id="footerContact"><a href="http://help.npr.org/npr/includes/customer/npr/custforms/contactus.aspx">Contact</a></li>
+						<li><a href="http://www.npr.org/about-npr/179876898/terms-of-use">Terms of Use</a></li>
+						<li><a href="http://www.npr.org/about-npr/179878450/privacy-policy">Privacy</a></li>
+						<li class="pull-right copyright">&copy;@DateTime.Now.Year NPR</li>
+					</ul>
+
+				</div>
+					
+			</div>
+        </div>
+
+
+        <!--POST FOOTER BAR-->
+        @*<div class="post-footer container noprint">
+        
+        </div>*@
+	    
+
+        <!--SCRIPTS-->
+		@Scripts.Render("~/bundles/bootstrapjs")
+	    @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
+        @Scripts.Render("~/bundles/backbone")
+        <script src="@Url.Content("~/Admin/AutoScript/DomainModel.js")" type="text/javascript"></script>
+        @Scripts.Render("~/bundles/res")
+        @Scripts.Render("~/Areas/npr/Scripts/init.js")
+		@this.RenderSection("Scripts", required: false)
+
+
+    </body>
+</html>

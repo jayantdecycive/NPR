@@ -1,0 +1,21 @@
+﻿@using Newtonsoft.Json
+@using cfacore.shared.domain.store
+@using cfares.site.modules.com.application
+@model string
+
+@{
+    var filePath = Request.MapPath("~/Data/Json/States.json");
+    Dictionary<string, string> states = null;
+    using (StreamReader r = new StreamReader(filePath))
+    {
+        string json = r.ReadToEnd();
+        states = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+    }
+    
+}
+
+@Html.Partial("EditorTemplates/DropDown/_DropDownString",Model,new ViewDataDictionary(ViewData)
+    {
+        
+        {"select", new SelectList(states.Select(x=>new {Value=x.Key,Label=x.Key}),"Value","Label",Model)}
+    })

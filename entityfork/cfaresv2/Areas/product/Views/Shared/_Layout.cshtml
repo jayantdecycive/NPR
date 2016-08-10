@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence Template / Layout Overrides
+----------------------------------------------------*@
+
+@this.RedefineSection("Head")
+@section head{
+    <meta name="description" content="Participating Chick-fil-A® restaurants are giving away one of a variety of FREE Breakfast entrées to customers who make a reservation online.">
+    <meta property="og:description" content="Participating Chick-fil-A® restaurants are giving away one of a variety of FREE Breakfast entrées to customers who make a reservation online." />
+    <meta property="og:title" content="Chick-fil-a Breakfast Entrée Giveaway"/>
+    <meta property="og:url" content="http://chick-fil-aforbreakfast.com"/>
+    <meta property="og:site_name" content="chick-fil-aforbreakfast"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://chick-fil-aforbreakfast.com/Content/Themes/breakfast-giveaway/images/desktop/mast.png" />
+}
+
+@section Header{
+    
+
+
+    <a href="/"><div id="theme_type_mast_chainwide"></div></a>
+    <img class="hidden-phone" id="theme_mast_chainwide" src="@Html.ThemeContent("~/images/desktop/mast.png")" />
+
+    @*
+    carson: Switched out header for new graphic 8-6-13
+    <a href="/"><div id="theme_type_mast"></div></a>
+    <img class="hidden-phone" id="theme_mast" src="@Html.ThemeContent("~/images/desktop/mast.png")" />
+    *@
+}
+
+@this.RedefineSection("Banner")
+
+
+@RenderBody()
+@this.RedefineSection("SocialFooter")
+
+@this.RedefineSection("Footer")
+
+
+
+
+@this.RedefineSection("Scripts")

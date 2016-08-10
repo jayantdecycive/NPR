@@ -1,0 +1,149 @@
+﻿@using cfacore.shared.modules.helpers
+@model cfares.domain._event.IOccurrence
+@{
+    ViewBag.Title = "Operator Customization";
+    ViewBag.Brief = "Edit Restaurant Event";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+}
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h3 id="myModalLabel">Attention: </h3>
+  </div>
+  <div class="modal-body">
+    <p>To save any changes to capacity, you must click <strong>Save</strong> at the bottom of the page.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+
+
+
+
+<h1>@Model</h1>
+
+@if (Model.ResEvent.ReservationTypeId == "ChainwideProduct")
+{
+	<p>&nbsp;</p>
+    <p>Street Store Operators - If you prefer to use Restaurant Coke funds for redemptions above 300 products per day, please complete <a target="_blank" href="https://www.surveymonkey.com/s/BreakfastVarietyGiveaway2013"><b>this survey</b></a>. If you do not complete the survey, we will assume that you <strong>do not</strong> want to use Restaurant Coke funds for the additional redemptions.</p>
+}
+
+  
+
+
+
+@using (Html.BeginForm())
+{
+    <section id="timeSlots-section">    
+		<h2>Time Slots</h2>
+
+
+        <div class='message maroon'>    
+        To save any changes to capacity, you must click <strong>Save</strong> at the bottom of the page.
+        </div>
+
+
+        @Html.ValidationSummary()
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Time Slots</th>
+                <th>Reservation Limit</th>
+                <th></th>
+            </tr>
+            @{int row = 0;
+
+              foreach (var slotDate in Model.SlotsList.ToList().GroupBy(x => x.Start.Date))
+              {
+                  string newLabel = slotDate.Key.ToDateStringWithDayOfWeek();
+
+				  //int dailycapacity = 0;
+				  //foreach (var slot in slotDate){
+				  //	dailycapacity += (slot as cfares.domain._event.Slot).Capacity;
+				  //}
+                  
+                  
+                  if (row > 0)
+                  {
+                        <tr><td></td><td></td><td></td></tr>
+                  }
+                  int i = 0;
+                  foreach (var slot in slotDate)
+                  {
+                      
+                      var indexOf = Model.SlotsList.IndexOf(slot);
+                        <tr>
+                            @if (i == 0)
+                            {
+                                <td class="newLabelDate">@newLabel</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            <td>@slot.Start.ToTimeString() to @slot.End.ToTimeString()</td>
+                            <td>@Html.TextBoxFor(x => x.SlotsList[indexOf].Capacity, new { step = "5", type = "number", @class = "capacity-field" })</td>
+                            
+
+                            @* Disable delete if deleting this slot will put lower below min daily capacity 
+                            @if ((dailycapacity - Model.SlotsList[indexOf].Capacity) < Model.ResEvent.MinimumDailyCapacity){
+                                <td><a class="disabled-link" href="/Admin/Slot/Delete/@Model.SlotsList[indexOf].SlotId">delete</a></td>
+                            }
+                            else{*@
+                                <td>@Html.ActionLink("delete", "Delete", "Slot", new { id = Model.SlotsList[indexOf].SlotId }, new { })</td>
+                            @* }*@
+
+
+                            @Html.HiddenFor(x => x.SlotsList[indexOf].SlotId)
+                        </tr>
+                            i++;
+                  }
+
+                  row++;
+              }
+            }
+        </table>
+	</section>
+    
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block'>
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+    </div>
+}
+
+
+@section Scripts{
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".capacity-field").keyup(function () {
+            var striped = $(this).val().replace(/\D/g, '');
+            $(this).val(striped);
+        });
+
+
+        $('#myModal').hide();
+        $(".step-1").click(function () {
+            $('#myModal').show();
+            $('#myModal').modal();
+        });
+
+    });
+    </script> 
+
+
+
+
+}

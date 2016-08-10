@@ -1,0 +1,85 @@
+
+/*-------------------------------------------------------------
+  Theme Stylesheet - Reception
+-------------------------------------------------------------*/
+
+// --- Override Colors -------------------------------------------------
+ 
+$bgColorNavBar:#4d6892;
+$bgColorNavBarAlt:#4d6892;
+$colorTextHeaderOne:#4d6892; 
+$colorTextHeaderTwo: $colorTextHeaderOne;
+$colorTextAlt:#666666;
+  
+$bgColorButtonPrimary:#ba0100 !default;
+$bgColorButtonPrimaryRoll:#930403 !default;
+
+$colorTextFooterLinks: #76a5f0 !default;
+$colorTextFooterLinksHover: #8fb3ec !default;
+$bgColorNavBarAlt:#6881a7;		
+$bgColorNavBarAltHover:#6881a7;	   
+$colorText:#666666; 
+$colorTextWelcome:#fdfbfb;
+ 
+// END Override Colors -------------------------------------------------
+
+@import '../../Screen.scss';   
+
+.viewMap{display:none;} 
+
+#theme_type_mast,#masthead{ 	
+	background-repeat:no-repeat;
+	background-position:center center;
+	
+		
+		width:100%;
+		margin:auto 0;
+		height:0px;		 
+	 
+	@media (max-width: $mobileWidth){
+		display:none;
+		width:287px;
+		height:53px;	
+		padding-top:15px;      
+		padding-bottom:18px;
+	}  
+	@include inline-block;
+	vertical-align:middle;	 		   
+}    
+
+#speaker_badge,.speaker_badge{ 
+	h2{
+		font-size:18pt; line-height:1.1em;
+	}
+	color:#666; 
+	margin-top:30px;
+	p{font-size:10.5pt;}
+	img{ position:relative;top:28px;
+		left:40px;
+		display:block;
+		
+		@media (max-width: $mobileWidth){
+			left:0px;
+			top:0px;
+			width:97%;
+		}
+	}
+	&:first-child{margin-top:0px;}
+}
+
+h3{color:#4d6892 !important;}
+.strong{font-weight:bold;}
+
+#step_reservation_calendar{
+	h3{font-size:16px; line-height:1.1em;}
+}
+
+footer ul li{}
+
+.tooltip-why{color:#4d6892; font-weight:bold; cursor:pointer;}
+
+.validation-summary-errors {
+	color: #e80c4d;
+	ul { margin: 0; padding: 0; }
+	li { margin: 0; padding: 0; list-style: none; }
+}

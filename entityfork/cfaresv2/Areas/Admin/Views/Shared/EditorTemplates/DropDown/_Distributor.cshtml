@@ -1,0 +1,14 @@
+﻿@using cfacore.shared.domain.store
+@using cfares.site.modules.com.application
+@model string
+
+@{
+    var context = ReservationConfig.GetContext();
+    var distributors = context.Distributors.AsEnumerable();
+}
+
+@Html.Partial("EditorTemplates/DropDown/_DropDownString",Model,new ViewDataDictionary(ViewData)
+    {
+        
+        {"select", new SelectList(distributors,"DistributorId","Name",Model)}
+    })

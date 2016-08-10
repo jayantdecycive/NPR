@@ -1,0 +1,54 @@
+﻿@using cfares.site.modules.com.application
+@model cfacore.shared.domain.store.Store
+
+@{string pk = Model.IsBound() ? Model.LocationNumber.ToString() : "new";}
+
+                <div class='model-field field-LocationNumber'>
+                    <div class="display-label inline-block">Location Number</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.LocationNumber)
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class='model-field field-RegionName'>
+                    <div class="display-label inline-block">Region Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.RegionName)
+                    </div>
+                </div>
+                
+<div class='model-field field-Status'>
+    <div class="display-label inline-block">Status</div>
+    <div class="display-field inline-block">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+</div>
+
+<div class='model-field field-HasParking'>
+                    <div class="display-label inline-block">Has Parking</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.HasParking)
+                    </div>
+                </div>
+                
+<div class='model-field field-ParkingNotes'>
+                    <div class="display-label inline-block">Parking Notes</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.ParkingNotes)
+                    </div>
+                </div>
+                
+<div class='model-field field-Comments'>
+                    <div class="display-label inline-block">Comments</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Comments)
+                    </div>
+                </div>
+                

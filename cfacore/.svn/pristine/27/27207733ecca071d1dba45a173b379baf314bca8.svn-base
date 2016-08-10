@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoriesEntityModelStoreContainer" CdmEntityContainer="CfaComStoriesEntities">
+    <EntitySetMapping Name="V2StoryImageAuthorWithTagRating">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryImageAuthorWithTagRating">
+        <MappingFragment StoreEntitySet="V2StoryImageAuthorWithTagRating">
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+          <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+          <ScalarProperty Name="TagDescription" ColumnName="TagDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V2StoryRatingSummary">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryRatingSummary">
+        <MappingFragment StoreEntitySet="V2StoryRatingSummary">
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+          <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V2StoryTagSummary">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryTagSummary">
+        <MappingFragment StoreEntitySet="V2StoryTagSummary">
+          <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+          <ScalarProperty Name="DescriptionSummary" ColumnName="DescriptionSummary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V2StoryWithImageAuthor">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryWithImageAuthor">
+        <MappingFragment StoreEntitySet="V2StoryWithImageAuthor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V2StoryWithImageAuthorQuality">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryWithImageAuthorQuality">
+        <MappingFragment StoreEntitySet="V2StoryWithImageAuthorQuality">
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+          <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V2StoryWithImageAuthorQualityTags">
+      <EntityTypeMapping TypeName="StoriesEntityModel.V2StoryWithImageAuthorQualityTags">
+        <MappingFragment StoreEntitySet="V2StoryWithImageAuthorQualityTags">
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="TagDescription" ColumnName="TagDescription" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="StoriesEntityModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="OrderHint" ColumnName="OrderHint" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagGroups">
+      <EntityTypeMapping TypeName="StoriesEntityModel.TagGroup">
+        <MappingFragment StoreEntitySet="TagGroup">
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryLocations">
+      <EntityTypeMapping TypeName="StoriesEntityModel.StoryLocation">
+        <MappingFragment StoreEntitySet="StoryLocation">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Foods">
+      <EntityTypeMapping TypeName="StoriesEntityModel.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="show_serving" ColumnName="show_serving" />
+          <ScalarProperty Name="notice" ColumnName="notice" />
+          <ScalarProperty Name="no_image" ColumnName="no_image" />
+          <ScalarProperty Name="non_menu" ColumnName="non_menu" />
+          <ScalarProperty Name="parent_item" ColumnName="parent_item" />
+          <ScalarProperty Name="serving_size_international" ColumnName="serving_size_international" />
+          <ScalarProperty Name="serving_size" ColumnName="serving_size" />
+          <ScalarProperty Name="vitamin_c_daily" ColumnName="vitamin_c_daily" />
+          <ScalarProperty Name="vitamin_c" ColumnName="vitamin_c" />
+          <ScalarProperty Name="vitamin_a_daily" ColumnName="vitamin_a_daily" />
+          <ScalarProperty Name="vitamin_a" ColumnName="vitamin_a" />
+          <ScalarProperty Name="saturated_fat_daily" ColumnName="saturated_fat_daily" />
+          <ScalarProperty Name="saturated_fat" ColumnName="saturated_fat" />
+          <ScalarProperty Name="trans_fat_daily" ColumnName="trans_fat_daily" />
+          <ScalarProperty Name="trans_fat" ColumnName="trans_fat" />
+          <ScalarProperty Name="fat_daily" ColumnName="fat_daily" />
+          <ScalarProperty Name="fat" ColumnName="fat" />
+          <ScalarProperty Name="fiber_daily" ColumnName="fiber_daily" />
+          <ScalarProperty Name="fiber" ColumnName="fiber" />
+          <ScalarProperty Name="iron_daily" ColumnName="iron_daily" />
+          <ScalarProperty Name="iron" ColumnName="iron" />
+          <ScalarProperty Name="calcium_daily" ColumnName="calcium_daily" />
+          <ScalarProperty Name="calcium" ColumnName="calcium" />
+          <ScalarProperty Name="sodium_daily" ColumnName="sodium_daily" />
+          <ScalarProperty Name="sodium" ColumnName="sodium" />
+          <ScalarProperty Name="cholesterol_daily" ColumnName="cholesterol_daily" />
+          <ScalarProperty Name="cholesterol" ColumnName="cholesterol" />
+          <ScalarProperty Name="sugar_daily" ColumnName="sugar_daily" />
+          <ScalarProperty Name="sugar" ColumnName="sugar" />
+          <ScalarProperty Name="carbs_daily" ColumnName="carbs_daily" />
+          <ScalarProperty Name="carbs" ColumnName="carbs" />
+          <ScalarProperty Name="protein" ColumnName="protein" />
+          <ScalarProperty Name="calories_fat" ColumnName="calories_fat" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+          <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="order_hint" ColumnName="order_hint" />
+          <ScalarProperty Name="url_hint" ColumnName="url_hint" />
+          <ScalarProperty Name="url_name" ColumnName="url_name" />
+          <ScalarProperty Name="extended_name" ColumnName="extended_name" />
+          <ScalarProperty Name="food_name" ColumnName="food_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food_Ingredient">
+      <EntityTypeMapping TypeName="StoriesEntityModel.Food_Ingredient">
+        <MappingFragment StoreEntitySet="Food_Ingredient">
+          <ScalarProperty Name="optional" ColumnName="optional" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+          <ScalarProperty Name="food_ingredient_id" ColumnName="food_ingredient_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food_Variation">
+      <EntityTypeMapping TypeName="StoriesEntityModel.Food_Variation">
+        <MappingFragment StoreEntitySet="Food_Variation">
+          <ScalarProperty Name="hint" ColumnName="hint" />
+          <ScalarProperty Name="is_option" ColumnName="is_option" />
+          <ScalarProperty Name="child_food_id" ColumnName="child_food_id" />
+          <ScalarProperty Name="parent_food_id" ColumnName="parent_food_id" />
+          <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodImages">
+      <EntityTypeMapping TypeName="StoriesEntityModel.FoodImage">
+        <MappingFragment StoreEntitySet="FoodImage">
+          <ScalarProperty Name="food_id" ColumnName="food_id" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="ratio" ColumnName="ratio" />
+          <ScalarProperty Name="brief" ColumnName="brief" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="img_url_name" ColumnName="img_url_name" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image_id" ColumnName="image_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryLocation_Location">
+      <EntityTypeMapping TypeName="StoriesEntityModel.StoryLocation_Location">
+        <MappingFragment StoreEntitySet="StoryLocation~Location">
+          <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+          <ScalarProperty Name="CorporateOwned" ColumnName="CorporateOwned" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FaxAreaCode" ColumnName="FaxAreaCode" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="NoUpdate" ColumnName="NoUpdate" />
+          <ScalarProperty Name="OffersWireless" ColumnName="OffersWireless" />
+          <ScalarProperty Name="ServesBreakfast" ColumnName="ServesBreakfast" />
+          <ScalarProperty Name="HasDiningRoom" ColumnName="HasDiningRoom" />
+          <ScalarProperty Name="AcceptsCfaCard" ColumnName="AcceptsCfaCard" />
+          <ScalarProperty Name="HasDriveThru" ColumnName="HasDriveThru" />
+          <ScalarProperty Name="OffersOnlineOrdering" ColumnName="OffersOnlineOrdering" />
+          <ScalarProperty Name="Playground" ColumnName="Playground" />
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="ConceptCode" ColumnName="ConceptCode" />
+          <ScalarProperty Name="GPS_Longitude" ColumnName="GPS_Longitude" />
+          <ScalarProperty Name="GPS_Latitude" ColumnName="GPS_Latitude" />
+          <ScalarProperty Name="MarketableURL" ColumnName="MarketableURL" />
+          <ScalarProperty Name="ProjectedOpenDate" ColumnName="ProjectedOpenDate" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="VoiceMail" ColumnName="VoiceMail" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="BillingAddress_ZipExtension" ColumnName="BillingAddress_ZipExtension" />
+          <ScalarProperty Name="BillingAddress_Zip" ColumnName="BillingAddress_Zip" />
+          <ScalarProperty Name="BillingAddress_State" ColumnName="BillingAddress_State" />
+          <ScalarProperty Name="BillingAddress_County" ColumnName="BillingAddress_County" />
+          <ScalarProperty Name="BillingAddress_City" ColumnName="BillingAddress_City" />
+          <ScalarProperty Name="BillingAddress_Address1" ColumnName="BillingAddress_Address1" />
+          <ScalarProperty Name="ShippingAddress_ZipExtension" ColumnName="ShippingAddress_ZipExtension" />
+          <ScalarProperty Name="ShippingAddress_Zip" ColumnName="ShippingAddress_Zip" />
+          <ScalarProperty Name="ShippingAddress_State" ColumnName="ShippingAddress_State" />
+          <ScalarProperty Name="ShippingAddress_County" ColumnName="ShippingAddress_County" />
+          <ScalarProperty Name="ShippingAddress_City" ColumnName="ShippingAddress_City" />
+          <ScalarProperty Name="ShippingAddress_Address1" ColumnName="ShippingAddress_Address1" />
+          <ScalarProperty Name="StreetAddress_ZipExtension" ColumnName="StreetAddress_ZipExtension" />
+          <ScalarProperty Name="StreetAddress_Zip" ColumnName="StreetAddress_Zip" />
+          <ScalarProperty Name="StreetAddress_State" ColumnName="StreetAddress_State" />
+          <ScalarProperty Name="StreetAddress_County" ColumnName="StreetAddress_County" />
+          <ScalarProperty Name="StreetAddress_City" ColumnName="StreetAddress_City" />
+          <ScalarProperty Name="StreetAddress_Address1" ColumnName="StreetAddress_Address1" />
+          <ScalarProperty Name="OperatorContact_Name" ColumnName="OperatorContact_Name" />
+          <ScalarProperty Name="OperatorContact_PersonID" ColumnName="OperatorContact_PersonID" />
+          <ScalarProperty Name="MarketableName" ColumnName="MarketableName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LocationNumber" ColumnName="LocationNumber" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Location_Story">
+      <EntityTypeMapping TypeName="StoriesEntityModel.Location_Story">
+        <MappingFragment StoreEntitySet="Location~Story">
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="TagDescription" ColumnName="TagDescription" />
+          <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+          <ScalarProperty Name="StoryRating" ColumnName="StoryRating" />
+          <ScalarProperty Name="PromoHeight" ColumnName="PromoHeight" />
+          <ScalarProperty Name="PromoWidth" ColumnName="PromoWidth" />
+          <ScalarProperty Name="LgHeight" ColumnName="LgHeight" />
+          <ScalarProperty Name="LgWidth" ColumnName="LgWidth" />
+          <ScalarProperty Name="MdHeight" ColumnName="MdHeight" />
+          <ScalarProperty Name="MdWidth" ColumnName="MdWidth" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="IsUnusableNegative" ColumnName="IsUnusableNegative" />
+          <ScalarProperty Name="ReviewUnsure" ColumnName="ReviewUnsure" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsUnusable" ColumnName="IsUnusable" />
+          <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Reviewed" ColumnName="Reviewed" />
+          <ScalarProperty Name="FinalApproval" ColumnName="FinalApproval" />
+          <ScalarProperty Name="ReviewApproval" ColumnName="ReviewApproval" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="StoryVersion" ColumnName="StoryVersion" />
+          <ScalarProperty Name="CurrentEntryID" ColumnName="CurrentEntryID" />
+          <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="StoryContent" ColumnName="StoryContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

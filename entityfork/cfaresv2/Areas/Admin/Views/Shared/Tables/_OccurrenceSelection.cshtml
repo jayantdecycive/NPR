@@ -1,0 +1,36 @@
+﻿@model int?
+
+
+<script type="text/javascript">
+    var occurrenceList = new DomainModel.OccurrenceCollection();
+    occurrenceList.setWhere("notemp", { "ResEvent/Status": { $ne: "Temp" } });
+    
+    @{
+        string typeFilter = Request.QueryString["ReservationTypeId"] ?? ViewData["ReservationTypeId"] as string;
+        typeFilter = string.IsNullOrEmpty(typeFilter) ? null : typeFilter;
+    }
+
+    @if (typeFilter != null)
+    {
+        <text>occurrenceList.setWhere("resType", { "ResEvent/ReservationTypeId": { $eq: "@Html.Raw(typeFilter)" } });</text>
+    }
+    occurrenceList.abstract = true;
+</script>
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="occurrence_select" class='data-table' data-jquery-ui="true" data-dom='<"H"r>t<"F"fp>' data-data='occurrenceList' 
+        data-mode='backbone'>
+            <thead>
+            <tr>
+                <th data-id='OccurrenceSelect' data-on-display='DataFormat.Radio' data-column-parent='OccurrenceId'></th>                        
+                <th data-column-name='OccurrenceIdL' data-id-column='true' width="3%">Occurrence Id</th>                
+                <th data-column-name='StoreName' data-query-name='Store/Name'>Restaurant Name</th>                
+                <th data-column-name='ResEventName'  data-query-name='ResEvent/Name'>Event Name</th>                
+                
+                <!--<th data-column-name='SiteStartD' data-on-display='DataFormat.date' >Site Start</th>			    
+			    <th data-column-name='SiteEndD' data-visible="false" data-on-display='DataFormat.date'>Site End</th>		
+                -->
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.ResEventStatus'>Status</th>  
+		    </tr>
+            </thead>
+      </table>
+      </div>

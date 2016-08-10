@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Add a location to an event ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="content rounded" id="main">
+<form method="post">
+
+    <label>Number of store you want to add</label>
+    <input type="text" name="store_number" placeholder="store number" id="store_number"/>
+    <br/><br/>
+
+    <label>Number of Store you want to duplicate</label>
+    <input type="text" name="store_number_copy" placeholder="store number to copy" id="store_number_copy"/>
+    <br/><br/>
+
+    <label>Event Number</label>
+    <input type="text" name="event_number" placeholder="event number" id="event_number"/>
+    <br/><br/>
+
+    <label>Is this a giveaway event</label>
+    <input type="checkbox" name="giveaway" id="giveaway"/>
+    <br/><br/>
+
+    <input type="submit" class="btn" value="Add">
+
+</form>
+</div>

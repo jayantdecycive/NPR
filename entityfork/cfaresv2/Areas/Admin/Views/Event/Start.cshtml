@@ -1,0 +1,258 @@
+﻿@using cfares.domain._event
+@model cfaresv2.Areas.Admin.Models.EventCreateStartViewModel
+@{
+    string key = "Event";
+    if (Model.Event.ReservationTypeId == "Tour") { key = "Tour"; }
+    ViewBag.Title = (Model.Event.Status == ResEventStatus.Temp ? "New " : "Edit ") + key;
+    ViewBag.Brief = "";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+} 
+<script>
+    $(document).ready(function () {
+        $("#Event_Urls").val(null);
+    });
+    $(function () {
+        $("#LocationNumber_LocationNumber,#LocationNumber").bind("pk", function (e, pk, label) {
+            $(this).append("<option value='{0}'>{1}</option>".format(pk, label)).val(pk).selectmenu();
+        });
+    });
+
+</script>
+
+<style>
+    .jq-date {
+        width: 170px !important;
+    }
+    #editor {
+        height:45px !important;
+    }
+    
+</style>
+
+<h2>@Model.Event.ReservationType.Name Details</h2>
+<p>Please set technical parameters.</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+    
+    <div class="field-block">
+        <fieldset data-pk='@Model.Event.ResEventId' class='resevent-@Model.Event.ResEventId inline-block create-form'>
+
+            @*[MODEL BINDING: ResEvent]*@
+            @Html.HiddenFor(m => m.Event.ResEventId)
+            @*            @Html.HiddenFor(m => m.Event.MinOccurrenceCapacity)*@
+
+
+            <div class='model-field field-Name'>
+                <div class="editor-label inline-block" style="float:left;">
+                    @Html.LabelFor(m => m.Event.Name)
+                </div>
+                <div class="editor-field inline-block">
+                    @Html.EditorFor(m => m.Event.Name)
+                    @Html.ValidationMessageFor(m => m.Event.Name)
+                </div>
+            </div>
+
+            @*<div class='model-field field-UrlName'>
+				<div class="editor-label inline-block">
+					@Html.LabelFor(m => m.Event.Urls, "Reservation site URLs, separated by a comma")
+				</div>
+				<div class="editor-field inline-block">
+					@Html.EditorFor(m => m.Event.Urls)
+					@Html.ValidationMessageFor(m => m.Event.Urls)
+				</div>
+			</div>*@
+
+            <div class='model-field field-UrlName'>
+                <div class="editor-label inline-block">
+                    @Html.LabelFor(m => m.Event.Urls, "Friendly Reservation URL")
+                </div>
+                <div class="editor-field inline-block">
+                    @*  @Html.LabelFor(m => m.Event.Urls, "http://npr.decycivefarm.com/")*@
+                    @Html.EditorFor(m => m.Event.Url)
+                    @Html.ValidationMessageFor(m => m.Event.Urls)
+                </div>
+            </div>
+
+
+            @if (Model.Event.ReservationTypeId == "Tour")
+            {
+@*<div class='model-field field-TourType'>
+					<div class="editor-label inline-block">
+						<label>Tour Type</label>
+					</div>
+					<div class="editor-field inline-block">
+						<input value="Tour" type="text" readonly="readonly" /></div>
+				</div>*@
+            }
+            else
+            {				
+			
+                <div class='model-field field-Category'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.CategoryId, "Event Type")
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.CategoryId)
+                        @Html.ValidationMessageFor(m => m.Event.CategoryId)
+                    </div>
+                </div>
+            }
+
+            @* Site start and end dates *@
+            <div class="model-field">
+                <div class='model-field field-Start inline-block'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.SiteStart, "Site Visibility Start Date")
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.SiteStart)
+                        <span class="calendar-icon-big"></span>
+                        @Html.ValidationMessageFor(m => m.Event.SiteStart)
+                    </div>
+                </div>
+
+                <div class='model-field field-End inline-block margin-left-25'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.SiteEnd, "Site Visibility End Date")
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.SiteEnd)
+                        <span class="calendar-icon-big"></span>
+                        @Html.ValidationMessageFor(m => m.Event.SiteEnd)
+                    </div>
+                </div>
+            </div>
+            @* Slot start and end dates *@
+            <div class="model-field">
+                <div class='model-field field-RegistrationStart inline-block'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.RegistrationStart, "First Slot Date")
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.RegistrationStart)
+                        <span class="calendar-icon-big"></span>
+                        @Html.ValidationMessageFor(m => m.Event.RegistrationStart)
+                    </div>
+                </div>
+
+                <div class='model-field field-RegistrationEnd inline-block margin-left-25'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.RegistrationEnd, "Last Slot Date")
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.RegistrationEnd)
+                        <span class="calendar-icon-big"></span>
+                        @Html.ValidationMessageFor(m => m.Event.RegistrationEnd)
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.Event.ReservationTypeId != "Tour")
+            {
+
+                <div class='model-field field-Location'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.LocationNumber)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.LocationNumber)
+                        @Html.ValidationMessageFor(m => m.LocationNumber)
+
+                        <span class='admin-table dia-tools'>
+                            <a data-icon="plus" title="Create New" href="@string.Format("/Admin/Location/CreateShort?snip=true"))" data-title="Create New Location" data-toggle="modal"  data-success="LocationNumber_LocationNumber" ></a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='model-field field-Visibility'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.Visibility)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.Visibility)
+                        @Html.ValidationMessageFor(m => m.Event.Visibility)
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                @Html.HiddenFor(m => m.LocationNumber)
+                @Html.HiddenFor(m => m.Event.Visibility)
+            }
+            @Html.HiddenFor(m => m.Event.TemplateId)
+
+            @if (Model.Event.Status == ResEventStatus.Temp)
+            {
+                @Html.HiddenFor(m => m.Event.Status)
+            }
+            else
+            {
+                <div class='model-field field-Status'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.Status)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.Status)
+                        @Html.ValidationMessageFor(m => m.Event.Status)
+                    </div>
+                </div>
+            }
+
+            @if (Model.Event.ReservationTypeId != "Tour")
+            {
+                <div class='model-field field-Featured'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.IsFeatured)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.IsFeatured)
+                        @Html.ValidationMessageFor(m => m.Event.IsFeatured)
+                    </div>
+                </div>
+            }
+
+            @if (Model.Event.ReservationTypeId != "Tour")
+            {
+				
+                <div class='model-field field-Featured'>
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.IsPaid)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.CheckBoxFor(m => m.Event.IsPaid, new { @onclick = "$('.ticketamount').toggle();" })
+                        @Html.ValidationMessageFor(m => m.Event.IsPaid)
+                    </div>
+                </div>
+				
+                <div class='model-field field-Featured ticketamount' style="@(Model.Event.IsPaid ? "" : "display:none")">
+                    <div class="editor-label inline-block">
+                        @Html.LabelFor(m => m.Event.TicketAmount)
+                    </div>
+                    <div class="editor-field inline-block">
+                        @Html.EditorFor(m => m.Event.TicketAmount)
+                        @Html.ValidationMessageFor(m => m.Event.TicketAmount)
+                    </div>
+                </div>
+            }
+
+        </fieldset>
+    </div>
+	
+    <div class='submit-block admin-green'>
+        <div class='button-cta admin-green' data-icon="ui-icon-plus">
+            <input type="hidden" id="hdn-stores" name="stores" />
+            <input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default" value="Save &amp; Continue" role="button" aria-disabled="false" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrap-wysiwyg")
+}
+
+<link href="/Content/bootstrap-combined.no-icons.min.css" rel="stylesheet" />
+
+

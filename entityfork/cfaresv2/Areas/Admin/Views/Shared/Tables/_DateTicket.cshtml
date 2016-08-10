@@ -1,0 +1,25 @@
+﻿@model string
+
+<table id="ticket_dash_@Model" class='data-table' data-data='@Model' data-mode='backbone'>
+        <thead>
+            <tr>
+                <th data-id='TicketLink' data-on-display='DataFormat.DateTicketUrl' data-column-parent='TicketId'></th>                        
+                <th data-column-name='SlotStart' data-query-name="SlotId" width="23%" >Slot Start</th>                        
+                
+                <th data-column-name='NumberOfGuests'>Number of Guests</th>                        
+                <th data-column-name='TableRequest'>Table Size</th>                        
+
+                <th data-column-name='TicketIdL' data-visible='false' data-id-column='true' >Reservation Id</th>                        
+                <th data-column-name='Status'  data-id-column='true' data-visible='false'>Status</th>                        
+                <th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+                <th data-id='SlotLink'  data-visible='false' data-column-parent='SlotId' data-on-display='DataFormat.SlotUrl' >Slot</th>
+                <th data-column-name='CardNumberI' data-visible='false'>Card Number</th>
+                <th data-column-name='OwnerIdL' data-searchable="false" data-visible='false'>Owner Id</th>  
+                <th data-column-name='OwnerName' data-sortable="false" data-query-name="Owner/NameString" >Customer</th>  
+                <th data-column-name='OwnerZip'  data-searchable="false" data-sortable="false"> Zip</th>  
+                <th data-column-name='OwnerEmail' data-sortable="false" data-query-name="Owner/Email" >Email</th>  
+                <th data-id='Owner' data-column-parent='OwnerId' data-on-display='DataFormat.UserUrl' data-visible='false'>Owner</th>  
+                <th data-column-name='CreatedDate' >Created On</th>
+            </tr>
+        </thead>
+    </table>

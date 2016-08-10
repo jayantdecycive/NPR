@@ -1,0 +1,65 @@
+﻿@using cfares.site.modules.com.reservations.npr
+@model npr.domain._event.ticket.NPRTicket
+
+@{
+
+	if (Model.Slot != null && Model.Slot.Occurrence != null 
+		&& Model.Slot.Occurrence.ResEvent != null
+		&& Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent"){
+		ViewBag.Nav = "Events";
+    }else{
+        ViewBag.Nav = "Tours";
+    }
+	
+	ReservationWizard wizard = ViewBag.wizard as ReservationWizard;
+	bool isevent = ( Model.Slot != null 
+				   && Model.Slot.Occurrence != null
+				   && Model.Slot.Occurrence.ResEvent != null
+				   && Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent" )
+				   || ViewBag.Subdomain == "events";
+	bool ispaid = (Model.Slot != null
+				   && Model.Slot.Occurrence != null
+				   && Model.Slot.Occurrence.ResEvent != null
+				   && Model.Slot.Occurrence.ResEvent.IsPaid);
+	string[] steps;
+    
+    if(isevent){
+		steps = new string[] { "Choose an Event", "Registration", "Payment", "Overview", "Confirmation" };
+    }else if(Model.IsSpecialtyTicket){
+		steps = new string[] { "Choose a Tour", "Personalized Tour Details", "Payment", "Overview", "Confirmation" };
+    }else{
+		steps = new string[] { "Choose a Tour & Date", "Registration", "Payment", "Overview", "Confirmation" };
+    }
+}
+
+<div class="breadcrumbs navbar pull-right">
+    <ul class="nav">
+        
+        @if(wizard != null){
+    
+        @*extra step for events
+            if(isevent){
+                <li>Event Overview</li>
+                <li class="gt-divider">&gt;</li>
+            }*@
+        
+        @*loop through steps*@
+            for (int i = 0; i < wizard.Steps.Count;i++ )
+            {
+				if (i == 2 && !ispaid) { continue; }
+				if (i == 3 && ispaid) { continue; }
+				
+                if (wizard.Steps[i] == wizard.CurrentStep){
+                    <li class="strong">@steps[i]</li>
+                }
+                else{
+                    <li>@steps[i]</li>
+                }
+                if (i != wizard.Steps.Count - 1){
+                    <li class="gt-divider">&gt;</li>
+                }
+            }
+        }
+
+    </ul>       
+</div>

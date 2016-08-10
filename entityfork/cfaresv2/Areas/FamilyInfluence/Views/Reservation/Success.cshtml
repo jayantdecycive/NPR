@@ -1,0 +1,32 @@
+﻿@model cfares.domain._event._tickets.DateTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence - Success
+----------------------------------------------------*@
+
+<section class="row-fluid" id="success">
+	
+		<h2>Reservation Successful!</h2>
+		
+    <article class="span7">
+			<h3>You're Almost Done&hellip;</h3>
+			<p>A message has been sent to your email (@Model.Owner.Email) with instructions on how to open and print your personal invitation to <strong>Mother-Son Date Knight.</strong></p>
+			<p>We notified @if(Model.Slot.Occurrence.Store.Operator != null){<span>@Model.Slot.Occurrence.Store.Operator.Name.Full, </span>} the Operator of the Chick-fil-A at @Model.Slot.Occurrence.Store.Name of your reservation. They are looking forward to seeing you on <strong>@Model.Slot.Start.ToString("dddd, MMMM d, yyyy"),</strong> from <strong>@Model.Slot.Start.ToString("h:mm tt")</strong> to <strong>@Model.Slot.End.ToString("h:mm tt")</strong>.@*<br /><a href="#" class="calAdd">(Add this to your calendar)</a>*@</p>
+			<p>You must print out and bring your personal invitation to attend <strong>Mother-Son Date Knight</strong>. A photo ID may also be requested.</p>
+		</article>
+
+    <aside id="accountInfoBox" class="span3 offset1 well">
+			<h3>Good News!</h3>
+			<p>Your new account gives you access to all of your reservations.</p>
+			<p>Even better, we've stored your information for an easier and faster future reservation!</p>
+			<p>Manage your account and reservations @Html.ActionLink( "here", "Index", "Dashboard", new{ Area = "MyAccount" }, new {} ).</p>
+		</aside>
+        
+		
+
+	
+</section>
+

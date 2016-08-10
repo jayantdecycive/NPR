@@ -1,0 +1,126 @@
+﻿@model cfacore.shared.domain.media.Media
+@{string pk = (Model!=null&&Model.IsBound()) ? Model.Id().ToString() : "0";}
+@{bool isNew = pk=="0";}
+    
+    <fieldset data-pk='@pk' class='media-@pk'>
+        
+        <div class='legend inline-block'>Media</div>
+        
+        <div class='model-field field-Image'>
+            <div class="display-label inline-block">
+                
+            </div>
+            <div class="display-field inline-block">                
+                <img src="@Model.MediaUri" width="200px" />
+            </div>
+        </div>
+        
+        <hr />
+        
+       
+
+        <div class='model-field field-Uri'>
+            <div class="display-label inline-block">
+                Uri
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.MediaUri)
+            </div>
+        </div>
+
+        <div class='model-field field-Name'>
+            <div class="display-label inline-block">
+                Name
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class='model-field field-Description'>
+            <div class="display-label inline-block">
+                Description
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class='model-field field-CreationDate'>
+            <div class="display-label inline-block">
+                Creation Date
+            </div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </div>
+        </div>
+
+        <div class='model-field field-FileSize'>
+            <div class="display-label inline-block">
+                File Size
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.FileSize)
+            </div>
+        </div>
+
+        <div class='model-field field-Height'>
+            <div class="display-label inline-block">
+                Height
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Height)
+            </div>
+        </div>
+
+        <div class='model-field field-Width'>
+            <div class="display-label inline-block">
+                Width
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Width)
+            </div>
+        </div>
+
+        <div class='model-field field-Length'>
+            <div class="display-label inline-block">
+                Length
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Length)
+            </div>
+        </div>
+
+        <div class='model-field field-Owner'>
+            <div class="display-label inline-block">
+                Owner
+            </div>
+            <div class="display-field inline-block">                
+                @Html.DisplayFor(model => model.Owner)
+            </div>
+        </div>
+
+        <div class='model-field field-IsSystem'>
+            <div class="display-label inline-block">
+                Is System
+            </div>
+            <div class="display-field inline-block">        
+                @Html.DisplayFor(model => model.IsSystem)
+            </div>
+        </div>
+        
+      
+
+        
+        <div class='model-field field-Crop'>
+            <div class="display-label inline-block">
+                Cropping
+                
+            </div>
+            <div class="display-field inline-block admin-table">
+                @Html.DisplayFor(model => model.Crop)       <br />    <br />         
+                @Html.ActionLink("Edit Croppping", "Crop", new { id=pk }, new { @class = "jq-button" })
+            </div>
+        </div>
+
+    </fieldset>

@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8DC3367B-57F6-4E65-8C19-E28BB275E7B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cfares.entity.dbcontext</RootNamespace>
+    <AssemblyName>cfares.entity.dbcontext</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S2.Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S2.Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S4.Staging|AnyCPU'">
+    <OutputPath>bin\CFA.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S5.Prod|AnyCPU'">
+    <OutputPath>bin\CFA.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S2.DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S2.DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S4.Staging|AnyCPU'">
+    <OutputPath>bin\NPR.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S5.Prod|AnyCPU'">
+    <OutputPath>bin\NPR.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Web.CFATours.S1.Local.config|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Web.CFATours.S1.Local.config\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S5.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S5.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.5.0.0.70\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Spatial, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.3.1\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201305081942197_init.cs" />
+    <Compile Include="Migrations\201305081942197_init.Designer.cs">
+      <DependentUpon>201305081942197_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305082012158_media-create.cs" />
+    <Compile Include="Migrations\201305082012158_media-create.Designer.cs">
+      <DependentUpon>201305082012158_media-create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305082309042_media-rect.cs" />
+    <Compile Include="Migrations\201305082309042_media-rect.Designer.cs">
+      <DependentUpon>201305082309042_media-rect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305090015557_ticket-no.cs" />
+    <Compile Include="Migrations\201305090015557_ticket-no.Designer.cs">
+      <DependentUpon>201305090015557_ticket-no.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305090024356_ticket-no2.cs" />
+    <Compile Include="Migrations\201305090024356_ticket-no2.Designer.cs">
+      <DependentUpon>201305090024356_ticket-no2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305090029225_ticket-no3.cs" />
+    <Compile Include="Migrations\201305090029225_ticket-no3.Designer.cs">
+      <DependentUpon>201305090029225_ticket-no3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305091411336_event_subheading.cs" />
+    <Compile Include="Migrations\201305091411336_event_subheading.Designer.cs">
+      <DependentUpon>201305091411336_event_subheading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305171931041_may17merge.cs" />
+    <Compile Include="Migrations\201305171931041_may17merge.Designer.cs">
+      <DependentUpon>201305171931041_may17merge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305241411586_notes_etc.cs" />
+    <Compile Include="Migrations\201305241411586_notes_etc.Designer.cs">
+      <DependentUpon>201305241411586_notes_etc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305301615175_food_allowance.cs" />
+    <Compile Include="Migrations\201305301615175_food_allowance.Designer.cs">
+      <DependentUpon>201305301615175_food_allowance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306031631330_food_media.cs" />
+    <Compile Include="Migrations\201306031631330_food_media.Designer.cs">
+      <DependentUpon>201306031631330_food_media.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306031746241_food_media1.cs" />
+    <Compile Include="Migrations\201306031746241_food_media1.Designer.cs">
+      <DependentUpon>201306031746241_food_media1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306042027184_menu_keys.cs" />
+    <Compile Include="Migrations\201306042027184_menu_keys.Designer.cs">
+      <DependentUpon>201306042027184_menu_keys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306071309118_additional-info.cs" />
+    <Compile Include="Migrations\201306071309118_additional-info.Designer.cs">
+      <DependentUpon>201306071309118_additional-info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306181525366_offsite-occurrence.cs" />
+    <Compile Include="Migrations\201306181525366_offsite-occurrence.Designer.cs">
+      <DependentUpon>201306181525366_offsite-occurrence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306181606025_speaker-event.cs" />
+    <Compile Include="Migrations\201306181606025_speaker-event.Designer.cs">
+      <DependentUpon>201306181606025_speaker-event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306181853021_speakerevent1.cs" />
+    <Compile Include="Migrations\201306181853021_speakerevent1.Designer.cs">
+      <DependentUpon>201306181853021_speakerevent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306182023122_speakerevent2.cs" />
+    <Compile Include="Migrations\201306182023122_speakerevent2.Designer.cs">
+      <DependentUpon>201306182023122_speakerevent2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306182122461_speakerevent3.cs" />
+    <Compile Include="Migrations\201306182122461_speakerevent3.Designer.cs">
+      <DependentUpon>201306182122461_speakerevent3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306182131543_speakerevent4.cs" />
+    <Compile Include="Migrations\201306182131543_speakerevent4.Designer.cs">
+      <DependentUpon>201306182131543_speakerevent4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306190002227_speakerevent5.cs" />
+    <Compile Include="Migrations\201306190002227_speakerevent5.Designer.cs">
+      <DependentUpon>201306190002227_speakerevent5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306190009105_speakerevent6.cs" />
+    <Compile Include="Migrations\201306190009105_speakerevent6.Designer.cs">
+      <DependentUpon>201306190009105_speakerevent6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306291753329_group_size.cs" />
+    <Compile Include="Migrations\201306291753329_group_size.Designer.cs">
+      <DependentUpon>201306291753329_group_size.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306292002137_occurrence_capacity.cs" />
+    <Compile Include="Migrations\201306292002137_occurrence_capacity.Designer.cs">
+      <DependentUpon>201306292002137_occurrence_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306301848428_occurrence_automation.cs" />
+    <Compile Include="Migrations\201306301848428_occurrence_automation.Designer.cs">
+      <DependentUpon>201306301848428_occurrence_automation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306302055033_guest_binding.cs" />
+    <Compile Include="Migrations\201306302055033_guest_binding.Designer.cs">
+      <DependentUpon>201306302055033_guest_binding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307032214370_favorite_subscription.cs" />
+    <Compile Include="Migrations\201307032214370_favorite_subscription.Designer.cs">
+      <DependentUpon>201307032214370_favorite_subscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308012114498_minimum_daily_capacity.cs" />
+    <Compile Include="Migrations\201308012114498_minimum_daily_capacity.Designer.cs">
+      <DependentUpon>201308012114498_minimum_daily_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308011528322_ResEvent_MasterCapacity.cs" />
+    <Compile Include="Migrations\201308011528322_ResEvent_MasterCapacity.Designer.cs">
+      <DependentUpon>201308011528322_ResEvent_MasterCapacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308012132034_removing_min_occurrence_capacity.cs" />
+    <Compile Include="Migrations\201308012132034_removing_min_occurrence_capacity.Designer.cs">
+      <DependentUpon>201308012132034_removing_min_occurrence_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308012141070_rename_of_master_capacity.cs" />
+    <Compile Include="Migrations\201308012141070_rename_of_master_capacity.Designer.cs">
+      <DependentUpon>201308012141070_rename_of_master_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308012321289_hotfix_min_occurrence_capacity.cs" />
+    <Compile Include="Migrations\201308012321289_hotfix_min_occurrence_capacity.Designer.cs">
+      <DependentUpon>201308012321289_hotfix_min_occurrence_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308021626284_original_capacity.cs" />
+    <Compile Include="Migrations\201308021626284_original_capacity.Designer.cs">
+      <DependentUpon>201308021626284_original_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308182353064_gender.cs" />
+    <Compile Include="Migrations\201308182353064_gender.Designer.cs">
+      <DependentUpon>201308182353064_gender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="res_event\IResContext.cs" />
+    <Compile Include="res_event\ResEventContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.domain\cfacore.shared.domain.csproj">
+      <Project>{F06B4A08-F390-4206-9FB8-6F8BDE4F9DB7}</Project>
+      <Name>cfacore.shared.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.domain\cfares.domain.csproj">
+      <Project>{893D1B65-F5FB-429C-BCC5-07F8C834A0CA}</Project>
+      <Name>cfares.domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305081942197_init.resx">
+      <DependentUpon>201305081942197_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305082012158_media-create.resx">
+      <DependentUpon>201305082012158_media-create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305082309042_media-rect.resx">
+      <DependentUpon>201305082309042_media-rect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305090015557_ticket-no.resx">
+      <DependentUpon>201305090015557_ticket-no.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305090024356_ticket-no2.resx">
+      <DependentUpon>201305090024356_ticket-no2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305090029225_ticket-no3.resx">
+      <DependentUpon>201305090029225_ticket-no3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305091411336_event_subheading.resx">
+      <DependentUpon>201305091411336_event_subheading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305171931041_may17merge.resx">
+      <DependentUpon>201305171931041_may17merge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305241411586_notes_etc.resx">
+      <DependentUpon>201305241411586_notes_etc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305301615175_food_allowance.resx">
+      <DependentUpon>201305301615175_food_allowance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306031631330_food_media.resx">
+      <DependentUpon>201306031631330_food_media.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306031746241_food_media1.resx">
+      <DependentUpon>201306031746241_food_media1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306042027184_menu_keys.resx">
+      <DependentUpon>201306042027184_menu_keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071309118_additional-info.resx">
+      <DependentUpon>201306071309118_additional-info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306181525366_offsite-occurrence.resx">
+      <DependentUpon>201306181525366_offsite-occurrence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306181606025_speaker-event.resx">
+      <DependentUpon>201306181606025_speaker-event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306181853021_speakerevent1.resx">
+      <DependentUpon>201306181853021_speakerevent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306182023122_speakerevent2.resx">
+      <DependentUpon>201306182023122_speakerevent2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306182122461_speakerevent3.resx">
+      <DependentUpon>201306182122461_speakerevent3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306182131543_speakerevent4.resx">
+      <DependentUpon>201306182131543_speakerevent4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306190002227_speakerevent5.resx">
+      <DependentUpon>201306190002227_speakerevent5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306190009105_speakerevent6.resx">
+      <DependentUpon>201306190009105_speakerevent6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306291753329_group_size.resx">
+      <DependentUpon>201306291753329_group_size.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306292002137_occurrence_capacity.resx">
+      <DependentUpon>201306292002137_occurrence_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306301848428_occurrence_automation.resx">
+      <DependentUpon>201306301848428_occurrence_automation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306302055033_guest_binding.resx">
+      <DependentUpon>201306302055033_guest_binding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307032214370_favorite_subscription.resx">
+      <DependentUpon>201307032214370_favorite_subscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308012114498_minimum_daily_capacity.resx">
+      <DependentUpon>201308012114498_minimum_daily_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011528322_ResEvent_MasterCapacity.resx">
+      <DependentUpon>201308011528322_ResEvent_MasterCapacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308012132034_removing_min_occurrence_capacity.resx">
+      <DependentUpon>201308012132034_removing_min_occurrence_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308012141070_rename_of_master_capacity.resx">
+      <DependentUpon>201308012141070_rename_of_master_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308012321289_hotfix_min_occurrence_capacity.resx">
+      <DependentUpon>201308012321289_hotfix_min_occurrence_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021626284_original_capacity.resx">
+      <DependentUpon>201308021626284_original_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308182353064_gender.resx">
+      <DependentUpon>201308182353064_gender.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

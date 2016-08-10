@@ -1,0 +1,29 @@
+﻿
+@using System.Security.Cryptography.X509Certificates
+@using Microsoft.IdentityModel.Configuration
+@using Microsoft.IdentityModel.Protocols.WSFederation
+@using Microsoft.IdentityModel.SecurityTokenService
+@using Microsoft.IdentityModel.Web
+@using cfaresv2.AuthenticationSP.App_Code
+@{
+    ViewBag.Title = "Home Page";
+			
+    string action = Request.QueryString[WSFederationConstants.Parameters.Action];
+	if (action == WSFederationConstants.Actions.SignIn)
+	{
+        SignInRequestMessage requestMessage = (SignInRequestMessage)
+			WSFederationMessage.CreateFromUri(Request.Url);
+		
+        SecurityTokenService sts = new CustomSecurityTokenService(
+            new SecurityTokenServiceConfiguration(
+                "http://WIFIdentityProvider",
+                new X509SigningCredentials(Helpers.GetCertificate(StoreName.My, 
+					StoreLocation.LocalMachine, "CN=SeanTouch"))));
+		
+        SignInResponseMessage responseMessage = 
+            FederatedPassiveSecurityTokenServiceOperations.ProcessSignInRequest(requestMessage, User, sts);
+
+		// Working postback - Below line will trigger post and the redirect to wreply
+		HttpContext.Current.Response.Write( responseMessage.WriteFormPost() );
+    }
+}

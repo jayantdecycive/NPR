@@ -1,0 +1,92 @@
+﻿@using cfares.domain._event
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@model IList<cfacore.shared.domain.user.CityStateZip>
+@{
+    ViewBag.Title = "Page Not Found";
+	if( AppContext.Current.Configuration.ApplicationId == Application.NPR ) {
+		Layout = "/Areas/npr/Views/Shared/_Layout.cshtml";
+	} else {
+        Layout = AppContext.Current.GetLayoutLocation();
+	}
+    var stateGroups = Model.GroupBy(x => x.State).ToList();
+}
+
+
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+@section Scripts {
+    <script src="/Scripts/map-pop-ups.js"></script>
+}
+
+@*----------------------------------------------------
+	Family Influence - Select Location
+----------------------------------------------------*@
+<div id="city_search">
+
+
+    @{
+        
+        IList<DateTime> dates = null;
+        dates = AppContext.Current.GetDates();
+        IList<IOccurrence> participatingPrefferedRestaurants=null;
+        if (AppContext.Current.IsAuthenticated)
+        {
+            if (AppContext.Current.Event != null)
+            {
+                participatingPrefferedRestaurants = AppContext.Current.User.GetAvailablePreferredOccurrences(AppContext.Current.Event);
+            }
+            else if (AppContext.Current.EventType != null)
+            {
+                participatingPrefferedRestaurants = AppContext.Current.User.GetAvailablePreferredOccurrences(AppContext.Current.EventType);
+            }
+        }
+
+    }
+<section class="row-fluid">
+    @Html.Partial("_EventNotice",dates,new ViewDataDictionary(ViewData)
+        {
+            {"span", "span9"}
+        })
+    
+
+    
+</section>
+    
+
+
+    @if (participatingPrefferedRestaurants != null && participatingPrefferedRestaurants.Any())
+    {
+        <p>Choose from your preferred Restaurants:</p>
+        
+        <section class="row-fluid" id="choose_city_near_you">
+            <div class="span12 captionedForm well">
+		
+                @Html.Partial("_OccurrenceSelectList",participatingPrefferedRestaurants)
+			
+            </div>
+        </section>
+        <p>Or choose a city near you:</p>
+    }
+    else
+    {
+        <p>Please choose a city near you:</p>
+    }
+<section class="well offset1 span5 row" id="state_select">
+    @if (stateGroups.Count() > 1)
+    {
+        <label for="state_dd">Filter by state: 
+            @Html.DropDownList("state",new SelectList(stateGroups.OrderBy(x=>x.Key).Select(x=>x.Key)),"State")
+        </label>
+    }
+    @foreach (var stateGroup in stateGroups)
+    {
+        <div class="state-group">
+        @foreach (var stateCity in stateGroup)
+        {
+            <a class="span6">@stateCity.City, @stateCity.State</a>
+        }
+        </div>
+    }
+</section>
+    
+    </div>

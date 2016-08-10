@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <connectionStrings>
+    <!--<add name="CfaComContext" providerName="System.Data.SqlClient" connectionString="Data Source=matt-work-w8\SQLEXPRESS;Initial Catalog=cfacom;User Id=foundry_admin;Password=foundry7;" />-->
+  <add name="CfaComContext" providerName="System.Data.SqlClient" connectionString="Data Source=cfacore.cuwhyqxxofly.us-east-1.rds.amazonaws.com;Initial Catalog=cfacom;User Id=foundry_admin;Password=foundry7;" />
+  </connectionStrings>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="v11.0" />
+      </parameters>
+    </defaultConnectionFactory>
+  </entityFramework>
+</configuration>

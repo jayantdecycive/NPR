@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WebPublishMethod>MSDeploy</WebPublishMethod>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <SiteUrlToLaunchAfterPublish>http://core.chick-fil-a.com</SiteUrlToLaunchAfterPublish>
+    <ExcludeApp_Data>False</ExcludeApp_Data>
+    <MSDeployServiceURL>54.243.220.224</MSDeployServiceURL>
+    <DeployIisAppPath>core.chick-fil-a.com</DeployIisAppPath>
+    <RemoteSitePhysicalPath />
+    <SkipExtraFilesOnServer>True</SkipExtraFilesOnServer>
+    <MSDeployPublishMethod>WMSVC</MSDeployPublishMethod>
+    <EnableMSDeployBackup>True</EnableMSDeployBackup>
+    <UserName>www_publish</UserName>
+    <_SavePWD>True</_SavePWD>
+    <PublishDatabaseSettings>
+      <Objects xmlns="">
+        <ObjectGroup Name="CfaComStoriesEntities" Order="1" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;Persist Security Info=True;User ID=445396_CDSadmin;Password=G7e5Kz783ps3!" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\CfaComStoriesEntities_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="metadata=res://*/Designer.Stories.csdl|res://*/Designer.Stories.ssdl|res://*/Designer.Stories.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;Persist Security Info=True;User ID=445396_CDSadmin;Password=G7e5Kz783ps3!;MultipleActiveResultSets=True&quot;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="ApplicationServices" Order="2" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|aspnetdb.mdf;Integrated Security=True;User Instance=True" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\ApplicationServices_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-site-rackspace" Order="3" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;User ID=445396_CDSadmin; Password=G7e5Kz783ps3!;" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-site-rackspace_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="Data Source=174.143.28.35,4120;Initial Catalog=445396_CUSTOMER_DATA_STORE;User ID=445396_CDSadmin; Password=G7e5Kz783ps3!;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-elasti-cache" Order="4" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="cfacore.hjywkp.0001.use1.cache.amazonaws.com:11211" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-elasti-cache_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="cfacore.hjywkp.0001.use1.cache.amazonaws.com:11211" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-app-fabric" Order="5" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="telnet://localhost:22233/cfaId" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-app-fabric_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="telnet://localhost:22233/cfaId" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-res-mssql" Order="6" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=id.chick-fil-a.com;Initial Catalog=resApplication;User ID=resSqlAdmin; Password=drake7;" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-res-mssql_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="Data Source=id.chick-fil-a.com;Initial Catalog=resApplication;User ID=resSqlAdmin; Password=drake7;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-res-mysql" Order="7" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=resSqlAdmin;pwd=drake7;database=resApplication;" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-res-mysql_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="server=rescfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=resSqlAdmin;pwd=drake7;database=resApplication;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="CFA-ADService" Order="8" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="LDAP://id.chick-fil-a.com:389/CN=Users,DC=id,DC=chick-fil-a,DC=com" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\CFA-ADService_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="LDAP://id.chick-fil-a.com:389/CN=Users,DC=id,DC=chick-fil-a,DC=com" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-id-mssql" Order="9" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=id.chick-fil-a.com;Initial Catalog=idApplication;User ID=idSqlAdmin; Password=drake7;" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-id-mssql_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="Data Source=id.chick-fil-a.com;Initial Catalog=idApplication;User ID=idSqlAdmin; Password=drake7;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+        <ObjectGroup Name="cfa-id-mysql" Order="10" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="server=idcfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=idSqlAdmin;pwd=drake7;database=idApplication;" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\cfa-id-mysql_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="server=idcfamysql.cuwhyqxxofly.us-east-1.rds.amazonaws.com;uid=idSqlAdmin;pwd=drake7;database=idApplication;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)ApplicationServices-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)CFA-ADService-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-app-fabric-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-elasti-cache-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-id-mssql-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-id-mysql-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-res-mssql-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-res-mysql-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)cfa-site-rackspace-Web.config Connection String" />
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)CfaComStoriesEntities-Web.config Connection String" />
+  </ItemGroup>
+</Project>

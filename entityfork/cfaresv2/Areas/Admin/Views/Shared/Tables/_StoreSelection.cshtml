@@ -1,0 +1,20 @@
+﻿@model string
+<script>
+    var stores = new DomainModel.ResStoreCollection();
+    stores.abstract = true;
+</script>
+
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+    <table id="slot_select" class='data-table' data-jquery-ui="true" data-mode="backbone" data-dom='<"H"r>t<"F"fp>' data-data='stores'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.Radio' data-column-parent='LocationNumber'></th>                       
+                <th data-column-name='LocationNumber' data-id-column='true' >Location Number</th>
+                <th data-column-name='Name'  >Name</th>			    
+                        
+			    <!--<th data-column-name='City' data-query-name="StreetAddress/City">City</th>-->
+                <th data-column-name='OperatorName' data-query-name='Operator/NameString'>Operator</th> 
+		    </tr>
+            </thead>
+        </table>
+      </div>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.ModelName = "ResTemplate";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+
+
+<h1>Res Template Home</h1>
+<p>Res Templates</p>
+
+@section Meta{
+    <script type="text/javascript">
+        var resTemplateList = new DomainModel.ResTemplateCollection();
+        resTemplateList.abstract = true;
+    </script>    
+}
+        
+@section Table{
+    <table id="schedule_dash" class='data-table' data-data='resTemplateList' data-mode="backbone" >
+            <thead>
+            <tr>
+                <!--<th data-column-name='AdminDetailCta' data-searchable="false" data-sortable="false"></th>                -->
+                <th data-column-name='ResTemplateId' data-id-column='true'>Id</th>
+                <th data-column-name='Name' >Name</th>  
+			    
+                 
+		    </tr>
+            </thead>
+        </table>
+}

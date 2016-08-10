@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CfatoursViewModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CfatoursViewModelStoreContainer">
+          <EntitySet Name="Slots_Test" EntityType="CfatoursViewModel.Store.Slots_Test" store:Type="Views" store:Schema="dbo" store:Name="Slots_Test">
+            <DefiningQuery>SELECT 
+      [Slots_Test].[SlotId] AS [SlotId], 
+      [Slots_Test].[Status] AS [Status], 
+      [Slots_Test].[Capacity] AS [Capacity], 
+      [Slots_Test].[Visibility] AS [Visibility], 
+      [Slots_Test].[Start] AS [Start], 
+      [Slots_Test].[StartDay] AS [StartDay], 
+      [Slots_Test].[NameString] AS [NameString]
+      FROM [dbo].[Slots_Test] AS [Slots_Test]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TourSlot_Summary" EntityType="CfatoursViewModel.Store.TourSlot_Summary" store:Type="Views" store:Schema="dbo" store:Name="TourSlot_Summary">
+            <DefiningQuery>SELECT 
+      [TourSlot_Summary].[SlotId] AS [SlotId], 
+      [TourSlot_Summary].[Status] AS [Status], 
+      [TourSlot_Summary].[Capacity] AS [Capacity], 
+      [TourSlot_Summary].[Visibility] AS [Visibility], 
+      [TourSlot_Summary].[OccurrenceId] AS [OccurrenceId], 
+      [TourSlot_Summary].[Start] AS [Start], 
+      [TourSlot_Summary].[End] AS [End], 
+      [TourSlot_Summary].[StartDay] AS [StartDay], 
+      [TourSlot_Summary].[NameString] AS [NameString], 
+      [TourSlot_Summary].[TicketsReserved] AS [TicketsReserved], 
+      [TourSlot_Summary].[GuideId] AS [GuideId]
+      FROM [dbo].[TourSlot_Summary] AS [TourSlot_Summary]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'cfatours.dbo.Slots_Test' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Slots_Test">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="Visibility" />
+            <PropertyRef Name="Start" />
+          </Key>
+          <Property Name="SlotId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Visibility" Type="int" Nullable="false" />
+          <Property Name="Start" Type="datetimeoffset" Nullable="false" />
+          <Property Name="StartDay" Type="int" />
+          <Property Name="NameString" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'cfatours.dbo.TourSlot_Summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="TourSlot_Summary">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="Visibility" />
+            
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+          </Key>
+          <Property Name="SlotId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Visibility" Type="int" Nullable="false" />
+          <Property Name="OccurrenceId" Type="int" Nullable="false" />
+          <Property Name="Start" Type="datetimeoffset" Nullable="false" />
+          <Property Name="End" Type="datetimeoffset" Nullable="false" />
+          <Property Name="StartDay" Type="int" />
+          <Property Name="NameString" Type="nvarchar(max)" />
+          <Property Name="TicketsReserved" Type="int" />
+          <Property Name="GuideId" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CfatoursViewModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CfatoursViewContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Slots_Test" EntityType="CfatoursViewModel.Slots_Test" />
+          <EntitySet Name="TourSlot_Summary" EntityType="CfatoursViewModel.TourSlot_Summary" />
+        </EntityContainer>
+        <EntityType Name="Slots_Test">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="Visibility" />
+            <PropertyRef Name="Start" />
+          </Key>
+          <Property Name="SlotId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Visibility" Type="Int32" Nullable="false" />
+          <Property Name="Start" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="StartDay" Type="Int32" />
+          <Property Name="NameString" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TourSlot_Summary">
+          <Key>
+            <PropertyRef Name="SlotId" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="Visibility" />
+            <PropertyRef Name="Start" />
+            <PropertyRef Name="End" />
+          </Key>
+          <Property Name="SlotId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Visibility" Type="Int32" Nullable="false" />
+          <Property Name="Start" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="End" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="StartDay" Type="Int32" />
+          <Property Name="NameString" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TicketsReserved" Type="Int32" />
+          <Property Type="Int32" Name="OccurrenceId" Nullable="false" />
+          <Property Type="Int32" Name="GuideId" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CfatoursViewModelStoreContainer" CdmEntityContainer="CfatoursViewContext">
+          <EntitySetMapping Name="Slots_Test">
+            <EntityTypeMapping TypeName="CfatoursViewModel.Slots_Test">
+              <MappingFragment StoreEntitySet="Slots_Test">
+                <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="NameString" ColumnName="NameString" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourSlot_Summary">
+            <EntityTypeMapping TypeName="CfatoursViewModel.TourSlot_Summary">
+              <MappingFragment StoreEntitySet="TourSlot_Summary">
+                <ScalarProperty Name="GuideId" ColumnName="GuideId" />
+                <ScalarProperty Name="OccurrenceId" ColumnName="OccurrenceId" />
+                <ScalarProperty Name="SlotId" ColumnName="SlotId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="NameString" ColumnName="NameString" />
+                <ScalarProperty Name="TicketsReserved" ColumnName="TicketsReserved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

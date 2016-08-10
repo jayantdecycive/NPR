@@ -1,0 +1,126 @@
+﻿@model cfares.domain._event.ResEvent
+@{string pk = (Model != null && Model.IsBound()) ? Model.Id().ToString() : "new";}
+@{bool isNew = pk == "new";}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true,"There has been an error, please view the messages below and try again.")
+    <fieldset data-pk='@pk' class='resevent-@pk'>
+        <div class='legend inline-block'></div>
+        @Html.HiddenFor(model => model.ResEventId)
+        <div class='model-field field-Name'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Name)
+            </div>                
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class='model-field field-UrlName'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Urls)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Urls)
+                @Html.ValidationMessageFor(model => model.Urls)
+            </div>
+        </div>
+        <div class='model-field field-Description'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        
+
+        
+        
+        
+        <div class='model-field field-SiteAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SiteStartString)
+            </div>                
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SiteStartString)
+                @Html.ValidationMessageFor(model => model.SiteStartString)
+            </div>
+        </div>
+        
+        <div class='model-field field-SiteAvailabilityEnd'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SiteEndString)
+            </div>                
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SiteEndString)
+                @Html.ValidationMessageFor(model => model.SiteEndString)
+            </div>
+        </div>
+
+        <div class='model-field field-RegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.RegistrationStartString)
+            </div>                
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.RegistrationStartString)
+                @Html.ValidationMessageFor(model => model.RegistrationStartString)
+            </div>
+        </div>
+        
+        <div class='model-field field-RegistrationAvailabilityEnd'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.RegistrationEndString)
+            </div>                
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.RegistrationEndString)
+                @Html.ValidationMessageFor(model => model.RegistrationEndString)
+            </div>
+        </div>
+
+        <div class='model-field field-Template'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.TemplateId)
+            </div>                
+            <div class="editor-field inline-block admin-table">
+                @Html.EditorFor(model => model.TemplateId)
+                @Html.ValidationMessageFor(model => model.TemplateId)
+            </div>
+        </div>
+
+    
+
+        <div class='model-field field-Template'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.ReservationTypeId)
+            </div>                
+            <div class="editor-field inline-block admin-table">
+                @Html.EditorFor(model => model.ReservationTypeId)
+                @Html.ValidationMessageFor(model => model.ReservationTypeId)
+            </div>
+        </div>
+        
+        <div class='model-field field-Status'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field inline-block admin-table">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>     
+        
+    </fieldset>
+    <div class='submit-block admin-green'>
+            <div class='editor-label inline-block'>
+            
+            </div>
+            <div class='editor-field inline-block'>
+                <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+            </div>
+            
+        </div>
+}

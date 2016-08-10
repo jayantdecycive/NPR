@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Tour Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+	<script type="text/javascript" id="mytemplate">
+		
+		var upcomingEventsBucket = new DomainModel.ActiveEvents();
+		upcomingEventsBucket.setWhere('upcomingEventsBucket_start', [{ RegistrationEnd: { $gt: (new Date()) }, Status: { $ne: 'Deleted' }, ReservationTypeId: { $eq: 'Tour' } }, { Status: { $ne: 'Temp' } }]); //, { Status: { $ne: 'Draft' } }
+		upcomingEventsBucket.abstract = true;
+
+		var pastEventsBucket = new DomainModel.ActiveEvents();
+		pastEventsBucket.setWhere('pastEventsBucket_start', [{ RegistrationEnd: { $lte: (new Date()) }, Status: { $ne: 'Deleted' }, ReservationTypeId: { $eq: 'Tour' } }, { Status: { $ne: 'Temp' } }, { Status: { $ne: 'Draft' } }]);
+		pastEventsBucket.abstract = true;
+		
+	</script>
+}
+
+<div class="content rounded" id="main">
+    
+    <!-- UPCOMING TOUR TICKETS -->
+    <div class="inner-content wrapper upcoming-tours">
+    <div class='model badge'>  
+		<div class="dashboard-create-button admin-table-2 right">
+			<div class='button-cta right'>
+				@Html.ActionLink("Create New Event","Wizard", "Event", new { id = "Tour" }, new { data_left_icon = "ui-icon-circle-plus" })
+			</div>
+		</div>
+    <h2>Upcoming Tour Events</h2>
+    <p>View upcoming tour campaigns and make modifcations if necessary.</p>
+    </div> 
+    @Html.Partial("Tables/_EventsDash","upcomingEventsBucket")
+    </div>
+
+@*    <!-- CREATE TICKET-->
+    <div class='inner-content wrapper new-tour-cta create-new-tour light-bg'>
+    <div class='model badge rounded'>
+        <div class="inline-block">
+	        <h2>Create New Public Tour Campaign</h2>
+		</div>
+		<div class='button-list'>
+			<a href="@Url.Action("Wizard", "Event", new { id = "Tour" })" class="button-green-next">
+				<span class="button-text">Create Campaign</span>
+				<span class="button-icon-container">
+					<span class="button-icon"></span>
+				</span>
+			</a>
+        </div>
+    </div>
+    </div>*@
+
+    <!-- PAST TOUR TICKETS -->
+    <div class="inner-content wrapper past-tours">
+    <div class='model badge'>
+    <h2>Past Tour Events</h2>
+    <p>View past tours and make reports</p>
+    </div>
+    @Html.Partial("Tables/_EventsDash","pastEventsBucket")
+    </div>
+
+
+
+</div>
+

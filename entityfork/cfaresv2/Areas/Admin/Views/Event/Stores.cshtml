@@ -1,0 +1,112 @@
+﻿@model cfares.domain._event.ResEvent
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    
+}
+@section Meta{
+    <script>
+        var initialStores = @Html.Raw(serializer.Serialize(ViewBag.ParticipatingStores));
+        var storeDeck;
+        if(initialStores)
+            storeDeck = new DomainModel.ResStoreCollection(initialStores);
+        else
+            storeDeck = new DomainModel.ResStoreCollection();
+        var AbstractStoreList = (new DomainModel.ResStoreCollection());
+        AbstractStoreList.abstract = true;
+        $(function () {
+            $("#a-add").click(function (e,stores) {
+                var checked = stores||AbstractStoreList.popChecked();
+                storeDeck.add(checked);
+
+                var where = []
+                storeDeck.each(function (m) {
+                    where.push(m.id);
+                });
+                if(where.legnth<40)
+                    AbstractStoreList.setQueryParam("exclude", where.join(","));
+                else
+                    AbstractStoreList.setQueryParam("exclude", where.join(","));
+                    //AbstractStoreList.removeQueryParam("exclude");
+                
+                $("#stores_list").dataTable().fnDraw();
+            });
+            $("#a-remove").click(function () {
+                var checked = storeDeck.popChecked();
+                storeDeck.remove(checked);
+                var where = []
+                storeDeck.each(function (m) {
+                    where.push(m.id);
+                });
+                if(where.legnth<40)
+                    AbstractStoreList.setQueryParam("exclude", where.join(","));
+                else
+                    AbstractStoreList.removeQueryParam("exclude");
+                $("#stores_list").dataTable().fnDraw();
+            });
+        });
+        storeDeck.on("change add remove", function () {
+            var ids = this.pluck("LocationNumber");
+            $("#hdn-stores").val(ids.join(","));
+        });
+        
+        AbstractStoreList.once("fetch", function () {
+            storeDeck.trigger("change");    
+            $("#a-add").trigger("click", [storeDeck.models]);                    
+            
+        });
+        
+    </script>
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model create edit">
+        <div class='model badge'>
+            <h1>Choose the participating Restaurant(s)</h1>
+            @if (!String.IsNullOrWhiteSpace(ViewBag.StoreError)){
+                <p class="validation-summary-errors">@ViewBag.StoreError</p>
+            }
+            <p>Select the participating restaurants, then click the "Add to List" button between the two tables.</p>
+             <p>NOTE: To Avoid loosing your checked stores, add currently checked stores to the selected stores table the before searching the available stores list</p>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("Tables/_StoreList", "AbstractStoreList", new ViewDataDictionary(this.ViewData) { { "id", "list" } })
+            @*<div class='submit-block admin-red submit-block-override no-pad-top'>
+				<div class='button-cta no-pad-top' data-icon="ui-icon-plus">
+					<input type="hidden" id="hdn-stores" name="stores" />
+					<input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+				</div>
+			</div>*@
+			<div class='button-list admin-green pad10'>
+
+                <a href="javascript:void(0);" id="a-add" data-icon="ui-icon-triangle-1-s" class='jq-button'>Add to List</a>
+                @*<a href="javascript:void(0);" id="a-remove" data-icon="ui-icon-triangle-1-n" class='jq-button'>Remove From List</a>*@
+            </div>
+            <br class="clearfloat" />
+            <div class="model badge">
+	        <h2>Selected Restaurants</h2>
+            </div>
+			<div class="pad10">
+				@Html.Partial("Tables/_StoreList", "storeDeck", new ViewDataDictionary(this.ViewData) { { "id", "deck" } })
+            </div>
+            <div class="admin-green pad10">
+				<a href="javascript:void(0);" id="a-remove" data-icon="ui-icon-triangle-1-n" class='jq-button'>Remove From List</a>
+            </div>
+				
+            
+            
+			<div class='submit-block admin-red submit-block-override'>
+                <div class='button-cta' data-icon="ui-icon-plus">
+                    <input type="hidden" id="hdn-stores" name="stores" />
+                    @* <input class="right-float" type="submit" value="Submit &amp; Continue" class="submit" /> *@
+					<input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

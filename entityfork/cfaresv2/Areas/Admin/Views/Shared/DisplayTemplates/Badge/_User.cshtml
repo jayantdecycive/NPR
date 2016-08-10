@@ -1,0 +1,3 @@
+﻿@model cfares.domain.user.ResUser
+
+@Html.Raw(Model==null?"None":string.Format("{0} [{1}]",Model.NameString,Model.Email))

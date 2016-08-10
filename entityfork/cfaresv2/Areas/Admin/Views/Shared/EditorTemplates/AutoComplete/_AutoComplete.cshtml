@@ -1,0 +1,43 @@
+﻿@model int?
+
+@{ 
+    string defaultLabel;
+    if (Model == null || Model.Value == 0) {
+        defaultLabel = ViewData["DefaultLabel"].ToString();
+    } else {
+        defaultLabel = Model.Value.ToString();
+    }
+	if( ViewData["DefaultLabelOverride"] != null ) {
+		defaultLabel = ViewData["DefaultLabelOverride"].ToString(); }
+	
+    int? id = Model;
+	if (id == 0) { id = null; }
+
+	//string FieldName = ViewData["FieldName"].ToString();
+    string FieldName = ViewData.TemplateInfo.HtmlFieldPrefix +"_"+ Guid.NewGuid().ToString().Replace("-", ""); ;
+    bool modal = ViewData["modal"] == null || (bool)ViewData["modal"] == true;
+}
+<script>
+    var @Html.Raw(FieldName)_models = new DomainModel.@Html.Raw(ViewData["DomainModel"])Collection();
+    
+</script>
+<span class='admin-grey'>    
+
+	<input type="text" data-default-label="@defaultLabel" value="@id" 
+		name="@ViewData.TemplateInfo.HtmlFieldPrefix" id="@FieldName" 
+		class='jq-auto-complete' data-filter="@ViewData["Filter"]" placeholder="@defaultLabel"
+		data-label="@ViewData["Label"]" data-model='@Html.Raw(FieldName)_models' />
+
+	@if (modal)
+    {
+        <span class='admin-table dia-tools'>
+            <a data-icon="plus" title="Create New" href="@Html.Raw(ViewData["AdminCreate"] ?? string.Format("/Admin/{0}/Create?snip=true", ViewData["DomainModel"]))" data-title="@Html.Raw(ViewData["CreateTitle"]??"Create new "+ViewData["DomainModel"])" data-toggle="modal"  data-success="@FieldName" ></a>    
+            @if (Model != null)
+            {
+                <a data-icon="pencil" title="Edit" href="@Html.Raw(ViewData["AdminEdit"] ?? string.Format("/Admin/{0}/Edit/{1}?snip=true", ViewData["DomainModel"], Model))" data-title="@Html.Raw(ViewData["EditTitle"]??"Edit "+ViewData["DomainModel"])" data-toggle="modal"  data-success="@FieldName" ></a>
+            }
+        </span>
+    }
+</span>
+
+<!--user-->

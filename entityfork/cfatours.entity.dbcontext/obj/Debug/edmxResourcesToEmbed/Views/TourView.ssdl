@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CfatoursViewModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CfatoursViewModelStoreContainer">
+    <EntitySet Name="Slots_Test" EntityType="CfatoursViewModel.Store.Slots_Test" store:Type="Views" store:Schema="dbo" store:Name="Slots_Test">
+      <DefiningQuery>SELECT 
+      [Slots_Test].[SlotId] AS [SlotId], 
+      [Slots_Test].[Status] AS [Status], 
+      [Slots_Test].[Capacity] AS [Capacity], 
+      [Slots_Test].[Visibility] AS [Visibility], 
+      [Slots_Test].[Start] AS [Start], 
+      [Slots_Test].[StartDay] AS [StartDay], 
+      [Slots_Test].[NameString] AS [NameString]
+      FROM [dbo].[Slots_Test] AS [Slots_Test]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TourSlot_Summary" EntityType="CfatoursViewModel.Store.TourSlot_Summary" store:Type="Views" store:Schema="dbo" store:Name="TourSlot_Summary">
+      <DefiningQuery>SELECT 
+      [TourSlot_Summary].[SlotId] AS [SlotId], 
+      [TourSlot_Summary].[Status] AS [Status], 
+      [TourSlot_Summary].[Capacity] AS [Capacity], 
+      [TourSlot_Summary].[Visibility] AS [Visibility], 
+      [TourSlot_Summary].[OccurrenceId] AS [OccurrenceId], 
+      [TourSlot_Summary].[Start] AS [Start], 
+      [TourSlot_Summary].[End] AS [End], 
+      [TourSlot_Summary].[StartDay] AS [StartDay], 
+      [TourSlot_Summary].[NameString] AS [NameString], 
+      [TourSlot_Summary].[TicketsReserved] AS [TicketsReserved], 
+      [TourSlot_Summary].[GuideId] AS [GuideId]
+      FROM [dbo].[TourSlot_Summary] AS [TourSlot_Summary]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'cfatours.dbo.Slots_Test' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Slots_Test">
+    <Key>
+      <PropertyRef Name="SlotId" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="Visibility" />
+      <PropertyRef Name="Start" />
+    </Key>
+    <Property Name="SlotId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Visibility" Type="int" Nullable="false" />
+    <Property Name="Start" Type="datetimeoffset" Nullable="false" />
+    <Property Name="StartDay" Type="int" />
+    <Property Name="NameString" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'cfatours.dbo.TourSlot_Summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="TourSlot_Summary">
+    <Key>
+      <PropertyRef Name="SlotId" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="Visibility" />
+      <PropertyRef Name="Start" />
+      <PropertyRef Name="End" />
+    </Key>
+    <Property Name="SlotId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Visibility" Type="int" Nullable="false" />
+    <Property Name="OccurrenceId" Type="int" Nullable="false" />
+    <Property Name="Start" Type="datetimeoffset" Nullable="false" />
+    <Property Name="End" Type="datetimeoffset" Nullable="false" />
+    <Property Name="StartDay" Type="int" />
+    <Property Name="NameString" Type="nvarchar(max)" />
+    <Property Name="TicketsReserved" Type="int" />
+    <Property Name="GuideId" Type="int" />
+  </EntityType>
+</Schema>

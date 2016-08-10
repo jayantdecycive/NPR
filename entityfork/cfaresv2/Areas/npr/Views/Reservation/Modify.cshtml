@@ -1,0 +1,214 @@
+﻿@model cfaresv2.Areas.npr.Models.ModifyTicketViewModel
+
+@{
+    ViewBag.Title = "Reservation Overview";
+    ViewBag.Nav = "Modify";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+}
+<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<h1>Modify or Cancel Your Reservation</h1>
+
+<p class="modify-padding">To modify a tour or event reservation, please enter the email used to make your reservation and the confirmation number found in your confirmation email.</p>
+<p id="ValidationMsg" style="color: red;"></p>
+@if (ViewBag.Message != null)
+{<p class="Validation" >@ViewBag.Message</p>}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    
+    <div class="control-group">
+        @Html.LabelFor(m => m.Email, "Email:", new { @class = "control-label", name = "modify-email" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.Email, new { @class = "required" })
+        </div>
+        <span class="validation">@Html.ValidationMessageFor(m => m.Email)</span>
+    </div>
+
+    <div class="control-group">
+        @Html.LabelFor(m => m.ConfirmNumber, "Confirmation #:", new { @class = "control-label", name = "modify-number" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.ConfirmNumber, new { @class = "required", maxlength = "8" })
+        </div>
+        <span class="validation">@Html.ValidationMessageFor(m => m.ConfirmNumber)</span>
+    </div>
+    
+    <div id="popupdiv" title="Basic modal dialog" style="display: none">
+<b> Thank you. Your tour has been cancelled. We hope to see you soon.</b>
+</div>
+    <span class="button-forward registration-button">
+        <input type="button" value="Reprint Tickets" onclick="ReprintTickets()" />
+        <span class="button-icon-container">
+            <span class="button-icon"></span>
+        </span>
+    </span>
+    <br />
+	
+    <span class="button-forward registration-button">
+        <input type="submit" value="Modify  a Reservation" class="" />
+        <span class="button-icon-container">
+            <span class="button-icon"></span>
+        </span>
+    </span>
+    
+    <span class="button-forward registration-button">
+        <input type="submit" value="Cancel a Reservation" id="ButtonCancel" class="" onclick="OpenPopup(); return false;"  name="Cancel"/>
+      @*  <input type="submit" value="Cancel a Reservation" id="ButtonCancel" class=""  name="Cancel"/>*@
+        <span class="button-icon-container">
+            <span class="button-icon"></span>
+        </span>
+    </span>
+    
+    
+    
+    <p class="modify-trouble"><span class="disclaimer">Questions about your reservation?</span> Contact us at <a href="http://www.npr.org/contact">npr.org/contact</a></p> 
+}
+
+
+<script type="text/javascript">
+    function ReprintTickets() {
+        debugger;
+        var confirmNumber = $("#ConfirmNumber").val();
+        var Email = $("#Email").val();
+        if (confirmNumber != "" && Email != "") {
+            $.ajax({
+                url: "/npr/Reservation/ReprintTickets",
+                data: { 'ConfirmNumber': confirmNumber },
+                cache: false,
+                success: function (data) {
+                    debugger;
+                    if (data.Message == "sucess") {
+                        var abc = data.aId;
+                        window.location.href = '@Url.Action("TicketList", "Reservation")' + "/" + data.aId;
+                    }
+                    else {
+                        $("#ValidationMsg").text(data.Message);
+                    }
+
+                }
+            });
+        }
+        else {
+            $("#ValidationMsg").text("The Email and Confirmation field is required.");
+        }
+    }
+
+
+</script>
+<script type="text/javascript">
+    function OpenPopup()
+    {
+        var confirmNumber = $("#ConfirmNumber").val();
+        var Email = $("#Email").val();
+        
+        if (confirmNumber != "" && Email != "") {
+            $("#popupdiv").dialog({
+                title: "Cancel Your Reservation",
+                width: 430,
+                height: 250,
+                modal: true,
+                buttons: {
+                    Close: function () {
+                        $(this).dialog('close');
+                      
+                    }
+                }
+
+            });
+            setTimeout(function () {               
+                $.ajax({
+                    type: "POST",
+                    url: "/npr/Reservation/Modify",
+                    data: { ConfirmNumber: confirmNumber, Email: Email, Cancel: "Cancel" },
+                    cache: false,
+                    success: function (data) {
+                        if (data.Message == "Ticket not Found") {
+                            alert(data.Message);
+                           
+                            @*window.location.href = '@Url.Action("Modify", "Reservation")';*@
+                        } else {
+                            window.location.href = '@Url.Action("Tours", "Home")';
+                        }
+                    }
+                });
+
+            }, 5000);
+
+        }
+        else
+        {
+            $("#ValidationMsg").text("The Email and Confirmation field is required.");
+        }
+    }
+
+  /*  $(document).ready(function () {      
+           debugger;
+        var confirmNumber = $("#ConfirmNumber").val();
+        var Email = $("#Email").val();
+        var massage = '  ViewBag.Message '
+     /*   $('#ButtonCancel').click(function () {
+            if (confirmNumber != "" && Email != "") {
+                $("#popupdiv").dialog({
+                    title: "Cancel Your Reservation",
+                    width: 430,
+                    height: 250,
+                    modal: true,
+                    buttons: {
+                        Close: function () {
+                            $(this).dialog('close');
+                          //  window.location.href = 'Url.Action("Tours", "Home")';
+                                    
+                                }
+                            }
+
+                });
+                setTimeout(function () {
+                    $.ajax({
+                        url: "/npr/Reservation/Modify",
+                        data: { 'ConfirmNumber': confirmNumber, 'Email': Email },
+                        cache: false,
+                        success: function (data) {
+                        }
+                    });
+
+                }, 5000);
+               
+
+           
+        }
+        });
+
+        //    $('#ButtonCancel').click(function () {
+        //    $("#popupdiv").dialog({
+        //        title: "Cancel Your Reservation",
+        //        width: 430,
+        //        height: 250,
+        //        modal: true,
+        //        buttons: {
+        //            Close: function () {
+        //                $(this).dialog('close');
+        //                return true;
+        //            }
+        //        }
+        //    });
+           
+        //});
+       
+    })*/
+
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>

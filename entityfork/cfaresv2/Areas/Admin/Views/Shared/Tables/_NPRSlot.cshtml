@@ -1,0 +1,17 @@
+﻿@model string
+
+<div class='admin-table'>
+    <table id="slots_@ViewData["id"]" data-sort="LocationNumber" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.NPRSlotUrl' data-column-parent='SlotId'></th>                        
+                <th data-column-name='SlotIdL' data-id-column='true' >Slot Id</th>
+                <th data-column-name='StartD' data-on-display='DataFormat.date' >Start</th>			    
+			    <th data-column-name='EndD' data-on-display='DataFormat.date'>End</th>
+                <th data-column-name='OccurrenceId'>Occurrence</th>
+			    <th data-column-name='CapacityI' >Capacity</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.SlotStatus'>Status</th>  
+		    </tr>
+            </thead>
+        </table>
+      </div>

@@ -1,0 +1,25 @@
+﻿@model cfares.domain._event._ticket.GuestTicket
+@{string pk = (Model != null && Model.IsBound()) ? Model.Id().ToString() : "";}
+@{bool isNew = string.IsNullOrEmpty(pk);}
+
+
+<fieldset data-pk='@pk' class='ticket-@pk'>
+    
+    @*<a href="/Admin/Media/Create?snip=true&Name=media_ticket_@Html.Raw(Model.TicketId)&Description=New+Ticket+Media&OwnerId=auto&IsSystem=false" 
+        data-title="Create new Media" data-toggle="modal"  data-success="myid" >Create New Media</a>    
+    *@
+    <div class='legend inline-block'>Guest Ticket Information</div>
+
+        
+    <div class='model-field field-NumberOfGuests'>
+        <div class="editor-label  inline-block" data-field="NumberOfGuests">
+            @Html.LabelFor(model => model.NumberOfGuests)
+        </div>
+        <div class="editor-field  inline-block">
+            @Html.EditorFor(model => model.NumberOfGuests)
+            @Html.ValidationMessageFor(model => model.NumberOfGuests)
+        </div>
+    </div>
+       
+</fieldset>
+    

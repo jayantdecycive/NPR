@@ -1,0 +1,74 @@
+﻿@using Ninject
+@using cfares.domain._event
+@using cfares.site.modules.com.application
+@model npr.domain._event.slot.NPRSlot
+
+@{
+    ViewData["vTicketType"] = Model.Occurrence.ResEvent.ReservationTypeId;
+    ViewData["vGuideName"] = Model.Guide==null?"N/A":Model.Guide.ToString();
+    ViewBag.Title = "Slot";
+    ViewBag.Brief = "Slot Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+
+    Type ticketType = typeof (Ticket);
+    if (Model.Occurrence != null && Model.Occurrence.ResEvent != null)
+    {
+        ticketType = AppContext.Current.Configuration.GetKernel(Model.Occurrence.ResEvent.ReservationType, null).Get<ITicket>().GetType();
+		if( Model.Occurrence.ResEvent.ReservationTypeId == "Tour" )
+		{
+			ViewBag.Title = "Public Tour Slot";
+		}
+    }
+}
+        
+            <h1></h1>
+            @*<p>
+            @Html.Raw(Model.ToHtmlString())
+            </p>*@
+        
+            @Html.Partial("ModelDetail/_NPRSlot")        
+            
+@section Action{
+
+<div class="button-list admin-green">
+
+    @if (Model.Occurrence!=null)
+	{
+		<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-arrow-e">
+			@Html.ActionLink("Event Summary", "Summary", "Event", new {id = Model.Occurrence.ResEventId}, new {})
+		</div>
+	}
+	
+    <div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-pencil">
+        @Html.ActionLink("Edit this Slot", "Edit", new { id = Model.SlotId }, new {})
+    </div>
+
+	<div class="jq-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" data-icon="ui-icon-circle-plus">
+            @Html.ActionLink("Create Ticket for This Slot", "Create", ticketType.Name, new {SlotId = Model.SlotId}, new {})
+    </div>
+    
+</div>    
+}
+       
+@section Table
+{
+	<script type="text/javascript">
+		
+		var tickets = new DomainModel.@Html.Raw(ticketType.Name)Collection();
+		tickets.abstract = true;
+		tickets.setWhere("model",[{SlotId: {$eq:'@Model.SlotId'} }, { Status: { $ne: 'Partial' } }]);
+		tickets.setOrder({ Status: -1 });
+
+	</script>
+	
+	<section id="slotDetailedInformation-section">    
+		<h2>Tickets</h2>
+		<div class='admin-table'>
+			@Html.Partial("Tables/_"+ticketType.Name,"tickets", new ViewDataDictionary(ViewData)
+			    {
+			        {"HideStart",true}
+			    })
+		</div>
+	</section>
+    
+}     

@@ -1,0 +1,1085 @@
+
+/*-------------------------------------------------------------
+  Reservation System - Master Stylesheet
+-------------------------------------------------------------*/
+
+// --- Settings -----------------------------------------------
+
+$assetsRoot: ''; 
+$themeFonts: '#{$assetsRoot}fonts'; 
+$themeImages: '#{$assetsRoot}images';
+
+$containerWidth:820px !default;
+
+$mobileWidth:768px;
+$tabletWidth:979px;
+
+@mixin inline-block{ 
+	display:inline-block;
+	*display:inline;
+	zoom:1;
+}
+
+// --- Colors -------------------------------------------------
+
+$gold: #e57200 !default;
+$brown:#a96f3e !default;
+$blue:#99b6cf !default;
+
+$grey:#999999 !default;
+$gray:#999999 !default;
+ 
+$red:#a33038 !default;
+$brightred:#D40F0F !default;
+ 
+
+
+$colorTextHeaderOne: #8d1d21 !default;
+$colorTextHeaderTwo: $red !default;
+$colorTextFooterLinks: #6d4f21 !default;
+$colorTextFooterLinksHover: #c19193 !default;
+$bgColorNavBar:#8d1d21 !default;
+$bgColorButtonPrimary:#78a1d6 !default;
+$bgColorButtonPrimaryRoll:#658ab9 !default;
+$colorTextNav:#fffefe !default;
+$bgColorNavBarAlt:#7c635b !default;
+		
+$bgColorNavBarAltHover:#543d36 !default;
+$colorText:$brown !default;
+$colorTextAlt:$brown !default;
+$colorTextWelcome:#ecac00 !default;
+
+// --- Fonts -------------------------------------------------
+
+@font-face {
+	font-family: "Caecilia";
+	src: url("../../Media/Font/caeciliacom-75bold-webfont.ttf");
+	font-weight: bold;
+}
+
+// --- Global -------------------------------------------------
+
+html, body {
+    overflow-x: hidden;
+    background: none repeat scroll 0 0 white;
+    margin: 0;
+    padding: 0;
+}
+@media (max-width: $mobileWidth){ 
+	#container > section{padding:0 1em;}
+}
+@media (max-width: $mobileWidth){ 
+.field-validation-error span{
+	display:block;
+	clear:both;
+}}
+
+.validation-summary-errors{
+	font-weight:bold;
+	color:$red;
+}
+
+.banner a{@include inline-block;}
+#container .alert-info{position:relative;top:10px;margin-bottom:0px;}
+@media (max-width: $mobileWidth){ 
+	#container .alert-info{top:-5px;}
+}
+
+#container {
+    //margin: 0 auto;
+	//padding: 0 20px;
+}
+.nav-collapse .nav > li > a:hover, .nav-collapse .nav > li > a:focus{ 
+	background-color:transparent;font-weight:normal;border-radius:0px;
+}
+
+.fb-header-wrapper{
+	width: 50px;
+	height: 25px;
+	margin-top: 8px;
+	overflow:hidden;
+}
+
+
+
+#cfa_icon{background-image:url("/Content/images/cfa-header.png");width:74px;height:35px;position:absolute;left: 50%;
+margin-left: -37px;
+top: 3px;}
+.navbar {
+	position:relative;
+	
+
+	&.authenticated{ li {padding-right:57px;}}
+	.container{
+		width:$containerWidth;
+		@media (max-width: $tabletWidth){
+			width:auto;
+		}
+	}
+	.navbar-inner{ 
+	border-radius:0px;
+	background-color: $bgColorNavBar;
+	background-image:none;
+	filter:none;
+	}
+	.btn-navbar{ 
+		float:left;
+		
+		
+		background-image:none;
+		border-radius:0px;	
+			background-color:$bgColorNavBarAlt;
+		&:hover{ 
+			background-color:$bgColorNavBarAltHover;			
+		}
+		
+	}
+	 
+	ul.nav {
+		
+		/*width: 880px;*/
+		/*mdrake: using bootstrap container*/
+		.welcome{padding:0 1em;}
+		@media (max-width: $tabletWidth){ 
+		.acct-dd{margin:0 .6em;}}
+		&.authenticated .acct-dd{margin:0;}
+		li {
+			
+			.btn{ margin-top:1px;border-radius:0px;}
+			
+			form{
+				margin-right:17px;
+				margin-bottom:.2em;
+				@include inline-block;
+				.input-small{ 
+					color:#807f7b;
+					width:11em;
+					@media (max-width: $mobileWidth){ 
+						width:100%;
+					}
+				}
+			}
+
+			font: {
+				family: Arial, sans-serif;
+				size: 12px;
+			}
+			color: white;
+			line-height: 40px;
+			/*padding-right: 5px;*/
+
+			
+
+			a, a:hover, a:active {
+				color: white;
+				text-shadow:none;
+				padding:0 1em;
+
+			}
+
+			input {
+				//width: 115px;
+				//height: 14px;
+				padding: 2px 5px;
+				margin: 0px;
+				border-radius: 0;
+			}
+
+			select {
+				height: 28px;
+				padding: 6px 2px;
+				margin:0px;
+				border-radius: 0;
+				background-color: #a5373b;
+				border: transparent;
+				color: #fffefe;
+				font: {
+					family: "Helvetica Neue", helvetica, sans-serif;
+					size: 12px;
+				}
+				width: auto;
+			}
+			/*
+			TODO: mdrake: need to move this somewhere specific
+			*/
+			/*button,span.button,a.button {
+				padding: 3px 8px;
+				border-radius: 0;
+				font: {
+					font-family: "Helvetica Neue", Helvetica, sans-serif;
+					size: 12px;
+				}
+				color: #8e1e22;
+				background-color: #cf9fa1;
+			} 
+
+			button:hover,span.button:hover,a.button:hover {
+				color: #8e1e22;
+				background-color: #c19193;
+			}*/
+		}
+
+		/*li.welcome { margin-right: 50px; }
+		li.modify { margin-right: 20px; } 
+		li.account { margin-right: 50px; }
+
+		li.fb { 
+			float: right;
+			margin-right: 50px;
+
+			span {
+				padding: 0 3px;
+				font-size: 11px;
+			}
+		}*/
+	}
+}
+
+footer {
+	margin: 40px 0;
+	@media (max-width: $mobileWidth){
+		padding: 0px 10px;
+
+	}
+	ul {
+		margin: 0px auto 20px;
+		li {
+			font-size:11px;
+			@include inline-block;
+			border-right: solid 2px #cfcfcf;
+			@media (max-width: $mobileWidth){
+				min-width: 40%;
+				border-right: none;
+				padding: 0px;
+			}
+			
+			
+			padding: 0 13px;
+			
+
+			a, a:active {
+				text-decoration: none;
+				font: {
+					family: Arial;
+					size: 11px;
+					weight: bold;
+				}
+				color: $colorTextFooterLinks;
+				white-space:nowrap;
+			}
+
+			a:hover, a:focus {
+				color: $colorTextFooterLinksHover;
+			}
+		}
+
+		li:first-child {
+			//padding-left: 0px;
+		}
+
+		li:last-child {
+			//padding-right: 0px;
+			border-right: none;
+		}
+	}
+
+	p {
+		font: {
+			family: Arial;
+			size: 11px;
+		}
+		color: #999;
+		text-align: center;
+		line-height: 1em;
+		@media (max-width: $mobileWidth){
+			text-align:justify;
+			line-height: 1.4em;
+		}
+	}
+}
+
+
+/*------------------------------------------------------
+    BOOTSTRAP OVERRIDE 
+	MDRAKE
+	*/
+
+	.nowrap{white-space:nowrap;}
+	.inline-block-rows {
+        text-align: center;
+    }
+	.inline-block-rows.row-fluid [class*="span"],.inline-block-rows.row [class*="span"] {
+            @include inline-block;
+            float: none;
+        }
+@media (max-width: $mobileWidth) {
+    .inline-block-rows.desktop {
+        text-align: left;
+    }
+       .inline-block-rows.row-fluid.desktop [class*="span"],.inline-block-rows.desktop.row [class*="span"] {
+            /*display: block;*/
+            float: left;
+        } 
+}
+    
+	section form.form-inline .typeahead.dropdown-menu li{ 
+		margin:0;
+	}
+
+	
+
+    /* END BOOTSTRAP OVERRIDE
+    ------------------------------------------------------*/
+
+
+/*------------------------------------------------------
+    CARES
+	*/
+	#cares_form{ 
+		h2{font-size:18pt;}
+		#Find a{font-weight:bold;}
+
+		.city-state-zip{ 
+			.city{ 
+				width:16%;
+			}
+			select{ 
+				width:10%;
+			}
+			.zip{ 
+				width:10%;
+			}		
+			@media (max-width: $mobileWidth){
+				.city,				
+				.zip,select{ 
+					width:206px;
+					display:block;
+				}
+				select{width:220px;}
+				
+			}	
+		}
+	}
+	
+
+	/* END CARES
+    ------------------------------------------------------*/
+
+
+/*------------------------------------------------------
+    MIXINS
+	MDRAKE
+	*/
+
+	@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+
+      -webkit-box-shadow:$top $left $blur $color #{$inset};
+      -moz-box-shadow:$top $left $blur $color #{$inset};
+      box-shadow:$top $left $blur $color #{$inset};
+    }
+
+	@mixin header-base {
+		font:{
+			family:"Caecilia", "Times New Roman", serif;
+			size:24pt;
+		}
+		
+	}
+
+	@mixin body-base {
+	  font-family:Arial, Sans-Serif;
+	}
+	
+	@mixin subheader-base {
+	  font-weight:bold;
+	  @include body-base;
+	}
+
+	@mixin location-base {	  
+	  @include subheader-base;
+	}
+
+	
+    
+
+    /* END MIXINS
+    ------------------------------------------------------*/
+
+// TODO - Move event specific styling back to this loc for global use
+// .. currently in the event SASS file for immediate recompilation detection
+
+
+
+
+h1,.h1{color:$colorTextHeaderOne; @include header-base; }
+
+h2{color:$colorTextHeaderTwo; @include subheader-base;font-size:15pt; }
+
+blockquote,p,.content{@include body-base; color:$colorText; font-size:15pt;}
+
+a{
+	color:#5f88bd;text-decoration:none;
+	&:hover,.hover,.active{
+		color:#3a6296;
+		text-decoration:underline;	
+	}
+}
+
+button,a.btn,input.btn{
+	&.btn-primary,&.btn-info{
+		color:#fff;
+		border-radius:0px;
+		filter:none;
+		background-image:none;
+		background: {
+			color:$bgColorButtonPrimary;
+		}
+
+	
+		&:hover,&.hover,&.active{		
+			text-decoration:underliner;	
+			transition:none;
+			background-color:$bgColorButtonPrimaryRoll;
+		}
+	}
+	&.btn-info{ 
+		background-color:#a1adbb;
+		&:hover,&.hover,&.active{ 
+			background-color:#8ba2bd;
+		}
+	}
+}
+
+.topbar ul li button{
+	
+}
+
+.well,blockquote{
+	background-color:#fbf7df;
+	border-color:#fdfbf1;
+	border-width:1px;
+	border-radius:0px;
+	hr{
+		border-top: 1px solid #e5d9d1;
+		border-bottom: 0px solid #ffffff;
+	}
+}
+ 
+
+
+.navbar{.navbar-inner{
+	ul li select{
+		background-color:$bgColorNavBarAlt;
+	}	
+}}
+  
+.store-name{
+	@include location-base;
+	color:#e51937;
+}
+
+
+
+
+	/*------------------------------------------------------
+    BOOTSTRAP
+	MDRAKE
+	*/
+	@media (min-width: $mobileWidth){
+	.container{width:$containerWidth;}
+	} 
+	 
+	@media (min-width: $mobileWidth){
+		.desktop-vert-middle{
+			display:table;
+			[class*="span"]{
+				@include inline-block; 
+				vertical-align:middle;
+				float:none;
+			}
+		}		
+	}
+
+	/* END BOOTSTRAP
+    ------------------------------------------------------*/
+
+	/*------------------------------------------------------
+    LAYOUT
+	MDRAKE
+	*/
+	.nav-collapse .nav > li > a{ font-weight:normal;}
+	.navbar {
+	
+		ul.nav {
+			li a{ 
+				color:$colorTextNav;
+				&:hover{ 
+					color:#fff;
+				}
+			}
+			li.welcome{color:$colorTextWelcome;}
+		}
+	}
+	.nav-collapse .nav > li > a:hover, .nav-collapse .nav > li > a:focus{
+		background-color:$bgColorNavBarAlt;
+	}
+
+	header{text-align:center;}
+
+	.topbar ul li button{}
+
+	section .title{
+			h1{
+				text-align:center;
+				font-size:18pt;
+				line-height:1em;
+			}
+			h3{
+				color:$colorTextAlt;
+				font-size:10.5pt;
+				line-height:1.3em;
+				text-align:center;
+			}
+
+		}
+    
+	#wizard{
+		.step-height{min-height:75px;@media (max-width: $tabletWidth) and (min-width: $mobileWidth){
+					height:auto;
+					min-height:0px;
+				}}
+		& > div{ 
+			@media (max-width: $tabletWidth) and (min-width: $mobileWidth){
+				padding:0px 20px;
+			}
+
+			min-height:100px;
+			
+			position:relative;
+			vertical-align:top;
+
+			a{font-size:7.5pt;}
+
+			h2,time.date{ 
+				color: $colorTextHeaderOne;
+				font-size:12pt;
+				line-height: 1em;
+				display:block;
+				font-weight:bold;
+				margin:10px 0px;
+				line-height:1.2em;
+
+				
+			}
+			
+			border-right:solid 1px #e3e1d2;
+			&:last-child{ 
+				border-right:none;
+			}
+			time,address{ 
+				color: $colorTextAlt;
+				font-weight:bold;
+			}
+		}
+		#step_reservation_calendar, #step_reservation_food{ 
+				text-align:center;
+		}
+		#step_reservation_food > div{ 
+			@include inline-block;
+			vertical-align:top;
+			&#wizard_food_name{
+				width:128px;	 
+				@media (max-width: $tabletWidth) and (min-width: $mobileWidth){
+					width:96px;
+				}
+				
+			}
+
+		}
+		padding-bottom:20px;
+		
+		
+	}
+
+	#wizard_phone{ 
+		text-align:center;
+		background-color:#f8f6f1;
+		border-top:solid 1px #f0eee6;
+		.wizard-wrapper{position:relative;@include inline-block;
+			span,a{padding:6px 8px;color:#b6af9a;}
+			span{right:100%;position:absolute;}
+			a{@include inline-block;
+				
+				&:hover,&.hover,&.active{ font-weight:bold;text-decoration:none;background-color:#e3e1d8;}
+			}
+		}
+		
+	
+	}
+	.system-page{ 
+		& > p{ 
+			font-size:10.5pt;color: $colorTextHeaderOne;
+			padding-bottom:3em;
+			padding-top:1em;
+		}
+		font-size:1em;
+		h1{}
+		h1,h2{padding:0 5.5em;text-align:center;line-height:1.1em;}
+		@media (max-width: $mobileWidth){
+				h1,h2{padding:0;text-align:left;}
+			}
+			h2{ font-size:1.2em;}
+	}
+	#browser_not_supported li{text-align:center;@media (max-width: $mobileWidth){text-align:left; a{ display:block;}}}
+
+
+	#social_footer{ 
+		li{ @include inline-block;  width:30%; 
+		@media (max-width: $mobileWidth){
+			dislay:block;
+			width:100%;
+			margin:.2em 0;
+		}
+			a{
+				img{@include inline-block; position:relative;top:-2px;left:4px;float:left;}
+
+				display:block;padding:.3em;background-color:#e3ddd7;font-family:"Caecilia", "Times New Roman", serif;
+				text-decoration:none;
+				color:#55585e;
+				padding-top:.5em;
+				font-size:12pt;
+				&:hover{text-decoration:none;background-color:#d4c8bd;}
+			}
+		}
+		li#visit_our_website{ 
+		a{img{ top:-3px;}}
+		}
+	}
+	
+
+    /* END LAYOUT
+    ------------------------------------------------------*/
+
+	
+	/*------------------------------------------------------
+    SEARCH RESULTS
+	MDRAKE
+	*/
+
+	.commands{button,a.btn{ .icon-arrow-right{font-size:.85em; position:relative;top:-1px;left:3px;padding-right:3px;}}}
+    .locationBlock{ 
+		.cta-badge{ 
+		.commands{
+			text-align:right;
+			@media (max-width: $mobileWidth){
+				text-align:left;
+			}
+		}
+			.reservationDetail p{
+				color: $colorTextHeaderOne;
+				font-size:10.5pt;
+				line-height:1em;
+				font-weight:bold;
+				
+				text-align:center;
+				@media (max-width: $mobileWidth){
+					text-align:left;
+				}
+			}
+		}
+		.overview{
+			h3{
+				color: $colorTextHeaderOne;
+				font-size:12pt;
+				line-height: 1em;
+			}
+			p,address,.viewMap{
+				font-size:10.5pt;
+				
+			}
+			p,address{color: $colorTextAlt;}
+		}
+		
+	}
+
+
+	
+		.locationBlock .cta-badge .commands .btn{
+			@media (max-width: $mobileWidth){
+				width:85%;
+			}		
+		}
+
+		.leadin{ 
+				padding:30px 0px;
+			@media (max-width: $mobileWidth){
+				padding:10px 19px;
+			}
+
+			
+			
+			
+			
+			
+			
+			p{font-size:10.5pt;}
+		}
+
+		.modal{ 
+			padding:25px 60px;
+			margin-left: -340px;
+			@media (max-width: $mobileWidth){
+				padding:15px;
+				width: 80%;
+				margin: auto;
+			}
+			border-radius:0px;
+			border:solid 2px #000;
+			h2{ font-size:13.5pt;line-height:1.2em;}
+			p,a{ font-size:10.5pt;}
+			.controls a{ 
+				display:block;
+				margin-top:1.2em;
+			}
+		}
+
+		
+		.modal-backdrop{ 
+			background-color:#6e6e6e;
+			&.fade.in{
+			opacity: 0.57;
+			filter: alpha(opacity=57);
+			}
+		}
+
+    /* END SEARCH RESULTS
+    ------------------------------------------------------*/
+
+	/*------------------------------------------------------
+    CALENDAR
+	MDRAKE
+	*/
+
+		
+		.slot-day{
+			 
+			h2{color:$red; line-height:1.1em; font-size:10.5pt;text-align:center;}
+			a.slot-cta{
+				
+				@media (min-width: $mobileWidth){
+					padding:4px 0px; 
+				
+				}
+
+				margin:5px 0px;
+				&:hover{text-decoration:none;}
+				> span{display:block;}
+				.start-end{ color:#fff;font-size:10.5pt;}
+				.remaining{ color:#e6e3c6;font-size:9pt; line-height: 1.2;}
+				.click-cta{ color:#2a486e;font-size:7pt; text-shadow: none;}
+			}
+			@media (max-width: $mobileWidth){
+				background-color:transparent;
+			}
+
+			@media (min-width: $mobileWidth){
+				padding:4px 10px; 
+				
+			}
+		}
+		.row-fluid .span2.slot-day{
+			@media (min-width: $mobileWidth){
+				
+				
+				
+				/*border:{ 
+					left:{ 
+						width:3px;						
+						color:#fff;
+					}
+					right:{ 
+						width:3px;						
+						color:#fff;
+					}
+				}
+				display: table-cell;
+				float: none;
+				vertical-align: top;
+				*/
+				margin-left: .75%; 
+				width: 15.84401709401709%;
+			}
+		}
+
+		#date_select_wrapper{text-align:center;
+			select{margin-bottom:0px;}
+		}
+
+		#slotday_carousel{
+			a.carousel-control{
+				
+				background{ 
+					color:transparent;
+					image:url("/Content/images/calendar-arrows.png");
+					position:center top;
+					repeat:no-repeat;					
+				}
+				width:24px;
+				height:111px;
+				border{ 
+					width:0px;
+				}
+				.left{
+					left:-5px;
+				}
+				.right{
+					background{ 				
+						position:center bottom;
+					}
+					right:-5px;
+				}
+			}
+			
+		}
+		
+
+
+	/* END CALENDAR
+    ------------------------------------------------------*/
+
+	/*------------------------------------------------------
+    RESERVATION FORM
+	MDRAKE
+	*/
+
+	section form.form-inline{ 
+		@media (max-width: $mobileWidth){ 
+			padding:0em 1em;
+			.btn-primary{ width:100%;}
+		}
+		
+		color: $colorTextAlt;
+		.field-validation-error{color:$brightred;font-weight:bold;}
+		p{color: $red;font-size:10.5pt; font-weight:bold;
+			.indicates-required{color: $colorTextAlt;font-weight:normal; span{white-space:nowrap;}}
+		}
+		li{ 
+			label{ min-width:30%;margin-right: 1em;font-weight:bold;}
+			.radio { min-width: 0; margin-left: 0.3em; }
+			input,select{border-radius:1px;border-color: $blue;}
+			@media (max-width: $mobileWidth){ 
+				input,select{margin-bottom:.5em;}
+			
+			}
+			label.radio{ min-width:auto;margin-right:1em;}
+			position:relative;
+			margin:15px 0px;
+			span.required{ 
+				position:absolute;
+				right:100.5%;
+				top:3px;
+			}
+			input[type="radio"], input[type="checkbox"] {
+			margin: -1px 0 0;			
+			}
+			input[type="checkbox"]:first-child{ 
+				margin-right:.5em;
+			}
+
+			.tooltip-why{
+				margin-left:1em;
+			}
+			@media (max-width: $mobileWidth){ 
+
+				span.required{ 			
+					top:3px;
+				}
+
+				.tooltip-why{				
+				margin-left:0px;
+				}
+				label{ min-width:auto;display:block;}
+				
+				input[type="checkbox"]:first-child,input[type="radio"]{ 
+					float:left;position:relative;top:4px;
+				}
+				input[type="radio"]{margin-right:.5em;}
+				label.radio{float:left;}
+			}
+		}
+	 
+	}
+
+
+
+	section#reservation_form{ 
+		
+	}
+
+	
+	/*------------------------------------------------------
+    FAQS
+	MDRAKE
+	*/
+
+	#faqs h2{text-align:center;font-size:13.5pt;line-height: 1.4em;}
+
+	#faqs .accordion-group{ 
+		a{text-decoration:none;&:hover{text-decoration:none;}}
+		background-color:#fbf5dd;
+		
+		font-size:10.5pt;
+		margin-bottom:.3em;
+		border:1px solid transparent;
+		border-radius:3px;
+		.accordion-toggle{
+			font-weight:bold; 
+			color:#5f88bd;
+			border:none;
+			border-image-width:0;
+			position:relative;
+			&::before{ 
+				content:"\F0D8";
+				font-family: FontAwesome;
+				font-size:1.8em;
+				/*position:absolute;
+
+				right:.6em;*/
+				float:right;
+			}
+		}
+		transition: background-color .3s,border .3s,border-radius 1s;
+		-webkit-transition: background-color .3s,border .3s,border-radius 1s;
+		
+		.accordion-inner{border:none; p{ font-size:.9em;margin:0;color: #333333;}}
+		&.active{ 
+			background-color:transparent;
+			border:solid 1px #e3e1d2; 
+			border-radius:1px;
+			.accordion-toggle::before{ 
+				content:"\F0D7";				
+			}
+		}
+	}
+
+	
+
+	/* END FAQS
+    ------------------------------------------------------*/
+
+
+	/*------------------------------------------------------
+    OVERVIEW
+	MDRAKE
+	*/
+
+	#city_search{
+		p{ 
+			text-align:center;
+			font-size:14px;
+		}
+		.leadin p{text-align:left;}
+	}
+
+	/* END FAQS
+    ------------------------------------------------------*/
+	
+	
+
+	
+
+	/*------------------------------------------------------
+    OVERVIEW
+	MDRAKE
+	*/
+	
+
+	h1{font-weight:normal;text-align:center;font-size:18pt;line-height:1.3em;
+		padding:0 .5em;margin:1em 0em;}
+
+	section#overview_intro,section#success{ 
+		
+
+		h3{ 
+			color: $red;
+			font-size:11pt;
+			line-height:1em;
+		}
+
+		p{ 
+			padding:0 .5em;
+			line-height:1.3em;
+			color: $colorTextAlt;
+			font-size:10.5pt;
+			text-align:center;
+			@media (max-width: $mobileWidth){ 
+				text-align:justify;
+			}
+		}
+	}
+	section#success{ 
+		h2{margin-bottom:2em;}
+		h3{ 
+			margin-bottom:1em;
+			margin-top:0px;
+		}
+		p{
+			text-align:left;
+			padding:0px;
+			line-height:1.5em;
+		}
+		time{font-weight:bold;}
+		article{padding:0 1em;}
+		aside{padding:1em 1em;}
+	}
+
+	section#res_review{ 
+		li{ 
+			margin:1em 1em;
+			position:relative;
+			.required{position:absolute;right:100.5%;}
+			color: $colorTextAlt;
+			font-weight:bold;
+			.itemInfo{color:$grey; display: inline-block; width: 350px;}
+			.itemName{ @include inline-block;min-width:30%; vertical-align: top;}
+			a.editInfo{ 
+				font-weight:normal;
+				position:absolute;
+				@include inline-block;
+				right:0px;
+			}
+			label{
+				display:block;
+				padding:0em .5em;
+			}
+			input[type="checkbox"]:first-child,input[type="radio"]{ 
+					float:left;position:relative;top:0px;
+					margin-right:.5em;
+				}
+			input[type='submit']{ 
+				display:block;
+				margin:1em 0em;
+				margin-right:2em;
+			}
+			@media (max-width: $mobileWidth){ 
+				input[type='submit']{ 
+					width:100%;
+					margin-right:0em;
+				}
+				.itemName{ display:block; }
+				a.editInfo{ 					
+					position:relative;		
+					display:block;			
+				}
+			}
+		}
+		li#confirm_cancel{ margin-top:2em;margin-bottom:2em;}
+		
+	}
+
+
+
+
+	/* END OVERVIEW
+    ------------------------------------------------------*/
+

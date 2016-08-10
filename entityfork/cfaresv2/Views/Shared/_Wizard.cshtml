@@ -1,0 +1,41 @@
+﻿@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain._event.resevent.store
+@using cfares.domain.store
+@using cfares.site.modules.com.application
+@model cfares.site.modules.com.reservations.res.IReservationWizard
+@{
+    //ResEvent evt = (ResEvent)AppContext.Current.Event;
+    
+    //ISlot slot = null;
+    //Model.Prime(evt);    
+}
+<section class="row-fluid hidden-phone" id="wizard">
+  
+   
+   
+        <div class="span4" id="step_reservation_calendar">
+       
+            <div class="step-height">
+            
+            </div>
+            <a href="@Html.Raw(Model.GetStep("Reservation.SearchByLocation").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+        
+    
+</section>
+
+<section class="row-fluid visible-phone" id="wizard_phone">
+    @*<div class="wizard-wrapper">
+    <span class="pull-left">Step</span>
+    
+        <a class="@Html.Raw(Model.IsCurrent("Reservation.ReceptionList")?"active":"")" href="@Html.Raw(Model.GetStep("Reservation.ReceptionList").Uri(ViewContext))">1</a>@if (evt!=null)
+    {<a class="@Html.Raw(Model.IsCurrent("Reservation.Reservation")?"active":"")" href="@Html.Raw(Model.GetStep("Reservation.Reservation").Uri(ViewContext))">2</a>}
+    
+        </div>*@
+</section>
+@*@if (evt != null)
+{
+    <hr />
+}*@

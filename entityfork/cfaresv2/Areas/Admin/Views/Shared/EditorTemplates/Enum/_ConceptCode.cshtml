@@ -1,0 +1,4 @@
+﻿@model cfacore.domain.store.ConceptCode?
+<div class='admin-table'>
+@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(cfacore.domain.store.ConceptCode)), Model != null ? Model : cfacore.domain.store.ConceptCode.CFA), new { @class = " jq-select" })
+</div>

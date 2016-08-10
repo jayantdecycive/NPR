@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence Template / Layout Overrides
+----------------------------------------------------*@
+
+@section Head{
+        
+    <meta property="og:url" content="http://www.mothersondate.com"/>
+    <meta property="og:site_name" content="Chick-fil-A Mother-Son Date Knight"/>
+    <meta property="og:title" content="Chick-fil-A Mother-Son Date Knight"/>
+    <!--<meta property="og:image" content=""/>-->
+    <meta property="og:description" content="Participating Chick-fil-A restaurants are hosting a Mother-Son Date Knight for yourself and your son(s).">
+
+    <link rel="canonical" href="http://www.mothersondate.com"/>
+    <meta name="description" content="Participating Chick-fil-A restaurants are hosting a Mother-Son Date Knight for yourself and your son(s).">
+
+}
+
+
+@this.RedefineSection("Head")
+@section Header{
+
+    <img class="hidden-phone" id="theme_mast" src="@Html.ThemeContent("~/images/banner.png")" />
+}
+
+@this.RedefineSection("Banner")
+@*@this.RedefineSection("Banner", 
+	@<div class="banner">Example Sublayout Override for Banner</div>)*@
+
+
+
+@RenderBody()
+@this.RedefineSection("SocialFooter")
+
+@this.RedefineSection("Footer")
+@this.RedefineSection("Scripts")

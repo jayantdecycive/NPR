@@ -1,0 +1,85 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@using cfares.domain.user
+@model  string
+@{
+	Layout = null;
+	
+	//IEnumerable<cfares.domain._event.IOccurrence> list = new List<IOccurrence>();
+	IList<int> ids = Model.ToIntList();
+	IEnumerable<Occurrence> list = AppContext.Current.Event.Occurrences.Where( o => ids.Contains( o.OccurrenceId ) );
+    var wizard = new ReservationWizard( null, null ); //  (IReservationWizard)ViewData["wizard"];
+}
+
+<ul class="unstyled" id="eventsList"> @* Title = Event Name, Detail = Hidden *@ 
+	@foreach (IOccurrence o in list)
+                    {
+                        <li class="event locationBlock row-fluid desktop-vert-middle" id="@("event" + o.ResEvent.ResEventId)">
+                            <div class="span5">
+                                @if (@o.Store.StreetAddress.ToString() != string.Empty)
+                                {
+                                    @Html.Partial("_StoreBadge",o.Store)
+                                }
+                                else
+                                {
+                                    <p class="address">&nbsp;</p>
+                                    <p class="cityStateZip">&nbsp;</p>
+                                    <p class="tools">&nbsp;</p>
+                                }
+                            </div>
+                            <div class='span7 row cta-badge'>
+                                <div class="reservationDetail span6">
+									<p class="remaining">@o.TicketsAvailable() reservations remaining</p>
+									@Html.Hidden( "OccurrenceId_item", o.OccurrenceId )
+                                </div>
+                                <div class="commands span4">
+                                    @{
+                                        cfares.domain.user.LocationSubscription locSub = new LocationSubscription();
+                                        string currentEmail = string.Empty;
+                                        if (cfares.site.modules.com.application.AppContext.Current.User != null && 
+                                            !string.IsNullOrEmpty(cfares.site.modules.com.application.AppContext.Current.User.Email))
+                                        {
+                                            currentEmail = cfares.site.modules.com.application.AppContext.Current.User.Email;
+                                            locSub = o.Store.PreferredUserSubscriptions.Where(l => l.User.Email == currentEmail).FirstOrDefault();
+                                        }
+
+                                    } 
+                                    @if (! o.FullyBooked)
+                                    {
+                                        var href = "/Calendar?occurrence=" + o.OccurrenceId; //wizard.Prime(o).NextStep.Uri(ViewContext);
+                                        var favoriteHref = href+(href.Contains("?")?"&":"?")+"favorite=true";
+                                        if (locSub == null || locSub.Store == null)
+                                        {     
+                                            <a href="@href" data-location-favorite="@Html.Raw(o.StoreId)" class="btn btn-primary">
+                                                Choose Date <i class="icon-arrow-right"></i>
+                                            </a>
+                                            <div class="modal hide fade add-as-favorite" data-location="@Html.Raw(o.StoreId)" tabindex="-1" role="dialog" aria-labelledby="Add favorite dialog" aria-hidden="true">
+                                                <div class="modal-body text-center">
+                                                   <h2 class="h1 ">Would you like to make this a "preferred&quot; Restaurant?</h2>
+                                                  <p class="">Save this Restaurant to your preferred locations list for quick access the next time you log in and make a reservation.</p>                                              
+                                                  <div class="controls text-left">
+                                                    <a href="@favoriteHref" class=""><i class="icon-caret-right"></i>Yes, make this one of my preferred Restaurants.</a>
+                                                    <a href="@href"  class=""><i class="icon-caret-right"></i>No, thank you.</a>
+                                                  </div>
+                                               </div>                                        
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <a href="@href" class="btn btn-primary">
+                                                Choose Date <i class="icon-arrow-right"></i>
+                                            </a>
+                                        }
+                                    }
+                                </div>
+                            </div>
+				       
+                        </li>
+                        if (o != list.Last())
+                        {
+                            <hr />
+                        }
+                    }
+                </ul>

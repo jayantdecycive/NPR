@@ -1,0 +1,85 @@
+﻿@model cfacore.domain._base.DomainObject
+
+@{
+    bool isPaid = false;
+    if (Model is npr.domain._event.ticket.NPRTicket) { isPaid = (Model as npr.domain._event.ticket.NPRTicket).IsPaid; }
+    
+    ViewBag.Title = isPaid ? "Refund" : "Delete";
+    
+
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+    
+}
+
+<div class=" @Html.Raw(Request.QueryString.AllKeys.Contains("snip")?"snip":"content rounded")" id="main">
+    
+    <div class="inner-content wrapper model details">
+        
+        <div class='model badge'>
+
+            @RenderBody()
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                @RenderSection("Details")
+				
+                <div class='submit-block admin-red'>
+                    <div class='editor-label inline-block inline-block'>
+                    </div>
+                    <div class='editor-field inline-block inline-block'>
+                        <input type="submit" data-icon="ui-icon-circle-close" class='jq-button' value="@(isPaid?"Issue Refund":"Delete")" />
+                    </div>
+
+                </div>
+            }
+            
+            @if (!Request.QueryString.AllKeys.Contains("snip"))
+            {
+
+                <div class='submit-block admin-table'>
+                    @if (IsSectionDefined("Action"))
+                    {
+                        @RenderSection("Action")
+                    }
+                    else
+                    {
+                        <div class='button-cta' data-icon="ui-icon-pencil">
+                            @Html.ActionLink("Edit", "Edit", new {id = Model.Id()})
+                        </div>
+                    }
+
+
+
+                    @if (IsSectionDefined("Cancel"))
+                    {
+                        @RenderSection("Cancel")
+                    }
+                    else
+                    {
+                        <div class='dash-cta'>
+                            @Html.ActionLink("Cancel", "Details", new {id = Model.Id()})
+                        </div>
+                    }
+                </div>
+            }
+    
+        </div>
+
+    </div>
+
+</div>
+
+
+@if (IsSectionDefined("Meta")) { DefineSection("Meta", () => RenderSection("Meta")); }
+@if (IsSectionDefined("Footer")) { DefineSection("Footer", () => RenderSection("Footer")); }
+@if (IsSectionDefined("Header")) { DefineSection("Header", () => RenderSection("Header")); }

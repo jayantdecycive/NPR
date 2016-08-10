@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Wizard"
+    targetNamespace="http://res.chick-fil-a.com/Wizard.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Wizard.xsd"
+    xmlns:mstns="http://tempuri.org/Wizard.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="wizard">    
+    <xs:complexType>      
+      <xs:sequence>
+        <xs:element name="step">
+                    
+        </xs:element>        
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

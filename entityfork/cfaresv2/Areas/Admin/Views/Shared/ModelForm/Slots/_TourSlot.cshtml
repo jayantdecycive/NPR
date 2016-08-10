@@ -1,0 +1,75 @@
+﻿@model cfares.domain._event.slot.tours.TourSlot
+
+@{string pk = (Model.IsBound() && Model.TourSlotId !=null)? (Model.TourSlotId.ToString()) : "new";}
+@{bool isNew = pk == "new";}
+
+
+    <fieldset data-pk='@pk' class='tourslot-@pk'>
+        
+        <div class='legend inline-block'></div>
+
+        @Html.HiddenFor(model => model.TourSlotId)
+
+        <div class='model-field field-Guide'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Guide)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Guide)
+                @Html.ValidationMessageFor(model => model.Guide)
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Cameos.AdditionalGuides)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Cameos.AdditionalGuides)
+                @Html.ValidationMessageFor(model => model.Cameos.AdditionalGuides)
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Cameos.CathyCameos)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Cameos.CathyCameos)
+                @Html.ValidationMessageFor(model => model.Cameos.CathyCameos)
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Cameos.ExecutiveCameos)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Cameos.ExecutiveCameos)
+                @Html.ValidationMessageFor(model => model.Cameos.ExecutiveCameos)
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Cameos.CowCameos)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Cameos.CowCameos)
+                @Html.ValidationMessageFor(model => model.Cameos.CowCameos)
+            </div>
+        </div>
+
+        <div class='model-field field-Cameo'>
+            <div class="editor-label  inline-block">
+                @Html.LabelFor(model => model.Cameos.StaffCameos)
+            </div>
+            <div class="editor-field  inline-block">
+                @Html.EditorFor(model => model.Cameos.StaffCameos)
+                @Html.ValidationMessageFor(model => model.Cameos.StaffCameos)
+            </div>
+        </div>
+
+        
+ 
+    </fieldset>

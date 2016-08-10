@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CfatoursViewModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CfatoursViewContext" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Slots_Test" EntityType="CfatoursViewModel.Slots_Test" />
+    <EntitySet Name="TourSlot_Summary" EntityType="CfatoursViewModel.TourSlot_Summary" />
+  </EntityContainer>
+  <EntityType Name="Slots_Test">
+    <Key>
+      <PropertyRef Name="SlotId" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="Visibility" />
+      <PropertyRef Name="Start" />
+    </Key>
+    <Property Name="SlotId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Visibility" Type="Int32" Nullable="false" />
+    <Property Name="Start" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="StartDay" Type="Int32" />
+    <Property Name="NameString" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TourSlot_Summary">
+    <Key>
+      <PropertyRef Name="SlotId" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="Visibility" />
+      <PropertyRef Name="Start" />
+      <PropertyRef Name="End" />
+    </Key>
+    <Property Name="SlotId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Visibility" Type="Int32" Nullable="false" />
+    <Property Name="Start" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="End" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="StartDay" Type="Int32" />
+    <Property Name="NameString" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TicketsReserved" Type="Int32" />
+    <Property Type="Int32" Name="OccurrenceId" Nullable="false" />
+    <Property Type="Int32" Name="GuideId" />
+  </EntityType>
+</Schema>

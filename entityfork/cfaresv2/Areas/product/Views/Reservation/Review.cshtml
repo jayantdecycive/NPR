@@ -1,0 +1,71 @@
+﻿@using System.Globalization
+@using cfacore.shared.modules.helpers
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@model cfares.domain._event._ticket.FoodTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ProductGiveawayWizard wizard = ViewBag.wizard as ProductGiveawayWizard;
+}
+
+@*----------------------------------------------------
+	Family Influence - Reservation Overview
+----------------------------------------------------*@
+@using (Html.BeginForm(null,null,FormMethod.Post,new {action=Request.Url.TranslatePort(Request),id="reviewForm"})) {
+	
+	<section class="row-fluid" id="overview_intro">
+		<div class="span10">
+
+			<h1>Reservation Overview</h1>
+		    <p>Please review the details of your reservation below. Click <strong>Confirm</strong> to complete your reservation, or click <strong>Edit this Information</strong> to modify any of your details. <br /><span class="required note">* Indicates required field</span></p>
+
+		</div>
+	</section>
+	<section class="row-fluid" id="res_review">
+		<div class="span11" >
+			<div id="block1">
+				<ul class="overview block unstyled">
+				    
+                    <li>
+                    <input type="submit" name="action" class="btn btn-primary large default reserve" value="Confirm Reservation" />
+                    </li>
+
+                    @Html.Partial("_TicketSummaryMixin",Model,new ViewDataDictionary(ViewData)
+                        {
+                            {"OwnerLabel",string.Empty},
+                            {"SlotStep","Reservation.Calendar"},
+                            {"LocationValue",Model.Slot.Occurrence.Store.Name},
+                            {"AddressStep","Reservation.SearchByLocation"}
+                        })
+                    
+				    <li class="groupEnd">
+				        @Html.CheckBox("storeupdates",(bool)ViewBag.StoreUpdates,new {@readonly="readonly", disabled="disabled"})
+				        <label class="check" for="promoJoin">Receive updates about promotions and events from this Chick-fil-A restaurant. <span class="ageReq">(must be 18 or older)</span></label>
+				    </li>
+                    
+				    <li>
+				        <span class="required review">*</span>
+				        <span class="itemName">Menu Item:</span>
+				        <span class="itemInfo">@Model.Item.Name</span>
+				        <a class="editInfo" href="@wizard.GetStep("Reservation.Food").Uri(ViewContext).TranslatePort()">Edit this information</a>
+				    </li>
+                    
+				    <li>
+						
+				        <span class="itemName">Have you tried Chick-fil-A Breakfast Before?</span>
+				        <span class="itemInfo">@Html.Raw(Model.AdditionalField("TriedBreakfast")??"no answer")</span>
+				        <a class="editInfo" href="@wizard.GetStep("Reservation.Reservation").Uri(ViewContext).TranslatePort()">Edit this information</a>
+				    </li>
+
+				    <li class="groupButton" id="confirm_cancel">
+					
+						
+						
+						<input type="submit" name="action" class="btn btn-info large cancel default" value="Cancel Reservation" />
+
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section> }
+

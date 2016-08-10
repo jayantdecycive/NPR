@@ -1,0 +1,67 @@
+﻿@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain._event.resevent.store
+@using cfares.domain.store
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@model IReservationWizard
+@{
+    var wizard = Model as ReceptionWizard;
+    SpeakerEvent evt = (SpeakerEvent)(AppContext.Current.Event??wizard.GetEvent());
+    
+    ISlot slot = null;
+    wizard.Prime(evt);
+    if (evt!=null)
+    {
+        slot = evt.GetSlot();
+    }
+}
+<section class="row-fluid hidden-phone" id="wizard">
+    @if (evt!=null)
+    {
+        <div class="span4 locationBlock">
+        
+            <div class="step-height">
+                @Html.Partial("_SpeakerBadge", evt)
+            </div>
+            <a href="@Html.Raw(wizard.GetStep("Reservation.ReceptionList").Uri(ViewContext))">modify this setting</a>
+        
+        </div>
+    }
+    @if (evt.OffSiteAddress!=null)
+    {
+        <div class="span4" id="step_reservation_calendar">
+            
+            <div class="step-height">
+                @Html.Partial("_AddressBadge", evt.OffSiteAddress, new ViewDataDictionary(ViewData){
+                            {"Label", evt.OffSiteAddress.Label}})
+            </div>
+            @*<a href="@Html.Raw(wizard.GetStep("Reservation.ReceptionList").Uri(ViewContext))">modify this setting</a>*@
+        
+        </div>
+    }
+    @if (slot!=null)
+    {
+        <div class="span4" id="step_reservation_calendar">
+       
+            <div class="step-height">
+                @Html.Partial("_SlotBadge", slot)
+            </div>
+            @*<a href="@Html.Raw(wizard.GetStep("Reservation.ReceptionList").Uri(ViewContext))">modify this setting</a>*@
+        
+        </div>
+        
+    }
+</section>
+
+<section class="row-fluid visible-phone" id="wizard_phone">
+    <div class="wizard-wrapper">
+    <span class="pull-left">Step</span>
+    
+        <a class="@Html.Raw(wizard.IsCurrent("Reservation.ReceptionList")?"active":"")" href="@Html.Raw(wizard.GetStep("Reservation.ReceptionList").Uri(ViewContext))">1</a>@if (evt!=null)
+    {<a class="@Html.Raw(wizard.IsCurrent("Reservation.Reservation")?"active":"")" href="@Html.Raw(wizard.GetStep("Reservation.Reservation").Uri(ViewContext))">2</a>}
+    
+        </div>
+</section>
+
+    <hr />

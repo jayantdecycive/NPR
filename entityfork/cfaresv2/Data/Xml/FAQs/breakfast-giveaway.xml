@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<faqs>
+  <group title="Breakfast Question">
+    <faq>
+      <q>
+        Question One
+      </q>
+      <a>
+        Answer One
+      </a>
+    </faq>
+    <faq>
+      <q>
+        Question Two Question Two Question Two Question Two
+      </q>
+      <a>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae dapibus enim. Nam volutpat sem et tempus pharetra. Integer accumsan nisi at neque condimentum interdum. Phasellus eleifend quis leo ac fringilla. Vivamus sit amet massa pharetra massa eleifend cursus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean semper ipsum ac nunc rutrum viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut dapibus massa non sem rutrum varius. Pellentesque ullamcorper blandit turpis, adipiscing consectetur enim tempus eget. Morbi sit amet laoreet nisl. Aenean rutrum est mauris, **blandit rhoncus orci vulputate quis**. Fusce tortor turpis, bibendum sed dolor sodales, laoreet vulputate sapien. Vivamus ut massa quam.
+      </a>
+    </faq>
+  </group>
+</faqs>

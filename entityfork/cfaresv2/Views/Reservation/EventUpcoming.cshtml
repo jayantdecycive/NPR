@@ -1,0 +1,42 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.Global
+@using cfares.site.modules.com.application
+@using cfacore.shared.domain._base
+@model cfares.domain._event.ResEvent
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = "Come back on " + Model.SiteStart.USEnglishDateWithSuffix();
+    }
+    else
+    {
+        ViewBag.Title = "No current events";  
+    }
+    Layout = AppContext.Current.GetLayoutLocation();
+}
+
+
+@* if template json ("/content/text/") contains a "UcomingPromo" key *@
+@if(!String.IsNullOrWhiteSpace(Html.ThemeText("UpcomingPromo", noParagraph: true).ToStringSafe())){
+
+    <section class="system-page ">
+    <h1>Coming Soon!</h1>
+    @Html.ThemeText("UpcomingPromo", noParagraph: true)
+    </section>   
+}
+
+<section class="system-page">
+    @if (@Model != null)
+    {    
+        <h1>This event is not accepting reservations yet.<br/>Please come back on @Model.SiteStart.USEnglishDateWithSuffix()</h1>
+
+        <p class="padding50 text-center">To ensure you don't miss out on future exclusive @Html.Raw(ReservationConfig.GetConfig().Organization.DisplayName) opportunities,<br /><a href="@Html.Raw(ReservationConfig.GetConfig().Organization.EventEndedEmail)">click here</a> to become an <b>Email Insider</b>.</p>
+    }
+    else
+    {
+        <h1>There are currently no upcoming events open for registration.<br /><br />Check back soon!</h1>
+    }
+</section>
+@section SocialFooter {
+	@Html.Partial("_SocialFooterPartial")
+}

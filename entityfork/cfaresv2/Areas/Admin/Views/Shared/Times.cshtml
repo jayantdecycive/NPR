@@ -1,0 +1,262 @@
+﻿@using cfacore.domain._base
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfaresv2.ViewModel
+@model cfares.domain._event.ResEvent
+@{
+    ViewBag.Title = "Create New";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+    IDomainObject ViewModel = ViewBag.ViewModel as DomainObject;
+    Dictionary<string,string> TimeSpans = new Dictionary<string, string>()
+        {
+            {("-0.00:00"),"The Day Of"}
+        };
+    TimeSpan CutoffDistance = ViewBag.CutoffDistance ?? new TimeSpan(-1,0,0,0);
+    DateTimeOffset Cutoff = ViewBag.Cutoff ?? new DateTimeOffset();
+}
+
+@section Meta{
+
+	<script>
+
+		$(function() {
+			setTimeout(function() {
+				$('.admin-table-2.slot-wrapper').css('display', 'block');
+				$('#date_summary_list').css('display', 'inline-block');
+			}, 1500);
+		});
+			
+	</script>
+    
+	<script type="text/template" id="slot_summary_template">
+        
+            <span class='label' data-mode="<%=mode%>"><%=label%></span>
+            
+            <a data-icon="ui-icon-circle-close" data-text='false' class='<%=(mode=="date"?"":"hidden")%> remove-summary inline-block jq-button-icon'></a>
+        
+    </script>
+
+    <script type="text/template" id="slot_row_template">
+	    <div class='slot-row'>
+			<ul>    
+				<li><p class="inline-block time-label">From</p> <input value='<%=Start.getTime()?Start.toString("hh:mm tt").toLowerCase():Start%>' type='text' class='inline-block jq-time in-start' name='<%=cid%>start' data-model-property='Start' /><span class="calendar-icon-big"></span></li>
+				<li><p class="inline-block time-label">To </p><input value='<%=End.getTime()?End.toString("hh:mm tt").toLowerCase():End%>' name='<%=cid%>end' type='text' class='inline-block jq-time in-end' data-model-property='End' /> <input value='<%=Start.getTime()?Start.toString("MM/dd/yyyy"):(new Date()).toString("MM/dd/yyyy")%>' name='<%=cid%>date' type='hidden' data-model-property='Date' /><span class="calendar-icon-big"></span></li>
+				<li><p class="inline-block time-label-limit">Reservation Limit: </p><input type='text' value='<%=Capacity%>' class='in-capacity' name='<%=cid%>Capacity' data-model-property='Capacity' /></li>
+            
+            @* dialog for additional options<a href='javascript:void(0);' class='jq-button edit-cameos' data-target='<%=cid%>'>Cameos &amp; Guides</a> *@
+            
+            @* <a data-icon="ui-icon-circle-close" data-target='<%=cid%>' data-text='false' class='close-icon remove-slot jq-button-icon inline-block'>close</a> *@
+			
+				<li><a data-target='<%=cid%>' data-text='false' class='close-icon remove-slot jq-button-icon inline-block'><img src="/Areas/Admin/Content/Img/Master/circle-close-red.png" /></a></li>
+            
+	    </div>
+	</script>
+   
+    <script type="text/template" id="accordion_slot_template">
+        
+        
+	    
+            <h3 class='<%=(mode=="All"?"mode-all":"mode-date")%>' data-mode="<%=mode%>"><a href="#"><%=label%></a></h3>
+		    <div class='slot-rows' ></div>
+            <div class="add-slot" ><a href='javascript:void(0);' data-icon="ui-icon-triangle-1-e" class='jq-button add-timeslot'>Add a new Timeslot</a></div>
+	    
+        
+    </script>
+   
+    
+    <script type="text/javascript">
+	    (function (exports) {
+		    var ViewModel = @Html.Raw(Json.Encode(ViewBag.ViewModel));
+		    for(var i in ViewModel){
+			    if(ViewModel[i].indexOf && ViewModel[i].indexOf("/Date")==0){
+				    var ticks = ViewModel[i].replace("/Date(","").replace(/\)\/$/gi,"");
+				    ViewModel[i] = new Date(new Number(ticks));
+			    }
+		    }
+		    exports.Model = ViewModel;
+
+		    exports.CurrentAggregates = @Html.Raw(Json.Encode(ViewBag.CurrentAggregates));
+		    exports.CapacityThreshold = @Html.Raw(ViewBag.CapacityThreshold??"null");
+	    })(window);
+    </script>
+    
+    <script src="@Url.Content("~/Areas/Admin/Scripts/Event/Times.js")" type="text/javascript"></script>
+    
+}
+@using (Html.BeginForm("Times", "Event", FormMethod.Post, new { id = "main", @class = "rounded", action = Request.Url.TranslatePort(Request) })) //rclark: removed "content" from class to fix display issue
+{        
+    @Html.Hidden("ResEventId", ViewModel.Id())
+
+    <input type="hidden" name="SaveAggregate" id="SaveAggregate" />
+    <input type="hidden" name="DeleteAggregate" id="DeleteAggregate" />
+    
+ 	@Html.ValidationSummary(false)
+   
+    <div class="inner-content wrapper no-border-top">
+
+        <div id='summary_segment' class='details dashboard padding-bot-20'>
+        
+			@if( AppContext.Current.Configuration.ApplicationId == Application.CFA ) {
+
+				<h2>Times Selection</h2><hr />
+	   
+				@* Site start and end dates *@
+				<div class='model-field field-Start'>
+					<div class="editor-label inline-block">
+						@Html.LabelFor(model => model.SiteStart, "Site Launch Date")
+					</div>                
+					<div class="editor-field inline-block">
+						@Html.EditorFor(model => model.SiteStart)
+						@Html.ValidationMessageFor(model => model.SiteStart)
+					</div>
+				</div>
+
+				<div class='model-field field-End'>
+					<div class="editor-label inline-block">
+						@Html.LabelFor(model => model.SiteEnd, "Site End Date")
+					</div>                
+					<div class="editor-field inline-block">
+						@Html.EditorFor(model => model.SiteEnd)
+						@Html.ValidationMessageFor(model => model.SiteEnd)
+					</div>
+				</div>
+
+				@* Slot start and end dates *@
+
+				<div class='model-field field-RegistrationStart'>
+					<div class="editor-label inline-block">
+						@Html.LabelFor(model => model.RegistrationStart, "First Slot Date")
+					</div>                
+					<div class="editor-field inline-block">
+						@Html.EditorFor(model => model.RegistrationStart)
+						@Html.ValidationMessageFor(model => model.RegistrationStart)
+					</div>
+				</div>
+
+				<div class='model-field field-RegistrationEnd'>
+					<div class="editor-label inline-block">
+						@Html.LabelFor(model => model.RegistrationEnd, "Last Slot Date")
+					</div>                
+					<div class="editor-field inline-block">
+						@Html.EditorFor(model => model.RegistrationEnd)
+						@Html.ValidationMessageFor(model => model.RegistrationEnd)
+					</div>
+				</div>
+				<hr />
+			}
+	   
+			
+			<h2>@( AppContext.Current.Configuration.ApplicationId == Application.CFA ? "Redemption Period" : "Event Dates" )</h2>
+            <p>@( AppContext.Current.Configuration.ApplicationId == Application.CFA ? "Select up to 10 days for the redemption period." : "Select days for this event." )</p>
+            <div class='date-grid admin-grey-2'>
+                <div id="event_summary" class='inline-block summary right model details'>
+					<h2>Event Details</h2>
+                    
+                    @* @Html.Partial("ModelDetail/_ResEvent",ViewModel as ResEventViewModel) *@
+
+                </div>
+
+                <div id='inline_cal' class='inline-block item'></div>
+
+                <ul id="date_summary_list" class='inline-block item ui-corner-all'>                   
+                </ul>
+
+                <div id='rule_summary' class='inline-block item'></div>
+
+            </div>
+        </div>
+
+    </div>
+	
+	<div class="clearLine"></div>
+	
+<div class="inner-content wrapper padding-top-10">
+
+	<div id='date_accordian_segment' class='rounded details dashboard'>
+        
+		<h2>Time Slots</h2>
+		<div id="button_group_all" class='button-group-master'>
+			<p class='inline-block'>
+				@( AppContext.Current.Configuration.ApplicationId == Application.CFA ? 
+																						 "Select the start and end time for each time slot, and apply a maximum capacity." : 
+																																											   "Select a start and end time for your " + Model.ReservationType.Name.ToLower()
+																																																							 .Replace( "special event", "event" ) + " date(s)." )
+			</p>
+                
+			<div class="inline-block wrapper admin-orange">
+				<div id="all_style_radios">
+					<input type="radio" id="as2" name="all_style" checked="checked"  value="day" /><label for="as2">Times Apply to Individual Day</label>
+					<input type="radio" id="as1" name="all_style"value="all" /><label for="as1">Times Apply to All Selected Dates</label>
+		                
+		            
+				</div>
+			</div>
+		</div>
+
+		<div id="button_group_week" class='button-group-master'>
+			<p class='inline-block'>Edit timeslots based on individual calendar days or days of the week.</p>
+                
+                
+			<div class="inline-block wrapper admin-orange">
+				<div id="day_style_radios">
+					<input type="radio" id="ds1" name="day_style" checked="checked"  value="date" /><label for="ds1">By Date</label>
+					<input type="radio" id="ds2" name="day_style" value="dow" /><label for="ds2">By Day of Week</label>
+		            
+				</div>
+			</div>
+		</div>
+
+            
+
+		<div class='admin-table-2 slot-wrapper'>
+			<div class='slot-accordion' id="slot_accordion">
+                    
+                    
+	                
+			</div>
+		</div>
+
+	</div>
+</div>
+@* -- Minimum Daily Capacity -- *@
+if(cfares.site.modules.com.application.AppContext.Current.Configuration.ApplicationId!=Application.NPR){   
+<div class="clearLine"></div>
+<div class="inner-content wrapper padding-top-10 padding-bot-10">
+	<div id='details_segment_min_daily_capacity' class='rounded details dashboard'>
+		<h2>@Html.LabelFor( m => m.MinimumDailyCapacity )</h2>
+		<p>@Html.DescriptionFor( m => m.MinimumDailyCapacity )</p>
+		<div class='details-input'>
+			<label class='inline-block'>
+				@Html.EditorFor( m => m.MinimumDailyCapacity )
+			</label>
+		</div>
+	</div>
+</div>
+}else{
+    @Html.HiddenFor( m => m.MinimumDailyCapacity )
+}
+
+@* -- Reservation Cut-Off Time -- *@
+<div class="clearLine"></div>
+<div class="inner-content wrapper padding-top-10 padding-bot-10">
+	<div id='details_segment' class='rounded details dashboard'>
+		<h2>Reservation Cut-Off Time</h2>
+		<p>@( AppContext.Current.Configuration.ApplicationId == Application.CFA ? "Choose a time at least a day in advance to stop taking reservations" : "Choose a time to stop taking reservations." )</p>
+		<div class='details-input'>
+			<label class='inline-block'>
+				<input type='text' value='@Cutoff.ToString("12:00 tt").ToLower()' class='inline-block' name='cutoff-time' id="cutoff_time" readonly="readonly" style="background-color:#DDDDDD; width:65px;" />
+			</label>
+			<label class='inline-block'>
+                <span style="font-size:14px;color:#666;">The Day Of</span>
+                <input type="hidden" name="cutoff-day" id="cutoff-day" value="-0.00:00" />
+			</label>
+		</div>
+	</div>
+</div>
+	
+	<div class='submit-block inline-block admin-red submit-times'>
+        <input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class='jq-button' value="Save & Continue" />
+    </div>
+}
+
+@Html.Partial("Dialogs/_SlotOperations")

@@ -1,0 +1,325 @@
+﻿@using System.Collections.ObjectModel
+@using System.Data.Entity
+@using Ninject
+@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.menu
+@using cfares.domain._event.resevent.store
+@using cfares.site.modules.com.application
+@model ResEvent
+@{
+    ViewBag.Title = "Event Summary"; // Overridden by wizard name
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    var occurrenceId = (Model.Occurrences.Count > 0 ? Model.Occurrences.First().OccurrenceId : -1);
+
+}
+
+@section Meta{
+    @Html.Partial("Filters/Script/_ResEvent")
+    <script>
+
+        var initialStores = @Html.Raw(Json.Encode(ViewBag.ParticipatingStores));
+        var storeDeck;
+        if(initialStores)
+            storeDeck = new DomainModel.ResStoreCollection(initialStores);
+        else
+            storeDeck = new DomainModel.ResStoreCollection();
+        
+        var slots = new DomainModel.SlotCollection();
+        slots.abstract = true;
+        slots.setWhere("model",{OccurrenceId: {$eq:@occurrenceId} });
+		        
+        $(function() {
+            $("#delete").click(function() {
+                var toDelete = [];
+                $("input[name='tableselect']:checked", "#slots_slots").each(function() {
+                    toDelete.push($(this).val());
+                });
+                $("#delete").bind("dialog-success", function () {
+                    console.log('redraw');
+                    slots.trigger("redraw");
+                });
+
+                $("#delete").trigger("modal", "/Admin/Slot/Destroy?snip=true&ids=" + toDelete.join(","));
+            });
+        });
+
+    </script>    
+}
+<div id="summary">
+	@if (AppContext.Current.Configuration.ApplicationId == Application.CFA)
+ {
+		<h1>Confirmation</h1>
+	 
+     //In default configuration, locations are listed below the slot table view
+		<section id="selectedRestaurants-section">    
+			<h2>Selected Restaurants</h2> 
+			@Html.Partial("Tables/_StoreListSummary", "storeDeck", new ViewDataDictionary(ViewData) { { "id", "deck" } })
+		</section>
+		<div class="clearLine"></div>
+
+     <section id="eventName-section">    
+         <h2>Name of Event</h2>
+         <span>@Model.Name</span>
+     </section>
+     
+     <section id="eventUrl-section">    
+         <h2>Event Url</h2>
+         @{
+     var urls = Model.ProductionUrls;
+#if DEBUG
+             urls = Model.SiteUrls;
+#endif
+     if (urls == null || !urls.Any())
+     {
+         urls = Model.ReservationType.ProductionUrls;
+#if DEBUG
+                             urls = Model.SiteUrls;
+#endif
+     }
+         }
+         @Html.Raw(string.Join(", ", urls.Select(x => string.Format("<a href='{0}' target='_blank'>{0}</a>", x.Url))))
+			
+		</section>
+		<div class="clearLine"></div>
+ }
+ else if (Model.ReservationTypeId != "Tour")
+ {
+		<h1>Overview</h1>
+		@Html.Partial("ModelDetail/_ResEvent", Model, new ViewDataDictionary { { "Mode", "DetailsSummary" } })
+ }
+
+	@if (Model.ReservationTypeId != "Tour")
+ {
+     if (Model.ReservationType.ShowSlots())
+     {
+	        <section id="redemptionPeriod-section">    
+	            <h2>Site Availability Dates</h2>
+	            <ul>
+	                <li>Site Launch Date: <strong>@Model.SiteStart.ToString("MMMM dd, yyyy")</strong></li>
+	                <li>Site End Date: <strong>@Model.SiteEnd.ToString("MMMM dd, yyyy")</strong></li>
+                    
+	            </ul>
+	        </section>
+	        <div class="clearLine"></div>
+
+	        <section id="timeSlots-section">    
+	            <h2>Time Slots</h2>
+	            <table>
+	                <tr>
+	                    <th>Date</th>
+	                    <th>Time Slots</th>
+	                    <th>Reservation Limit</th>
+	                </tr>
+	                @{
+         int row = 0;
+         int groupingId = 0;
+         List<List<cfares.domain.aggregates.SlotDayAggregate>> aggregates = new List<List<cfares.domain.aggregates.SlotDayAggregate>> { ViewBag.CurrentAggregates.All, ViewBag.CurrentAggregates.Day, ViewBag.CurrentAggregates.Date };
+         foreach (List<cfares.domain.aggregates.SlotDayAggregate> aggregate in aggregates)
+         {
+             string label = string.Empty;
+             foreach (cfares.domain.aggregates.SlotDayAggregate grouping in aggregate)
+             {
+                 string newLabel = groupingId == 0 ? "Every Day" :
+                                       (groupingId == 1 ? grouping.GetStartTime().ToString("dddd") :
+                                            grouping.GetStartTime().ToDateStringWithDayOfWeek()
+                                       );
+                 if (row > 0 && newLabel != label)
+                 {
+	                                <tr><td></td><td></td><td></td></tr>
+                 }
+	                            <tr>
+	                                @if (newLabel != label)
+                                 {
+	                                    <td class="newLabelDate">@newLabel</td>
+                                 }
+                                 else
+                                 {
+	                                    <td></td>
+                                 }
+	                                <td>@grouping.GetStartTime().ToTimeString() to @grouping.GetEndTime().ToTimeString()</td>
+	                                <td>@grouping.Capacity</td>
+	                            </tr>
+                                 label = newLabel;
+                                 row++;
+             }
+             groupingId++;
+         }
+
+	                }
+	            </table>
+	        </section>
+	        <div class="clearLine"></div>
+     }
+ }
+ else
+ {
+		<div class='button-cta right-float summary-btn-grp' style="position: absolute; right: 30px;">
+			@Html.ActionLink("Create Single Slot", "Create", Model.SlotType.Name, new { OccurrenceId = Model.Occurrences.First().OccurrenceId }, new { data_icon = "ui-icon-locked", @class = "btn-container-default" })
+		</div>
+
+		@*<h2>Event Summary</h2>*@
+	 
+		<div class="inner-content wrapper event-details border-top-none">
+			@Html.Partial("ModelDetail/_ResEvent", Model, new ViewDataDictionary { { "Mode", "DetailsSummary" } })
+		</div>
+
+		<div class="inner-content wrapper site-availability">
+			<section id="redemptionPeriod-tour-section">    
+				<h2>Site Availability Dates</h2>
+				<ul>
+					<li>Site Launch Date: <strong>@Model.SiteStart.ToString("MMMM dd, yyyy")</strong></li>
+					<li>Site End Date: <strong>@Model.SiteEnd.ToString("MMMM dd, yyyy")</strong></li>
+				</ul>
+			</section>
+		</div>
+
+		<div class='filters model badge'>
+			<p class='inline-block'>Filter by:</p>
+			@Html.Partial("Filters/Input/_SlotDash", Model.ReservationTypeId)
+		</div>
+		
+		@Html.Partial("Tables/_" + Model.SlotType.Name + "Checkbox", "slots")
+	 	 
+		<div class="clearLine"></div>
+ }
+
+@if (Model.ReservationType.HasFood())
+{
+    var giveEvent = Model as GiveawayEvent;
+    giveEvent.ProductAllowances = giveEvent.ProductAllowances ?? new Collection<MenuItemAllowance>();
+    
+    <section id="eventName-section" class="food-list well">    
+        <h2>Selected Items</h2>
+        <div id="food_canvas">
+            @foreach (var allowance in giveEvent.ProductAllowances.AsQueryable().Include("AllowedItem"))
+            {
+                <div class="food-selection" data-pk="@allowance.AllowedItem.DomId">
+                    @try
+                    {
+                        @Html.Media(allowance.AllowedItem.Media, width: 190)
+                    }
+                    catch (Exception e)
+                    {
+                        <p>Sorry there was a, Problem loading that image.</p>
+                        <script type="text/javascript">console.log("Error loading image: "+ @Html.Raw(e.Message));</script>
+                    }
+                    
+                    <p class='name'>@allowance.AllowedItem.Name</p> 
+                    
+                    @switch (allowance.Condition)
+                    {
+                        case MenuItemCondition.DefaultOff:
+                            <p class="status">Off By Default</p>
+                            break;
+                        case MenuItemCondition.DefaultOn:
+                            <p class="status">On By Default</p>
+                            break;
+                        case MenuItemCondition.LockedOn:
+                            <p class="status">Locked On</p>
+                            break;
+                    }    
+
+                </div>
+            }                    
+        </div>
+    </section>
+   
+    <div class="clearLine"></div>
+}
+
+@if (Model.ReservationTypeId == "reception")
+{
+    var speakEvent = Model as SpeakerEvent;
+    
+    
+    <section id="eventName-section" class="speaker-info well">    
+        <h2>Speaker Info</h2>
+        @Html.Media(speakEvent.SpeakerMedia, true, 200, htmlAttributes: new { width = 200 })
+        <ul id="speaker_canvas">
+            <li>Speaker Name: <strong>@speakEvent.SpeakerName</strong></li>
+            <li>Location Address Label: <strong>@speakEvent.OffSiteAddress.Label</strong></li>
+            <li>Location Address Line 1: <strong>@speakEvent.OffSiteAddress.Line1</strong></li>
+            @*<li>Location Address Line 2: <strong>@speakEvent.OffSiteAddress.Line2</strong></li>
+            <li>Location Address Line 3: <strong>@speakEvent.OffSiteAddress.Line3</strong></li>*@
+            <li>Location Address City: <strong>@speakEvent.OffSiteAddress.City</strong></li>
+            <li>Location Address State: <strong>@speakEvent.OffSiteAddress.State</strong></li>
+            <li>Location Address Zip: <strong>@speakEvent.OffSiteAddress.ZipString</strong></li>
+            <li>Location Description: <strong>@speakEvent.OffSiteDescription</strong></li>
+            <li>Parking Description: <strong>@speakEvent.OffSiteParkingDescription</strong></li>
+        </ul>
+    </section>
+    
+     <section id="eventName-section" class="speaker-info well">    
+        <h2>Schedule Info</h2>
+	        <ul id="speaker_canvas">
+	            <li>Start: <strong>@speakEvent.StartDateTime().ToString("MM/dd/yyyy hh:mmtt")</strong></li>
+	            <li>End: <strong>@speakEvent.EndDateTime().ToString("MM/dd/yyyy hh:mmtt")</strong></li>
+
+
+                @if ((Model.MaximumCapacity ?? 0) > 0)
+                {
+                <li>Total Event Capacity: <strong>@speakEvent.MaximumCapacity</strong></li>
+                }
+                else
+                {   
+	            <li>Capacity: <strong>@speakEvent.Schedule.Capacity</strong></li>
+                }
+
+
+
+                @{
+                var showSlotCutoff = false;
+#if DEBUG
+                        showSlotCutoff=true;
+#endif
+                    }
+                    @if (showSlotCutoff)
+                    {
+                    <li>First Slot Cutoff: <strong>@Model.Slots.First().CutoffString</strong></li>
+                    }
+	        </ul>
+    </section>
+    
+    
+    
+   
+    
+    
+    <div class="clearLine"></div>
+}
+    
+@*	SH - Removing per ticket just after prior ticket requesting this be added just after the wireframes didn't show it .. yea! :)
+	<script type="text/javascript">
+    	var tickets = new DomainModel.@Html.Raw(ticketType.Name)Collection();
+    	//tickets.setWhere("summaryTickets",{SlotId: {$ne:'null'} });
+    	tickets.setWhere('summaryTickets', [{ Status: { $ne: 'Deleted' }, "Slot/Occurrence/ResEventId": { $eq: Number(@Model.ResEventId) } }, { Status: { $ne: 'Temp' } }, { Status: { $ne: 'Draft' } }]);
+    	tickets.abstract = true;
+	</script>
+
+	<section id="summaryTickets-section">    
+		<h2>Tickets</h2>
+        @Html.Partial("Tables/_"+ticketType.Name,"tickets")
+	</section>
+<div class="clearLine"></div>
+*@
+</div>
+@section Action{
+	<div class='button-cta right-float summary-btn-grp admin'>
+
+		
+		<div class="admin-green">
+			@Html.ActionLink("Save and Activate Event", "Activate", "Event", new { id = Model.ResEventId }, new { data_icon = "ui-icon-circle-check", @class = "btn-container-default" })
+		</div>
+
+		<div class="admin-red">
+			<a href="/Admin/Event/Delete/@Model.ResEventId?snip=true" data-icon="ui-icon-circle-close" class="btn-container-default" data-toggle="modal" data-title="Delete Event" data-submit-title="Delete">Delete Event</a>
+		</div>
+		
+		<div class="admin-table-2">
+			@Html.ActionLink("Save as Draft", "SaveAsDraft", "Event", new { id = Model.ResEventId }, new { data_icon = "ui-icon-locked", @class = "btn-container-default" })
+		</div>
+        
+	</div>
+}
+

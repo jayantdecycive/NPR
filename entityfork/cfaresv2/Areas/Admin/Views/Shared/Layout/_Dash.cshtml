@@ -1,0 +1,37 @@
+﻿
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string typeFilter = Request.QueryString["ReservationTypeId"];
+    typeFilter = string.IsNullOrEmpty(typeFilter) ? null : typeFilter;
+}
+@section Meta{
+@RenderSection("Meta",false)
+}
+<div class="content rounded" id="main">
+    <div class="inner-content wrapper model details dashboard">
+
+        <div class='model badge dash'>
+                    <div class='admin-table-2'>
+            @if (IsSectionDefined("Action")) {
+                @RenderSection("Action",false)
+            }else{
+                <div class='button-cta right'>
+                    @Html.ActionLink("Create New", "Create", new { ReservationTypeId=typeFilter }, new { data_left_icon = "ui-icon-circle-plus" })
+                </div>
+            }
+        </div>
+            @RenderBody()
+        </div>
+        @if (IsSectionDefined("Table")) {
+            <div class='admin-table'>
+                @RenderSection("Table")         
+            </div>
+        }
+            
+    </div>
+</div>
+
+
+@if (IsSectionDefined("Footer")) {DefineSection("Footer", () => RenderSection("Footer"));}
+@if (IsSectionDefined("Header")) {DefineSection("Header", () => RenderSection("Header"));}

@@ -1,0 +1,55 @@
+﻿span.calendar-icon-big {
+	vertical-align:top !important;
+    margin-top: 2px;
+
+	
+}
+
+.slot-row span.calendar-icon-big{
+	vertical-align:top !important;
+    margin-top: 10px;
+}
+
+
+
+
+#date_summary_list li {
+    background: #fff;
+}
+
+
+
+.wizard-step .wizard-icon {
+    margin-bottom: 5px !important;
+}
+
+
+.details-input label.admin-table-2{
+    vertical-align: top !important;
+    margin-top: 5px;
+}
+
+
+li .time-label {
+    margin-top: -40px;
+    margin-right: 5px;
+}
+
+li .time-label-limit {
+    margin-top: -33px;
+    margin-right: 5px;
+}
+
+.logged-in {
+    height: 30px;
+}
+.logged-in .admin-table-2{
+    vertical-align: top;
+}
+
+
+.model .editor-label{
+    margin-top: 6px;
+    vertical-align: top;
+    line-height: 1.5;
+}

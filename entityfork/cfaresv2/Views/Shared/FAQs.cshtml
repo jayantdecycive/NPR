@@ -1,0 +1,66 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@using cfaresv2.Models
+@model ICollection<cfaresv2.ViewModel.FAQGroup>
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    
+    Layout = AppContext.Current.GetLayoutLocation();
+}
+
+@section Scripts {
+    <script>
+        
+        $('.accordion-body').on('hide', function () {
+            $(this).parent(".accordion-group").removeClass("active");
+        });
+        $('.accordion-body').on('show', function () {
+            $(this).parent(".accordion-group").addClass("active");
+        });
+        
+
+    </script>
+}
+
+
+
+<section id="faqs" class="row-fluid">
+    <h2>Chick-fil-A&reg; &quot;Reserve Your FREE Breakfast Entr&eacute;e&quot; Giveaway</h2>
+    <h1>Frequently Asked Questions</h1>    
+    <hr />
+
+    <div class="accordion" id="faqs_accordion">
+    @foreach (var group in Model)
+    {
+        <h2 class="h1">@group.Title</h2>
+        
+        
+            
+                
+                    foreach (var faq in group.FAQs)
+                    {
+                        <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#faqs_accordion" href="#@Html.Raw(faq.HtmlId())">
+                                @Html.Raw(@faq.Question)
+                            </a>
+                        </div>
+                            <div id="@Html.Raw(faq.HtmlId())" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    @Html.Raw(@faq.Answer)
+                                </div>
+                            </div>
+                        </div>            
+                    }
+                
+            
+        
+        
+    }
+        </div>
+</section>

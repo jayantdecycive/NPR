@@ -1,0 +1,190 @@
+﻿@using cfares.site.modules.com.application
+@model cfacore.shared.domain.store.Store
+
+@{string pk = Model.IsBound() ? Model.LocationNumber.ToString() : "new";}
+
+        <fieldset data-pk='@pk' class='store-@pk'>
+            
+            <div class='legend inline-block'>Store</div>
+
+            
+            
+            @if (ReservationConfig.GetConfig().ApplicationId == Application.NPR)
+            {
+                @Html.Partial("ModelDetail/_LocationShort")
+            }
+            else
+            {
+                <div class='model-field field-LocationNumber'>
+                    <div class="display-label inline-block">Location Number</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.LocationNumber)
+                    </div>
+                </div>
+
+
+                <div class='model-field field-ConceptCode'>
+                    <div class="display-label inline-block">Concept Code</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.ConceptCode)
+                    </div>
+                </div>
+                <div class='model-field field-CorporateOwned'>
+                    <div class="display-label inline-block">Corporate Owned</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.CorporateOwned)
+                    </div>
+                </div>
+                <div class='model-field field-Email'>
+                    <div class="display-label inline-block">Email</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                </div>
+                <div class='model-field field-AcceptsCfaCard'>
+                    <div class="display-label inline-block">Accepts CfaCard</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.AcceptsCfaCard)
+                    </div>
+                </div>
+                <div class='model-field field-HasDiningRoom'>
+                    <div class="display-label inline-block">Has Dining Room</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.HasDiningRoom)
+                    </div>
+                </div>
+                <div class='model-field field-HasDriveThru'>
+                    <div class="display-label inline-block">Has Drive Thru</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.HasDriveThru)
+                    </div>
+                </div>
+                <div class='model-field field-OffersOnlineOrdering'>
+                    <div class="display-label inline-block">Offers Online Ordering</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.OffersOnlineOrdering)
+                    </div>
+                </div>
+                <div class='model-field field-OffersWireless'>
+                    <div class="display-label inline-block">Offers Wireless</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.OffersWireless)
+                    </div>
+                </div>
+                <div class='model-field field-Playground'>
+                    <div class="display-label inline-block">Playground</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Playground)
+                    </div>
+                </div>
+                <div class='model-field field-ServesBreakfast'>
+                    <div class="display-label inline-block">Serves Breakfast</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.ServesBreakfast)
+                    </div>
+                </div>
+                <div class='model-field field-GMTOffset'>
+                    <div class="display-label inline-block">GMT Offset</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.GMTOffset)
+                    </div>
+                </div>
+                <div class='model-field field-Lat'>
+                    <div class="display-label inline-block">Lat</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Lat)
+                    </div>
+                </div>
+                <div class='model-field field-Lon'>
+                    <div class="display-label inline-block">Lon</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Lon)
+                    </div>
+                </div>
+                <div class='model-field field-LocationCode'>
+                    <div class="display-label inline-block">Location Code</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.LocationCode)
+                    </div>
+                </div>
+                <div class='model-field field-MarketableName'>
+                    <div class="display-label inline-block">Marketable Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.MarketableName)
+                    </div>
+                </div>
+                <div class='model-field field-Message'>
+                    <div class="display-label inline-block">Message</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Message)
+                    </div>
+                </div>
+                <div class='model-field field-LocationDescription'>
+                    <div class="display-label inline-block">Location Description</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.LocationDescription)
+                    </div>
+                </div>
+                <div class='model-field field-Name'>
+                    <div class="display-label inline-block">Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Name)
+                    </div>
+                </div>
+                <div class='model-field field-NameNoLocationCode'>
+                    <div class="display-label inline-block">Name NoLocation Code</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.NameNoLocationCode)
+                    </div>
+                </div>
+                <div class='model-field field-OpenDate'>
+                    <div class="display-label inline-block">Open Date</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.OpenDate)
+                    </div>
+                </div>
+                <div class='model-field field-OperatorTeamName'>
+                    <div class="display-label inline-block">Operator Team Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.OperatorTeamName)
+                    </div>
+                </div>
+                <div class='model-field field-PriceGroupNumber'>
+                    <div class="display-label inline-block">Price Group Number</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.PriceGroupNumber)
+                    </div>
+                </div>
+                <div class='model-field field-ProjectedOpenDate'>
+                    <div class="display-label inline-block">Projected Open Date</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.ProjectedOpenDate)
+                    </div>
+                </div>
+                <div class='model-field field-RegionName'>
+                    <div class="display-label inline-block">Region Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.RegionName)
+                    </div>
+                </div>
+                <div class='model-field field-ServiceTeamName'>
+                    <div class="display-label inline-block">Service Team Name</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.ServiceTeamName)
+                    </div>
+                </div>
+                <div class='model-field field-Status'>
+                    <div class="display-label inline-block">Status</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.Status)
+                    </div>
+                </div>
+                <div class='model-field field-SiteStatus'>
+                    <div class="display-label inline-block">Site Status</div>
+                    <div class="display-field inline-block">
+                        @Html.DisplayFor(model => model.SiteStatus)
+                    </div>
+                </div>
+            }    
+        </fieldset>
+        

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PostageApp</id>
+    <version>0.0.1</version>
+    <title>PostageApp</title>
+    <authors>Derek Watson</authors>
+    <owners>Derek Watson</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>http://github.com/derek-watson/postageapp-net</projectUrl>
+    <iconUrl>http://postageapp.com/assets/postageapp-32px.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>PostageApp API client library for .NET 3.5+</description>
+    <releaseNotes>Initial release supporting the send_message method and all of its features.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <language />
+    <tags>postageapp send email delivery template background api smtp client</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
+    </dependencies>
+  </metadata>
+</package>

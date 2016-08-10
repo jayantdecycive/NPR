@@ -1,0 +1,19 @@
+﻿@model cfacore.shared.domain.user.Address
+
+<section class="overview">
+    <h3 class="name">@Html.Raw(ViewData["Label"]??Model.Name)</h3>
+
+    <address class="address">
+
+        
+
+            @Model.Line1<br />
+            @Model.City, @Model.State @Model.ZipString
+
+        
+            <a class="viewMap" id="@( "viewMap" + Model.AddressId)" rel="popover" data-original-title="@Model.Name" href="javascript:void(0);" data-poload="http://maps.google.com/maps?q=@Model.ToStringSingleLine().Replace(' ', '+')">view map</a>
+    
+        
+
+    </address>
+</section>

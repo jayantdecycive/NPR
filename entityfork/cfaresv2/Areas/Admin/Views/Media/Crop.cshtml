@@ -1,0 +1,53 @@
+﻿@using System.Text.RegularExpressions
+@model cfacore.shared.domain.media.Media
+
+@{
+  
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+    
+    ViewBag.Brief = "Crop " + Model.Name;
+}
+
+
+<h1>Crop Image</h1>
+<p>Click and drag box in the left-hand corner of the image to crop the photo.</p>
+<br />
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = ViewBag.EncType ?? "application/x-www-form-urlencoded" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class='model-field field-Crop'>
+        @Html.HiddenFor(x=>x.MediaId)
+        
+        @Html.Media(Model,original:true, htmlAttributes:new {
+			data_crop_name="Crop",
+            data_crop_rect_x=Model.Crop.X,
+            data_crop_rect_y=Model.Crop.Y,
+            data_crop_rect_x2=Model.Crop.Right,
+            data_crop_rect_y2=Model.Crop.Bottom,
+            width="100%", @class="jq-crop"
+        })
+    </div>
+
+    @*@Html.Media(Model,width:100)*@
+    
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>   
+}
+

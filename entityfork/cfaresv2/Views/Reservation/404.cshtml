@@ -1,0 +1,32 @@
+﻿@using cfares.site.modules.com.application
+@model cfares.domain._event.IResEvent
+@{
+    ViewBag.Title = "Page Not Found";
+	if( AppContext.Current.Configuration.ApplicationId == Application.NPR ) {
+		Layout = "~/Areas/npr/Views/Shared/_Layout.cshtml";
+	} else {
+        Layout = AppContext.Current.GetLayoutLocation();
+	}
+}
+
+<div class="system-page page404">
+	
+	@if( AppContext.Current.Configuration.ApplicationId == Application.NPR ) {
+		<h2>We Apologize.</h2>
+		<p>Your requested page was not found on this server.</p>
+	}
+	else {
+		<h1>We apologize, but your requested page was not found on this server.</h1>
+	}
+
+	@if(Model!=null) {
+		<p class="padding50 text-center"><a href="~/">Click here</a> to access the @Html.Raw(Model.OrganizationDisplayName) @Html.Raw(Model.Name) home page.</p>
+	 }
+
+</div>
+
+@section SocialFooter {
+        <div class="footer-404">
+	@Html.Partial("_SocialFooterPartial")
+            </div>
+}    

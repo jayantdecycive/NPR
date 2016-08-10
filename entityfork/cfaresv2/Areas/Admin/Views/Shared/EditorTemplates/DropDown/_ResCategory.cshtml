@@ -1,0 +1,15 @@
+﻿@using cfares.domain._event
+@using cfares.entity.dbcontext.res_event
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@model int?
+
+@{
+	IResContext context = ReservationConfig.GetContext();
+    IEnumerable<ReservationCategory> list = context.ReservationCategories.OrderBy( o => o.Name ).AsEnumerable();
+}
+
+@Html.Partial("EditorTemplates/DropDown/_DropDown", Model, new ViewDataDictionary(ViewData)
+{
+	{"select", list.ToSelectList( m => m.Name, m => m.Id(), "Select a Category", Model.GetValueOrDefault().ToString() )}
+})

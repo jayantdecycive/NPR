@@ -1,0 +1,262 @@
+﻿@using cfacore.shared.Helpers
+@using cfacore.shared.modules.com.request
+@using cfacore.shared.modules.com.admin
+@using cfares.domain.user
+@using cfares.site.modules.com.application
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:og="http://opengraphprotocol.org/schema/" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en">
+<head>
+    <title>@ViewBag.Title | Administration</title>
+    
+    @Styles.Render("~/Admin/Style/shared.css")
+    
+    <!--[if IE 7]>
+	<link href="~/Content/Browser/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 8]>
+	<link href="~/Content/Browser/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    
+
+    <link href="@Url.Content("~/Areas/Admin/Content/Themes/" + @ReservationConfig.GetConfig().ApplicationId + ".css")" rel="stylesheet" type="text/css" />
+
+    @Scripts.Render("~/Admin/Script/shared.js")
+    @*@foreach (var scr in cfaresv2.Areas.Admin.BundleConfig.scripts)
+    {
+        <script src="@Url.Content(scr)" type="text/javascript"></script>
+    }*@
+
+	@* @Scripts.Render("~/Admin/Script/shared2.js")     *@
+    
+    <script src="@Url.Content("~/Admin/AutoScript/DomainModel.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap/bootstrap-modal.js")" type="text/javascript"></script>
+
+     @Scripts.Render("~/Admin/Script/backbone.js")
+
+    @* @Scripts.Render("~/Admin/Script/backbone.js") *@
+	
+
+    
+    <script src="@Url.Content("~/Scripts/init.js")" type="text/javascript"></script>
+    @if ((ViewData["browser"] as BrowserInfo) != null)
+    {
+        foreach (string s in ((BrowserInfo)ViewData["browser"]).browserCSS)
+        {
+    @:<link href="@Url.Content("~/Content/Browser/" + @s + ".css")" rel="stylesheet" type="text/css" />
+        }
+    }
+
+    <link href="~/content/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    
+    @Html.ResApplicationScript()
+    @Html.GlobalTimeData()
+    <!--ResEvent Hint
+    @ViewData[ReservationConfig.ViewDataKey]
+    -->
+
+    @if (IsSectionDefined("Meta"))
+    {
+        @RenderSection("Meta")
+    }
+    else
+    {
+
+    }
+	<script type="text/javascript">
+		$(window).load(function () {
+			window.setTimeout(function () {
+				$("th[data-column-name='StartD']").click();
+			}, 500);
+		});
+        
+	</script>
+	
+	@* SH - Temporary solution to support minification and bundling on the front-end while 
+	.. keeping JS errors away on the back-end due to minification issues w/ the below scripts
+	.. tried to reduce set below, but set ( in order ) is required for admin features to fn *@
+
+	<script src="/Scripts/backbone.dev.js"></script>
+	<script src="/Scripts/backbone/Url.js"></script>
+	<script src="/Scripts/backbone/pagination.js"></script>
+	<script src="/Scripts/backbone/queryable.js"></script>
+	<script src="/Scripts/backbone/order.js"></script>
+	<script src="/Scripts/backbone/backbone-relational.js"></script>
+	<script src="/Scripts/knockout-2.1.0.debug.js"></script>
+	<script src="/Scripts/knockback.dev.js"></script>
+	<script src="/Scripts/backbone.localStorage.js"></script>
+	<script src="/Scripts/jquery.dataTables.js"></script>
+	<script src="/Scripts/jquery/jquery.jeditable.js"></script>
+	<script src="/Scripts/datatables/KeyTable.js"></script>
+	<script src="/Scripts/datatables/jquery.dataTables.editable.js"></script>
+	<script src="/Scripts/datatables/plugins.js"></script>
+	<script src="/Scripts/datatables/ColVis-1.0.7/media/js/ColVis.js"></script>
+	<script src="/Scripts/datatables/TableTools-2.0.3/media/js/TableTools.js"></script>
+	<script src="/Scripts/datatables/TableTools-2.0.3/media/js/ZeroClipboard.js"></script>
+	<script src="/Scripts/plugins.js"></script>
+	<script src="/Scripts/ajaxupload-min.js"></script>
+	<script src="/Scripts/jcrop/js/jquery.color.js"></script>
+	<script src="/Scripts/jcrop/js/jquery.Jcrop.js"></script>
+
+	
+</head>
+<body class='@ReservationConfig.GetConfig().ApplicationId @Html.BrowerBodyClasses(ViewData["browser"]) @Html.RouteClasses() '>
+    <div class="page">
+        <div class="page">
+            <div class="page header-bar"></div>
+            <div class="page secondary-bar"></div>
+            <div class="content" id="header">
+                <a id='logo' href="/Admin" class='inline-block'></a>
+                <div class='top-menu inline-block'>
+					@if( AppContext.Current.Configuration.HasTitle() ) {
+						<div id="toptitle">
+							@if(true){
+							   if( AppContext.Current.User != null && AppContext.Current.User.OperationRole == UserOperationRole.Operator ) {
+								<h2 class='caecilia inline-block'>Reservation System | Operator Admin</h2>
+							   } else {
+								<h2 class='caecilia inline-block'>Reservation System | Corporate Admin</h2>
+								}
+                            }
+                            else{
+                                <h2 class='caecilia inline-block'>@Html.ApplicationTitle()</h2>
+                            }
+
+						</div>
+					}
+					<div class="nav-bar">
+						@if( AppContext.Current.User != null && AppContext.Current.User.OperationRole == UserOperationRole.Operator ) {
+                        <a class="help-link" href="/areas/admin/content/pdf/Breakfast-Chain-Manual.pdf" target="_blank">Need Help?</a>
+                        }
+                        @*@if ( ! string.IsNullOrWhiteSpace( ViewBag.Section ) || IsSectionDefined("Nav")){
+                       
+                            
+
+							*@<div id="logindisplay" class="right">
+								@* @Html.TourAdminCrumbs() *@
+								@Html.Partial("_AdminLogOnPartial")
+								@*Html.ActionLink("Log Out", "LogOff", "Account",new{}, new { @class = "jq-button", Area = "Admin" })*@
+							</div>
+							
+							<ul class="nav">
+								
+								@*
+								@Html.ActionLink("Main Dashboard", "Index", "Home")
+								*@
+                                @if ( AppContext.Current.IsLoggedIn && AppContext.Current.Configuration.HasWizardNav())
+                                {
+                                    if (ViewBag.Section == "Events")
+                                     {
+                                         <li>@Html.ActionLink("Admin Home", "Events", "Home")</li>
+                                         <li>@Html.ActionLink("Event Dashboard", "EventDashboard", "Home")</li>
+                                         <li>@Html.ActionLink("Create New Event", "Wizard", "Event", new {id = "SpecialEvent"}, new {})</li>
+                                     }
+                                     else
+                                     {
+                                         <li>@Html.ActionLink("Admin Home", "Tours", "Home")</li>
+                                         <li>@Html.ActionLink("Tour Dashboard", "TourDashboard", "Home")</li>
+                                         <li>@Html.ActionLink("Create Public Tour", "Wizard", "Event", new {id = "Tour"}, new {})</li>
+                                     }
+                                }
+								@if (IsSectionDefined("Nav"))
+								{
+									@RenderSection("Nav")
+								}
+							</ul>
+		  
+                              @if (AppContext.Current.Configuration.HasToursAndEvents())
+                               {
+                                   <select class="selectpicker left" @( AppContext.Current.IsLoggedIn ? "" : "disabled" ) data-width="auto" style="width: 120px;" id="admin-section-picker">
+                                       <option>Main</option>
+                                       <option value="@Url.Action("Tours", "Home")" onclick="">Tours Admin</option>
+                                       <option value="@Url.Action("Events", "Home" )" onclick="">Event Admin</option>
+                                   </select>
+                               }
+						@*}*@
+
+					</div>
+				</div>
+            <div class='wizard page'>
+                <div class='wizard content'>
+                    <div class='wizard wrapper'>
+                        @{
+                            IWizard w = null;
+
+                            if (ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Wizard"] != null)
+                            {
+                                w = ViewContext.ParentActionViewContext.ViewData["Wizard"] as IWizard;
+                            }
+                            else if (ViewContext != null && ViewContext.ViewData["Wizard"] != null)
+                            {
+                                w = ViewContext.ViewData["Wizard"] as IWizard;
+                            }
+
+
+                            if (ViewContext.HttpContext.Request.Params["message"] != null)
+                            {
+                                Html.RenderPartial("_MessagePartial", ViewContext.HttpContext.Request.Params["message"]);
+                            }
+                            else if (ViewContext.HttpContext.Request.Params["Message"] != null)
+                            {
+                                Html.RenderPartial("_MessagePartial", ViewContext.HttpContext.Request.Params["Message"]);
+                            }
+                            else if (w != null)
+                            {
+                                ViewBag.Wizard = w;
+                                Html.RenderPartial("_WizardPartial", w);
+                            }
+                            else if (ViewContext.ViewData["Message"] != null)
+                            {
+                                Html.RenderPartial("_MessagePartial", ViewContext.ViewData["Message"]);
+                            }
+                            else if (IsSectionDefined("WizardBanner"))
+                            {
+                            @RenderSection("WizardBanner")
+                            }
+                            else
+                            {
+                                Html.RenderPartial("_AdminTitlePartial");
+                            }
+                    }
+                    </div>
+                </div>
+            </div>
+
+            @if (IsSectionDefined("Header"))
+            {
+                @RenderSection("Header")
+            }
+        </div>
+
+        
+        
+        
+        @RenderBody()
+            
+
+            <div class="content" id="footer">
+                @if (IsSectionDefined("Footer"))
+                {
+                    @RenderSection("Footer")
+                }
+            </div>
+            </div>
+    </div>
+	<iframe id="xcel_src"></iframe>
+	
+    
+
+    @RenderSection("Scripts", required: false)
+@*	@Scripts.Render("~/bundles/bootstrapjs")*@
+	@*
+		@Styles.Render("~/Content/bootstrap")
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.selectpicker').selectpicker();
+			});
+		</script>
+	*@
+
+</body>
+</html>

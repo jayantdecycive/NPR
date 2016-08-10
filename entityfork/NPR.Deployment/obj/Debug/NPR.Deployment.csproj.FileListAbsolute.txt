@@ -1,0 +1,12 @@
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\bin\Debug\NPR.Deployment.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\bin\Debug\NPR.Deployment.pdb
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\bin\Debug\jlib.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.csprojResolveAssemblyReference.cache
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.dll
+D:\Alex_Avendano\Pratap\NPR\SRC\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.pdb
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\bin\Debug\NPR.Deployment.dll
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\bin\Debug\NPR.Deployment.pdb
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\bin\Debug\jlib.dll
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.csprojResolveAssemblyReference.cache
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.dll
+D:\Ashish\PratapNew\PratapNew\entityfork\NPR.Deployment\obj\Debug\NPR.Deployment.pdb

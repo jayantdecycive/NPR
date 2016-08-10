@@ -1,0 +1,79 @@
+﻿span.calendar-icon-big {
+	vertical-align:top !important;
+    margin-top: 2px;
+
+	
+}
+
+
+#date_summary_list {
+    display: inline !important;
+    zoom: 1;
+}
+
+.slot-row span.calendar-icon-big{
+	vertical-align:top !important;
+    margin-top: 3px;
+}
+
+
+#date_summary_list li {
+    background: #fff;
+}
+
+#date_summary_list li .remove-summary{
+    margin-top: -23px;
+}
+
+.wizard-step .wizard-icon {
+    margin-bottom: 5px !important;
+}
+
+
+.details-input label.admin-table-2{
+    vertical-align: top !important;
+    margin-top: 5px;
+}
+
+
+li .time-label {
+    margin-top: -40px;
+    margin-right: 5px;
+}
+
+li .time-label-limit {
+    margin-top: -33px;
+    margin-right: 5px;
+}
+
+.odd, .odd td {
+    width: 200px !important;
+}
+
+.logged-in {
+    height: 30px;
+}
+.logged-in .admin-table-2{
+    vertical-align: top;
+}
+
+
+.model .editor-label{
+    margin-top: 6px;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.field-Birthday {
+    line-height: 1.3;
+}
+
+.filters .admin-table{
+    margin-left: 10px;    
+}
+
+.DataTables_sort_wrapper .DataTables_sort_icon{
+    display: inline;
+    zoom: 1;
+    float: none;
+}

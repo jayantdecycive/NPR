@@ -1,0 +1,47 @@
+﻿@using System.Text.RegularExpressions
+@model npr.domain._event.ticket.NPRTicket
+
+@{
+  
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+    
+    ViewBag.Brief = "Notes for ticket";
+}
+
+
+<h1>Add note for @Model.OwnerName</h1>
+<p>
+    <br />
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class='model-field field-Crop'>
+        @Html.HiddenFor(x=>x.TicketId)
+        
+        @Html.TextArea("Note")
+    </div>
+
+   
+    
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>   
+}
+

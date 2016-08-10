@@ -1,0 +1,4 @@
+﻿@model string
+<span class='admin-grey'>    
+    @Html.Action("Picker/ResType", "Partial", new { FieldName = ViewData.TemplateInfo.HtmlFieldPrefix, Value = ViewData.TemplateInfo.FormattedModelValue })    
+</span>

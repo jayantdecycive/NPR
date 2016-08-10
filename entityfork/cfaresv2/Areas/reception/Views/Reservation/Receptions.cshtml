@@ -1,0 +1,49 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain._event.resevent.store
+@using cfares.domain.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@using cfaresv2.Models
+@model cfares.domain._event._ticket.GuestTicket
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+
+
+    var wizard = ViewBag.wizard as ReceptionWizard;
+    IList<SpeakerEvent> evtList = null;
+    if (AppContext.Current.Event == null && AppContext.Current.EventType!=null)
+    {
+        evtList = AppContext.Current.EventType.ActiveEvents.Cast<SpeakerEvent>().ToList();
+    }
+    else if (AppContext.Current.Event != null)
+    {
+        evtList = new List<SpeakerEvent>() { (SpeakerEvent)AppContext.Current.Event };
+    }
+
+
+}
+
+@section Scripts {
+   
+}
+
+@*----------------------------------------------------
+	Receptions - Reservation Signup
+----------------------------------------------------*@
+
+
+
+<div>
+
+@foreach (var evt in evtList)
+{
+<text>@Html.Partial("_SpeakerEventBadge", evt, new ViewDataDictionary(ViewData) { 
+    {"Ticket",Model}
+ })</text>
+}
+
+</div>

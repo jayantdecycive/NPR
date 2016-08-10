@@ -1,0 +1,28 @@
+﻿@model cfares.domain.user.ResUser
+
+@{
+    ViewBag.Title = "User";
+    ViewBag.Brief = "Edit User";
+
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+}
+
+
+<h1>User Information</h1>
+<p>&nbsp;</p>
+
+
+            
+@Html.Partial("ModelForm/_User")
+
+          
+
+

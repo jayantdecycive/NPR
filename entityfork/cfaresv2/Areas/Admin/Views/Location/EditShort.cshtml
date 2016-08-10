@@ -1,0 +1,39 @@
+﻿@model cfares.domain.store.ResStore
+
+@{
+    if (!Request.QueryString.AllKeys.Contains("snip"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/Layout/_Edit.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+    
+}
+
+
+<h1>Edit Location</h1>
+<p>
+    @ViewBag.Brief
+    <br />
+    @*Info <strong>info info</strong>*@
+</p>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+    
+    @Html.Partial("ModelForm/_LocationShort")
+   
+
+    <div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>
+}

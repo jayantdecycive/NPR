@@ -1,0 +1,7 @@
+﻿@model System.Collections.Generic.List<cfares.domain._event.ResTemplate>
+@if (ViewData["Value"] == null)
+{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ResTemplateId", "Name", Model.First().Id()), new { @class = "res-template picker-dropdown jq-select" })
+}else{
+    @Html.DropDownList(ViewData["FieldName"].ToString(), new SelectList(Model, "ResTemplateId", "Name", ViewData["Value"]), new { @class = "res-template picker-dropdown jq-select" })
+}

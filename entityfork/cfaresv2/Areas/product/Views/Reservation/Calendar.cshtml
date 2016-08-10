@@ -1,0 +1,149 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@using cfaresv2.Models
+@model cfares.domain._event._ticket.FoodTicket
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+    GiveawayOccurrence occurrence = ViewBag.Occurrence as GiveawayOccurrence;
+    ResStore store = occurrence.Store;
+    ProductGiveawayWizard wizard = ViewBag.wizard as ProductGiveawayWizard;
+
+    var slotDaySetSlice = 6;
+    var slotDaySets = SlotDayCollection.GetSets(occurrence.AvailableSlots.Cast<ISlot>().ToList().OrderBy(x => x.Start.Ticks).ToList(), slotDaySetSlice);
+    var dateSpanString = "July 15-20, 2013";
+    var first = true;
+    
+}
+
+@section Scripts {
+    <script>
+        var NARROW_SLOT_SLICE = @Html.Raw(slotDaySetSlice);
+        var WIDE_SLOT_SLICE = 1;
+        $(function() {
+            $(".carousel").hammer().on("swiperight", function(e) {
+                $(this).carousel('prev');
+                console.log(e);
+            });
+            $(".carousel").hammer().on("swipeleft", function() {
+                $(this).carousel('next');
+            });
+
+            $("#slotday_carousel").data("wide", false);
+            $(window).resize();
+
+            $("#date_select").change(function() {
+                var ticks = Number($(this).val());
+                var target = $(".slot-day[data-ticks='{0}']".format(ticks)).closest(".item");
+                if (target.is(":visible")) {
+                    return;
+                }
+                var i = $("#slotday_carousel .item").index(target);
+                $("#slotday_carousel").carousel("pause").carousel(i);
+            });
+            $("#slotday_carousel").on("slid", function(e) {
+                var firstTick = Number($('#slotday_carousel .active .slot-day[data-ticks]').attr('data-ticks'));
+                $("#date_select").val(firstTick);
+
+            });
+        });
+        $(window).resize(function() {
+            //STYLE CHANGES MAY BREAK THIS
+            //var isWide = $("#slotday_carousel .span2").width() == $(window).width();
+            var isWide = $(window).width() < 768;
+            //STYLE CHANGES MAY BREAK THIS
+
+            var reset = $("#slotday_carousel").data("wide") != isWide;
+            
+            if (reset) {
+                var slotDays = $("#day_carousel_inner .slot-day");
+                $("#day_carousel_inner").empty();
+
+                var slotSlice = isWide ? WIDE_SLOT_SLICE : NARROW_SLOT_SLICE;
+
+                slotDays.each(function(i, slotDay) {
+                    if (i == 0 || i % slotSlice == 0) {
+                        $("#day_carousel_inner").append('<div class="day-sets container-fluid item {0}" />'.format(i == 0 ? "active" : ""));
+
+                    }
+                    $("#day_carousel_inner .day-sets").last().append(slotDay);
+                });
+                $("#slotday_carousel").carousel({ interval: false });
+            }
+
+
+            $("#slotday_carousel").data("wide", isWide);
+        });
+
+    </script>
+}
+
+@*----------------------------------------------------
+	Family Influence - Reservation Signup
+----------------------------------------------------*@
+
+@Html.Partial("_Wizard",wizard)
+
+<section id="calendar" class="row-fluid">
+    <div class="title">
+    <h1>@dateSpanString</h1>
+    <h3>Please choose a day and time from the available options below.</h3>
+    </div>
+    <div id="date_select_wrapper" class="hidden-desktop well">
+        @Html.DropDownList("date_select", new SelectList(slotDaySets.SelectMany(x => x)
+       .Select(x => new { Text=x.Date.ToString("dddd, MMM. d"),Value=x.Date.Ticks }),"Value","Text"))
+    </div>
+    <div id="slotday_carousel" class="carousel slide" data-interval="false">
+        
+        
+        <div id="day_carousel_inner" class="day-carousel carousel-inner">
+        @foreach (var slotDays in slotDaySets)
+        {
+            
+            <div class="day-sets container-fluid item @Html.Raw(first?"active":"")">
+
+                @foreach (var slotDay in slotDays)
+                {
+                    <section class="well span2 row-fluid slot-day" data-ticks="@slotDay.Date.Ticks">
+                        <h2 class="span12 hidden-phone">
+                            @slotDay.Date.ToString("dddd,")<br/>
+                            <span class="nowrap">@slotDay.Date.ToString("MMM. d")</span>
+                        </h2>
+                        @foreach (var slot in slotDay.Slots)
+                        {
+                            <a class="span12 slot-cta btn btn-primary" href="@wizard.Prime(slot).NextStep.Uri(ViewContext)">
+                                <span class="start-end">
+                                    <span class="nowrap">@slot.Start.ToString("h:mm tt")
+                                    to </span><br/> 
+                                    <span class="nowrap">@slot.End.ToString("h:mm tt")</span>
+                                </span>
+                                <span class="remaining">@slot.TicketsAvailable reservations available</span>
+                                <span class="click-cta">click to reserve</span>
+                            </a>
+                        }
+            
+                    </section>
+                }
+            </div>
+            first = false;
+        }
+        </div>
+        
+        @if (slotDaySets.Count>1)
+        {
+            <div class="visible-desktop">
+                <a class="carousel-control left" href="#slotday_carousel" data-slide="prev">
+                    
+                </a>
+                <a class="carousel-control right" href="#slotday_carousel" data-slide="next">
+                    
+                </a>
+            </div>
+        }
+
+    </div>
+</section>

@@ -1,0 +1,129 @@
+﻿@model cfares.domain._event.ResEvent
+@{
+    
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    int pk = Model.ResEventId;
+  
+}
+
+<style>
+    #SubHeadingEditor #editor {
+    height:45px;
+    }
+</style>
+
+<h1>Event Details</h1>
+
+<aside>
+	<h2>@Html.Raw(Model.ToString())</h2> @* rclark: changed for more emphasis *@
+	@Html.Partial("ModelDetail/_ResEvent")
+</aside>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(false)
+    
+	<div class="field-block">
+		<fieldset data-pk='@pk' class='resevent-@pk inline-block'>
+			
+			@Html.HiddenFor(m => m.ResEventId)
+
+			<div class='model-field field-SubHeading'>
+				<div class="editor-label inline-block">
+					@Html.LabelAndDescriptionFor(m => m.SubHeading)
+				</div>
+				<div class="editor-field inline-block" id="SubHeadingEditor">
+					@Html.EditorFor(m => m.SubHeading)
+					@Html.ValidationMessageFor(m => m.SubHeading)
+				</div>
+			</div>
+
+			<div class='model-field field-Description'>
+				<div class="editor-label inline-block" style="float: left;">
+					@Html.LabelAndDescriptionFor(m => m.Description, "Summary")
+                   
+               </div>
+
+              <div class="editor-field inline-block"  id="DiscriptionEditor">
+				@Html.EditorFor(m => m.Description)
+
+					@Html.ValidationMessageFor(m => m.Description)
+				</div>
+
+			</div>
+
+		    <div class='model-field field-MustBeOfAgeToAttend'>
+		        <div class="editor-field inline-block">
+		            @Html.EditorFor(m => m.MustBeOfAgeToAttend)
+		            @Html.ValidationMessageFor(m => m.MustBeOfAgeToAttend)
+		        </div>
+				<div class="editor-label inline-block">
+		            @Html.LabelFor(m => m.MustBeOfAgeToAttend)
+		        </div>
+		    </div>
+            
+		    <script>
+		        $(function () {
+		            $("[name='MediaId']").bind("pk",function(e,pk) {
+		                var m = new DomainModel.Media({ MediaId: Number(pk) });
+		                m.SetImage($("#media_preview"),{cropped:true,width:150});
+		            });
+		        });
+    		</script>
+            
+		    <div class='model-field field-Media'>
+				<div class="editor-label inline-block">
+					@Html.LabelFor(m => m.MediaId)
+				    <p>Upload a photo or image to be presented with this event.</p>
+				</div>
+				<div class="editor-field inline-block">
+					<div id="media_preview">
+				        @if (Model.MediaId != null)
+            {
+                            @Html.Media(Model.Media, crop: true, width: 100)
+            }
+				    </div>
+
+                
+				@Html.EditorFor(m => m.MediaId,new
+					    {
+					        Name=Model.Name+" Image",
+                            Description="Media for "+Model.Name,
+                            IsSystem="true",
+                            OwnerId="auto",
+                            AdminEdit="/Admin/Media/Crop/"+Model.MediaId+"?snip=true"
+					    })
+					@Html.ValidationMessageFor(m => m.MediaId)
+				</div>
+			</div>
+
+		</fieldset>
+	</div>
+	
+	<div class='submit-block'>
+		<div class='button-cta' data-icon="ui-icon-plus">
+			<input type="hidden" id="hdn-stores" name="stores" />
+			<input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" style="padding: .4em 1em;" aria-disabled="false" />
+		</div>
+	</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrap-wysiwyg")
+}
+
+<link href="/Content/bootstrap-combined.no-icons.min.css" rel="stylesheet"/>
+<script>
+    $(function () {
+        debugger;
+      //  $("#Description").wysihtml5();
+     //   $("#editorNew").wysihtml5();
+        $("#DiscriptionEditor #editorNew").attr('contenteditable', true);
+        var discriptionEditorValue = $("#Description").val();
+        //$("#editorNew").text(discriptionEditorValue);
+        $("#editorNew").html(discriptionEditorValue);
+    });
+</script>
+
+

@@ -1,0 +1,134 @@
+﻿@model cfares.domain._event.ResEvent
+@{
+    ViewBag.Title = "Event Overview";
+    ViewBag.ModelName = "Occurrence";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dash.cshtml";
+}
+
+
+
+<h1>Participating Restaurant Details</h1>
+<p>A list of your participating Restaurants.</p>
+
+
+
+@section Meta{
+    <script type="text/javascript">
+        var OccurrenceList = new DomainModel.OccurrenceCollection();
+        OccurrenceList.abstract = true;
+        var qs = $.parseParams((window.location.search).replace("?", ""));
+
+
+        if (qs && qs["where"]) {
+            var where = JSON.parse(qs["where"]);
+            console.log(where);
+            OccurrenceList.setWhere("qs", where);
+        }
+
+        var SlotList = new DomainModel.SlotCollection();
+        SlotList.abstract = true;
+
+        $(function () {
+        	// SH - Needed since I don't have time to research further and I need sorting to retain from a DT POV 
+        	$('#slot_dash th[data-column-name=Start]').click();
+        });
+
+        if (qs && qs["event"]) {
+            var where = (qs["event"]);
+
+            SlotList.setQueryParam("event", where);
+        }
+        if (qs && qs["stores"]) {
+            var where = (qs["stores"]);
+
+            SlotList.setQueryParam("stores", where);
+        }
+        DataFormat.OccurrenceUrl = function(row, val) {
+            return "<a href='/Admin/Occurrence/Capacity/{0}'>Edit Capacity</a>".format(val);
+        };
+
+    </script>    
+}    
+@section Action
+{
+    @if(!String.IsNullOrWhiteSpace(Model.Name)){
+    <fieldset data-pk="new" class="slot-new">
+            
+            <h1>Event Details</h1>
+         
+            <div class="model-field field-Start">
+            <div class="display-label inline-block">Event Name</div>
+            <div class="display-field inline-block">
+            @Model.Name
+            </div>
+            </div>
+
+            <div class="model-field field-Start">
+            <div class="display-label inline-block">Registration Start Date</div>
+            <div class="display-field inline-block">
+            @Model.RegistrationStartString
+            </div>
+            </div>
+
+            <div class="model-field field-Start">
+            <div class="display-label inline-block">Registration End Date</div>
+            <div class="display-field inline-block">
+            @Model.RegistrationEndString
+            </div>
+            </div>
+
+            <div class="model-field field-Start">
+            <div class="display-label inline-block">Registration Cutoff</div>
+            <div class="display-field inline-block">
+            @Model.CutoffString
+            </div>
+            </div>
+
+            <div class="model-field field-Start">
+            <div class="display-label inline-block">Capacity / Tickets Issued</div>
+            <div class="display-field inline-block">
+            @Model.TotalCapacity / @Model.TotalTicketsIssued
+            </div>
+            </div>
+            
+        </fieldset>
+    }
+
+
+
+}
+        
+@section Table{
+    <table id="occurrence_dash" class='data-table' data-data='OccurrenceList' 
+           data-mode='backbone'>
+        <thead>
+            <tr>
+                <th data-id='ResEventLink' data-on-display='DataFormat.OccurrenceUrl' data-column-parent='OccurrenceId'></th>                        
+                <th data-id='StoreName' width="34%" data-searchable="true" data-sortable='true'>Restaurant Name</th>   
+                <th data-column-name='OccurrenceIdL' width="14%" data-id-column='true' >Occurrence Id</th>
+                <th data-id='ResStoreLink' data-on-display='DataFormat.StoreUrl' data-column-parent='StoreId'></th>                        
+                <th data-column-name='StoreIdL' data-id-column='true' >Store Id</th>
+                <th data-column-name='Status' data-searchable='false' data-on-display='EnumFormat.OccurrenceStatus'>Status</th>  
+            </tr>
+        </thead>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <p style="padding-left:20px;">A list of your event's time slots.</p><br />
+
+
+    <table id="slot_dash" class='data-table' data-data='SlotList' data-mode='backbone'>
+            <thead>
+            <tr>
+                <th data-id='SlotLink' data-on-display='DataFormat.SlotUrl' data-column-parent='SlotId'></th>                        
+                <th data-id='SlotId' width="34%" data-searchable="false" data-sortable='false' data-visible="false">Slot Id</th>   
+                <th data-column-name='Start' data-on-display='DataFormat.dateWithoutDaylightDavings' >Registration Start</th>			    
+                <th data-column-name='End' data-on-display='DataFormat.dateWithoutDaylightDavings'>Registration End</th>
+                <th data-column-name='TotalTickets'>Total Reservations</th>
+                <th data-column-name='TicketsAvailable'>Reservations Available</th>
+                <th data-column-name='Capacity'>Capacity</th>
+		    </tr>
+            </thead>
+        </table>
+}

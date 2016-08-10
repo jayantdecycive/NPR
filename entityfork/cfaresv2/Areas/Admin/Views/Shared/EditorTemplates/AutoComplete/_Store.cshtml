@@ -1,0 +1,22 @@
+﻿@model cfacore.shared.domain.store.Store
+@{ 
+    string defaultLabel;
+    string id = "0";
+    if(Model==null){
+        defaultLabel = "No store";        
+    }else{
+        id = Model.Id();
+        if (Model.Name == null)
+        {
+            defaultLabel = string.Format("Store number:{0}", Model.Id());
+        }
+        else
+        {
+            defaultLabel = Model.Name.ToString();
+        }
+    }
+}
+<span class='admin-grey'>    
+    <input type="text" data-default-label="@defaultLabel" value="@id" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='related-model'
+    data-model='DomainModel.StoreCollection' />
+</span>

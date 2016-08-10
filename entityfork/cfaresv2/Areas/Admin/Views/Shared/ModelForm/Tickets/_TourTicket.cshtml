@@ -1,0 +1,319 @@
+﻿@model cfares.domain._event._ticket.tours.TourTicket
+
+@{string pk = Model.IsBound() ? Model.Id().ToString() : "new";}
+    
+    <fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+        <div class='legend inline-block'>Tour Ticket</div>
+
+
+        <div class="editor-label" data-field="GuestCount">
+            @Html.LabelFor(model => model.GuestCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GuestCount)
+            @Html.ValidationMessageFor(model => model.GuestCount)
+        </div>
+
+        @Html.HiddenFor(model => model.TourTicketId)
+
+        @Html.HiddenFor(model => model.CreationSrc)
+
+      </fieldset>
+      <fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+        <div class='legend inline-block'>Lunch</div>
+
+        <div class="editor-label" data-field="TotalCostOfLunches">
+            @Html.LabelFor(model => model.TotalCostOfLunches)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TotalCostOfLunches)
+            @Html.ValidationMessageFor(model => model.TotalCostOfLunches)
+        </div>
+
+        <div class="editor-label" data-field="OptInForLunch">
+            @Html.LabelFor(model => model.OptInForLunch)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OptInForLunch)
+            @Html.ValidationMessageFor(model => model.OptInForLunch)
+        </div>
+
+        <div class="editor-label" data-field="NumberOfAdultLunches">
+            @Html.LabelFor(model => model.NumberOfAdultLunches)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumberOfAdultLunches)
+            @Html.ValidationMessageFor(model => model.NumberOfAdultLunches)
+        </div>
+
+        <div class="editor-label" data-field="NumberOfKidLunches">
+            @Html.LabelFor(model => model.NumberOfKidLunches)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumberOfKidLunches)
+            @Html.ValidationMessageFor(model => model.NumberOfKidLunches)
+        </div>
+
+        <div class="editor-label" data-field="NumberOfSpecialNeedLunches">
+            @Html.LabelFor(model => model.NumberOfSpecialNeedLunches)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumberOfSpecialNeedLunches)
+            @Html.ValidationMessageFor(model => model.NumberOfSpecialNeedLunches)
+        </div>
+
+        <div class="editor-label" data-field="SpecialDietNeedsDescription">
+            @Html.LabelFor(model => model.SpecialDietNeedsDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SpecialDietNeedsDescription)
+            @Html.ValidationMessageFor(model => model.SpecialDietNeedsDescription)
+        </div>
+
+        </fieldset>
+      <fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+        <div class='legend inline-block'>For Team Members</div>
+        
+
+        <div class="editor-label" data-field="VisitMarketing">
+            @Html.LabelFor(model => model.VisitMarketing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitMarketing)
+            @Html.ValidationMessageFor(model => model.VisitMarketing)
+        </div>
+
+        <div class="editor-label" data-field="VisitTech">
+            @Html.LabelFor(model => model.VisitTech)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitTech)
+            @Html.ValidationMessageFor(model => model.VisitTech)
+        </div>
+
+        <div class="editor-label" data-field="VisitInnovation">
+            @Html.LabelFor(model => model.VisitInnovation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitInnovation)
+            @Html.ValidationMessageFor(model => model.VisitInnovation)
+        </div>
+
+        <div class="editor-label" data-field="VisitTraining">
+            @Html.LabelFor(model => model.VisitTraining)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitTraining)
+            @Html.ValidationMessageFor(model => model.VisitTraining)
+        </div>
+
+        <div class="editor-label" data-field="VisitWellness">
+            @Html.LabelFor(model => model.VisitWellness)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitWellness)
+            @Html.ValidationMessageFor(model => model.VisitWellness)
+        </div>
+
+        <div class="editor-label" data-field="VisitWareHouse">
+            @Html.LabelFor(model => model.VisitWareHouse)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitWareHouse)
+            @Html.ValidationMessageFor(model => model.VisitWareHouse)
+        </div>
+
+        <div class="editor-label" data-field="VisitIT">
+            @Html.LabelFor(model => model.VisitIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitIT)
+            @Html.ValidationMessageFor(model => model.VisitIT)
+        </div>
+
+        <div class="editor-label" data-field="VisitOther">
+            @Html.LabelFor(model => model.VisitOther)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitOther)
+            @Html.ValidationMessageFor(model => model.VisitOther)
+        </div>
+
+        <div class="editor-label" data-field="VisitOtherDescription">
+            @Html.LabelFor(model => model.VisitOtherDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VisitOtherDescription)
+            @Html.ValidationMessageFor(model => model.VisitOtherDescription)
+        </div>
+
+         </fieldset>
+      <fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+        <div class='legend inline-block'>Special Needs</div>
+
+        <div class="editor-label" data-field="HasSpecialNeeds">
+            @Html.LabelFor(model => model.HasSpecialNeeds)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HasSpecialNeeds)
+            @Html.ValidationMessageFor(model => model.HasSpecialNeeds)
+        </div>
+
+        <div class="editor-label" data-field="IsVisuallyImpaired">
+            @Html.LabelFor(model => model.IsVisuallyImpaired)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsVisuallyImpaired)
+            @Html.ValidationMessageFor(model => model.IsVisuallyImpaired)
+        </div>
+
+        
+
+        <div class="editor-label" data-field="IsHearingImpaired">
+            @Html.LabelFor(model => model.IsHearingImpaired)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsHearingImpaired)
+            @Html.ValidationMessageFor(model => model.IsHearingImpaired)
+        </div>
+
+        <div class="editor-label" data-field="NeedsWheelChair">
+            @Html.LabelFor(model => model.NeedsWheelChair)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NeedsWheelChair)
+            @Html.ValidationMessageFor(model => model.NeedsWheelChair)
+        </div>
+
+        <div class="editor-label" data-field="OtherNeeds">
+            @Html.LabelFor(model => model.OtherNeeds)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherNeeds)
+            @Html.ValidationMessageFor(model => model.OtherNeeds)
+        </div>
+
+        <div class="editor-label" data-field="OtherNeedsDescription">
+            @Html.LabelFor(model => model.OtherNeedsDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherNeedsDescription)
+            @Html.ValidationMessageFor(model => model.OtherNeedsDescription)
+        </div>
+
+        </fieldset>
+      <fieldset data-pk='@pk' class='tourticket-@pk auto-format-mvc'>
+        <div class='legend inline-block'>Group Information</div>
+
+         <div class="editor-label" data-field="GroupName">
+            @Html.LabelFor(model => model.GroupName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GroupName)
+            @Html.ValidationMessageFor(model => model.GroupName)
+        </div>
+
+        <div class="editor-label" data-field="Guests">
+            @Html.LabelFor(model => model.GuestList)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GuestList)
+            @Html.ValidationMessageFor(model => model.GuestList)
+        </div>
+
+        <div class="editor-label" data-field="IsFamilyWithKids">
+            @Html.LabelFor(model => model.IsFamilyWithKids)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsFamilyWithKids)
+            @Html.ValidationMessageFor(model => model.IsFamilyWithKids)
+        </div>
+
+        <div class="editor-label" data-field="IsSchoolGroup">
+            @Html.LabelFor(model => model.IsSchoolGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsSchoolGroup)
+            @Html.ValidationMessageFor(model => model.IsSchoolGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsFamilyWithoutKids">
+            @Html.LabelFor(model => model.IsFamilyWithoutKids)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsFamilyWithoutKids)
+            @Html.ValidationMessageFor(model => model.IsFamilyWithoutKids)
+        </div>
+
+        <div class="editor-label" data-field="IsAdultGroup">
+            @Html.LabelFor(model => model.IsAdultGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsAdultGroup)
+            @Html.ValidationMessageFor(model => model.IsAdultGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsReligiousGroup">
+            @Html.LabelFor(model => model.IsReligiousGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsReligiousGroup)
+            @Html.ValidationMessageFor(model => model.IsReligiousGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsSeniorGroup">
+            @Html.LabelFor(model => model.IsSeniorGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsSeniorGroup)
+            @Html.ValidationMessageFor(model => model.IsSeniorGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsBusinessGroup">
+            @Html.LabelFor(model => model.IsBusinessGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsBusinessGroup)
+            @Html.ValidationMessageFor(model => model.IsBusinessGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsRavingFans">
+            @Html.LabelFor(model => model.IsRavingFans)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsRavingFans)
+            @Html.ValidationMessageFor(model => model.IsRavingFans)
+        </div>
+
+        <div class="editor-label" data-field="IsTeamMemberGroup">
+            @Html.LabelFor(model => model.IsTeamMemberGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsTeamMemberGroup)
+            @Html.ValidationMessageFor(model => model.IsTeamMemberGroup)
+        </div>
+
+        <div class="editor-label" data-field="IsOtherTypeOfGroup">
+            @Html.LabelFor(model => model.IsOtherTypeOfGroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsOtherTypeOfGroup)
+            @Html.ValidationMessageFor(model => model.IsOtherTypeOfGroup)
+        </div>
+
+        <div class="editor-label" data-field="OtherTypeDescription">
+            @Html.LabelFor(model => model.OtherTypeDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherTypeDescription)
+            @Html.ValidationMessageFor(model => model.OtherTypeDescription)
+        </div>
+
+        
+
+       
+
+        
+
+        
+    </fieldset>

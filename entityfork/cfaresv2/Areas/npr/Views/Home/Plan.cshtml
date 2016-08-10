@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Plan Your Visit";
+    ViewBag.Nav = "Plan";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+}
+
+<h1>Plan Your Visit</h1>
+
+<ul id="plan-visit">
+	<!-- Left column -->
+	<li>
+		<div id="guests">
+			<span class="title-guests">Guests</span>
+			<p>We are so excited to have you visit our brand new headquarters in <a href="http://www.nomabid.org/maps/">NoMa</a>! After checking in with NPR security, we hope you will spend some time exploring the attractions in our lobby or browse through the merchandise in NPR Commons, the official NPR shop. If you're feeling a little parched, pick up a cup of coffee or tea from the coffee bar. You are also welcome to take photographs in this area of the building.</p>
+		</div>
+		<div id="arrival">
+			<span class="title-arrival">Arrival</span>
+			<p>We recommend that you arrive at least 15 minutes prior to the start of the tour to check in with NPR security.  Guests will meet and assemble in front of the NPR Commons, located just inside the main doors on the left side of the lobby. The tour starts promptly at 11am.</p>
+		</div>
+		<div id="directions">
+			<span class="title-directions">Directions</span>
+			<div class="accordion" id="dir">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#dir" href="#collapse-dir1"><span class="tri-down"></span>Car</a>
+					</div>
+					<div id="collapse-dir1" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<p>For driving directions, you can locate the NPR headquarters on <a href="https://maps.google.com/maps?oe=utf-8&client=firefox-a&q=1111+north+capitol+street+ne&ie=UTF-8&hq=&hnear=0x89b7b81f92c8fddb:0x8d124c38875251a2,1111+North+Capitol+St+NE,+Washington,+DC+20002&gl=us&ei=sDeWUbTYGZal4APQjoHQDg&ved=0CC4Q8gEwAA" target="_blank">this
+				Google map.</a></p>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#dir" href="#collapse-dir2"><span class="tri-right"></span>Metrorail</a>
+					</div>
+					<div id="collapse-dir2" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<p>The NPR headquarters are about equal distance from both the <a href="http://www.wmata.com/rail/stations.cfm">Union Station and NoMa-Gallaudet U</a> stops on the Red Line. <a href="http://www.wmata.com/rail/maps/map.cfm">Check out the map</a> to see which would work best for you.</p>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#dir" href="#collapse-dir3"><span class="tri-right"></span>Bus</a>
+					</div>
+					<div id="collapse-dir3" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<p>The Loudon County Transit and the WMTA Commuters Bus provide service near the building. Below is a list of the neighborhood stops:</p>
+							<ul>
+								<li>90/92/93 U Street - Garfield Line</li>
+								<li>96/97 East Capitol Street - Cardozo Line</li>
+								<li>80 North Capitol Street Line</li>
+								<li>P6 Anacostia - Eckington Line</li>
+								<li>D3 Ivy City - Dupont Circle Line</li>
+								<li>D4 Ivy City - Franklin Square Line</li>
+								<li>D6 to Stadium-Armory</li>
+								<li>D8 Hospital Center - Union Station</li>
+								<li>X1 Benning Road - Potomac Park Line</li>
+								<li>X2 Benning Road - H Street Line</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#dir" href="#collapse-dir4"><span class="tri-right"></span>Bike</a>
+					</div>
+					<div id="collapse-dir4" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<p><a href="http://metbranchtrail.com">Metropolitan Branch Trail</a>: The Metropolitan Branch Trail runs eight miles from nearby Union Station to Silver Spring, MD. <a href="http://metbranchtrail.com/map">Click here for a map</a>. There are a limited number of bike racks located on the L street side of the building.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+
+	<!-- Right Column -->
+	<li>
+		<div id="parking">
+			<span class="title-parking">Parking</span>
+			<p>There is a public parking lot on L street across from NPR headquarters. The neighborhood also offers metered street parking where available. If you are arriving by bike, there are a limited number of bike racks located on the L street side of the building.</p>
+		</div>
+		<div id="disabilities">
+			<span class="title-disabilities">Visitors with Disabilities</span>
+			<p>NPR is accessible to guests with disabilities. If you require special accommodations, please let us know in advance by contacting 202-513-2031.</p>
+		</div>
+		<div id="attire">
+			<span class="title-attire">Attire</span>
+			<p>Our dress code is casual. As our guest, we want you to be comfortable. However, you will be doing quite a bit of walking on the tour and so we recommend suitable footwear.</p>
+		</div>
+		<div id="hotels">
+			<span class="title-hotels">Hotels</span>
+			<ul>
+				<li>
+                    <address>
+                        <span class="hotel-name">Hilton Garden Inn </span>
+                        1225 First St, NE<br />
+                        Washington, DC 20002<br />
+                        202.408.4870<br />
+                        <a href="http://hiltongardeninn.hilton.com/en/gi/reservations/index.jhtml?hotel=DCANMGI&corporateCode=2847522">Online Reservations</a>
+                    </address>
+                    
+
+                </li>
+
+				<li>
+
+					<address>
+                        <span class="hotel-name">Phoenix Park Hotel</span>
+                        520 North Capitol Street, NE<br/>
+                        Washington, DC 20002<br/>
+                        202.737.9575<br />
+                        <a href="https://bookings.ihotelier.com/Phoenix-Park-Hotel/bookings.jsp?hotelId=75979&languageid=1">Online Reservations</a><br />
+                        Use Promo/Corporate Code: NPR
+                    </address>
+				</li>
+			</ul>
+		</div>
+	</li>
+</ul>
+
+<!-- Triangle controls for each accordion question -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.accordion').on('show hidden', function (n) {
+			$(n.target).siblings('.accordion-heading').find('.accordion-toggle span').toggleClass('tri-right tri-down');
+		});
+	});
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>

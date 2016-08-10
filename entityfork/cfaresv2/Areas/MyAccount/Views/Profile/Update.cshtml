@@ -1,0 +1,192 @@
+﻿@using System.Globalization
+@model cfaresv2.Areas.MyAccount.Models.UpdateAccountViewModel
+@{
+    ViewBag.Title = "My Account Information";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>My Account Information</h1>
+	</div>
+	<p class="text-center">Below is your account information. To make changes simply modify the fields and hit "Save Changes."</p>
+</div>
+
+<div class="row-fluid">
+	<div class="span7 offset3" id="updateAccount">
+			<div class="accountPasswordBlock">
+				
+				@using (Html.BeginForm("Password", "Profile", new {area = "MyAccount"}, FormMethod.Post, new {id = "passwordResetAccount", @class = "form-horizontal", style = "display: inline"})) {
+
+					<div class="control-group">
+						@Html.LabelFor(m => m.User.ApplicationUser.Email, "Email:", new {@class = "control-label"})
+						<div class="controls">
+							@Html.TextBoxFor(x => x.User.ApplicationUser.Email, new { @readonly = "true", disabled="disabled"})
+							@Html.ValidationMessageFor(m => m.User.ApplicationUser.Email)
+						</div>
+					</div>
+				
+					<div class="control-group ">
+						@Html.LabelFor(model => model.PasswordCurrent, "Current Password:", new {@class = "control-label"})
+						<div class="controls">
+							@Html.TextBoxFor(model => model.PasswordCurrent, new { @type = "password" })
+							@Html.ValidationMessageFor(model => model.PasswordCurrent)
+						</div>
+					</div>
+					<div class="control-group pad25">
+						@Html.LabelFor(model => model.PasswordNew, "New Password:", new {@class = "control-label"})
+						<div class="controls">
+							@Html.TextBoxFor(model => model.PasswordNew, new { @type = "password" })
+							@Html.ValidationMessageFor(model => model.PasswordNew)
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(model => model.PasswordNewConfirm, "Re-enter New Password:", new {@class = "control-label"})
+						<div class="controls">
+							@Html.TextBoxFor(model => model.PasswordNewConfirm, new { @type = "password" })
+   							@Html.ValidationMessageFor(model => model.PasswordNewConfirm)
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn-large btn btn-primary" name="submit" value="account">Save Changes</button>
+						</div>
+					</div>
+				}
+			</div>
+
+				@using (Html.BeginForm("Update", "Profile", new {area = "MyAccount"}, FormMethod.Post, new {id = "updateAccount", @class = "form-horizontal", style = "display: inline"})) {
+
+			<div class="control-group pad25">
+				<label class="control-label" for="nameFirst">First Name:</label>
+				<div class="controls">
+					@Html.EditorFor(x=>x.User.ApplicationUser.FirstName)
+                    @Html.ValidationMessageFor(x=>x.User.ApplicationUser.FirstName)
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="nameLast">Last Name:</label>
+				<div class="controls">
+					@Html.EditorFor(x=>x.User.ApplicationUser.LastName)
+                    @Html.ValidationMessageFor(x=>x.User.ApplicationUser.LastName)
+                    @Html.HiddenFor(x=>x.User.ApplicationUser.UserId)
+				</div>
+			</div>
+				    <div class="control-group">
+				        <label class="control-label" for="birthMonth">Birthday:</label>
+				        <div class="controls">
+				            @{
+                             var monthList = DateTimeFormatInfo.CurrentInfo.MonthNames.ToList();
+				            }
+
+                            <select name="BirthMonth" class="span4" id="BirthMonth">
+                            <option value="">Month</option>
+                            @foreach (var o in Enumerable.Range(0, 12).Select(x => new {Label=monthList[x],Value=x+1}))
+                            {
+                                <option value="@o.Label" @(o.Label==Model.User.ApplicationUser.BirthMonth?"selected=\"selected\" ":"")>@o.Label</option>
+                            }
+                            </select>                            
+				            
+                            @Html.ValidationMessageFor(x=>x.User.ApplicationUser.BirthMonth)                                                        
+
+				            <select name="BirthDate" class="span4" id="BirthDate">
+				                <option value="">Day</option>
+				                @foreach (var o in Enumerable.Range(0, 31).Select(x => new { Label = x + 1, Value = x + 1 }))
+				                {
+				                    <option value="@o.Value" @(o.Value==Model.User.ApplicationUser.BirthDate?"selected=\"selected\" ":"")>@o.Label</option>
+				                }
+				            </select>
+                            
+                            @Html.ValidationMessageFor(x=>x.User.ApplicationUser.BirthDate)
+
+				            
+				            @*  control not initializing correctly -- fix is above
+				            
+                            Html.DropDownListFor(x=>x.User.ApplicationUser.BirthMonth, 
+				                                  new SelectList(Enumerable.Range(0, 12)
+				                                                           .Select(x => new {Label=monthList[x],Value=x+1}),
+				                                                 "Value","Label"),"Month", new {@class="span4"}
+				                 )
+
+				            @Html.DropDownListFor(x=>x.User.ApplicationUser.BirthDate, 
+				                                  new SelectList(Enumerable.Range(0, 31)
+				                                                           .Select(x => new {Label=x+1,Value=x+1}),
+				                                                 "Value","Label"),"Day", new {@class="span3"}
+				                 )*@
+
+			      
+				        </div>
+				    </div>
+        
+			<div class="control-group">
+				<label class="control-label" for="zipCode">Zip Code:</label>
+				<div class="controls">
+                    
+					@Html.EditorFor(x=>x.User.ApplicationUser.Address.ZipString)
+                    @Html.ValidationMessageFor(x=>x.User.ApplicationUser.Address.ZipString)
+				</div>
+			</div>
+			@*<div class="control-group">
+				<label class="control-label" for="gender">Gender:</label>
+				<div class="controls">
+					<select id="gender" class="span4">
+						<option>Gender</option>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+			</div>*@
+			
+			@*<div class="control-group ">
+				@Html.LabelFor(model => model.NumberOfGuests, "Number of family members:", new {@class = "control-label"})
+				<div class="controls">
+	            @Html.DropDownListFor(x=>x.NumberOfGuests, new SelectList( Enumerable.Range(0,8) ) )
+				@Html.ValidationMessageFor(x=>x.NumberOfGuests)
+				</div>
+			</div>*@
+
+
+@*			<div class="control-group">
+				<label class="control-label" for="zipCode">Family Members:</label>
+				<div class="controls family-members">
+					<input type="text" id="familyMember1" class="inline" />
+					<select id="familyMember1-role" class="span3 inline">
+						<option>Daughter</option>
+						<option>Son</option>
+					</select>
+					<button class="btn btn-small inline">Remove</button>
+				</div>
+				<div class="controls family-members">
+					<input type="text" id="familyMember1" class="inline" />
+					<select id="familyMember1-role" class="span3 inline">
+						<option>Daughter</option>
+						<option>Son</option>
+					</select>
+					<button class="btn btn-small inline">Remove</button>
+				</div>
+				<div class="controls family-members">
+					<input type="text" id="familyMember1" class="inline" />
+					<select id="familyMember1-role" class="span3 inline">
+						<option>Daughter</option>
+						<option>Son</option>
+					</select>
+					<button class="btn btn-small inline">Remove</button>
+				</div>
+				<div class="controls family-members">
+					<div class="controls btn-container">
+						<button type="submit" class="btn-small">Add Family Member</button>
+					</div>
+				</div>
+			</div>*@
+			
+					<div class="control-group">
+					    <div class="controls">
+							<button type="submit" name="submit" value="profile" class="btn-large btn btn-primary">Save Changes</button>
+					</div>
+					</div>
+		
+	            @*@Html.HiddenFor( m => m.ReturnUrl )*@
+		
+			}
+	</div>
+</div>

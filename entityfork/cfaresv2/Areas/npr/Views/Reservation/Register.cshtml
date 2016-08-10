@@ -1,0 +1,345 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+
+@{
+	ViewBag.Title = "Registration";
+	Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+	if (Model.Slot != null && Model.Slot.Occurrence != null
+		&& Model.Slot.Occurrence.ResEvent != null
+		&& Model.Slot.Occurrence.ResEvent.ReservationTypeId == "SpecialEvent")
+	{
+		ViewBag.Nav = "Events";
+	}
+	else
+	{
+		ViewBag.Nav = "Tours";
+	}
+}
+
+    @* =======================================================================================================================================
+    PAGE DESCRIPTION *@
+
+    @Html.Partial("Breadcrumbs")
+
+	@Html.HiddenFor(m => m.CardNumber) 
+
+    @if (Model.IsSpecialtyTicket)
+	{
+        <h1 style="margin-bottom:35px;">Personalized Tour Registration</h1>
+        <p>We welcome the opportunity to provide your group or organization with a tour of NPR’s headquarters. We will do our best to accommodate your 
+            party with your preferred date requested below. Please be aware that there is a twenty (20) person maximum per walking tour which would 
+            include organizers and/or translators. If your total party is greater than twenty, please break your group into two or more requests when 
+			filling out the form. If your party has fewer than four people, please reserve a space on the @Html.ActionLink("public tour", "Tours", "Home").  Please schedule your tour at least two weeks in advance and up to two months prior to the date you wish to attend the tour. 
+            We will review the information and contact you within four (4) business dates to discuss your requests and requirements. After everything 
+            is finalized, you will receive an email with the date, time and confirmation number per request.
+        <br/>Thank you for your interest in NPR.</p>
+
+
+        <fieldset class="personalized-tour-details">
+			<legend class="title-border">Personalized Tour Details</legend>
+			<p><span class="strong">Monday-Friday</span> (except national holidays, subject to availability)</p>
+			<p>Group tours cannot be scheduled during the hour reserved for the public tour (every day at 11 am). If you wish to schedule your tour during this time, please register for the @Html.ActionLink("public tour", "Tours", "Home")</p>
+			<p><span class="strong">Group Size:</span> 5 -20 guests</p>
+    
+			<ul>
+				<li class="professional">
+					<p><strong>For:</strong> Professional Organizations:</p>
+					<ul>
+						<li>Media Groups</li>
+						<li>Professional Groups in related fields</li>
+						<li>Colleagues</li>
+					</ul>
+				</li>
+				<li class="students">
+					<p>Students Studying:</p>
+					<ul>
+						<li>Journalism</li>
+						<li>Communications</li>
+						<li>Political Science</li>
+						<li>Related Studies</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<p class="margin-top-10">If your organization does not fall into the categories above, please register for the @Html.ActionLink("public tour", "Tours", "Home")</p>
+		</fieldset>
+	}
+	else
+	{
+        <h1 class="margin-bot-20">Registration</h1>
+	}
+
+    <p>Please complete your reservation by filling out the form below. 
+<span class="disclaimer">*</span> Indicates required fields.</p>
+   
+        
+    @* =======================================================================================================================================
+    LEADER DETAILS *@
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal registration" }))
+	{     
+
+			@Html.ValidationSummary(false)
+    
+
+        <h3>Event Organizer Information</h3>    
+ 
+
+    
+		if (Model.IsSpecialtyTicket)
+		{
+		<p>Please select your 3 preferred dates for attending a tour.</p>
+                
+		<div class="priority">
+			@for (int i = 0; i < 3; i++)
+   {
+				<div class="priority-group">
+					@if (i == 0)
+	 {
+						<span class="asterisk">*</span>
+	 }
+					@Html.Label(string.Format("Priority {0}:", i + 1), new { @class = "control-label" })
+					<div class="controls">
+			        
+						<span class="slot-picker-container">
+							@if (i == 0)
+	   {
+								@Html.TextBoxFor(m => m.Dates[i], new { @class = "slotpicker required", autocomplete = "off" })
+	   }
+	   else
+	   {
+								@Html.TextBoxFor(m => m.Dates[i], new { @class = "slotpicker", autocomplete = "off" })
+	   }
+
+                            
+						</span>
+
+					</div>
+				</div>
+   }
+		</div>       
+		}
+            
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.Owner.FirstName, "First Name:", new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.Owner.FirstName, new { @class = "required" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.Owner.FirstName)</span>
+	</div>
+
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.LastName, "Last Name:", new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.Owner.LastName, new { @class = "required" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.Owner.LastName)</span>
+	</div>
+
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.Owner.Email, "Email Address:", new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.Owner.Email, new { @class = "required email" })
+			<span class="help-inline">@Html.ValidationMessageFor(m => m.Owner.Email)</span>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<span class="asterisk">*</span>
+		@Html.LabelFor(m => m.Owner.Username, "Confirm Email:", new { @class = "control-label" })
+		<div class="controls">
+			@Html.TextBoxFor(m => m.Owner.Username, new { @class = "required email" })
+		</div>
+		<span class="validation">@Html.ValidationMessageFor(m => m.Owner.Username)</span>
+	</div>
+		if (Model.IsSpecialtyTicket)
+		{
+		<div class="control-group">
+			<span class="asterisk">*</span>
+			@Html.LabelFor(m => m.Owner.HomePhoneString, "Phone:", new { @class = "control-label" })
+			<div class="controls">
+				@Html.TextBoxFor(m => m.Owner.HomePhoneString, new { @class = "required" }) <span class="example">example: 4129998630 (no dashes)</span>
+			</div>
+			<span class="validation">@Html.ValidationMessageFor(m => m.Owner.HomePhoneString)</span>
+		</div>
+		}
+		else
+		{
+		<div class="control-group margin-bot-0">
+			<span class="asterisk">*</span>
+			<p>Best Way to Contact You:</p>
+			<label class="radio">@Html.RadioButtonFor(m => m.ContactPreference, "Email") Email:</label>
+			<label class="radio radio-inline">@Html.RadioButtonFor(m => m.ContactPreference, "Phone") Phone:</label>@Html.TextBoxFor(m => m.Owner.HomePhoneString, new { disabled = "disabled" }) <span class="example">example: 4129998630 (no dashes)</span>
+		</div>
+		}
+    
+		if( Model.IsPaid )
+		{
+		<style>
+			.accordion div.accordion-heading a.accordion-toggle span.opentitle.tri-down
+			{
+				display: none;
+			}
+			.accordion .control-group
+			{
+				margin-left: 0px ! important;
+			}
+			div.topicsofinterest label
+			{
+				height: 115px;
+			}
+			div.topicsofinterest .controls
+			{
+				height: 115px;
+				vertical-align: top;
+			}
+			div.topicsofinterest .controls DIV
+			{
+				padding-bottom: 5px;
+			}
+		</style>
+		<div class="accordion">
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent=".accordion" href="#collapse-addlinfo1"><span class="tri-right"></span><b>Tell us more about yourself to better serve you.</b> <span class="opentitle">Click here to expand and add more info.</span></a>
+				</div>
+				<div id="collapse-addlinfo1" class="accordion-body collapse">
+					<div class="accordion-inner">
+
+						<div class="control-group">
+							@Html.LabelFor(m => m.ListenToNprStation, new { @class = "control-label" })
+							<div class="controls">@Html.TextBoxFor(m => m.ListenToNprStation)</div>
+						</div>
+
+						<div class="control-group">
+							@Html.LabelFor(m => m.VisitorOfWebsite, new { @class = "control-label" })
+							<div class="controls"> 
+								<span>@Html.RadioButtonFor(x => x.VisitorOfWebsite, "true", new { @checked = Model.VisitorOfWebsite }) Yes</span>
+								<span>@Html.RadioButtonFor(x => x.VisitorOfWebsite, "false", new { @checked = !Model.VisitorOfWebsite }) No</span>
+							</div>
+						</div>
+					
+						<div class="control-group">
+							@Html.LabelFor(m => m.Age, new { @class = "control-label" })
+							<div class="controls">@Html.DropDownListFor(m => m.Age, new List<SelectListItem>() { new SelectListItem() { Text = "", Value = "" }, new SelectListItem() { Text = "18 – 24", Value = "18 – 24" }, new SelectListItem() { Text = "25 – 34 ", Value = "25 – 34" }, new SelectListItem() { Text = "35 – 44", Value = "35 – 44" }, new SelectListItem() { Text = "45 – 54", Value = "45 – 54" }, new SelectListItem() { Text = "55 – 64", Value = "55 – 64" }, new SelectListItem() { Text = "65 – 74 /75 +", Value = "65 – 74 /75 +" } })</div>
+						</div>
+
+						<div class="control-group">
+							@Html.LabelFor(m => m.Race, new { @class = "control-label" })
+							<div class="controls">@Html.TextBoxFor(m => m.Race)</div>
+						</div>
+
+						<div class="control-group topicsofinterest">
+							@Html.LabelFor(m => m.TopicsOfInterest, new { @class = "control-label" })
+							<div class="controls">
+								<div>@Html.TextBoxFor(m => m.TopicsOfInterest1)</div>
+								<div>@Html.TextBoxFor(m => m.TopicsOfInterest2)</div>
+								<div>@Html.TextBoxFor(m => m.TopicsOfInterest3)</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.accordion').on('show hidden', function (n)
+				{
+					$(n.target).siblings('.accordion-heading').find('.accordion-toggle span').toggleClass('tri-right tri-down');
+				});
+			});
+		</script>
+		}
+		
+    @* =======================================================================================================================================
+    GROUP DEATILS *@
+        
+    <h3 class="margin-top-0">Group Details</h3>
+
+		if (Model.IsSpecialtyTicket)
+		{
+        <div class="control-group">
+			<span class="asterisk">*</span>
+			@Html.LabelFor(m => m.GroupType, "Type of Group:", new { @class = "control-label" })
+            <div class="controls">
+                @*@Html.DropDownListFor(m => m.GroupType, new SelectList(Enum.GetValues(typeof(npr.domain._event.ticket.TourGroupTypes))))*@
+
+                <select id="GroupType" name="GroupType" class="valid">
+                    <option>Journalists</option>
+                    <option>College/University Students</option>
+                    <option>High School Students</option>
+                    <option>Interns</option>
+                    <option>NPR Staff</option>
+                    <option>NPR Member Station Staff</option>
+                    <option>Public Radio Staff</option>
+                    <option>Congressional Staff</option>
+                    <option>Foreign Government Officials</option>
+                    <option>Trade/Advocacy Organazation Representatives</option>
+                    <option>Librarians</option>
+                    <option>Auction Winner</option>
+                    <option>Sponsors</option>
+                    <option>Other</option>
+                </select>
+
+            </div>
+			<span class="validation">@Html.ValidationMessageFor(m => m.GroupType)</span>
+        </div>
+		}
+        
+    
+    @Html.Partial("_memberList")
+
+        
+    @Html.HiddenFor(m => m.GuestListString, new { id = "guestlist-field" }) 
+    @Html.HiddenFor(m => m.IsSpecialtyTicket)
+    @Html.HiddenFor(m => m.TicketId)   
+    @Html.HiddenFor(m => m.SlotId)   
+    @Html.HiddenFor(m => m.OwnerId)
+    @Html.HiddenFor(m => m.Owner.BirthDay)
+		
+	<span class="button-forward registration-button">
+		<input type="submit" value="Next: Review Your Information" class=""/><span class="button-icon-container"><span class="button-icon"></span></span>
+	</span>
+	}
+
+@if (ViewBag.Nav == "Tours" && Model.IsSpecialtyTicket)
+{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#GroupSize option").each(function () { if ($(this).html() < 5) $(this).remove(); });
+        $("#GroupSize").trigger("change");
+    });
+</script>
+}
+
+@if (Model.Dates != null)
+{
+    @section scripts {
+        <script type="text/javascript">
+            var date1 = '@(Model.Dates[0] == null ? "" : Model.Dates[0].Value.Date.ToString("MM-dd-yyyy"))';
+            var date2 = '@(Model.Dates[1] == null ? "" : Model.Dates[1].Value.Date.ToString("MM-dd-yyyy"))';
+            var date3 = '@(Model.Dates[2] == null ? "" : Model.Dates[2].Value.Date.ToString("MM-dd-yyyy"))';
+
+            if (date1 != null) { $("#Dates_0_").data({ date: date1 }).val(date1).datepicker('update'); }
+            if (date2 != null) { $("#Dates_1_").data({ date: date2 }).val(date2).datepicker('update'); }
+            if (date3 != null) { $("#Dates_2_").data({ date: date3 }).val(date3).datepicker('update'); }
+        </script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51138297-1', 'npr.org');
+    ga('send', 'pageview');
+
+</script>
+    }
+}

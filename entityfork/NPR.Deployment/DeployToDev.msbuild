@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Development" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll"/>
+	<UsingTask TaskName="Deployment.Tasks.SqlChangeScripts" AssemblyFile=".\bin\Debug\NPR.Deployment.dll"/>
+	<UsingTask TaskName="Deployment.Tasks.SmartCopy" AssemblyFile=".\bin\Debug\NPR.Deployment.dll"/>
+
+	<!--Determine Remote Folder-->
+	<PropertyGroup>
+		<RemotePath>c:\Data\WWW\npr.decycivefarm.com\www</RemotePath>
+		<!--<TargetConfiguration>Debug</TargetConfiguration>-->
+		<!--<ConnectionString>server=sql.flowersdrive.com;uid=<uid>;pwd=<pwd>;database=<db>;</ConnectionString>-->
+	</PropertyGroup>
+
+	<Target Name="Deploy">
+		<CallTarget Targets ="Build"/>
+		<!--<CallTarget Targets ="DeploySql"/>-->
+		<CallTarget Targets ="DeployWWW"/>
+	</Target>
+
+	<Target Name="Build">
+		
+		<Message Text="*********** Compile Deployment ***********" />
+		<MSBuild Projects=".\NPR.Deployment.csproj" Properties="Configuration=$(TargetConfiguration)"/>
+	
+		<Message Text="*********** Compile NPR.WWW ***********" />
+		<MSBuild Projects="..\cfaresv2\cfaresv2.csproj" Properties="Configuration=$(TargetConfiguration)"/>
+
+	</Target>
+
+	<Target Name="DeploySql">
+
+		<!--SQL Files-->
+		<ItemGroup>
+			<SqlFiles	
+								Include="..\PerformanceInsights.Data\Sql\Schema Changes\*.sql" 
+								Exclude=""
+								/>
+
+		</ItemGroup>
+
+		<Message Text="*********** Executing SQL Change Scripts ***********" />
+		<SqlChangeScripts ConnectionString="$(ConnectionString)" Files="@(SqlFiles)" CheckScriptStatus="true" />
+		
+	</Target>
+
+	
+	
+	<Target Name="DeployWWW">
+		<Message Text="=========== Deploy Site\cfaresv2 =========== " />
+
+		<!--Xml Transform-->
+		<Message Text="*********** Transform Web.Config *********** " />
+		<!--
+		<TransformXml Source="..\cfaresv2\Web.Template.Config"
+                      Transform="..\cfaresv2\Web.Decycive$(TargetConfiguration).Config"
+                      Destination="..\cfaresv2\Web.Config"
+                      StackTrace="true" />
+		-->
+		
+		<!--Copy Files to Server-->
+		<Message Text="*********** Copy Files to Server ***********" />
+		<ItemGroup>
+			<Files 
+								Include="
+										..\cfaresv2\*.*;
+										..\cfaresv2\**\*.*
+										"
+								
+								Exclude="
+										..\cfaresv2\**\*.cs;
+										..\cfaresv2\**\.svn\**;
+										..\cfaresv2\obj\**;
+										..\cfaresv2\Web.*.Config;
+										..\cfaresv2\*.csproj;
+										"
+							   />
+		</ItemGroup>
+		<SmartCopy SourceFiles="@(Files)" LocalRootFolder="$(MSBuildProjectDirectory)\..\cfaresv2\" DestinationRootFolder="$(RemotePath)\NPR\" SkipUnchangedFiles="true" />
+
+
+	</Target>
+	
+	
+	
+</Project>

@@ -1,0 +1,73 @@
+﻿@using System.Data.Entity
+@using System.Web.Script.Serialization
+@model cfares.domain._event.resevent.store.GiveawayEvent
+
+@{
+    ViewBag.Title = "Food";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Default.cshtml";
+    int pk = Model.ResEventId;
+}
+
+@section Meta{
+    <script type="text/template" id="item_template">
+        <div class="food-selection" data-pk="{0}" data-state="{4}">
+            <img src="http://www.chick-fil-a.com/{2}.png" />
+            <input type="hidden" name="food_image[{0}]" value="http://www.chick-fil-a.com/{3}.png" />
+            <input type="hidden" name="food_name[{0}]" value="{1}" />
+            <p>{1}</p> 
+            <select name="food[{0}]">
+                <option value="">Not Used</option>
+                <option value="0">On By Default</option>
+                <option value="1">Off By Default</option>
+                <option value="2">Locked On</option>
+            </select>
+        </div>
+    </script>
+}
+
+
+<h1>Set Allowed Products for this Event</h1>
+
+<br /><br />
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(false)
+    <div class="field-block food-block">
+        <fieldset data-pk='@pk' class='resevent-@pk inline-block'>
+            
+            @Html.HiddenFor(model => model.ResEventId)
+            
+            <section id='min_mix'>
+                Operators must offer a minimum of @Html.TextBoxFor(x=>x.MinItems,new {@class="inline-block", type="number", min="0"}) products and a maximum of @Html.TextBoxFor(x=>x.MaxItems,new {@class="inline-block", type="number", min="0"}) products.
+            </section>
+        
+            <section class='food-list well'>
+                <h3>Choose Products</h3>
+                <div class='admin-table'>
+                <select id="food_categories" name="food.categories">
+                    <option>Select a Category</option>
+                </select>
+                </div>
+                <div id="food_canvas" data-load="true">
+                    
+                </div>
+            </section>
+
+        </fieldset>
+    </div>
+    <div class='submit-block admin-red submit-block-override'>
+        <div class='button-cta' data-icon="ui-icon-plus">
+            <input type="hidden" id="hdn-stores" name="stores" />
+            @* <input type="submit" value="Submit and Continue" class="submit" /> *@
+            <input data-icon="ui-icon-triangle-1-e" id="save" type="submit" class="jq-button ui-button ui-widget ui-state-default ui-corner-all right-float" value="Save &amp; Continue" role="button" aria-disabled="false" />
+        </div>
+    </div>
+    
+    <script>
+            @{
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string json = serializer.Serialize(Model.ProductAllowances.AsQueryable().Include("AllowedItem").ToDictionary(x => x.AllowedItem.DomId, x => (int)x.Condition));
+            }
+            var foodConditions = @Html.Raw(json);
+    </script>
+}

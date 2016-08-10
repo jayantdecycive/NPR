@@ -1,0 +1,6 @@
+﻿@model ViewPage<cfacore.domain._base.IDomainObject>
+
+<span class='admin-grey'>
+    <input type="text" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class='jq-auto-complete' data-onselect="ModelTools.AutoCompleteSelect"
+    data-columns="@ViewData["Columns"]" data-filter="@ViewData["Filter"]" data-label="@ViewData["Label"]" data-src='@ViewData["Src"]' />
+</span>

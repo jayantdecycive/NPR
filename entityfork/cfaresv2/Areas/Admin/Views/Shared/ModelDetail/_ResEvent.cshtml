@@ -1,0 +1,238 @@
+﻿@using cfares.domain._event
+@using cfares.domain.store
+@using cfares.site.modules.com.application
+@model ResEvent
+
+@{
+	string pk = Model.IsBound() ? Model.Id() : "new";
+	string mode = ViewData["Mode"] == null ? "Details" : ViewData["Mode"].ToString();
+}
+
+<fieldset data-pk='@pk' class='resevent-@pk'>
+
+	@if( AppContext.Current.Configuration.ApplicationId != Application.CFA )
+	{
+		if( mode == "DetailsSummary" ) {
+			<h2 style="padding-bottom: 15px;" class='legend inline-block'>Event Details</h2>
+		} else {
+			<div class='legend inline-block'>Event Details</div>
+		}
+	}
+            
+	<div class='model-field field-Name'>                
+		<div class="display-label inline-block">Name</div>
+		<div class="display-field inline-block">
+			@Html.Raw(Model.Name)
+		</div>
+	</div>
+	@if( Model.ReservationType.ReservationTypeId == "Tour" )
+	{
+		// No "event type" made visible to the user for this type
+	}
+	else if( Model.ReservationType.ReservationTypeId == "SpecialEvent" )
+	{
+		<div class='model-field field-Category'>                
+			<div class="display-label inline-block">Event Type</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.Category.Name)
+			</div>
+		</div>
+	}
+	else
+	{
+		<div class='model-field field-EventType'>                
+			<div class="display-label inline-block">Event Type</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.ReservationType.ReservationTypeId)
+			</div>
+		</div>
+	}
+	@if (Model.SiteUrls!=null&&!Model.SiteUrls.All(x=>x.Url.StartsWith("http://temp-event")))
+	{
+		<div class='model-field field-Url'>                
+			<div class="display-label inline-block">Url</div>
+			<div class="display-field inline-block">
+				@Html.Raw( Model.UrlsAsHtml )
+			</div>
+		</div>
+	}
+	
+	@if( AppContext.Current.Configuration.ApplicationId != Application.CFA ) 
+	{
+		<div class='model-field field-Location'>
+			<div class="display-label inline-block">Location@(Model.ParticipatingStoresList.Count() > 1 ? "s" : string.Empty)</div>
+			<div class="display-field inline-block">
+				@foreach (ResStore store in Model.ParticipatingStoresList) {
+					@Html.DisplayFor( s => store.Name )
+				}
+			</div>
+		</div>
+		<div class='model-field field-Capacity'>
+			<div class="display-label inline-block">Capacity / Tickets Issued</div>
+			<div class="display-field inline-block">
+                @if((Model.MaximumCapacity ?? 0) > 0){
+                    <span>@Html.DisplayFor(model => model.TotalCapacity)&nbsp;/&nbsp;</span>
+                    <span>@Html.DisplayFor(model => model.TotalTicketsIssued)&nbsp;&nbsp;</span>
+                    <span>Note: This event has a master capacity set and will not take slot capacities into effect when accepting reservations</span>
+                }
+                else{
+                    <span>@Html.DisplayFor(model => model.TotalCapacity)&nbsp;/&nbsp;</span>
+                    <span>@Html.DisplayFor(model => model.TotalTicketsIssued)</span>
+                }
+
+				
+				
+			</div>
+		</div>@* SH - Hiding per req.
+		<div class='model-field field-Date'>
+			<div class="display-label inline-block">Date</div>
+			<div class="display-field inline-block">
+				@foreach( Occurrence o in Model.OccurencesDistinctByDate ) {
+					@Html.DisplayFor( model => o.FirstSlotStartStringAsDate )
+				}
+			</div>
+		</div>
+		<div class='model-field field-Time'>
+			<div class="display-label inline-block">Time</div>
+			<div class="display-field inline-block">
+				@foreach( Occurrence o in Model.OccurencesDistinctByDate ) {
+					@Html.DisplayFor( model => o.FirstSlotStartStringAsTime )
+					<span>&nbsp;to&nbsp;</span>
+					@Html.DisplayFor( model => o.FirstSlotStartStringAsTime )
+				}
+			</div>
+		</div>*@
+		<div class='model-field field-Visibility'>
+			<div class="display-label inline-block">Reservation Visibility</div>
+			<div class="display-field inline-block">@Html.DisplayFor(model => model.Visibility)</div>
+		</div>
+		if( Model.IsFeatured ) {
+			<div class='model-field field-Featured'>
+				<div class="display-label inline-block">Featured Event</div>
+				<div class="display-field inline-block">@Html.DisplayFor(model => Model.IsFeatured)</div>
+			</div>
+		}
+	}
+	else
+	{
+		<div class='model-field field-Description'>                
+			<div class="display-label inline-block">Description</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.Description)
+			</div>
+		</div>
+	}
+    <div class='model-field field-Status'>                
+        <div class="display-label inline-block">Status</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Status)
+        </div>
+    </div>
+	
+	@if( mode == "DetailsSummary" && Model.ReservationTypeId != "Tour" ) 
+	{
+		<div class='model-field field-SubHeading'>                
+			<div class="display-label inline-block">SubHeading</div>
+			<div class="display-field inline-block">
+				@Html.Raw(Model.SubHeading)
+			</div>
+		</div>
+		<div class='model-field field-Description'>                
+			<div class="display-label inline-block">Summary</div>
+			<div class="display-field inline-block">
+				@Html.Raw(Model.Description)
+			</div>
+		</div>
+		<div class='model-field field-MustBeOfAgeToAttend'>                
+			<div class="display-label inline-block">Must be over 21</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.MustBeOfAgeToAttend)
+			</div>
+		</div>
+
+		<div class='model-field field-ImagePreview'>
+			<div class="display-label inline-block">Image Preview</div>
+			<div class="display-field inline-block">
+				@if (Model.MediaId!=null)
+				{
+                    @Html.Media(Model.Media,crop:true,width:100)
+				}
+			</div>
+		</div>
+	}
+
+	@if (mode == "DetailsSummary" && Model.ReservationTypeId != "Tour")
+	{
+				
+		<div class='model-field field-Featured'>
+			<div class="editor-label inline-block">
+				@Html.LabelFor(m => m.IsPaid)
+			</div>
+			<div class="editor-field inline-block">
+				@Html.DisplayFor(m => m.IsPaid)
+			</div>
+		</div>
+				
+		<div class='model-field field-Featured ticketamount' style="@(Model.IsPaid?"":"display:none")">
+			<div class="editor-label inline-block">
+				@Html.LabelFor(m => m.TicketAmount)
+			</div>
+			<div class="editor-field inline-block">
+				@Html.DisplayFor(m => m.TicketAmount)
+			</div>
+		</div>
+	}
+
+	
+	@if( AppContext.Current.Configuration.ApplicationId == Application.CFA ) 
+	{
+		<div class='model-field field-Cutoff'>
+			<div class="display-label inline-block">Reservation Cutoff Time</div>
+			<div class="display-field inline-block">
+				@Html.DisplayFor(model => model.CutoffString)
+			</div>
+		</div>
+
+		@* SH - Temporarily Hiding these fields due to performance reasons - After model redesign and conversion, can reinstate *@
+		if( Model.Occurrences.Count < 100 ) {
+
+			if( Model.MinimumDailyCapacity > 0 ) {
+	 	<div class='model-field field-MinimumDailyCapacity'>
+			<div class="display-label inline-block">MDC / Current Lowest Capacity</div>
+			<div class="display-field inline-block">
+                <span>@Html.DisplayFor(model => model.MinimumDailyCapacity)&nbsp;/&nbsp;</span>
+                <span>@Model.LowestDailyCapacity.ToString()&nbsp;&nbsp;</span>
+			</div>
+		</div>
+	  }
+
+		  <div class='model-field field-Capacity'>
+			  <div class="display-label inline-block">Capacity / Tickets Issued</div>
+			  <div class="display-field inline-block">
+				  @if((Model.MaximumCapacity ?? 0) > 0){
+					  <span>@Html.DisplayFor(model => model.MaximumCapacity)&nbsp;/&nbsp;</span>
+					  <span>@Html.DisplayFor(model => model.TotalTicketsIssued)&nbsp;&nbsp;</span>
+				  }
+				  else{
+					  <span>@Html.DisplayFor(model => model.TotalCapacity)&nbsp;/&nbsp;</span>
+					  <span>@Html.DisplayFor(model => model.TotalTicketsIssued)</span>
+				  }
+			  </div>
+		  </div>
+	  }
+     
+        if((Model.MaximumCapacity ?? 0) > 0){
+        <div class='model-field field-Capacity'>
+			<div class="display-label inline-block">NOTE:</div>
+			<div class="display-field inline-block">
+                 This event has a maximum capactiy set and will not take slot capacities into account when accepting reservations.
+			</div>
+		</div>
+        }
+	}
+
+
+</fieldset>
+
+
+

@@ -1,0 +1,146 @@
+﻿@using cfacore.shared.modules.helpers
+@model npr.domain._event.ticket.NPRTicket
+
+<fieldset data-pk='@Model.TicketId' class='resevent-@Model.TicketId'>
+
+    <div class='model-field field-Name'>                
+        <div class="display-label inline-block">Issued To Name</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.OwnerName)
+        </div>
+    </div>
+    
+    <div class='model-field field-Email'>                
+        <div class="display-label inline-block">Issued To Email</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    </div>
+    
+    <div class='model-field field-GroupSize'>                
+        <div class="display-label inline-block">Issued To Phone</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+    </div>
+    
+    <div class='model-field field-Owner'>                
+        <div class="display-label inline-block">Issued To Details</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Owner)
+        </div>
+    </div>
+    
+    <div class='model-field field-GroupSize'>                
+        <div class="display-label inline-block">Number in Group</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.GroupSize)
+        </div>
+    </div>
+    
+    <div class='model-field field-Status'>                
+        <div class="display-label inline-block">Status</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Status)
+        </div>
+    </div>
+
+    @if (Model.Status == cfares.domain._event.TicketStatus.Canceled)
+    {
+        <div class='model-field field-CanceledDate'>                
+            <div class="display-label inline-block">Canceled On</div>
+            <div class="display-field inline-block">
+                @(Model.CanceledDate.HasValue ? Model.CanceledDate.Value.ToLocalTime().ToDateTimeString() : "Unknown")
+        </div>
+    </div>
+    }
+    
+    <div class='model-field field-CreationSrc'>                
+        <div class="display-label inline-block">Creation Source</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.CreationSrc)
+        </div>
+    </div>
+    
+    <div class='model-field field-CreatedDate'>                
+        <div class="display-label inline-block">Created On</div>
+        <div class="display-field inline-block">
+            @Model.CreatedDate.ToLocalTime().ToDateTimeString()
+        </div>
+    </div>
+    
+    <div class='model-field field-Note'>                
+        <div class="display-label inline-block">Notes</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.Note)
+        </div>
+    </div>
+    
+    <div class='model-field field-ConfirmationNumber'>                
+        <div class="display-label inline-block">Confirmation Number</div>
+        <div class="display-field inline-block">
+            @Html.DisplayFor(model => model.ConfirmationNumber)
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.IsPaid)
+    @if (Model.IsPaid)
+    {
+        <div class='model-field field-TotalAmount'>
+            <div class="display-label inline-block">Amount Charged</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.TotalAmount)
+            </div>
+        </div>
+        
+        <div class='model-field field-CCName'>
+            <div class="display-label inline-block">Cardholder Name</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.CCName)
+            </div>
+        </div>
+        
+        <div class='model-field field-CCExpiration'>
+            <div class="display-label inline-block">Card Expiration</div>
+            <div class="display-field inline-block">
+                @String.Format("{0}/{1}", Model.CCExpDateMonth, Model.CCExpDateYear)
+            </div>
+        </div>
+        
+        <div class='model-field field-ListenToNprStation'>
+            <div class="display-label inline-block">NPR Listener</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.ListenToNprStation)
+            </div>
+        </div>
+        
+        <div class='model-field field-VisitorOfWebsite'>
+            <div class="display-label inline-block">Website Visitor</div>
+            <div class="display-field inline-block">
+                @(Model.VisitorOfWebsite ? "Yes" : "No")
+            </div>
+        </div>
+        
+        <div class='model-field field-Age'>
+            <div class="display-label inline-block">Age</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Age)
+            </div>
+        </div>
+        
+        <div class='model-field field-Race'>
+            <div class="display-label inline-block">Race</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.Race)
+            </div>
+        </div>
+        
+        <div class='model-field field-TopicsOfInterest'>
+            <div class="display-label inline-block">Topics of Interest</div>
+            <div class="display-field inline-block">
+                @Html.DisplayFor(model => model.TopicsOfInterest)
+            </div>
+        </div>
+    }
+   
+</fieldset>

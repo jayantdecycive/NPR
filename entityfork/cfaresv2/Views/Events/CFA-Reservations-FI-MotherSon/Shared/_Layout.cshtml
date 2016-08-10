@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	CFA-Reservations-FI-MotherSon - Event Layout
+----------------------------------------------------*@
+
+@this.RedefineSection("Head")
+@this.RedefineSection("Header")
+@this.RedefineSection("Banner")
+
+@RenderBody()
+@this.RedefineSection("SocialFooter")
+
+@this.RedefineSection("Footer")
+@this.RedefineSection("Scripts")

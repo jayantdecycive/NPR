@@ -1,0 +1,125 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.Areas.tours.Models.StoryTourTicketFormModel>
+@{
+    cfacore.site.controllers._event.OccurrenceService oServ = new cfacore.site.controllers._event.OccurrenceService();
+
+    DateTime correctedStart = oServ.ConvertToTimeZoneContext(Model.tourTicket.Slot.Start);
+    DateTime correctedEnd = oServ.ConvertToTimeZoneContext(Model.tourTicket.Slot.End);       
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AdminConfirmation</title>
+</head>
+<body>
+    <div class="reservation-overview">
+    <div class="review-description">
+       A new reservation has been requested with the following information: </div>
+       <br />
+    <div class="review-section review-column">
+        <div class="name-value-pair">
+            <span class="name">Tour Type: </span><span class="value">Normal</span></div>
+        <div class="name-value-pair">
+            <span class="name">Time Slot: </span><span class="value">@String.Format("{0}", correctedStart.ToString("dddd, MMMM, dd, yyyy")) at @String.Format("{0} - {1}", correctedStart.ToString("h:mmtt").ToLower())
+            </span>
+        </div>
+
+        <div class="name-value-pair">
+            <span class="name">Group Size: </span><span class="value">@Model.tourTicket.GuestCount</span>
+        </div>
+    </div>
+    
+    <br />
+    <div class="review-section review-column">
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.First): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.First)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Name.Last): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Name.Last)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">@Html.LabelFor(m => m.reservationUser.Email): </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Email)</span></div>
+
+        <div class="name-value-pair">
+            <span class="name">Zip Code: </span><span class="value">@Html.DisplayFor(m => m.reservationUser.Address.Zip.Code)</span></div>
+    </div>
+    <br />
+
+    
+    <br />
+     
+         <div class="review-section review-column">
+
+        <div class="name-value-pair">
+            <span class="name">Type of Group: </span><span class="value">
+            <span class="checkbox-name-wrapper">@Html.DisplayFor(m => m.tourTicket.IsFamilyWithKids)
+                @Html.LabelFor(m => m.tourTicket.IsFamilyWithKids)</span> |
+                 <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsFamilyWithoutKids): @Html.DisplayFor(m => m.tourTicket.IsFamilyWithoutKids)</span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsReligiousGroup): @Html.DisplayFor(m => m.tourTicket.IsReligiousGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsSchoolGroup): @Html.DisplayFor(m => m.tourTicket.IsSchoolGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsAdultGroup): @Html.DisplayFor(m => m.tourTicket.IsAdultGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsSeniorGroup): @Html.DisplayFor(m => m.tourTicket.IsSeniorGroup) </span> | 
+                <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsBusinessGroup): @Html.DisplayFor(m => m.tourTicket.IsBusinessGroup)  </span> | 
+                <span class="checkboxWithExplanation">@Html.LabelFor(m => m.tourTicket.IsOtherTypeOfGroup): @Html.DisplayFor(m => m.tourTicket.IsOtherTypeOfGroup)<br />
+                     @Html.DisplayFor(m => m.tourTicket.OtherTypeDescription)</span>
+            </span>
+        </div>
+    </div>
+    <br />
+
+
+
+     
+
+    <div class="review-section">
+
+        <div class="name-value-pair">
+            <span class="name">Does anyone in the group have special needs? </span><span class="value">
+                @Html.DisplayFor(model => model.tourTicket.HasSpecialNeeds)
+               </span>
+        </div>
+        @{
+            if (Model.tourTicket.HasSpecialNeeds)
+            {
+            <div class="name-value-pair">
+                <span class="name">Needs: </span><span class="value"><span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsHearingImpaired): 
+                    @Html.DisplayFor(m => m.tourTicket.IsHearingImpaired)</span> |  <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.IsVisuallyImpaired): @Html.DisplayFor(m => m.tourTicket.IsVisuallyImpaired)</span> | 
+                    <span class="checkbox-name-wrapper">@Html.LabelFor(m => m.tourTicket.NeedsWheelChair): @Html.DisplayFor(m => m.tourTicket.NeedsWheelChair)</span> | 
+                    <span class="checkboxWithExplanation">@Html.LabelFor(m => m.tourTicket.OtherNeedsDescription): @Html.DisplayFor(m => m.tourTicket.OtherNeedsDescription)
+                        @Html.DisplayFor(m => m.tourTicket.OtherNeedsDescription)</span>
+                </span>
+            </div>
+            }
+        }
+    </div>
+    <br />
+    <div class="review-section">
+        
+                <div class="name-value-pair">
+                <span class="name">This tour time has a @cfares.domain._event._ticket.tours.TourTicket.ADULT_LUNCH_COST
+                    lunch option. Would anyone in your group like to reserve a lunch? </span>
+                <span class="value">
+                @Html.DisplayFor(model => model.tourTicket.OptInForLunch)
+               </span>
+               </div>
+                <div class="name-value-pair">
+            <span class="name">Number of Lunches: </span><span class="value">@Html.DisplayFor(m => m.tourTicket.NumberOfAdultLunches)
+                adults, @Html.DisplayFor(m => m.tourTicket.NumberOfKidLunches) kids, @Html.DisplayFor(m => m.tourTicket.NumberOfSpecialNeedLunches)
+                special need lunches</span><br />
+                @Html.DisplayFor(m => m.tourTicket.SpecialDietNeedsDescription)</div>
+            
+            <div class="name-value-pair">
+                <span class="name">Will this group be staying for lunch? </span>
+                <span class="value">
+                @Html.DisplayFor(model => model.tourTicket.OptInForLunch)
+               </span>
+               </div>
+            
+            
+    </div>
+    <br />
+    <br />
+    
+</body>
+</html>

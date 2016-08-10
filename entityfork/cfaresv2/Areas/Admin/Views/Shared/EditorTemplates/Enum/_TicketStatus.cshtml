@@ -1,0 +1,4 @@
+﻿@model cfares.domain._event.TicketStatus?
+<div class='admin-table'>
+@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(cfares.domain._event.TicketStatus)), Model != null ? Model : cfares.domain._event.TicketStatus.Hidden), new { @class = " jq-select" })
+</div>

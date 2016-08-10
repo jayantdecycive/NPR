@@ -1,0 +1,20 @@
+﻿@model string
+
+
+<table id="table_@Model" class='data-table' data-jquery-ui="true" data-mode="backbone" @Html.Raw(ViewData["Picker"]!=null?"data-dom='<\"H\"r>t<\"F\"fp>' ":"") data-data='@Model'>
+            <thead>
+                <tr>
+                    @if (ViewData["Picker"]!=null)
+                    {
+                        <th data-id='ResTemplateSelect' data-on-display='DataFormat.Radio' data-column-parent='ResTemplateId'></th>
+                    }
+                    <th data-column-name='Cta'></th>       
+                    <th data-column-name='ResTemplateId' data-id-column='true' >Template Id</th>
+                    <th data-column-name='Name'  >Name</th>			    
+                        
+			    
+                
+                </tr>
+            </thead>
+        </table>
+

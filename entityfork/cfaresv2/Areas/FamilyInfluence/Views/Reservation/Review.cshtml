@@ -1,0 +1,61 @@
+﻿@using System.Globalization
+@using cfacore.shared.modules.helpers
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@model cfares.domain._event._tickets.DateTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    FamilyInfluenceReservationWizard wizard = ViewBag.wizard as FamilyInfluenceReservationWizard;
+}
+
+@*----------------------------------------------------
+	Family Influence - Reservation Overview
+----------------------------------------------------*@
+@using (Html.BeginForm(null,null,FormMethod.Post,new {action=Request.Url.TranslatePort(Request),id="reviewForm"})) {
+	
+	<section class="row-fluid" id="overview_intro">
+		<div class="span10 offset1">
+
+			<h1>Reservation Overview</h1>
+			<p>Please review the details of your reservation below. Click <strong>Confirm</strong> to complete your reservation, or click<br /><strong>Edit this Information</strong> to modify any of your details. <span class="required note">* Indicates required field</span></p>
+
+		</div>
+	</section>
+	<section class="row-fluid" id="res_review">
+		<div class="span12">
+			<div id="block1">
+				<ul class="overview block unstyled">
+				    @Html.Partial("_TicketSummaryMixin",Model,new ViewDataDictionary(ViewData)
+                        {
+                            {"OwnerLabel","Mother"}
+                        })
+				    
+                  
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">Number of Sons:</span>
+						<span class="itemInfo">@Model.NumberOfGuests</span>
+					</li>
+					<li class="groupBegin">
+						@Html.CheckBox("tableRequest",Model.TableRequest == "standard",new {@readonly="readonly", disabled="disabled"})
+						<label class="check" for="tablePref">I prefer a standard height table (Ideal for children under the age of 6)</label>
+					</li>
+					
+					<li class="groupEnd">
+						@Html.CheckBox("storeupdates",(bool)ViewBag.StoreUpdates,new {@readonly="readonly", disabled="disabled"})
+						<label class="check" for="promoJoin">Receive updates about promotions and events from this Chick-fil-A restaurant. <span class="ageReq">(must be 18 or older)</span></label>
+					</li>
+					
+					<li class="groupButton" id="confirm_cancel">
+					
+						
+						<input type="submit" name="action" class="btn btn-primary large default reserve" value="Confirm Reservation" />
+						<input type="submit" name="action" class="btn btn-info large cancel default" value="Cancel Reservation" />
+
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section> }
+
+

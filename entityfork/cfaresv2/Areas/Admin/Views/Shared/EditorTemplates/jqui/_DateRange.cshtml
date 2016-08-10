@@ -1,0 +1,11 @@
+﻿@model cfacore.shared.domain._base.DateRange
+
+<span class='admin-grey in-daterange'>    
+    @if (Model != null && Model.Start != null)
+    {
+        <input type="text" class="jq-date-range inline-block clean-timezone" value="@Model.Start.ToString("MM/dd/yyyy h:mmtt").ToLower(),@Model.End.ToString("MM/dd/yyyy h:mmtt").ToLower()" name="@ViewData.TemplateInfo.HtmlFieldPrefix"  />    
+    }
+    else { 
+        <input type="text" class="jq-date-range inline-block clean-timezone" value="" name="@ViewData.TemplateInfo.HtmlFieldPrefix"  />    
+    }
+</span>

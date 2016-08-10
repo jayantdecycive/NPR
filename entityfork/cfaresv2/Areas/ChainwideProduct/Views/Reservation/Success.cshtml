@@ -1,0 +1,73 @@
+﻿@using cfares.site.modules.com.application
+@model cfares.domain._event._ticket.FoodTicket
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@*----------------------------------------------------
+	Family Influence - Success
+----------------------------------------------------*@
+
+<section class="row-fluid" id="success">
+	
+	<h1 class="span12">Reservation Successful!</h1>
+		
+	<article class="span9">
+	    <h3>You're Almost Done&hellip;</h3>
+	    <p>A message has been sent to your email (@Model.Owner.Email) with instructions on how to open and print your personal invitation to try our <strong>@Model.Item.Name.</strong></p>
+	    <p>We notified @if(Model.Slot.Occurrence.Store.Operator != null){<span>@Model.Slot.Occurrence.Store.Operator.Name.Full, </span>} the Operator of the Chick-fil-A at @Model.Slot.Occurrence.Store.Name of your reservation. They are looking forward to seeing you on <time datetime="@Html.Raw(Model.Slot.Start.ToString("yyyy-MM-dd")+"T"+Model.Slot.Start.ToString("HH:mmzzz"))">@Model.Slot.Start.ToString("dddd, MMMM d, yyyy"),</time> from <strong>@Model.Slot.Start.ToString("h:mm tt")</strong> to <time datetime="@Html.Raw(Model.Slot.End.ToString("yyyy-MM-dd")+"T"+Model.Slot.End.ToString("HH:mmzzz"))">@Model.Slot.End.ToString("h:mm tt")</time>.@*<br /><a href="#" class="calAdd">(Add this to your calendar)</a>*@</p>
+	    <p>You must print out and bring your personal invitation to receive your FREE <strong>@Model.Item.Name</strong>. A photo ID may also be requested.</p>
+	</article>
+        
+    @if(Model.Owner.CreatedDate > DateTime.Now.AddMinutes(-5)){
+    <aside id="accountInfoBox" class="well span3 offset1">
+		<h3>Good News!</h3>
+		<p>Your new account gives you access to all of your reservations.</p>
+		<p>Even better, we've stored your information for an easier and faster future reservation!</p>
+		<p>Manage your account and reservations @Html.ActionLink( "here", "Index", "Dashboard", new{ Area = "MyAccount" }, new {} ).</p>
+	</aside>
+    }
+
+	
+</section>
+
+<div class="row-fluid">
+	<div class="span8 offset2 text-center" id="shareBox">
+
+		<p>Tell your friends about the <strong>FREE Breakfast Entr&eacute;e Giveaway</strong></p>
+		<ul>
+			<li><a id="facebook">Facebook</a></li>
+			<li><a id="twitter">Twitter</a></li>
+			<li><a id="email" href="mailto:?subject=Breakfast is on us!&body=Don't miss out! Make your reservation now to receive a free breakfast entrée at your local Chick-fil-A Restaurant the week of September 9th. Click this link for details: http://cot.ag/18Phu9o.">Email</a></li>
+		</ul>
+		
+	</div>
+</div>
+
+@section scripts {
+	<script type="text/javascript">
+		
+		var facebook_appid = "138837436154588";
+		var facebook_title = "Breakfast is on us!";
+		var facebook_message = "Don't miss out! Make your reservation now to receive a free breakfast entrée at your local Chick-fil-A Restaurant the week of September 9th. Click for details.";
+		var facebook_url = "http://cot.ag/18Phu9o";
+		var facebook_imageurl = "http://www.chick-fil-aforbreakfast.com/Content/images/cfa-header.png";
+		var twitter_message = "I just reserved my free @@ChickfilA breakfast entrée! Make your reservation online at http://cot.ag/18PhBC4. #ChickenForBreakfast";
+
+		$('#facebook').click(function () {
+			//var url = "https://www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + facebook_appid +
+			//	"&picture=" + facebook_appid + "&name=" + facebook_appid + "&description=" + facebook_appid;
+			var url = "https://www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + facebook_url +
+				"&picture=" + facebook_imageurl + "&name=" + facebook_title + "&description=" + facebook_message;
+			window.open(url, '_blank');
+		});
+
+		$('#twitter').click(function () {
+		    var url = "https://twitter.com/intent/tweet?text=" + twitter_message + "&tw_p=tweetbutton&url=http%3A%2F%2Fwww%2Fchick-fil-aforbreakfast.com";
+		    //var url = "http://twitter.com/share?text=" + twitter_message + "&url=http%3A%2F%2Fwww.chick-fil-aforbreakfast.com";
+			window.open(url, '_blank');
+		});
+
+	</script>
+}
+

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67CF10F4-F076-4CD7-8EC1-847035108EFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>npr.entity.dbcontext</RootNamespace>
+    <AssemblyName>npr.entity.dbcontext</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S2.Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S2.Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFA.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S4.Staging|AnyCPU'">
+    <OutputPath>bin\CFA.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFA.S5.Prod|AnyCPU'">
+    <OutputPath>bin\CFA.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S2.DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S2.DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S3.QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\NPR.S3.QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S4.Staging|AnyCPU'">
+    <OutputPath>bin\NPR.S4.Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NPR.S5.Prod|AnyCPU'">
+    <OutputPath>bin\NPR.S5.Prod\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Web.CFATours.S1.Local.config|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Web.CFATours.S1.Local.config\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S1.Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S1.Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CFATours.S5.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CFATours.S5.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201304032319431_hello_npr.cs" />
+    <Compile Include="Migrations\201304032319431_hello_npr.Designer.cs">
+      <DependentUpon>201304032319431_hello_npr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304032322416_optional_stores.cs" />
+    <Compile Include="Migrations\201304032322416_optional_stores.Designer.cs">
+      <DependentUpon>201304032322416_optional_stores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304071842238_relation_update.cs" />
+    <Compile Include="Migrations\201304071842238_relation_update.Designer.cs">
+      <DependentUpon>201304071842238_relation_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304072149491_user_birthday.cs" />
+    <Compile Include="Migrations\201304072149491_user_birthday.Designer.cs">
+      <DependentUpon>201304072149491_user_birthday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304082040333_res_new.cs" />
+    <Compile Include="Migrations\201304082040333_res_new.Designer.cs">
+      <DependentUpon>201304082040333_res_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304082120406_user_address.cs" />
+    <Compile Include="Migrations\201304082120406_user_address.Designer.cs">
+      <DependentUpon>201304082120406_user_address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304101408339_npr_update.cs" />
+    <Compile Include="Migrations\201304101408339_npr_update.Designer.cs">
+      <DependentUpon>201304101408339_npr_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304101540170_user_unique_keys.cs" />
+    <Compile Include="Migrations\201304101540170_user_unique_keys.Designer.cs">
+      <DependentUpon>201304101540170_user_unique_keys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305062109199_npr_update1.cs" />
+    <Compile Include="Migrations\201305062109199_npr_update1.Designer.cs">
+      <DependentUpon>201305062109199_npr_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305071506152_EventCategory.cs" />
+    <Compile Include="Migrations\201305071506152_EventCategory.Designer.cs">
+      <DependentUpon>201305071506152_EventCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305071549498_EventIsFeatured.cs" />
+    <Compile Include="Migrations\201305071549498_EventIsFeatured.Designer.cs">
+      <DependentUpon>201305071549498_EventIsFeatured.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305071809579_ticket_change.cs" />
+    <Compile Include="Migrations\201305071809579_ticket_change.Designer.cs">
+      <DependentUpon>201305071809579_ticket_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305071838534_slot_no_longer_required.cs" />
+    <Compile Include="Migrations\201305071838534_slot_no_longer_required.Designer.cs">
+      <DependentUpon>201305071838534_slot_no_longer_required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305080133167_store_change.cs" />
+    <Compile Include="Migrations\201305080133167_store_change.Designer.cs">
+      <DependentUpon>201305080133167_store_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305081631500_media_owner_id_event_visibility.cs" />
+    <Compile Include="Migrations\201305081631500_media_owner_id_event_visibility.Designer.cs">
+      <DependentUpon>201305081631500_media_owner_id_event_visibility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305081643225_ticket-cardnumber-string.cs" />
+    <Compile Include="Migrations\201305081643225_ticket-cardnumber-string.Designer.cs">
+      <DependentUpon>201305081643225_ticket-cardnumber-string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305081654279_unique-index-cardnumber.cs" />
+    <Compile Include="Migrations\201305081654279_unique-index-cardnumber.Designer.cs">
+      <DependentUpon>201305081654279_unique-index-cardnumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305081687382_ticket_no.cs" />
+    <Compile Include="Migrations\201305081687382_ticket_no.Designer.cs">
+      <DependentUpon>201305081687382_ticket_no.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305081804367_media-date.cs" />
+    <Compile Include="Migrations\201305081804367_media-date.Designer.cs">
+      <DependentUpon>201305081804367_media-date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305091404254_event_subheading.cs" />
+    <Compile Include="Migrations\201305091404254_event_subheading.Designer.cs">
+      <DependentUpon>201305091404254_event_subheading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305102024327_event_media.cs" />
+    <Compile Include="Migrations\201305102024327_event_media.Designer.cs">
+      <DependentUpon>201305102024327_event_media.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305131424191_restemplate-media.cs" />
+    <Compile Include="Migrations\201305131424191_restemplate-media.Designer.cs">
+      <DependentUpon>201305131424191_restemplate-media.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305132048050_ticket_owner.cs" />
+    <Compile Include="Migrations\201305132048050_ticket_owner.Designer.cs">
+      <DependentUpon>201305132048050_ticket_owner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305142341579_npr_slot.cs" />
+    <Compile Include="Migrations\201305142341579_npr_slot.Designer.cs">
+      <DependentUpon>201305142341579_npr_slot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305142359591_npr_slot_guide.cs" />
+    <Compile Include="Migrations\201305142359591_npr_slot_guide.Designer.cs">
+      <DependentUpon>201305142359591_npr_slot_guide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305150018220_slot_visibility.cs" />
+    <Compile Include="Migrations\201305150018220_slot_visibility.Designer.cs">
+      <DependentUpon>201305150018220_slot_visibility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305150041585_slot_user.cs" />
+    <Compile Include="Migrations\201305150041585_slot_user.Designer.cs">
+      <DependentUpon>201305150041585_slot_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305172149005_nprslot_printbadge.cs" />
+    <Compile Include="Migrations\201305172149005_nprslot_printbadge.Designer.cs">
+      <DependentUpon>201305172149005_nprslot_printbadge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305201614151_ticket_created.cs" />
+    <Compile Include="Migrations\201305201614151_ticket_created.Designer.cs">
+      <DependentUpon>201305201614151_ticket_created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305201623109_ticket_created_resolution.cs" />
+    <Compile Include="Migrations\201305201623109_ticket_created_resolution.Designer.cs">
+      <DependentUpon>201305201623109_ticket_created_resolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305201632101_ticket_created_defaultvalue.cs" />
+    <Compile Include="Migrations\201305201632101_ticket_created_defaultvalue.Designer.cs">
+      <DependentUpon>201305201632101_ticket_created_defaultvalue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305220624479_slot_notes.cs" />
+    <Compile Include="Migrations\201305220624479_slot_notes.Designer.cs">
+      <DependentUpon>201305220624479_slot_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305220721012_cascade.cs" />
+    <Compile Include="Migrations\201305220721012_cascade.Designer.cs">
+      <DependentUpon>201305220721012_cascade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305281632183_transactions.cs" />
+    <Compile Include="Migrations\201305281632183_transactions.Designer.cs">
+      <DependentUpon>201305281632183_transactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305281709337_transactions1.cs" />
+    <Compile Include="Migrations\201305281709337_transactions1.Designer.cs">
+      <DependentUpon>201305281709337_transactions1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306010406034_giveaway.cs" />
+    <Compile Include="Migrations\201306010406034_giveaway.Designer.cs">
+      <DependentUpon>201306010406034_giveaway.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306071824262_AdditionalInformationString.cs" />
+    <Compile Include="Migrations\201306071824262_AdditionalInformationString.Designer.cs">
+      <DependentUpon>201306071824262_AdditionalInformationString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306191748067_SpeakerEvents.cs" />
+    <Compile Include="Migrations\201306191748067_SpeakerEvents.Designer.cs">
+      <DependentUpon>201306191748067_SpeakerEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307021935286_OccurencesCapacity.cs" />
+    <Compile Include="Migrations\201307021935286_OccurencesCapacity.Designer.cs">
+      <DependentUpon>201307021935286_OccurencesCapacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307092225045_Test.cs" />
+    <Compile Include="Migrations\201307092225045_Test.Designer.cs">
+      <DependentUpon>201307092225045_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308161935319_minimum_daily_capacity.cs" />
+    <Compile Include="Migrations\201308161935319_minimum_daily_capacity.Designer.cs">
+      <DependentUpon>201308161935319_minimum_daily_capacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308191702019_gender.cs" />
+    <Compile Include="Migrations\201308191702019_gender.Designer.cs">
+      <DependentUpon>201308191702019_gender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311051056031_resevent_paid_tickets.cs" />
+    <Compile Include="Migrations\201311051056031_resevent_paid_tickets.Designer.cs">
+      <DependentUpon>201311051056031_resevent_paid_tickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311051316031_tickets_authorization.cs" />
+    <Compile Include="Migrations\201311051316031_tickets_authorization.Designer.cs">
+      <DependentUpon>201311051316031_tickets_authorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311051316032_tickets_cc_info.cs" />
+    <Compile Include="Migrations\201311051316032_tickets_cc_info.Designer.cs">
+      <DependentUpon>201311051316032_tickets_cc_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311141316032_tickets_additional_info.cs" />
+    <Compile Include="Migrations\201311141316032_tickets_additional_info.Designer.cs">
+      <DependentUpon>201311141316032_tickets_additional_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411041005471_ticketguest.cs" />
+    <Compile Include="Migrations\201411041005471_ticketguest.Designer.cs">
+      <DependentUpon>201411041005471_ticketguest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411041340295_transcations2.cs" />
+    <Compile Include="Migrations\201411041340295_transcations2.Designer.cs">
+      <DependentUpon>201411041340295_transcations2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411041354003_ticketguest1.cs" />
+    <Compile Include="Migrations\201411041354003_ticketguest1.Designer.cs">
+      <DependentUpon>201411041354003_ticketguest1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411071431110_ChangeInTicketGuestRef.cs" />
+    <Compile Include="Migrations\201411071431110_ChangeInTicketGuestRef.Designer.cs">
+      <DependentUpon>201411071431110_ChangeInTicketGuestRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411071444261_ChangeInTicketGuestRef1.cs" />
+    <Compile Include="Migrations\201411071444261_ChangeInTicketGuestRef1.Designer.cs">
+      <DependentUpon>201411071444261_ChangeInTicketGuestRef1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="npr_res\INprContext.cs" />
+    <Compile Include="npr_res\NprContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cfacore\cfacore.shared.domain\cfacore.shared.domain.csproj">
+      <Project>{f06b4a08-f390-4206-9fb8-6f8bde4f9db7}</Project>
+      <Name>cfacore.shared.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.domain\cfares.domain.csproj">
+      <Project>{893d1b65-f5fb-429c-bcc5-07f8c834a0ca}</Project>
+      <Name>cfares.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cfares.entity.dbcontext\cfares.entity.dbcontext.csproj">
+      <Project>{8dc3367b-57f6-4e65-8c19-e28bb275e7b0}</Project>
+      <Name>cfares.entity.dbcontext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\npr.domain.csproj">
+      <Project>{9365c84d-49bf-4389-bc98-eefbb52e135b}</Project>
+      <Name>npr.domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201304032319431_hello_npr.resx">
+      <DependentUpon>201304032319431_hello_npr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304032322416_optional_stores.resx">
+      <DependentUpon>201304032322416_optional_stores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304071842238_relation_update.resx">
+      <DependentUpon>201304071842238_relation_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304072149491_user_birthday.resx">
+      <DependentUpon>201304072149491_user_birthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304082040333_res_new.resx">
+      <DependentUpon>201304082040333_res_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304082120406_user_address.resx">
+      <DependentUpon>201304082120406_user_address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304101408339_npr_update.resx">
+      <DependentUpon>201304101408339_npr_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304101540170_user_unique_keys.resx">
+      <DependentUpon>201304101540170_user_unique_keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305062109199_npr_update1.resx">
+      <DependentUpon>201305062109199_npr_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305071506152_EventCategory.resx">
+      <DependentUpon>201305071506152_EventCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305071549498_EventIsFeatured.resx">
+      <DependentUpon>201305071549498_EventIsFeatured.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305071809579_ticket_change.resx">
+      <DependentUpon>201305071809579_ticket_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305071838534_slot_no_longer_required.resx">
+      <DependentUpon>201305071838534_slot_no_longer_required.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305080133167_store_change.resx">
+      <DependentUpon>201305080133167_store_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305081631500_media_owner_id_event_visibility.resx">
+      <DependentUpon>201305081631500_media_owner_id_event_visibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305081643225_ticket-cardnumber-string.resx">
+      <DependentUpon>201305081643225_ticket-cardnumber-string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305081654279_unique-index-cardnumber.resx">
+      <DependentUpon>201305081654279_unique-index-cardnumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305081687382_ticket_no.resx">
+      <DependentUpon>201305081687382_ticket_no.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305081804367_media-date.resx">
+      <DependentUpon>201305081804367_media-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305091404254_event_subheading.resx">
+      <DependentUpon>201305091404254_event_subheading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305102024327_event_media.resx">
+      <DependentUpon>201305102024327_event_media.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131424191_restemplate-media.resx">
+      <DependentUpon>201305131424191_restemplate-media.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305132048050_ticket_owner.resx">
+      <DependentUpon>201305132048050_ticket_owner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305142341579_npr_slot.resx">
+      <DependentUpon>201305142341579_npr_slot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305142359591_npr_slot_guide.resx">
+      <DependentUpon>201305142359591_npr_slot_guide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305150018220_slot_visibility.resx">
+      <DependentUpon>201305150018220_slot_visibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305150041585_slot_user.resx">
+      <DependentUpon>201305150041585_slot_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305172149005_nprslot_printbadge.resx">
+      <DependentUpon>201305172149005_nprslot_printbadge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305201614151_ticket_created.resx">
+      <DependentUpon>201305201614151_ticket_created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305201623109_ticket_created_resolution.resx">
+      <DependentUpon>201305201623109_ticket_created_resolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305201632101_ticket_created_defaultvalue.resx">
+      <DependentUpon>201305201632101_ticket_created_defaultvalue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305220624479_slot_notes.resx">
+      <DependentUpon>201305220624479_slot_notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305220721012_cascade.resx">
+      <DependentUpon>201305220721012_cascade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305281632183_transactions.resx">
+      <DependentUpon>201305281632183_transactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305281709337_transactions1.resx">
+      <DependentUpon>201305281709337_transactions1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306010406034_giveaway.resx">
+      <DependentUpon>201306010406034_giveaway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071824262_AdditionalInformationString.resx">
+      <DependentUpon>201306071824262_AdditionalInformationString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306191748067_SpeakerEvents.resx">
+      <DependentUpon>201306191748067_SpeakerEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307021935286_OccurencesCapacity.resx">
+      <DependentUpon>201307021935286_OccurencesCapacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307092225045_Test.resx">
+      <DependentUpon>201307092225045_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308161935319_minimum_daily_capacity.resx">
+      <DependentUpon>201308161935319_minimum_daily_capacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308191702019_gender.resx">
+      <DependentUpon>201308191702019_gender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311051056031_resevent_paid_tickets.resx">
+      <DependentUpon>201311051056031_resevent_paid_tickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311051316031_tickets_authorization.resx">
+      <DependentUpon>201311051316031_tickets_authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311051316032_tickets_cc_info.resx">
+      <DependentUpon>201311051316032_tickets_cc_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311141316032_tickets_additional_info.resx">
+      <DependentUpon>201311141316032_tickets_additional_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411041005471_ticketguest.resx">
+      <DependentUpon>201411041005471_ticketguest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411041340295_transcations2.resx">
+      <DependentUpon>201411041340295_transcations2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411041354003_ticketguest1.resx">
+      <DependentUpon>201411041354003_ticketguest1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411071431110_ChangeInTicketGuestRef.resx">
+      <DependentUpon>201411071431110_ChangeInTicketGuestRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411071444261_ChangeInTicketGuestRef1.resx">
+      <DependentUpon>201411071444261_ChangeInTicketGuestRef1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

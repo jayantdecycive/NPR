@@ -1,0 +1,102 @@
+﻿@using cfacore.shared.domain.user
+@using cfacore.shared.modules.com.admin
+@using cfacore.shared.modules.helpers
+@using cfares.site.modules.Helpers
+@using cfares.domain._event._ticket
+@using cfacore.domain.user
+@{
+    string slotStep = ViewData["SlotStep"] as string??"Reservation.Reservation";
+    string addressStep = ViewData["AddressStep"] as string ?? "Reservation.SearchByLocation";
+    IWizard wizard = ViewBag.wizard as IWizard;
+    string OwnerLabel = string.IsNullOrEmpty(ViewData["OwnerLabel"] as string)?"":ViewData["OwnerLabel"]+"'s ";
+    string LocationLabel = string.IsNullOrEmpty(ViewData["LocationLabel"] as string) ? "Restaurant Name" : ViewData["LocationLabel"] as string;
+    string LocationValue = string.IsNullOrEmpty(ViewData["Location"] as string) ? Model.Slot.Occurrence.Store.Name : ViewData["Location"] + "'s ";
+    string LocationAddressLabel = string.IsNullOrEmpty(ViewData["LocationAddressLabel"] as string) ? "Restaurant Address" : ViewData["LocationAddressLabel"] as string;
+    string EventName = ViewData["LocationValue"] as string ?? "";
+    
+    Address LocationAddress = (ViewData["LocationAddress"] == null) ? Model.Slot.Occurrence.Store.StreetAddress : ViewData["LocationAddress"] as Address;
+}
+@model cfares.domain._event.ITicket
+
+                    <li>
+						<span class="required review">*</span>
+						<span class="itemName">@LocationLabel:</span>
+						<span class="itemInfo">@EventName</span>
+					</li>
+					<li class="reviewBlockEnd">
+						<span class="required review">*</span>
+						<span class="itemName">@LocationAddressLabel:</span>
+						<span class="itemInfo">@LocationAddress.ToSummary()</span>
+						<a class="editInfo" href="@wizard.GetStep(addressStep).Uri(ViewContext).TranslatePort()">Edit this information</a>
+					</li>
+					<li class="groupBegin">
+						<span class="required review">*</span>
+						<span class="itemName">Date:</span>
+						<span class="itemInfo">@Model.Slot.Start.ToDateStringWithDayOfWeek()</span>
+					</li>
+					<li class="reviewBlockEnd">
+						<span class="required review">*</span>
+						<span class="itemName">Time:</span>
+						<span class="itemInfo">@Model.Slot.Start.ToTimeString() - @Model.Slot.End.ToTimeString()</span>
+						<a class="editInfo" href="@wizard.GetStep(slotStep).Uri(ViewContext).TranslatePort()">Edit this information</a>
+					</li>
+
+@if (Model is IGuestTicket) { 
+                    <li>
+				        <span class="required review">*</span>
+				        <span class="itemName">Number of Guests:</span>
+				        <span class="itemInfo">@(((IGuestTicket)Model).NumberOfGuests)</span>
+				    </li>
+
+}
+<!--@Model.AllocatedCapacity-->
+					<li class="groupBegin">
+						<span class="required review">*</span>
+						<span class="itemName">@Html.Raw(OwnerLabel)First Name:</span>
+						<span class="itemInfo">@Model.Owner.FirstName</span>
+						@*@Html.ActionLink( "Edit this information", "Update", "Profile", new { Area = "MyAccount", returnUrl = UrlHelpers.CurrentRawUrl() }, new { @class="editInfo"} )*@
+					</li>
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">@Html.Raw(OwnerLabel)Last Name:</span>
+						<span class="itemInfo">@Model.Owner.LastName</span>
+					</li>
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">@Html.Raw(OwnerLabel)Email Address:</span>
+						<span class="itemInfo">@Model.Owner.Email</span>
+					</li>
+					
+				    <li>
+				        @Html.CheckBoxFor(x => x.Owner.EmailInsiders,new {@readonly="readonly", disabled="disabled"})
+				        <label class="check" for="emailJoin">Join the Email Insiders and receive exclusive updates from Chick-fil-A, Inc. <span class="ageReq">(must be 18 or older)</span></label>
+				    </li>
+
+					
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">Password:</span>
+						<span class="itemInfo">******</span>
+					</li>
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">Zip Code:</span>
+						<span class="itemInfo">@if( @Model.Owner.Address != null ) { @Model.Owner.Address.ZipString }</span>
+					</li>
+					<li>
+						<span class="required review">*</span>
+						<span class="itemName">I am 13 years of age or older:</span>
+						<span class="itemInfo">Yes</span>
+					</li>
+				    <li>
+				        <span class="required review">*</span>
+				        <span class="itemName">Birthday:</span>
+				        <span class="itemInfo">@Model.Owner.BirthDay.ToString("M/dd")</span>
+				    </li>
+
+                    @if(Model.Owner.Gender == Gender.Female || Model.Owner.Gender == Gender.Male){
+                    <li>
+						<span class="itemName">Gender:</span>
+						<span class="itemInfo">@Model.Owner.Gender</span>
+					</li>
+                    }

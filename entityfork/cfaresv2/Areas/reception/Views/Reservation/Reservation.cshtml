@@ -1,0 +1,143 @@
+﻿
+@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain._event.resevent.store
+@using cfares.domain._event.slot
+@using cfares.domain.store
+@using cfares.repository._event
+@using cfares.repository.slot
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.com.reservations.res
+@model cfaresv2.Models.TicketAccountModel<cfares.domain._event._ticket.GuestTicket>
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+    var wizard = ViewBag.wizard as ReceptionWizard;
+    var evt = AppContext.Current.Event??wizard.GetEvent() as SpeakerEvent;
+}
+
+@section Scripts {
+    <script>
+
+
+            $(".tooltip-why").popover({
+                placement: "right",
+                html: $(this).attr("data-content"),
+                trigger: "hover",
+                animation: true
+            })
+
+
+    </script>
+}
+
+
+@Html.Partial("_Wizard",wizard)
+
+
+<section class="row-fluid" id="reservation_form">
+	
+	<div class="span11 offset1">
+	    @using (Html.BeginForm(null, null, FormMethod.Post, new { action = Request.Url.TranslatePort(Request), id = "reservationForm", @class = "form-horizontal form-inline" }))
+     {
+	        
+	            <fieldset> 
+                    <p>Complete your reservation by filling out the form below. <span class="indicates-required"><span>*
+                                 Indicates</span> required field</span></p>
+	                <ul  class="unstyled">
+	                    <li>
+	                        
+							
+							@Html.ValidationSummary(true)
+	                    </li>
+	                    
+	                        
+						    @Html.HiddenFor(x=>x.Ticket.CardNumber)
+	                  
+	                 
+	                    
+	                    @if (!Request.IsAuthenticated)
+                        {
+                            @Html.Partial("_ResUserMixin")
+                        }
+                        else
+                        {
+                            @*@Html.HiddenFor(x=>x.Ticket.OwnerId)*@
+                        }
+                        
+                        
+
+	                    <li>
+                        <span class="required">*</span>
+                        @Html.LabelFor(x=>x.Ticket.NumberOfGuests,"Number of Additional Guests:")
+                        @Html.DropDownListFor(x=>x.Ticket.NumberOfGuests,
+                                              new SelectList(
+                                                  Enumerable.Range(0,8).Select(x=>new {Value=x,Label=x})
+                                                  ,"Value","Label"
+                                                  )
+                             )
+                        @Html.ValidationMessageFor(x=>x.Ticket.NumberOfGuests)
+                    </li>
+	                    
+
+	                    @*            
+	                    <li>
+	                        @Html.CheckBoxFor(x=>x.StoreOptIn)
+	                        @Html.LabelFor(x=>x.StoreOptIn,"Receive updates about promotions and events from this Chick-fil-A restaurant.", new{@class="check"})<span class='ageReq'> (must be 18 or older)</span>
+	                        @Html.ValidationMessageFor(x=>x.StoreOptIn)
+                        </li>
+                        *@
+
+	                    <li>
+	                        
+	                        <fieldset>
+	                            <span class="required">*</span>
+	                            <label>I am 13 years of age or older:</label>
+	                            @Html.EditorFor(x=>x.AgeCheck)
+	                            @Html.ValidationMessageFor(x=>x.AgeCheck)
+	                        </fieldset>
+	                    </li>
+                        
+                        
+
+                        @if (evt.AvailableSlots.Count()==1)
+                        {
+                            Model.Ticket.SlotId = evt.AvailableSlots.First().SlotId;
+                            @Html.HiddenFor(x=>x.Ticket.SlotId)
+                        }
+                        
+                        else 
+                        {
+                        
+                            <li>
+                                <span class="required">*</span>
+                                @Html.LabelFor(x => x.Ticket.SlotId, "Which Restaurant did you receive an invitation from:")
+	            
+                                @Html.DropDownListFor(x => x.Ticket.SlotId,
+                                                        new SelectList(
+                                                            evt.AvailableSlots.OrderBy(x=>x.Occurrence.StoreId=="00000").Select(x => new { Label = x.Occurrence.StoreId=="00000"?"Other":x.Occurrence.StoreName, Value = x.SlotId }),
+                                                            "Value", "Label"
+                                                            ),"Choose Restaurant", new { @class = "" }
+                                        )
+                                @Html.ValidationMessageFor(x => x.Ticket.SlotId)
+                            </li>    
+                        }
+                            
+                        
+                        
+                        
+                 
+	               
+	                    
+	                </ul>
+
+	                <button type="submit" class="btn medium default reserve btn-primary">Save &amp; Continue <i class="icon-arrow-right"></i></button>
+
+	            </fieldset>
+	        
+     }
+	</div>
+</section>
+

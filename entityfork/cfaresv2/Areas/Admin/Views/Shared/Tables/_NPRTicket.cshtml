@@ -1,0 +1,95 @@
+﻿@model string
+
+
+<div class='admin-table'>
+    <table id="occurrences_@ViewData["id"]" class='data-table' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+            <tr>
+				<th data-id='TicketLink' data-on-display='DataFormat.NPRTicketUrl' data-column-parent='TicketId'></th>
+				<th data-column-name='TicketIdL' data-id-column='true' data-visible='false'>Ticket Id</th>
+				<th data-column-name='ConfirmationNumber' data-searchable="false">Confirmation #</th>
+				<th data-id='Owner' data-column-parent='OwnerId' data-on-display='DataFormat.UserUrl' data-visible='false'>View Owner</th>
+				<th data-column-name='OwnerName'  data-sortable="false">Owner</th>
+                <th data-column-name='FirstName' data-query-name="Owner/FirstName" data-visible="false">Guest First Name</th>
+				 <th data-column-name='LastName' data-query-name="Owner/LastName" data-visible="false">Guest Last Name</th>
+				 <th data-column-name='OwnerEmail' data-visible="false">Guest Email</th>
+                 <th data-column-name='OwnerHomePhone'  data-visible="false">Phone</th> 
+				<th data-column-name='ContactPreference' data-searchable="false">Contact Method</th>
+                <th data-column-name='GroupSize'>Group Size</th>
+				<th data-column-name='GuestListString'>Guests</th>
+                <th data-column-name='Status' data-sortable="true">Status</th>    
+				<th data-id='SlotStart' data-visible="false" data-on-display='DataFormat.date'>Start Time</th>
+				<th data-column-name='CreatedDateD' data-sortable="false" data-searchable="false" data-on-display='DataFormat.date' data-visible="false" width="15%">Registration Date</th>
+                <th data-column-name='SlotIdL' data-visible='false'>Slot Id</th>
+                <th data-column-name='OwnerIdL' data-visible='false'>Owner Id</th>
+                <th data-column-name='ListenToNprStation' data-visible='false'>Listen to NPR Station</th> 
+                <th data-column-name='VisitorOfWebsite' data-visible='false'>Visitor of npr.org</th> 
+                <th data-column-name='Age' data-visible='false'>Age</th> 
+                <th data-column-name='Race' data-visible='false'>Race</th> 
+                <th data-column-name='TopicsOfInterest' data-visible='false'>Topics of Interest</th> 
+            </tr>
+        </thead>
+        </table>
+      </div>
+@{ var morecolumn="";
+   var guidename = "";
+   var guidestring = "";
+   if (ViewData["vTicketType"]!=null &&  ViewData["vTicketType"].ToString() == "Tour")
+    {
+        guidename = "'" + ViewData["vGuideName"].ToString() + "',";
+        guidestring = "'Guide',"; 
+        morecolumn = ", 16";
+    }
+}
+ <script type="text/javascript">
+
+     var debug;
+     $("#occurrences_@ViewData["id"]").unbind().data("tools", ["copy", "csv", {
+         "sExtends": "ajax",
+         "sButtonText":  "Excel",
+         "fnClick": function (nButton, oConfig) {
+             oConfig.sFieldBoundary = "'";
+             oConfig.sFieldSeperator = ",";
+                oConfig.mColumns = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21 @morecolumn]; 
+                oConfig.fnCellRender = function (cell) {
+
+                            return ("" + cell).replace(/\r/gi, "").replace(/<(?:.|\n)*?>/gm, '').replace("'", "\\'");
+                        }
+
+                        var sData = this.fnGetTableData(oConfig).replace("\\''", "\\'");
+                        debug = sData;
+                        var debug2="";
+                        var lines = debug.split('\n');
+                        var i = 1;
+                    
+                        $.each(lines, function () {
+                            var line;
+                            if (i == 1) {
+                                line = "'@ViewData["vTicketType"]',@( new HtmlString(guidestring))" + this + '\n';
+                                i++;
+                            } else {
+                                line = "'@ViewData["vTicketType"]',@( new HtmlString(guidename))" + this + '\n';
+                            }
+
+                            //need to make multiple
+                            debug2 = debug2 + line;
+                        });
+                        sData = debug2;
+                        $.ajax({
+                            "url": "/Admin/Excel/Table/occurrences_@ViewData["id"]",
+                            "data": { "data": sData },
+                            "success": function(d,xhr){
+                                var href = d.href;
+                                $("#xcel_src").attr("src",href);
+                            },
+                            "dataType": "json",
+                            "type": "POST",
+                            "cache": false,
+                            "error": function () {
+                                alert("Error detected when sending table data to server");
+                            }
+                        });
+                    }
+
+                }]);
+            </script>

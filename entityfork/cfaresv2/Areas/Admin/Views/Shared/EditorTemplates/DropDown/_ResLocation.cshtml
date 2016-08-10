@@ -1,0 +1,15 @@
+﻿@using cfares.domain.store
+@using cfares.entity.dbcontext.res_event
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@model string
+
+@{
+	IResContext context = ReservationConfig.GetContext();
+    IEnumerable<ResStore> stores = context.Stores.OrderBy( o => o.Name ).AsEnumerable();
+}
+
+@Html.Partial("EditorTemplates/DropDown/_DropDownString", Model, new ViewDataDictionary(ViewData)
+{
+    {"select", stores.ToSelectList( m => m.MaximumCapacity > 0 ? string.Format( "{0} ({1})", m.Name, m.MaximumCapacity ) : m.Name, m => m.LocationNumber, "Select a Location", Model )}
+})

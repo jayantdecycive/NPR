@@ -1,0 +1,66 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.NprEmailContextModel>
+@*@model npr.domain._event.ticket.NPRTicket*@
+
+<html>
+<head>
+</head>
+<body style="width:600px; padding:0px; margin:0px;">
+@*<div id="head" style="background:#ddd; width:600px; height:200px">
+
+    <img src="http://www.npr.org/about/images/press/Logos/npr_logo_rgb.JPG" style="float:left; width:150px; margin-left: 38px; margin-top: 70px;"/>
+    <img src="http://tours.qa.npr.org/Content/themes/npr/images/npr-headquarters-email.jpg" style="float:right;"/>
+
+</div>*@
+    <div id="content" style="padding:50px 20px; clear:both;">
+
+
+
+
+
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            Dear @Model.Ticket.Owner.FirstName,
+        </p>
+
+		<p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+			This is a reminder of your upcoming tour at our new NPR headquarters at 1111 North Capitol Street, NE!<br />  Below are the details of your reservation:
+		</p>
+
+        <ul style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333; margin:0px; padding-left:0px; list-style:none;">
+            <li><span style="font-weight:bold;">First Name: </span>@Model.Ticket.Owner.FirstName</li>
+            <li><span style="font-weight:bold;">Last Name: </span>@Model.Ticket.Owner.LastName</li>
+            <li><span style="font-weight:bold;">Tour Date: </span>@Model.Ticket.Slot.Start.ToString("dddd, MMMM dd, yyyy")</li>
+            <li><span style="font-weight:bold;">Tour Time: </span>@Model.Ticket.Slot.Start.ToString("hh:mmtt") - @Model.Ticket.Slot.End.ToString("hh:mmtt")</li>
+            <li><span style="font-weight:bold;">Group Size: </span>@Model.Ticket.GroupSize</li>
+            <li><span style="font-weight:bold;">Confirmation Number: </span>@Model.Ticket.ConfirmationNumber</li>
+        </ul>
+
+
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            Please print this email and bring it with you along with your photo ID on the day of your tour. If you need to cancel or modify your reservation, please visit the <a href="http://tours.npr.org/npr/Reservation/Modify">website</a> and log in using your email address and confirmation number. 
+        </p>
+    
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            We want your visit to be amazing, so we put together an <a href="http://tours.npr.org/npr/Home/Faq">FAQ</a> and guide to help <a href="">Plan Your Trip</a>. 
+        </p>
+    
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            We look forward to seeing you!
+        </p>
+    
+		<p class="margin-top-35 margin-bot-60" style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">Sincerely,<br />
+		<img src="http://tours.npr.org/content/themes/npr/images/signature-erin-mcintyre.png" /><br />
+		Erin McIntyre<br/>
+		Manager, NPR Audience and Community Relations<br/>
+		</p>
+
+    </div>
+
+
+    
+
+</body>
+</html>
+
+
+
+

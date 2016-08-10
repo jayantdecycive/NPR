@@ -1,0 +1,26 @@
+﻿@model cfares.domain._event.ResTemplate
+
+@{
+    ViewBag.Title = "ResTemplate";
+    ViewBag.Brief = "Event ResTemplate Detailed Information";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+}
+        
+            <h1 class='clean-timezone'>@Model.Name</h1>
+            <p>
+            @Html.Raw(Model.Name)
+            </p>
+        
+        
+            @Html.Partial("ModelDetail/_ResTemplate")        
+@*
+@section Table{
+ <br class='clearfloat' />
+        
+            <br />
+            <h2 class='table-header'>Slots in this Schedule:</h2>
+            <div class='admin-table'>            
+            @Html.Partial("Tables/_ResTemplate",Model.Id())
+        </div>
+        }
+*@

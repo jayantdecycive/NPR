@@ -1,0 +1,42 @@
+﻿@using System.Text.RegularExpressions
+@using Ninject
+@using cfares.domain._event
+@model cfares.domain._event.ReservationType
+
+@{
+    var k = Model.GetKernel();
+    var slotType = k.Get<ISlot>().GetType();
+    var ticketType = k.Get<ITicket>().GetType();
+    string typeName = Model.ReservationTypeId=="Tour"?"Tour ":"Event ";
+    string slotName = Regex.Replace(slotType.Name, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ").Replace("NPR ", typeName);
+    string ticketName = Regex.Replace(ticketType.Name, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1 ").Replace("NPR ",typeName);
+}
+
+<!-- DASHBOARDS -->
+        <div class='inner-content wrapper home-dash-cta light-bg'>
+            <div class='model badge rounded'>
+                <h2>Dashboards</h2>
+                <p>Create or view data for the application</p>
+                <div class='button-list dashboards'>
+					<a href="@Url.Action("Index", "User",new {ReservationTypeId=Model.ReservationTypeId})" class="button-grey-menu">
+						<span class="button-text">User Dashboard</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+					<a href="@Url.Action("Index", slotType.Name,new {ReservationTypeId=Model.ReservationTypeId})" class="button-grey-menu">
+						<span class="button-text">@slotName Dashboard</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+					<a href="@Url.Action("Index", ticketType.Name,new {ReservationTypeId=Model.ReservationTypeId})" class="button-grey-menu">
+						<span class="button-text">@ticketName Dashboard</span>
+						<span class="button-icon-container">
+							<span class="button-icon"></span>
+						</span>
+					</a>
+				</div>
+            </div>
+        </div>
+

@@ -1,0 +1,30 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<cfares.site.modules.mail.NprEmailContextModel>
+@*@model npr.domain._event.ticket.NPRTicket*@
+
+<html>
+<head>
+</head>
+<body style="width:600px; padding:0px; margin:0px;">
+@*<div id="head" style="background:#ddd; width:600px; height:200px">
+
+    <img src="http://www.npr.org/about/images/press/Logos/npr_logo_rgb.JPG" style="float:left; width:150px; margin-left: 38px; margin-top: 70px;"/>
+    <img src="http://tours.qa.npr.org/Content/themes/npr/images/npr-headquarters-email.jpg" style="float:right; height:200px;"/>
+
+</div>*@
+    <div id="content" style="padding:50px 20px; clear:both;">
+
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 14pt; color:#333; font-weight:bold;">
+        Personalized Tour Request:
+        </p>
+
+        <p style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; color:#333;">
+            A new personalized tour request has been submitted for @Model.Ticket.Owner.FirstName @Model.Ticket.Owner.LastName, login to view this request and create a timeslot.
+        </p>
+
+    </div>
+</body>
+</html>
+
+
+
+

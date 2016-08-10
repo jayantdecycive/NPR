@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResEventTheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TemplateName>Chick-fil-A Product</TemplateName>  
+  <Name>Product</Name>
+  <ResEventThemeId>product</ResEventThemeId>
+  <TabletTemplateId>product</TabletTemplateId>
+  <TemplateId>product</TemplateId>  
+  <ReservationTypeName>Product Giveaway</ReservationTypeName>
+  <ReservationTypeId>product</ReservationTypeId>
+</ResEventTheme>

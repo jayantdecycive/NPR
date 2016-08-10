@@ -1,0 +1,4 @@
+﻿@model npr.domain._event.ticket.ContactPreference ?
+<div class='admin-table'>
+	@Html.DropDownListFor(model => model, new SelectList(Enum.GetValues(typeof(npr.domain._event.ticket.ContactPreference)), Model ?? npr.domain._event.ticket.ContactPreference.Email), new { @class = " jq-select" })
+</div>

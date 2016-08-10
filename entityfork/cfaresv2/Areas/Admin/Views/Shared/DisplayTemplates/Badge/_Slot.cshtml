@@ -1,0 +1,3 @@
+﻿@model cfares.domain._event.Slot
+
+@Html.Raw(Model==null?"None":(string.Format("{1} on {0}",Model.StartOffsetString,Model.Occurrence.StoreName)))

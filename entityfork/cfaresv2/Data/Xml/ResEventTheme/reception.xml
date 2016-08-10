@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResEventTheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TemplateName>Chick-fil-A Influence</TemplateName>  
+  <Name>Influence</Name>
+  <ResEventThemeId>influence</ResEventThemeId>
+  <TabletTemplateId>influence</TabletTemplateId>
+  <TemplateId>influence</TemplateId>
+  <ReservationTypeName>Influence Event</ReservationTypeName>
+  <ReservationTypeId>influence</ReservationTypeId>
+</ResEventTheme>

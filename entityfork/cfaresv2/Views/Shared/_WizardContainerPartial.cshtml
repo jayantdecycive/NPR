@@ -1,0 +1,36 @@
+﻿@using cfacore.shared.modules.com.admin
+@using cfares.domain._event
+ 
+<section class='wizard page'>
+	<div class='wizard content'>
+		<div class='wizard wrapper'>
+			@{
+				if (ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Wizard"] != null)
+				{
+                    IWizard wizard = (IWizard)ViewContext.ParentActionViewContext.ViewData["Wizard"];
+					ViewBag.Wizard = wizard;
+					Html.RenderPartial("_WizardPartial", wizard);
+				}
+				else if (ViewContext != null && ViewContext.ViewData["Wizard"] != null)
+				{
+                    IWizard wizard = (IWizard)ViewContext.ViewData["Wizard"];
+					ViewBag.Wizard = wizard;
+					Html.RenderPartial("_WizardPartial", wizard);
+				}
+				else if (ViewContext.ParentActionViewContext != null && ViewContext.ParentActionViewContext.ViewData["Message"] != null)
+				{
+					Html.RenderPartial("_MessagePartial", ViewContext.ParentActionViewContext.ViewData["Message"]);
+				}
+				else if (ViewContext.ViewData["Message"] != null)
+				{
+					Html.RenderPartial("_MessagePartial", ViewContext.ViewData["Message"]);
+				}
+				/*else if (IsSectionDefined("WizardBanner"))
+				{
+					@RenderSection("WizardBanner")
+				}*/
+			}
+		</div>
+	</div>
+</section>
+

@@ -1,0 +1,22 @@
+﻿@model cfares.domain._event.Ticket
+
+@{
+    ViewBag.Title = "Create Ticket";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+    ViewBag.Brief = "Create New Event Ticket";
+}
+
+
+<h1>Create Ticket</h1>
+<p>Enter Basic Ticket Information.</p>
+
+@Html.Partial("ModelForm/_Ticket")
+<div class='submit-block admin-green'>
+        <div class='editor-label inline-block inline-block inline-block'>
+            
+        </div>
+        <div class='editor-field inline-block inline-block inline-block'>
+            <input type="submit" data-icon="ui-icon-disk" class='jq-button' value="Save" />
+        </div>
+            
+    </div>

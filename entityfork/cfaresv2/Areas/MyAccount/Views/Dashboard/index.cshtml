@@ -1,0 +1,62 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.entity.dbcontext.res_event
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+@using cfares.site.modules.repository.ticket
+@model cfaresv2.Areas.MyAccount.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "../Shared/_Layout.cshtml";
+    IResContext context = ReservationConfig.GetContext();
+}
+
+<div class="row-fluid">
+	<div class="span12">
+		<h1>My Events</h1>
+		<p>The following are events that you have registered for. To modify, cancel or have your invitation re-sent, click the "Modify this reservation" button next to the event.</p>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		@if( ! Model.Tickets.Any() ) {
+			<div class="noRecordsFound">No events found</div>
+		} else {
+			<ul id="eventsList" class="media-list">
+				@{ ResTicketRepository r = new ResTicketRepository(context); }
+				@foreach( ITicket t in Model.Tickets )
+				{
+					<li class="media row-fluid" id="@("#ticket" + t.TicketId)">
+						
+					    <a class="hidden-phone pull-left eventThumb span2" href="@r.GetModifyUrl( t,ViewContext )">
+					        @Html.Media( t.Slot.Occurrence.ResEvent.Template.Preview, width: 90 )
+					    </a>
+                        <a class="visible-phone pull-left eventThumb span2" href="@r.GetModifyUrl( t,ViewContext )">
+							@Html.Media( t.Slot.Occurrence.ResEvent.Template.Preview, width: 400,height:120,htmlAttributes:new {width="100%"} )
+						</a>
+
+						
+
+					    <div class="media-body eventInfo span6">
+					        @if (!string.IsNullOrEmpty(t.Slot.Occurrence.ResEvent.Description))
+					        {
+					            <h4>@t.Slot.Occurrence.ResEvent.Description:</h4>
+					        }
+					        <span class="restaurant">@t.Slot.Occurrence.ResEvent.ReservationType.Name: @t.Slot.Occurrence.Store.Name</span>
+					        <div class="slot-time">
+					            <span>Date: <strong>@t.Slot.Start.ToDateString()</strong></span>
+					            <span>Time Slot: <strong>@t.Slot.Start.ToTimeString() - @t.Slot.End.ToTimeString()</strong></span>
+					        </div>
+					        <div class="clear"></div>
+					    </div>
+                        
+                        <a class="button-a pull-right span3 btn btn-large btn btn-primary" href="@r.GetModifyUrl( t,ViewContext )">
+							Modify this reservation <i class="icon-arrow-right"></i>
+						</a>
+
+					</li>
+				}
+			</ul> 
+		}
+	</div>
+</div>

@@ -1,0 +1,23 @@
+﻿@using cfares.site.modules.com.application
+@model HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = "../Shared/_layout.cshtml"; //Layout = "~\Areas\npr\Views\Shared\_layout.cshtml";
+}
+
+<div id="errorPage">
+	<h2>
+We Apologize.
+	</h2>
+	<p>
+We are experiencing some technical difficulties with the NPR Reservation System.
+	</p><p>
+		Please check back soon!
+	</p>
+
+</div>
+
+@*<input type="hidden" name="errorActionName" value="@Model.ActionName" />
+<input type="hidden" name="errorControllerName" value="@Model.ControllerName" />
+<input type="hidden" name="errorException" value="@Model.Exception.ToString()" />*@
+

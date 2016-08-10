@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CfaComFoodModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CfaComFoodModelStoreContainer">
+          <EntitySet Name="Food" EntityType="CfaComFoodModel.Store.Food" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Food_Category" EntityType="CfaComFoodModel.Store.Food_Category" store:Type="Tables" Schema="dbo" Table="Food.Category" />
+          <EntitySet Name="Food_Variation" EntityType="CfaComFoodModel.Store.Food_Variation" store:Type="Tables" Schema="dbo" Table="Food.Variation" />
+        </EntityContainer>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="food_id" />
+          </Key>
+          <Property Name="food_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="short_name" Type="nvarchar" MaxLength="180" />
+          <Property Name="food_name" Type="nvarchar" MaxLength="180" />
+          <Property Name="extended_name" Type="varchar" MaxLength="180" />
+          <Property Name="url_name" Type="nvarchar" Nullable="false" MaxLength="180" />
+          <Property Name="url_hint" Type="varchar" MaxLength="180" />
+          <Property Name="order_hint" Type="int" Nullable="false" />
+          <Property Name="img" Type="nvarchar(max)" />
+          <Property Name="dom_id" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="ingredients" Type="nvarchar(max)" />
+          <Property Name="calories" Type="int" />
+          <Property Name="calories_fat" Type="int" />
+          <Property Name="protein" Type="float" />
+          <Property Name="carbs" Type="float" />
+          <Property Name="carbs_daily" Type="float" />
+          <Property Name="sugar" Type="float" />
+          <Property Name="sugar_daily" Type="float" />
+          <Property Name="cholesterol" Type="float" />
+          <Property Name="cholesterol_daily" Type="float" />
+          <Property Name="sodium" Type="float" />
+          <Property Name="sodium_daily" Type="float" />
+          <Property Name="calcium" Type="float" />
+          <Property Name="calcium_daily" Type="float" />
+          <Property Name="iron" Type="float" />
+          <Property Name="iron_daily" Type="float" />
+          <Property Name="fiber" Type="float" />
+          <Property Name="fiber_daily" Type="float" />
+          <Property Name="fat" Type="float" />
+          <Property Name="fat_daily" Type="float" />
+          <Property Name="trans_fat" Type="float" />
+          <Property Name="trans_fat_daily" Type="float" />
+          <Property Name="saturated_fat" Type="float" />
+          <Property Name="saturated_fat_daily" Type="float" />
+          <Property Name="vitamin_a" Type="float" />
+          <Property Name="vitamin_a_daily" Type="float" />
+          <Property Name="vitamin_c" Type="float" />
+          <Property Name="vitamin_c_daily" Type="float" />
+          <Property Name="serving_size" Type="float" />
+          <Property Name="serving_size_international" Type="float" />
+          <Property Name="parent_item" Type="int" />
+          <Property Name="non_menu" Type="bit" Nullable="false" />
+          <Property Name="no_image" Type="bit" Nullable="false" />
+          <Property Name="notice" Type="nvarchar(max)" />
+          <Property Name="show_serving" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Food_Category">
+          <Key>
+            <PropertyRef Name="food_category_id" />
+          </Key>
+          <Property Name="food_category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="food_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Food_Variation">
+          <Key>
+            <PropertyRef Name="variation_id" />
+          </Key>
+          <Property Name="variation_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="parent_food_id" Type="int" Nullable="false" />
+          <Property Name="child_food_id" Type="int" Nullable="false" />
+          <Property Name="is_option" Type="bit" Nullable="false" />
+          <Property Name="hint" Type="varchar" MaxLength="250" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CfaComFoodModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CfaComFoodEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Foods" EntityType="CfaComFoodModel.Food" />
+          <EntitySet Name="Food_Category" EntityType="CfaComFoodModel.Food_Category" />
+          <EntitySet Name="Food_Variation" EntityType="CfaComFoodModel.Food_Variation" />
+        </EntityContainer>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="food_id" />
+          </Key>
+          <Property Name="food_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="short_name" Type="String" MaxLength="180" Unicode="true" FixedLength="false" />
+          <Property Name="food_name" Type="String" MaxLength="180" Unicode="true" FixedLength="false" />
+          <Property Name="extended_name" Type="String" MaxLength="180" Unicode="false" FixedLength="false" />
+          <Property Name="url_name" Type="String" Nullable="false" MaxLength="180" Unicode="true" FixedLength="false" />
+          <Property Name="url_hint" Type="String" MaxLength="180" Unicode="false" FixedLength="false" />
+          <Property Name="order_hint" Type="Int32" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="dom_id" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ingredients" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="calories" Type="Int32" />
+          <Property Name="calories_fat" Type="Int32" />
+          <Property Name="protein" Type="Double" />
+          <Property Name="carbs" Type="Double" />
+          <Property Name="carbs_daily" Type="Double" />
+          <Property Name="sugar" Type="Double" />
+          <Property Name="sugar_daily" Type="Double" />
+          <Property Name="cholesterol" Type="Double" />
+          <Property Name="cholesterol_daily" Type="Double" />
+          <Property Name="sodium" Type="Double" />
+          <Property Name="sodium_daily" Type="Double" />
+          <Property Name="calcium" Type="Double" />
+          <Property Name="calcium_daily" Type="Double" />
+          <Property Name="iron" Type="Double" />
+          <Property Name="iron_daily" Type="Double" />
+          <Property Name="fiber" Type="Double" />
+          <Property Name="fiber_daily" Type="Double" />
+          <Property Name="fat" Type="Double" />
+          <Property Name="fat_daily" Type="Double" />
+          <Property Name="trans_fat" Type="Double" />
+          <Property Name="trans_fat_daily" Type="Double" />
+          <Property Name="saturated_fat" Type="Double" />
+          <Property Name="saturated_fat_daily" Type="Double" />
+          <Property Name="vitamin_a" Type="Double" />
+          <Property Name="vitamin_a_daily" Type="Double" />
+          <Property Name="vitamin_c" Type="Double" />
+          <Property Name="vitamin_c_daily" Type="Double" />
+          <Property Name="serving_size" Type="Double" />
+          <Property Name="serving_size_international" Type="Double" />
+          <Property Name="parent_item" Type="Int32" />
+          <Property Name="non_menu" Type="Boolean" Nullable="false" />
+          <Property Name="no_image" Type="Boolean" Nullable="false" />
+          <Property Name="notice" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="show_serving" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Food_Category">
+          <Key>
+            <PropertyRef Name="food_category_id" />
+          </Key>
+          <Property Name="food_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="food_id" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Food_Variation">
+          <Key>
+            <PropertyRef Name="variation_id" />
+          </Key>
+          <Property Name="variation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_food_id" Type="Int32" Nullable="false" />
+          <Property Name="child_food_id" Type="Int32" Nullable="false" />
+          <Property Name="is_option" Type="Boolean" Nullable="false" />
+          <Property Name="hint" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CfaComFoodModelStoreContainer" CdmEntityContainer="CfaComFoodEntities">
+          <EntitySetMapping Name="Foods">
+            <EntityTypeMapping TypeName="CfaComFoodModel.Food">
+              <MappingFragment StoreEntitySet="Food">
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="short_name" ColumnName="short_name" />
+                <ScalarProperty Name="food_name" ColumnName="food_name" />
+                <ScalarProperty Name="extended_name" ColumnName="extended_name" />
+                <ScalarProperty Name="url_name" ColumnName="url_name" />
+                <ScalarProperty Name="url_hint" ColumnName="url_hint" />
+                <ScalarProperty Name="order_hint" ColumnName="order_hint" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="dom_id" ColumnName="dom_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+                <ScalarProperty Name="calories" ColumnName="calories" />
+                <ScalarProperty Name="calories_fat" ColumnName="calories_fat" />
+                <ScalarProperty Name="protein" ColumnName="protein" />
+                <ScalarProperty Name="carbs" ColumnName="carbs" />
+                <ScalarProperty Name="carbs_daily" ColumnName="carbs_daily" />
+                <ScalarProperty Name="sugar" ColumnName="sugar" />
+                <ScalarProperty Name="sugar_daily" ColumnName="sugar_daily" />
+                <ScalarProperty Name="cholesterol" ColumnName="cholesterol" />
+                <ScalarProperty Name="cholesterol_daily" ColumnName="cholesterol_daily" />
+                <ScalarProperty Name="sodium" ColumnName="sodium" />
+                <ScalarProperty Name="sodium_daily" ColumnName="sodium_daily" />
+                <ScalarProperty Name="calcium" ColumnName="calcium" />
+                <ScalarProperty Name="calcium_daily" ColumnName="calcium_daily" />
+                <ScalarProperty Name="iron" ColumnName="iron" />
+                <ScalarProperty Name="iron_daily" ColumnName="iron_daily" />
+                <ScalarProperty Name="fiber" ColumnName="fiber" />
+                <ScalarProperty Name="fiber_daily" ColumnName="fiber_daily" />
+                <ScalarProperty Name="fat" ColumnName="fat" />
+                <ScalarProperty Name="fat_daily" ColumnName="fat_daily" />
+                <ScalarProperty Name="trans_fat" ColumnName="trans_fat" />
+                <ScalarProperty Name="trans_fat_daily" ColumnName="trans_fat_daily" />
+                <ScalarProperty Name="saturated_fat" ColumnName="saturated_fat" />
+                <ScalarProperty Name="saturated_fat_daily" ColumnName="saturated_fat_daily" />
+                <ScalarProperty Name="vitamin_a" ColumnName="vitamin_a" />
+                <ScalarProperty Name="vitamin_a_daily" ColumnName="vitamin_a_daily" />
+                <ScalarProperty Name="vitamin_c" ColumnName="vitamin_c" />
+                <ScalarProperty Name="vitamin_c_daily" ColumnName="vitamin_c_daily" />
+                <ScalarProperty Name="serving_size" ColumnName="serving_size" />
+                <ScalarProperty Name="serving_size_international" ColumnName="serving_size_international" />
+                <ScalarProperty Name="parent_item" ColumnName="parent_item" />
+                <ScalarProperty Name="non_menu" ColumnName="non_menu" />
+                <ScalarProperty Name="no_image" ColumnName="no_image" />
+                <ScalarProperty Name="notice" ColumnName="notice" />
+                <ScalarProperty Name="show_serving" ColumnName="show_serving" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food_Category">
+            <EntityTypeMapping TypeName="CfaComFoodModel.Food_Category">
+              <MappingFragment StoreEntitySet="Food_Category">
+                <ScalarProperty Name="food_category_id" ColumnName="food_category_id" />
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food_Variation">
+            <EntityTypeMapping TypeName="CfaComFoodModel.Food_Variation">
+              <MappingFragment StoreEntitySet="Food_Variation">
+                <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+                <ScalarProperty Name="parent_food_id" ColumnName="parent_food_id" />
+                <ScalarProperty Name="child_food_id" ColumnName="child_food_id" />
+                <ScalarProperty Name="is_option" ColumnName="is_option" />
+                <ScalarProperty Name="hint" ColumnName="hint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

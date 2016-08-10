@@ -1,0 +1,59 @@
+﻿@using cfares.site.modules.com.application
+@model string
+
+<div class='admin-table'>
+    <table id="@Html.Raw(ViewData["id"]??"upcoming_tour_table_"+Model)" class='data-table filterable' data-mode="backbone"  data-jquery-ui="true"  data-data='@Model'>
+            <thead>
+                <tr>
+                    <th data-id='Cta' data-sortable="false" data-searchable="false" class="view-column"></th>
+                    <th data-id='SlotIdL' data-searchable='false' data-id-column='true' style="width:50px;" >ID</th>
+					@if( Model.EndsWith( "EventsBucket" ) )
+					{
+						<th data-id="StartMonthD" data-column-parent='Start' data-on-display='DataFormat.month' width="8%">Month</th>
+						<th data-id="StartDayD" data-column-parent='Start' data-on-display='DataFormat.day' width="5%">Day</th>
+						<th data-id="StartYearD" data-column-parent='Start' data-on-display='DataFormat.year' width="5%">Year</th>
+						<th data-id="StartTimeD" data-column-parent='Start' data-on-display='DataFormat.time' width="11%">Time</th>
+						<th data-column-name='StartD' data-searchable='false' data-visible='false' width="15%">Start</th>
+						<th data-column-name='EventName' data-query-name='Occurrence/ResEvent/Name' width="27%">Title</th>
+						<th data-column-name='EventCategory' data-query-name='Occurrence/ResEvent/Category/Name' width="17%">Type of Event</th>
+					}
+					else
+					{
+					
+						<th data-column-name='StartDay' width="15%">Day</th>
+						<th data-column-name='StartD' data-searchable='false' data-on-display='DataFormat.date' width="15%">Start</th>
+						<th data-column-name='EndD' data-searchable='false' data-on-display='DataFormat.date' width="15%">End</th>
+						<th data-column-name='SlotIdAsString' data-visible='false' width="15%">SlotId2</th>				
+						<th data-column-name='StartAsString' data-visible='false' width="15%">Start2</th> 
+						<th data-column-name='EndAsString' data-visible='false' width="15%">End2</th>
+					}
+
+					@if( Model.EndsWith( "ToursBucket" ) )
+					{
+						<th data-column-name='Visibility' data-sortable="false" data-searchable='false' data-on-display='EnumFormat.SlotVisibility' width="95px">Tour Type</th>
+					}
+					else
+					{
+						<th data-column-name='Visibility' data-sortable="false" data-searchable='false' data-on-display='EnumFormat.SlotVisibility' width="9%">Visibility</th>
+					}
+
+					@if( Model.EndsWith( "EventsBucket" ) )
+					{
+						<th data-column-name='EventLocationName' data-query-name='Occurrence/Store/Name' width="27%">Location</th>
+					}
+
+					@if( Model.EndsWith( "pastEventsBucket" ) )
+					{
+						<th data-column-name='TotalTickets' data-sortable="false" data-searchable='false'>Reservations Reserved</th>
+					}
+					else
+					{
+						<th data-column-name='EventStatus' data-sortable="false" data-searchable='false' data-on-display='EnumFormat.EventStatus' style="width:75px;">Status</th>
+						<th data-column-name='TotalTickets' data-sortable="false" data-searchable='false'>Reservations Reserved</th>
+						<th data-column-name='TicketsAvailable' data-sortable="false" data-searchable='false'>Reservations Available</th>
+					}
+                </tr>
+            </thead>
+       
+        </table>
+    </div>

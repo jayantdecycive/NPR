@@ -1,0 +1,59 @@
+
+@import '../../Screen.scss';
+
+.navbar{ margin-bottom:0px;}
+@media (max-width: $mobileWidth){ 
+	.navbar{ margin-bottom:20px;}
+}
+
+#wizard{padding-top:20px;}
+
+#wizard > div:last-child{ text-align:center; }
+
+span.triUp {
+	float: right;
+	margin-top: 5px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 0 9px 10px 9px;
+	border-color: transparent transparent #8d1d20 transparent;
+	-webkit-transform:rotate(360deg); 
+}
+
+.validation-summary-errors{
+	font-weight:bold;
+	color:$red;
+}
+
+span.triDown {
+	float: right;
+	margin-top: 5px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 9px 0 9px;
+	border-color: #8d1d20 transparent transparent transparent;
+}
+
+.tools > .popover {
+	max-width: 650px;
+}		
+
+.tools-inline {
+	float: right;
+	> .popover {
+		max-width: 480px;
+	}	
+	h3 {
+		padding-top: 12px;
+		padding-bottom: 14px;
+		text-align: left;
+	}	
+	.viewMapCloseButton {
+		float: right;
+		position: relative;
+		top: -5px;
+		right: -6px;
+	}
+}

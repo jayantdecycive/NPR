@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="CopyWebTemplateConfig;UpdateWebConfigBeforeRun;" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<UsingTask TaskName="TransformXml" AssemblyFile="bin\Microsoft.Web.Publishing.Tasks.dll"/>
+
+  <!-- Make sure Web.config will be there even for package/publish -->
+  <Target Name="CopyWebTemplateConfig">
+    <Copy SourceFiles="Web.Template.config"
+          DestinationFiles="Web.config"/>
+  </Target>
+  
+  <!-- This target will run right before you run your app in Visual Studio -->
+  <Target Name="UpdateWebConfigBeforeRun">
+
+    <Message Text="Configuration: $(Configuration): Web.$(Configuration).config"/>
+
+    <TransformXml Source="Web.Template.config"
+              Transform="Web.$(Configuration).config"
+              Destination="Web.config" />
+
+  </Target>
+
+</Project>

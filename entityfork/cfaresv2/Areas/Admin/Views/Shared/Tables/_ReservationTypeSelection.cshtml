@@ -1,0 +1,12 @@
+﻿@model string
+<script>
+    var stores = new DomainModel.ReservationTypeCollection();
+    stores.abstract = true;
+</script>
+
+    <div class='select-wrapper table-short vcenter center admin-green' data-pk="@Model">
+   @Html.Partial("Tables/_ReservationType","stores", new ViewDataDictionary(ViewData){
+       {"Picker",true},
+       {"id","picker"},
+    })
+      </div>

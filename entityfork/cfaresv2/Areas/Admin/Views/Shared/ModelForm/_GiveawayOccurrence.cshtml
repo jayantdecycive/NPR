@@ -1,0 +1,90 @@
+﻿@model cfares.domain._event.Occurrence
+@{string pk = Model.OccurrenceId.ToString();}
+
+ 
+    <fieldset data-pk='@pk' class='occurrence-@pk'>
+        
+        @Html.HiddenFor(model => model.OccurrenceId)
+        <div class='legend inline-block'>Reservation Occurrence</div>
+
+        <div class='model-field field-Store'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.StoreId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.StoreId)
+                @Html.ValidationMessageFor(model => model.StoreId)
+            </div>
+        </div>
+
+        <div class='model-field field-ResEvent'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.ResEventId)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.ResEventId)
+                @Html.ValidationMessageFor(model => model.ResEventId)
+            </div>
+        </div>
+        @Html.HiddenFor(x=>x.StartString)
+        @Html.HiddenFor(x=>x.EndString)
+        @Html.HiddenFor(x=>x.SlotRangeStartString)
+        @Html.HiddenFor(x=>x.SlotRangeEndString)
+        @*<div class='model-field field-RegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.StartString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.StartString)
+                @Html.ValidationMessageFor(model => model.StartString)
+            </div>
+        </div>
+
+        
+        <div class='model-field field-EndRegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.EndString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.EndString)
+                @Html.ValidationMessageFor(model => model.EndString)
+            </div>
+        </div>
+        
+        <div class='model-field field-RegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SlotRangeStartString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SlotRangeStartString)
+                @Html.ValidationMessageFor(model => model.SlotRangeStartString)
+            </div>
+        </div>
+
+        
+        <div class='model-field field-SlotRangeEndRegistrationAvailability'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.SlotRangeEndString)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.SlotRangeEndString)
+                @Html.ValidationMessageFor(model => model.SlotRangeEndString)
+            </div>
+        </div>*@
+
+        <div class='model-field field-Status'>
+            <div class="editor-label inline-block">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field inline-block">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        
+            
+
+        
+    </fieldset>
+   
+ 

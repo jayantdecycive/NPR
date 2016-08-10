@@ -1,0 +1,11 @@
+﻿@model cfares.domain._event.ResEventStatus?
+@{
+
+	Array values = Enum.GetValues(typeof (cfares.domain._event.ResEventStatus));
+	List<cfares.domain._event.ResEventStatus> l = values.OfType<cfares.domain._event.ResEventStatus>().ToList();
+	l.Remove(cfares.domain._event.ResEventStatus.Temp);
+}
+
+<div class='admin-table'>
+	@Html.DropDownListFor(model => model, new SelectList( l , Model ?? cfares.domain._event.ResEventStatus.Draft ), new { @class = " jq-select" })
+</div>

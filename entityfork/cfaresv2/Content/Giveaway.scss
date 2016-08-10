@@ -1,0 +1,91 @@
+// --- Colors -------------------------------------------------
+
+$gold: #e57200;
+
+$bgColorNavBar:#543d36;
+$colorTextHeaderOne: $gold;
+$colorTextFooterLinks: #c19193;
+
+// END Colors -------------------------------------------------
+
+@import 'Screen.scss';
+
+
+.food-choice{text-align:center;}
+
+$gold: #e57200;
+$brown:#a96f3e;
+$blue:#99b6cf;
+
+$grey:#999999;
+$gray:#999999;
+ 
+//$red:#a33038;
+
+
+$red:#D41926;
+
+
+ 
+
+
+	/*------------------------------------------------------
+    FOOD
+	MDRAKE
+	*/
+
+	.food-choice{ 
+		
+		h2{ 
+			color:$gold;
+			font-size:10.5pt;
+			line-height:1.2em;
+		}
+		padding:15px 0px;
+		.cta-wrapper{
+			width:100%;
+			@include inline-block;
+			float: none;
+			margin-left: 2.564102564102564%;
+			
+			/*.btn{width:100%;margin-left: 2.564102564102564%;@include inline-block;float: none;}	*/
+			
+		}
+		@media (max-width: $mobileWidth){
+			.cta-wrapper{
+				margin-left: 10%;
+				width:15%;
+				.btn{text-align:center;}	
+			}
+			.image-wrapper,h2{@include inline-block;vertical-align:middle; } 
+
+			.image-wrapper{width:23%;}
+
+			h2{width:35%;padding-left:3%;padding-right:3%;}
+			
+		}
+		
+	}
+
+	#food_selection{ 
+		@media (max-width: $mobileWidth){
+			hr{ width:90%; margin:4px auto;}
+		}
+	}
+
+	.food-choice:first-child{
+		
+	}
+
+	
+
+
+	
+    /* END FOOD
+    ------------------------------------------------------*/
+
+
+	
+
+
+	

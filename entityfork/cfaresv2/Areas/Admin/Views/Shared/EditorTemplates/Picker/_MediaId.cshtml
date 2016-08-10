@@ -1,0 +1,23 @@
+﻿@model int?
+
+@if (Model != null)
+{
+    @Html.Media(Model.Value, true, width:200, htmlAttributes: new {width="200",@class = "media-preview"})
+}
+else
+{
+    <img class="media-preview hide" width="200" />
+}
+
+@{
+    //string addparams = string.Join("&", ViewData.Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value.ToString()))).ToArray());
+}
+
+@Html.Partial("EditorTemplates/Picker/_Picker",Model,new ViewDataDictionary(ViewData)
+    {
+        {"Table","_MediaSelection"},
+        {"DialogTitle","Please Select an Image"},
+        {"DomainModel","Media"},
+        //{"CreateParams",addparams},
+        //{"EditParams",addparams},
+    })

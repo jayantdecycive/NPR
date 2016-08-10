@@ -1,0 +1,42 @@
+﻿@{ Layout = null; /* Required for Dynamic non-cached elements */ }
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.application
+
+    <ul class="nav unstyled @Html.Raw(AppContext.Current.User == null?"authenticated":"")">
+
+        @*-- Not Logged In State --*@
+        @if (!AppContext.Current.IsAuthenticated)
+        {
+            <li>
+                @using (Html.BeginForm("Index", "LogOn", new { area = "MyAccount",ReturnUrl=Request.Url.TranslatePort(Request) }, FormMethod.Post, new { id = "login", @class = "form-horizontal" }))
+                {
+                    <input id="username-header" class="input-small" type="text" name="UserName" placeholder="Email" />
+                    <input id="password-header" class="input-small" type="password" name="Password" placeholder="Password" />
+                    <button type="submit" class="btn small default btn-primary" value="login">login</button>
+                }
+            </li>
+		@*-- Logged In State --*@ 
+        }
+        else
+        {
+            <li class="welcome">Welcome, @if (AppContext.Current.User != null) { @AppContext.Current.User.FirstName }</li>
+            <li class="modify"><a href="@Url.Action("Index", "Dashboard", new { Area = "MyAccount" })">Modify / Cancel Reservation</a></li>
+        }
+        @if (AppContext.Current.IsAuthenticated)
+                {
+        <li class="acct-dd">
+            <select id="manageAccountDropdown">
+                <option value="@Url.Action("Index", "Dashboard", new { Area = "MyAccount" })">Manage Account</option>
+                <option value="@Url.Action("Update", "Profile", new { Area = "MyAccount" })">My Profile</option>
+                <option value="@Url.Action("Index", "Dashboard", new { Area = "MyAccount" })">Modify / Cancel Reservation</option> 
+                                
+                <option value="@Url.Action("ForgotPassword", "LogOn", new { Area = "MyAccount" })">Forgot Your Password?</option>
+                @*<option value="@Url.Action("Password", "Profile", new { Area = "MyAccount" })">Change Password</option>*@
+                <option value="@Url.Action("LogOff", "Dashboard", new { Area = "MyAccount" })">Log Off</option>
+                @* SH - Disabling per MD - <option>Create account</option>*@
+            </select>
+        </li>
+        }else{
+            <li><a href="@Url.Action("ForgotPassword", "LogOn", new { Area = "MyAccount" })">Forgot Password?</a></li>
+        }
+

@@ -1,0 +1,48 @@
+﻿@using System.Globalization
+@using cfares.domain._event
+@using System.Text.RegularExpressions;
+@model List<IResEvent>
+
+
+@if (!Model.Any())
+{
+    <p>Sorry, there are no events that match this filter.</p>
+}
+else
+{
+    foreach (IResEvent e in Model.OrderBy(d => d.Occurrences[0].SlotsList[0].Start))
+    {
+        if(	e.Occurrences.Any() && 
+			e.Occurrences[0].SlotsList.Any() &&
+			e.Status != ResEventStatus.Hidden &&
+			 e.Occurrences[0].SlotsList[0].Status != SlotStatus.Hidden
+			)
+        {
+            string month = e.Occurrences[0].SlotsList[0].Start.Month.ToString(CultureInfo.InvariantCulture);
+            string year = e.Occurrences[0].SlotsList[0].Start.Year.ToString(CultureInfo.InvariantCulture);
+            string past = e.Occurrences[0].SlotsList[0].Start < DateTime.Now.AddHours(-3) ? "true" : "false";
+            
+            // past event doesnt need to be shown in featured events
+            string featured = e.IsFeatured ? "true" : "false";
+            string subhead = Regex.Replace(@Html.Raw(e.SubHeading).ToString(), @"<[^>]*>", String.Empty);
+         
+               <div class="event-listing @( featured )" data-month="@( month + "_" + year )" data-past="@( past )" data-featured="@(past=="true"?"false":featured )">
+                <h4>@Html.Raw(e.Name) - @subhead</h4>
+                <!-- Need to update to pull from DB -->
+               <p class="event-date">@e.Occurrences[0].SlotsList[0].Start.ToString("dddd, MMMM dd, yyyy") at @e.Occurrences[0].SlotsList[0].Start.ToString("hh:mmtt")</p>
+               <div>@Html.Raw(e.Description)</div>
+
+               
+                <span class="button-forward">
+                    @Html.ActionLink("Check Out the Details to Begin Your Reservation", "EventDetails", new {id = e.ResEventId})
+                    <span class="button-icon-container">
+                        <span class="button-icon"></span>
+                    </span>
+                </span>
+               
+            </div>
+        }
+    }
+}
+
+

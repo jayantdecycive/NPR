@@ -1,0 +1,16 @@
+﻿@model cfares.domain.user.ResUser
+
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Details.cshtml";
+    ViewBag.Brief = "Event User Detailed Information";
+    
+}
+        
+<h1>@Model.Name</h1>
+<p>
+@Model.ToString()
+</p>
+        
+        
+@Html.Partial("ModelDetail/_User")    

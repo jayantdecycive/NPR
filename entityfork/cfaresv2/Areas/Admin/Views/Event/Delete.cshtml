@@ -1,0 +1,18 @@
+﻿@model cfares.domain._event.ResEvent
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Delete.cshtml";
+    ViewBag.Brief = "Delete Event";
+}
+
+@*
+<h1>@Model.ResEventId</h1>
+<p>
+@Html.Raw(Model.ToString())
+</p>
+*@
+        
+@section Details{    
+    @Html.Partial("ModelDetail/_ResEvent")        
+}
+        

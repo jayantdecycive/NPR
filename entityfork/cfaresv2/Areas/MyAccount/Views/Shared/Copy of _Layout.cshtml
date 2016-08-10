@@ -1,0 +1,91 @@
+﻿@using cfares.site.modules.com.application
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My Account</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+	    @Styles.Render("~/Content/bootstrap")
+	    @Styles.Render("~/Content/MyAccount/css")
+
+		@Scripts.Render("~/bundles/modernizr")
+		@Scripts.Render("~/bundles/jquery")
+		
+		@this.RenderSection("Head", required: false)
+    </head>
+    <body>
+	    
+	    @*----------------------------------------------------
+			Reservation System - My Account Master Template / Layout
+		----------------------------------------------------*@
+	    <div id="container" class="container-fluid">
+		   
+		    <header>
+			    @this.RenderSection("Header", 
+				@<div class="container-fluid span10 offset1">
+					<div class="row-fluid">
+						<div class="span2 logo">
+							<a href="@Url.Action( "Index", "Dashboard" )">
+								@Html.ThemeImage("logo.png", "MyAccount")
+							</a>
+						</div>
+						<div class="span4 titlecard">
+							<a href="@Url.Action( "Index", "Dashboard" )">
+								@Html.ThemeImage("reservationcenter.png", "MyAccount")
+							</a>
+						</div>
+						<div class="span4">
+							@using (Html.BeginForm("Index", "LogOn", new {area = "MyAccount"}, FormMethod.Get, new {id = "login", @class = "", style = "display: inline"}))
+							{
+								<ul id="subNav" style="min-width: 450px; width: 450px; position: relative; left: 30px;">
+									@*-- Temporarily Hiding Elements for Demo ( please remove inline styling when restored ) --*@
+									<li style="padding: 0 20px; width: 145px; float: left; line-height: 29px; font-size: 0.9em; color: #555;">Welcome@( AppContext.Current.User == null ? "" : ", " + AppContext.Current.User.FirstName )</li>
+									<li style="padding: 0 20px; float: left; line-height: 29px;">@Html.ActionLink( "My Events", "Index", "Dashboard" )</li>
+									<li style="padding: 0 20px; float: left; border-right: 0; line-height: 29px;">@Html.ActionLink( "Modify Account Info", "Update", "Profile" )</li>
+									@*<li>@Html.ActionLink( "Preferred Restaurants", "PreferredStores", "Locations" )</li>*@
+								</ul>
+							}
+						</div>
+					</div>
+				</div>)
+                
+		    </header>	        
+
+	        <main>
+	            @if (!string.IsNullOrEmpty(Request.QueryString["message"]))
+                {
+                    <div class="alert alert-info">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      @Request.QueryString["message"]
+                    </div>
+                }
+	            @RenderBody()
+	        </main>
+
+		    <footer>
+			    @this.RenderSection("Footer",
+				@<div class="row-fluid">
+					<div class="span4 offset4">
+						<ul>
+							<li><a target="_blank" href="http://www.chick-fil-a.com/legal/">LEGAL</a></li>
+							<li><a target="_blank" href="http://www.chick-fil-a.com/">CHICK-FIL-A.COM</a></li>
+							<li><a target="_blank" href="http://www.chick-fil-a.com/legal/privacy">PRIVACY</a></li>
+						</ul>
+					</div>
+					<div class="span12 footer-grad"></div>
+				</div>)
+		    </footer>
+	    
+		</div>
+	    
+		
+		@Scripts.Render("~/bundles/bootstrapjs")
+	    @Scripts.Render("~/bundles/jqueryval")
+	    @this.RenderSection("scripts", required: false)
+
+    </body>
+</html>

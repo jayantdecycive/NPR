@@ -1,0 +1,29 @@
+﻿@model npr.domain._event.ticket.NPRTicket
+@{
+    ViewBag.Title = "Create NPR Ticket";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Create.cshtml";
+}
+
+<h2>NPR Ticket Details</h2>
+<p>Enter Basic NPR Ticket Information.</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	@Html.Partial("ModelForm/_NPRTicket")
+
+	<div class="button-cta left-float summary-btn-grp admin">
+	
+		<p>&nbsp;</p>
+
+		<div class="admin-green">
+			<input type="submit" style="display: none;" id="saveTrigger" value="Save" />
+			<a class="btn-container-default" onclick="$('#saveTrigger').click(); return false;"  data-icon="ui-icon-circle-check" href="">Save Ticket</a>
+		</div>
+
+		<div class="admin-red">
+			<a href="@UrlHelpers.GetReferrerUrl()" data-icon="ui-icon-circle-close" class="btn-container-default">Cancel</a>
+		</div>
+		
+	</div>	
+}

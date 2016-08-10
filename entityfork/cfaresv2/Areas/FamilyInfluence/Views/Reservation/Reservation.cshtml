@@ -1,0 +1,210 @@
+﻿@using cfacore.shared.modules.helpers
+@using cfares.domain._event
+@using cfares.domain._event.occ
+@using cfares.domain.store
+@using cfares.site.modules.Helpers
+@using cfares.site.modules.com.reservations.res
+@using cfares.domain._event._tickets
+@model cfaresv2.Models.TicketAccountModel<DateTicket>
+@{
+    // ViewBag.Title = "Family Influence - Override Example";
+    Layout = "../Shared/_Layout.cshtml";
+    DateOccurrence occurrence = (ViewBag.Occurrence as DateOccurrence);
+    ResStore store = occurrence.Store;
+    FamilyInfluenceReservationWizard wizard = ViewData["wizard"] as FamilyInfluenceReservationWizard;
+}
+
+@section Scripts {
+<script>
+
+    function bindViewMapLinks() {
+
+        $('*[data-poload]').bind('click', function () {
+            var e = $(this);
+
+            if (e.attr('maptoggle') == 'true')
+                e.removeAttr('maptoggle');
+            else
+                e.attr('maptoggle', 'true');
+
+            var mapToggle = (e.attr('maptoggle') == 'true');
+            var mapLoaded = (e.attr('maploaded') == 'true');
+
+            if (mapToggle) {
+
+                $('*[maptoggle]').each(function () {
+                    if (this.id != e[0].id)
+                        $(this).popover('hide');
+                });
+
+                if (!mapLoaded) {
+
+                    e.popover({
+                        html: true,
+                        trigger: 'manual',
+
+                        title: function () { return "TITLE"; },
+
+                        content: '<iframe width="420" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' + e.data('poload') + '&amp;output=embed"></iframe>'
+
+                    }).popover('show');
+                    e.attr('mapLoaded', 'true');
+                }
+                else
+                    e.popover('show');
+
+                $('.popover-title').append(function () {
+                    return $('<button class="btn small default viewMapCloseButton" value="Close">Close</button>').click(function () {
+                        e.popover('hide');
+                    });
+                });
+            }
+            else
+                e.popover('hide');
+
+            return false;
+        });
+    }
+
+    $(function () {
+
+        $('.tooltip-why').bind('mouseover', function () {
+            $(this).popover({ html: true, trigger: 'manual' }).popover('show');
+        })
+		.bind('mouseout', function () {
+		    $(this).popover('hide');
+		})
+		.bind('click', function () {
+		    return false;
+		});
+
+        bindViewMapLinks();
+
+    });
+
+    $(document).ready(function () {
+        $('#StandardTable').click(function () {
+            if ($('#StandardTable').attr('checked')) {
+                $("#TableRequest").val("standard");
+            }
+            else {
+                $("#TableRequest").val("any");
+            }
+        })
+    });
+
+</script>
+}
+
+@*----------------------------------------------------
+	Family Influence - Reservation Signup
+----------------------------------------------------*@
+
+@Html.Partial("_Wizard",wizard)
+
+<section class="row-fluid" id="reservation_form">
+
+    
+    <div class="span11 offset1">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { action = Request.Url.TranslatePort(Request), id = "reservationForm", @class = "form-horizontal form-inline" }))
+        {
+	        
+            <fieldset>
+                <p>Complete your reservation by filling out the form below. <span class="required note">* Indicates required field</span></p>
+                <ul class="unstyled">
+                    <li>
+                        
+                    @Html.HiddenFor(x=>x.Ticket.CardNumber)    
+                        @Html.ValidationSummary(true)
+                    </li>
+                    
+                    
+                    <li>
+
+                        <span class="required">*</span>
+					    
+                        @Html.LabelFor(x=>x.Ticket.SlotId,"Reservation Time:")
+                        @Html.DropDownListFor(x=>x.Ticket.SlotId,
+                                              new SelectList(
+                                                  occurrence.AvailableSlots.OrderBy(x=>x.Start).Select(x=>new
+                                                      {
+                                                          Value=x.SlotId, Label = string.Format("{0} ({1} available)",x.Start.ToDateTimeString(),x.Capacity-x.IssuedTickets.Count())
+                                                      }),"Value","Label"
+                                                  )
+                             )
+                        @Html.ValidationMessageFor(x=>x.Ticket.SlotId)
+						
+                    </li> 
+	                    
+                    <li>
+                        <span class="required">*</span>
+                        @Html.LabelFor(x=>x.Ticket.NumberOfGuests,"Number of sons:")
+                        @Html.DropDownListFor(x=>x.Ticket.NumberOfGuests,
+                                              new SelectList(
+                                                  Enumerable.Range(0,8).Select(x=>new {Value=x,Label=x})
+                                                  ,"Value","Label"
+                                                  )
+                             )
+                        @Html.ValidationMessageFor(x=>x.Ticket.NumberOfGuests)
+                    </li>
+                    <li>
+                        @Html.CheckBox("StandardTable", (Model.Ticket.TableRequest == "standard"), new { id="StandardTable"})
+                        @Html.Label("StandardTable","I prefer a standard height table (Ideal for children under the age of 6)", new{@class="check"})<span class='ageReq'> (must be 18 or older)</span>
+                        @Html.HiddenFor(m => m.Ticket.TableRequest, new{ id="TableRequest" })
+
+
+
+                        @*
+                        <!--<input type="checkbox" id="tablePref" />-->
+                        @Html.CheckBoxFor(x=>x.StandardTable)
+                        @Html.LabelFor(x=>x.StandardTable,"I prefer a standard height table (Ideal for children under the age of 6)",new {@class="check"})
+                        @Html.ValidationMessageFor(x=>x.StandardTable)
+                        <!--<label class="check" for="tablePref">I prefer a standard height table (Ideal for children under the age of 6)</label>-->
+                        *@
+                    </li>
+                        
+                    <li>
+
+                        
+                        @Html.CheckBoxFor(x=>x.StoreOptIn)
+                        @Html.LabelFor(x=>x.StoreOptIn,"Receive updates about promotions and events from this Chick-fil-A restaurant.", new{@class="check"})<span class='ageReq'> (must be 18 or older)</span>
+                        @Html.ValidationMessageFor(x=>x.StoreOptIn)
+                        
+                    </li>
+	                    
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @Html.Partial("_ResUserMixin")
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(x=>x.Ticket.OwnerId)
+
+                             @* <li>
+	                                
+	                                @Html.LabelFor(x=>x.Ticket.OwnerEmail,"Ticket Assigned to:")
+	                                @Html.TextBoxFor(x=>x.User.Email,new {@readonly="readonly"})
+	                            </li>*@
+                    }
+
+                    <li>
+                        
+                        <fieldset>
+                            <span class="required">*</span>
+                            <label>I am 13 years of age or older:</label>
+                            @Html.EditorFor(x=>x.AgeCheck)
+                            @Html.ValidationMessageFor(x=>x.AgeCheck)
+                        </fieldset>
+                    </li>
+	                    
+                </ul>
+
+                <button type="submit" class="btn medium default reserve btn-primary">Save &amp; Continue <i class="icon-arrow-right"></i></button>
+
+            </fieldset>
+	        
+        }
+    </div>
+
+    </section>
+
